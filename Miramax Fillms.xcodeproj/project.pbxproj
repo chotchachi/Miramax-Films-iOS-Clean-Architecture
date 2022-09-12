@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		61D73C8110AE141D057D3229 /* Pods_Miramax_Fillms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C90E95A357C070699EC3983 /* Pods_Miramax_Fillms.framework */; };
 		ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62128C6369800D60351 /* AppDelegate.swift */; };
-		ED86E62428C6369800D60351 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62328C6369800D60351 /* SceneDelegate.swift */; };
-		ED86E62628C6369800D60351 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62528C6369800D60351 /* ViewController.swift */; };
-		ED86E62928C6369900D60351 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62728C6369900D60351 /* Main.storyboard */; };
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
 		ED86E62E28C6369B00D60351 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62C28C6369B00D60351 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -22,9 +19,6 @@
 		53B990CD2AA8BFC87184AC0E /* Pods-Miramax Fillms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Miramax Fillms.debug.xcconfig"; path = "Target Support Files/Pods-Miramax Fillms/Pods-Miramax Fillms.debug.xcconfig"; sourceTree = "<group>"; };
 		ED86E61E28C6369800D60351 /* Miramax Fillms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Miramax Fillms.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED86E62128C6369800D60351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ED86E62328C6369800D60351 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ED86E62528C6369800D60351 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		ED86E62828C6369900D60351 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED86E62A28C6369B00D60351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED86E62D28C6369B00D60351 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED86E62F28C6369B00D60351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +42,6 @@
 				53B990CD2AA8BFC87184AC0E /* Pods-Miramax Fillms.debug.xcconfig */,
 				4758F1EC2A08D665697C22E4 /* Pods-Miramax Fillms.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -74,9 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				ED86E62128C6369800D60351 /* AppDelegate.swift */,
-				ED86E62328C6369800D60351 /* SceneDelegate.swift */,
-				ED86E62528C6369800D60351 /* ViewController.swift */,
-				ED86E62728C6369900D60351 /* Main.storyboard */,
 				ED86E62A28C6369B00D60351 /* Assets.xcassets */,
 				ED86E62C28C6369B00D60351 /* LaunchScreen.storyboard */,
 				ED86E62F28C6369B00D60351 /* Info.plist */,
@@ -153,7 +143,6 @@
 			files = (
 				ED86E62E28C6369B00D60351 /* LaunchScreen.storyboard in Resources */,
 				ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */,
-				ED86E62928C6369900D60351 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,23 +178,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED86E62628C6369800D60351 /* ViewController.swift in Sources */,
 				ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */,
-				ED86E62428C6369800D60351 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ED86E62728C6369900D60351 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ED86E62828C6369900D60351 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		ED86E62C28C6369B00D60351 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -343,9 +322,10 @@
 				INFOPLIST_FILE = "Miramax Fillms/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -371,9 +351,10 @@
 				INFOPLIST_FILE = "Miramax Fillms/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
