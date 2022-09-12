@@ -1,3 +1,70 @@
-PODFILE CHECKSUM: ab47b47e12c019dcae35d056fa697f066ac41b73
+PODS:
+  - Differentiator (4.0.1)
+  - MKProgress (1.1.0)
+  - "NSObject+Rx (5.1.0)":
+    - RxSwift (~> 5.1)
+  - RxCocoa (5.1.3):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.1.3):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.3)
+  - RxSwiftExt (5.2.0):
+    - RxSwiftExt/Core (= 5.2.0)
+    - RxSwiftExt/RxCocoa (= 5.2.0)
+  - RxSwiftExt/Core (5.2.0):
+    - RxSwift (~> 5.0)
+  - RxSwiftExt/RxCocoa (5.2.0):
+    - RxCocoa (~> 5.0)
+    - RxSwiftExt/Core
+  - SnapKit (5.0.1)
+  - XCoordinator (2.0.7):
+    - XCoordinator/Core (= 2.0.7)
+  - XCoordinator/Core (2.0.7)
+  - XCoordinator/RxSwift (2.0.7):
+    - RxSwift (~> 5.0)
+    - XCoordinator/Core
+
+DEPENDENCIES:
+  - MKProgress
+  - "NSObject+Rx (~> 5.1.0)"
+  - RxCocoa
+  - RxDataSources (~> 4.0)
+  - RxSwift
+  - RxSwiftExt (~> 5)
+  - SnapKit (~> 5.0.0)
+  - XCoordinator (~> 2.0)
+  - XCoordinator/RxSwift (~> 2.0)
+
+SPEC REPOS:
+  trunk:
+    - Differentiator
+    - MKProgress
+    - "NSObject+Rx"
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - RxSwiftExt
+    - SnapKit
+    - XCoordinator
+
+SPEC CHECKSUMS:
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  MKProgress: 260d166200323f3d991190a73ab2dc3a04b0f52f
+  "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
+  RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
+  RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
+  RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  XCoordinator: 9ee654fedef1ffede33d5c11677708a555c00542
+
+PODFILE CHECKSUM: 6ec1fe0f70d195cc965b4cc91a56ec83d9110ee2
 
 COCOAPODS: 1.11.2
