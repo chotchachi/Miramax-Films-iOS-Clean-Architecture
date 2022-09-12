@@ -10,7 +10,15 @@
 		61D73C8110AE141D057D3229 /* Pods_Miramax_Fillms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C90E95A357C070699EC3983 /* Pods_Miramax_Fillms.framework */; };
 		ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62128C6369800D60351 /* AppDelegate.swift */; };
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
-		ED86E62E28C6369B00D60351 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62C28C6369B00D60351 /* LaunchScreen.storyboard */; };
+		EDC6DB2128CF69DF00164EBD /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB2028CF69DF00164EBD /* BaseViewModel.swift */; };
+		EDC6DB2428CF6A0800164EBD /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */; };
+		EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB2628CF6C3300164EBD /* BaseViewController.swift */; };
+		EDC6DB2C28CF70F500164EBD /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB2B28CF70F500164EBD /* AppDIContainer.swift */; };
+		EDC6DB2F28CF717600164EBD /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB2E28CF717600164EBD /* MainNavigationController.swift */; };
+		EDC6DB3228CF724A00164EBD /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB3128CF724A00164EBD /* AppCoordinator.swift */; };
+		EDC6DB3628CF759400164EBD /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB3428CF759400164EBD /* SplashViewController.swift */; };
+		EDC6DB3728CF759400164EBD /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC6DB3528CF759400164EBD /* SplashViewController.xib */; };
+		EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB3828CF764500164EBD /* SplashViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,8 +28,16 @@
 		ED86E61E28C6369800D60351 /* Miramax Fillms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Miramax Fillms.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED86E62128C6369800D60351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED86E62A28C6369B00D60351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ED86E62D28C6369B00D60351 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED86E62F28C6369B00D60351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDC6DB2028CF69DF00164EBD /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		EDC6DB2628CF6C3300164EBD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		EDC6DB2B28CF70F500164EBD /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		EDC6DB2E28CF717600164EBD /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		EDC6DB3128CF724A00164EBD /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		EDC6DB3428CF759400164EBD /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		EDC6DB3528CF759400164EBD /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		EDC6DB3828CF764500164EBD /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,12 +82,132 @@
 		ED86E62028C6369800D60351 /* Miramax Fillms */ = {
 			isa = PBXGroup;
 			children = (
-				ED86E62128C6369800D60351 /* AppDelegate.swift */,
-				ED86E62A28C6369B00D60351 /* Assets.xcassets */,
-				ED86E62C28C6369B00D60351 /* LaunchScreen.storyboard */,
-				ED86E62F28C6369B00D60351 /* Info.plist */,
+				EDC6DB1728CF666C00164EBD /* Application */,
+				EDC6DB1C28CF676B00164EBD /* Data */,
+				EDC6DB1B28CF676600164EBD /* Domain */,
+				EDC6DB1828CF668500164EBD /* Extensions */,
+				EDC6DB1528CF664D00164EBD /* GlobalDefine */,
+				EDC6DB1A28CF674300164EBD /* Presentation */,
+				EDC6DB1928CF669F00164EBD /* Resources */,
 			);
 			path = "Miramax Fillms";
+			sourceTree = "<group>";
+		};
+		EDC6DB1528CF664D00164EBD /* GlobalDefine */ = {
+			isa = PBXGroup;
+			children = (
+				ED86E62F28C6369B00D60351 /* Info.plist */,
+			);
+			path = GlobalDefine;
+			sourceTree = "<group>";
+		};
+		EDC6DB1728CF666C00164EBD /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB2A28CF70DC00164EBD /* DIContainer */,
+				ED86E62128C6369800D60351 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		EDC6DB1828CF668500164EBD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EDC6DB1928CF669F00164EBD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ED86E62A28C6369B00D60351 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EDC6DB1A28CF674300164EBD /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB3028CF723700164EBD /* Coordinators */,
+				EDC6DB1F28CF69CD00164EBD /* Base */,
+				EDC6DB2228CF69FE00164EBD /* Common */,
+				EDC6DB2528CF6C1900164EBD /* Scenes */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		EDC6DB1B28CF676600164EBD /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		EDC6DB1C28CF676B00164EBD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		EDC6DB1F28CF69CD00164EBD /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB2028CF69DF00164EBD /* BaseViewModel.swift */,
+				EDC6DB2628CF6C3300164EBD /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		EDC6DB2228CF69FE00164EBD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		EDC6DB2528CF6C1900164EBD /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB3328CF758100164EBD /* SplashViewController */,
+				EDC6DB2D28CF715800164EBD /* MainNavigationController */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		EDC6DB2A28CF70DC00164EBD /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB2B28CF70F500164EBD /* AppDIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		EDC6DB2D28CF715800164EBD /* MainNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB2E28CF717600164EBD /* MainNavigationController.swift */,
+			);
+			path = MainNavigationController;
+			sourceTree = "<group>";
+		};
+		EDC6DB3028CF723700164EBD /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB3128CF724A00164EBD /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		EDC6DB3328CF758100164EBD /* SplashViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB3428CF759400164EBD /* SplashViewController.swift */,
+				EDC6DB3528CF759400164EBD /* SplashViewController.xib */,
+				EDC6DB3828CF764500164EBD /* SplashViewModel.swift */,
+			);
+			path = SplashViewController;
 			sourceTree = "<group>";
 		};
 		FE5917F12D77CB7E93DB3BE7 /* Frameworks */ = {
@@ -93,6 +229,7 @@
 				ED86E61A28C6369800D60351 /* Sources */,
 				ED86E61B28C6369800D60351 /* Frameworks */,
 				ED86E61C28C6369800D60351 /* Resources */,
+				8163624D96F2F416EFB74BFE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,7 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED86E62E28C6369B00D60351 /* LaunchScreen.storyboard in Resources */,
+				EDC6DB3728CF759400164EBD /* SplashViewController.xib in Resources */,
 				ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +286,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8163624D96F2F416EFB74BFE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Miramax Fillms/Pods-Miramax Fillms-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Miramax Fillms/Pods-Miramax Fillms-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Miramax Fillms/Pods-Miramax Fillms-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D36C0E2DB537BBC51662529E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -178,22 +332,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
+				EDC6DB2428CF6A0800164EBD /* ViewModelType.swift in Sources */,
+				EDC6DB2C28CF70F500164EBD /* AppDIContainer.swift in Sources */,
+				EDC6DB3628CF759400164EBD /* SplashViewController.swift in Sources */,
 				ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */,
+				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
+				EDC6DB3228CF724A00164EBD /* AppCoordinator.swift in Sources */,
+				EDC6DB2F28CF717600164EBD /* MainNavigationController.swift in Sources */,
+				EDC6DB2128CF69DF00164EBD /* BaseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		ED86E62C28C6369B00D60351 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ED86E62D28C6369B00D60351 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		ED86E63028C6369B00D60351 /* Debug */ = {
@@ -319,7 +470,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Miramax Fillms/Info.plist";
+				INFOPLIST_FILE = "Miramax Fillms/GlobalDefine/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -348,7 +499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Miramax Fillms/Info.plist";
+				INFOPLIST_FILE = "Miramax Fillms/GlobalDefine/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
