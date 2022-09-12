@@ -14,4 +14,7 @@ class SplashViewModel: BaseViewModel {
         self.router = router
     }
     
+    func goToHome() {
+        router.trigger(.home)
+    }
 }

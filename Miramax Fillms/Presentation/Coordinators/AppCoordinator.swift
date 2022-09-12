@@ -10,6 +10,7 @@ import XCoordinator
 
 enum AppRoute: Route {
     case splash
+    case home
 }
 
 class AppCoordinator: NavigationCoordinator<AppRoute> {
@@ -24,6 +25,8 @@ class AppCoordinator: NavigationCoordinator<AppRoute> {
             let vc = SplashViewController()
             vc.viewModel = SplashViewModel(router: unownedRouter)
             return .set([vc])
+        case .home:
+            return .set([HomeCoordinator().strongRouter])
         }
     }
 }

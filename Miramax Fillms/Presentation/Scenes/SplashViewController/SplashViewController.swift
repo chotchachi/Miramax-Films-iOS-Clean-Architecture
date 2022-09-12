@@ -13,7 +13,7 @@ class SplashViewController: BaseViewController<SplashViewModel> {
         super.viewDidLoad()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            
+            self.viewModel.goToHome()
         }
     }
 }
