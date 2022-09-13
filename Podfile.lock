@@ -1,50 +1,54 @@
 PODS:
-  - Differentiator (4.0.1)
+  - Alamofire (5.6.2)
+  - Differentiator (5.0.0)
   - MKProgress (1.1.0)
-  - "NSObject+Rx (5.1.0)":
-    - RxSwift (~> 5.1)
-  - RxCocoa (5.1.3):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxDataSources (4.0.1):
-    - Differentiator (~> 4.0)
-    - RxCocoa (~> 5.0)
-    - RxSwift (~> 5.0)
-  - RxRelay (5.1.3):
-    - RxSwift (~> 5)
-  - RxSwift (5.1.3)
-  - RxSwiftExt (5.2.0):
-    - RxSwiftExt/Core (= 5.2.0)
-    - RxSwiftExt/RxCocoa (= 5.2.0)
-  - RxSwiftExt/Core (5.2.0):
-    - RxSwift (~> 5.0)
-  - RxSwiftExt/RxCocoa (5.2.0):
-    - RxCocoa (~> 5.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (15.0.0):
+    - Moya/Core
+    - RxSwift (~> 6.0)
+  - ObjectMapper (4.2.0)
+  - RxCocoa (6.0.0):
+    - RxRelay (= 6.0.0)
+    - RxSwift (= 6.0.0)
+  - RxDataSources (5.0.0):
+    - Differentiator (~> 5.0)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.0.0):
+    - RxSwift (= 6.0.0)
+  - RxSwift (6.0.0)
+  - RxSwiftExt (6.0.1):
+    - RxSwiftExt/Core (= 6.0.1)
+    - RxSwiftExt/RxCocoa (= 6.0.1)
+  - RxSwiftExt/Core (6.0.1):
+    - RxSwift (~> 6.0)
+  - RxSwiftExt/RxCocoa (6.0.1):
+    - RxCocoa (~> 6.0)
     - RxSwiftExt/Core
   - SnapKit (5.0.1)
-  - XCoordinator (2.0.7):
-    - XCoordinator/Core (= 2.0.7)
-  - XCoordinator/Core (2.0.7)
-  - XCoordinator/RxSwift (2.0.7):
-    - RxSwift (~> 5.0)
-    - XCoordinator/Core
+  - XCoordinator (2.2.0):
+    - XCoordinator/Core (= 2.2.0)
+  - XCoordinator/Core (2.2.0)
 
 DEPENDENCIES:
   - MKProgress
-  - "NSObject+Rx (~> 5.1.0)"
-  - RxCocoa
-  - RxDataSources (~> 4.0)
-  - RxSwift
-  - RxSwiftExt (~> 5)
+  - Moya/RxSwift (~> 15.0)
+  - ObjectMapper (~> 4.2.0)
+  - RxCocoa (~> 6.0.0)
+  - RxDataSources (~> 5.0.0)
+  - RxSwift (~> 6.0.0)
+  - RxSwiftExt (~> 6.0.1)
   - SnapKit (~> 5.0.0)
   - XCoordinator (~> 2.0)
-  - XCoordinator/RxSwift (~> 2.0)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Differentiator
     - MKProgress
-    - "NSObject+Rx"
+    - Moya
+    - ObjectMapper
     - RxCocoa
     - RxDataSources
     - RxRelay
@@ -54,17 +58,19 @@ SPEC REPOS:
     - XCoordinator
 
 SPEC CHECKSUMS:
-  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   MKProgress: 260d166200323f3d991190a73ab2dc3a04b0f52f
-  "NSObject+Rx": fa6bbcc1ab1faa06b01466bc09b1e0692bbc5946
-  RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
-  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
-  RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
-  RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
-  RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
+  RxCocoa: 3f79328fafa3645b34600f37c31e64c73ae3a80e
+  RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxRelay: 8d593be109c06ea850df027351beba614b012ffb
+  RxSwift: c14e798c59b9f6e9a2df8fd235602e85cc044295
+  RxSwiftExt: d61c4b9b06e0a448041b1c659e0f1b5c5a035afc
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  XCoordinator: 9ee654fedef1ffede33d5c11677708a555c00542
+  XCoordinator: a5f91e43ee944f508529763921165697d3211629
 
-PODFILE CHECKSUM: 6ec1fe0f70d195cc965b4cc91a56ec83d9110ee2
+PODFILE CHECKSUM: cd0666cdaaff51b0a383d701439c86e0d4223e7a
 
 COCOAPODS: 1.11.2

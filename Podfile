@@ -8,18 +8,18 @@ target 'Miramax Fillms' do
   # Pods for Miramax Fillms
   
   # rx
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod 'NSObject+Rx', '~> 5.1.0'
-  pod 'RxDataSources', '~> 4.0'
-  pod 'RxSwiftExt', '~> 5'
+  pod 'RxSwift', '~> 6.0.0'
+  pod 'RxCocoa', '~> 6.0.0'
+  pod 'RxDataSources', '~> 5.0.0'
+  pod 'RxSwiftExt', '~> 6.0.1'
   
   # XCoordinator
   pod 'XCoordinator', '~> 2.0'
-  pod 'XCoordinator/RxSwift', '~> 2.0'
   
   # others
   pod 'SnapKit', '~> 5.0.0'
   pod 'MKProgress'
+  pod 'ObjectMapper', '~> 4.2.0'
+  pod 'Moya/RxSwift', '~> 15.0'
 
 end

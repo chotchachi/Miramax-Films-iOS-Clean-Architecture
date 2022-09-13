@@ -9,8 +9,8 @@ import RxSwift
 
 protocol MovieRepository {
     func getGenreList() -> Single<GenreResponse>
-    func getNowPlaying() -> Single<MovieResponse>
-    func getTopRated() -> Single<MovieResponse>
-    func getPopular() -> Single<MovieResponse>
-    func getUpComing() -> Single<MovieResponse>
+//    func getNowPlaying() -> Single<MovieResponse>
+//    func getTopRated() -> Single<MovieResponse>
+//    func getPopular() -> Single<MovieResponse>
+//    func getUpComing() -> Single<MovieResponse>
 }

@@ -32,6 +32,17 @@
 		EDC6DB5628D0633F00164EBD /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5528D0633F00164EBD /* MovieResponse.swift */; };
 		EDC6DB5828D0639500164EBD /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5728D0639500164EBD /* Dates.swift */; };
 		EDC6DB5A28D0649F00164EBD /* GenreResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5928D0649F00164EBD /* GenreResponse.swift */; };
+		EDC6DB5C28D068CE00164EBD /* GenreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5B28D068CE00164EBD /* GenreDTO.swift */; };
+		EDC6DB5F28D0713400164EBD /* GenreResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5E28D0713400164EBD /* GenreResponseDTO.swift */; };
+		EDC6DB6128D071F300164EBD /* MovieRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB6028D071F200164EBD /* MovieRepositoryImpl.swift */; };
+		EDC6DB6528D0725E00164EBD /* AppApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB6428D0725E00164EBD /* AppApi.swift */; };
+		EDC6DB6728D078B000164EBD /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB6628D078B000164EBD /* Api.swift */; };
+		EDC6DB6A28D07C4C00164EBD /* DomainConvertibleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB6928D07C4C00164EBD /* DomainConvertibleType.swift */; };
+		EDC6DB6C28D082E800164EBD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB6B28D082E800164EBD /* NetworkManager.swift */; };
+		EDC6DB7128D0835500164EBD /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7028D0835500164EBD /* NetworkProvider.swift */; };
+		EDC6DB7428D0841300164EBD /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7328D0841300164EBD /* ReachabilityManager.swift */; };
+		EDC6DB7628D0847000164EBD /* AppNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7528D0847000164EBD /* AppNetworking.swift */; };
+		EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +75,17 @@
 		EDC6DB5528D0633F00164EBD /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
 		EDC6DB5728D0639500164EBD /* Dates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
 		EDC6DB5928D0649F00164EBD /* GenreResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreResponse.swift; sourceTree = "<group>"; };
+		EDC6DB5B28D068CE00164EBD /* GenreDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDTO.swift; sourceTree = "<group>"; };
+		EDC6DB5E28D0713400164EBD /* GenreResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreResponseDTO.swift; sourceTree = "<group>"; };
+		EDC6DB6028D071F200164EBD /* MovieRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepositoryImpl.swift; sourceTree = "<group>"; };
+		EDC6DB6428D0725E00164EBD /* AppApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppApi.swift; sourceTree = "<group>"; };
+		EDC6DB6628D078B000164EBD /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		EDC6DB6928D07C4C00164EBD /* DomainConvertibleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainConvertibleType.swift; sourceTree = "<group>"; };
+		EDC6DB6B28D082E800164EBD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		EDC6DB7028D0835500164EBD /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		EDC6DB7328D0841300164EBD /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		EDC6DB7528D0847000164EBD /* AppNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNetworking.swift; sourceTree = "<group>"; };
+		EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAlamofireSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,8 +196,11 @@
 		EDC6DB1C28CF676B00164EBD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				EDC6DB6828D07C3D00164EBD /* Encodable */,
 				EDC6DB4F28D0392A00164EBD /* Model */,
+				EDC6DB6228D0723300164EBD /* Network */,
 				EDC6DB4E28D0391D00164EBD /* Repository */,
+				EDC6DB7228D0840300164EBD /* Utility */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -285,6 +310,7 @@
 		EDC6DB4E28D0391D00164EBD /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				EDC6DB6028D071F200164EBD /* MovieRepositoryImpl.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -292,6 +318,8 @@
 		EDC6DB4F28D0392A00164EBD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EDC6DB5D28D0712600164EBD /* Response */,
+				EDC6DB5B28D068CE00164EBD /* GenreDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,6 +331,59 @@
 				EDC6DB5928D0649F00164EBD /* GenreResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		EDC6DB5D28D0712600164EBD /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB5E28D0713400164EBD /* GenreResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		EDC6DB6228D0723300164EBD /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB6628D078B000164EBD /* Api.swift */,
+				EDC6DB6B28D082E800164EBD /* NetworkManager.swift */,
+				EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */,
+				EDC6DB6D28D0831500164EBD /* NetworkProvider */,
+				EDC6DB6328D0724D00164EBD /* Target */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		EDC6DB6328D0724D00164EBD /* Target */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB6428D0725E00164EBD /* AppApi.swift */,
+			);
+			path = Target;
+			sourceTree = "<group>";
+		};
+		EDC6DB6828D07C3D00164EBD /* Encodable */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB6928D07C4C00164EBD /* DomainConvertibleType.swift */,
+			);
+			path = Encodable;
+			sourceTree = "<group>";
+		};
+		EDC6DB6D28D0831500164EBD /* NetworkProvider */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB7028D0835500164EBD /* NetworkProvider.swift */,
+				EDC6DB7528D0847000164EBD /* AppNetworking.swift */,
+			);
+			path = NetworkProvider;
+			sourceTree = "<group>";
+		};
+		EDC6DB7228D0840300164EBD /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB7328D0841300164EBD /* ReachabilityManager.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		FE5917F12D77CB7E93DB3BE7 /* Frameworks */ = {
@@ -430,16 +511,24 @@
 			files = (
 				EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */,
 				EDC6DB4628CF98F800164EBD /* MovieViewController.swift in Sources */,
+				EDC6DB7128D0835500164EBD /* NetworkProvider.swift in Sources */,
 				EDC6DB5328D0623E00164EBD /* Movie.swift in Sources */,
+				EDC6DB7428D0841300164EBD /* ReachabilityManager.swift in Sources */,
+				EDC6DB5C28D068CE00164EBD /* GenreDTO.swift in Sources */,
 				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
 				EDC6DB5628D0633F00164EBD /* MovieResponse.swift in Sources */,
+				EDC6DB6728D078B000164EBD /* Api.swift in Sources */,
+				EDC6DB6528D0725E00164EBD /* AppApi.swift in Sources */,
 				EDC6DB3E28CF8F3400164EBD /* HomeViewModel.swift in Sources */,
 				EDC6DB2428CF6A0800164EBD /* ViewModelType.swift in Sources */,
+				EDC6DB5F28D0713400164EBD /* GenreResponseDTO.swift in Sources */,
 				EDC6DB2C28CF70F500164EBD /* AppDIContainer.swift in Sources */,
 				EDC6DB5A28D0649F00164EBD /* GenreResponse.swift in Sources */,
 				EDC6DB3628CF759400164EBD /* SplashViewController.swift in Sources */,
 				EDC6DB4C28CF9D5D00164EBD /* Genre.swift in Sources */,
+				EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */,
 				ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */,
+				EDC6DB7628D0847000164EBD /* AppNetworking.swift in Sources */,
 				EDC6DB5828D0639500164EBD /* Dates.swift in Sources */,
 				EDC6DB5128D039A400164EBD /* MovieRepository.swift in Sources */,
 				EDC6DB3C28CF8F1700164EBD /* HomeViewController.swift in Sources */,
@@ -447,7 +536,10 @@
 				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
 				EDC6DB4928CF990900164EBD /* MovieViewModel.swift in Sources */,
 				EDC6DB3228CF724A00164EBD /* AppCoordinator.swift in Sources */,
+				EDC6DB6A28D07C4C00164EBD /* DomainConvertibleType.swift in Sources */,
+				EDC6DB6C28D082E800164EBD /* NetworkManager.swift in Sources */,
 				EDC6DB2F28CF717600164EBD /* MainNavigationController.swift in Sources */,
+				EDC6DB6128D071F300164EBD /* MovieRepositoryImpl.swift in Sources */,
 				EDC6DB2128CF69DF00164EBD /* BaseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
