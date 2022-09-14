@@ -8,17 +8,10 @@
 import RxSwift
 import RxCocoa
 
-class BaseViewModel {
-//    let repository: Repository
-//
-//    let trigger: PublishRelay<Void> = PublishRelay()
-//    let loading = ActivityIndicator()
-//    let error = ErrorTracker()
-    
-    init() {
-        
-    
-    }
+class BaseViewModel: NSObject {
+    let trigger = PublishRelay<Void>()
+    let loading = ActivityTracker()
+    let error = ErrorTracker()
     
     deinit {
         print("\(self): Deinited")

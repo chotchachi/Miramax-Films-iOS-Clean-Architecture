@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class BaseViewController<T: BaseViewModel>: UIViewController {
     var viewModel: T!
@@ -22,6 +24,9 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
     }
     
     func bindViewModel() {
-        
+        rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+            .mapToVoid()
+            .bind(to: viewModel.trigger)
+            .disposed(by: rx.disposeBag)        
     }
 }
