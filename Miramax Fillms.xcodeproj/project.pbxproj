@@ -45,6 +45,12 @@
 		EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */; };
 		EDFAD37128D205B800ED3BCD /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37028D205B800ED3BCD /* RepositoryAssembly.swift */; };
 		EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */; };
+		EDFAD37628D22BEF00ED3BCD /* ViewModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37528D22BEF00ED3BCD /* ViewModelAssembly.swift */; };
+		EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */; };
+		EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */; };
+		EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37C28D22FD300ED3BCD /* Rx+Map.swift */; };
+		EDFAD37F28D2309C00ED3BCD /* NSObject+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37E28D2309C00ED3BCD /* NSObject+Rx.swift */; };
+		EDFAD38128D230C200ED3BCD /* HasDisposeBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38028D230C200ED3BCD /* HasDisposeBag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +96,12 @@
 		EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAlamofireSession.swift; sourceTree = "<group>"; };
 		EDFAD37028D205B800ED3BCD /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
+		EDFAD37528D22BEF00ED3BCD /* ViewModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelAssembly.swift; sourceTree = "<group>"; };
+		EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
+		EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTracker.swift; sourceTree = "<group>"; };
+		EDFAD37C28D22FD300ED3BCD /* Rx+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Map.swift"; sourceTree = "<group>"; };
+		EDFAD37E28D2309C00ED3BCD /* NSObject+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Rx.swift"; sourceTree = "<group>"; };
+		EDFAD38028D230C200ED3BCD /* HasDisposeBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasDisposeBag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +177,7 @@
 		EDC6DB1828CF668500164EBD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				EDFAD37728D22EE400ED3BCD /* Rx */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -396,8 +409,21 @@
 			children = (
 				EDFAD37028D205B800ED3BCD /* RepositoryAssembly.swift */,
 				EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */,
+				EDFAD37528D22BEF00ED3BCD /* ViewModelAssembly.swift */,
 			);
 			path = Assemblers;
+			sourceTree = "<group>";
+		};
+		EDFAD37728D22EE400ED3BCD /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */,
+				EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */,
+				EDFAD37C28D22FD300ED3BCD /* Rx+Map.swift */,
+				EDFAD37E28D2309C00ED3BCD /* NSObject+Rx.swift */,
+				EDFAD38028D230C200ED3BCD /* HasDisposeBag.swift */,
+			);
+			path = Rx;
 			sourceTree = "<group>";
 		};
 		FE5917F12D77CB7E93DB3BE7 /* Frameworks */ = {
@@ -524,7 +550,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */,
+				EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */,
 				EDC6DB4628CF98F800164EBD /* MovieViewController.swift in Sources */,
+				EDFAD37628D22BEF00ED3BCD /* ViewModelAssembly.swift in Sources */,
 				EDC6DB7128D0835500164EBD /* NetworkProvider.swift in Sources */,
 				EDC6DB5328D0623E00164EBD /* Movie.swift in Sources */,
 				EDFAD37128D205B800ED3BCD /* RepositoryAssembly.swift in Sources */,
@@ -547,12 +575,16 @@
 				EDC6DB5828D0639500164EBD /* Dates.swift in Sources */,
 				EDC6DB5128D039A400164EBD /* MovieRepositoryProtocol.swift in Sources */,
 				EDC6DB3C28CF8F1700164EBD /* HomeViewController.swift in Sources */,
+				EDFAD37F28D2309C00ED3BCD /* NSObject+Rx.swift in Sources */,
+				EDFAD38128D230C200ED3BCD /* HasDisposeBag.swift in Sources */,
 				EDC6DB4028CF92DE00164EBD /* HomeCoordinator.swift in Sources */,
 				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
 				EDC6DB4928CF990900164EBD /* MovieViewModel.swift in Sources */,
 				EDC6DB3228CF724A00164EBD /* AppCoordinator.swift in Sources */,
 				EDC6DB6A28D07C4C00164EBD /* DomainConvertibleType.swift in Sources */,
 				EDC6DB6C28D082E800164EBD /* NetworkManager.swift in Sources */,
+				EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */,
+				EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */,
 				EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */,
 				EDC6DB2F28CF717600164EBD /* MainNavigationController.swift in Sources */,
 				EDC6DB6128D071F300164EBD /* MovieRepository.swift in Sources */,
