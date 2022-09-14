@@ -1,5 +1,5 @@
 //
-//  MovieRepositoryImpl.swift
+//  MovieRepository.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 13/09/2022.
@@ -7,7 +7,7 @@
 
 import RxSwift
 
-final class MovieRepositoryImpl: MovieRepository {
+final class MovieRepository: MovieRepositoryProtocol {
     private let api: Api
     
     init(api: Api) {

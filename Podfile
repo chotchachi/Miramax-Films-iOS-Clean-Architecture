@@ -12,14 +12,13 @@ target 'Miramax Fillms' do
   pod 'RxCocoa', '~> 6.0.0'
   pod 'RxDataSources', '~> 5.0.0'
   pod 'RxSwiftExt', '~> 6.0.1'
-  
-  # XCoordinator
-  pod 'XCoordinator', '~> 2.0'
-  
+    
   # others
   pod 'SnapKit', '~> 5.0.0'
   pod 'MKProgress'
   pod 'ObjectMapper', '~> 4.2.0'
   pod 'Moya/RxSwift', '~> 15.0'
+  pod 'Swinject', '~> 2.8.2'
+  pod 'XCoordinator', '~> 2.0'
 
 end

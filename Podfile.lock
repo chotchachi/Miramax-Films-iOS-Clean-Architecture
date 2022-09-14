@@ -27,6 +27,7 @@ PODS:
     - RxCocoa (~> 6.0)
     - RxSwiftExt/Core
   - SnapKit (5.0.1)
+  - Swinject (2.8.2)
   - XCoordinator (2.2.0):
     - XCoordinator/Core (= 2.2.0)
   - XCoordinator/Core (2.2.0)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - RxSwift (~> 6.0.0)
   - RxSwiftExt (~> 6.0.1)
   - SnapKit (~> 5.0.0)
+  - Swinject (~> 2.8.2)
   - XCoordinator (~> 2.0)
 
 SPEC REPOS:
@@ -55,6 +57,7 @@ SPEC REPOS:
     - RxSwift
     - RxSwiftExt
     - SnapKit
+    - Swinject
     - XCoordinator
 
 SPEC CHECKSUMS:
@@ -69,8 +72,9 @@ SPEC CHECKSUMS:
   RxSwift: c14e798c59b9f6e9a2df8fd235602e85cc044295
   RxSwiftExt: d61c4b9b06e0a448041b1c659e0f1b5c5a035afc
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Swinject: b4a11b31992e8668308dc594ba1cb9b3164a37ab
   XCoordinator: a5f91e43ee944f508529763921165697d3211629
 
-PODFILE CHECKSUM: cd0666cdaaff51b0a383d701439c86e0d4223e7a
+PODFILE CHECKSUM: 323667ee7c92e6819f813a4438c90fef21dc92de
 
 COCOAPODS: 1.11.2
