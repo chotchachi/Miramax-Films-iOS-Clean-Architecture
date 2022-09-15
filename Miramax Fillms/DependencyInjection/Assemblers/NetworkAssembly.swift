@@ -11,7 +11,7 @@ final class NetworkAssembly: Assembly {
     
     func assemble(container: Container) {
         container.register(Api.self) { resolver in
-            return NetworkManager(appNetworking: AppNetworking.getNetworking())
+            return NetworkManager(genreNetworking: .getNetworking(), movieNetworking: .getNetworking())
         }
     }
 }

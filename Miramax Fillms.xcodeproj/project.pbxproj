@@ -35,15 +35,12 @@
 		EDC6DB5C28D068CE00164EBD /* GenreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5B28D068CE00164EBD /* GenreDTO.swift */; };
 		EDC6DB5F28D0713400164EBD /* GenreResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5E28D0713400164EBD /* GenreResponseDTO.swift */; };
 		EDC6DB6128D071F300164EBD /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB6028D071F200164EBD /* MovieRepository.swift */; };
-		EDC6DB6528D0725E00164EBD /* AppApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB6428D0725E00164EBD /* AppApi.swift */; };
 		EDC6DB6728D078B000164EBD /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB6628D078B000164EBD /* Api.swift */; };
 		EDC6DB6A28D07C4C00164EBD /* DomainConvertibleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB6928D07C4C00164EBD /* DomainConvertibleType.swift */; };
 		EDC6DB6C28D082E800164EBD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB6B28D082E800164EBD /* NetworkManager.swift */; };
 		EDC6DB7128D0835500164EBD /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7028D0835500164EBD /* NetworkProvider.swift */; };
 		EDC6DB7428D0841300164EBD /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7328D0841300164EBD /* ReachabilityManager.swift */; };
-		EDC6DB7628D0847000164EBD /* AppNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7528D0847000164EBD /* AppNetworking.swift */; };
 		EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */; };
-		EDFAD37128D205B800ED3BCD /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37028D205B800ED3BCD /* RepositoryAssembly.swift */; };
 		EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */; };
 		EDFAD37628D22BEF00ED3BCD /* ViewModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37528D22BEF00ED3BCD /* ViewModelAssembly.swift */; };
 		EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */; };
@@ -51,6 +48,26 @@
 		EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37C28D22FD300ED3BCD /* Rx+Map.swift */; };
 		EDFAD37F28D2309C00ED3BCD /* NSObject+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37E28D2309C00ED3BCD /* NSObject+Rx.swift */; };
 		EDFAD38128D230C200ED3BCD /* HasDisposeBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38028D230C200ED3BCD /* HasDisposeBag.swift */; };
+		EDFAD38328D2387F00ED3BCD /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38228D2387F00ED3BCD /* ViewState.swift */; };
+		EDFAD38528D244E000ED3BCD /* DatesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38428D244E000ED3BCD /* DatesDTO.swift */; };
+		EDFAD38728D2453900ED3BCD /* MovieDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38628D2453900ED3BCD /* MovieDTO.swift */; };
+		EDFAD38928D2465700ED3BCD /* MovieResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38828D2465700ED3BCD /* MovieResponseDTO.swift */; };
+		EDFAD38B28D2D90300ED3BCD /* GenreApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38A28D2D90300ED3BCD /* GenreApi.swift */; };
+		EDFAD38D28D2DA9100ED3BCD /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38C28D2DA9100ED3BCD /* NetworkConfiguration.swift */; };
+		EDFAD38F28D2DC0700ED3BCD /* MovieApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38E28D2DC0700ED3BCD /* MovieApi.swift */; };
+		EDFAD39128D2E2BF00ED3BCD /* GenreRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD39028D2E2BF00ED3BCD /* GenreRepositoryProtocol.swift */; };
+		EDFAD39328D2E41500ED3BCD /* GenreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD39228D2E41500ED3BCD /* GenreRepository.swift */; };
+		EDFAD39628D3077500ED3BCD /* NetworkingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD39528D3077500ED3BCD /* NetworkingType.swift */; };
+		EDFAD39828D3090B00ED3BCD /* GenreNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD39728D3090B00ED3BCD /* GenreNetworking.swift */; };
+		EDFAD39A28D30D6A00ED3BCD /* RemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD39928D30D6A00ED3BCD /* RemoteDataSourceProtocol.swift */; };
+		EDFAD39C28D30E1A00ED3BCD /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD39B28D30E1A00ED3BCD /* RemoteDataSource.swift */; };
+		EDFAD39E28D30E7200ED3BCD /* DataSourceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD39D28D30E7200ED3BCD /* DataSourceAssembly.swift */; };
+		EDFAD3A128D3104200ED3BCD /* LocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD3A028D3104200ED3BCD /* LocalDataSourceProtocol.swift */; };
+		EDFAD3A328D313EF00ED3BCD /* RepositoryProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD3A228D313EF00ED3BCD /* RepositoryProviderProtocol.swift */; };
+		EDFAD3A528D3143E00ED3BCD /* RepositoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD3A428D3143E00ED3BCD /* RepositoryProvider.swift */; };
+		EDFAD3A728D3149500ED3BCD /* ProviderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD3A628D3149500ED3BCD /* ProviderAssembly.swift */; };
+		EDFAD3AA28D3152800ED3BCD /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD3A928D3152800ED3BCD /* LocalDataSource.swift */; };
+		EDFAD3AC28D31C9600ED3BCD /* MovieNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD3AB28D31C9600ED3BCD /* MovieNetworking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,15 +103,12 @@
 		EDC6DB5B28D068CE00164EBD /* GenreDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDTO.swift; sourceTree = "<group>"; };
 		EDC6DB5E28D0713400164EBD /* GenreResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreResponseDTO.swift; sourceTree = "<group>"; };
 		EDC6DB6028D071F200164EBD /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
-		EDC6DB6428D0725E00164EBD /* AppApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppApi.swift; sourceTree = "<group>"; };
 		EDC6DB6628D078B000164EBD /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		EDC6DB6928D07C4C00164EBD /* DomainConvertibleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainConvertibleType.swift; sourceTree = "<group>"; };
 		EDC6DB6B28D082E800164EBD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EDC6DB7028D0835500164EBD /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		EDC6DB7328D0841300164EBD /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
-		EDC6DB7528D0847000164EBD /* AppNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNetworking.swift; sourceTree = "<group>"; };
 		EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAlamofireSession.swift; sourceTree = "<group>"; };
-		EDFAD37028D205B800ED3BCD /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37528D22BEF00ED3BCD /* ViewModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
@@ -102,6 +116,26 @@
 		EDFAD37C28D22FD300ED3BCD /* Rx+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Map.swift"; sourceTree = "<group>"; };
 		EDFAD37E28D2309C00ED3BCD /* NSObject+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Rx.swift"; sourceTree = "<group>"; };
 		EDFAD38028D230C200ED3BCD /* HasDisposeBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasDisposeBag.swift; sourceTree = "<group>"; };
+		EDFAD38228D2387F00ED3BCD /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		EDFAD38428D244E000ED3BCD /* DatesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesDTO.swift; sourceTree = "<group>"; };
+		EDFAD38628D2453900ED3BCD /* MovieDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDTO.swift; sourceTree = "<group>"; };
+		EDFAD38828D2465700ED3BCD /* MovieResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponseDTO.swift; sourceTree = "<group>"; };
+		EDFAD38A28D2D90300ED3BCD /* GenreApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreApi.swift; sourceTree = "<group>"; };
+		EDFAD38C28D2DA9100ED3BCD /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
+		EDFAD38E28D2DC0700ED3BCD /* MovieApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieApi.swift; sourceTree = "<group>"; };
+		EDFAD39028D2E2BF00ED3BCD /* GenreRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreRepositoryProtocol.swift; sourceTree = "<group>"; };
+		EDFAD39228D2E41500ED3BCD /* GenreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreRepository.swift; sourceTree = "<group>"; };
+		EDFAD39528D3077500ED3BCD /* NetworkingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingType.swift; sourceTree = "<group>"; };
+		EDFAD39728D3090B00ED3BCD /* GenreNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreNetworking.swift; sourceTree = "<group>"; };
+		EDFAD39928D30D6A00ED3BCD /* RemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
+		EDFAD39B28D30E1A00ED3BCD /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
+		EDFAD39D28D30E7200ED3BCD /* DataSourceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceAssembly.swift; sourceTree = "<group>"; };
+		EDFAD3A028D3104200ED3BCD /* LocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSourceProtocol.swift; sourceTree = "<group>"; };
+		EDFAD3A228D313EF00ED3BCD /* RepositoryProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProviderProtocol.swift; sourceTree = "<group>"; };
+		EDFAD3A428D3143E00ED3BCD /* RepositoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProvider.swift; sourceTree = "<group>"; };
+		EDFAD3A628D3149500ED3BCD /* ProviderAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderAssembly.swift; sourceTree = "<group>"; };
+		EDFAD3A928D3152800ED3BCD /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
+		EDFAD3AB28D31C9600ED3BCD /* MovieNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNetworking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +238,7 @@
 		EDC6DB1B28CF676600164EBD /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				EDFAD3A228D313EF00ED3BCD /* RepositoryProviderProtocol.swift */,
 				EDC6DB4D28D0391400164EBD /* Repository */,
 				EDC6DB4A28CF9D4C00164EBD /* Entity */,
 			);
@@ -213,9 +248,12 @@
 		EDC6DB1C28CF676B00164EBD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				EDFAD3A428D3143E00ED3BCD /* RepositoryProvider.swift */,
+				EDFAD39F28D30F6C00ED3BCD /* DataSources */,
 				EDC6DB6828D07C3D00164EBD /* Encodable */,
+				EDFAD3A828D314FC00ED3BCD /* Local */,
 				EDC6DB4F28D0392A00164EBD /* Model */,
-				EDC6DB6228D0723300164EBD /* Network */,
+				EDC6DB6228D0723300164EBD /* Remote */,
 				EDC6DB4E28D0391D00164EBD /* Repository */,
 				EDC6DB7228D0840300164EBD /* Utility */,
 			);
@@ -235,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */,
+				EDFAD38228D2387F00ED3BCD /* ViewState.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -321,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				EDC6DB5028D039A400164EBD /* MovieRepositoryProtocol.swift */,
+				EDFAD39028D2E2BF00ED3BCD /* GenreRepositoryProtocol.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -329,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				EDC6DB6028D071F200164EBD /* MovieRepository.swift */,
+				EDFAD39228D2E41500ED3BCD /* GenreRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -338,6 +379,8 @@
 			children = (
 				EDC6DB5D28D0712600164EBD /* Response */,
 				EDC6DB5B28D068CE00164EBD /* GenreDTO.swift */,
+				EDFAD38428D244E000ED3BCD /* DatesDTO.swift */,
+				EDFAD38628D2453900ED3BCD /* MovieDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -355,26 +398,30 @@
 			isa = PBXGroup;
 			children = (
 				EDC6DB5E28D0713400164EBD /* GenreResponseDTO.swift */,
+				EDFAD38828D2465700ED3BCD /* MovieResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
 		};
-		EDC6DB6228D0723300164EBD /* Network */ = {
+		EDC6DB6228D0723300164EBD /* Remote */ = {
 			isa = PBXGroup;
 			children = (
 				EDC6DB6628D078B000164EBD /* Api.swift */,
+				EDFAD38C28D2DA9100ED3BCD /* NetworkConfiguration.swift */,
 				EDC6DB6B28D082E800164EBD /* NetworkManager.swift */,
-				EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */,
-				EDC6DB6D28D0831500164EBD /* NetworkProvider */,
+				EDFAD39B28D30E1A00ED3BCD /* RemoteDataSource.swift */,
+				EDFAD39428D3076400ED3BCD /* Helper */,
+				EDC6DB6D28D0831500164EBD /* Provider */,
 				EDC6DB6328D0724D00164EBD /* Target */,
 			);
-			path = Network;
+			path = Remote;
 			sourceTree = "<group>";
 		};
 		EDC6DB6328D0724D00164EBD /* Target */ = {
 			isa = PBXGroup;
 			children = (
-				EDC6DB6428D0725E00164EBD /* AppApi.swift */,
+				EDFAD38A28D2D90300ED3BCD /* GenreApi.swift */,
+				EDFAD38E28D2DC0700ED3BCD /* MovieApi.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -387,13 +434,13 @@
 			path = Encodable;
 			sourceTree = "<group>";
 		};
-		EDC6DB6D28D0831500164EBD /* NetworkProvider */ = {
+		EDC6DB6D28D0831500164EBD /* Provider */ = {
 			isa = PBXGroup;
 			children = (
-				EDC6DB7028D0835500164EBD /* NetworkProvider.swift */,
-				EDC6DB7528D0847000164EBD /* AppNetworking.swift */,
+				EDFAD39728D3090B00ED3BCD /* GenreNetworking.swift */,
+				EDFAD3AB28D31C9600ED3BCD /* MovieNetworking.swift */,
 			);
-			path = NetworkProvider;
+			path = Provider;
 			sourceTree = "<group>";
 		};
 		EDC6DB7228D0840300164EBD /* Utility */ = {
@@ -407,8 +454,9 @@
 		EDFAD36F28D2059600ED3BCD /* Assemblers */ = {
 			isa = PBXGroup;
 			children = (
-				EDFAD37028D205B800ED3BCD /* RepositoryAssembly.swift */,
+				EDFAD39D28D30E7200ED3BCD /* DataSourceAssembly.swift */,
 				EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */,
+				EDFAD3A628D3149500ED3BCD /* ProviderAssembly.swift */,
 				EDFAD37528D22BEF00ED3BCD /* ViewModelAssembly.swift */,
 			);
 			path = Assemblers;
@@ -424,6 +472,33 @@
 				EDFAD38028D230C200ED3BCD /* HasDisposeBag.swift */,
 			);
 			path = Rx;
+			sourceTree = "<group>";
+		};
+		EDFAD39428D3076400ED3BCD /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */,
+				EDFAD39528D3077500ED3BCD /* NetworkingType.swift */,
+				EDC6DB7028D0835500164EBD /* NetworkProvider.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		EDFAD39F28D30F6C00ED3BCD /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				EDFAD39928D30D6A00ED3BCD /* RemoteDataSourceProtocol.swift */,
+				EDFAD3A028D3104200ED3BCD /* LocalDataSourceProtocol.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		EDFAD3A828D314FC00ED3BCD /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				EDFAD3A928D3152800ED3BCD /* LocalDataSource.swift */,
+			);
+			path = Local;
 			sourceTree = "<group>";
 		};
 		FE5917F12D77CB7E93DB3BE7 /* Frameworks */ = {
@@ -549,44 +624,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDFAD38B28D2D90300ED3BCD /* GenreApi.swift in Sources */,
+				EDFAD39328D2E41500ED3BCD /* GenreRepository.swift in Sources */,
 				EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */,
 				EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */,
 				EDC6DB4628CF98F800164EBD /* MovieViewController.swift in Sources */,
 				EDFAD37628D22BEF00ED3BCD /* ViewModelAssembly.swift in Sources */,
+				EDFAD39A28D30D6A00ED3BCD /* RemoteDataSourceProtocol.swift in Sources */,
 				EDC6DB7128D0835500164EBD /* NetworkProvider.swift in Sources */,
 				EDC6DB5328D0623E00164EBD /* Movie.swift in Sources */,
-				EDFAD37128D205B800ED3BCD /* RepositoryAssembly.swift in Sources */,
+				EDFAD39C28D30E1A00ED3BCD /* RemoteDataSource.swift in Sources */,
 				EDC6DB7428D0841300164EBD /* ReachabilityManager.swift in Sources */,
+				EDFAD39128D2E2BF00ED3BCD /* GenreRepositoryProtocol.swift in Sources */,
 				EDC6DB5C28D068CE00164EBD /* GenreDTO.swift in Sources */,
 				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
 				EDC6DB5628D0633F00164EBD /* MovieResponse.swift in Sources */,
 				EDC6DB6728D078B000164EBD /* Api.swift in Sources */,
-				EDC6DB6528D0725E00164EBD /* AppApi.swift in Sources */,
 				EDC6DB3E28CF8F3400164EBD /* HomeViewModel.swift in Sources */,
 				EDC6DB2428CF6A0800164EBD /* ViewModelType.swift in Sources */,
+				EDFAD39828D3090B00ED3BCD /* GenreNetworking.swift in Sources */,
+				EDFAD39628D3077500ED3BCD /* NetworkingType.swift in Sources */,
 				EDC6DB5F28D0713400164EBD /* GenreResponseDTO.swift in Sources */,
 				EDC6DB2C28CF70F500164EBD /* AppDIContainer.swift in Sources */,
+				EDFAD3A328D313EF00ED3BCD /* RepositoryProviderProtocol.swift in Sources */,
 				EDC6DB5A28D0649F00164EBD /* GenreResponse.swift in Sources */,
 				EDC6DB3628CF759400164EBD /* SplashViewController.swift in Sources */,
 				EDC6DB4C28CF9D5D00164EBD /* Genre.swift in Sources */,
+				EDFAD3AC28D31C9600ED3BCD /* MovieNetworking.swift in Sources */,
 				EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */,
 				ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */,
-				EDC6DB7628D0847000164EBD /* AppNetworking.swift in Sources */,
+				EDFAD3A728D3149500ED3BCD /* ProviderAssembly.swift in Sources */,
+				EDFAD38328D2387F00ED3BCD /* ViewState.swift in Sources */,
 				EDC6DB5828D0639500164EBD /* Dates.swift in Sources */,
+				EDFAD39E28D30E7200ED3BCD /* DataSourceAssembly.swift in Sources */,
 				EDC6DB5128D039A400164EBD /* MovieRepositoryProtocol.swift in Sources */,
 				EDC6DB3C28CF8F1700164EBD /* HomeViewController.swift in Sources */,
+				EDFAD38928D2465700ED3BCD /* MovieResponseDTO.swift in Sources */,
 				EDFAD37F28D2309C00ED3BCD /* NSObject+Rx.swift in Sources */,
 				EDFAD38128D230C200ED3BCD /* HasDisposeBag.swift in Sources */,
 				EDC6DB4028CF92DE00164EBD /* HomeCoordinator.swift in Sources */,
+				EDFAD3AA28D3152800ED3BCD /* LocalDataSource.swift in Sources */,
+				EDFAD3A128D3104200ED3BCD /* LocalDataSourceProtocol.swift in Sources */,
 				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
 				EDC6DB4928CF990900164EBD /* MovieViewModel.swift in Sources */,
 				EDC6DB3228CF724A00164EBD /* AppCoordinator.swift in Sources */,
+				EDFAD38728D2453900ED3BCD /* MovieDTO.swift in Sources */,
+				EDFAD38528D244E000ED3BCD /* DatesDTO.swift in Sources */,
 				EDC6DB6A28D07C4C00164EBD /* DomainConvertibleType.swift in Sources */,
 				EDC6DB6C28D082E800164EBD /* NetworkManager.swift in Sources */,
+				EDFAD38D28D2DA9100ED3BCD /* NetworkConfiguration.swift in Sources */,
 				EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */,
 				EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */,
 				EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */,
 				EDC6DB2F28CF717600164EBD /* MainNavigationController.swift in Sources */,
+				EDFAD3A528D3143E00ED3BCD /* RepositoryProvider.swift in Sources */,
+				EDFAD38F28D2DC0700ED3BCD /* MovieApi.swift in Sources */,
 				EDC6DB6128D071F300164EBD /* MovieRepository.swift in Sources */,
 				EDC6DB2128CF69DF00164EBD /* BaseViewModel.swift in Sources */,
 			);

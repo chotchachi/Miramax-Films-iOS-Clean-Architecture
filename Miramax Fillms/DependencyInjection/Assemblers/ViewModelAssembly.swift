@@ -11,10 +11,10 @@ final class ViewModelAssembly: Assembly {
     
     func assemble(container: Container) {
         container.register(MovieViewModel.self) { resolver in
-            guard let movieRepository = resolver.resolve(MovieRepositoryProtocol.self) else {
-                fatalError("Api dependency could not be resolved")
+            guard let repositoryProvider = resolver.resolve(RepositoryProviderProtocol.self) else {
+                fatalError("RepositoryProvider dependency could not be resolved")
             }
-            return MovieViewModel(movieRepository: movieRepository)
+            return MovieViewModel(repositoryProvider: repositoryProvider)
         }
     }
 }

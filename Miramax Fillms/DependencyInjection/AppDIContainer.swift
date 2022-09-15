@@ -16,8 +16,9 @@ final class AppDIContainer {
     init() {
         assembler = Assembler(
             [
+                DataSourceAssembly(),
                 NetworkAssembly(),
-                RepositoryAssembly(),
+                ProviderAssembly(),
                 ViewModelAssembly()
             ],
             container: container
