@@ -11,7 +11,6 @@ enum ViewState<Entity>: Equatable where Entity: Equatable {
     case populated([Entity])
     case empty
     case error(Error)
-    case loading
 
     static func == (lhs: ViewState, rhs: ViewState) -> Bool {
         switch (lhs, rhs) {
@@ -25,8 +24,6 @@ enum ViewState<Entity>: Equatable where Entity: Equatable {
             return true
         case (.error, .error):
             return true
-        case (.loading, .loading):
-            return true
         default:
             return false
         }
@@ -38,14 +35,14 @@ enum ViewState<Entity>: Equatable where Entity: Equatable {
             return entities
         case .paging(let entities, _):
             return entities
-        case .initial, .empty, .error, .loading:
+        case .initial, .empty, .error:
             return []
         }
     }
 
     var currentPage: Int {
         switch self {
-        case .initial, .populated, .empty, .error, .loading:
+        case .initial, .populated, .empty, .error:
             return 1
         case .paging(_, let page):
             return page
@@ -58,7 +55,7 @@ enum ViewState<Entity>: Equatable where Entity: Equatable {
 
     var needsPrefetch: Bool {
         switch self {
-        case .initial, .populated, .empty, .error, .loading:
+        case .initial, .populated, .empty, .error:
             return false
         case .paging:
             return true
