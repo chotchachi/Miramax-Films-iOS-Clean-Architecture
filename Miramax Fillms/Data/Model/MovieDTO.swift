@@ -9,14 +9,14 @@ import ObjectMapper
 
 struct MovieDTO : Mappable {
     var adult: Bool!
-    var backdropPath: String!
+    var backdropPath: String?
     var genreIDS: [Int]!
     var id: Int!
     var originalLanguage: String!
     var originalTitle: String!
-    var overview: String!
+    var overview: String?
     var popularity: Double!
-    var posterPath: String!
+    var posterPath: String?
     var releaseDate: String!
     var title: String!
     var video: Bool!
