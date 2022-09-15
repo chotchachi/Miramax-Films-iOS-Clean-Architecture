@@ -13,6 +13,9 @@ target 'Miramax Fillms' do
   pod 'RxDataSources', '~> 5.0.0'
   pod 'RxSwiftExt', '~> 6.0.1'
     
+  # SwifterSwift
+  pod 'SwifterSwift/UIKit'
+
   # others
   pod 'SnapKit', '~> 5.0.0'
   pod 'MKProgress'
