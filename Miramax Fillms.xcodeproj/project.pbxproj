@@ -58,7 +58,6 @@
 		EDC6DB7428D0841300164EBD /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7328D0841300164EBD /* ReachabilityManager.swift */; };
 		EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */; };
 		EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */; };
-		EDFAD37628D22BEF00ED3BCD /* ViewModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37528D22BEF00ED3BCD /* ViewModelAssembly.swift */; };
 		EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */; };
 		EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */; };
 		EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37C28D22FD300ED3BCD /* Rx+Map.swift */; };
@@ -143,7 +142,6 @@
 		EDC6DB7328D0841300164EBD /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAlamofireSession.swift; sourceTree = "<group>"; };
 		EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
-		EDFAD37528D22BEF00ED3BCD /* ViewModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTracker.swift; sourceTree = "<group>"; };
 		EDFAD37C28D22FD300ED3BCD /* Rx+Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+Map.swift"; sourceTree = "<group>"; };
@@ -557,7 +555,6 @@
 				EDFAD39D28D30E7200ED3BCD /* DataSourceAssembly.swift */,
 				EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */,
 				EDFAD3A628D3149500ED3BCD /* ProviderAssembly.swift */,
-				EDFAD37528D22BEF00ED3BCD /* ViewModelAssembly.swift */,
 				EDA4476F28D438430037751C /* ConfigurationAssembly.swift */,
 			);
 			path = Assemblers;
@@ -768,7 +765,6 @@
 				EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */,
 				EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */,
 				EDC6DB4628CF98F800164EBD /* MovieViewController.swift in Sources */,
-				EDFAD37628D22BEF00ED3BCD /* ViewModelAssembly.swift in Sources */,
 				EDA4477428D438D90037751C /* NetworkConfiguration.swift in Sources */,
 				EDFAD39A28D30D6A00ED3BCD /* RemoteDataSourceProtocol.swift in Sources */,
 				EDC6DB7128D0835500164EBD /* NetworkProvider.swift in Sources */,
