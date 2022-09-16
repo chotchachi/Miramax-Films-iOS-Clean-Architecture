@@ -18,6 +18,7 @@ target 'Miramax Fillms' do
 
   # others
   pod 'SnapKit', '~> 5.0.0'
+  pod 'Kingfisher'
   pod 'MKProgress'
   pod 'ObjectMapper', '~> 4.2.0'
   pod 'Moya/RxSwift', '~> 15.0'

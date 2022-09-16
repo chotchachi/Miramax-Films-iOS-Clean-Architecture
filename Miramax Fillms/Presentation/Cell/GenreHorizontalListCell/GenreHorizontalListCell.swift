@@ -1,5 +1,5 @@
 //
-//  MovieGenreListCell.swift
+//  GenreHorizontalListCell.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 15/09/2022.
@@ -9,22 +9,17 @@ import UIKit
 import SnapKit
 import SwifterSwift
 
-protocol MovieGenreListCellDelegate: AnyObject {
-    func onRetryButtonTap()
-    func onGenreItemTap(genre: Genre)
-}
-
-class MovieGenreListCell: UICollectionViewCell {
+class GenreHorizontalListCell: UICollectionViewCell {
     
     // MARK: - Views
     
     private var genreCollectionView: UICollectionView!
     private var loadingIndicatorView: UIActivityIndicatorView!
-    private var btnRetry: UIButton!
+    private var btnRetry: PrimaryButton!
     
     // MARK: - Properties
     
-    public weak var delegate: MovieGenreListCellDelegate?
+    public weak var delegate: GenreHorizontalListCellDelegate?
     private var genreItems: [Genre] = []
     
     override init(frame: CGRect) {
@@ -55,8 +50,8 @@ class MovieGenreListCell: UICollectionViewCell {
         
         // retry button
         
-        btnRetry = UIButton(type: .system)
-        btnRetry.setTitle("Retry", for: .normal)
+        btnRetry = PrimaryButton()
+        btnRetry.titleText = "Retry"
         btnRetry.addTarget(self, action: #selector(btnRetryTapped), for: .touchUpInside)
         
         // constraint layout
@@ -118,13 +113,13 @@ class MovieGenreListCell: UICollectionViewCell {
         loadingIndicatorView.startAnimating()
         genreCollectionView.isHidden = true
         btnRetry.isHidden = true
-        delegate?.onRetryButtonTap()
+        delegate?.genreHorizontalListRetryButtonTapped()
     }
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension MovieGenreListCell: UICollectionViewDataSource {
+extension GenreHorizontalListCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         genreItems.count
     }
@@ -140,10 +135,10 @@ extension MovieGenreListCell: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension MovieGenreListCell: UICollectionViewDelegate {
+extension GenreHorizontalListCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let genre = genreItems[indexPath.row]
-        delegate?.onGenreItemTap(genre: genre)
+        delegate?.genreHorizontalList(onItemTapped: genre)
     }
     
 }

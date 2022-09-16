@@ -9,4 +9,5 @@ import Foundation
 
 enum MovieViewData {
     case genreViewState(viewState: ViewState<Genre>)
+    case upComingViewState(viewState: ViewState<Movie>)
 }

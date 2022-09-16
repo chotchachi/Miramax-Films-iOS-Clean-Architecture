@@ -16,13 +16,13 @@ class MovieViewController: BaseViewController<MovieViewModel> {
     
     @IBOutlet weak var collectionView: UICollectionView!
 
-    
     // MARK: - Properties
     
     private var movieViewDataItems: [MovieViewData] = []
     
     private let retryGenreViewTriggerS = PublishRelay<Void>()
-    
+    private let retryUpComingViewTriggerS = PublishRelay<Void>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,14 +36,16 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         collectionView.collectionViewLayout = gridCollectionViewLayout
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(cellWithClass: MovieGenreListCell.self)
+        collectionView.register(cellWithClass: GenreHorizontalListCell.self)
+        collectionView.register(cellWithClass: MovieHorizontalListCell.self)
     }
     
     override func bindViewModel() {
         super.bindViewModel()
         
         let input = MovieViewModel.Input(
-            retryGenreTrigger: retryGenreViewTriggerS.asDriverOnErrorJustComplete()
+            retryGenreTrigger: retryGenreViewTriggerS.asDriverOnErrorJustComplete(),
+            retryUpComingTrigger: retryUpComingViewTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -83,7 +85,12 @@ extension MovieViewController: UICollectionViewDataSource {
         let movieViewData = movieViewDataItems[indexPath.row]
         switch movieViewData {
         case .genreViewState(viewState: let viewState):
-            let cell = collectionView.dequeueReusableCell(withClass: MovieGenreListCell.self, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withClass: GenreHorizontalListCell.self, for: indexPath)
+            cell.bind(viewState)
+            cell.delegate = self
+            return cell
+        case .upComingViewState(viewState: let viewState):
+            let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalListCell.self, for: indexPath)
             cell.bind(viewState)
             cell.delegate = self
             return cell
@@ -108,7 +115,7 @@ extension MovieViewController: GridCollectionViewLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, columnSpanForItemAt index: GridIndex, indexPath: IndexPath) -> Int {
         let movieViewData = movieViewDataItems[indexPath.row]
         switch movieViewData {
-        case .genreViewState:
+        case .genreViewState, .upComingViewState:
             return 2
         }
     }
@@ -118,6 +125,8 @@ extension MovieViewController: GridCollectionViewLayoutDelegate {
         switch movieViewData {
         case .genreViewState:
             return 50.0
+        case .upComingViewState:
+            return 186.0
         }
     }
     
@@ -137,13 +146,26 @@ extension MovieViewController: GridCollectionViewLayoutDelegate {
 
 // MARK: - MovieGenreListCellDelegate
 
-extension MovieViewController: MovieGenreListCellDelegate {
-    func onRetryButtonTap() {
+extension MovieViewController: GenreHorizontalListCellDelegate {
+    func genreHorizontalListRetryButtonTapped() {
         retryGenreViewTriggerS.accept(())
     }
     
-    func onGenreItemTap(genre: Genre) {
-        print(genre.name)
+    func genreHorizontalList(onItemTapped genre: Genre) {
+        
+    }
+    
+}
+
+// MARK: - MovieHorizontalListDelegate
+
+extension MovieViewController: MovieHorizontalListDelegate {
+    func movieHorizontalListRetryButtonTapped() {
+        retryUpComingViewTriggerS.accept(())
+    }
+    
+    func movieHorizontalList(onItemTapped movie: Movie) {
+        
     }
     
 }

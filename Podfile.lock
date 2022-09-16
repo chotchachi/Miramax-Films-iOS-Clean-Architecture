@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (5.6.2)
   - Differentiator (5.0.0)
+  - Kingfisher (6.3.1)
   - MKProgress (1.1.0)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
@@ -34,6 +35,7 @@ PODS:
   - XCoordinator/Core (2.2.0)
 
 DEPENDENCIES:
+  - Kingfisher
   - MKProgress
   - Moya/RxSwift (~> 15.0)
   - ObjectMapper (~> 4.2.0)
@@ -50,6 +52,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Differentiator
+    - Kingfisher
     - MKProgress
     - Moya
     - ObjectMapper
@@ -66,6 +69,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   MKProgress: 260d166200323f3d991190a73ab2dc3a04b0f52f
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
@@ -79,6 +83,6 @@ SPEC CHECKSUMS:
   Swinject: b4a11b31992e8668308dc594ba1cb9b3164a37ab
   XCoordinator: a5f91e43ee944f508529763921165697d3211629
 
-PODFILE CHECKSUM: 720fa1b8abf7f4ef9ca517101adf1bb7e4db9770
+PODFILE CHECKSUM: 66c5382051353acedf9fbb5737254ba8abdaaec8
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
