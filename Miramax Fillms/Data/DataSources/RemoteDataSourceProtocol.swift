@@ -8,7 +8,6 @@
 import RxSwift
 
 protocol RemoteDataSourceProtocol {
-    func configure(with apiKey: String)
     func getGenreMovieList() -> Single<GenreResponseDTO>
     func getGenreShowList() -> Single<GenreResponseDTO>
     func getMovieNowPlaying(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>

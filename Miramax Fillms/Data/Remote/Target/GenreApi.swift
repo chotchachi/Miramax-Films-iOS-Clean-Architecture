@@ -12,13 +12,9 @@ enum GenreApi {
     case showGenreList
 }
 
-extension GenreApi: TargetType {
-    var apiKey: String {
-        return NetworkConfiguration.shared.apiKey
-    }
-    
+extension GenreApi: TargetType, NetworkConfigurable {
     var baseURL: URL {
-        NetworkConfiguration.shared.baseAPIURL
+        return baseApiURL
     }
     
     var path: String {

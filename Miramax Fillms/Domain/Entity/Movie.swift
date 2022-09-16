@@ -5,6 +5,8 @@
 //  Created by Thanh Quang on 13/09/2022.
 //
 
+import Foundation
+
 struct Movie {
     let adult: Bool
     let backdropPath: String?
@@ -38,5 +40,19 @@ extension Movie: Equatable {
         && lhs.video == rhs.video
         && lhs.voteAverage == rhs.voteAverage
         && lhs.voteCount == rhs.voteCount
+    }
+}
+
+extension Movie: ImageConfigurable {
+    var posterURL: URL? {
+        guard let posterPath = posterPath else { return nil }
+        let urlString = regularImageBaseURLString.appending(posterPath)
+        return URL(string: urlString)
+    }
+    
+    var backdropURL: URL? {
+        guard let backdropPath = backdropPath else { return nil }
+        let urlString = backdropImageBaseURLString.appending(backdropPath)
+        return URL(string: urlString)
     }
 }

@@ -16,6 +16,7 @@ final class AppDIContainer {
     init() {
         assembler = Assembler(
             [
+                ConfigurationAssembly(),
                 DataSourceAssembly(),
                 NetworkAssembly(),
                 ProviderAssembly(),

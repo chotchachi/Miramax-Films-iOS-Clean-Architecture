@@ -14,10 +14,6 @@ final class RemoteDataSource: RemoteDataSourceProtocol {
         self.apiClient = apiClient
     }
     
-    func configure(with apiKey: String) {
-        NetworkConfiguration.shared.configure(with: apiKey)
-    }
-    
     func getGenreMovieList() -> Single<GenreResponseDTO> {
         return apiClient.getGenreMovieList()
     }

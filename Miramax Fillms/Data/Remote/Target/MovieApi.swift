@@ -16,13 +16,9 @@ enum MovieApi {
     case byGenre(genreId: Int?, page: Int?)
 }
 
-extension MovieApi: TargetType {
-    var apiKey: String {
-        return NetworkConfiguration.shared.apiKey
-    }
-    
+extension MovieApi: TargetType, NetworkConfigurable {
     var baseURL: URL {
-        NetworkConfiguration.shared.baseAPIURL
+        return baseApiURL
     }
     
     var path: String {
