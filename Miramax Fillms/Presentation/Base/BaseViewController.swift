@@ -24,7 +24,7 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
     }
     
     func bindViewModel() {
-        rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+        rx.sentMessage(#selector(UIViewController.viewDidAppear(_:)))
             .mapToVoid()
             .bind(to: viewModel.trigger)
             .disposed(by: rx.disposeBag)        
