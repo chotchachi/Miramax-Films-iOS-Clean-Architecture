@@ -86,10 +86,7 @@ class MovieHorizontalListCell: UICollectionViewCell {
         
         contentView.addSubview(btnRetry)
         btnRetry.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.leading.equalToSuperview()
+            make.center.equalTo(movieCollectionView.snp.center)
         }
     }
     

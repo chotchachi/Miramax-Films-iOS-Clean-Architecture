@@ -60,15 +60,9 @@ class SelfieWithMovieCell: UICollectionViewCell {
         
         // choose frame button
         
-        let btnChooseFrame = UIButton()
+        let btnChooseFrame = PrimaryButton()
         btnChooseFrame.translatesAutoresizingMaskIntoConstraints = false
-        btnChooseFrame.setTitle("Choose frame", for: .normal)
-        btnChooseFrame.setTitleColor(AppColors.colorAccent, for: .normal)
-        btnChooseFrame.titleLabel?.font = AppFonts.calloutSemiBold
-        btnChooseFrame.backgroundColor = .clear
-        btnChooseFrame.cornerRadius = 8.0
-        btnChooseFrame.borderColor = AppColors.colorAccent
-        btnChooseFrame.borderWidth = 1.0
+        btnChooseFrame.titleText = "Choose frame"
         btnChooseFrame.addTarget(self, action: #selector(selfieButtonTapped(_:)), for: .touchUpInside)
         
         // view wrapper
@@ -103,11 +97,6 @@ class SelfieWithMovieCell: UICollectionViewCell {
         ivCameraIcon.snp.makeConstraints { make in
             make.height.equalTo(40.0)
             make.width.equalTo(40.0)
-        }
-        
-        btnChooseFrame.snp.makeConstraints { make in
-            make.height.equalTo(32.0)
-            make.width.equalTo(137.0)
         }
     }
     

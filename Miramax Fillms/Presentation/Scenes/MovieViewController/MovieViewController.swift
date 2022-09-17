@@ -35,7 +35,7 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         appToolbar.delegate = self
         
         let gridCollectionViewLayout = GridCollectionViewLayout()
-        gridCollectionViewLayout.rowSpacing = 16.0
+        gridCollectionViewLayout.rowSpacing = 32.0
         gridCollectionViewLayout.delegate = self
         collectionView.collectionViewLayout = gridCollectionViewLayout
         collectionView.dataSource = self
