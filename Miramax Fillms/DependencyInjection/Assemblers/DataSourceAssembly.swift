@@ -11,10 +11,7 @@ final class DataSourceAssembly: Assembly {
     
     func assemble(container: Container) {
         container.register(RemoteDataSourceProtocol.self) { resolver in
-            guard let apiClient = resolver.resolve(Api.self) else {
-                fatalError("Api dependency could not be resolved")
-            }
-            return RemoteDataSource(apiClient: apiClient)
+            return RemoteDataSource(apiClient: resolver.resolve())
         }
         container.register(LocalDataSourceProtocol.self) { _ in
             return LocalDataSource()

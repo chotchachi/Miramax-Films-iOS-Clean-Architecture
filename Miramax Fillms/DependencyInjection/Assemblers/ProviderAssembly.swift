@@ -11,13 +11,7 @@ final class ProviderAssembly: Assembly {
     
     func assemble(container: Container) {
         container.register(RepositoryProviderProtocol.self) { resolver in
-            guard let remoteDataSource = resolver.resolve(RemoteDataSourceProtocol.self) else {
-                fatalError("RemoteDataSource dependency could not be resolved")
-            }
-            guard let localDataSource = resolver.resolve(LocalDataSourceProtocol.self) else {
-                fatalError("LocalDataSource dependency could not be resolved")
-            }
-            return RepositoryProvider(remoteDataSource: remoteDataSource, localDataSource: localDataSource)
+            return RepositoryProvider(remoteDataSource: resolver.resolve(), localDataSource: resolver.resolve())
         }
     }
 }

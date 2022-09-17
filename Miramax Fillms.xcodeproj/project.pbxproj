@@ -20,6 +20,7 @@
 		EDA4477428D438D90037751C /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4477328D438D90037751C /* NetworkConfiguration.swift */; };
 		EDA4477628D438E30037751C /* NetworkConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4477528D438E30037751C /* NetworkConfigurationProtocol.swift */; };
 		EDA4477828D4566E0037751C /* NetworkConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4477728D4566E0037751C /* NetworkConfigurable.swift */; };
+		EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4477D28D58D0E0037751C /* Resolver+resolveOrThrow.swift */; };
 		EDC502CA28D376D30047C7C3 /* GenreHorizontalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502C828D376D30047C7C3 /* GenreHorizontalListCell.swift */; };
 		EDC502D028D377CC0047C7C3 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502CF28D377CC0047C7C3 /* GenreCell.swift */; };
 		EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */; };
@@ -104,6 +105,7 @@
 		EDA4477328D438D90037751C /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		EDA4477528D438E30037751C /* NetworkConfigurationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurationProtocol.swift; sourceTree = "<group>"; };
 		EDA4477728D4566E0037751C /* NetworkConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurable.swift; sourceTree = "<group>"; };
+		EDA4477D28D58D0E0037751C /* Resolver+resolveOrThrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resolver+resolveOrThrow.swift"; sourceTree = "<group>"; };
 		EDC502C828D376D30047C7C3 /* GenreHorizontalListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreHorizontalListCell.swift; sourceTree = "<group>"; };
 		EDC502CF28D377CC0047C7C3 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -262,6 +264,14 @@
 			path = NetworkConfiguration;
 			sourceTree = "<group>";
 		};
+		EDA4477C28D58CF10037751C /* Swinject */ = {
+			isa = PBXGroup;
+			children = (
+				EDA4477D28D58D0E0037751C /* Resolver+resolveOrThrow.swift */,
+			);
+			path = Swinject;
+			sourceTree = "<group>";
+		};
 		EDC502CE28D377B00047C7C3 /* GenreCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +316,7 @@
 		EDC6DB1828CF668500164EBD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				EDA4477C28D58CF10037751C /* Swinject */,
 				EDFAD37728D22EE400ED3BCD /* Rx */,
 				EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */,
 			);
@@ -777,6 +788,7 @@
 				EDC502DB28D38FEA0047C7C3 /* MovieHorizontalListCell.swift in Sources */,
 				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
 				EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */,
+				EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */,
 				EDFAD3B328D3745D00ED3BCD /* GridCollectionViewLayout.swift in Sources */,
 				EDC6DB5628D0633F00164EBD /* MovieResponse.swift in Sources */,
 				EDC6DB6728D078B000164EBD /* Api.swift in Sources */,

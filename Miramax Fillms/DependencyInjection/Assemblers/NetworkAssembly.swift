@@ -10,7 +10,7 @@ import Swinject
 final class NetworkAssembly: Assembly {
     
     func assemble(container: Container) {
-        container.register(Api.self) { resolver in
+        container.register(Api.self) { _ in
             return NetworkManager(genreNetworking: .getNetworking(), movieNetworking: .getNetworking())
         }
     }
