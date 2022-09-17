@@ -15,18 +15,30 @@ enum AppRoute: Route {
 
 class AppCoordinator: NavigationCoordinator<AppRoute> {
     
-    init() {
+    private let appDIContainer: AppDIContainer
+    
+    init(appDIContainer: AppDIContainer) {
+        self.appDIContainer = appDIContainer
         super.init(rootViewController: MainNavigationController(), initialRoute: .splash)
     }
     
     override func prepareTransition(for route: AppRoute) -> NavigationTransition {
         switch route {
         case .splash:
-            let vc = SplashViewController()
-            vc.viewModel = SplashViewModel(router: unownedRouter)
-            return .set([vc])
+            return getSplashTransition(for: route)
         case .home:
-            return .set([HomeCoordinator().strongRouter])
+            return getHomeTransition(for: route)
         }
+    }
+    
+    private func getSplashTransition(for route: AppRoute) -> NavigationTransition {
+        let vc = SplashViewController()
+        vc.viewModel = SplashViewModel(router: unownedRouter)
+        return .set([vc])
+    }
+    
+    private func getHomeTransition(for route: AppRoute) -> NavigationTransition {
+        let homeRoute = HomeCoordinator(appDIContainer: appDIContainer).strongRouter
+        return .set([homeRoute])
     }
 }

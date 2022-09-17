@@ -13,7 +13,4 @@ enum MovieRoute: Route {
 
 class MovieCoordinator: ViewCoordinator<MovieRoute> {
     
-    override func prepareTransition(for route: MovieRoute) -> ViewTransition {
-        <#code#>
-    }
 }

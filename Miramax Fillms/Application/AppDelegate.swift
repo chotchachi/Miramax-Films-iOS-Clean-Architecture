@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import XCoordinator
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private lazy var mainWindow = UIWindow()
     
     private let appDIContainer = AppDIContainer.shared
-    private let router = AppCoordinator().strongRouter
+    private var router: StrongRouter<AppRoute>!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             mainWindow.overrideUserInterfaceStyle = .light // force disable dark mode
         }
         
+        router = AppCoordinator(appDIContainer: appDIContainer).strongRouter
         router.setRoot(for: mainWindow)
         
         return true

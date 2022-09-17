@@ -17,9 +17,11 @@ enum HomeTabRoute: Route {
 
 class HomeCoordinator: TabBarCoordinator<HomeTabRoute> {
     private let movieRoute: StrongRouter<MovieRoute>
-
-    init() {
-        let movieCoordinator = MovieCoordinator(rootViewController: MovieViewController())
+    
+    init(appDIContainer: AppDIContainer) {
+        let vc = MovieViewController()
+        vc.viewModel = MovieViewModel(repositoryProvider: appDIContainer.resolve())
+        let movieCoordinator = MovieCoordinator(rootViewController: vc)
         movieCoordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 0)
         movieRoute = movieCoordinator.strongRouter
         super.init(rootViewController: HomeViewController(), tabs: [movieRoute], select: movieRoute)
