@@ -26,6 +26,8 @@
 		EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478428D59B300037751C /* SectionHeaderViewDelegate.swift */; };
 		EDA4478828D59F0B0037751C /* SelfieWithMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478728D59F0B0037751C /* SelfieWithMovieCell.swift */; };
 		EDA4478A28D5A15B0037751C /* SelfieWithMovieCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478928D5A15B0037751C /* SelfieWithMovieCellDelegate.swift */; };
+		EDA4478D28D5A7640037751C /* AppToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478C28D5A7640037751C /* AppToolbar.swift */; };
+		EDA4478F28D5A7740037751C /* AppToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478E28D5A7740037751C /* AppToolbarDelegate.swift */; };
 		EDC502CA28D376D30047C7C3 /* GenreHorizontalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502C828D376D30047C7C3 /* GenreHorizontalListCell.swift */; };
 		EDC502D028D377CC0047C7C3 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502CF28D377CC0047C7C3 /* GenreCell.swift */; };
 		EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */; };
@@ -116,6 +118,8 @@
 		EDA4478428D59B300037751C /* SectionHeaderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewDelegate.swift; sourceTree = "<group>"; };
 		EDA4478728D59F0B0037751C /* SelfieWithMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieWithMovieCell.swift; sourceTree = "<group>"; };
 		EDA4478928D5A15B0037751C /* SelfieWithMovieCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieWithMovieCellDelegate.swift; sourceTree = "<group>"; };
+		EDA4478C28D5A7640037751C /* AppToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToolbar.swift; sourceTree = "<group>"; };
+		EDA4478E28D5A7740037751C /* AppToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToolbarDelegate.swift; sourceTree = "<group>"; };
 		EDC502C828D376D30047C7C3 /* GenreHorizontalListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreHorizontalListCell.swift; sourceTree = "<group>"; };
 		EDC502CF28D377CC0047C7C3 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -298,6 +302,15 @@
 				EDA4478928D5A15B0037751C /* SelfieWithMovieCellDelegate.swift */,
 			);
 			path = SelfieWithMovieCell;
+			sourceTree = "<group>";
+		};
+		EDA4478B28D5A74C0037751C /* AppToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				EDA4478C28D5A7640037751C /* AppToolbar.swift */,
+				EDA4478E28D5A7740037751C /* AppToolbarDelegate.swift */,
+			);
+			path = AppToolbar;
 			sourceTree = "<group>";
 		};
 		EDC502CE28D377B00047C7C3 /* GenreCell */ = {
@@ -655,6 +668,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				EDA4478B28D5A74C0037751C /* AppToolbar */,
 				EDA4477F28D591320037751C /* SectionHeaderView */,
 				EDA4475928D41FE50037751C /* PrimaryButton */,
 				EDFAD3B128D3745400ED3BCD /* GridCollectionViewLayout */,
@@ -817,8 +831,10 @@
 				EDFAD39128D2E2BF00ED3BCD /* GenreRepositoryProtocol.swift in Sources */,
 				EDC502CA28D376D30047C7C3 /* GenreHorizontalListCell.swift in Sources */,
 				EDC6DB5C28D068CE00164EBD /* GenreDTO.swift in Sources */,
+				EDA4478D28D5A7640037751C /* AppToolbar.swift in Sources */,
 				EDC502DB28D38FEA0047C7C3 /* MovieHorizontalListCell.swift in Sources */,
 				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
+				EDA4478F28D5A7740037751C /* AppToolbarDelegate.swift in Sources */,
 				EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */,
 				EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */,
 				EDFAD3B328D3745D00ED3BCD /* GridCollectionViewLayout.swift in Sources */,

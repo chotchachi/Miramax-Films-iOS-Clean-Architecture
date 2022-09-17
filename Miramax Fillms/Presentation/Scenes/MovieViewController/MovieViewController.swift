@@ -14,6 +14,7 @@ class MovieViewController: BaseViewController<MovieViewModel> {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var collectionView: UICollectionView!
 
     // MARK: - Properties
@@ -31,12 +32,15 @@ class MovieViewController: BaseViewController<MovieViewModel> {
     override func configView() {
         super.configView()
         
+        appToolbar.delegate = self
+        
         let gridCollectionViewLayout = GridCollectionViewLayout()
-        gridCollectionViewLayout.rowSpacing = 24
+        gridCollectionViewLayout.rowSpacing = 16.0
         gridCollectionViewLayout.delegate = self
         collectionView.collectionViewLayout = gridCollectionViewLayout
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.contentInset = .init(top: 16.0, left: 0.0, bottom: 16.0, right: 0.0)
         collectionView.register(cellWithClass: GenreHorizontalListCell.self)
         collectionView.register(cellWithClass: MovieHorizontalListCell.self)
         collectionView.register(cellWithClass: SelfieWithMovieCell.self)
@@ -73,6 +77,14 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         case .error(let error):
             print(error.localizedDescription)
         }
+    }
+}
+
+// MARK: - AppToolbarDelegate
+
+extension MovieViewController: AppToolbarDelegate {
+    func appToolbar(onBackButtonTapped button: UIButton) {
+        
     }
 }
 

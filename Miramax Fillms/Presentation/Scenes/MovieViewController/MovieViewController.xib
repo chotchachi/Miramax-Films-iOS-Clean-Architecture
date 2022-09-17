@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieViewController" customModule="Miramax_Fillms" customModuleProvider="target">
             <connections>
+                <outlet property="appToolbar" destination="AUo-Rh-dtV" id="x4C-8m-kiD"/>
                 <outlet property="collectionView" destination="WTZ-oG-Jvn" id="B8L-Hf-0PH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,8 +21,19 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUo-Rh-dtV" customClass="AppToolbar" customModule="Miramax_Fillms" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="59" width="393" height="54"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="VTC-12-KlW"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Discover"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="showBackButton" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WTZ-oG-Jvn">
-                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <rect key="frame" x="0.0" y="113" width="393" height="705"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lU6-Qr-y2d">
                         <size key="itemSize" width="128" height="128"/>
@@ -34,17 +46,20 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="ColorPrimary"/>
             <constraints>
+                <constraint firstItem="WTZ-oG-Jvn" firstAttribute="top" secondItem="AUo-Rh-dtV" secondAttribute="bottom" id="8f5-lb-5Dv"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WTZ-oG-Jvn" secondAttribute="trailing" id="ESr-xf-0Nc"/>
+                <constraint firstItem="AUo-Rh-dtV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="H3B-bn-9QF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AUo-Rh-dtV" secondAttribute="trailing" id="Hrs-HN-pYa"/>
                 <constraint firstItem="WTZ-oG-Jvn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aa0-9L-fco"/>
-                <constraint firstItem="WTZ-oG-Jvn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="nMx-L7-op1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="WTZ-oG-Jvn" secondAttribute="bottom" id="ost-j9-gdJ"/>
+                <constraint firstItem="AUo-Rh-dtV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="sl9-TS-kRu"/>
             </constraints>
-            <point key="canvasLocation" x="110" y="21"/>
+            <point key="canvasLocation" x="109.16030534351144" y="20.422535211267608"/>
         </view>
     </objects>
     <resources>
         <namedColor name="ColorPrimary">
-            <color red="0.023529411764705882" green="0.066666666666666666" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.024000000208616257" green="0.067000001668930054" blue="0.21199999749660492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
