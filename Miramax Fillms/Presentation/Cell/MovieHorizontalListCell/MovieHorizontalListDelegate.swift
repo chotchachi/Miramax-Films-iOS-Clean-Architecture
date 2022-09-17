@@ -8,4 +8,5 @@
 protocol MovieHorizontalListDelegate: AnyObject {
     func movieHorizontalListRetryButtonTapped()
     func movieHorizontalList(onItemTapped movie: Movie)
+    func movieHorizontalListSeeMoreButtonTapped()
 }

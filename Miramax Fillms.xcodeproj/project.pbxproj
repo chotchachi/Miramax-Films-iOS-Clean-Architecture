@@ -21,6 +21,9 @@
 		EDA4477628D438E30037751C /* NetworkConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4477528D438E30037751C /* NetworkConfigurationProtocol.swift */; };
 		EDA4477828D4566E0037751C /* NetworkConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4477728D4566E0037751C /* NetworkConfigurable.swift */; };
 		EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4477D28D58D0E0037751C /* Resolver+resolveOrThrow.swift */; };
+		EDA4478128D591410037751C /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478028D591410037751C /* SectionHeaderView.swift */; };
+		EDA4478328D59A090037751C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478228D59A090037751C /* Constants.swift */; };
+		EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478428D59B300037751C /* SectionHeaderViewDelegate.swift */; };
 		EDC502CA28D376D30047C7C3 /* GenreHorizontalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502C828D376D30047C7C3 /* GenreHorizontalListCell.swift */; };
 		EDC502D028D377CC0047C7C3 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502CF28D377CC0047C7C3 /* GenreCell.swift */; };
 		EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */; };
@@ -106,6 +109,9 @@
 		EDA4477528D438E30037751C /* NetworkConfigurationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurationProtocol.swift; sourceTree = "<group>"; };
 		EDA4477728D4566E0037751C /* NetworkConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurable.swift; sourceTree = "<group>"; };
 		EDA4477D28D58D0E0037751C /* Resolver+resolveOrThrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resolver+resolveOrThrow.swift"; sourceTree = "<group>"; };
+		EDA4478028D591410037751C /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		EDA4478228D59A090037751C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EDA4478428D59B300037751C /* SectionHeaderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewDelegate.swift; sourceTree = "<group>"; };
 		EDC502C828D376D30047C7C3 /* GenreHorizontalListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreHorizontalListCell.swift; sourceTree = "<group>"; };
 		EDC502CF28D377CC0047C7C3 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -272,6 +278,15 @@
 			path = Swinject;
 			sourceTree = "<group>";
 		};
+		EDA4477F28D591320037751C /* SectionHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				EDA4478028D591410037751C /* SectionHeaderView.swift */,
+				EDA4478428D59B300037751C /* SectionHeaderViewDelegate.swift */,
+			);
+			path = SectionHeaderView;
+			sourceTree = "<group>";
+		};
 		EDC502CE28D377B00047C7C3 /* GenreCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				ED86E62F28C6369B00D60351 /* Info.plist */,
+				EDA4478228D59A090037751C /* Constants.swift */,
 			);
 			path = GlobalDefine;
 			sourceTree = "<group>";
@@ -625,6 +641,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				EDA4477F28D591320037751C /* SectionHeaderView */,
 				EDA4475928D41FE50037751C /* PrimaryButton */,
 				EDFAD3B128D3745400ED3BCD /* GridCollectionViewLayout */,
 			);
@@ -774,6 +791,7 @@
 				EDFAD38B28D2D90300ED3BCD /* GenreApi.swift in Sources */,
 				EDFAD39328D2E41500ED3BCD /* GenreRepository.swift in Sources */,
 				EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */,
+				EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */,
 				EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */,
 				EDC6DB4628CF98F800164EBD /* MovieViewController.swift in Sources */,
 				EDA4477428D438D90037751C /* NetworkConfiguration.swift in Sources */,
@@ -793,6 +811,7 @@
 				EDC6DB5628D0633F00164EBD /* MovieResponse.swift in Sources */,
 				EDC6DB6728D078B000164EBD /* Api.swift in Sources */,
 				EDA4475D28D422320037751C /* MovieHorizontalListDelegate.swift in Sources */,
+				EDA4478128D591410037751C /* SectionHeaderView.swift in Sources */,
 				EDC6DB3E28CF8F3400164EBD /* HomeViewModel.swift in Sources */,
 				EDC6DB2428CF6A0800164EBD /* ViewModelType.swift in Sources */,
 				EDFAD39828D3090B00ED3BCD /* GenreNetworking.swift in Sources */,
@@ -809,6 +828,7 @@
 				EDC502D828D38EDB0047C7C3 /* MovieHorizontalCell.swift in Sources */,
 				EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */,
 				ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */,
+				EDA4478328D59A090037751C /* Constants.swift in Sources */,
 				EDFAD3A728D3149500ED3BCD /* ProviderAssembly.swift in Sources */,
 				EDFAD38328D2387F00ED3BCD /* ViewState.swift in Sources */,
 				EDA4477028D438430037751C /* ConfigurationAssembly.swift in Sources */,

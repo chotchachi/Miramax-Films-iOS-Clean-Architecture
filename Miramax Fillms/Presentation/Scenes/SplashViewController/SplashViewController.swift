@@ -12,7 +12,7 @@ class SplashViewController: BaseViewController<SplashViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.viewModel.goToHome()
         }
     }

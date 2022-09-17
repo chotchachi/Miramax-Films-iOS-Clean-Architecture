@@ -25,6 +25,7 @@ class MovieHorizontalCell: UICollectionViewCell {
         ivMoviePoster = UIImageView()
         ivMoviePoster.translatesAutoresizingMaskIntoConstraints = false
         ivMoviePoster.contentMode = .scaleAspectFill
+        ivMoviePoster.clipsToBounds = true
         ivMoviePoster.kf.indicatorType = .activity
         
         // constraint layout

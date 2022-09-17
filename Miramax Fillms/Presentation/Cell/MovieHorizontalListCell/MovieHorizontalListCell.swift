@@ -13,9 +13,10 @@ class MovieHorizontalListCell: UICollectionViewCell {
     
     // MARK: - Views
     
+    private var sectionHeaderView: SectionHeaderView!
     private var movieCollectionView: UICollectionView!
     private var loadingIndicatorView: UIActivityIndicatorView!
-    private var btnRetry: UIButton!
+    private var btnRetry: PrimaryButton!
     
     // MARK: - Properties
     
@@ -27,13 +28,16 @@ class MovieHorizontalListCell: UICollectionViewCell {
         
         backgroundColor = .clear
         
+        // section header view
+        
+        sectionHeaderView = SectionHeaderView()
+        sectionHeaderView.translatesAutoresizingMaskIntoConstraints = false
+        sectionHeaderView.delegate = self
+        
         // collection view
         
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
-        collectionViewLayout.itemSize = .init(width: 96.0, height: 48.0)
-        collectionViewLayout.sectionInset = .init(top: 1.0, left: 16.0, bottom: 1.0, right: 16.0)
-        collectionViewLayout.minimumLineSpacing = 12.0
         movieCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         movieCollectionView.translatesAutoresizingMaskIntoConstraints = false
         movieCollectionView.backgroundColor = .clear
@@ -50,15 +54,23 @@ class MovieHorizontalListCell: UICollectionViewCell {
         
         // retry button
         
-        btnRetry = UIButton(type: .system)
-        btnRetry.setTitle("Retry", for: .normal)
+        btnRetry = PrimaryButton()
+        btnRetry.titleText = "Retry"
         btnRetry.addTarget(self, action: #selector(btnRetryTapped), for: .touchUpInside)
         
         // constraint layout
         
+        contentView.addSubview(sectionHeaderView)
+        sectionHeaderView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(24.0)
+        }
+        
         contentView.addSubview(movieCollectionView)
         movieCollectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalTo(sectionHeaderView.snp.bottom).offset(12.0)
             make.bottom.equalToSuperview()
             make.trailing.equalToSuperview()
             make.leading.equalToSuperview()
@@ -85,7 +97,9 @@ class MovieHorizontalListCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(_ viewState: ViewState<Movie>) {
+    func bind(_ viewState: ViewState<Movie>, headerTitle: String) {
+        sectionHeaderView.setHeaderTitle(headerTitle)
+        
         switch viewState {
         case .initial:
             loadingIndicatorView.startAnimating()
@@ -121,7 +135,7 @@ class MovieHorizontalListCell: UICollectionViewCell {
 
 extension MovieHorizontalListCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        movieItems.count
+        return movieItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -141,4 +155,30 @@ extension MovieHorizontalListCell: UICollectionViewDelegate {
         delegate?.movieHorizontalList(onItemTapped: movie)
     }
     
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension MovieHorizontalListCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemHeight = collectionView.frame.height
+        let itemWidth = itemHeight * Constants.posterRatio
+        return .init(width: itemWidth, height: itemHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .init(top: 0, left: 16.0, bottom: 0.0, right: 16.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 4.0
+    }
+}
+
+// MARK: - SectionHeaderViewDelegate
+
+extension MovieHorizontalListCell: SectionHeaderViewDelegate {
+    func sectionHeaderView(onSeeMoreButtonTapped button: UIButton) {
+        delegate?.movieHorizontalListSeeMoreButtonTapped()
+    }
 }

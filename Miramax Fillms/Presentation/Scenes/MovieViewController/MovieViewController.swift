@@ -32,6 +32,7 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         super.configView()
         
         let gridCollectionViewLayout = GridCollectionViewLayout()
+        gridCollectionViewLayout.rowSpacing = 24
         gridCollectionViewLayout.delegate = self
         collectionView.collectionViewLayout = gridCollectionViewLayout
         collectionView.dataSource = self
@@ -91,7 +92,7 @@ extension MovieViewController: UICollectionViewDataSource {
             return cell
         case .upComingViewState(viewState: let viewState):
             let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalListCell.self, for: indexPath)
-            cell.bind(viewState)
+            cell.bind(viewState, headerTitle: "Upcoming")
             cell.delegate = self
             return cell
         }
@@ -126,7 +127,7 @@ extension MovieViewController: GridCollectionViewLayoutDelegate {
         case .genreViewState:
             return 50.0
         case .upComingViewState:
-            return 186.0
+            return 200.0
         }
     }
     
@@ -168,4 +169,7 @@ extension MovieViewController: MovieHorizontalListDelegate {
         
     }
     
+    func movieHorizontalListSeeMoreButtonTapped() {
+        
+    }
 }
