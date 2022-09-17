@@ -25,6 +25,12 @@ struct AppFonts {
         if !dynamic { return font }
         return UIFontMetrics.default.scaledFont(for: font)
     }
+    
+    static func medium(withSize size: CGFloat, dynamic: Bool = true) -> UIFont {
+        let font = UIFont.systemFont(ofSize: size, weight: UIFont.Weight.medium)
+        if !dynamic { return font }
+        return UIFontMetrics.default.scaledFont(for: font)
+    }
 
     static func regular(withSize size: CGFloat, dynamic: Bool = true) -> UIFont {
         let font = UIFont.systemFont(ofSize: size, weight: UIFont.Weight.regular)
@@ -46,11 +52,9 @@ extension AppFonts {
     static let bodyBold = AppFonts.bold(withSize: 17.0)
 
     static let callout = AppFonts.regular(withSize: 14.0)
+    static let calloutMedium = AppFonts.medium(withSize: 14.0)
     static let calloutLight = AppFonts.light(withSize: 14.0)
     static let calloutSemiBold = AppFonts.semiBold(withSize: 14.0)
-
-    static let footnote = AppFonts.regular(withSize: 13.0)
-    static let footnoteLight = AppFonts.light(withSize: 13.0)
 
     static let caption1 = AppFonts.regular(withSize: 12.0)
     static let caption1Light = AppFonts.light(withSize: 12.0)

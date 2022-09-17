@@ -24,6 +24,8 @@
 		EDA4478128D591410037751C /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478028D591410037751C /* SectionHeaderView.swift */; };
 		EDA4478328D59A090037751C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478228D59A090037751C /* Constants.swift */; };
 		EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478428D59B300037751C /* SectionHeaderViewDelegate.swift */; };
+		EDA4478828D59F0B0037751C /* SelfieWithMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478728D59F0B0037751C /* SelfieWithMovieCell.swift */; };
+		EDA4478A28D5A15B0037751C /* SelfieWithMovieCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478928D5A15B0037751C /* SelfieWithMovieCellDelegate.swift */; };
 		EDC502CA28D376D30047C7C3 /* GenreHorizontalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502C828D376D30047C7C3 /* GenreHorizontalListCell.swift */; };
 		EDC502D028D377CC0047C7C3 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502CF28D377CC0047C7C3 /* GenreCell.swift */; };
 		EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */; };
@@ -112,6 +114,8 @@
 		EDA4478028D591410037751C /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		EDA4478228D59A090037751C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EDA4478428D59B300037751C /* SectionHeaderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewDelegate.swift; sourceTree = "<group>"; };
+		EDA4478728D59F0B0037751C /* SelfieWithMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieWithMovieCell.swift; sourceTree = "<group>"; };
+		EDA4478928D5A15B0037751C /* SelfieWithMovieCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieWithMovieCellDelegate.swift; sourceTree = "<group>"; };
 		EDC502C828D376D30047C7C3 /* GenreHorizontalListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreHorizontalListCell.swift; sourceTree = "<group>"; };
 		EDC502CF28D377CC0047C7C3 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -285,6 +289,15 @@
 				EDA4478428D59B300037751C /* SectionHeaderViewDelegate.swift */,
 			);
 			path = SectionHeaderView;
+			sourceTree = "<group>";
+		};
+		EDA4478628D59EEF0037751C /* SelfieWithMovieCell */ = {
+			isa = PBXGroup;
+			children = (
+				EDA4478728D59F0B0037751C /* SelfieWithMovieCell.swift */,
+				EDA4478928D5A15B0037751C /* SelfieWithMovieCellDelegate.swift */,
+			);
+			path = SelfieWithMovieCell;
 			sourceTree = "<group>";
 		};
 		EDC502CE28D377B00047C7C3 /* GenreCell */ = {
@@ -630,6 +643,7 @@
 		EDFAD3AF28D3723C00ED3BCD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EDA4478628D59EEF0037751C /* SelfieWithMovieCell */,
 				EDC502D928D38FD80047C7C3 /* MovieHorizontalListCell */,
 				EDC502D628D38E550047C7C3 /* MovieHorizontalCell */,
 				EDC502CE28D377B00047C7C3 /* GenreCell */,
@@ -808,6 +822,7 @@
 				EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */,
 				EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */,
 				EDFAD3B328D3745D00ED3BCD /* GridCollectionViewLayout.swift in Sources */,
+				EDA4478A28D5A15B0037751C /* SelfieWithMovieCellDelegate.swift in Sources */,
 				EDC6DB5628D0633F00164EBD /* MovieResponse.swift in Sources */,
 				EDC6DB6728D078B000164EBD /* Api.swift in Sources */,
 				EDA4475D28D422320037751C /* MovieHorizontalListDelegate.swift in Sources */,
@@ -848,6 +863,7 @@
 				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
 				EDC6DB4928CF990900164EBD /* MovieViewModel.swift in Sources */,
 				EDC6DB3228CF724A00164EBD /* AppCoordinator.swift in Sources */,
+				EDA4478828D59F0B0037751C /* SelfieWithMovieCell.swift in Sources */,
 				EDA4476928D4288D0037751C /* ImageConfigurable.swift in Sources */,
 				EDFAD38728D2453900ED3BCD /* MovieDTO.swift in Sources */,
 				EDA4476E28D432350037751C /* AppColors.swift in Sources */,

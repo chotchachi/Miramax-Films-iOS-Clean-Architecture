@@ -39,6 +39,7 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         collectionView.delegate = self
         collectionView.register(cellWithClass: GenreHorizontalListCell.self)
         collectionView.register(cellWithClass: MovieHorizontalListCell.self)
+        collectionView.register(cellWithClass: SelfieWithMovieCell.self)
     }
     
     override func bindViewModel() {
@@ -95,6 +96,10 @@ extension MovieViewController: UICollectionViewDataSource {
             cell.bind(viewState, headerTitle: "Upcoming")
             cell.delegate = self
             return cell
+        case .selfieWithMovie:
+            let cell = collectionView.dequeueReusableCell(withClass: SelfieWithMovieCell.self, for: indexPath)
+            cell.delegate = self
+            return cell
         }
     }
     
@@ -116,7 +121,7 @@ extension MovieViewController: GridCollectionViewLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, columnSpanForItemAt index: GridIndex, indexPath: IndexPath) -> Int {
         let movieViewData = movieViewDataItems[indexPath.row]
         switch movieViewData {
-        case .genreViewState, .upComingViewState:
+        case .genreViewState, .upComingViewState, .selfieWithMovie:
             return 2
         }
     }
@@ -126,7 +131,7 @@ extension MovieViewController: GridCollectionViewLayoutDelegate {
         switch movieViewData {
         case .genreViewState:
             return 50.0
-        case .upComingViewState:
+        case .upComingViewState, .selfieWithMovie:
             return 200.0
         }
     }
@@ -170,6 +175,14 @@ extension MovieViewController: MovieHorizontalListDelegate {
     }
     
     func movieHorizontalListSeeMoreButtonTapped() {
+        
+    }
+}
+
+// MARK: - SelfieWithMovieCellDelegate
+
+extension MovieViewController: SelfieWithMovieCellDelegate {
+    func selfieWithMovieCellChooseFrameButtonTapped() {
         
     }
 }

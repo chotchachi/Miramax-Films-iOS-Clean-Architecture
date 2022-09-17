@@ -71,6 +71,10 @@ final class SectionHeaderView: UIView {
         lblHeaderTitle.text = title
     }
     
+    public func setSeeMoreButtonHidden(_ hidden: Bool) {
+        btnSeeMore.isHidden = hidden
+    }
+    
     @objc private func seeMoreButtonTapped(_ sender: UIButton) {
         delegate?.sectionHeaderView(onSeeMoreButtonTapped: sender)
     }
