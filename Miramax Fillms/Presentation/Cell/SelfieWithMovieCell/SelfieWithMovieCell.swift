@@ -40,6 +40,8 @@ class SelfieWithMovieCell: UICollectionViewCell {
         containerView.shadowColor = UIColor.black.withAlphaComponent(0.2)
         containerView.shadowOffset = .init(width: 0.0, height: 2.0)
         containerView.shadowRadius = 10.0
+        containerView.shadowOpacity = 1.0
+        containerView.layer.masksToBounds = false
         
         // camera image view
         
@@ -84,7 +86,7 @@ class SelfieWithMovieCell: UICollectionViewCell {
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints { make in
             make.top.equalTo(sectionHeaderView.snp.bottom).offset(12.0)
-            make.bottom.equalToSuperview().offset(-16.0)
+            make.bottom.equalToSuperview()
             make.trailing.equalToSuperview().offset(-16.0)
             make.leading.equalToSuperview().offset(16.0)
         }
@@ -103,7 +105,6 @@ class SelfieWithMovieCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     @objc private func selfieButtonTapped(_ sender: UIButton) {
         delegate?.selfieWithMovieCellChooseFrameButtonTapped()

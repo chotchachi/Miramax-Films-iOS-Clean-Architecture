@@ -70,7 +70,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
             genreViewStateO,
             upComingViewStateO
         )
-            .map { [$0.0, $0.1, .selfieWithMovie] }
+            .map { [$0.0, $0.1, .selfieWithMovie, .tabSelection] }
             .asDriver(onErrorJustReturn: [])
         
         return Output(movieViewDataItems: movieViewDataItems)

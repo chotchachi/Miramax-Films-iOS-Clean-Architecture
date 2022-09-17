@@ -65,6 +65,10 @@
 		EDC6DB7128D0835500164EBD /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7028D0835500164EBD /* NetworkProvider.swift */; };
 		EDC6DB7428D0841300164EBD /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7328D0841300164EBD /* ReachabilityManager.swift */; };
 		EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */; };
+		EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */; };
+		EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */; };
+		EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3828D60DBA002726B0 /* TabLayout.swift */; };
+		EDE69B3B28D60E5B002726B0 /* TabLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3A28D60E5B002726B0 /* TabLayoutDelegate.swift */; };
 		EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */; };
 		EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */; };
 		EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */; };
@@ -157,6 +161,10 @@
 		EDC6DB7028D0835500164EBD /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		EDC6DB7328D0841300164EBD /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAlamofireSession.swift; sourceTree = "<group>"; };
+		EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCell.swift; sourceTree = "<group>"; };
+		EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCellDelegate.swift; sourceTree = "<group>"; };
+		EDE69B3828D60DBA002726B0 /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
+		EDE69B3A28D60E5B002726B0 /* TabLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayoutDelegate.swift; sourceTree = "<group>"; };
 		EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTracker.swift; sourceTree = "<group>"; };
@@ -602,6 +610,24 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		EDE69B3228D60C9B002726B0 /* TabSelectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */,
+				EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */,
+			);
+			path = TabSelectionCell;
+			sourceTree = "<group>";
+		};
+		EDE69B3728D60DAF002726B0 /* TabLayout */ = {
+			isa = PBXGroup;
+			children = (
+				EDE69B3828D60DBA002726B0 /* TabLayout.swift */,
+				EDE69B3A28D60E5B002726B0 /* TabLayoutDelegate.swift */,
+			);
+			path = TabLayout;
+			sourceTree = "<group>";
+		};
 		EDFAD36F28D2059600ED3BCD /* Assemblers */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,6 +682,7 @@
 		EDFAD3AF28D3723C00ED3BCD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EDE69B3228D60C9B002726B0 /* TabSelectionCell */,
 				EDA4478628D59EEF0037751C /* SelfieWithMovieCell */,
 				EDC502D928D38FD80047C7C3 /* MovieHorizontalListCell */,
 				EDC502D628D38E550047C7C3 /* MovieHorizontalCell */,
@@ -668,6 +695,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				EDE69B3728D60DAF002726B0 /* TabLayout */,
 				EDA4478B28D5A74C0037751C /* AppToolbar */,
 				EDA4477F28D591320037751C /* SectionHeaderView */,
 				EDA4475928D41FE50037751C /* PrimaryButton */,
@@ -841,6 +869,7 @@
 				EDA4478A28D5A15B0037751C /* SelfieWithMovieCellDelegate.swift in Sources */,
 				EDC6DB5628D0633F00164EBD /* MovieResponse.swift in Sources */,
 				EDC6DB6728D078B000164EBD /* Api.swift in Sources */,
+				EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */,
 				EDA4475D28D422320037751C /* MovieHorizontalListDelegate.swift in Sources */,
 				EDA4478128D591410037751C /* SectionHeaderView.swift in Sources */,
 				EDC6DB3E28CF8F3400164EBD /* HomeViewModel.swift in Sources */,
@@ -854,11 +883,13 @@
 				EDC6DB3628CF759400164EBD /* SplashViewController.swift in Sources */,
 				EDA4477828D4566E0037751C /* NetworkConfigurable.swift in Sources */,
 				EDC6DB4C28CF9D5D00164EBD /* Genre.swift in Sources */,
+				EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */,
 				EDFAD3AC28D31C9600ED3BCD /* MovieNetworking.swift in Sources */,
 				EDFAD3AE28D36F4700ED3BCD /* MovieViewData.swift in Sources */,
 				EDC502D828D38EDB0047C7C3 /* MovieHorizontalCell.swift in Sources */,
 				EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */,
 				ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */,
+				EDE69B3B28D60E5B002726B0 /* TabLayoutDelegate.swift in Sources */,
 				EDA4478328D59A090037751C /* Constants.swift in Sources */,
 				EDFAD3A728D3149500ED3BCD /* ProviderAssembly.swift in Sources */,
 				EDFAD38328D2387F00ED3BCD /* ViewState.swift in Sources */,
@@ -893,6 +924,7 @@
 				EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */,
 				EDC6DB2F28CF717600164EBD /* MainNavigationController.swift in Sources */,
 				EDFAD3A528D3143E00ED3BCD /* RepositoryProvider.swift in Sources */,
+				EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */,
 				EDFAD38F28D2DC0700ED3BCD /* MovieApi.swift in Sources */,
 				EDC6DB6128D071F300164EBD /* MovieRepository.swift in Sources */,
 				EDA4475828D41F060037751C /* GenreHorizontalListCellDelegate.swift in Sources */,

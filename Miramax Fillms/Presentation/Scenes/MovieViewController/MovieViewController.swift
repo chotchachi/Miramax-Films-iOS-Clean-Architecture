@@ -44,6 +44,7 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         collectionView.register(cellWithClass: GenreHorizontalListCell.self)
         collectionView.register(cellWithClass: MovieHorizontalListCell.self)
         collectionView.register(cellWithClass: SelfieWithMovieCell.self)
+        collectionView.register(cellWithClass: TabSelectionCell.self)
     }
     
     override func bindViewModel() {
@@ -112,6 +113,10 @@ extension MovieViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withClass: SelfieWithMovieCell.self, for: indexPath)
             cell.delegate = self
             return cell
+        case .tabSelection:
+            let cell = collectionView.dequeueReusableCell(withClass: TabSelectionCell.self, for: indexPath)
+            cell.bind(["Top rating", "News", "Trending"], selectIndex: 1)
+            return cell
         }
     }
     
@@ -133,7 +138,7 @@ extension MovieViewController: GridCollectionViewLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, columnSpanForItemAt index: GridIndex, indexPath: IndexPath) -> Int {
         let movieViewData = movieViewDataItems[indexPath.row]
         switch movieViewData {
-        case .genreViewState, .upComingViewState, .selfieWithMovie:
+        case .genreViewState, .upComingViewState, .selfieWithMovie, .tabSelection:
             return 2
         }
     }
@@ -143,8 +148,12 @@ extension MovieViewController: GridCollectionViewLayoutDelegate {
         switch movieViewData {
         case .genreViewState:
             return 50.0
-        case .upComingViewState, .selfieWithMovie:
+        case .upComingViewState:
             return 200.0
+        case .selfieWithMovie:
+            return 190.0
+        case .tabSelection:
+            return 40.0
         }
     }
     
@@ -195,6 +204,14 @@ extension MovieViewController: MovieHorizontalListDelegate {
 
 extension MovieViewController: SelfieWithMovieCellDelegate {
     func selfieWithMovieCellChooseFrameButtonTapped() {
+        
+    }
+}
+
+// MARK: - TabSelectionCellDelegate
+
+extension MovieViewController: TabSelectionCellDelegate {
+    func tabSelectionCell(onTabSelected index: Int) {
         
     }
 }
