@@ -14,4 +14,5 @@ protocol MovieRepositoryProtocol {
     func getUpComing(genreId: Int?, page: Int?) -> Single<MovieResponse>
     func getLatest(genreId: Int?, page: Int?) -> Single<MovieResponse>
     func getByGenre(genreId: Int?, page: Int?) -> Single<MovieResponse>
+    func searchMovie(query: String, page: Int?) -> Single<MovieResponse>
 }

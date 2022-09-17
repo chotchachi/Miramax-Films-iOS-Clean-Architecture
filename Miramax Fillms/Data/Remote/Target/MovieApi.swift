@@ -14,6 +14,7 @@ enum MovieApi {
     case upComing(genreId: Int?, page: Int?)
     case latest(genreId: Int?, page: Int?)
     case byGenre(genreId: Int?, page: Int?)
+    case search(query: String, page: Int?)
 }
 
 extension MovieApi: TargetType, NetworkConfigurable {
@@ -35,6 +36,8 @@ extension MovieApi: TargetType, NetworkConfigurable {
             return "movie/latest"
         case .byGenre:
             return "discover/movie"
+        case .search:
+            return "search/movie"
         }
     }
     
@@ -56,6 +59,8 @@ extension MovieApi: TargetType, NetworkConfigurable {
             return requestWithGenreIdAndPageTask(genreId, page)
         case .byGenre(genreId: let genreId, page: let page):
             return requestWithGenreIdAndPageTask(genreId, page)
+        case .search(query: let query, page: let page):
+            return requestWithQueryAndPageTask(query, page)
         }
     }
     
@@ -70,6 +75,17 @@ extension MovieApi: TargetType, NetworkConfigurable {
         if genreId != nil {
             params["with_genres"] = genreId
         }
+        if page != nil {
+            params["page"] = page
+        }
+        return .requestParameters(parameters: params, encoding: URLEncoding.default)
+    }
+    
+    private func requestWithQueryAndPageTask(_ query: String, _ page: Int?) -> Moya.Task {
+        var params: [String : Any] = [
+            "api_key" : apiKey
+        ]
+        params["query"] = query
         if page != nil {
             params["page"] = page
         }

@@ -54,4 +54,10 @@ final class MovieRepository: MovieRepositoryProtocol {
             .getMovieByGenre(genreId: genreId, page: page)
             .map { $0.asDomain() }
     }
+    
+    func searchMovie(query: String, page: Int?) -> Single<MovieResponse> {
+        return remoteDataSource
+            .searchMovie(query: query, page: page)
+            .map { $0.asDomain() }
+    }
 }

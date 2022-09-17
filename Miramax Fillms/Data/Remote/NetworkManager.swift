@@ -58,6 +58,13 @@ final class NetworkManager: Api {
         return movieNetworking.provider.requestObject(.byGenre(genreId: genreId, page: page), type: MovieResponseDTO.self)
     }
     
+    func searchMovie(query: String, page: Int?) -> Single<MovieResponseDTO> {
+        return movieNetworking.provider.requestObject(.search(query: query, page: page), type: MovieResponseDTO.self)
+    }
+    
     // MARK: - Show
 
+    func searchTVShow(query: String, page: Int?) -> Single<MovieResponseDTO> {
+        return movieNetworking.provider.requestObject(.search(query: query, page: page), type: MovieResponseDTO.self)
+    }
 }
