@@ -28,7 +28,7 @@ class SearchCoordinator: NavigationCoordinator<SearchRoute> {
             vc.viewModel = SearchViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter)
             return .push(vc)
         case .dismiss:
-            return .pop()
+            return .pop(animation: .fade)
         }
     }
 }
