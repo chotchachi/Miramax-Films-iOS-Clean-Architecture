@@ -11,4 +11,16 @@ extension Movie: PresenterModelType {
     var thumbImageURL: URL? {
         return posterURL
     }
+    
+    var backdropImageURL: URL? {
+        return backdropURL
+    }
+    
+    var textName: String {
+        return title
+    }
+    
+    var textDescription: String {
+        return overview
+    }
 }

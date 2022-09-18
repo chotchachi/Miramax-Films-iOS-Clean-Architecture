@@ -9,4 +9,7 @@ import Foundation
 
 protocol PresenterModelType {
     var thumbImageURL: URL? { get }
+    var backdropImageURL: URL? { get }
+    var textName: String { get }
+    var textDescription: String { get }
 }

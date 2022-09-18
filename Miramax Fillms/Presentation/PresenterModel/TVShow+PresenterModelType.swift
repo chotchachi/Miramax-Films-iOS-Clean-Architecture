@@ -11,4 +11,16 @@ extension TVShow: PresenterModelType {
     var thumbImageURL: URL? {
         return posterURL
     }
+    
+    var backdropImageURL: URL? {
+        return backdropURL
+    }
+    
+    var textName: String {
+        return name
+    }
+    
+    var textDescription: String {
+        return overview
+    }
 }
