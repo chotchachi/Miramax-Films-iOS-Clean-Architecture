@@ -45,6 +45,7 @@ extension AppFonts {
 
     static let subhead = AppFonts.regular(withSize: 18.0)
     static let subheadLight = AppFonts.light(withSize: 18.0)
+    static let subheadSemiBold = AppFonts.semiBold(withSize: 18.0)
     static let subheadBold = AppFonts.bold(withSize: 18.0)
 
     static let body = AppFonts.regular(withSize: 17.0)
