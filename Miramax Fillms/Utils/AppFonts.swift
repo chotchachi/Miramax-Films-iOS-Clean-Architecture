@@ -57,4 +57,6 @@ extension AppFonts {
     static let calloutSemiBold = AppFonts.semiBold(withSize: 14.0)
 
     static let caption1 = AppFonts.regular(withSize: 14.0)
+    static let caption1Medium = AppFonts.medium(withSize: 14.0)
+    static let caption1Semibold = AppFonts.semiBold(withSize: 14.0)
 }

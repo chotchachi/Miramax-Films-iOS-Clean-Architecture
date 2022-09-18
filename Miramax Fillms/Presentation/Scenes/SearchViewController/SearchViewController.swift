@@ -19,7 +19,10 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     @IBOutlet weak var tfSearch: UITextField!
     @IBOutlet weak var btnClearSearch: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var viewSearchEmpty: UIView!
+    @IBOutlet weak var lblEmptyMessage: UILabel!
+    
     // MARK: - Properties
     
     private var searchViewDataItems: [SearchViewData] = []
@@ -69,6 +72,9 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         
         btnClearSearch.isHidden = true
         btnClearSearch.addTarget(self, action: #selector(clearSearchButtonTapped(_:)), for: .touchUpInside)
+        
+        lblEmptyMessage.font = AppFonts.caption1Semibold
+        lblEmptyMessage.textColor = AppColors.textColorPrimary
     }
     
     override func bindViewModel() {
@@ -84,6 +90,18 @@ class SearchViewController: BaseViewController<SearchViewModel> {
                 guard let self = self else { return }
                 self.searchViewDataItems = items
                 self.collectionView.reloadData()
+                self.collectionView.isHidden = items.isEmpty
+                self.viewSearchEmpty.isHidden = !items.isEmpty
+                if items.isEmpty {
+                    self.lblEmptyMessage.text = "No search results found “\(self.tfSearch.text ?? "")”"
+                }
+            })
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.loading
+            .drive(onNext: { [weak self] isLoading in
+                guard let self = self else { return }
+                isLoading ? self.loadingIndicatorView.startAnimating() : self.loadingIndicatorView.stopAnimating()
             })
             .disposed(by: rx.disposeBag)
     }
@@ -103,9 +121,13 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let query = textField.text, !query.isEmpty && !query.isBlank else { return false }
+        collectionView.isHidden = true
+        viewSearchEmpty.isHidden = true
         searchTriggerS.accept(query)
         tfSearch.resignFirstResponder()
         return true

@@ -74,6 +74,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
             }
 
         return Observable.zip(searchMovieO, searchTVShowO, searchPersonO)
+            .trackActivity(loading)
             .map { (movieItems, tvShowItems, personItems) in
                 var searchViewDataItems: [SearchViewData] = []
                 if !movieItems.isEmpty {
