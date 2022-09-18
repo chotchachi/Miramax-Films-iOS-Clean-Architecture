@@ -108,6 +108,7 @@ class PersonHorizontalListCell: UICollectionViewCell {
             // set data
             personItems = array
             personCollectionView.reloadData()
+            sectionHeaderView.setSeeMoreButtonHidden(array.count < Constants.defaultPageLimit)
         case .empty:
             break
         case .error:

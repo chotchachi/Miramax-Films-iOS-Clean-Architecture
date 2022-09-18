@@ -108,6 +108,7 @@ class MovieHorizontalListCell: UICollectionViewCell {
             // set data
             movieItems = array
             movieCollectionView.reloadData()
+            sectionHeaderView.setSeeMoreButtonHidden(array.count < Constants.defaultPageLimit)
         case .empty:
             break
         case .error:
