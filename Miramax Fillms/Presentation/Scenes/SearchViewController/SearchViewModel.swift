@@ -63,15 +63,27 @@ class SearchViewModel: BaseViewModel, ViewModelType {
                     .map { $0.results }
                     .catchAndReturn([])
             }
+        
+        let searchPersonO = Observable.just(query)
+            .flatMapLatest {
+                return self.repositoryProvider
+                    .personRepository()
+                    .searchPerson(query: $0, page: nil)
+                    .map { $0.results }
+                    .catchAndReturn([])
+            }
 
-        return Observable.zip(searchMovieO, searchTVShowO)
-            .map { (movieItems, tvShowItem) in
+        return Observable.zip(searchMovieO, searchTVShowO, searchPersonO)
+            .map { (movieItems, tvShowItems, personItems) in
                 var searchViewDataItems: [SearchViewData] = []
                 if !movieItems.isEmpty {
                     searchViewDataItems.append(.movie(items: movieItems))
                 }
-                if !tvShowItem.isEmpty {
-                    searchViewDataItems.append(.tvShow(items: tvShowItem))
+                if !tvShowItems.isEmpty {
+                    searchViewDataItems.append(.tvShow(items: tvShowItems))
+                }
+                if !personItems.isEmpty {
+                    searchViewDataItems.append(.actor(items: personItems))
                 }
                 return searchViewDataItems
             }

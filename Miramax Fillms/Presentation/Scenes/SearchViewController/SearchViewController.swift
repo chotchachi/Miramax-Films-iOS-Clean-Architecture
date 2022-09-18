@@ -43,6 +43,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         collectionView.delegate = self
         collectionView.contentInset = .init(top: 32.0, left: 0.0, bottom: 32.0, right: 0.0)
         collectionView.register(cellWithClass: MovieHorizontalListCell.self)
+        collectionView.register(cellWithClass: PersonHorizontalListCell.self)
         
         let btnCancel = UIButton(type: .system)
         btnCancel.setTitle("Cancel", for: .normal)
@@ -136,8 +137,11 @@ extension SearchViewController: UICollectionViewDataSource {
             cell.bind(.populated(items), headerTitle: "TV Shows")
             cell.delegate = self
             return cell
-        case .actor:
-            return UICollectionViewCell()
+        case .actor(items: let items):
+            let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalListCell.self, for: indexPath)
+            cell.bind(.populated(items), headerTitle: "Actors")
+            cell.delegate = self
+            return cell
         }
     }
     
@@ -160,7 +164,14 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemHeight = 200.0
+        var itemHeight: CGFloat!
+        let item = searchViewDataItems[indexPath.row]
+        switch item {
+        case .actor:
+            itemHeight = 150.0
+        default:
+            itemHeight = 200.0
+        }
         let itemWidth = collectionView.frame.width
         return .init(width: itemWidth, height: itemHeight)
     }
@@ -178,6 +189,23 @@ extension SearchViewController: MovieHorizontalListCellDelegate {
     }
     
     func movieHorizontalListSeeMoreButtonTapped() {
+        
+    }
+    
+}
+
+// MARK: - PersonHorizontalListCellDelegate
+
+extension SearchViewController: PersonHorizontalListCellDelegate {
+    func personHorizontalListRetryButtonTapped() {
+        
+    }
+    
+    func personHorizontalList(onItemTapped person: Person) {
+        
+    }
+    
+    func personHorizontalListSeeMoreButtonTapped() {
         
     }
     

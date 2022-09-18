@@ -11,5 +11,5 @@ enum SearchViewData {
     case recent(items: [Movie])
     case movie(items: [Movie])
     case tvShow(items: [Movie])
-    case actor
+    case actor(items: [Person])
 }

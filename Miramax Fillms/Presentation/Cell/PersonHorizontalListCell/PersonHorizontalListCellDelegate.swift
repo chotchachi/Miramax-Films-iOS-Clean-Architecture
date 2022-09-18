@@ -6,5 +6,7 @@
 //
 
 protocol PersonHorizontalListCellDelegate: AnyObject {
-    
+    func personHorizontalListRetryButtonTapped()
+    func personHorizontalList(onItemTapped person: Person)
+    func personHorizontalListSeeMoreButtonTapped()
 }

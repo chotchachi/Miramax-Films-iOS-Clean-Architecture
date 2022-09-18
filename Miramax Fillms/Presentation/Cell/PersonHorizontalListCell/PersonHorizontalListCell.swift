@@ -121,7 +121,7 @@ class PersonHorizontalListCell: UICollectionViewCell {
         loadingIndicatorView.startAnimating()
         personCollectionView.isHidden = true
         btnRetry.isHidden = true
-//        delegate?.movieHorizontalListRetryButtonTapped()
+        delegate?.personHorizontalListRetryButtonTapped()
     }
 }
 
@@ -146,7 +146,7 @@ extension PersonHorizontalListCell: UICollectionViewDataSource {
 extension PersonHorizontalListCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let person = personItems[indexPath.row]
-//        delegate?.movieHorizontalList(onItemTapped: movie)
+        delegate?.personHorizontalList(onItemTapped: person)
     }
     
 }
@@ -156,7 +156,7 @@ extension PersonHorizontalListCell: UICollectionViewDelegate {
 extension PersonHorizontalListCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemHeight = collectionView.frame.height
-        let itemWidth = itemHeight * Constants.posterRatio
+        let itemWidth = itemHeight * Constants.actorCellRatio
         return .init(width: itemWidth, height: itemHeight)
     }
     
@@ -165,7 +165,7 @@ extension PersonHorizontalListCell: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 4.0
+        return 16.0
     }
 }
 
@@ -173,6 +173,6 @@ extension PersonHorizontalListCell: UICollectionViewDelegateFlowLayout {
 
 extension PersonHorizontalListCell: SectionHeaderViewDelegate {
     func sectionHeaderView(onSeeMoreButtonTapped button: UIButton) {
-//        delegate?.movieHorizontalListSeeMoreButtonTapped()
+        delegate?.personHorizontalListSeeMoreButtonTapped()
     }
 }

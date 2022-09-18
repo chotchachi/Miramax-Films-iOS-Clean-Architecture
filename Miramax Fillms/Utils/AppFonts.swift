@@ -56,7 +56,5 @@ extension AppFonts {
     static let calloutLight = AppFonts.light(withSize: 14.0)
     static let calloutSemiBold = AppFonts.semiBold(withSize: 14.0)
 
-    static let caption1 = AppFonts.regular(withSize: 12.0)
-    static let caption1Light = AppFonts.light(withSize: 12.0)
-    static let caption2 = AppFonts.regular(withSize: 11.0)
+    static let caption1 = AppFonts.regular(withSize: 14.0)
 }

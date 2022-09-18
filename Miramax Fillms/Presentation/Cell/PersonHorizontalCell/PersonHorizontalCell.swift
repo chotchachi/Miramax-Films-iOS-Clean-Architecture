@@ -15,13 +15,14 @@ class PersonHorizontalCell: UICollectionViewCell {
     // MARK: - Views
 
     private var ivPersonProfile: UIImageView!
+    private var lblPersonName: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .clear
         
-        // image view poster
+        // image view profile
         
         ivPersonProfile = UIImageView()
         ivPersonProfile.translatesAutoresizingMaskIntoConstraints = false
@@ -29,11 +30,28 @@ class PersonHorizontalCell: UICollectionViewCell {
         ivPersonProfile.clipsToBounds = true
         ivPersonProfile.kf.indicatorType = .activity
         
+        // label name
+        
+        lblPersonName = UILabel()
+        lblPersonName.translatesAutoresizingMaskIntoConstraints = false
+        lblPersonName.font = AppFonts.caption1
+        lblPersonName.textColor = AppColors.textColorPrimary
+        lblPersonName.numberOfLines = 2
+        lblPersonName.textAlignment = .center
+        
         // constraint layout
         
         contentView.addSubview(ivPersonProfile)
         ivPersonProfile.snp.makeConstraints { make in
             make.top.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.height.equalTo(ivPersonProfile.snp.width)
+        }
+        
+        contentView.addSubview(lblPersonName)
+        lblPersonName.snp.makeConstraints { make in
+            make.top.equalTo(ivPersonProfile.snp.bottom)
             make.bottom.equalToSuperview()
             make.trailing.equalToSuperview()
             make.leading.equalToSuperview()
@@ -43,7 +61,7 @@ class PersonHorizontalCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        ivPersonProfile.cornerRadius = ivPersonProfile.height / 2
+        ivPersonProfile.cornerRadius = ivPersonProfile.width / 2.0
     }
     
     required init?(coder: NSCoder) {
@@ -54,5 +72,8 @@ class PersonHorizontalCell: UICollectionViewCell {
         if let profileURL = person.profileURL {
             ivPersonProfile.kf.setImage(with: profileURL)
         }
+        lblPersonName.text = person.name
+        
+        layoutIfNeeded()
     }
 }
