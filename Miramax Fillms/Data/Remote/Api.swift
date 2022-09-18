@@ -26,7 +26,13 @@ protocol Api {
 
     // MARK: - Show
     
-    func searchTVShow(query: String, page: Int?) -> Single<MovieResponseDTO>
+    func getTVShowAiringToday(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
+    func getTVShowOnTheAir(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
+    func getTVShowToprated(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
+    func getTVShowPopular(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
+    func getTVShowLatest(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
+    func getTVShowByGenre(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
+    func searchTVShow(query: String, page: Int?) -> Single<TVShowResponseDTO>
     
     // MARK: - Person
     

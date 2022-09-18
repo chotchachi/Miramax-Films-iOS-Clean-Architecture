@@ -11,7 +11,12 @@ final class NetworkAssembly: Assembly {
     
     func assemble(container: Container) {
         container.register(Api.self) { _ in
-            return NetworkManager(genreNetworking: .getNetworking(), movieNetworking: .getNetworking(), searchNetworking: .getNetworking())
+            return NetworkManager(
+                genreNetworking: .getNetworking(),
+                movieNetworking: .getNetworking(),
+                tvShowNetworking: .getNetworking(),
+                searchNetworking: .getNetworking()
+            )
         }
     }
 }

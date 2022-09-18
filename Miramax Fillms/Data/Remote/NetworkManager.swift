@@ -13,15 +13,18 @@ import ObjectMapper
 final class NetworkManager: Api {
     private let genreNetworking: GenreNetworking
     private let movieNetworking: MovieNetworking
+    private let tvShowNetworking: TVShowNetworking
     private let searchNetworking: SearchNetworking
     
     init(
         genreNetworking: GenreNetworking,
         movieNetworking: MovieNetworking,
+        tvShowNetworking: TVShowNetworking,
         searchNetworking: SearchNetworking
     ) {
         self.genreNetworking = genreNetworking
         self.movieNetworking = movieNetworking
+        self.tvShowNetworking = tvShowNetworking
         self.searchNetworking = searchNetworking
     }
     
@@ -67,9 +70,33 @@ final class NetworkManager: Api {
     
     // MARK: - Show
 
-    func searchTVShow(query: String, page: Int?) -> Single<MovieResponseDTO> {
-        return searchNetworking.provider.requestObject(.searchTVShow(query: query, page: page), type: MovieResponseDTO.self)
+    func getTVShowAiringToday(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
+        return tvShowNetworking.provider.requestObject(.airingToday(genreId: genreId, page: page), type: TVShowResponseDTO.self)
     }
+    
+    func getTVShowOnTheAir(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
+        return tvShowNetworking.provider.requestObject(.onTheAir(genreId: genreId, page: page), type: TVShowResponseDTO.self)
+    }
+    
+    func getTVShowToprated(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
+        return tvShowNetworking.provider.requestObject(.topRated(genreId: genreId, page: page), type: TVShowResponseDTO.self)
+    }
+    
+    func getTVShowPopular(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
+        return tvShowNetworking.provider.requestObject(.popular(genreId: genreId, page: page), type: TVShowResponseDTO.self)
+    }
+    
+    func getTVShowLatest(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
+        return tvShowNetworking.provider.requestObject(.latest(genreId: genreId, page: page), type: TVShowResponseDTO.self)
+    }
+    
+    func getTVShowByGenre(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
+        return tvShowNetworking.provider.requestObject(.byGenre(genreId: genreId, page: page), type: TVShowResponseDTO.self)
+    }
+    
+    func searchTVShow(query: String, page: Int?) -> Single<TVShowResponseDTO> {
+        return searchNetworking.provider.requestObject(.searchTVShow(query: query, page: page), type: TVShowResponseDTO.self)
+    }    
     
     // MARK: - Person
     

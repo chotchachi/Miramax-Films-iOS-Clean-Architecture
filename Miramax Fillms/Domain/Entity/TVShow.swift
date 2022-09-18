@@ -1,47 +1,42 @@
 //
-//  Movie.swift
+//  TVShow.swift
 //  Miramax Fillms
 //
-//  Created by Thanh Quang on 13/09/2022.
+//  Created by Thanh Quang on 18/09/2022.
 //
 
 import Foundation
 
-struct Movie {
+struct TVShow {
     let id: Int
-    let title: String
-    let originalTitle: String
+    let name: String
+    let originalName: String
     let originalLanguage: String
     let backdropPath: String?
     let posterPath: String?
     let genreIDS: [Int]
     let overview: String
-    let releaseDate: String
     let popularity: Double
-    let video: Bool
     let voteAverage: Double
     let voteCount: Int
 }
 
-extension Movie: Equatable {
-    static func == (lhs: Movie, rhs: Movie) -> Bool {
+extension TVShow: Equatable {
+    static func == (lhs: TVShow, rhs: TVShow) -> Bool {
         return lhs.id == rhs.id
-        && lhs.title == rhs.title
-        && lhs.originalTitle == rhs.originalTitle
+        && lhs.name == rhs.name
+        && lhs.originalName == rhs.originalName
         && lhs.originalLanguage == rhs.originalLanguage
         && lhs.backdropPath == rhs.backdropPath
-        && lhs.posterPath == rhs.posterPath
         && lhs.genreIDS == rhs.genreIDS
         && lhs.overview == rhs.overview
-        && lhs.releaseDate == rhs.releaseDate
         && lhs.popularity == rhs.popularity
-        && lhs.video == rhs.video
         && lhs.voteAverage == rhs.voteAverage
         && lhs.voteCount == rhs.voteCount
     }
 }
 
-extension Movie: ImageConfigurable {
+extension TVShow: ImageConfigurable {
     var posterURL: URL? {
         guard let posterPath = posterPath else { return nil }
         let urlString = regularImageBaseURLString.appending(posterPath)

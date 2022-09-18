@@ -50,7 +50,31 @@ final class RemoteDataSource: RemoteDataSourceProtocol {
         return apiClient.searchMovie(query: query, page: page)
     }
     
-    func searchTVShow(query: String, page: Int?) -> Single<MovieResponseDTO> {
+    func getTVShowAiringToday(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
+        return apiClient.getTVShowAiringToday(genreId: genreId, page: page)
+    }
+    
+    func getTVShowOnTheAir(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
+        return apiClient.getTVShowOnTheAir(genreId: genreId, page: page)
+    }
+    
+    func getTVShowTopRated(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
+        return apiClient.getTVShowToprated(genreId: genreId, page: page)
+    }
+    
+    func getTVShowPopular(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
+        return apiClient.getTVShowPopular(genreId: genreId, page: page)
+    }
+    
+    func getTVShowLatest(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
+        return apiClient.getTVShowLatest(genreId: genreId, page: page)
+    }
+    
+    func getTVShowByGenre(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
+        return apiClient.getTVShowByGenre(genreId: genreId, page: page)
+    }
+    
+    func searchTVShow(query: String, page: Int?) -> Single<TVShowResponseDTO> {
         return apiClient.searchTVShow(query: query, page: page)
     }
     

@@ -27,6 +27,10 @@ final class RepositoryProvider: RepositoryProviderProtocol {
         return MovieRepository(remoteDataSource: remoteDataSource, localDataSource: localDataSource)
     }
     
+    func tvShowRepository() -> TVShowRepositoryProtocol {
+        return TVShowRepository(remoteDataSource: remoteDataSource, localDataSource: localDataSource)
+    }
+    
     func personRepository() -> PersonRepositoryProtocol {
         return PersonRepository(remoteDataSource: remoteDataSource, localDataSource: localDataSource)
     }
