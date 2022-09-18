@@ -27,4 +27,8 @@ protocol Api {
     // MARK: - Show
     
     func searchTVShow(query: String, page: Int?) -> Single<MovieResponseDTO>
+    
+    // MARK: - Person
+    
+    func searchPerson(query: String, page: Int?) -> Single<PersonResponseDTO>
 }

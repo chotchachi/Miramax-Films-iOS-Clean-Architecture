@@ -13,13 +13,16 @@ import ObjectMapper
 final class NetworkManager: Api {
     private let genreNetworking: GenreNetworking
     private let movieNetworking: MovieNetworking
+    private let searchNetworking: SearchNetworking
     
     init(
         genreNetworking: GenreNetworking,
-        movieNetworking: MovieNetworking
+        movieNetworking: MovieNetworking,
+        searchNetworking: SearchNetworking
     ) {
         self.genreNetworking = genreNetworking
         self.movieNetworking = movieNetworking
+        self.searchNetworking = searchNetworking
     }
     
     // MARK: - Genre
@@ -59,12 +62,18 @@ final class NetworkManager: Api {
     }
     
     func searchMovie(query: String, page: Int?) -> Single<MovieResponseDTO> {
-        return movieNetworking.provider.requestObject(.search(query: query, page: page), type: MovieResponseDTO.self)
+        return searchNetworking.provider.requestObject(.searchMovie(query: query, page: page), type: MovieResponseDTO.self)
     }
     
     // MARK: - Show
 
     func searchTVShow(query: String, page: Int?) -> Single<MovieResponseDTO> {
-        return movieNetworking.provider.requestObject(.search(query: query, page: page), type: MovieResponseDTO.self)
+        return searchNetworking.provider.requestObject(.searchTVShow(query: query, page: page), type: MovieResponseDTO.self)
+    }
+    
+    // MARK: - Person
+    
+    func searchPerson(query: String, page: Int?) -> Single<PersonResponseDTO> {
+        return searchNetworking.provider.requestObject(.searchPerson(query: query, page: page), type: PersonResponseDTO.self)
     }
 }

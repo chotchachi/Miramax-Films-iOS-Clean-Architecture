@@ -1,15 +1,15 @@
 //
-//  MovieResponseDTO.swift
+//  PersonResponseDTO.swift
 //  Miramax Fillms
 //
-//  Created by Thanh Quang on 15/09/2022.
+//  Created by Thanh Quang on 18/09/2022.
 //
 
 import ObjectMapper
 
-struct MovieResponseDTO: Mappable {
+struct PersonResponseDTO: Mappable {
     var page: Int!
-    var results: [MovieDTO]!
+    var results: [PersonDTO]!
     var totalPages: Int!
     var totalResults: Int!
     
@@ -25,9 +25,9 @@ struct MovieResponseDTO: Mappable {
     }
 }
 
-extension MovieResponseDTO: DomainConvertibleType {
-    func asDomain() -> MovieResponse {
-        return MovieResponse(
+extension PersonResponseDTO: DomainConvertibleType {
+    func asDomain() -> PersonResponse {
+        return PersonResponse(
             page: page,
             results: results.map { $0.asDomain() },
             totalPages: totalPages,

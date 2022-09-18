@@ -6,7 +6,6 @@
 //
 
 struct MovieResponse {
-    let dates: Dates?
     let page: Int
     let results: [Movie]
     let totalPages: Int

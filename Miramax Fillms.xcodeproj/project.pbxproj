@@ -54,7 +54,6 @@
 		EDC6DB5128D039A400164EBD /* MovieRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5028D039A400164EBD /* MovieRepositoryProtocol.swift */; };
 		EDC6DB5328D0623E00164EBD /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5228D0623E00164EBD /* Movie.swift */; };
 		EDC6DB5628D0633F00164EBD /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5528D0633F00164EBD /* MovieResponse.swift */; };
-		EDC6DB5828D0639500164EBD /* Dates.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5728D0639500164EBD /* Dates.swift */; };
 		EDC6DB5A28D0649F00164EBD /* GenreResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5928D0649F00164EBD /* GenreResponse.swift */; };
 		EDC6DB5C28D068CE00164EBD /* GenreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5B28D068CE00164EBD /* GenreDTO.swift */; };
 		EDC6DB5F28D0713400164EBD /* GenreResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB5E28D0713400164EBD /* GenreResponseDTO.swift */; };
@@ -77,6 +76,15 @@
 		EDE69B5028D643A6002726B0 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B4F28D643A6002726B0 /* String+Ext.swift */; };
 		EDE69B5228D6BA58002726B0 /* PersonHorizontalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B5128D6BA58002726B0 /* PersonHorizontalListCell.swift */; };
 		EDE69B5428D6BA66002726B0 /* PersonHorizontalListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B5328D6BA66002726B0 /* PersonHorizontalListCellDelegate.swift */; };
+		EDE69B5628D6BB34002726B0 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B5528D6BB34002726B0 /* Person.swift */; };
+		EDE69B5828D6BE1A002726B0 /* PersonHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B5728D6BE1A002726B0 /* PersonHorizontalCell.swift */; };
+		EDE69B5A28D6C051002726B0 /* PersonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B5928D6C051002726B0 /* PersonResponse.swift */; };
+		EDE69B5C28D6C0B0002726B0 /* PersonRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B5B28D6C0B0002726B0 /* PersonRepositoryProtocol.swift */; };
+		EDE69B5E28D6C0E2002726B0 /* PersonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B5D28D6C0E2002726B0 /* PersonRepository.swift */; };
+		EDE69B6028D6C142002726B0 /* PersonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B5F28D6C142002726B0 /* PersonDTO.swift */; };
+		EDE69B6228D6C1FE002726B0 /* PersonResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B6128D6C1FE002726B0 /* PersonResponseDTO.swift */; };
+		EDE69B6428D6C3A7002726B0 /* SearchApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B6328D6C3A7002726B0 /* SearchApi.swift */; };
+		EDE69B6628D6C48F002726B0 /* SearchNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B6528D6C48F002726B0 /* SearchNetworking.swift */; };
 		EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */; };
 		EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */; };
 		EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */; };
@@ -84,7 +92,6 @@
 		EDFAD37F28D2309C00ED3BCD /* NSObject+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37E28D2309C00ED3BCD /* NSObject+Rx.swift */; };
 		EDFAD38128D230C200ED3BCD /* HasDisposeBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38028D230C200ED3BCD /* HasDisposeBag.swift */; };
 		EDFAD38328D2387F00ED3BCD /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38228D2387F00ED3BCD /* ViewState.swift */; };
-		EDFAD38528D244E000ED3BCD /* DatesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38428D244E000ED3BCD /* DatesDTO.swift */; };
 		EDFAD38728D2453900ED3BCD /* MovieDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38628D2453900ED3BCD /* MovieDTO.swift */; };
 		EDFAD38928D2465700ED3BCD /* MovieResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38828D2465700ED3BCD /* MovieResponseDTO.swift */; };
 		EDFAD38B28D2D90300ED3BCD /* GenreApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD38A28D2D90300ED3BCD /* GenreApi.swift */; };
@@ -158,7 +165,6 @@
 		EDC6DB5028D039A400164EBD /* MovieRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepositoryProtocol.swift; sourceTree = "<group>"; };
 		EDC6DB5228D0623E00164EBD /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		EDC6DB5528D0633F00164EBD /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
-		EDC6DB5728D0639500164EBD /* Dates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dates.swift; sourceTree = "<group>"; };
 		EDC6DB5928D0649F00164EBD /* GenreResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreResponse.swift; sourceTree = "<group>"; };
 		EDC6DB5B28D068CE00164EBD /* GenreDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDTO.swift; sourceTree = "<group>"; };
 		EDC6DB5E28D0713400164EBD /* GenreResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreResponseDTO.swift; sourceTree = "<group>"; };
@@ -181,6 +187,15 @@
 		EDE69B4F28D643A6002726B0 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		EDE69B5128D6BA58002726B0 /* PersonHorizontalListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHorizontalListCell.swift; sourceTree = "<group>"; };
 		EDE69B5328D6BA66002726B0 /* PersonHorizontalListCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHorizontalListCellDelegate.swift; sourceTree = "<group>"; };
+		EDE69B5528D6BB34002726B0 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		EDE69B5728D6BE1A002726B0 /* PersonHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHorizontalCell.swift; sourceTree = "<group>"; };
+		EDE69B5928D6C051002726B0 /* PersonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonResponse.swift; sourceTree = "<group>"; };
+		EDE69B5B28D6C0B0002726B0 /* PersonRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRepositoryProtocol.swift; sourceTree = "<group>"; };
+		EDE69B5D28D6C0E2002726B0 /* PersonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRepository.swift; sourceTree = "<group>"; };
+		EDE69B5F28D6C142002726B0 /* PersonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDTO.swift; sourceTree = "<group>"; };
+		EDE69B6128D6C1FE002726B0 /* PersonResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonResponseDTO.swift; sourceTree = "<group>"; };
+		EDE69B6328D6C3A7002726B0 /* SearchApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApi.swift; sourceTree = "<group>"; };
+		EDE69B6528D6C48F002726B0 /* SearchNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNetworking.swift; sourceTree = "<group>"; };
 		EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTracker.swift; sourceTree = "<group>"; };
@@ -188,7 +203,6 @@
 		EDFAD37E28D2309C00ED3BCD /* NSObject+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Rx.swift"; sourceTree = "<group>"; };
 		EDFAD38028D230C200ED3BCD /* HasDisposeBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasDisposeBag.swift; sourceTree = "<group>"; };
 		EDFAD38228D2387F00ED3BCD /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
-		EDFAD38428D244E000ED3BCD /* DatesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesDTO.swift; sourceTree = "<group>"; };
 		EDFAD38628D2453900ED3BCD /* MovieDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDTO.swift; sourceTree = "<group>"; };
 		EDFAD38828D2465700ED3BCD /* MovieResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponseDTO.swift; sourceTree = "<group>"; };
 		EDFAD38A28D2D90300ED3BCD /* GenreApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreApi.swift; sourceTree = "<group>"; };
@@ -530,7 +544,7 @@
 				EDC6DB5428D0633300164EBD /* Response */,
 				EDC6DB4B28CF9D5D00164EBD /* Genre.swift */,
 				EDC6DB5228D0623E00164EBD /* Movie.swift */,
-				EDC6DB5728D0639500164EBD /* Dates.swift */,
+				EDE69B5528D6BB34002726B0 /* Person.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -540,6 +554,7 @@
 			children = (
 				EDC6DB5028D039A400164EBD /* MovieRepositoryProtocol.swift */,
 				EDFAD39028D2E2BF00ED3BCD /* GenreRepositoryProtocol.swift */,
+				EDE69B5B28D6C0B0002726B0 /* PersonRepositoryProtocol.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -549,6 +564,7 @@
 			children = (
 				EDC6DB6028D071F200164EBD /* MovieRepository.swift */,
 				EDFAD39228D2E41500ED3BCD /* GenreRepository.swift */,
+				EDE69B5D28D6C0E2002726B0 /* PersonRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -558,8 +574,8 @@
 			children = (
 				EDC6DB5D28D0712600164EBD /* Response */,
 				EDC6DB5B28D068CE00164EBD /* GenreDTO.swift */,
-				EDFAD38428D244E000ED3BCD /* DatesDTO.swift */,
 				EDFAD38628D2453900ED3BCD /* MovieDTO.swift */,
+				EDE69B5F28D6C142002726B0 /* PersonDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -569,6 +585,7 @@
 			children = (
 				EDC6DB5528D0633F00164EBD /* MovieResponse.swift */,
 				EDC6DB5928D0649F00164EBD /* GenreResponse.swift */,
+				EDE69B5928D6C051002726B0 /* PersonResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -578,6 +595,7 @@
 			children = (
 				EDC6DB5E28D0713400164EBD /* GenreResponseDTO.swift */,
 				EDFAD38828D2465700ED3BCD /* MovieResponseDTO.swift */,
+				EDE69B6128D6C1FE002726B0 /* PersonResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -600,6 +618,7 @@
 			children = (
 				EDFAD38A28D2D90300ED3BCD /* GenreApi.swift */,
 				EDFAD38E28D2DC0700ED3BCD /* MovieApi.swift */,
+				EDE69B6328D6C3A7002726B0 /* SearchApi.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -617,6 +636,7 @@
 			children = (
 				EDFAD39728D3090B00ED3BCD /* GenreNetworking.swift */,
 				EDFAD3AB28D31C9600ED3BCD /* MovieNetworking.swift */,
+				EDE69B6528D6C48F002726B0 /* SearchNetworking.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -670,6 +690,7 @@
 		EDE69B4C28D63A63002726B0 /* PersonHorizontalCell */ = {
 			isa = PBXGroup;
 			children = (
+				EDE69B5728D6BE1A002726B0 /* PersonHorizontalCell.swift */,
 			);
 			path = PersonHorizontalCell;
 			sourceTree = "<group>";
@@ -893,13 +914,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE69B6228D6C1FE002726B0 /* PersonResponseDTO.swift in Sources */,
 				EDFAD38B28D2D90300ED3BCD /* GenreApi.swift in Sources */,
 				EDFAD39328D2E41500ED3BCD /* GenreRepository.swift in Sources */,
 				EDE69B4728D6312F002726B0 /* SearchViewData.swift in Sources */,
 				EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */,
+				EDE69B6628D6C48F002726B0 /* SearchNetworking.swift in Sources */,
+				EDE69B5828D6BE1A002726B0 /* PersonHorizontalCell.swift in Sources */,
 				EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */,
 				EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */,
+				EDE69B6428D6C3A7002726B0 /* SearchApi.swift in Sources */,
 				EDC6DB4628CF98F800164EBD /* MovieViewController.swift in Sources */,
+				EDE69B6028D6C142002726B0 /* PersonDTO.swift in Sources */,
 				EDA4477428D438D90037751C /* NetworkConfiguration.swift in Sources */,
 				EDFAD39A28D30D6A00ED3BCD /* RemoteDataSourceProtocol.swift in Sources */,
 				EDC6DB7128D0835500164EBD /* NetworkProvider.swift in Sources */,
@@ -935,6 +961,7 @@
 				EDC6DB5A28D0649F00164EBD /* GenreResponse.swift in Sources */,
 				EDC6DB3628CF759400164EBD /* SplashViewController.swift in Sources */,
 				EDA4477828D4566E0037751C /* NetworkConfigurable.swift in Sources */,
+				EDE69B5628D6BB34002726B0 /* Person.swift in Sources */,
 				EDC6DB4C28CF9D5D00164EBD /* Genre.swift in Sources */,
 				EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */,
 				EDFAD3AC28D31C9600ED3BCD /* MovieNetworking.swift in Sources */,
@@ -948,7 +975,7 @@
 				EDFAD3A728D3149500ED3BCD /* ProviderAssembly.swift in Sources */,
 				EDFAD38328D2387F00ED3BCD /* ViewState.swift in Sources */,
 				EDA4477028D438430037751C /* ConfigurationAssembly.swift in Sources */,
-				EDC6DB5828D0639500164EBD /* Dates.swift in Sources */,
+				EDE69B5C28D6C0B0002726B0 /* PersonRepositoryProtocol.swift in Sources */,
 				EDFAD39E28D30E7200ED3BCD /* DataSourceAssembly.swift in Sources */,
 				EDC6DB5128D039A400164EBD /* MovieRepositoryProtocol.swift in Sources */,
 				EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */,
@@ -963,13 +990,14 @@
 				EDFAD3AA28D3152800ED3BCD /* LocalDataSource.swift in Sources */,
 				EDFAD3A128D3104200ED3BCD /* LocalDataSourceProtocol.swift in Sources */,
 				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
+				EDE69B5E28D6C0E2002726B0 /* PersonRepository.swift in Sources */,
 				EDC6DB4928CF990900164EBD /* MovieViewModel.swift in Sources */,
 				EDC6DB3228CF724A00164EBD /* AppCoordinator.swift in Sources */,
 				EDA4478828D59F0B0037751C /* SelfieWithMovieCell.swift in Sources */,
 				EDA4476928D4288D0037751C /* ImageConfigurable.swift in Sources */,
+				EDE69B5A28D6C051002726B0 /* PersonResponse.swift in Sources */,
 				EDFAD38728D2453900ED3BCD /* MovieDTO.swift in Sources */,
 				EDA4476E28D432350037751C /* AppColors.swift in Sources */,
-				EDFAD38528D244E000ED3BCD /* DatesDTO.swift in Sources */,
 				EDC502D528D38C2D0047C7C3 /* Rx+asDriver.swift in Sources */,
 				EDC6DB6A28D07C4C00164EBD /* DomainConvertibleType.swift in Sources */,
 				EDC6DB6C28D082E800164EBD /* NetworkManager.swift in Sources */,
