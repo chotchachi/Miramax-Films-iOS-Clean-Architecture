@@ -12,7 +12,6 @@ struct PersonDTO: Mappable {
     var name: String!
     var profilePath: String?
     var popularity: Double!
-    var knownFor: [MovieDTO] = []
     
     init?(map: Map) {
         
@@ -23,7 +22,6 @@ struct PersonDTO: Mappable {
         name <- map["name"]
         profilePath <- map["profile_path"]
         popularity <- map["popularity"]
-        knownFor <- map["known_for"]
     }
 }
 
@@ -33,8 +31,7 @@ extension PersonDTO: DomainConvertibleType {
             id: id,
             name: name,
             profilePath: profilePath,
-            popularity: popularity,
-            knownFor: knownFor.map { $0.asDomain() }
+            popularity: popularity
         )
     }
 }

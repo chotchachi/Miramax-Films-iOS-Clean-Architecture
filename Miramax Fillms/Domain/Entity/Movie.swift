@@ -8,17 +8,16 @@
 import Foundation
 
 struct Movie {
-    let adult: Bool
-    let backdropPath: String?
-    let genreIDS: [Int]
     let id: Int
-    let originalLanguage: String
-    let originalTitle: String
-    let overview: String?
-    let popularity: Double
-    let posterPath: String?
-    let releaseDate: String
     let title: String
+    let originalTitle: String
+    let originalLanguage: String
+    let backdropPath: String?
+    let posterPath: String?
+    let genreIDS: [Int]
+    let overview: String
+    let releaseDate: String
+    let popularity: Double
     let video: Bool
     let voteAverage: Double
     let voteCount: Int
@@ -26,8 +25,7 @@ struct Movie {
 
 extension Movie: Equatable {
     static func == (lhs: Movie, rhs: Movie) -> Bool {
-        return lhs.adult == rhs.adult
-        && lhs.backdropPath == rhs.backdropPath
+        return lhs.backdropPath == rhs.backdropPath
         && lhs.genreIDS == rhs.genreIDS
         && lhs.id == rhs.id
         && lhs.originalLanguage == rhs.originalLanguage

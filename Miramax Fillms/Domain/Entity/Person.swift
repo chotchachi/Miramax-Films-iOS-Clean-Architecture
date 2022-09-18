@@ -12,7 +12,6 @@ struct Person {
     let name: String
     let profilePath: String?
     let popularity: Double
-    let knownFor: [Movie]
 }
 
 extension Person: Equatable {
@@ -21,7 +20,6 @@ extension Person: Equatable {
         && lhs.name == rhs.name
         && lhs.profilePath == rhs.profilePath
         && lhs.popularity == rhs.popularity
-        && lhs.knownFor == rhs.knownFor
     }
 }
 
