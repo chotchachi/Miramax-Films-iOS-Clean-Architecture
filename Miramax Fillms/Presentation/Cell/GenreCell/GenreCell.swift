@@ -9,29 +9,20 @@ import UIKit
 import SnapKit
 
 class GenreCell: UICollectionViewCell {
-    private lazy var containerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(hex: 0x1A2138)
-        view.layer.cornerRadius = 16.0
-        view.layer.borderColor = UIColor(hex: 0x354271).cgColor
-        view.layer.borderWidth = 1.0
-        return view
-    }()
-    
-    private lazy var lblGenreName: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.textAlignment = .center
-        return label
-    }()
+    private var containerView: UIView!
+    private var lblGenreName: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .clear
+        
+        containerView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.backgroundColor = UIColor(hex: 0x1A2138)
+        containerView.layer.cornerRadius = 16.0
+        containerView.layer.borderColor = UIColor(hex: 0x354271).cgColor
+        containerView.layer.borderWidth = 1.0
         
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints { make in
@@ -41,12 +32,20 @@ class GenreCell: UICollectionViewCell {
             make.leading.equalToSuperview()
         }
         
+        lblGenreName = UILabel()
+        lblGenreName.translatesAutoresizingMaskIntoConstraints = false
+        lblGenreName.textColor = AppColors.textColorPrimary
+        lblGenreName.font = AppFonts.medium(withSize: 14, dynamic: true)
+        lblGenreName.textAlignment = .center
+        lblGenreName.numberOfLines = 0
+        lblGenreName.lineBreakMode = .byWordWrapping
+        
         containerView.addSubview(lblGenreName)
         lblGenreName.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-8.0)
+            make.leading.equalToSuperview().offset(8.0)
         }
     }
     
