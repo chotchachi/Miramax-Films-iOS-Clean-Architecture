@@ -11,4 +11,5 @@ final class Constants {
     static let defaultPageLimit: Int = 20
     static let posterRatio: CGFloat = 0.6667
     static let actorCellRatio: CGFloat = 0.65
+    static let airingTodayCellRatio: CGFloat = 0.85
 }
