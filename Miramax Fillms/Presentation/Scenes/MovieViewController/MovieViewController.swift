@@ -12,10 +12,12 @@ import SwifterSwift
 
 class MovieViewController: BaseViewController<MovieViewModel> {
     
-    // MARK: - Outlets
+    // MARK: - Outlets + Views
     
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    private var btnSearch: UIButton!
 
     // MARK: - Properties
     
@@ -32,7 +34,12 @@ class MovieViewController: BaseViewController<MovieViewModel> {
     override func configView() {
         super.configView()
         
+        btnSearch = UIButton(type: .system)
+        btnSearch.translatesAutoresizingMaskIntoConstraints = false
+        btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
+        
         appToolbar.delegate = self
+        appToolbar.rightButtons = [btnSearch]
         
         let gridCollectionViewLayout = GridCollectionViewLayout()
         gridCollectionViewLayout.rowSpacing = 32.0

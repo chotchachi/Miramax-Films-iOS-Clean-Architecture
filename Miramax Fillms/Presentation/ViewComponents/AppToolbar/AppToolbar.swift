@@ -16,7 +16,9 @@ final class AppToolbar: UIView {
     
     private var btnBack: UIButton!
     private var lblTitle: UILabel!
-    
+    private var leftStackView: UIStackView!
+    private var rightStackView: UIStackView!
+
     // MARK: - Properties
     
     weak var delegate: AppToolbarDelegate?
@@ -36,6 +38,12 @@ final class AppToolbar: UIView {
     @IBInspectable var showBackButton: Bool = true {
         didSet {
             btnBack.isHidden = !showBackButton
+        }
+    }
+    
+    var rightButtons: [UIButton] = [] {
+        didSet {
+            updateRightStackView()
         }
     }
     
@@ -63,13 +71,18 @@ final class AppToolbar: UIView {
         lblTitle.textColor = AppColors.textColorPrimary
         lblTitle.font = AppFonts.headlineBold
 
-        let leftStackView = UIStackView(arrangedSubviews: [btnBack, lblTitle], axis: .horizontal)
-        leftStackView.spacing = 4.0
-        leftStackView.alignment = .center
-        
+        leftStackView = UIStackView(arrangedSubviews: [btnBack, lblTitle], axis: .horizontal, spacing: 4.0, alignment: .center)
+        rightStackView = UIStackView(arrangedSubviews: [], axis: .horizontal, spacing: 16.0, alignment: .center)
+
         addSubview(leftStackView)
         leftStackView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16.0)
+            make.centerY.equalToSuperview()
+        }
+        
+        addSubview(rightStackView)
+        rightStackView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-16.0)
             make.centerY.equalToSuperview()
         }
         
@@ -81,5 +94,17 @@ final class AppToolbar: UIView {
     
     @objc private func backButtonTapped(_ sender: UIButton) {
         delegate?.appToolbar(onBackButtonTapped: sender)
+    }
+    
+    private func updateRightStackView() {
+        rightStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        rightStackView.addArrangedSubviews(rightButtons)
+        
+        rightButtons.forEach { button in
+            button.snp.makeConstraints { make in
+                make.height.equalTo(40.0)
+                make.width.equalTo(40.0)
+            }
+        }
     }
 }
