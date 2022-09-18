@@ -58,6 +58,7 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         super.bindViewModel()
         
         let input = MovieViewModel.Input(
+            toSearchTrigger: btnSearch.rx.tap.asDriver(),
             retryGenreTrigger: retryGenreViewTriggerS.asDriverOnErrorJustComplete(),
             retryUpComingTrigger: retryUpComingViewTriggerS.asDriverOnErrorJustComplete()
         )

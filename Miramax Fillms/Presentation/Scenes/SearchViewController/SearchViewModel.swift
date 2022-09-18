@@ -7,11 +7,13 @@
 
 import RxCocoa
 import RxSwift
+import XCoordinator
 
 class SearchViewModel: BaseViewModel, ViewModelType {
     
     struct Input {
         let searchTrigger: Driver<String?>
+        let cancelTrigger: Driver<Void>
     }
     
     struct Output {
@@ -19,11 +21,12 @@ class SearchViewModel: BaseViewModel, ViewModelType {
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
-    
-    init(repositoryProvider: RepositoryProviderProtocol) {
+    private let router: UnownedRouter<SearchRoute>
+
+    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<SearchRoute>) {
         self.repositoryProvider = repositoryProvider
+        self.router = router
         super.init()
-        
     }
     
     func transform(input: Input) -> Output {
@@ -41,6 +44,13 @@ class SearchViewModel: BaseViewModel, ViewModelType {
                 }
             }
             .asDriver(onErrorJustReturn: [])
+        
+        input.cancelTrigger
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.router.trigger(.dismiss)
+            })
+            .disposed(by: rx.disposeBag)
         
         return Output(searchViewDataItems: searchViewDataItemsD)
     }

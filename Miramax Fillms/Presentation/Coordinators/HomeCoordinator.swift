@@ -18,13 +18,19 @@ enum HomeTabRoute: Route {
 class HomeCoordinator: TabBarCoordinator<HomeTabRoute> {
     private let movieRoute: StrongRouter<MovieRoute>
     
-    init(appDIContainer: AppDIContainer) {
-        let vc = MovieViewController()
-        vc.viewModel = MovieViewModel(repositoryProvider: appDIContainer.resolve())
-        let movieCoordinator = MovieCoordinator(rootViewController: vc)
+    convenience init(appDIContainer: AppDIContainer) {
+        let movieCoordinator = MovieCoordinator(appDIContainer: appDIContainer)
         movieCoordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 0)
-        movieRoute = movieCoordinator.strongRouter
-        super.init(rootViewController: HomeViewController(), tabs: [movieRoute], select: movieRoute)
+
+        self.init(movieRoute: movieCoordinator.strongRouter)
+    }
+    
+    init(
+        movieRoute: StrongRouter<MovieRoute>
+    ) {
+        self.movieRoute = movieRoute
+        
+        super.init(tabs: [movieRoute], select: movieRoute)
     }
     
     override func prepareTransition(for route: HomeTabRoute) -> TabBarTransition {

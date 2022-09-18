@@ -13,7 +13,7 @@ import SwifterSwift
 
 class SearchViewController: BaseViewController<SearchViewModel> {
 
-    // MARK: - Outlets
+    // MARK: - Outlets + Views
     
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var tfSearch: UITextField!
@@ -22,6 +22,8 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var viewSearchEmpty: UIView!
     @IBOutlet weak var lblEmptyMessage: UILabel!
+    
+    private var btnCancel: UIButton!
     
     // MARK: - Properties
     
@@ -48,7 +50,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         collectionView.register(cellWithClass: MovieHorizontalListCell.self)
         collectionView.register(cellWithClass: PersonHorizontalListCell.self)
         
-        let btnCancel = UIButton(type: .system)
+        btnCancel = UIButton(type: .system)
         btnCancel.setTitle("Cancel", for: .normal)
         btnCancel.setTitleColor(AppColors.colorAccent, for: .normal)
         btnCancel.titleLabel?.font = AppFonts.callout
@@ -81,7 +83,8 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         super.bindViewModel()
         
         let input = SearchViewModel.Input(
-            searchTrigger: searchTriggerS.asDriverOnErrorJustComplete()
+            searchTrigger: searchTriggerS.asDriverOnErrorJustComplete(),
+            cancelTrigger: btnCancel.rx.tap.asDriver()
         )
         let output = viewModel.transform(input: input)
         

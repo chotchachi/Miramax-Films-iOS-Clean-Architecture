@@ -85,6 +85,7 @@
 		EDE69B6228D6C1FE002726B0 /* PersonResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B6128D6C1FE002726B0 /* PersonResponseDTO.swift */; };
 		EDE69B6428D6C3A7002726B0 /* SearchApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B6328D6C3A7002726B0 /* SearchApi.swift */; };
 		EDE69B6628D6C48F002726B0 /* SearchNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B6528D6C48F002726B0 /* SearchNetworking.swift */; };
+		EDE69B6A28D71464002726B0 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B6928D71464002726B0 /* SearchCoordinator.swift */; };
 		EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */; };
 		EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */; };
 		EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */; };
@@ -196,6 +197,7 @@
 		EDE69B6128D6C1FE002726B0 /* PersonResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonResponseDTO.swift; sourceTree = "<group>"; };
 		EDE69B6328D6C3A7002726B0 /* SearchApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApi.swift; sourceTree = "<group>"; };
 		EDE69B6528D6C48F002726B0 /* SearchNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNetworking.swift; sourceTree = "<group>"; };
+		EDE69B6928D71464002726B0 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTracker.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				EDC6DB3128CF724A00164EBD /* AppCoordinator.swift */,
 				EDC6DB3F28CF92DE00164EBD /* HomeCoordinator.swift */,
 				EDC6DB4128CF961700164EBD /* MovieCoordinator.swift */,
+				EDE69B6928D71464002726B0 /* SearchCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1010,6 +1013,7 @@
 				EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */,
 				EDE69B5228D6BA58002726B0 /* PersonHorizontalListCell.swift in Sources */,
 				EDFAD38F28D2DC0700ED3BCD /* MovieApi.swift in Sources */,
+				EDE69B6A28D71464002726B0 /* SearchCoordinator.swift in Sources */,
 				EDC6DB6128D071F300164EBD /* MovieRepository.swift in Sources */,
 				EDA4475828D41F060037751C /* GenreHorizontalListCellDelegate.swift in Sources */,
 				EDC6DB2128CF69DF00164EBD /* BaseViewModel.swift in Sources */,

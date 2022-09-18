@@ -7,10 +7,12 @@
 
 import RxCocoa
 import RxSwift
+import XCoordinator
 
 class MovieViewModel: BaseViewModel, ViewModelType {
     
     struct Input {
+        let toSearchTrigger: Driver<Void>
         let retryGenreTrigger: Driver<Void>
         let retryUpComingTrigger: Driver<Void>
     }
@@ -20,9 +22,11 @@ class MovieViewModel: BaseViewModel, ViewModelType {
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
-    
-    init(repositoryProvider: RepositoryProviderProtocol) {
+    private let router: UnownedRouter<MovieRoute>
+
+    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<MovieRoute>) {
         self.repositoryProvider = repositoryProvider
+        self.router = router
         super.init()
         
         repositoryProvider.movieRepository()
@@ -37,6 +41,13 @@ class MovieViewModel: BaseViewModel, ViewModelType {
         
         let viewTriggerO = trigger
             .take(1)
+        
+        input.toSearchTrigger
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.router.trigger(.search)
+            })
+            .disposed(by: rx.disposeBag)
         
         let retryGenreTriggerO = input.retryGenreTrigger
             .asObservable()
