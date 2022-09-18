@@ -12,7 +12,7 @@
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
 		EDA4475828D41F060037751C /* GenreHorizontalListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475728D41F060037751C /* GenreHorizontalListCellDelegate.swift */; };
 		EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475A28D41FFC0037751C /* PrimaryButton.swift */; };
-		EDA4475D28D422320037751C /* MovieHorizontalListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475C28D422320037751C /* MovieHorizontalListDelegate.swift */; };
+		EDA4475D28D422320037751C /* MovieHorizontalListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475C28D422320037751C /* MovieHorizontalListCellDelegate.swift */; };
 		EDA4476928D4288D0037751C /* ImageConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476828D4288D0037751C /* ImageConfigurable.swift */; };
 		EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476B28D431DC0037751C /* AppFonts.swift */; };
 		EDA4476E28D432350037751C /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476D28D432350037751C /* AppColors.swift */; };
@@ -75,6 +75,8 @@
 		EDE69B4728D6312F002726B0 /* SearchViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B4628D6312F002726B0 /* SearchViewData.swift */; };
 		EDE69B4E28D63EBB002726B0 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B4D28D63EBB002726B0 /* UIViewController+Ext.swift */; };
 		EDE69B5028D643A6002726B0 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B4F28D643A6002726B0 /* String+Ext.swift */; };
+		EDE69B5228D6BA58002726B0 /* PersonHorizontalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B5128D6BA58002726B0 /* PersonHorizontalListCell.swift */; };
+		EDE69B5428D6BA66002726B0 /* PersonHorizontalListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B5328D6BA66002726B0 /* PersonHorizontalListCellDelegate.swift */; };
 		EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */; };
 		EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */; };
 		EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */; };
@@ -114,7 +116,7 @@
 		ED86E62F28C6369B00D60351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDA4475728D41F060037751C /* GenreHorizontalListCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreHorizontalListCellDelegate.swift; sourceTree = "<group>"; };
 		EDA4475A28D41FFC0037751C /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
-		EDA4475C28D422320037751C /* MovieHorizontalListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHorizontalListDelegate.swift; sourceTree = "<group>"; };
+		EDA4475C28D422320037751C /* MovieHorizontalListCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHorizontalListCellDelegate.swift; sourceTree = "<group>"; };
 		EDA4476828D4288D0037751C /* ImageConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConfigurable.swift; sourceTree = "<group>"; };
 		EDA4476B28D431DC0037751C /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		EDA4476D28D432350037751C /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -177,6 +179,8 @@
 		EDE69B4628D6312F002726B0 /* SearchViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewData.swift; sourceTree = "<group>"; };
 		EDE69B4D28D63EBB002726B0 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		EDE69B4F28D643A6002726B0 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		EDE69B5128D6BA58002726B0 /* PersonHorizontalListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHorizontalListCell.swift; sourceTree = "<group>"; };
+		EDE69B5328D6BA66002726B0 /* PersonHorizontalListCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHorizontalListCellDelegate.swift; sourceTree = "<group>"; };
 		EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTracker.swift; sourceTree = "<group>"; };
@@ -353,7 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				EDC502DA28D38FEA0047C7C3 /* MovieHorizontalListCell.swift */,
-				EDA4475C28D422320037751C /* MovieHorizontalListDelegate.swift */,
+				EDA4475C28D422320037751C /* MovieHorizontalListCellDelegate.swift */,
 			);
 			path = MovieHorizontalListCell;
 			sourceTree = "<group>";
@@ -657,6 +661,8 @@
 		EDE69B4928D63A31002726B0 /* PersonHorizontalListCell */ = {
 			isa = PBXGroup;
 			children = (
+				EDE69B5128D6BA58002726B0 /* PersonHorizontalListCell.swift */,
+				EDE69B5328D6BA66002726B0 /* PersonHorizontalListCellDelegate.swift */,
 			);
 			path = PersonHorizontalListCell;
 			sourceTree = "<group>";
@@ -916,7 +922,7 @@
 				EDC6DB5628D0633F00164EBD /* MovieResponse.swift in Sources */,
 				EDC6DB6728D078B000164EBD /* Api.swift in Sources */,
 				EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */,
-				EDA4475D28D422320037751C /* MovieHorizontalListDelegate.swift in Sources */,
+				EDA4475D28D422320037751C /* MovieHorizontalListCellDelegate.swift in Sources */,
 				EDA4478128D591410037751C /* SectionHeaderView.swift in Sources */,
 				EDC6DB3E28CF8F3400164EBD /* HomeViewModel.swift in Sources */,
 				EDC6DB2428CF6A0800164EBD /* ViewModelType.swift in Sources */,
@@ -936,6 +942,7 @@
 				EDC502D828D38EDB0047C7C3 /* MovieHorizontalCell.swift in Sources */,
 				EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */,
 				ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */,
+				EDE69B5428D6BA66002726B0 /* PersonHorizontalListCellDelegate.swift in Sources */,
 				EDE69B3B28D60E5B002726B0 /* TabLayoutDelegate.swift in Sources */,
 				EDA4478328D59A090037751C /* Constants.swift in Sources */,
 				EDFAD3A728D3149500ED3BCD /* ProviderAssembly.swift in Sources */,
@@ -973,6 +980,7 @@
 				EDC6DB2F28CF717600164EBD /* MainNavigationController.swift in Sources */,
 				EDFAD3A528D3143E00ED3BCD /* RepositoryProvider.swift in Sources */,
 				EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */,
+				EDE69B5228D6BA58002726B0 /* PersonHorizontalListCell.swift in Sources */,
 				EDFAD38F28D2DC0700ED3BCD /* MovieApi.swift in Sources */,
 				EDC6DB6128D071F300164EBD /* MovieRepository.swift in Sources */,
 				EDA4475828D41F060037751C /* GenreHorizontalListCellDelegate.swift in Sources */,

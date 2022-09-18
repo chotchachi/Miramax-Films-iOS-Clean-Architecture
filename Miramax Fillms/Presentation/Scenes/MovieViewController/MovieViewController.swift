@@ -184,9 +184,9 @@ extension MovieViewController: GenreHorizontalListCellDelegate {
     
 }
 
-// MARK: - MovieHorizontalListDelegate
+// MARK: - MovieHorizontalListCellDelegate
 
-extension MovieViewController: MovieHorizontalListDelegate {
+extension MovieViewController: MovieHorizontalListCellDelegate {
     func movieHorizontalListRetryButtonTapped() {
         retryUpComingViewTriggerS.accept(())
     }

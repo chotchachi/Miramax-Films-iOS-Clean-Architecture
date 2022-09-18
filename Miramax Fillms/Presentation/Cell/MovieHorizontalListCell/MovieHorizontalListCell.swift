@@ -20,7 +20,7 @@ class MovieHorizontalListCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    public weak var delegate: MovieHorizontalListDelegate?
+    public weak var delegate: MovieHorizontalListCellDelegate?
     private var movieItems: [Movie] = []
     
     override init(frame: CGRect) {

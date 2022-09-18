@@ -166,9 +166,9 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - MovieHorizontalListDelegate
+// MARK: - MovieHorizontalListCellDelegate
 
-extension SearchViewController: MovieHorizontalListDelegate {
+extension SearchViewController: MovieHorizontalListCellDelegate {
     func movieHorizontalListRetryButtonTapped() {
         
     }
