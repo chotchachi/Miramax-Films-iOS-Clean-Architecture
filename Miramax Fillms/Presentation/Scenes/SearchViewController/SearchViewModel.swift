@@ -68,8 +68,8 @@ class SearchViewModel: BaseViewModel, ViewModelType {
         let searchTVShowO = Observable.just(query)
             .flatMapLatest {
                 return self.repositoryProvider
-                    .movieRepository()
-                    .searchMovie(query: $0, page: nil)
+                    .tvShowRepository()
+                    .searchTVShow(query: $0, page: nil)
                     .map { $0.results }
                     .catchAndReturn([])
             }

@@ -10,6 +10,6 @@ import Foundation
 enum SearchViewData {
     case recent(items: [Movie])
     case movie(items: [Movie])
-    case tvShow(items: [Movie])
+    case tvShow(items: [TVShow])
     case actor(items: [Person])
 }

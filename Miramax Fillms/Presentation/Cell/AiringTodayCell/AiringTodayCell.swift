@@ -32,9 +32,11 @@ class AiringTodayCell: UICollectionViewCell {
         ivPoster.contentMode = .scaleAspectFill
         ivPoster.kf.indicatorType = .activity
         ivPoster.cornerRadius = 8.0
+        ivPoster.clipsToBounds = true
         
         ivBackdrop.contentMode = .scaleAspectFill
         ivBackdrop.kf.indicatorType = .activity
+        ivBackdrop.clipsToBounds = true
         
         lblName.font = AppFonts.subheadSemiBold
         lblName.textColor = AppColors.textColorPrimary
