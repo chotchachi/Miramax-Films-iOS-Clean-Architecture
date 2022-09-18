@@ -8,4 +8,5 @@
 protocol RepositoryProviderProtocol {
     func genreRepository() -> GenreRepositoryProtocol
     func movieRepository() -> MovieRepositoryProtocol
+    func personRepository() -> PersonRepositoryProtocol
 }
