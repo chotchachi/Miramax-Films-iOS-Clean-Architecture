@@ -72,21 +72,6 @@ class MovieViewController: BaseViewController<MovieViewModel> {
             })
             .disposed(by: rx.disposeBag)
     }
-    
-    private func handleGenreViewState(_ state: ViewState<Genre>) {
-        switch state {
-        case .initial:
-            break
-        case .paging:
-            break
-        case .populated(let array):
-            print(array)
-        case .empty:
-            break
-        case .error(let error):
-            print(error.localizedDescription)
-        }
-    }
 }
 
 // MARK: - AppToolbarDelegate
