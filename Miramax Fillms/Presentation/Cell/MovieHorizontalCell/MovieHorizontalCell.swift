@@ -13,7 +13,7 @@ class MovieHorizontalCell: UICollectionViewCell {
     
     // MARK: - Views
 
-    private var ivMoviePoster: UIImageView!
+    private var ivPoster: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,16 +22,16 @@ class MovieHorizontalCell: UICollectionViewCell {
         
         // image view poster
         
-        ivMoviePoster = UIImageView()
-        ivMoviePoster.translatesAutoresizingMaskIntoConstraints = false
-        ivMoviePoster.contentMode = .scaleAspectFill
-        ivMoviePoster.clipsToBounds = true
-        ivMoviePoster.kf.indicatorType = .activity
+        ivPoster = UIImageView()
+        ivPoster.translatesAutoresizingMaskIntoConstraints = false
+        ivPoster.contentMode = .scaleAspectFill
+        ivPoster.clipsToBounds = true
+        ivPoster.kf.indicatorType = .activity
         
         // constraint layout
         
-        contentView.addSubview(ivMoviePoster)
-        ivMoviePoster.snp.makeConstraints { make in
+        contentView.addSubview(ivPoster)
+        ivPoster.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.bottom.equalToSuperview()
             make.trailing.equalToSuperview()
@@ -43,9 +43,9 @@ class MovieHorizontalCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(_ movie: Movie) {
-        if let posterURL = movie.posterURL {
-            ivMoviePoster.kf.setImage(with: posterURL)
+    func bind(_ item: PresenterModelType) {
+        if let thumbImageURL = item.thumbImageURL {
+            ivPoster.kf.setImage(with: thumbImageURL)
         }
     }
 }

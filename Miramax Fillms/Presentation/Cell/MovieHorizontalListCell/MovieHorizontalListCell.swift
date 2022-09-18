@@ -14,14 +14,14 @@ class MovieHorizontalListCell: UICollectionViewCell {
     // MARK: - Views
     
     private var sectionHeaderView: SectionHeaderView!
-    private var movieCollectionView: UICollectionView!
+    private var collectionView: UICollectionView!
     private var loadingIndicatorView: UIActivityIndicatorView!
     private var btnRetry: PrimaryButton!
     
     // MARK: - Properties
     
     public weak var delegate: MovieHorizontalListCellDelegate?
-    private var movieItems: [Movie] = []
+    private var modelItems: [PresenterModelType] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,13 +38,13 @@ class MovieHorizontalListCell: UICollectionViewCell {
         
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
-        movieCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        movieCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        movieCollectionView.backgroundColor = .clear
-        movieCollectionView.register(cellWithClass: MovieHorizontalCell.self)
-        movieCollectionView.dataSource = self
-        movieCollectionView.delegate = self
-        movieCollectionView.showsHorizontalScrollIndicator = false
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .clear
+        collectionView.register(cellWithClass: MovieHorizontalCell.self)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.showsHorizontalScrollIndicator = false
         
         // loading indicator
         
@@ -68,8 +68,8 @@ class MovieHorizontalListCell: UICollectionViewCell {
             make.height.equalTo(24.0)
         }
         
-        contentView.addSubview(movieCollectionView)
-        movieCollectionView.snp.makeConstraints { make in
+        contentView.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
             make.top.equalTo(sectionHeaderView.snp.bottom).offset(12.0)
             make.bottom.equalToSuperview()
             make.trailing.equalToSuperview()
@@ -78,12 +78,12 @@ class MovieHorizontalListCell: UICollectionViewCell {
         
         contentView.addSubview(loadingIndicatorView)
         loadingIndicatorView.snp.makeConstraints { make in
-            make.center.equalTo(movieCollectionView.snp.center)
+            make.center.equalTo(collectionView.snp.center)
         }
         
         contentView.addSubview(btnRetry)
         btnRetry.snp.makeConstraints { make in
-            make.center.equalTo(movieCollectionView.snp.center)
+            make.center.equalTo(collectionView.snp.center)
         }
     }
     
@@ -97,30 +97,57 @@ class MovieHorizontalListCell: UICollectionViewCell {
         switch viewState {
         case .initial:
             loadingIndicatorView.startAnimating()
-            movieCollectionView.isHidden = true
+            collectionView.isHidden = true
             btnRetry.isHidden = true
         case .paging:
             break
         case .populated(let array):
             loadingIndicatorView.stopAnimating()
-            movieCollectionView.isHidden = false
+            collectionView.isHidden = false
             btnRetry.isHidden = true
-            // set data
-            movieItems = array
-            movieCollectionView.reloadData()
-            sectionHeaderView.setSeeMoreButtonHidden(array.count < Constants.defaultPageLimit)
+            setData(array)
         case .empty:
             break
         case .error:
             loadingIndicatorView.stopAnimating()
-            movieCollectionView.isHidden = true
+            collectionView.isHidden = true
             btnRetry.isHidden = false
         }
     }
     
+    func bind(_ viewState: ViewState<TVShow>, headerTitle: String) {
+        sectionHeaderView.setHeaderTitle(headerTitle)
+        
+        switch viewState {
+        case .initial:
+            loadingIndicatorView.startAnimating()
+            collectionView.isHidden = true
+            btnRetry.isHidden = true
+        case .paging:
+            break
+        case .populated(let array):
+            loadingIndicatorView.stopAnimating()
+            collectionView.isHidden = false
+            btnRetry.isHidden = true
+            setData(array)
+        case .empty:
+            break
+        case .error:
+            loadingIndicatorView.stopAnimating()
+            collectionView.isHidden = true
+            btnRetry.isHidden = false
+        }
+    }
+    
+    private func setData(_ items: [PresenterModelType]) {
+        modelItems = items
+        collectionView.reloadData()
+        sectionHeaderView.setSeeMoreButtonHidden(items.count < Constants.defaultPageLimit)
+    }
+    
     @objc private func btnRetryTapped() {
         loadingIndicatorView.startAnimating()
-        movieCollectionView.isHidden = true
+        collectionView.isHidden = true
         btnRetry.isHidden = true
         delegate?.movieHorizontalListRetryButtonTapped()
     }
@@ -130,13 +157,13 @@ class MovieHorizontalListCell: UICollectionViewCell {
 
 extension MovieHorizontalListCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movieItems.count
+        return modelItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let movie = movieItems[indexPath.row]
+        let item = modelItems[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalCell.self, for: indexPath)
-        cell.bind(movie)
+        cell.bind(item)
         return cell
     }
     
@@ -146,8 +173,8 @@ extension MovieHorizontalListCell: UICollectionViewDataSource {
 
 extension MovieHorizontalListCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let movie = movieItems[indexPath.row]
-        delegate?.movieHorizontalList(onItemTapped: movie)
+        let item = modelItems[indexPath.row]
+        delegate?.movieHorizontalList(onItemTapped: item)
     }
     
 }

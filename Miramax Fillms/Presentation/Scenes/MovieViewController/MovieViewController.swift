@@ -184,7 +184,7 @@ extension MovieViewController: MovieHorizontalListCellDelegate {
         retryUpComingViewTriggerS.accept(())
     }
     
-    func movieHorizontalList(onItemTapped movie: Movie) {
+    func movieHorizontalList(onItemTapped item: PresenterModelType) {
         
     }
     

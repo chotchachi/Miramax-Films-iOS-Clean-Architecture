@@ -7,6 +7,6 @@
 
 protocol MovieHorizontalListCellDelegate: AnyObject {
     func movieHorizontalListRetryButtonTapped()
-    func movieHorizontalList(onItemTapped movie: Movie)
+    func movieHorizontalList(onItemTapped item: PresenterModelType)
     func movieHorizontalListSeeMoreButtonTapped()
 }
