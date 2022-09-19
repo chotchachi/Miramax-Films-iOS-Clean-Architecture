@@ -15,6 +15,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
         let toSearchTrigger: Driver<Void>
         let retryGenreTrigger: Driver<Void>
         let retryUpComingTrigger: Driver<Void>
+        let movieSelectTrigger: Driver<Movie>
     }
     
     struct Output {
@@ -28,13 +29,6 @@ class MovieViewModel: BaseViewModel, ViewModelType {
         self.repositoryProvider = repositoryProvider
         self.router = router
         super.init()
-        
-        repositoryProvider.movieRepository()
-            .getNowPlaying(genreId: nil, page: nil)
-            .subscribe {
-                print($0)
-            }
-            .disposed(by: rx.disposeBag)
     }
     
     func transform(input: Input) -> Output {
@@ -46,6 +40,13 @@ class MovieViewModel: BaseViewModel, ViewModelType {
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.router.trigger(.search)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.movieSelectTrigger
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.router.trigger(.detail(movie: $0))
             })
             .disposed(by: rx.disposeBag)
         

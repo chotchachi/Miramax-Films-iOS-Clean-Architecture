@@ -10,6 +10,7 @@ import XCoordinator
 enum MovieRoute: Route {
     case initial
     case search
+    case detail(movie: Movie)
 }
 
 class MovieCoordinator: NavigationCoordinator<MovieRoute> {
@@ -31,6 +32,9 @@ class MovieCoordinator: NavigationCoordinator<MovieRoute> {
             return .push(vc)
         case .search:
             addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
+            return .none()
+        case .detail(movie: let movie):
+            addChild(MovieDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, movie: movie))
             return .none()
         }
     }

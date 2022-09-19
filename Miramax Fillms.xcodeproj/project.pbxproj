@@ -28,6 +28,10 @@
 		EDA4478A28D5A15B0037751C /* SelfieWithMovieCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478928D5A15B0037751C /* SelfieWithMovieCellDelegate.swift */; };
 		EDA4478D28D5A7640037751C /* AppToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478C28D5A7640037751C /* AppToolbar.swift */; };
 		EDA4478F28D5A7740037751C /* AppToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478E28D5A7740037751C /* AppToolbarDelegate.swift */; };
+		EDB8780228D8AA720016B96B /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780028D8AA720016B96B /* MovieDetailsViewController.swift */; };
+		EDB8780328D8AA720016B96B /* MovieDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDB8780128D8AA720016B96B /* MovieDetailsViewController.xib */; };
+		EDB8780528D8AA7A0016B96B /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780428D8AA7A0016B96B /* MovieDetailsViewModel.swift */; };
+		EDB8780728D8AABB0016B96B /* MovieDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780628D8AABB0016B96B /* MovieDetailsCoordinator.swift */; };
 		EDC502CA28D376D30047C7C3 /* GenreHorizontalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502C828D376D30047C7C3 /* GenreHorizontalListCell.swift */; };
 		EDC502D028D377CC0047C7C3 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502CF28D377CC0047C7C3 /* GenreCell.swift */; };
 		EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */; };
@@ -165,6 +169,10 @@
 		EDA4478928D5A15B0037751C /* SelfieWithMovieCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieWithMovieCellDelegate.swift; sourceTree = "<group>"; };
 		EDA4478C28D5A7640037751C /* AppToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToolbar.swift; sourceTree = "<group>"; };
 		EDA4478E28D5A7740037751C /* AppToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToolbarDelegate.swift; sourceTree = "<group>"; };
+		EDB8780028D8AA720016B96B /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
+		EDB8780128D8AA720016B96B /* MovieDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailsViewController.xib; sourceTree = "<group>"; };
+		EDB8780428D8AA7A0016B96B /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
+		EDB8780628D8AABB0016B96B /* MovieDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsCoordinator.swift; sourceTree = "<group>"; };
 		EDC502C828D376D30047C7C3 /* GenreHorizontalListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreHorizontalListCell.swift; sourceTree = "<group>"; };
 		EDC502CF28D377CC0047C7C3 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -404,6 +412,16 @@
 			path = AppToolbar;
 			sourceTree = "<group>";
 		};
+		EDB877FF28D8AA600016B96B /* MovieDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDB8780028D8AA720016B96B /* MovieDetailsViewController.swift */,
+				EDB8780128D8AA720016B96B /* MovieDetailsViewController.xib */,
+				EDB8780428D8AA7A0016B96B /* MovieDetailsViewModel.swift */,
+			);
+			path = MovieDetailsViewController;
+			sourceTree = "<group>";
+		};
 		EDC502CE28D377B00047C7C3 /* GenreCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,6 +546,7 @@
 		EDC6DB2528CF6C1900164EBD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EDB877FF28D8AA600016B96B /* MovieDetailsViewController */,
 				EDE69B3F28D6292D002726B0 /* SearchViewController */,
 				EDC6DB4328CF98E500164EBD /* MovieViewController */,
 				EDE69B7A28D731FB002726B0 /* TVShowViewController */,
@@ -563,6 +582,7 @@
 				EDC6DB4128CF961700164EBD /* MovieCoordinator.swift */,
 				EDE69B6928D71464002726B0 /* SearchCoordinator.swift */,
 				EDE69B8128D732A1002726B0 /* TVShowCoordinator.swift */,
+				EDB8780628D8AABB0016B96B /* MovieDetailsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -972,6 +992,7 @@
 				EDC6DB3728CF759400164EBD /* SplashViewController.xib in Resources */,
 				EDE69B4328D62943002726B0 /* SearchViewController.xib in Resources */,
 				EDE69B7E28D73214002726B0 /* TVShowViewController.xib in Resources */,
+				EDB8780328D8AA720016B96B /* MovieDetailsViewController.xib in Resources */,
 				ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */,
 				EDE69B8928D73B97002726B0 /* AiringTodayCell.xib in Resources */,
 			);
@@ -1034,6 +1055,7 @@
 				EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */,
 				EDE69B6628D6C48F002726B0 /* SearchNetworking.swift in Sources */,
 				EDE69B5828D6BE1A002726B0 /* PersonHorizontalCell.swift in Sources */,
+				EDB8780228D8AA720016B96B /* MovieDetailsViewController.swift in Sources */,
 				EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */,
 				EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */,
 				EDE69B6428D6C3A7002726B0 /* SearchApi.swift in Sources */,
@@ -1067,6 +1089,7 @@
 				EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */,
 				EDA4475D28D422320037751C /* MovieHorizontalListCellDelegate.swift in Sources */,
 				EDE69B7D28D73214002726B0 /* TVShowViewController.swift in Sources */,
+				EDB8780728D8AABB0016B96B /* MovieDetailsCoordinator.swift in Sources */,
 				EDA4478128D591410037751C /* SectionHeaderView.swift in Sources */,
 				EDE69B9128D76E7A002726B0 /* TVShowResponse.swift in Sources */,
 				EDC6DB3E28CF8F3400164EBD /* HomeViewModel.swift in Sources */,
@@ -1125,6 +1148,7 @@
 				EDE69B7428D7303D002726B0 /* Animation+Fade.swift in Sources */,
 				EDA4478828D59F0B0037751C /* SelfieWithMovieCell.swift in Sources */,
 				EDE69B7928D730F3002726B0 /* CGAffineTransform+Ext.swift in Sources */,
+				EDB8780528D8AA7A0016B96B /* MovieDetailsViewModel.swift in Sources */,
 				EDA4476928D4288D0037751C /* ImageConfigurable.swift in Sources */,
 				EDE69B5A28D6C051002726B0 /* PersonResponse.swift in Sources */,
 				EDFAD38728D2453900ED3BCD /* MovieDTO.swift in Sources */,

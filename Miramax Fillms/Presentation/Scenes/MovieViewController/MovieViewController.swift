@@ -25,6 +25,7 @@ class MovieViewController: BaseViewController<MovieViewModel> {
     
     private let retryGenreViewTriggerS = PublishRelay<Void>()
     private let retryUpComingViewTriggerS = PublishRelay<Void>()
+    private let movieSelectTriggerS = PublishRelay<Movie>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +61,8 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         let input = MovieViewModel.Input(
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             retryGenreTrigger: retryGenreViewTriggerS.asDriverOnErrorJustComplete(),
-            retryUpComingTrigger: retryUpComingViewTriggerS.asDriverOnErrorJustComplete()
+            retryUpComingTrigger: retryUpComingViewTriggerS.asDriverOnErrorJustComplete(),
+            movieSelectTrigger: movieSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -185,7 +187,9 @@ extension MovieViewController: MovieHorizontalListCellDelegate {
     }
     
     func movieHorizontalList(onItemTapped item: PresenterModelType) {
-        
+        if let movie = item as? Movie {
+            movieSelectTriggerS.accept(movie)
+        }
     }
     
     func movieHorizontalListSeeMoreButtonTapped() {
