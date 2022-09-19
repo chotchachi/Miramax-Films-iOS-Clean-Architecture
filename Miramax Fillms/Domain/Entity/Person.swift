@@ -7,20 +7,10 @@
 
 import Foundation
 
-struct Person {
+struct Person: Equatable {
     let id: Int
     let name: String
     let profilePath: String?
-    let popularity: Double
-}
-
-extension Person: Equatable {
-    static func == (lhs: Person, rhs: Person) -> Bool {
-        return lhs.id == rhs.id
-        && lhs.name == rhs.name
-        && lhs.profilePath == rhs.profilePath
-        && lhs.popularity == rhs.popularity
-    }
 }
 
 extension Person: ImageConfigurable {

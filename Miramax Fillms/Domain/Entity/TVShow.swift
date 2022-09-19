@@ -7,33 +7,15 @@
 
 import Foundation
 
-struct TVShow {
+struct TVShow: Equatable {
     let id: Int
     let name: String
-    let originalName: String
-    let originalLanguage: String
     let backdropPath: String?
     let posterPath: String?
     let genreIDS: [Int]
     let overview: String
-    let popularity: Double
     let voteAverage: Double
     let voteCount: Int
-}
-
-extension TVShow: Equatable {
-    static func == (lhs: TVShow, rhs: TVShow) -> Bool {
-        return lhs.id == rhs.id
-        && lhs.name == rhs.name
-        && lhs.originalName == rhs.originalName
-        && lhs.originalLanguage == rhs.originalLanguage
-        && lhs.backdropPath == rhs.backdropPath
-        && lhs.genreIDS == rhs.genreIDS
-        && lhs.overview == rhs.overview
-        && lhs.popularity == rhs.popularity
-        && lhs.voteAverage == rhs.voteAverage
-        && lhs.voteCount == rhs.voteCount
-    }
 }
 
 extension TVShow: ImageConfigurable {

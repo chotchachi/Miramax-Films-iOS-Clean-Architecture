@@ -11,7 +11,6 @@ struct PersonDTO: Mappable {
     var id: Int!
     var name: String!
     var profilePath: String?
-    var popularity: Double!
     
     init?(map: Map) {
         
@@ -21,7 +20,6 @@ struct PersonDTO: Mappable {
         id <- map["id"]
         name <- map["name"]
         profilePath <- map["profile_path"]
-        popularity <- map["popularity"]
     }
 }
 
@@ -30,8 +28,7 @@ extension PersonDTO: DomainConvertibleType {
         return Person(
             id: id,
             name: name,
-            profilePath: profilePath,
-            popularity: popularity
+            profilePath: profilePath
         )
     }
 }
