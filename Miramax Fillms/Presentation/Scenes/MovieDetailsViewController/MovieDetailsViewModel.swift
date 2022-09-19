@@ -17,19 +17,25 @@ class MovieDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     struct Output {
-        
+        let movieDetail: Driver<MovieDetail>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
     private let router: UnownedRouter<MovieDetailRoute>
+    private let movie: Movie
 
     init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<MovieDetailRoute>, movie: Movie) {
         self.repositoryProvider = repositoryProvider
         self.router = router
+        self.movie = movie
         super.init()
     }
     
     func transform(input: Input) -> Output {
+        
+        let viewTriggerO = trigger
+            .take(1)
+        
         input.popViewTrigger
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -37,6 +43,17 @@ class MovieDetailsViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output()
+        let movieDetailD = viewTriggerO
+            .flatMapLatest {
+                return self.repositoryProvider
+                    .movieRepository()
+                    .getMovieDetail(movieId: self.movie.id)
+                    .trackError(self.error)
+                    .trackActivity(self.loading)
+                    .asDriverOnErrorJustComplete()
+            }
+            .asDriverOnErrorJustComplete()
+        
+        return Output(movieDetail: movieDetailD)
     }
 }

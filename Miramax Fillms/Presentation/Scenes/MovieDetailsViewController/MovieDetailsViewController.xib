@@ -12,6 +12,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsViewController" customModule="Miramax_Fillms" customModuleProvider="target">
             <connections>
                 <outlet property="appToolbar" destination="twN-0J-lwG" id="PRk-5G-clh"/>
+                <outlet property="ivPoster" destination="lyU-Xt-BQn" id="2HV-Y7-Jpe"/>
+                <outlet property="lblDuration" destination="bnm-Bp-KOg" id="Zz9-Q7-NOu"/>
+                <outlet property="lblRating" destination="lXV-oj-5Ra" id="AGJ-bw-mSc"/>
+                <outlet property="lblReleaseDate" destination="l6n-2U-6Ot" id="dXn-wp-Bwc"/>
+                <outlet property="lblTitle" destination="bvD-2o-7gq" id="Uu4-oL-fL7"/>
+                <outlet property="loadingIndicator" destination="i16-rv-Xon" id="cs2-uk-PxB"/>
+                <outlet property="scrollView" destination="KFI-Sc-xE0" id="71N-PP-8PH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -212,6 +219,18 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lyU-Xt-BQn">
                                                     <rect key="frame" x="0.0" y="0.0" width="214.66666666666666" height="322.66666666666669"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_play_circle" translatesAutoresizingMaskIntoConstraints="NO" id="SVi-XA-An3">
+                                                    <rect key="frame" x="77.333333333333329" y="131.33333333333334" width="59.999999999999986" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="NCc-Sr-Uif"/>
+                                                        <constraint firstAttribute="width" constant="60" id="cRm-Sp-4kZ"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" name="ColorSecondary"/>
@@ -220,8 +239,27 @@
                                                 <constraint firstItem="lyU-Xt-BQn" firstAttribute="top" secondItem="tSg-2m-hLy" secondAttribute="top" id="MNQ-2e-Yox"/>
                                                 <constraint firstItem="lyU-Xt-BQn" firstAttribute="leading" secondItem="tSg-2m-hLy" secondAttribute="leading" id="Yeo-cy-MzK"/>
                                                 <constraint firstAttribute="trailing" secondItem="lyU-Xt-BQn" secondAttribute="trailing" id="bD9-Gx-dVw"/>
+                                                <constraint firstItem="SVi-XA-An3" firstAttribute="centerY" secondItem="tSg-2m-hLy" secondAttribute="centerY" id="bF3-cx-fAo"/>
+                                                <constraint firstItem="SVi-XA-An3" firstAttribute="centerX" secondItem="tSg-2m-hLy" secondAttribute="centerX" id="trm-xO-Uug"/>
                                                 <constraint firstAttribute="bottom" secondItem="lyU-Xt-BQn" secondAttribute="bottom" id="xeW-1b-pyd"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="16"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                    <size key="value" width="0.0" height="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -257,14 +295,20 @@
                         <constraint firstItem="FLu-ix-PIr" firstAttribute="centerX" secondItem="KFI-Sc-xE0" secondAttribute="centerX" id="r3L-Uv-umM"/>
                     </constraints>
                 </scrollView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="i16-rv-Xon">
+                    <rect key="frame" x="185" y="445.66666666666669" width="20" height="20"/>
+                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="ColorPrimary"/>
             <constraints>
                 <constraint firstItem="KFI-Sc-xE0" firstAttribute="top" secondItem="twN-0J-lwG" secondAttribute="bottom" id="CJm-vr-p74"/>
                 <constraint firstItem="twN-0J-lwG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Lo7-yK-dHE"/>
+                <constraint firstItem="i16-rv-Xon" firstAttribute="centerY" secondItem="KFI-Sc-xE0" secondAttribute="centerY" id="XDg-H7-jL7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KFI-Sc-xE0" secondAttribute="trailing" id="eKf-AO-9pX"/>
                 <constraint firstItem="twN-0J-lwG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eji-zj-2Nx"/>
+                <constraint firstItem="i16-rv-Xon" firstAttribute="centerX" secondItem="KFI-Sc-xE0" secondAttribute="centerX" id="gPt-aD-86q"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="twN-0J-lwG" secondAttribute="trailing" id="iIP-ho-ul3"/>
                 <constraint firstItem="KFI-Sc-xE0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mSn-2Q-Qzp"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="KFI-Sc-xE0" secondAttribute="bottom" id="p1R-oR-vvm"/>
@@ -274,6 +318,7 @@
     </objects>
     <resources>
         <image name="ic_calendar_fill" width="24" height="24"/>
+        <image name="ic_play_circle" width="60" height="60"/>
         <image name="ic_start_fill" width="24" height="24"/>
         <image name="ic_time_fill" width="24" height="24"/>
         <namedColor name="ColorPrimary">

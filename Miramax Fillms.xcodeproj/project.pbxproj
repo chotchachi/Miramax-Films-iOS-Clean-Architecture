@@ -40,6 +40,7 @@
 		EDB8781328D8C2C80016B96B /* CreditDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8781228D8C2C80016B96B /* CreditDTO.swift */; };
 		EDB8781528D8C4760016B96B /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8781428D8C4760016B96B /* MovieDetail.swift */; };
 		EDB8781728D8C7060016B96B /* MovieDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8781628D8C7060016B96B /* MovieDetailDTO.swift */; };
+		EDB8781928D8D37C0016B96B /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8781828D8D37C0016B96B /* DataUtils.swift */; };
 		EDC502CA28D376D30047C7C3 /* GenreHorizontalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502C828D376D30047C7C3 /* GenreHorizontalListCell.swift */; };
 		EDC502D028D377CC0047C7C3 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502CF28D377CC0047C7C3 /* GenreCell.swift */; };
 		EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */; };
@@ -189,6 +190,7 @@
 		EDB8781228D8C2C80016B96B /* CreditDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditDTO.swift; sourceTree = "<group>"; };
 		EDB8781428D8C4760016B96B /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		EDB8781628D8C7060016B96B /* MovieDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailDTO.swift; sourceTree = "<group>"; };
+		EDB8781828D8D37C0016B96B /* DataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
 		EDC502C828D376D30047C7C3 /* GenreHorizontalListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreHorizontalListCell.swift; sourceTree = "<group>"; };
 		EDC502CF28D377CC0047C7C3 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				EDE69B6B28D7303D002726B0 /* XCoordinator+Animations */,
 				EDA4476B28D431DC0037751C /* AppFonts.swift */,
 				EDA4476D28D432350037751C /* AppColors.swift */,
+				EDB8781828D8D37C0016B96B /* DataUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1078,6 +1081,7 @@
 				EDB8780928D8BE900016B96B /* Crew.swift in Sources */,
 				EDE69B4728D6312F002726B0 /* SearchViewData.swift in Sources */,
 				EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */,
+				EDB8781928D8D37C0016B96B /* DataUtils.swift in Sources */,
 				EDB8781728D8C7060016B96B /* MovieDetailDTO.swift in Sources */,
 				EDE69B6628D6C48F002726B0 /* SearchNetworking.swift in Sources */,
 				EDE69B5828D6BE1A002726B0 /* PersonHorizontalCell.swift in Sources */,
