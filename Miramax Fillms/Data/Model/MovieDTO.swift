@@ -16,7 +16,6 @@ struct MovieDTO : Mappable {
     var overview: String!
     var releaseDate: String!
     var voteAverage: Double!
-    var voteCount: Int!
     
     init?(map: Map) {
         
@@ -31,13 +30,12 @@ struct MovieDTO : Mappable {
         overview <- map["overview"]
         releaseDate <- map["release_date"]
         voteAverage <- map["vote_average"]
-        voteCount <- map["vote_count"]
     }
 }
 
 extension MovieDTO: DomainConvertibleType {
     func asDomain() -> Movie {
-        return Movie(id: id, title: title, backdropPath: backdropPath, posterPath: posterPath, genreIDS: genreIDS, overview: overview, releaseDate: releaseDate, voteAverage: voteAverage, voteCount: voteCount)
+        return Movie(id: id, title: title, backdropPath: backdropPath, posterPath: posterPath, genreIDS: genreIDS, overview: overview, releaseDate: releaseDate, voteAverage: voteAverage)
     }
 }
 

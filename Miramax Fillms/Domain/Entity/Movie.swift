@@ -16,7 +16,6 @@ struct Movie: Equatable {
     let overview: String
     let releaseDate: String
     let voteAverage: Double
-    let voteCount: Int
 }
 
 extension Movie: ImageConfigurable {
