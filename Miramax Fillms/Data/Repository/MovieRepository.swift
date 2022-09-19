@@ -60,4 +60,10 @@ final class MovieRepository: MovieRepositoryProtocol {
             .searchMovie(query: query, page: page)
             .map { $0.asDomain() }
     }
+    
+    func getMovieDetail(movieId: Int) -> Single<MovieDetail> {
+        return remoteDataSource
+            .getMovieDetail(movieId: movieId)
+            .map { $0.asDomain() }
+    }
 }

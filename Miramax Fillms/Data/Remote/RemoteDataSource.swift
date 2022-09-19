@@ -50,6 +50,10 @@ final class RemoteDataSource: RemoteDataSourceProtocol {
         return apiClient.searchMovie(query: query, page: page)
     }
     
+    func getMovieDetail(movieId: Int) -> Single<MovieDetailDTO> {
+        return apiClient.getMovieDetail(movieId: movieId)
+    }
+    
     func getTVShowAiringToday(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
         return apiClient.getTVShowAiringToday(genreId: genreId, page: page)
     }

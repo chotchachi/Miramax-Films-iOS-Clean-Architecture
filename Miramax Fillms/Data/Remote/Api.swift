@@ -23,6 +23,7 @@ protocol Api {
     func getMovieLatest(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
     func getMovieByGenre(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
     func searchMovie(query: String, page: Int?) -> Single<MovieResponseDTO>
+    func getMovieDetail(movieId: Int) -> Single<MovieDetailDTO>
 
     // MARK: - Show
     

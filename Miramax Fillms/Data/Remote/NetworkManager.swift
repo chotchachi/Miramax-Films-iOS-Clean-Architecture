@@ -68,6 +68,10 @@ final class NetworkManager: Api {
         return searchNetworking.provider.requestObject(.searchMovie(query: query, page: page), type: MovieResponseDTO.self)
     }
     
+    func getMovieDetail(movieId: Int) -> Single<MovieDetailDTO> {
+        return movieNetworking.provider.requestObject(.detail(movieId: movieId), type: MovieDetailDTO.self)
+    }
+    
     // MARK: - Show
 
     func getTVShowAiringToday(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
