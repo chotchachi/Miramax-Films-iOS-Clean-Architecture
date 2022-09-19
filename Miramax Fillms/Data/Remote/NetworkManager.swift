@@ -100,7 +100,11 @@ final class NetworkManager: Api {
     
     func searchTVShow(query: String, page: Int?) -> Single<TVShowResponseDTO> {
         return searchNetworking.provider.requestObject(.searchTVShow(query: query, page: page), type: TVShowResponseDTO.self)
-    }    
+    }
+    
+    func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetailDTO> {
+        return tvShowNetworking.provider.requestObject(.detail(tvShowId: tvShowId), type: TVShowDetailDTO.self)
+    }
     
     // MARK: - Person
     

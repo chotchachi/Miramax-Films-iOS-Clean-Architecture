@@ -60,4 +60,10 @@ final class TVShowRepository: TVShowRepositoryProtocol {
             .searchTVShow(query: query, page: page)
             .map { $0.asDomain() }
     }
+    
+    func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetail> {
+        return remoteDataSource
+            .getTVShowDetail(tvShowId: tvShowId)
+            .map { $0.asDomain() }
+    }
 }

@@ -34,7 +34,8 @@ protocol Api {
     func getTVShowLatest(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowByGenre(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
     func searchTVShow(query: String, page: Int?) -> Single<TVShowResponseDTO>
-    
+    func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetailDTO>
+
     // MARK: - Person
     
     func searchPerson(query: String, page: Int?) -> Single<PersonResponseDTO>
