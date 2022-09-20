@@ -81,6 +81,9 @@
 		EDC6DB7128D0835500164EBD /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7028D0835500164EBD /* NetworkProvider.swift */; };
 		EDC6DB7428D0841300164EBD /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7328D0841300164EBD /* ReachabilityManager.swift */; };
 		EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */; };
+		EDD52F5128DA06A60078C6C5 /* PersonModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5028DA06A60078C6C5 /* PersonModelType.swift */; };
+		EDD52F5328DA07F30078C6C5 /* Person+PersonModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5228DA07F30078C6C5 /* Person+PersonModelType.swift */; };
+		EDD52F5528DA085A0078C6C5 /* Cast+PersonModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5428DA085A0078C6C5 /* Cast+PersonModelType.swift */; };
 		EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */; };
 		EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */; };
 		EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3828D60DBA002726B0 /* TabLayout.swift */; };
@@ -235,6 +238,9 @@
 		EDC6DB7028D0835500164EBD /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		EDC6DB7328D0841300164EBD /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		EDC6DB7728D084AD00164EBD /* DefaultAlamofireSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAlamofireSession.swift; sourceTree = "<group>"; };
+		EDD52F5028DA06A60078C6C5 /* PersonModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModelType.swift; sourceTree = "<group>"; };
+		EDD52F5228DA07F30078C6C5 /* Person+PersonModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+PersonModelType.swift"; sourceTree = "<group>"; };
+		EDD52F5428DA085A0078C6C5 /* Cast+PersonModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cast+PersonModelType.swift"; sourceTree = "<group>"; };
 		EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCell.swift; sourceTree = "<group>"; };
 		EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCellDelegate.swift; sourceTree = "<group>"; };
 		EDE69B3828D60DBA002726B0 /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
@@ -566,6 +572,7 @@
 				EDE69B9A28D77A0B002726B0 /* PresenterModelType.swift */,
 				EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */,
 				EDFAD38228D2387F00ED3BCD /* ViewState.swift */,
+				EDD52F5028DA06A60078C6C5 /* PersonModelType.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -859,6 +866,8 @@
 			children = (
 				EDE69B9E28D77A90002726B0 /* Movie+PresenterModelType.swift */,
 				EDE69BA028D77E09002726B0 /* TVShow+PresenterModelType.swift */,
+				EDD52F5228DA07F30078C6C5 /* Person+PersonModelType.swift */,
+				EDD52F5428DA085A0078C6C5 /* Cast+PersonModelType.swift */,
 			);
 			path = PresenterModel;
 			sourceTree = "<group>";
@@ -1167,6 +1176,7 @@
 				EDA4478328D59A090037751C /* Constants.swift in Sources */,
 				EDFAD3A728D3149500ED3BCD /* ProviderAssembly.swift in Sources */,
 				EDFAD38328D2387F00ED3BCD /* ViewState.swift in Sources */,
+				EDD52F5528DA085A0078C6C5 /* Cast+PersonModelType.swift in Sources */,
 				EDE69B7328D7303D002726B0 /* Animation+Modal.swift in Sources */,
 				EDA4477028D438430037751C /* ConfigurationAssembly.swift in Sources */,
 				EDE69B5C28D6C0B0002726B0 /* PersonRepositoryProtocol.swift in Sources */,
@@ -1184,11 +1194,13 @@
 				EDE69B4228D62943002726B0 /* SearchViewController.swift in Sources */,
 				EDFAD37F28D2309C00ED3BCD /* NSObject+Rx.swift in Sources */,
 				EDFAD38128D230C200ED3BCD /* HasDisposeBag.swift in Sources */,
+				EDD52F5128DA06A60078C6C5 /* PersonModelType.swift in Sources */,
 				EDC6DB4028CF92DE00164EBD /* HomeCoordinator.swift in Sources */,
 				EDFAD3AA28D3152800ED3BCD /* LocalDataSource.swift in Sources */,
 				EDFAD3A128D3104200ED3BCD /* LocalDataSourceProtocol.swift in Sources */,
 				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
 				EDB8782128D8D8CB0016B96B /* TVShowDetailDTO.swift in Sources */,
+				EDD52F5328DA07F30078C6C5 /* Person+PersonModelType.swift in Sources */,
 				EDE69B5E28D6C0E2002726B0 /* PersonRepository.swift in Sources */,
 				EDC6DB4928CF990900164EBD /* MovieViewModel.swift in Sources */,
 				EDE69B9928D7733B002726B0 /* TVShowNetworking.swift in Sources */,
