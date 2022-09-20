@@ -92,7 +92,7 @@ class MovieHorizontalListCell: UICollectionViewCell {
     }
     
     func bind(_ viewState: ViewState<Movie>, headerTitle: String) {
-        sectionHeaderView.setHeaderTitle(headerTitle)
+        sectionHeaderView.title = headerTitle
         
         switch viewState {
         case .initial:
@@ -116,7 +116,7 @@ class MovieHorizontalListCell: UICollectionViewCell {
     }
     
     func bind(_ viewState: ViewState<TVShow>, headerTitle: String) {
-        sectionHeaderView.setHeaderTitle(headerTitle)
+        sectionHeaderView.title = headerTitle
         
         switch viewState {
         case .initial:
@@ -142,7 +142,7 @@ class MovieHorizontalListCell: UICollectionViewCell {
     private func setData(_ items: [PresenterModelType]) {
         modelItems = items
         collectionView.reloadData()
-        sectionHeaderView.setSeeMoreButtonHidden(items.count < Constants.defaultPageLimit)
+        sectionHeaderView.showSeeMoreButton = items.count >= Constants.defaultPageLimit
     }
     
     @objc private func btnRetryTapped() {

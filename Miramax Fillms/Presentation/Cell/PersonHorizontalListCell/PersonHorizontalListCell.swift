@@ -92,7 +92,7 @@ class PersonHorizontalListCell: UICollectionViewCell {
     }
     
     func bind(_ viewState: ViewState<Person>, headerTitle: String) {
-        sectionHeaderView.setHeaderTitle(headerTitle)
+        sectionHeaderView.title = headerTitle
         
         switch viewState {
         case .initial:
@@ -108,7 +108,7 @@ class PersonHorizontalListCell: UICollectionViewCell {
             // set data
             personItems = array
             personCollectionView.reloadData()
-            sectionHeaderView.setSeeMoreButtonHidden(array.count < Constants.defaultPageLimit)
+            sectionHeaderView.showSeeMoreButton = array.count >= Constants.defaultPageLimit
         case .empty:
             break
         case .error:

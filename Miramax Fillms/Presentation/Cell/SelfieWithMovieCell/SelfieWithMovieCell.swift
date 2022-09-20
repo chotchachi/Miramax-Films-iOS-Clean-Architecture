@@ -28,8 +28,8 @@ class SelfieWithMovieCell: UICollectionViewCell {
         
         sectionHeaderView = SectionHeaderView()
         sectionHeaderView.translatesAutoresizingMaskIntoConstraints = false
-        sectionHeaderView.setHeaderTitle("Selfie with movie")
-        sectionHeaderView.setSeeMoreButtonHidden(true)
+        sectionHeaderView.title = "Selfie with movie"
+        sectionHeaderView.showSeeMoreButton = false
         
         // main container
         

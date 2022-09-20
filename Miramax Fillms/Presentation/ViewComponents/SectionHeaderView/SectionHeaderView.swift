@@ -19,14 +19,28 @@ final class SectionHeaderView: UIView {
     
     weak var delegate: SectionHeaderViewDelegate?
     
+    @IBInspectable var title: String? {
+        didSet {
+            lblHeaderTitle.text = title
+        }
+    }
+    
+    @IBInspectable var showSeeMoreButton: Bool = true {
+        didSet {
+            btnSeeMore.isHidden = !showSeeMoreButton
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setup()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+        
+        setup()
     }
     
     private func setup() {
@@ -65,14 +79,6 @@ final class SectionHeaderView: UIView {
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().offset(-16.0)
         }
-    }
-    
-    public func setHeaderTitle(_ title: String) {
-        lblHeaderTitle.text = title
-    }
-    
-    public func setSeeMoreButtonHidden(_ hidden: Bool) {
-        btnSeeMore.isHidden = hidden
     }
     
     @objc private func seeMoreButtonTapped(_ sender: UIButton) {
