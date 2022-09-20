@@ -184,7 +184,7 @@ extension MovieHorizontalListCell: UICollectionViewDelegate {
 extension MovieHorizontalListCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemHeight = collectionView.frame.height
-        let itemWidth = itemHeight * Constants.posterRatio
+        let itemWidth = itemHeight * DimensionConstants.entertainmentHorizontalCellRatio
         return .init(width: itemWidth, height: itemHeight)
     }
     
@@ -193,7 +193,7 @@ extension MovieHorizontalListCell: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 4.0
+        return DimensionConstants.entertainmentHorizontalCellSpacing
     }
 }
 

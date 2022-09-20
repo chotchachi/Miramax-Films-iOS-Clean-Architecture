@@ -68,11 +68,11 @@ class PersonHorizontalCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(_ person: Person) {
-        if let profileURL = person.profileURL {
+    func bind(_ item: PersonModelType) {
+        if let profileURL = item.personModelProfileURL {
             ivPersonProfile.kf.setImage(with: profileURL)
         }
-        lblPersonName.text = person.name
+        lblPersonName.text = item.personModelName
         
         layoutIfNeeded()
     }

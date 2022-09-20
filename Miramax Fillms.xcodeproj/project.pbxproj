@@ -84,6 +84,8 @@
 		EDD52F5128DA06A60078C6C5 /* PersonModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5028DA06A60078C6C5 /* PersonModelType.swift */; };
 		EDD52F5328DA07F30078C6C5 /* Person+PersonModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5228DA07F30078C6C5 /* Person+PersonModelType.swift */; };
 		EDD52F5528DA085A0078C6C5 /* Cast+PersonModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5428DA085A0078C6C5 /* Cast+PersonModelType.swift */; };
+		EDD52F5728DA14930078C6C5 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5628DA14930078C6C5 /* UILabel+Ext.swift */; };
+		EDD52F5928DA1B2A0078C6C5 /* DimensionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5828DA1B2A0078C6C5 /* DimensionConstants.swift */; };
 		EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */; };
 		EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */; };
 		EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3828D60DBA002726B0 /* TabLayout.swift */; };
@@ -241,6 +243,8 @@
 		EDD52F5028DA06A60078C6C5 /* PersonModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModelType.swift; sourceTree = "<group>"; };
 		EDD52F5228DA07F30078C6C5 /* Person+PersonModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+PersonModelType.swift"; sourceTree = "<group>"; };
 		EDD52F5428DA085A0078C6C5 /* Cast+PersonModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cast+PersonModelType.swift"; sourceTree = "<group>"; };
+		EDD52F5628DA14930078C6C5 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
+		EDD52F5828DA1B2A0078C6C5 /* DimensionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionConstants.swift; sourceTree = "<group>"; };
 		EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCell.swift; sourceTree = "<group>"; };
 		EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCellDelegate.swift; sourceTree = "<group>"; };
 		EDE69B3828D60DBA002726B0 /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
@@ -485,6 +489,7 @@
 			children = (
 				ED86E62F28C6369B00D60351 /* Info.plist */,
 				EDA4478228D59A090037751C /* Constants.swift */,
+				EDD52F5828DA1B2A0078C6C5 /* DimensionConstants.swift */,
 			);
 			path = GlobalDefine;
 			sourceTree = "<group>";
@@ -506,6 +511,7 @@
 				EDE69B4D28D63EBB002726B0 /* UIViewController+Ext.swift */,
 				EDE69B4F28D643A6002726B0 /* String+Ext.swift */,
 				EDE69B7828D730F3002726B0 /* CGAffineTransform+Ext.swift */,
+				EDD52F5628DA14930078C6C5 /* UILabel+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1129,6 +1135,7 @@
 				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
 				EDE69B4528D6294D002726B0 /* SearchViewModel.swift in Sources */,
 				EDA4478F28D5A7740037751C /* AppToolbarDelegate.swift in Sources */,
+				EDD52F5728DA14930078C6C5 /* UILabel+Ext.swift in Sources */,
 				EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */,
 				EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */,
 				EDE69B9728D7730B002726B0 /* TVShowApi.swift in Sources */,
@@ -1212,6 +1219,7 @@
 				EDB8780528D8AA7A0016B96B /* MovieDetailsViewModel.swift in Sources */,
 				EDA4476928D4288D0037751C /* ImageConfigurable.swift in Sources */,
 				EDE69B5A28D6C051002726B0 /* PersonResponse.swift in Sources */,
+				EDD52F5928DA1B2A0078C6C5 /* DimensionConstants.swift in Sources */,
 				EDFAD38728D2453900ED3BCD /* MovieDTO.swift in Sources */,
 				EDB8781328D8C2C80016B96B /* CreditDTO.swift in Sources */,
 				EDA4476E28D432350037751C /* AppColors.swift in Sources */,

@@ -34,3 +34,15 @@ extension MovieDetail: ImageConfigurable {
         return URL(string: urlString)
     }
 }
+
+extension MovieDetail {
+    var directors: [Crew] {
+        guard let credits = credits else { return [] }
+        return credits.crew.filter { $0.job == "Director" }
+    }
+    
+    var writers: [Crew] {
+        guard let credits = credits else { return [] }
+        return credits.crew.filter { $0.job == "Screenplay" || $0.job == "Writer" }
+    }
+}

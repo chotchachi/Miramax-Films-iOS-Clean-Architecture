@@ -157,7 +157,7 @@ extension PersonHorizontalListCell: UICollectionViewDelegate {
 extension PersonHorizontalListCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemHeight = collectionView.frame.height
-        let itemWidth = itemHeight * Constants.actorCellRatio
+        let itemWidth = itemHeight * DimensionConstants.personHorizontalCellRatio
         return .init(width: itemWidth, height: itemHeight)
     }
     
@@ -166,7 +166,7 @@ extension PersonHorizontalListCell: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 16.0
+        return DimensionConstants.personHorizontalCellSpacing
     }
 }
 

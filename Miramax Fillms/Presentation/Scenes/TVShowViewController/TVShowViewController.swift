@@ -144,7 +144,7 @@ extension TVShowViewController: GridCollectionViewLayoutDelegate {
         case .genreViewState:
             return 50.0
         case .airingTodayViewState:
-            return collectionView.frame.width * Constants.airingTodayCellRatio
+            return collectionView.frame.width * DimensionConstants.airingTodayCellRatio
         case .onTheAirViewState:
             return 200.0
         case .tabSelection:
