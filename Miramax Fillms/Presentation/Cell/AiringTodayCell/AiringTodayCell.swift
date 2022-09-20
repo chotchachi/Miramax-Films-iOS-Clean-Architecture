@@ -103,7 +103,7 @@ class AiringTodayCell: UICollectionViewCell {
         }
     }
     
-    private func bind(_ item: PresenterModelType) {
+    private func bind(_ item: EntertainmentModelType) {
         if let thumbURL = item.thumbImageURL {
             ivPoster.kf.setImage(with: thumbURL)
         }

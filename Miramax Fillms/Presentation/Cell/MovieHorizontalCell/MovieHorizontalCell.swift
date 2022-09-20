@@ -43,7 +43,7 @@ class MovieHorizontalCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(_ item: PresenterModelType) {
+    func bind(_ item: EntertainmentModelType) {
         if let thumbImageURL = item.thumbImageURL {
             ivPoster.kf.setImage(with: thumbImageURL)
         }

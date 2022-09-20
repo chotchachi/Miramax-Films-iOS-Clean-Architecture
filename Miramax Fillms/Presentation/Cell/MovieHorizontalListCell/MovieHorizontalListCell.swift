@@ -21,7 +21,7 @@ class MovieHorizontalListCell: UICollectionViewCell {
     // MARK: - Properties
     
     public weak var delegate: MovieHorizontalListCellDelegate?
-    private var modelItems: [PresenterModelType] = []
+    private var modelItems: [EntertainmentModelType] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -139,7 +139,7 @@ class MovieHorizontalListCell: UICollectionViewCell {
         }
     }
     
-    private func setData(_ items: [PresenterModelType]) {
+    private func setData(_ items: [EntertainmentModelType]) {
         modelItems = items
         collectionView.reloadData()
         sectionHeaderView.showSeeMoreButton = items.count >= Constants.defaultPageLimit

@@ -1,5 +1,5 @@
 //
-//  TVShow+PresenterModelType.swift
+//  Movie+EntertainmentModelType.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 18/09/2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension TVShow: PresenterModelType {
+extension Movie: EntertainmentModelType {
     var thumbImageURL: URL? {
         return posterURL
     }
@@ -17,7 +17,7 @@ extension TVShow: PresenterModelType {
     }
     
     var textName: String {
-        return name
+        return title
     }
     
     var textDescription: String {

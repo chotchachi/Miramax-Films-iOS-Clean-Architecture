@@ -209,7 +209,7 @@ extension SearchViewController: MovieHorizontalListCellDelegate {
         
     }
     
-    func movieHorizontalList(onItemTapped item: PresenterModelType) {
+    func movieHorizontalList(onItemTapped item: EntertainmentModelType) {
         
     }
     

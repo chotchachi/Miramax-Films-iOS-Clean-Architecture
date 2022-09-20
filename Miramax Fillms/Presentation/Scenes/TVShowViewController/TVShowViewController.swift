@@ -186,7 +186,7 @@ extension TVShowViewController: MovieHorizontalListCellDelegate {
         retryUpComingViewTriggerS.accept(())
     }
     
-    func movieHorizontalList(onItemTapped item: PresenterModelType) {
+    func movieHorizontalList(onItemTapped item: EntertainmentModelType) {
         
     }
     
