@@ -86,6 +86,9 @@
 		EDD52F5528DA085A0078C6C5 /* Cast+PersonModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5428DA085A0078C6C5 /* Cast+PersonModelType.swift */; };
 		EDD52F5728DA14930078C6C5 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5628DA14930078C6C5 /* UILabel+Ext.swift */; };
 		EDD52F5928DA1B2A0078C6C5 /* DimensionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5828DA1B2A0078C6C5 /* DimensionConstants.swift */; };
+		EDD52F5B28DA22250078C6C5 /* EntertainmentDetailModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5A28DA22250078C6C5 /* EntertainmentDetailModelType.swift */; };
+		EDD52F5D28DA25040078C6C5 /* MovieDetail+EntertainmentDetailModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5C28DA25040078C6C5 /* MovieDetail+EntertainmentDetailModelType.swift */; };
+		EDD52F5F28DA26730078C6C5 /* TVShowDetail+EntertainmentDetailModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5E28DA26730078C6C5 /* TVShowDetail+EntertainmentDetailModelType.swift */; };
 		EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */; };
 		EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */; };
 		EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3828D60DBA002726B0 /* TabLayout.swift */; };
@@ -245,6 +248,9 @@
 		EDD52F5428DA085A0078C6C5 /* Cast+PersonModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cast+PersonModelType.swift"; sourceTree = "<group>"; };
 		EDD52F5628DA14930078C6C5 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		EDD52F5828DA1B2A0078C6C5 /* DimensionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionConstants.swift; sourceTree = "<group>"; };
+		EDD52F5A28DA22250078C6C5 /* EntertainmentDetailModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailModelType.swift; sourceTree = "<group>"; };
+		EDD52F5C28DA25040078C6C5 /* MovieDetail+EntertainmentDetailModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDetail+EntertainmentDetailModelType.swift"; sourceTree = "<group>"; };
+		EDD52F5E28DA26730078C6C5 /* TVShowDetail+EntertainmentDetailModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVShowDetail+EntertainmentDetailModelType.swift"; sourceTree = "<group>"; };
 		EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCell.swift; sourceTree = "<group>"; };
 		EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCellDelegate.swift; sourceTree = "<group>"; };
 		EDE69B3828D60DBA002726B0 /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
@@ -576,6 +582,7 @@
 			isa = PBXGroup;
 			children = (
 				EDE69B9A28D77A0B002726B0 /* EntertainmentModelType.swift */,
+				EDD52F5A28DA22250078C6C5 /* EntertainmentDetailModelType.swift */,
 				EDD52F5028DA06A60078C6C5 /* PersonModelType.swift */,
 				EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */,
 				EDFAD38228D2387F00ED3BCD /* ViewState.swift */,
@@ -874,6 +881,8 @@
 				EDE69BA028D77E09002726B0 /* TVShow+EntertainmentModelType.swift */,
 				EDD52F5228DA07F30078C6C5 /* Person+PersonModelType.swift */,
 				EDD52F5428DA085A0078C6C5 /* Cast+PersonModelType.swift */,
+				EDD52F5C28DA25040078C6C5 /* MovieDetail+EntertainmentDetailModelType.swift */,
+				EDD52F5E28DA26730078C6C5 /* TVShowDetail+EntertainmentDetailModelType.swift */,
 			);
 			path = PresenterModel;
 			sourceTree = "<group>";
@@ -1138,6 +1147,7 @@
 				EDD52F5728DA14930078C6C5 /* UILabel+Ext.swift in Sources */,
 				EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */,
 				EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */,
+				EDD52F5D28DA25040078C6C5 /* MovieDetail+EntertainmentDetailModelType.swift in Sources */,
 				EDE69B9728D7730B002726B0 /* TVShowApi.swift in Sources */,
 				EDFAD3B328D3745D00ED3BCD /* GridCollectionViewLayout.swift in Sources */,
 				EDA4478A28D5A15B0037751C /* SelfieWithMovieCellDelegate.swift in Sources */,
@@ -1163,6 +1173,8 @@
 				EDC6DB5F28D0713400164EBD /* GenreResponseDTO.swift in Sources */,
 				EDC6DB2C28CF70F500164EBD /* AppDIContainer.swift in Sources */,
 				EDE69B9F28D77A90002726B0 /* Movie+EntertainmentModelType.swift in Sources */,
+				EDD52F5F28DA26730078C6C5 /* TVShowDetail+EntertainmentDetailModelType.swift in Sources */,
+				EDD52F5B28DA22250078C6C5 /* EntertainmentDetailModelType.swift in Sources */,
 				EDFAD3A328D313EF00ED3BCD /* RepositoryProviderProtocol.swift in Sources */,
 				EDC6DB5A28D0649F00164EBD /* GenreResponse.swift in Sources */,
 				EDC6DB3628CF759400164EBD /* SplashViewController.swift in Sources */,
