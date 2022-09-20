@@ -8,6 +8,7 @@
 import Foundation
 
 protocol EntertainmentModelType {
+    var entertainmentModelId: Int { get }
     var thumbImageURL: URL? { get }
     var backdropImageURL: URL? { get }
     var textName: String { get }

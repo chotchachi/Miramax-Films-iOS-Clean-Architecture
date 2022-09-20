@@ -31,3 +31,25 @@ extension Movie: ImageConfigurable {
         return URL(string: urlString)
     }
 }
+
+extension Movie: EntertainmentModelType {
+    var entertainmentModelId: Int {
+        return id
+    }
+    
+    var thumbImageURL: URL? {
+        return posterURL
+    }
+    
+    var backdropImageURL: URL? {
+        return backdropURL
+    }
+    
+    var textName: String {
+        return title
+    }
+    
+    var textDescription: String {
+        return overview
+    }
+}

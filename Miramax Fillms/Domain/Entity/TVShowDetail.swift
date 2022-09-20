@@ -47,3 +47,45 @@ extension TVShowDetail {
         return credits.crew.filter { $0.job == "Screenplay" || $0.job == "Writer" }
     }
 }
+
+extension TVShowDetail: EntertainmentDetailModelType {
+    var entertainmentDetailTitle: String {
+        return name
+    }
+    
+    var entertainmentPosterURL: URL? {
+        return posterURL
+    }
+    
+    var entertainmentVoteAverage: Double {
+        return voteAverage
+    }
+    
+    var entertainmentRuntime: Int? {
+        return nil
+    }
+    
+    var entertainmentReleaseDate: String {
+        return firstAirDate
+    }
+    
+    var entertainmentOverview: String {
+        return overview
+    }
+    
+    var entertainmentDirectors: [Crew] {
+        return directors
+    }
+    
+    var entertainmentWriters: [Crew] {
+        return writers
+    }
+    
+    var entertainmentCasts: [Cast] {
+        return credits?.cast ?? []
+    }
+    
+    var entertainmentRecommends: [EntertainmentModelType] {
+        return recommendations?.results ?? []
+    }
+}

@@ -21,3 +21,13 @@ extension Cast: ImageConfigurable {
         return URL(string: urlString)
     }
 }
+
+extension Cast: PersonModelType {
+    var personModelProfileURL: URL? {
+        return profileURL
+    }
+    
+    var personModelName: String? {
+        return name
+    }
+}

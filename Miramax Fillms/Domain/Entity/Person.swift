@@ -20,3 +20,13 @@ extension Person: ImageConfigurable {
         return URL(string: urlString)
     }
 }
+
+extension Person: PersonModelType {
+    var personModelProfileURL: URL? {
+        return profileURL
+    }
+    
+    var personModelName: String? {
+        return name
+    }
+}

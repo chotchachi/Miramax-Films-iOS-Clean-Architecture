@@ -31,3 +31,25 @@ extension TVShow: ImageConfigurable {
         return URL(string: urlString)
     }
 }
+
+extension TVShow: EntertainmentModelType {
+    var entertainmentModelId: Int {
+        return id
+    }
+    
+    var thumbImageURL: URL? {
+        return posterURL
+    }
+    
+    var backdropImageURL: URL? {
+        return backdropURL
+    }
+    
+    var textName: String {
+        return name
+    }
+    
+    var textDescription: String {
+        return overview
+    }
+}
