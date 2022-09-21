@@ -12,7 +12,7 @@ struct SeasonDTO : Mappable {
     var name: String!
     var overview: String!
     var airDate: String?
-    var episodeCount: Int!
+    var episodeCount: Int?
     var posterPath: String?
     var seasonNumber: Int!
     

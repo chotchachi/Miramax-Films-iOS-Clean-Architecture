@@ -87,6 +87,8 @@
 		EDD52F5B28DA22250078C6C5 /* EntertainmentDetailModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5A28DA22250078C6C5 /* EntertainmentDetailModelType.swift */; };
 		EDD52F6528DAC1A90078C6C5 /* AiringTodayCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F6428DAC1A90078C6C5 /* AiringTodayCellDelegate.swift */; };
 		EDD52F6728DAC9B70078C6C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDD52F6628DAC9B70078C6C5 /* Localizable.strings */; };
+		EDD52F6B28DAD1A00078C6C5 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F6A28DAD1A00078C6C5 /* Episode.swift */; };
+		EDD52F6D28DAEBB90078C6C5 /* EpisodeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F6C28DAEBB90078C6C5 /* EpisodeDTO.swift */; };
 		EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */; };
 		EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */; };
 		EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3828D60DBA002726B0 /* TabLayout.swift */; };
@@ -245,6 +247,8 @@
 		EDD52F5A28DA22250078C6C5 /* EntertainmentDetailModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailModelType.swift; sourceTree = "<group>"; };
 		EDD52F6428DAC1A90078C6C5 /* AiringTodayCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiringTodayCellDelegate.swift; sourceTree = "<group>"; };
 		EDD52F6628DAC9B70078C6C5 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		EDD52F6A28DAD1A00078C6C5 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		EDD52F6C28DAEBB90078C6C5 /* EpisodeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDTO.swift; sourceTree = "<group>"; };
 		EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCell.swift; sourceTree = "<group>"; };
 		EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCellDelegate.swift; sourceTree = "<group>"; };
 		EDE69B3828D60DBA002726B0 /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
@@ -668,6 +672,7 @@
 				EDB8781428D8C4760016B96B /* MovieDetail.swift */,
 				EDB8781A28D8D5A60016B96B /* TVShowDetail.swift */,
 				EDB8781C28D8D7260016B96B /* Season.swift */,
+				EDD52F6A28DAD1A00078C6C5 /* Episode.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -706,8 +711,9 @@
 				EDB8781028D8C2870016B96B /* CastDTO.swift */,
 				EDB8781228D8C2C80016B96B /* CreditDTO.swift */,
 				EDB8781628D8C7060016B96B /* MovieDetailDTO.swift */,
-				EDB8781E28D8D8300016B96B /* SeasonDTO.swift */,
 				EDB8782028D8D8CB0016B96B /* TVShowDetailDTO.swift */,
+				EDB8781E28D8D8300016B96B /* SeasonDTO.swift */,
+				EDD52F6C28DAEBB90078C6C5 /* EpisodeDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1236,7 +1242,9 @@
 				EDB8780D28D8C17D0016B96B /* Credit.swift in Sources */,
 				EDE69B9328D76ECB002726B0 /* TVShowRepositoryProtocol.swift in Sources */,
 				EDE69B5228D6BA58002726B0 /* PersonHorizontalListCell.swift in Sources */,
+				EDD52F6B28DAD1A00078C6C5 /* Episode.swift in Sources */,
 				EDFAD38F28D2DC0700ED3BCD /* MovieApi.swift in Sources */,
+				EDD52F6D28DAEBB90078C6C5 /* EpisodeDTO.swift in Sources */,
 				EDE69B6A28D71464002726B0 /* SearchCoordinator.swift in Sources */,
 				EDC6DB6128D071F300164EBD /* MovieRepository.swift in Sources */,
 				EDA4475828D41F060037751C /* GenreHorizontalListCellDelegate.swift in Sources */,

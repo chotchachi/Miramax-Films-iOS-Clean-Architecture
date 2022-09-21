@@ -12,7 +12,15 @@ struct Season: Equatable {
     let name: String
     let overview: String
     let airDate: String?
-    let episodeCount: Int
+    let episodeCount: Int?
     let posterPath: String?
     let seasonNumber: Int
+}
+
+extension Season: ImageConfigurable {
+    var posterURL: URL? {
+        guard let posterPath = posterPath else { return nil }
+        let urlString = regularImageBaseURLString.appending(posterPath)
+        return URL(string: urlString)
+    }
 }
