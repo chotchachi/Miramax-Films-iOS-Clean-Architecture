@@ -91,6 +91,7 @@
 		EDD52F6D28DAEBB90078C6C5 /* EpisodeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F6C28DAEBB90078C6C5 /* EpisodeDTO.swift */; };
 		EDD52F6F28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F6E28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift */; };
 		EDD52F7128DAF2890078C6C5 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7028DAF2890078C6C5 /* SearchRepository.swift */; };
+		EDD52F7B28DB6D260078C6C5 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7A28DB6D260078C6C5 /* IntrinsicTableView.swift */; };
 		EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */; };
 		EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */; };
 		EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3828D60DBA002726B0 /* TabLayout.swift */; };
@@ -253,6 +254,7 @@
 		EDD52F6C28DAEBB90078C6C5 /* EpisodeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDTO.swift; sourceTree = "<group>"; };
 		EDD52F6E28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryProtocol.swift; sourceTree = "<group>"; };
 		EDD52F7028DAF2890078C6C5 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
+		EDD52F7A28DB6D260078C6C5 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCell.swift; sourceTree = "<group>"; };
 		EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCellDelegate.swift; sourceTree = "<group>"; };
 		EDE69B3828D60DBA002726B0 /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
@@ -807,6 +809,14 @@
 			path = ModelType;
 			sourceTree = "<group>";
 		};
+		EDD52F7928DB6D1F0078C6C5 /* IntrinsicTableView */ = {
+			isa = PBXGroup;
+			children = (
+				EDD52F7A28DB6D260078C6C5 /* IntrinsicTableView.swift */,
+			);
+			path = IntrinsicTableView;
+			sourceTree = "<group>";
+		};
 		EDE69B3228D60C9B002726B0 /* TabSelectionCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -957,6 +967,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				EDD52F7928DB6D1F0078C6C5 /* IntrinsicTableView */,
 				EDE69B3728D60DAF002726B0 /* TabLayout */,
 				EDA4478B28D5A74C0037751C /* AppToolbar */,
 				EDA4477F28D591320037751C /* SectionHeaderView */,
@@ -1216,6 +1227,7 @@
 				EDD52F5128DA06A60078C6C5 /* PersonModelType.swift in Sources */,
 				EDC6DB4028CF92DE00164EBD /* HomeCoordinator.swift in Sources */,
 				EDFAD3AA28D3152800ED3BCD /* LocalDataSource.swift in Sources */,
+				EDD52F7B28DB6D260078C6C5 /* IntrinsicTableView.swift in Sources */,
 				EDFAD3A128D3104200ED3BCD /* LocalDataSourceProtocol.swift in Sources */,
 				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
 				EDB8782128D8D8CB0016B96B /* TVShowDetailDTO.swift in Sources */,
