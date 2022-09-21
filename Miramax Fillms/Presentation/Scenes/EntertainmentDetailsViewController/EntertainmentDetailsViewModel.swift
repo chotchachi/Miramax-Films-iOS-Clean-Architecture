@@ -14,6 +14,7 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
         let popViewTrigger: Driver<Void>
         let toSearchTrigger: Driver<Void>
         let shareTrigger: Driver<Void>
+        let retryTrigger: Driver<Void>
     }
     
     struct Output {
@@ -32,9 +33,20 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        
         let viewTriggerO = trigger
             .take(1)
+        
+        let retryTriggerO = input.retryTrigger
+            .asObservable()
+        
+        let entertainmentDetailD = Observable.merge(viewTriggerO, retryTriggerO)
+            .flatMapLatest {
+                self.getEntertainmentDetails(self.entertainmentModel)
+                    .trackError(self.error)
+                    .trackActivity(self.loading)
+                    .asDriverOnErrorJustComplete()
+            }
+            .asDriverOnErrorJustComplete()
         
         input.popViewTrigger
             .drive(onNext: { [weak self] in
@@ -43,18 +55,20 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        let entertainmentDetailD = viewTriggerO
-            .flatMapLatest {
-                return self.repositoryProvider
-                    .movieRepository()
-                    .getMovieDetail(movieId: self.entertainmentModel.entertainmentModelId)
-                    .map { $0 as EntertainmentDetailModelType }
-                    .trackError(self.error)
-                    .trackActivity(self.loading)
-                    .asDriverOnErrorJustComplete()
-            }
-            .asDriverOnErrorJustComplete()
-        
         return Output(entertainmentDetail: entertainmentDetailD)
+    }
+    
+    private func getEntertainmentDetails(_ model: EntertainmentModelType) -> Single<EntertainmentDetailModelType> {
+        if model is Movie {
+            return repositoryProvider
+                .movieRepository()
+                .getMovieDetail(movieId: model.entertainmentModelId)
+                .map { $0 as EntertainmentDetailModelType }
+        } else {
+            return repositoryProvider
+                .tvShowRepository()
+                .getTVShowDetail(tvShowId: model.entertainmentModelId)
+                .map { $0 as EntertainmentDetailModelType }
+        }
     }
 }

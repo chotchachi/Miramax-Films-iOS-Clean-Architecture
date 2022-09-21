@@ -97,7 +97,8 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         let input = EntertainmentDetailsViewModel.Input(
             popViewTrigger: popViewTriggerS.asDriverOnErrorJustComplete(),
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
-            shareTrigger: btnShare.rx.tap.asDriver()
+            shareTrigger: btnShare.rx.tap.asDriver(),
+            retryTrigger: Driver.empty()
         )
         let output = viewModel.transform(input: input)
         
@@ -114,6 +115,13 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
             .drive(onNext: { [weak self] isLoading in
                 guard let self = self else { return }
                 isLoading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
+            })
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.error
+            .drive(onNext: { [weak self] error in
+                guard let self = self else { return }
+                
             })
             .disposed(by: rx.disposeBag)
     }
