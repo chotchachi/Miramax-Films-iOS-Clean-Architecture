@@ -41,6 +41,9 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     override func configView() {
         super.configView()
         
+        appToolbar.title = "search".localized
+        appToolbar.showBackButton = false
+        
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .vertical
         collectionView.collectionViewLayout = collectionViewLayout
@@ -51,7 +54,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         collectionView.register(cellWithClass: PersonHorizontalListCell.self)
         
         btnCancel = UIButton(type: .system)
-        btnCancel.setTitle("Cancel", for: .normal)
+        btnCancel.setTitle("cancel", for: .normal)
         btnCancel.setTitleColor(AppColors.colorAccent, for: .normal)
         btnCancel.titleLabel?.font = AppFonts.callout
         btnCancel.addTarget(self, action: #selector(cancelButtonTapped(_:)), for: .touchUpInside)
@@ -67,7 +70,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         tfSearch.clearButtonMode = .never
         tfSearch.textColor = AppColors.textColorPrimary
         tfSearch.attributedPlaceholder = NSAttributedString(
-            string: "Movies, TV Shows, Actor,...",
+            string: "search_bar_placeholder".localized,
             attributes: [NSAttributedString.Key.foregroundColor: AppColors.textColorPrimary.withAlphaComponent(0.5)]
         )
         tfSearch.addTarget(self, action: #selector(searchTextFieldDidChange(_:)), for: .editingChanged)
@@ -96,7 +99,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
                 self.collectionView.isHidden = items.isEmpty
                 self.viewSearchEmpty.isHidden = !items.isEmpty
                 if items.isEmpty {
-                    self.lblEmptyMessage.text = "No search results found “\(self.tfSearch.text ?? "")”"
+                    self.lblEmptyMessage.text = "\("search_result_empty".localized) “\(self.tfSearch.text ?? "")”"
                 }
             })
             .disposed(by: rx.disposeBag)
@@ -149,22 +152,22 @@ extension SearchViewController: UICollectionViewDataSource {
         switch item {
         case .recent(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalListCell.self, for: indexPath)
-            cell.bind(.populated(items), headerTitle: "Recent")
+            cell.bind(.populated(items), headerTitle: "recent".localized)
             cell.delegate = self
             return cell
         case .movie(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalListCell.self, for: indexPath)
-            cell.bind(.populated(items), headerTitle: "Movies")
+            cell.bind(.populated(items), headerTitle: "movies".localized)
             cell.delegate = self
             return cell
         case .tvShow(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalListCell.self, for: indexPath)
-            cell.bind(.populated(items), headerTitle: "TV Shows")
+            cell.bind(.populated(items), headerTitle: "tvshows".localized)
             cell.delegate = self
             return cell
         case .actor(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalListCell.self, for: indexPath)
-            cell.bind(.populated(items), headerTitle: "Actors")
+            cell.bind(.populated(items), headerTitle: "actors".localized)
             cell.delegate = self
             return cell
         }

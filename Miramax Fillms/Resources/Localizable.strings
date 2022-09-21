@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  Miramax Fillms
+
+  Created by Thanh Quang on 21/09/2022.
+  
+*/
+
+"cancel" = "Cancel";
+"movie" = "Movie";
+"movies" = "Movies";
+"tvshow" = "TV Show";
+"tvshows" = "TV Shows";
+"upcoming" = "Upcoming";
+"top_rating" = "Top rating";
+"news" = "News";
+"trending" = "Trending";
+"on_the_air" = "On The Air";
+"search" = "Search";
+"search_bar_placeholder" = "Movies, TV Shows, Actor,...";
+"search_result_empty" = "No search results found";
+"recent" = "Recent";
+"actors" = "Actors";

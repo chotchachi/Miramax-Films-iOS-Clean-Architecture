@@ -67,6 +67,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         btnShare.setImage(UIImage(named: "ic_toolbar_share"), for: .normal)
         
         appToolbar.delegate = self
+        appToolbar.showTitleLabel = false
         appToolbar.rightButtons = [btnSearch, btnShare]
         
         scrollView.isHidden = true

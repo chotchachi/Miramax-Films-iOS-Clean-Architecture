@@ -40,6 +40,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel> {
         btnSearch.translatesAutoresizingMaskIntoConstraints = false
         btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
         
+        appToolbar.title = "tvshow".localized
         appToolbar.showBackButton = false
         appToolbar.rightButtons = [btnSearch]
         
@@ -99,12 +100,12 @@ extension TVShowViewController: UICollectionViewDataSource {
             return cell
         case .onTheAirViewState(viewState: let viewState):
             let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalListCell.self, for: indexPath)
-            cell.bind(viewState, headerTitle: "On The Air")
+            cell.bind(viewState, headerTitle: "on_the_air".localized)
             cell.delegate = self
             return cell
         case .tabSelection:
             let cell = collectionView.dequeueReusableCell(withClass: TabSelectionCell.self, for: indexPath)
-            cell.bind(["Top rating", "News", "Trending"], selectIndex: 1)
+            cell.bind(["top_rating".localized, "news".localized, "trending".localized], selectIndex: 1)
             return cell
         }
     }
