@@ -64,7 +64,7 @@ extension TVShowDetail: EntertainmentDetailModelType {
     }
     
     var entertainmentRuntime: Int? {
-        return nil
+        return numberOfEpisodes
     }
     
     var entertainmentReleaseDate: String {
@@ -89,5 +89,9 @@ extension TVShowDetail: EntertainmentDetailModelType {
     
     var entertainmentRecommends: [EntertainmentModelType] {
         return recommendations?.results ?? []
+    }
+    
+    var entertainmentSeasons: [Season]? {
+        return seasons
     }
 }

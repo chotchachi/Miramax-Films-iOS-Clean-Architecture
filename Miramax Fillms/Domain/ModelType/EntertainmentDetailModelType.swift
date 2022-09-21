@@ -18,4 +18,5 @@ protocol EntertainmentDetailModelType {
     var entertainmentWriters: [Crew] { get }
     var entertainmentCasts: [Cast] { get }
     var entertainmentRecommends: [EntertainmentModelType] { get }
+    var entertainmentSeasons: [Season]? { get }
 }

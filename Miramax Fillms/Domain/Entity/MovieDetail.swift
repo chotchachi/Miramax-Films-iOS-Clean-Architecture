@@ -87,4 +87,8 @@ extension MovieDetail: EntertainmentDetailModelType {
     var entertainmentRecommends: [EntertainmentModelType] {
         return recommendations?.results ?? []
     }
+    
+    var entertainmentSeasons: [Season]? {
+        return nil
+    }
 }
