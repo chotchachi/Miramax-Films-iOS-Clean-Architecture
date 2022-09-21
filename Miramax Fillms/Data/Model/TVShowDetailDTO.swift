@@ -17,6 +17,8 @@ struct TVShowDetailDTO : Mappable {
     var firstAirDate: String!
     var voteAverage: Double!
     var episodeRuntime: [Int]!
+    var numberOfEpisodes: Int!
+    var numberOfSeasons: Int!
     var seasons: [SeasonDTO]!
     var credits: CreditDTO?
     var recommendations: TVShowResponseDTO?
@@ -35,6 +37,8 @@ struct TVShowDetailDTO : Mappable {
         firstAirDate <- map["first_air_date"]
         voteAverage <- map["vote_average"]
         episodeRuntime <- map["episode_run_time"]
+        numberOfEpisodes <- map["number_of_episodes"]
+        numberOfSeasons <- map["number_of_seasons"]
         seasons <- map["seasons"]
         credits <- map["credits"]
         recommendations <- map["recommendations"]
@@ -43,6 +47,6 @@ struct TVShowDetailDTO : Mappable {
 
 extension TVShowDetailDTO: DomainConvertibleType {
     func asDomain() -> TVShowDetail {
-        return TVShowDetail(id: id, name: name, backdropPath: backdropPath, posterPath: posterPath, genres: genres.map { $0.asDomain() }, overview: overview, firstAirDate: firstAirDate, voteAverage: voteAverage, episodeRuntime: episodeRuntime, seasons: seasons.map { $0.asDomain() }, credits: credits?.asDomain(), recommendations: recommendations?.asDomain())
+        return TVShowDetail(id: id, name: name, backdropPath: backdropPath, posterPath: posterPath, genres: genres.map { $0.asDomain() }, overview: overview, firstAirDate: firstAirDate, voteAverage: voteAverage, episodeRuntime: episodeRuntime, numberOfEpisodes: numberOfEpisodes, numberOfSeasons: numberOfSeasons, seasons: seasons.map { $0.asDomain() }, credits: credits?.asDomain(), recommendations: recommendations?.asDomain())
     }
 }

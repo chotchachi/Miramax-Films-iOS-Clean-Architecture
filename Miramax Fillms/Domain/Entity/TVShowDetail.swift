@@ -17,6 +17,8 @@ struct TVShowDetail: Equatable {
     let firstAirDate: String
     let voteAverage: Double
     let episodeRuntime: [Int]
+    let numberOfEpisodes: Int
+    let numberOfSeasons: Int
     let seasons: [Season]
     let credits: Credit?
     let recommendations: TVShowResponse?
