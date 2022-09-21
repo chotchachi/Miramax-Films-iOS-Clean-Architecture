@@ -34,7 +34,7 @@ class MovieCoordinator: NavigationCoordinator<MovieRoute> {
             addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
             return .none()
         case .detail(movie: let movie):
-            addChild(MovieDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, movie: movie))
+            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: movie))
             return .none()
         }
     }

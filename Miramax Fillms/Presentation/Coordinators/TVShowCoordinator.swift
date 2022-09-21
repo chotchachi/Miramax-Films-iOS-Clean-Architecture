@@ -10,6 +10,7 @@ import XCoordinator
 enum TVShowRoute: Route {
     case initial
     case search
+    case detail(tvShow: TVShow)
 }
 
 class TVShowCoordinator: NavigationCoordinator<TVShowRoute> {
@@ -31,6 +32,9 @@ class TVShowCoordinator: NavigationCoordinator<TVShowRoute> {
             return .push(vc)
         case .search:
             addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
+            return .none()
+        case .detail(tvShow: let tvShow):
+            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: tvShow))
             return .none()
         }
     }
