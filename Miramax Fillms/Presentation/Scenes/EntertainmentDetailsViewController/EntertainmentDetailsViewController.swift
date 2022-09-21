@@ -24,11 +24,20 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     @IBOutlet weak var ivPoster: UIImageView!
     
     @IBOutlet weak var lblRating: UILabel!
-    @IBOutlet weak var lblDuration: UILabel!
-    @IBOutlet weak var lblReleaseDate: UILabel!
+    @IBOutlet weak var lblRatingText: UILabel!
     
+    @IBOutlet weak var lblDuration: UILabel!
+    @IBOutlet weak var lblDurationText: UILabel!
+
+    @IBOutlet weak var lblReleaseDate: UILabel!
+    @IBOutlet weak var lblReleaseDateText: UILabel!
+
     @IBOutlet weak var overviewSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var lblOverview: UILabel!
+    
+    @IBOutlet weak var seasonsSectionHeaderView: SectionHeaderView!
+    @IBOutlet weak var seasonsTableView: IntrinsicTableView!
+    @IBOutlet weak var seasonsTableViewHc: NSLayoutConstraint!
     
     @IBOutlet weak var actorsSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var actorsCollectionView: UICollectionView!
@@ -47,16 +56,15 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     // MARK: - Properties
     
     private var popViewTriggerS = PublishRelay<Void>()
-    
+    private var retryTriggerS = PublishRelay<Void>()
+    private var seasonSelectTriggerS = PublishRelay<Season>()
+
     private var entertainmentDetail: EntertainmentDetailModelType?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
 
     override func configView() {
         super.configView()
+        
+        // Toolbar
         
         btnSearch = UIButton(type: .system)
         btnSearch.translatesAutoresizingMaskIntoConstraints = false
@@ -66,14 +74,45 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         btnShare.translatesAutoresizingMaskIntoConstraints = false
         btnShare.setImage(UIImage(named: "ic_toolbar_share"), for: .normal)
         
-        appToolbar.delegate = self
         appToolbar.showTitleLabel = false
         appToolbar.rightButtons = [btnSearch, btnShare]
+        appToolbar.rx.backButtonTap
+            .bind(to: popViewTriggerS)
+            .disposed(by: rx.disposeBag)
         
-        scrollView.isHidden = true
+        // Scroll view
+        
+        scrollView.isHidden = true /// initial hidden
+        
+        // Loading indicator
+        
         loadingIndicator.startAnimating()
         
+        // Poster image view
+        
         ivPoster.kf.indicatorType = .activity
+        
+        overviewSectionHeaderView.title = "overview".localized
+        overviewSectionHeaderView.showSeeMoreButton = false
+        
+        seasonsSectionHeaderView.title = "seasons".localized
+        
+        actorsSectionHeaderView.title = "actors".localized
+        actorsSectionHeaderView.showSeeMoreButton = false
+        
+        gallerySectionHeaderView.title = "gallery".localized
+        
+        recommendSectionHeaderView.title = "recommend".localized
+        
+        // Seasons tsable view
+        seasonsTableView.dataSource = self
+        seasonsTableView.delegate = self
+        seasonsTableView.separatorStyle = .none
+        seasonsTableView.showsVerticalScrollIndicator = false
+        seasonsTableView.isScrollEnabled = false
+        seasonsTableView.register(cellWithClass: SeasonSmallCell.self)
+
+        // Actors collection view
         
         let actorsCollectionViewLayout = UICollectionViewFlowLayout()
         actorsCollectionViewLayout.scrollDirection = .horizontal
@@ -82,6 +121,8 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         actorsCollectionView.dataSource = self
         actorsCollectionView.delegate = self
         actorsCollectionView.showsHorizontalScrollIndicator = false
+        
+        // Recommend collection view
         
         let recommendCollectionViewLayout = UICollectionViewFlowLayout()
         recommendCollectionViewLayout.scrollDirection = .horizontal
@@ -99,7 +140,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
             popViewTrigger: popViewTriggerS.asDriverOnErrorJustComplete(),
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             shareTrigger: btnShare.rx.tap.asDriver(),
-            retryTrigger: Driver.empty()
+            retryTrigger: retryTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -120,22 +161,58 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
             .disposed(by: rx.disposeBag)
         
         viewModel.error
-            .drive(onNext: { [weak self] error in
+            .drive(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                
+                self.showAlert(
+                    title: "error".localized,
+                    message: "an_error_occurred".localized,
+                    buttonTitles: ["cancel".localized, "try_again".localized]) { buttonIndex in
+                        if buttonIndex == 1 {
+                            self.retryTriggerS.accept(())
+                        } else {
+                            self.popViewTriggerS.accept(())
+                        }
+                    }
             })
             .disposed(by: rx.disposeBag)
     }
     
-    private func bindData(_ entertainmentDetail: EntertainmentDetailModelType) {
-        lblTitle.text = entertainmentDetail.entertainmentDetailTitle
-        lblRating.text = DataUtils.getRatingText(entertainmentDetail.entertainmentVoteAverage)
-        lblDuration.text = DataUtils.getDurationText(entertainmentDetail.entertainmentRuntime)
-        lblReleaseDate.text = DataUtils.getReleaseYear(entertainmentDetail.entertainmentReleaseDate)
-        lblOverview.text = entertainmentDetail.entertainmentOverview
+    override func viewWillLayoutSubviews() {
+        super.updateViewConstraints()
         
-        actorsCollectionView.reloadData()
-        recommendCollectionView.reloadData()
+        seasonsTableViewHc.constant = seasonsTableView.intrinsicContentSize.height
+    }
+}
+
+// MARK: - Private functions
+
+extension EntertainmentDetailsViewController {
+    private func bindData(_ entertainmentDetail: EntertainmentDetailModelType) {
+        if let posterURL = entertainmentDetail.entertainmentPosterURL {
+            ivPoster.kf.setImage(with: posterURL)
+        }
+        
+        lblTitle.text = entertainmentDetail.entertainmentDetailTitle
+        
+        lblRatingText.text = "rating".localized
+        lblRating.text = DataUtils.getRatingText(entertainmentDetail.entertainmentVoteAverage)
+        
+        lblReleaseDateText.text = "year".localized
+        lblReleaseDate.text = DataUtils.getReleaseYear(entertainmentDetail.entertainmentReleaseDate)
+        
+        if entertainmentDetail is MovieDetail {
+            lblDurationText.text = "duration".localized
+            lblDuration.text = DataUtils.getDurationText(entertainmentDetail.entertainmentRuntime)
+        } else {
+            lblDurationText.text = "episodes".localized
+            if let numsOfEpisodes = entertainmentDetail.entertainmentRuntime {
+                lblDuration.text = "\(numsOfEpisodes)"
+            } else {
+                lblDuration.text = "unknown".localized
+            }
+        }
+
+        lblOverview.text = entertainmentDetail.entertainmentOverview
         
         let directorsString = entertainmentDetail.entertainmentDirectors.map { $0.name }.joined(separator: ", ")
         lblDirector.text = "Director: \(directorsString)"
@@ -145,18 +222,38 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         lblWriters.text = "Writers: \(writersString)"
         lblWriters.highlight(text: writersString, color: .white.withAlphaComponent(0.5))
         
-        if let posterURL = entertainmentDetail.entertainmentPosterURL {
-            ivPoster.kf.setImage(with: posterURL)
-        }
+        seasonsTableView.reloadData()
+        actorsCollectionView.reloadData()
+        recommendCollectionView.reloadData()
     }
 
 }
 
-// MARK: - AppToolbarDelegate
+// MARK: - UITableViewDataSource
 
-extension EntertainmentDetailsViewController: AppToolbarDelegate {
-    func appToolbar(onBackButtonTapped button: UIButton) {
-        popViewTriggerS.accept(())
+extension EntertainmentDetailsViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return entertainmentDetail?.entertainmentSeasons?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let item = entertainmentDetail?.entertainmentSeasons?[indexPath.row] else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(withClass: SeasonSmallCell.self, for: indexPath)
+        cell.bind(item, offset: indexPath.row)
+        cell.onPlayButtonTapped = { [weak self] in
+            guard let self = self else { return }
+            self.seasonSelectTriggerS.accept(item)
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return DimensionConstants.seasonSmallCellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let item = entertainmentDetail?.entertainmentSeasons?[indexPath.row] else { return }
+        seasonSelectTriggerS.accept(item)
     }
 }
 

@@ -92,6 +92,7 @@
 		EDD52F6F28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F6E28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift */; };
 		EDD52F7128DAF2890078C6C5 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7028DAF2890078C6C5 /* SearchRepository.swift */; };
 		EDD52F7B28DB6D260078C6C5 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7A28DB6D260078C6C5 /* IntrinsicTableView.swift */; };
+		EDD52F7E28DB6F0E0078C6C5 /* SeasonSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7D28DB6F0E0078C6C5 /* SeasonSmallCell.swift */; };
 		EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */; };
 		EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */; };
 		EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3828D60DBA002726B0 /* TabLayout.swift */; };
@@ -255,6 +256,7 @@
 		EDD52F6E28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryProtocol.swift; sourceTree = "<group>"; };
 		EDD52F7028DAF2890078C6C5 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		EDD52F7A28DB6D260078C6C5 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
+		EDD52F7D28DB6F0E0078C6C5 /* SeasonSmallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonSmallCell.swift; sourceTree = "<group>"; };
 		EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCell.swift; sourceTree = "<group>"; };
 		EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCellDelegate.swift; sourceTree = "<group>"; };
 		EDE69B3828D60DBA002726B0 /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
@@ -817,6 +819,14 @@
 			path = IntrinsicTableView;
 			sourceTree = "<group>";
 		};
+		EDD52F7C28DB6EBA0078C6C5 /* SeasonSmallCell */ = {
+			isa = PBXGroup;
+			children = (
+				EDD52F7D28DB6F0E0078C6C5 /* SeasonSmallCell.swift */,
+			);
+			path = SeasonSmallCell;
+			sourceTree = "<group>";
+		};
 		EDE69B3228D60C9B002726B0 /* TabSelectionCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -951,6 +961,7 @@
 		EDFAD3AF28D3723C00ED3BCD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EDD52F7C28DB6EBA0078C6C5 /* SeasonSmallCell */,
 				EDE69B8528D73ABF002726B0 /* AiringTodayCell */,
 				EDE69B4928D63A31002726B0 /* PersonHorizontalListCell */,
 				EDE69B4C28D63A63002726B0 /* PersonHorizontalCell */,
@@ -1232,6 +1243,7 @@
 				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
 				EDB8782128D8D8CB0016B96B /* TVShowDetailDTO.swift in Sources */,
 				EDE69B5E28D6C0E2002726B0 /* PersonRepository.swift in Sources */,
+				EDD52F7E28DB6F0E0078C6C5 /* SeasonSmallCell.swift in Sources */,
 				EDC6DB4928CF990900164EBD /* MovieViewModel.swift in Sources */,
 				EDE69B9928D7733B002726B0 /* TVShowNetworking.swift in Sources */,
 				EDC6DB3228CF724A00164EBD /* AppCoordinator.swift in Sources */,
