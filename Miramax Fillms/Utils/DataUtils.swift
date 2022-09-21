@@ -25,7 +25,10 @@ class DataUtils {
         return "\(minutesLeft)m"
     }
     
-    static func getReleaseYear(_ date: String) -> String {
-        return "\(date.split(separator: "-").first ?? "")"
+    static func getReleaseYear(_ strDate: String) -> Int? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Constants.apiDateResponseFormat
+        let date = dateFormatter.date(from: strDate)
+        return date?.get(.year)
     }
 }

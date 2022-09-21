@@ -198,7 +198,11 @@ extension EntertainmentDetailsViewController {
         lblRating.text = DataUtils.getRatingText(entertainmentDetail.entertainmentVoteAverage)
         
         lblReleaseDateText.text = "year".localized
-        lblReleaseDate.text = DataUtils.getReleaseYear(entertainmentDetail.entertainmentReleaseDate)
+        if let releaseYear = DataUtils.getReleaseYear(entertainmentDetail.entertainmentReleaseDate) {
+            lblReleaseDate.text = "\(releaseYear)"
+        } else {
+            lblReleaseDate.text = "unknown".localized
+        }
         
         if entertainmentDetail is MovieDetail {
             lblDurationText.text = "duration".localized
