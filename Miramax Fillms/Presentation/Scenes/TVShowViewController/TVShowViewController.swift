@@ -40,7 +40,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel> {
         btnSearch.translatesAutoresizingMaskIntoConstraints = false
         btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
         
-        appToolbar.delegate = self
+        appToolbar.showBackButton = false
         appToolbar.rightButtons = [btnSearch]
         
         let gridCollectionViewLayout = GridCollectionViewLayout()
@@ -75,14 +75,6 @@ class TVShowViewController: BaseViewController<TVShowViewModel> {
                 self.collectionView.reloadData()
             })
             .disposed(by: rx.disposeBag)
-    }
-}
-
-// MARK: - AppToolbarDelegate
-
-extension TVShowViewController: AppToolbarDelegate {
-    func appToolbar(onBackButtonTapped button: UIButton) {
-        
     }
 }
 

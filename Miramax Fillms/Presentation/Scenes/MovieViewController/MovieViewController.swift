@@ -39,7 +39,7 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         btnSearch.translatesAutoresizingMaskIntoConstraints = false
         btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
         
-        appToolbar.delegate = self
+        appToolbar.showBackButton = false
         appToolbar.rightButtons = [btnSearch]
         
         let gridCollectionViewLayout = GridCollectionViewLayout()
@@ -73,14 +73,6 @@ class MovieViewController: BaseViewController<MovieViewModel> {
                 self.collectionView.reloadData()
             })
             .disposed(by: rx.disposeBag)
-    }
-}
-
-// MARK: - AppToolbarDelegate
-
-extension MovieViewController: AppToolbarDelegate {
-    func appToolbar(onBackButtonTapped button: UIButton) {
-        
     }
 }
 
