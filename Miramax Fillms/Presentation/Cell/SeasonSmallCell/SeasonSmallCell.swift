@@ -108,15 +108,29 @@ class SeasonSmallCell: UITableViewCell {
     
     func bind(_ item: Season, offset: Int) {
         lblOffset.text = "\(offset + 1)"
+        
         lblSeasonName.text = item.name
-        if let airDate = item.airDate {
-            lblAirDate.text = airDate
+        
+        if let airDateStr = getAirDateStringFormatted(item.airDate) {
+            lblAirDate.text = airDateStr
             lblAirDate.isHidden = false
         } else {
             lblAirDate.isHidden = true
         }
+        
         if let posterURL = item.posterURL {
             ivPoster.kf.setImage(with: posterURL)
+        }
+    }
+    
+    private func getAirDateStringFormatted(_ strDate: String?) -> String? {
+        if let strDate = strDate,
+           let date = DataUtils.getApiResponseDate(strDate) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d, yyyy"
+            return dateFormatter.string(from: date)
+        } else {
+            return nil
         }
     }
     

@@ -25,10 +25,15 @@ class DataUtils {
         return "\(minutesLeft)m"
     }
     
-    static func getReleaseYear(_ strDate: String) -> Int? {
+    static func getApiResponseDate(_ strDate: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = Constants.apiDateResponseFormat
         let date = dateFormatter.date(from: strDate)
+        return date
+    }
+    
+    static func getReleaseYear(_ strDate: String) -> Int? {
+        let date = getApiResponseDate(strDate)
         return date?.get(.year)
     }
 }
