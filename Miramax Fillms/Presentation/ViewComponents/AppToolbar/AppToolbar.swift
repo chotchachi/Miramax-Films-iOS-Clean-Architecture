@@ -8,16 +8,18 @@
 import UIKit
 import SnapKit
 import SwifterSwift
+import RxSwift
+import RxCocoa
 
 @IBDesignable
 final class AppToolbar: UIView {
 
     // MARK: - Views
     
-    private var btnBack: UIButton!
-    private var lblTitle: UILabel!
-    private var leftStackView: UIStackView!
-    private var rightStackView: UIStackView!
+    fileprivate var btnBack: UIButton!
+    fileprivate var lblTitle: UILabel!
+    fileprivate var leftStackView: UIStackView!
+    fileprivate var rightStackView: UIStackView!
 
     // MARK: - Properties
     
@@ -106,5 +108,11 @@ final class AppToolbar: UIView {
                 make.width.equalTo(40.0)
             }
         }
+    }
+}
+
+extension Reactive where Base: AppToolbar {
+    var backButtonTap: ControlEvent<Void> {
+        return base.btnBack.rx.tap
     }
 }
