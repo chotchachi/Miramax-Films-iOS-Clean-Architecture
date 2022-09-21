@@ -16,6 +16,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         let retryGenreTrigger: Driver<Void>
         let retryAiringTodayTrigger: Driver<Void>
         let retryUpComingTrigger: Driver<Void>
+        let tvShowSelectTrigger: Driver<TVShow>
     }
     
     struct Output {
@@ -40,6 +41,13 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.router.trigger(.search)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.tvShowSelectTrigger
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.router.trigger(.detail(tvShow: $0))
             })
             .disposed(by: rx.disposeBag)
         

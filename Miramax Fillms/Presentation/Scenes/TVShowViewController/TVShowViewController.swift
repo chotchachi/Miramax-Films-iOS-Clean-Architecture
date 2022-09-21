@@ -26,6 +26,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel> {
     private let retryGenreViewTriggerS = PublishRelay<Void>()
     private let retryAiringTodayTriggerS = PublishRelay<Void>()
     private let retryUpComingViewTriggerS = PublishRelay<Void>()
+    private let tvShowSelectTriggerS = PublishRelay<TVShow>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +63,8 @@ class TVShowViewController: BaseViewController<TVShowViewModel> {
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             retryGenreTrigger: retryGenreViewTriggerS.asDriverOnErrorJustComplete(),
             retryAiringTodayTrigger: retryAiringTodayTriggerS.asDriverOnErrorJustComplete(),
-            retryUpComingTrigger: retryUpComingViewTriggerS.asDriverOnErrorJustComplete()
+            retryUpComingTrigger: retryUpComingViewTriggerS.asDriverOnErrorJustComplete(),
+            tvShowSelectTrigger: tvShowSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -179,6 +181,20 @@ extension TVShowViewController: GenreHorizontalListCellDelegate {
     
 }
 
+// MARK: - AiringTodayCellDelegate
+
+extension TVShowViewController: AiringTodayCellDelegate {
+    func airingTodayCell(didTapPlayButton item: EntertainmentModelType) {
+        if let tvShow = item as? TVShow {
+            tvShowSelectTriggerS.accept(tvShow)
+        }
+    }
+    
+    func airingTodayCellRetryButtonTapped() {
+        retryAiringTodayTriggerS.accept(())
+    }
+}
+
 // MARK: - MovieHorizontalListCellDelegate
 
 extension TVShowViewController: MovieHorizontalListCellDelegate {
@@ -187,7 +203,9 @@ extension TVShowViewController: MovieHorizontalListCellDelegate {
     }
     
     func movieHorizontalList(onItemTapped item: EntertainmentModelType) {
-        
+        if let tvShow = item as? TVShow {
+            tvShowSelectTriggerS.accept(tvShow)
+        }
     }
     
     func movieHorizontalListSeeMoreButtonTapped() {

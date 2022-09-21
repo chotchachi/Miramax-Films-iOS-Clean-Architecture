@@ -24,10 +24,18 @@ class AiringTodayCell: UICollectionViewCell {
     private var loadingIndicatorView: UIActivityIndicatorView!
     private var btnRetry: PrimaryButton!
     
+    // MARK: - Properties
+    
+    weak var delegate: AiringTodayCellDelegate?
+    private var entertainment: EntertainmentModelType?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         backgroundColor = .clear
+        
+        viewMainWrap.isUserInteractionEnabled = true
+        viewMainWrap.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onViewMainTapped(_:))))
         
         ivPoster.contentMode = .scaleAspectFill
         ivPoster.kf.indicatorType = .activity
@@ -63,7 +71,7 @@ class AiringTodayCell: UICollectionViewCell {
         
         btnRetry = PrimaryButton()
         btnRetry.titleText = "Retry"
-        btnRetry.addTarget(self, action: #selector(btnRetryTapped), for: .touchUpInside)
+        btnRetry.addTarget(self, action: #selector(btnRetryTapped(_:)), for: .touchUpInside)
         
         // constraint layout
         
@@ -92,6 +100,7 @@ class AiringTodayCell: UICollectionViewCell {
             btnRetry.isHidden = true
             // set data
             if let firstItem = array.first {
+                entertainment = firstItem
                 bind(firstItem)
             }
         case .empty:
@@ -114,10 +123,15 @@ class AiringTodayCell: UICollectionViewCell {
         lblDescription.text = item.textDescription
     }
     
-    @objc private func btnRetryTapped() {
+    @objc private func btnRetryTapped(_ sender: UIButton) {
         loadingIndicatorView.startAnimating()
         viewMainWrap.isHidden = true
         btnRetry.isHidden = true
-//        delegate?.movieHorizontalListRetryButtonTapped()
+        delegate?.airingTodayCellRetryButtonTapped()
+    }
+    
+    @objc private func onViewMainTapped(_ sender: UITapGestureRecognizer) {
+        guard let entertainment = entertainment else { return }
+        delegate?.airingTodayCell(didTapPlayButton: entertainment)
     }
 }

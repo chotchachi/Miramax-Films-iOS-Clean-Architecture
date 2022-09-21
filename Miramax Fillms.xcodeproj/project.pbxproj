@@ -85,6 +85,7 @@
 		EDD52F5728DA14930078C6C5 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5628DA14930078C6C5 /* UILabel+Ext.swift */; };
 		EDD52F5928DA1B2A0078C6C5 /* DimensionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5828DA1B2A0078C6C5 /* DimensionConstants.swift */; };
 		EDD52F5B28DA22250078C6C5 /* EntertainmentDetailModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5A28DA22250078C6C5 /* EntertainmentDetailModelType.swift */; };
+		EDD52F6528DAC1A90078C6C5 /* AiringTodayCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F6428DAC1A90078C6C5 /* AiringTodayCellDelegate.swift */; };
 		EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */; };
 		EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */; };
 		EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3828D60DBA002726B0 /* TabLayout.swift */; };
@@ -241,6 +242,7 @@
 		EDD52F5628DA14930078C6C5 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		EDD52F5828DA1B2A0078C6C5 /* DimensionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionConstants.swift; sourceTree = "<group>"; };
 		EDD52F5A28DA22250078C6C5 /* EntertainmentDetailModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailModelType.swift; sourceTree = "<group>"; };
+		EDD52F6428DAC1A90078C6C5 /* AiringTodayCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiringTodayCellDelegate.swift; sourceTree = "<group>"; };
 		EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCell.swift; sourceTree = "<group>"; };
 		EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCellDelegate.swift; sourceTree = "<group>"; };
 		EDE69B3828D60DBA002726B0 /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
@@ -865,6 +867,7 @@
 			children = (
 				EDE69B8628D73B97002726B0 /* AiringTodayCell.swift */,
 				EDE69B8728D73B97002726B0 /* AiringTodayCell.xib */,
+				EDD52F6428DAC1A90078C6C5 /* AiringTodayCellDelegate.swift */,
 			);
 			path = AiringTodayCell;
 			sourceTree = "<group>";
@@ -1162,6 +1165,7 @@
 				EDC6DB4C28CF9D5D00164EBD /* Genre.swift in Sources */,
 				EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */,
 				EDFAD3AC28D31C9600ED3BCD /* MovieNetworking.swift in Sources */,
+				EDD52F6528DAC1A90078C6C5 /* AiringTodayCellDelegate.swift in Sources */,
 				EDFAD3AE28D36F4700ED3BCD /* MovieViewData.swift in Sources */,
 				EDC502D828D38EDB0047C7C3 /* MovieHorizontalCell.swift in Sources */,
 				EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */,
