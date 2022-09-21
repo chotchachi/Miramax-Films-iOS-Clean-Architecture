@@ -7,6 +7,8 @@
 */
 
 "cancel" = "Cancel";
+"error" = "Error";
+"an_error_occurred" = "An error occurred. Please try again!";
 "movie" = "Movie";
 "movies" = "Movies";
 "tvshow" = "TV Show";
@@ -21,3 +23,14 @@
 "search_result_empty" = "No search results found";
 "recent" = "Recent";
 "actors" = "Actors";
+"rating" = "Rating";
+"duration" = "Duration";
+"episodes" = "Episodes";
+"year" = "Year";
+"unknown" = "Unknown";
+"retry" = "Retry";
+"try_again" = "Try again";
+"overview" = "Overview";
+"seasons" = "Seasons";
+"gallery" = "Gallery";
+"recommend" = "Recommend";

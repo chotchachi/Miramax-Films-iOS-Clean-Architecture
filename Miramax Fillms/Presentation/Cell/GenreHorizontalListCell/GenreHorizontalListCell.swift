@@ -51,7 +51,7 @@ class GenreHorizontalListCell: UICollectionViewCell {
         // retry button
         
         btnRetry = PrimaryButton()
-        btnRetry.titleText = "Retry"
+        btnRetry.titleText = "retry".localized
         btnRetry.addTarget(self, action: #selector(btnRetryTapped), for: .touchUpInside)
         
         // constraint layout

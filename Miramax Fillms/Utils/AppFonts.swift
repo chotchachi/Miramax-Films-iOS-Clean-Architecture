@@ -60,4 +60,8 @@ extension AppFonts {
     static let caption1 = AppFonts.regular(withSize: 14.0)
     static let caption1Medium = AppFonts.medium(withSize: 14.0)
     static let caption1Semibold = AppFonts.semiBold(withSize: 14.0)
+    
+    static let caption2 = AppFonts.regular(withSize: 12.0)
+    static let caption2Medium = AppFonts.medium(withSize: 12.0)
+    static let caption2Semibold = AppFonts.semiBold(withSize: 12.0)
 }
