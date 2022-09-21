@@ -97,6 +97,7 @@ extension TVShowViewController: UICollectionViewDataSource {
         case .airingTodayViewState(viewStatte: let viewState):
             let cell = collectionView.dequeueReusableCell(withClass: AiringTodayCell.self, for: indexPath)
             cell.bind(viewState)
+            cell.delegate = self
             return cell
         case .onTheAirViewState(viewState: let viewState):
             let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalListCell.self, for: indexPath)
