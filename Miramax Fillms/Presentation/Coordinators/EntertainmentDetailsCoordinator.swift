@@ -31,8 +31,8 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
     override func prepareTransition(for route: EntertainmentDetailsRoute) -> NavigationTransition {
         switch route {
         case .initial(entertainment: let entertainment):
-            let vc = MovieDetailsViewController()
-            vc.viewModel = MovieDetailsViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter, entertainmentModel: entertainment)
+            let vc = EntertainmentDetailsViewController()
+            vc.viewModel = EntertainmentDetailsViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter, entertainmentModel: entertainment)
             autoreleaseController = vc
             return .push(vc)
         case .pop:

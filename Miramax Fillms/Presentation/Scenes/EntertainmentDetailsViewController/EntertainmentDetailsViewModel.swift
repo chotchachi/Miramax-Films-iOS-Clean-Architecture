@@ -1,5 +1,5 @@
 //
-//  MovieDetailsViewModel.swift
+//  EntertainmentDetailsViewModel.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 19/09/2022.
@@ -9,7 +9,7 @@ import RxSwift
 import RxCocoa
 import XCoordinator
 
-class MovieDetailsViewModel: BaseViewModel, ViewModelType {
+class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let popViewTrigger: Driver<Void>
         let toSearchTrigger: Driver<Void>
@@ -17,17 +17,17 @@ class MovieDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     struct Output {
-        let movieDetail: Driver<MovieDetail>
+        let entertainmentDetail: Driver<EntertainmentDetailModelType>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
-    private let router: UnownedRouter<MovieDetailRoute>
-    private let movie: Movie
+    private let router: UnownedRouter<EntertainmentDetailsRoute>
+    private let entertainmentModel: EntertainmentModelType
 
-    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<MovieDetailRoute>, movie: Movie) {
+    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<EntertainmentDetailsRoute>, entertainmentModel: EntertainmentModelType) {
         self.repositoryProvider = repositoryProvider
         self.router = router
-        self.movie = movie
+        self.entertainmentModel = entertainmentModel
         super.init()
     }
     
@@ -43,17 +43,18 @@ class MovieDetailsViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        let movieDetailD = viewTriggerO
+        let entertainmentDetailD = viewTriggerO
             .flatMapLatest {
                 return self.repositoryProvider
                     .movieRepository()
-                    .getMovieDetail(movieId: self.movie.id)
+                    .getMovieDetail(movieId: self.entertainmentModel.entertainmentModelId)
+                    .map { $0 as EntertainmentDetailModelType }
                     .trackError(self.error)
                     .trackActivity(self.loading)
                     .asDriverOnErrorJustComplete()
             }
             .asDriverOnErrorJustComplete()
         
-        return Output(movieDetail: movieDetailD)
+        return Output(entertainmentDetail: entertainmentDetailD)
     }
 }
