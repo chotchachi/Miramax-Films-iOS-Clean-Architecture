@@ -17,7 +17,6 @@ protocol RemoteDataSourceProtocol {
     func getMovieUpcoming(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
     func getMovieLatest(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
     func getMovieByGenre(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
-    func searchMovie(query: String, page: Int?) -> Single<MovieResponseDTO>
     func getMovieDetail(movieId: Int) -> Single<MovieDetailDTO>
     
     func getTVShowAiringToday(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
@@ -27,7 +26,9 @@ protocol RemoteDataSourceProtocol {
     func getTVShowLatest(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowByGenre(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetailDTO>
+    func getTVShowSeasonDetails(tvShowId: Int, seasonNumber: Int) -> Single<SeasonDTO>
 
+    func searchMovie(query: String, page: Int?) -> Single<MovieResponseDTO>
     func searchTVShow(query: String, page: Int?) -> Single<TVShowResponseDTO>
     func searchPerson(query: String, page: Int?) -> Single<PersonResponseDTO>
 }

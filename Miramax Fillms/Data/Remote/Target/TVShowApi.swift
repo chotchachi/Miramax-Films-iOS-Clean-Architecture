@@ -15,6 +15,7 @@ enum TVShowApi {
     case latest(genreId: Int?, page: Int?)
     case byGenre(genreId: Int?, page: Int?)
     case detail(tvShowId: Int)
+    case season(tvShowId: Int, seasonNumber: Int)
 }
 
 extension TVShowApi: TargetType, NetworkConfigurable {
@@ -38,6 +39,8 @@ extension TVShowApi: TargetType, NetworkConfigurable {
             return "discover/tv"
         case .detail(tvShowId: let tvShowId):
             return "tv/\(tvShowId)"
+        case .season(tvShowId: let tvShowId, seasonNumber: let seasonNumber):
+            return "tv/\(tvShowId)/season/\(seasonNumber)"
         }
     }
     
@@ -61,6 +64,8 @@ extension TVShowApi: TargetType, NetworkConfigurable {
             return requestWithGenreIdAndPageTask(genreId, page)
         case .detail:
             return requestTvShowDetail()
+        case .season:
+            return requestTvShowSeason()
         }
     }
     
@@ -85,6 +90,13 @@ extension TVShowApi: TargetType, NetworkConfigurable {
         let params: [String : Any] = [
             "api_key" : apiKey,
             "append_to_response" : "credits,recommendations"
+        ]
+        return .requestParameters(parameters: params, encoding: URLEncoding.default)
+    }
+    
+    private func requestTvShowSeason() -> Moya.Task {
+        let params: [String : Any] = [
+            "api_key" : apiKey,
         ]
         return .requestParameters(parameters: params, encoding: URLEncoding.default)
     }

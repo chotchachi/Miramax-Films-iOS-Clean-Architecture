@@ -22,10 +22,9 @@ protocol Api {
     func getMovieUpcoming(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
     func getMovieLatest(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
     func getMovieByGenre(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
-    func searchMovie(query: String, page: Int?) -> Single<MovieResponseDTO>
     func getMovieDetail(movieId: Int) -> Single<MovieDetailDTO>
 
-    // MARK: - Show
+    // MARK: - TV
     
     func getTVShowAiringToday(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowOnTheAir(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
@@ -33,10 +32,16 @@ protocol Api {
     func getTVShowPopular(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowLatest(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowByGenre(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
-    func searchTVShow(query: String, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetailDTO>
 
-    // MARK: - Person
+    // MARK: - TV Season
     
+    func getTVSeasonDetails(tvShowId: Int, seasonNumber: Int) -> Single<SeasonDTO>
+    
+    // MARK: - Search
+    
+    func searchMovie(query: String, page: Int?) -> Single<MovieResponseDTO>
+    func searchTVShow(query: String, page: Int?) -> Single<TVShowResponseDTO>
     func searchPerson(query: String, page: Int?) -> Single<PersonResponseDTO>
+
 }

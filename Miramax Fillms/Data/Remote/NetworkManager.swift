@@ -64,10 +64,6 @@ final class NetworkManager: Api {
         return movieNetworking.provider.requestObject(.byGenre(genreId: genreId, page: page), type: MovieResponseDTO.self)
     }
     
-    func searchMovie(query: String, page: Int?) -> Single<MovieResponseDTO> {
-        return searchNetworking.provider.requestObject(.searchMovie(query: query, page: page), type: MovieResponseDTO.self)
-    }
-    
     func getMovieDetail(movieId: Int) -> Single<MovieDetailDTO> {
         return movieNetworking.provider.requestObject(.detail(movieId: movieId), type: MovieDetailDTO.self)
     }
@@ -98,15 +94,26 @@ final class NetworkManager: Api {
         return tvShowNetworking.provider.requestObject(.byGenre(genreId: genreId, page: page), type: TVShowResponseDTO.self)
     }
     
-    func searchTVShow(query: String, page: Int?) -> Single<TVShowResponseDTO> {
-        return searchNetworking.provider.requestObject(.searchTVShow(query: query, page: page), type: TVShowResponseDTO.self)
-    }
-    
     func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetailDTO> {
         return tvShowNetworking.provider.requestObject(.detail(tvShowId: tvShowId), type: TVShowDetailDTO.self)
     }
     
-    // MARK: - Person
+    // MARK: - TV Season
+    
+    func getTVSeasonDetails(tvShowId: Int, seasonNumber: Int) -> Single<SeasonDTO> {
+        return tvShowNetworking.provider.requestObject(.season(tvShowId: tvShowId, seasonNumber: seasonNumber), type: SeasonDTO.self)
+    }
+
+    
+    // MARK: - Search
+    
+    func searchMovie(query: String, page: Int?) -> Single<MovieResponseDTO> {
+        return searchNetworking.provider.requestObject(.searchMovie(query: query, page: page), type: MovieResponseDTO.self)
+    }
+
+    func searchTVShow(query: String, page: Int?) -> Single<TVShowResponseDTO> {
+        return searchNetworking.provider.requestObject(.searchTVShow(query: query, page: page), type: TVShowResponseDTO.self)
+    }
     
     func searchPerson(query: String, page: Int?) -> Single<PersonResponseDTO> {
         return searchNetworking.provider.requestObject(.searchPerson(query: query, page: page), type: PersonResponseDTO.self)
