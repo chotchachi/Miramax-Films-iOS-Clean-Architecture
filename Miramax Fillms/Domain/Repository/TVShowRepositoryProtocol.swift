@@ -14,7 +14,6 @@ protocol TVShowRepositoryProtocol {
     func getPopular(genreId: Int?, page: Int?) -> Single<TVShowResponse>
     func getLatest(genreId: Int?, page: Int?) -> Single<TVShowResponse>
     func getByGenre(genreId: Int?, page: Int?) -> Single<TVShowResponse>
-    func searchTVShow(query: String, page: Int?) -> Single<TVShowResponse>
     func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetail>
     func getTVShowSeasonDetails(tvShowId: Int, seasonNumber: Int) -> Single<Season>
 }

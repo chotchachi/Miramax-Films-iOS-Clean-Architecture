@@ -89,6 +89,8 @@
 		EDD52F6728DAC9B70078C6C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDD52F6628DAC9B70078C6C5 /* Localizable.strings */; };
 		EDD52F6B28DAD1A00078C6C5 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F6A28DAD1A00078C6C5 /* Episode.swift */; };
 		EDD52F6D28DAEBB90078C6C5 /* EpisodeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F6C28DAEBB90078C6C5 /* EpisodeDTO.swift */; };
+		EDD52F6F28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F6E28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift */; };
+		EDD52F7128DAF2890078C6C5 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7028DAF2890078C6C5 /* SearchRepository.swift */; };
 		EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */; };
 		EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */; };
 		EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3828D60DBA002726B0 /* TabLayout.swift */; };
@@ -249,6 +251,8 @@
 		EDD52F6628DAC9B70078C6C5 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EDD52F6A28DAD1A00078C6C5 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		EDD52F6C28DAEBB90078C6C5 /* EpisodeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDTO.swift; sourceTree = "<group>"; };
+		EDD52F6E28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryProtocol.swift; sourceTree = "<group>"; };
+		EDD52F7028DAF2890078C6C5 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCell.swift; sourceTree = "<group>"; };
 		EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCellDelegate.swift; sourceTree = "<group>"; };
 		EDE69B3828D60DBA002726B0 /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
@@ -684,6 +688,7 @@
 				EDC6DB5028D039A400164EBD /* MovieRepositoryProtocol.swift */,
 				EDE69B5B28D6C0B0002726B0 /* PersonRepositoryProtocol.swift */,
 				EDE69B9228D76ECB002726B0 /* TVShowRepositoryProtocol.swift */,
+				EDD52F6E28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -695,6 +700,7 @@
 				EDC6DB6028D071F200164EBD /* MovieRepository.swift */,
 				EDE69B5D28D6C0E2002726B0 /* PersonRepository.swift */,
 				EDE69B9428D7705F002726B0 /* TVShowRepository.swift */,
+				EDD52F7028DAF2890078C6C5 /* SearchRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1142,6 +1148,7 @@
 				EDD52F5728DA14930078C6C5 /* UILabel+Ext.swift in Sources */,
 				EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */,
 				EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */,
+				EDD52F6F28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift in Sources */,
 				EDE69B9728D7730B002726B0 /* TVShowApi.swift in Sources */,
 				EDFAD3B328D3745D00ED3BCD /* GridCollectionViewLayout.swift in Sources */,
 				EDA4478A28D5A15B0037751C /* SelfieWithMovieCellDelegate.swift in Sources */,
@@ -1153,6 +1160,7 @@
 				EDE69B7D28D73214002726B0 /* TVShowViewController.swift in Sources */,
 				EDB8780728D8AABB0016B96B /* EntertainmentDetailsCoordinator.swift in Sources */,
 				EDA4478128D591410037751C /* SectionHeaderView.swift in Sources */,
+				EDD52F7128DAF2890078C6C5 /* SearchRepository.swift in Sources */,
 				EDB8781128D8C2870016B96B /* CastDTO.swift in Sources */,
 				EDE69B9128D76E7A002726B0 /* TVShowResponse.swift in Sources */,
 				EDC6DB3E28CF8F3400164EBD /* HomeViewModel.swift in Sources */,

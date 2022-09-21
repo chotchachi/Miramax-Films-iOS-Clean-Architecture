@@ -34,4 +34,8 @@ final class RepositoryProvider: RepositoryProviderProtocol {
     func personRepository() -> PersonRepositoryProtocol {
         return PersonRepository(remoteDataSource: remoteDataSource, localDataSource: localDataSource)
     }
+    
+    func searchRepository() -> SearchRepositoryProtocol {
+        return SearchRepository(remoteDataSource: remoteDataSource, localDataSource: localDataSource)
+    }
 }

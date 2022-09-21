@@ -10,4 +10,5 @@ protocol RepositoryProviderProtocol {
     func movieRepository() -> MovieRepositoryProtocol
     func tvShowRepository() -> TVShowRepositoryProtocol
     func personRepository() -> PersonRepositoryProtocol
+    func searchRepository() -> SearchRepositoryProtocol
 }

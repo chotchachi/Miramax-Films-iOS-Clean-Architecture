@@ -8,5 +8,5 @@
 import RxSwift
 
 protocol PersonRepositoryProtocol {
-    func searchPerson(query: String, page: Int?) -> Single<PersonResponse>
+    
 }

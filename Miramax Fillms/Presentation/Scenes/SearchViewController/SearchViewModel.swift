@@ -59,7 +59,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
         let searchMovieO = Observable.just(query)
             .flatMapLatest {
                 return self.repositoryProvider
-                    .movieRepository()
+                    .searchRepository()
                     .searchMovie(query: $0, page: nil)
                     .map { $0.results }
                     .catchAndReturn([])
@@ -68,7 +68,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
         let searchTVShowO = Observable.just(query)
             .flatMapLatest {
                 return self.repositoryProvider
-                    .tvShowRepository()
+                    .searchRepository()
                     .searchTVShow(query: $0, page: nil)
                     .map { $0.results }
                     .catchAndReturn([])
@@ -77,7 +77,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
         let searchPersonO = Observable.just(query)
             .flatMapLatest {
                 return self.repositoryProvider
-                    .personRepository()
+                    .searchRepository()
                     .searchPerson(query: $0, page: nil)
                     .map { $0.results }
                     .catchAndReturn([])

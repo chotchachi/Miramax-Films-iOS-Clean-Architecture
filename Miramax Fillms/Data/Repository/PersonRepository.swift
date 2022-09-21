@@ -19,9 +19,4 @@ final class PersonRepository: PersonRepositoryProtocol {
         self.localDataSource = localDataSource
     }
     
-    func searchPerson(query: String, page: Int?) -> Single<PersonResponse> {
-        return remoteDataSource
-            .searchPerson(query: query, page: page)
-            .map { $0.asDomain() }
-    }
 }
