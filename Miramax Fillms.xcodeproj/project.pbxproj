@@ -98,6 +98,11 @@
 		EDD5301628DC99860078C6C5 /* SeasonsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5301528DC99860078C6C5 /* SeasonsCoordinator.swift */; };
 		EDD5301928DCA03F0078C6C5 /* SeasonLargeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5301828DCA03F0078C6C5 /* SeasonLargeCell.swift */; };
 		EDD5301C28DCB6D00078C6C5 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5301B28DCB6D00078C6C5 /* GradientView.swift */; };
+		EDD5302528DCBDA50078C6C5 /* SeasonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5302328DCBDA50078C6C5 /* SeasonDetailsViewController.swift */; };
+		EDD5302628DCBDA50078C6C5 /* SeasonDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD5302428DCBDA50078C6C5 /* SeasonDetailsViewController.xib */; };
+		EDD5302828DCBDBA0078C6C5 /* SeasonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5302728DCBDBA0078C6C5 /* SeasonDetailsViewModel.swift */; };
+		EDD5302A28DCBDC50078C6C5 /* SeasonDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5302928DCBDC50078C6C5 /* SeasonDetailsCoordinator.swift */; };
+		EDD5302D28DCC01A0078C6C5 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5302C28DCC01A0078C6C5 /* EpisodeCell.swift */; };
 		EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */; };
 		EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */; };
 		EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3828D60DBA002726B0 /* TabLayout.swift */; };
@@ -267,6 +272,11 @@
 		EDD5301528DC99860078C6C5 /* SeasonsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonsCoordinator.swift; sourceTree = "<group>"; };
 		EDD5301828DCA03F0078C6C5 /* SeasonLargeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonLargeCell.swift; sourceTree = "<group>"; };
 		EDD5301B28DCB6D00078C6C5 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		EDD5302328DCBDA50078C6C5 /* SeasonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailsViewController.swift; sourceTree = "<group>"; };
+		EDD5302428DCBDA50078C6C5 /* SeasonDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasonDetailsViewController.xib; sourceTree = "<group>"; };
+		EDD5302728DCBDBA0078C6C5 /* SeasonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailsViewModel.swift; sourceTree = "<group>"; };
+		EDD5302928DCBDC50078C6C5 /* SeasonDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailsCoordinator.swift; sourceTree = "<group>"; };
+		EDD5302C28DCC01A0078C6C5 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCell.swift; sourceTree = "<group>"; };
 		EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCellDelegate.swift; sourceTree = "<group>"; };
 		EDE69B3828D60DBA002726B0 /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
@@ -607,6 +617,7 @@
 		EDC6DB2528CF6C1900164EBD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EDD5301D28DCBBF40078C6C5 /* SeasonDetailsViewController */,
 				EDD5300628DC95210078C6C5 /* SeasonsViewController */,
 				EDB877FF28D8AA600016B96B /* EntertainmentDetailsViewController */,
 				EDE69B3F28D6292D002726B0 /* SearchViewController */,
@@ -856,6 +867,25 @@
 			path = GradientView;
 			sourceTree = "<group>";
 		};
+		EDD5301D28DCBBF40078C6C5 /* SeasonDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDD5302728DCBDBA0078C6C5 /* SeasonDetailsViewModel.swift */,
+				EDD5302328DCBDA50078C6C5 /* SeasonDetailsViewController.swift */,
+				EDD5302428DCBDA50078C6C5 /* SeasonDetailsViewController.xib */,
+				EDD5302928DCBDC50078C6C5 /* SeasonDetailsCoordinator.swift */,
+			);
+			path = SeasonDetailsViewController;
+			sourceTree = "<group>";
+		};
+		EDD5302B28DCBFE10078C6C5 /* EpisodeCell */ = {
+			isa = PBXGroup;
+			children = (
+				EDD5302C28DCC01A0078C6C5 /* EpisodeCell.swift */,
+			);
+			path = EpisodeCell;
+			sourceTree = "<group>";
+		};
 		EDE69B3228D60C9B002726B0 /* TabSelectionCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -990,6 +1020,7 @@
 		EDFAD3AF28D3723C00ED3BCD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EDD5302B28DCBFE10078C6C5 /* EpisodeCell */,
 				EDD5301728DCA0300078C6C5 /* SeasonLargeCell */,
 				EDD52F7C28DB6EBA0078C6C5 /* SeasonSmallCell */,
 				EDE69B8528D73ABF002726B0 /* AiringTodayCell */,
@@ -1110,6 +1141,7 @@
 				EDE69B4328D62943002726B0 /* SearchViewController.xib in Resources */,
 				EDE69B7E28D73214002726B0 /* TVShowViewController.xib in Resources */,
 				EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */,
+				EDD5302628DCBDA50078C6C5 /* SeasonDetailsViewController.xib in Resources */,
 				EDD52F6728DAC9B70078C6C5 /* Localizable.strings in Resources */,
 				ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */,
 				EDE69B8928D73B97002726B0 /* AiringTodayCell.xib in Resources */,
@@ -1201,6 +1233,7 @@
 				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
 				EDE69B4528D6294D002726B0 /* SearchViewModel.swift in Sources */,
 				EDA4478F28D5A7740037751C /* AppToolbarDelegate.swift in Sources */,
+				EDD5302A28DCBDC50078C6C5 /* SeasonDetailsCoordinator.swift in Sources */,
 				EDD52F5728DA14930078C6C5 /* UILabel+Ext.swift in Sources */,
 				EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */,
 				EDD5301C28DCB6D00078C6C5 /* GradientView.swift in Sources */,
@@ -1241,8 +1274,10 @@
 				EDC6DB4C28CF9D5D00164EBD /* Genre.swift in Sources */,
 				EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */,
 				EDFAD3AC28D31C9600ED3BCD /* MovieNetworking.swift in Sources */,
+				EDD5302D28DCC01A0078C6C5 /* EpisodeCell.swift in Sources */,
 				EDD5301928DCA03F0078C6C5 /* SeasonLargeCell.swift in Sources */,
 				EDD52F6528DAC1A90078C6C5 /* AiringTodayCellDelegate.swift in Sources */,
+				EDD5302828DCBDBA0078C6C5 /* SeasonDetailsViewModel.swift in Sources */,
 				EDFAD3AE28D36F4700ED3BCD /* MovieViewData.swift in Sources */,
 				EDC502D828D38EDB0047C7C3 /* MovieHorizontalCell.swift in Sources */,
 				EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */,
@@ -1310,6 +1345,7 @@
 				EDB8780D28D8C17D0016B96B /* Credit.swift in Sources */,
 				EDE69B9328D76ECB002726B0 /* TVShowRepositoryProtocol.swift in Sources */,
 				EDE69B5228D6BA58002726B0 /* PersonHorizontalListCell.swift in Sources */,
+				EDD5302528DCBDA50078C6C5 /* SeasonDetailsViewController.swift in Sources */,
 				EDD52F6B28DAD1A00078C6C5 /* Episode.swift in Sources */,
 				EDFAD38F28D2DC0700ED3BCD /* MovieApi.swift in Sources */,
 				EDD52F6D28DAEBB90078C6C5 /* EpisodeDTO.swift in Sources */,

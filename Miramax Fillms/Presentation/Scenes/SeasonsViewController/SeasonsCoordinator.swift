@@ -10,11 +10,13 @@ import XCoordinator
 enum SeasonsRoute: Route {
     case initial(seasons: [Season])
     case pop
+    case seasonDetail(season: Season)
 }
 
 class SeasonsCoordinator: NavigationCoordinator<SeasonsRoute> {
     
     private let appDIContainer: AppDIContainer
+    private let tvShowId: Int
     
     public override var viewController: UIViewController! {
         return autoreleaseController
@@ -22,8 +24,9 @@ class SeasonsCoordinator: NavigationCoordinator<SeasonsRoute> {
     
     private weak var autoreleaseController: UIViewController?
     
-    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, seasons: [Season]) {
+    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, tvShowId: Int, seasons: [Season]) {
         self.appDIContainer = appDIContainer
+        self.tvShowId = tvShowId
         super.init(rootViewController: rootViewController, initialRoute: nil)
         trigger(.initial(seasons: seasons))
     }
@@ -37,6 +40,9 @@ class SeasonsCoordinator: NavigationCoordinator<SeasonsRoute> {
             return .push(vc)
         case .pop:
             return .pop()
+        case .seasonDetail(season: let season):
+            addChild(SeasonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, tvShowId: tvShowId, season: season))
+            return .none()
         }
     }
 }

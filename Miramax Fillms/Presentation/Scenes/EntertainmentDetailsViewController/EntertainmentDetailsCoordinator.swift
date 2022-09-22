@@ -16,6 +16,7 @@ enum EntertainmentDetailsRoute: Route {
 class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetailsRoute> {
     
     private let appDIContainer: AppDIContainer
+    private let entertainment: EntertainmentModelType
     
     public override var viewController: UIViewController! {
         return autoreleaseController
@@ -25,6 +26,7 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
     
     init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, entertainment: EntertainmentModelType) {
         self.appDIContainer = appDIContainer
+        self.entertainment = entertainment
         super.init(rootViewController: rootViewController, initialRoute: nil)
         trigger(.initial(entertainment: entertainment))
     }
@@ -39,7 +41,7 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
         case .pop:
             return .pop()
         case .seasonsList(seasons: let seasons):
-            addChild(SeasonsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, seasons: seasons))
+            addChild(SeasonsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, tvShowId: entertainment.entertainmentModelId, seasons: seasons))
             return .none()
         }
     }
