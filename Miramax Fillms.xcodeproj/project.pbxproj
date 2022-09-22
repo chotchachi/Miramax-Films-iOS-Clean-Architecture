@@ -92,6 +92,12 @@
 		EDD52F7B28DB6D260078C6C5 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7A28DB6D260078C6C5 /* IntrinsicTableView.swift */; };
 		EDD52F7E28DB6F0E0078C6C5 /* SeasonSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7D28DB6F0E0078C6C5 /* SeasonSmallCell.swift */; };
 		EDD52F8328DB7D4D0078C6C5 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F8228DB7D4D0078C6C5 /* Date+Ext.swift */; };
+		EDD5300A28DC95740078C6C5 /* SeasonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5300928DC95740078C6C5 /* SeasonsViewModel.swift */; };
+		EDD5301328DC97650078C6C5 /* SeasonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5301128DC97650078C6C5 /* SeasonsViewController.swift */; };
+		EDD5301428DC97650078C6C5 /* SeasonsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD5301228DC97650078C6C5 /* SeasonsViewController.xib */; };
+		EDD5301628DC99860078C6C5 /* SeasonsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5301528DC99860078C6C5 /* SeasonsCoordinator.swift */; };
+		EDD5301928DCA03F0078C6C5 /* SeasonLargeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5301828DCA03F0078C6C5 /* SeasonLargeCell.swift */; };
+		EDD5301C28DCB6D00078C6C5 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5301B28DCB6D00078C6C5 /* GradientView.swift */; };
 		EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */; };
 		EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */; };
 		EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE69B3828D60DBA002726B0 /* TabLayout.swift */; };
@@ -255,6 +261,12 @@
 		EDD52F7A28DB6D260078C6C5 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
 		EDD52F7D28DB6F0E0078C6C5 /* SeasonSmallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonSmallCell.swift; sourceTree = "<group>"; };
 		EDD52F8228DB7D4D0078C6C5 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		EDD5300928DC95740078C6C5 /* SeasonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonsViewModel.swift; sourceTree = "<group>"; };
+		EDD5301128DC97650078C6C5 /* SeasonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonsViewController.swift; sourceTree = "<group>"; };
+		EDD5301228DC97650078C6C5 /* SeasonsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasonsViewController.xib; sourceTree = "<group>"; };
+		EDD5301528DC99860078C6C5 /* SeasonsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonsCoordinator.swift; sourceTree = "<group>"; };
+		EDD5301828DCA03F0078C6C5 /* SeasonLargeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonLargeCell.swift; sourceTree = "<group>"; };
+		EDD5301B28DCB6D00078C6C5 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		EDE69B3328D60CF2002726B0 /* TabSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCell.swift; sourceTree = "<group>"; };
 		EDE69B3528D60CF9002726B0 /* TabSelectionCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionCellDelegate.swift; sourceTree = "<group>"; };
 		EDE69B3828D60DBA002726B0 /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
@@ -463,6 +475,7 @@
 				EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */,
 				EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */,
 				EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */,
+				EDB8780628D8AABB0016B96B /* EntertainmentDetailsCoordinator.swift */,
 			);
 			path = EntertainmentDetailsViewController;
 			sourceTree = "<group>";
@@ -594,6 +607,7 @@
 		EDC6DB2528CF6C1900164EBD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EDD5300628DC95210078C6C5 /* SeasonsViewController */,
 				EDB877FF28D8AA600016B96B /* EntertainmentDetailsViewController */,
 				EDE69B3F28D6292D002726B0 /* SearchViewController */,
 				EDC6DB4328CF98E500164EBD /* MovieViewController */,
@@ -629,7 +643,6 @@
 				EDC6DB4128CF961700164EBD /* MovieCoordinator.swift */,
 				EDE69B6928D71464002726B0 /* SearchCoordinator.swift */,
 				EDE69B8128D732A1002726B0 /* TVShowCoordinator.swift */,
-				EDB8780628D8AABB0016B96B /* EntertainmentDetailsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -816,6 +829,33 @@
 			path = SeasonSmallCell;
 			sourceTree = "<group>";
 		};
+		EDD5300628DC95210078C6C5 /* SeasonsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDD5300928DC95740078C6C5 /* SeasonsViewModel.swift */,
+				EDD5301128DC97650078C6C5 /* SeasonsViewController.swift */,
+				EDD5301228DC97650078C6C5 /* SeasonsViewController.xib */,
+				EDD5301528DC99860078C6C5 /* SeasonsCoordinator.swift */,
+			);
+			path = SeasonsViewController;
+			sourceTree = "<group>";
+		};
+		EDD5301728DCA0300078C6C5 /* SeasonLargeCell */ = {
+			isa = PBXGroup;
+			children = (
+				EDD5301828DCA03F0078C6C5 /* SeasonLargeCell.swift */,
+			);
+			path = SeasonLargeCell;
+			sourceTree = "<group>";
+		};
+		EDD5301A28DCB6C90078C6C5 /* GradientView */ = {
+			isa = PBXGroup;
+			children = (
+				EDD5301B28DCB6D00078C6C5 /* GradientView.swift */,
+			);
+			path = GradientView;
+			sourceTree = "<group>";
+		};
 		EDE69B3228D60C9B002726B0 /* TabSelectionCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -950,6 +990,7 @@
 		EDFAD3AF28D3723C00ED3BCD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EDD5301728DCA0300078C6C5 /* SeasonLargeCell */,
 				EDD52F7C28DB6EBA0078C6C5 /* SeasonSmallCell */,
 				EDE69B8528D73ABF002726B0 /* AiringTodayCell */,
 				EDE69B4928D63A31002726B0 /* PersonHorizontalListCell */,
@@ -967,6 +1008,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				EDD5301A28DCB6C90078C6C5 /* GradientView */,
 				EDD52F7928DB6D1F0078C6C5 /* IntrinsicTableView */,
 				EDE69B3728D60DAF002726B0 /* TabLayout */,
 				EDA4478B28D5A74C0037751C /* AppToolbar */,
@@ -1064,6 +1106,7 @@
 			files = (
 				EDC6DB4728CF98F800164EBD /* MovieViewController.xib in Resources */,
 				EDC6DB3728CF759400164EBD /* SplashViewController.xib in Resources */,
+				EDD5301428DC97650078C6C5 /* SeasonsViewController.xib in Resources */,
 				EDE69B4328D62943002726B0 /* SearchViewController.xib in Resources */,
 				EDE69B7E28D73214002726B0 /* TVShowViewController.xib in Resources */,
 				EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */,
@@ -1147,6 +1190,7 @@
 				EDC6DB5328D0623E00164EBD /* Movie.swift in Sources */,
 				EDFAD39C28D30E1A00ED3BCD /* RemoteDataSource.swift in Sources */,
 				EDC6DB7428D0841300164EBD /* ReachabilityManager.swift in Sources */,
+				EDD5300A28DC95740078C6C5 /* SeasonsViewModel.swift in Sources */,
 				EDFAD39128D2E2BF00ED3BCD /* GenreRepositoryProtocol.swift in Sources */,
 				EDC502CA28D376D30047C7C3 /* GenreHorizontalListCell.swift in Sources */,
 				EDC6DB5C28D068CE00164EBD /* GenreDTO.swift in Sources */,
@@ -1159,6 +1203,7 @@
 				EDA4478F28D5A7740037751C /* AppToolbarDelegate.swift in Sources */,
 				EDD52F5728DA14930078C6C5 /* UILabel+Ext.swift in Sources */,
 				EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */,
+				EDD5301C28DCB6D00078C6C5 /* GradientView.swift in Sources */,
 				EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */,
 				EDD52F6F28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift in Sources */,
 				EDE69B9728D7730B002726B0 /* TVShowApi.swift in Sources */,
@@ -1168,6 +1213,7 @@
 				EDC6DB5628D0633F00164EBD /* MovieResponse.swift in Sources */,
 				EDC6DB6728D078B000164EBD /* Api.swift in Sources */,
 				EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */,
+				EDD5301628DC99860078C6C5 /* SeasonsCoordinator.swift in Sources */,
 				EDA4475D28D422320037751C /* MovieHorizontalListCellDelegate.swift in Sources */,
 				EDE69B7D28D73214002726B0 /* TVShowViewController.swift in Sources */,
 				EDB8780728D8AABB0016B96B /* EntertainmentDetailsCoordinator.swift in Sources */,
@@ -1184,6 +1230,7 @@
 				EDFAD39628D3077500ED3BCD /* NetworkingType.swift in Sources */,
 				EDE69B8828D73B97002726B0 /* AiringTodayCell.swift in Sources */,
 				EDC6DB5F28D0713400164EBD /* GenreResponseDTO.swift in Sources */,
+				EDD5301328DC97650078C6C5 /* SeasonsViewController.swift in Sources */,
 				EDC6DB2C28CF70F500164EBD /* AppDIContainer.swift in Sources */,
 				EDD52F5B28DA22250078C6C5 /* EntertainmentDetailModelType.swift in Sources */,
 				EDFAD3A328D313EF00ED3BCD /* RepositoryProviderProtocol.swift in Sources */,
@@ -1194,6 +1241,7 @@
 				EDC6DB4C28CF9D5D00164EBD /* Genre.swift in Sources */,
 				EDE69B3428D60CF2002726B0 /* TabSelectionCell.swift in Sources */,
 				EDFAD3AC28D31C9600ED3BCD /* MovieNetworking.swift in Sources */,
+				EDD5301928DCA03F0078C6C5 /* SeasonLargeCell.swift in Sources */,
 				EDD52F6528DAC1A90078C6C5 /* AiringTodayCellDelegate.swift in Sources */,
 				EDFAD3AE28D36F4700ED3BCD /* MovieViewData.swift in Sources */,
 				EDC502D828D38EDB0047C7C3 /* MovieHorizontalCell.swift in Sources */,

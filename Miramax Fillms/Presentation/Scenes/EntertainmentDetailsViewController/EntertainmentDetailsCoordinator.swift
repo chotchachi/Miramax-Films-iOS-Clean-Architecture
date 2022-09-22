@@ -10,6 +10,7 @@ import XCoordinator
 enum EntertainmentDetailsRoute: Route {
     case initial(entertainment: EntertainmentModelType)
     case pop
+    case seasonsList(seasons: [Season])
 }
 
 class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetailsRoute> {
@@ -37,6 +38,9 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
             return .push(vc)
         case .pop:
             return .pop()
+        case .seasonsList(seasons: let seasons):
+            addChild(SeasonsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, seasons: seasons))
+            return .none()
         }
     }
 }

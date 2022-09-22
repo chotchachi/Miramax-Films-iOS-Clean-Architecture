@@ -141,6 +141,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         let input = EntertainmentDetailsViewModel.Input(
             popViewTrigger: popViewTriggerS.asDriverOnErrorJustComplete(),
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
+            toSeasonListTrigger: seasonsSectionHeaderView.rx.seeMoreButtonTap.asDriver(),
             shareTrigger: btnShare.rx.tap.asDriver(),
             retryTrigger: retryTriggerS.asDriverOnErrorJustComplete()
         )

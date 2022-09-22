@@ -13,6 +13,7 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let popViewTrigger: Driver<Void>
         let toSearchTrigger: Driver<Void>
+        let toSeasonListTrigger: Driver<Void>
         let shareTrigger: Driver<Void>
         let retryTrigger: Driver<Void>
     }
@@ -52,6 +53,16 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.router.trigger(.pop)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.toSeasonListTrigger
+            .withLatestFrom(entertainmentDetailD)
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                if let seasons = item.entertainmentSeasons {
+                    self.router.trigger(.seasonsList(seasons: seasons))
+                }
             })
             .disposed(by: rx.disposeBag)
         
