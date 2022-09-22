@@ -20,8 +20,8 @@ class SeasonDetailsViewController: BaseViewController<SeasonDetailsViewModel> {
     
     // MARK: - Properties
     
-    private var popViewTriggerS = PublishRelay<Void>()
-    private var episodeSelectTriggerS = PublishRelay<Episode>()
+    private let popViewTriggerS = PublishRelay<Void>()
+    private let episodeSelectTriggerS = PublishRelay<Episode>()
     
     override func configView() {
         super.configView()
