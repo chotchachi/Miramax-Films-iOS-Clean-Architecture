@@ -7,13 +7,15 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 final class SectionHeaderView: UIView {
     
     // MARK: - Views
     
-    private var lblHeaderTitle: UILabel!
-    private var btnSeeMore: UIButton!
+    fileprivate var lblHeaderTitle: UILabel!
+    fileprivate var btnSeeMore: UIButton!
     
     // MARK: - Properties
     
@@ -83,5 +85,11 @@ final class SectionHeaderView: UIView {
     
     @objc private func seeMoreButtonTapped(_ sender: UIButton) {
         delegate?.sectionHeaderView(onSeeMoreButtonTapped: sender)
+    }
+}
+
+extension Reactive where Base: SectionHeaderView {
+    var seeMoreButtonTap: ControlEvent<Void> {
+        return base.btnSeeMore.rx.tap
     }
 }
