@@ -142,6 +142,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
             popViewTrigger: popViewTriggerS.asDriverOnErrorJustComplete(),
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             toSeasonListTrigger: seasonsSectionHeaderView.rx.seeMoreButtonTap.asDriver(),
+            seasonSelectTrigger: seasonSelectTriggerS.asDriverOnErrorJustComplete(),
             shareTrigger: btnShare.rx.tap.asDriver(),
             retryTrigger: retryTriggerS.asDriverOnErrorJustComplete()
         )
