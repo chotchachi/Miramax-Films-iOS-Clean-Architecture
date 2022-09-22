@@ -60,8 +60,6 @@
 		EDC6DB3628CF759400164EBD /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB3428CF759400164EBD /* SplashViewController.swift */; };
 		EDC6DB3728CF759400164EBD /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC6DB3528CF759400164EBD /* SplashViewController.xib */; };
 		EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB3828CF764500164EBD /* SplashViewModel.swift */; };
-		EDC6DB3C28CF8F1700164EBD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB3B28CF8F1700164EBD /* HomeViewController.swift */; };
-		EDC6DB3E28CF8F3400164EBD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB3D28CF8F3400164EBD /* HomeViewModel.swift */; };
 		EDC6DB4028CF92DE00164EBD /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB3F28CF92DE00164EBD /* HomeCoordinator.swift */; };
 		EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB4128CF961700164EBD /* MovieCoordinator.swift */; };
 		EDC6DB4628CF98F800164EBD /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB4428CF98F800164EBD /* MovieViewController.swift */; };
@@ -225,8 +223,6 @@
 		EDC6DB3428CF759400164EBD /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		EDC6DB3528CF759400164EBD /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		EDC6DB3828CF764500164EBD /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
-		EDC6DB3B28CF8F1700164EBD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		EDC6DB3D28CF8F3400164EBD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		EDC6DB3F28CF92DE00164EBD /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		EDC6DB4128CF961700164EBD /* MovieCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCoordinator.swift; sourceTree = "<group>"; };
 		EDC6DB4428CF98F800164EBD /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
@@ -602,7 +598,6 @@
 				EDE69B3F28D6292D002726B0 /* SearchViewController */,
 				EDC6DB4328CF98E500164EBD /* MovieViewController */,
 				EDE69B7A28D731FB002726B0 /* TVShowViewController */,
-				EDC6DB3A28CF8E9700164EBD /* HomeViewController */,
 				EDC6DB3328CF758100164EBD /* SplashViewController */,
 				EDC6DB2D28CF715800164EBD /* MainNavigationController */,
 			);
@@ -647,15 +642,6 @@
 				EDC6DB3828CF764500164EBD /* SplashViewModel.swift */,
 			);
 			path = SplashViewController;
-			sourceTree = "<group>";
-		};
-		EDC6DB3A28CF8E9700164EBD /* HomeViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EDC6DB3B28CF8F1700164EBD /* HomeViewController.swift */,
-				EDC6DB3D28CF8F3400164EBD /* HomeViewModel.swift */,
-			);
-			path = HomeViewController;
 			sourceTree = "<group>";
 		};
 		EDC6DB4328CF98E500164EBD /* MovieViewController */ = {
@@ -1189,7 +1175,6 @@
 				EDD52F7128DAF2890078C6C5 /* SearchRepository.swift in Sources */,
 				EDB8781128D8C2870016B96B /* CastDTO.swift in Sources */,
 				EDE69B9128D76E7A002726B0 /* TVShowResponse.swift in Sources */,
-				EDC6DB3E28CF8F3400164EBD /* HomeViewModel.swift in Sources */,
 				EDC6DB2428CF6A0800164EBD /* ViewModelType.swift in Sources */,
 				EDFAD39828D3090B00ED3BCD /* GenreNetworking.swift in Sources */,
 				EDB8781528D8C4760016B96B /* MovieDetail.swift in Sources */,
@@ -1229,7 +1214,6 @@
 				EDC6DB5128D039A400164EBD /* MovieRepositoryProtocol.swift in Sources */,
 				EDE69B8F28D74459002726B0 /* TVShow.swift in Sources */,
 				EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */,
-				EDC6DB3C28CF8F1700164EBD /* HomeViewController.swift in Sources */,
 				EDC502D028D377CC0047C7C3 /* GenreCell.swift in Sources */,
 				EDB8781D28D8D7260016B96B /* Season.swift in Sources */,
 				EDFAD38928D2465700ED3BCD /* MovieResponseDTO.swift in Sources */,
