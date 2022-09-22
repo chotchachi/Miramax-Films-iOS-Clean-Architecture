@@ -19,4 +19,5 @@ extension AppColors {
     static let colorQuaternary = UIColor(named: "ColorQuaternary")!
     static let textColorPrimary = UIColor.white
     static let textColorSecondary = UIColor.white.withAlphaComponent(0.5)
+    static let colorYellow = UIColor(named: "ColorYellow")!
 }
