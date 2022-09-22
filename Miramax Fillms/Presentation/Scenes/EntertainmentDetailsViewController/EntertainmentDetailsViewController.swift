@@ -11,6 +11,8 @@ import RxSwift
 import Kingfisher
 import SwifterSwift
 
+fileprivate let kSeasonsMaxItems: Int = 3
+
 class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetailsViewModel> {
     
     // MARK: - Outlets + Views
@@ -237,7 +239,11 @@ extension EntertainmentDetailsViewController {
 
 extension EntertainmentDetailsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return entertainmentDetail?.entertainmentSeasons?.count ?? 0
+        if let seasonCount = entertainmentDetail?.entertainmentSeasons?.count {
+            return seasonCount >= kSeasonsMaxItems ? kSeasonsMaxItems : seasonCount
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
