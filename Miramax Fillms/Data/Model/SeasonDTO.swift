@@ -15,6 +15,7 @@ struct SeasonDTO : Mappable {
     var episodeCount: Int?
     var posterPath: String?
     var seasonNumber: Int!
+    var episodes: [EpisodeDTO]?
     
     init?(map: Map) {
         
@@ -28,11 +29,12 @@ struct SeasonDTO : Mappable {
         episodeCount <- map["episode_count"]
         posterPath <- map["poster_path"]
         seasonNumber <- map["season_number"]
+        episodes <- map["episodes"]
     }
 }
 
 extension SeasonDTO: DomainConvertibleType {
     func asDomain() -> Season {
-        return Season(id: id, name: name, overview: overview, airDate: airDate, episodeCount: episodeCount, posterPath: posterPath, seasonNumber: seasonNumber)
+        return Season(id: id, name: name, overview: overview, airDate: airDate, episodeCount: episodeCount, posterPath: posterPath, seasonNumber: seasonNumber, episodes: episodes?.map { $0.asDomain() })
     }
 }

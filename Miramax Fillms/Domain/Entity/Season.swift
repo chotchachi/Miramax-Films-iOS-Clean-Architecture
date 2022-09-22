@@ -15,6 +15,7 @@ struct Season: Equatable {
     let episodeCount: Int?
     let posterPath: String?
     let seasonNumber: Int
+    let episodes: [Episode]?
 }
 
 extension Season: ImageConfigurable {
