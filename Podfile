@@ -27,6 +27,6 @@ target 'Miramax Fillms' do
   pod 'ObjectMapper', '~> 4.2.0'
   pod 'Moya/RxSwift', '~> 15.0'
   pod 'Swinject', '~> 2.8.2'
-  
+  pod 'RealmSwift', '~>10'
   
 end
