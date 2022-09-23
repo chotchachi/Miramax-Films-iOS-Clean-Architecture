@@ -12,7 +12,6 @@ struct Movie: Equatable {
     let title: String
     let backdropPath: String?
     let posterPath: String?
-    let genreIDS: [Int]
     let overview: String
     let releaseDate: String
     let voteAverage: Double
