@@ -665,8 +665,6 @@
 			children = (
 				EDC6DB3128CF724A00164EBD /* AppCoordinator.swift */,
 				EDC6DB3F28CF92DE00164EBD /* HomeCoordinator.swift */,
-				EDC6DB4128CF961700164EBD /* MovieCoordinator.swift */,
-				EDE69B8128D732A1002726B0 /* TVShowCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -688,6 +686,7 @@
 				EDC6DB4528CF98F800164EBD /* MovieViewController.xib */,
 				EDC6DB4828CF990900164EBD /* MovieViewModel.swift */,
 				EDFAD3AD28D36F4700ED3BCD /* MovieViewData.swift */,
+				EDC6DB4128CF961700164EBD /* MovieCoordinator.swift */,
 			);
 			path = MovieViewController;
 			sourceTree = "<group>";
@@ -968,6 +967,7 @@
 				EDE69B7C28D73214002726B0 /* TVShowViewController.xib */,
 				EDE69B7F28D7321F002726B0 /* TVShowViewModel.swift */,
 				EDE69B8328D73395002726B0 /* TVShowViewData.swift */,
+				EDE69B8128D732A1002726B0 /* TVShowCoordinator.swift */,
 			);
 			path = TVShowViewController;
 			sourceTree = "<group>";
