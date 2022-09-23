@@ -8,8 +8,8 @@
 import ObjectMapper
 
 struct GenreDTO : Mappable {
-    var id: Int!
-    var name: String!
+    var id: Int = 0
+    var name: String = ""
     
     init?(map: Map) {
         
