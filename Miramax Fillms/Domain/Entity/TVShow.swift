@@ -12,10 +12,8 @@ struct TVShow: Equatable {
     let name: String
     let backdropPath: String?
     let posterPath: String?
-    let genreIDS: [Int]
     let overview: String
     let voteAverage: Double
-    let voteCount: Int
 }
 
 extension TVShow: ImageConfigurable {
