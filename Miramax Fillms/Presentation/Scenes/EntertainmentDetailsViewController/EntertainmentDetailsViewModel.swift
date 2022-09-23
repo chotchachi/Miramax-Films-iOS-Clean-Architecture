@@ -57,6 +57,13 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
+        input.toSearchTrigger
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.router.trigger(.search)
+            })
+            .disposed(by: rx.disposeBag)
+        
         input.toSeasonListTrigger
             .withLatestFrom(entertainmentDetailD)
             .drive(onNext: { [weak self] item in

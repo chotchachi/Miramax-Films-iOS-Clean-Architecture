@@ -68,9 +68,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
 
     override func configView() {
         super.configView()
-        
-        // Toolbar
-        
+                
         btnSearch = UIButton(type: .system)
         btnSearch.translatesAutoresizingMaskIntoConstraints = false
         btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
@@ -84,17 +82,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         appToolbar.rx.backButtonTap
             .bind(to: popViewTriggerS)
             .disposed(by: rx.disposeBag)
-        
-        // Scroll view
-        
-        scrollView.isHidden = true /// initial hidden
-        
-        // Loading indicator
-        
-        loadingIndicator.startAnimating()
-        
-        // Poster image view
-        
+                
         ivPoster.kf.indicatorType = .activity
         
         overviewSectionHeaderView.title = "overview".localized
@@ -112,6 +100,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         configureSeasonsTableView()
         configureActorsCollectionView()
         configureRecommendCollectionView()
+        initialViewState()
     }
     
     override func bindViewModel() {
@@ -133,6 +122,8 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
                 self.entertainmentDetail = item
                 self.bindData(item)
                 self.scrollView.isHidden = false
+                self.btnShare.isEnabled = true
+                self.btnShare.alpha = 1.0
             })
             .disposed(by: rx.disposeBag)
         
@@ -260,6 +251,12 @@ extension EntertainmentDetailsViewController {
         seasonsDataS.accept(entertainmentDetail.entertainmentSeasons ?? [])
     }
 
+    private func initialViewState() {
+        scrollView.isHidden = true
+        loadingIndicator.startAnimating()
+        btnShare.isEnabled = false
+        btnShare.alpha = 0.5
+    }
 }
 
 // MARK: - UITableViewDelegate
