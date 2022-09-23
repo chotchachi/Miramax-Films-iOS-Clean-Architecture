@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import RxDataSources
 import Kingfisher
 import SwifterSwift
 
@@ -57,10 +58,12 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
 
     // MARK: - Properties
     
-    private var popViewTriggerS = PublishRelay<Void>()
-    private var retryTriggerS = PublishRelay<Void>()
-    private var seasonSelectTriggerS = PublishRelay<Season>()
+    private let popViewTriggerS = PublishRelay<Void>()
+    private let retryTriggerS = PublishRelay<Void>()
+    private let seasonSelectTriggerS = PublishRelay<Season>()
 
+    private let seasonsDataS = BehaviorRelay<[Season]>(value: [])
+    
     private var entertainmentDetail: EntertainmentDetailModelType?
 
     override func configView() {
@@ -106,33 +109,9 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         
         recommendSectionHeaderView.title = "recommend".localized
         
-        // Seasons tsable view
-        seasonsTableView.dataSource = self
-        seasonsTableView.delegate = self
-        seasonsTableView.separatorStyle = .none
-        seasonsTableView.showsVerticalScrollIndicator = false
-        seasonsTableView.isScrollEnabled = false
-        seasonsTableView.register(cellWithClass: SeasonSmallCell.self)
-
-        // Actors collection view
-        
-        let actorsCollectionViewLayout = UICollectionViewFlowLayout()
-        actorsCollectionViewLayout.scrollDirection = .horizontal
-        actorsCollectionView.collectionViewLayout = actorsCollectionViewLayout
-        actorsCollectionView.register(cellWithClass: PersonHorizontalCell.self)
-        actorsCollectionView.dataSource = self
-        actorsCollectionView.delegate = self
-        actorsCollectionView.showsHorizontalScrollIndicator = false
-        
-        // Recommend collection view
-        
-        let recommendCollectionViewLayout = UICollectionViewFlowLayout()
-        recommendCollectionViewLayout.scrollDirection = .horizontal
-        recommendCollectionView.collectionViewLayout = recommendCollectionViewLayout
-        recommendCollectionView.register(cellWithClass: MovieHorizontalCell.self)
-        recommendCollectionView.dataSource = self
-        recommendCollectionView.delegate = self
-        recommendCollectionView.showsHorizontalScrollIndicator = false
+        configureSeasonsTableView()
+        configureActorsCollectionView()
+        configureRecommendCollectionView()
     }
     
     override func bindViewModel() {
@@ -191,6 +170,51 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
 // MARK: - Private functions
 
 extension EntertainmentDetailsViewController {
+    private func configureSeasonsTableView() {
+        seasonsTableView.delegate = self
+        seasonsTableView.separatorStyle = .none
+        seasonsTableView.showsVerticalScrollIndicator = false
+        seasonsTableView.isScrollEnabled = false
+        seasonsTableView.register(cellWithClass: SeasonSmallCell.self)
+        
+        let seasonDataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Season>> { dataSource, tableView, indexPath, item in
+            let cell = tableView.dequeueReusableCell(withClass: SeasonSmallCell.self)
+            cell.bind(item, offset: indexPath.row)
+            cell.onPlayButtonTapped = { [weak self] in
+                guard let self = self else { return }
+                self.seasonSelectTriggerS.accept(item)
+            }
+            return cell
+        }
+        
+        seasonsDataS
+            .asDriver()
+            .map { Array($0.prefix(kSeasonsMaxItems)) }
+            .map { [SectionModel(model: "", items: $0)] }
+            .drive(seasonsTableView.rx.items(dataSource: seasonDataSource))
+            .disposed(by: rx.disposeBag)
+    }
+    
+    private func configureActorsCollectionView() {
+        let actorsCollectionViewLayout = UICollectionViewFlowLayout()
+        actorsCollectionViewLayout.scrollDirection = .horizontal
+        actorsCollectionView.collectionViewLayout = actorsCollectionViewLayout
+        actorsCollectionView.register(cellWithClass: PersonHorizontalCell.self)
+        actorsCollectionView.dataSource = self
+        actorsCollectionView.delegate = self
+        actorsCollectionView.showsHorizontalScrollIndicator = false
+    }
+    
+    private func configureRecommendCollectionView() {
+        let recommendCollectionViewLayout = UICollectionViewFlowLayout()
+        recommendCollectionViewLayout.scrollDirection = .horizontal
+        recommendCollectionView.collectionViewLayout = recommendCollectionViewLayout
+        recommendCollectionView.register(cellWithClass: MovieHorizontalCell.self)
+        recommendCollectionView.dataSource = self
+        recommendCollectionView.delegate = self
+        recommendCollectionView.showsHorizontalScrollIndicator = false
+    }
+    
     private func bindData(_ entertainmentDetail: EntertainmentDetailModelType) {
         if let posterURL = entertainmentDetail.entertainmentPosterURL {
             ivPoster.kf.setImage(with: posterURL)
@@ -230,35 +254,17 @@ extension EntertainmentDetailsViewController {
         lblWriters.text = "Writers: \(writersString)"
         lblWriters.highlight(text: writersString, color: .white.withAlphaComponent(0.5))
         
-        seasonsTableView.reloadData()
         actorsCollectionView.reloadData()
         recommendCollectionView.reloadData()
+        
+        seasonsDataS.accept(entertainmentDetail.entertainmentSeasons ?? [])
     }
 
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - UITableViewDelegate
 
-extension EntertainmentDetailsViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let seasonCount = entertainmentDetail?.entertainmentSeasons?.count {
-            return seasonCount >= kSeasonsMaxItems ? kSeasonsMaxItems : seasonCount
-        } else {
-            return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let item = entertainmentDetail?.entertainmentSeasons?[indexPath.row] else { return UITableViewCell() }
-        let cell = tableView.dequeueReusableCell(withClass: SeasonSmallCell.self, for: indexPath)
-        cell.bind(item, offset: indexPath.row)
-        cell.onPlayButtonTapped = { [weak self] in
-            guard let self = self else { return }
-            self.seasonSelectTriggerS.accept(item)
-        }
-        return cell
-    }
-    
+extension EntertainmentDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return DimensionConstants.seasonSmallCellHeight
     }
@@ -267,6 +273,7 @@ extension EntertainmentDetailsViewController: UITableViewDataSource, UITableView
         guard let item = entertainmentDetail?.entertainmentSeasons?[indexPath.row] else { return }
         seasonSelectTriggerS.accept(item)
     }
+    
 }
 
 // MARK: - UICollectionViewDataSource
