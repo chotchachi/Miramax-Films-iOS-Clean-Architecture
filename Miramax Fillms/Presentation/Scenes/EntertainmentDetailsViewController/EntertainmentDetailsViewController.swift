@@ -13,6 +13,7 @@ import Kingfisher
 import SwifterSwift
 
 fileprivate let kSeasonsMaxItems: Int = 3
+fileprivate let kOverviewLabelMaxLines: Int = 5
 
 class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetailsViewModel> {
     
@@ -37,6 +38,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
 
     @IBOutlet weak var overviewSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var lblOverview: UILabel!
+    @IBOutlet weak var btnSeeMoreOverview: UIButton!
     
     @IBOutlet weak var seasonsSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var seasonsTableView: IntrinsicTableView!
@@ -66,41 +68,18 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     
     private var entertainmentDetail: EntertainmentDetailModelType?
 
+    private var lblOverviewShowMore = false
+
     override func configView() {
         super.configView()
-                
-        btnSearch = UIButton(type: .system)
-        btnSearch.translatesAutoresizingMaskIntoConstraints = false
-        btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
         
-        btnShare = UIButton(type: .system)
-        btnShare.translatesAutoresizingMaskIntoConstraints = false
-        btnShare.setImage(UIImage(named: "ic_toolbar_share"), for: .normal)
-        
-        appToolbar.showTitleLabel = false
-        appToolbar.rightButtons = [btnSearch, btnShare]
-        appToolbar.rx.backButtonTap
-            .bind(to: popViewTriggerS)
-            .disposed(by: rx.disposeBag)
-                
-        ivPoster.kf.indicatorType = .activity
-        
-        overviewSectionHeaderView.title = "overview".localized
-        overviewSectionHeaderView.showSeeMoreButton = false
-        
-        seasonsSectionHeaderView.title = "seasons".localized
-        
-        actorsSectionHeaderView.title = "actors".localized
-        actorsSectionHeaderView.showSeeMoreButton = false
-        
-        gallerySectionHeaderView.title = "gallery".localized
-        
-        recommendSectionHeaderView.title = "recommend".localized
-        
-        configureSeasonsTableView()
-        configureActorsCollectionView()
-        configureRecommendCollectionView()
-        initialViewState()
+        configureAppToolbar()
+        configureOverviewSection()
+        configureSeasonsSection()
+        configureActorsSection()
+        configureGallerySection()
+        configureRecommendSection()
+        configureOthersView()
     }
     
     override func bindViewModel() {
@@ -161,7 +140,47 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
 // MARK: - Private functions
 
 extension EntertainmentDetailsViewController {
-    private func configureSeasonsTableView() {
+    private func configureAppToolbar() {
+        btnSearch = UIButton(type: .system)
+        btnSearch.translatesAutoresizingMaskIntoConstraints = false
+        btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
+        
+        btnShare = UIButton(type: .system)
+        btnShare.translatesAutoresizingMaskIntoConstraints = false
+        btnShare.setImage(UIImage(named: "ic_toolbar_share"), for: .normal)
+        
+        appToolbar.showTitleLabel = false
+        appToolbar.rightButtons = [btnSearch, btnShare]
+        appToolbar.rx.backButtonTap
+            .bind(to: popViewTriggerS)
+            .disposed(by: rx.disposeBag)
+    }
+    
+    private func configureOverviewSection() {
+        overviewSectionHeaderView.title = "overview".localized
+        overviewSectionHeaderView.showSeeMoreButton = false
+        
+        lblOverview.numberOfLines = kOverviewLabelMaxLines
+        
+        btnSeeMoreOverview.setTitle("see_more".localized, for: .normal)
+        btnSeeMoreOverview.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                UIView.transition(with: self.lblOverview, duration: 0.25, options: .transitionCrossDissolve, animations: {
+                    self.lblOverviewShowMore
+                    ? (self.lblOverview.numberOfLines = kOverviewLabelMaxLines)
+                    : (self.lblOverview.numberOfLines = 0)
+                    self.btnSeeMoreOverview.setTitle(self.lblOverviewShowMore ? "see_more".localized : "see_less".localized, for: .normal)
+                }) { _ in
+                    self.lblOverviewShowMore.toggle()
+                }
+            })
+            .disposed(by: rx.disposeBag)
+    }
+    
+    private func configureSeasonsSection() {
+        seasonsSectionHeaderView.title = "seasons".localized
+
         seasonsTableView.delegate = self
         seasonsTableView.separatorStyle = .none
         seasonsTableView.showsVerticalScrollIndicator = false
@@ -186,7 +205,10 @@ extension EntertainmentDetailsViewController {
             .disposed(by: rx.disposeBag)
     }
     
-    private func configureActorsCollectionView() {
+    private func configureActorsSection() {
+        actorsSectionHeaderView.title = "actors".localized
+        actorsSectionHeaderView.showSeeMoreButton = false
+        
         let actorsCollectionViewLayout = UICollectionViewFlowLayout()
         actorsCollectionViewLayout.scrollDirection = .horizontal
         actorsCollectionView.collectionViewLayout = actorsCollectionViewLayout
@@ -196,7 +218,14 @@ extension EntertainmentDetailsViewController {
         actorsCollectionView.showsHorizontalScrollIndicator = false
     }
     
-    private func configureRecommendCollectionView() {
+    private func configureGallerySection() {
+        gallerySectionHeaderView.title = "gallery".localized
+
+    }
+    
+    private func configureRecommendSection() {
+        recommendSectionHeaderView.title = "recommend".localized
+
         let recommendCollectionViewLayout = UICollectionViewFlowLayout()
         recommendCollectionViewLayout.scrollDirection = .horizontal
         recommendCollectionView.collectionViewLayout = recommendCollectionViewLayout
@@ -204,6 +233,14 @@ extension EntertainmentDetailsViewController {
         recommendCollectionView.dataSource = self
         recommendCollectionView.delegate = self
         recommendCollectionView.showsHorizontalScrollIndicator = false
+    }
+    
+    private func configureOthersView() {
+        ivPoster.kf.indicatorType = .activity
+        scrollView.isHidden = true
+        loadingIndicator.startAnimating()
+        btnShare.isEnabled = false
+        btnShare.alpha = 0.5
     }
     
     private func bindData(_ entertainmentDetail: EntertainmentDetailModelType) {
@@ -249,13 +286,6 @@ extension EntertainmentDetailsViewController {
         recommendCollectionView.reloadData()
         
         seasonsDataS.accept(entertainmentDetail.entertainmentSeasons ?? [])
-    }
-
-    private func initialViewState() {
-        scrollView.isHidden = true
-        loadingIndicator.startAnimating()
-        btnShare.isEnabled = false
-        btnShare.alpha = 0.5
     }
 }
 

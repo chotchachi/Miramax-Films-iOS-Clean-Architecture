@@ -666,7 +666,6 @@
 				EDC6DB3128CF724A00164EBD /* AppCoordinator.swift */,
 				EDC6DB3F28CF92DE00164EBD /* HomeCoordinator.swift */,
 				EDC6DB4128CF961700164EBD /* MovieCoordinator.swift */,
-				EDE69B6928D71464002726B0 /* SearchCoordinator.swift */,
 				EDE69B8128D732A1002726B0 /* TVShowCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -927,6 +926,7 @@
 				EDE69B4128D62943002726B0 /* SearchViewController.xib */,
 				EDE69B4428D6294D002726B0 /* SearchViewModel.swift */,
 				EDE69B4628D6312F002726B0 /* SearchViewData.swift */,
+				EDE69B6928D71464002726B0 /* SearchCoordinator.swift */,
 			);
 			path = SearchViewController;
 			sourceTree = "<group>";

@@ -14,6 +14,7 @@
                 <outlet property="actorsCollectionView" destination="qWn-yn-d4z" id="Xa2-L5-zC0"/>
                 <outlet property="actorsSectionHeaderView" destination="aCn-cF-N4o" id="2b5-0u-0Db"/>
                 <outlet property="appToolbar" destination="twN-0J-lwG" id="PRk-5G-clh"/>
+                <outlet property="btnSeeMoreOverview" destination="lZk-Bn-NcY" id="HGL-TE-30e"/>
                 <outlet property="gallerySectionHeaderView" destination="Apb-3h-i54" id="WrG-AD-Puq"/>
                 <outlet property="ivPoster" destination="lyU-Xt-BQn" id="2HV-Y7-Jpe"/>
                 <outlet property="lblDirector" destination="9Er-wk-P5f" id="ejC-7z-qcv"/>
@@ -57,7 +58,7 @@
                     <rect key="frame" x="0.0" y="101" width="390" height="709"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLu-ix-PIr">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="1348"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="1372"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhj-Go-AHS" userLabel="Section Title">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="89.333333333333329"/>
@@ -302,7 +303,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ni3-US-Axb" userLabel="Section Overview">
-                                    <rect key="frame" x="0.0" y="412" width="390" height="101"/>
+                                    <rect key="frame" x="0.0" y="412" width="390" height="125"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wju-qU-NfZ" userLabel="Overview Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="24" width="390" height="24"/>
@@ -311,26 +312,41 @@
                                                 <constraint firstAttribute="height" constant="24" id="t7r-Dc-EKo"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rh8-9a-Ldk" userLabel="Overview Label">
-                                            <rect key="frame" x="16" y="60" width="358" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" white="1" alpha="0.50987856080000005" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="e2y-Fs-eNq">
+                                            <rect key="frame" x="16" y="60" width="358" height="41"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rh8-9a-Ldk" userLabel="Overview Label">
+                                                    <rect key="frame" x="0.0" y="0.0" width="35.333333333333336" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="0.50987856080000005" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZk-Bn-NcY">
+                                                    <rect key="frame" x="0.0" y="21" width="66" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="ac5-9K-osB"/>
+                                                    </constraints>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="See more">
+                                                        <color key="titleColor" name="ColorAccent"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="e2y-Fs-eNq" secondAttribute="bottom" constant="24" id="5fK-3L-myS"/>
                                         <constraint firstItem="wju-qU-NfZ" firstAttribute="leading" secondItem="Ni3-US-Axb" secondAttribute="leading" id="62p-rU-I3S"/>
-                                        <constraint firstAttribute="trailing" secondItem="rh8-9a-Ldk" secondAttribute="trailing" constant="16" id="IwZ-Z5-cse"/>
                                         <constraint firstAttribute="trailing" secondItem="wju-qU-NfZ" secondAttribute="trailing" id="Wgm-ff-sjk"/>
-                                        <constraint firstItem="rh8-9a-Ldk" firstAttribute="top" secondItem="wju-qU-NfZ" secondAttribute="bottom" constant="12" id="dgk-ch-PKw"/>
-                                        <constraint firstAttribute="bottom" secondItem="rh8-9a-Ldk" secondAttribute="bottom" constant="24" id="pjG-T8-tQ2"/>
+                                        <constraint firstItem="e2y-Fs-eNq" firstAttribute="top" secondItem="wju-qU-NfZ" secondAttribute="bottom" constant="12" id="cFO-lr-c1M"/>
+                                        <constraint firstAttribute="trailing" secondItem="e2y-Fs-eNq" secondAttribute="trailing" constant="16" id="djm-gM-Gf8"/>
+                                        <constraint firstItem="e2y-Fs-eNq" firstAttribute="leading" secondItem="Ni3-US-Axb" secondAttribute="leading" constant="16" id="jox-f9-htT"/>
                                         <constraint firstItem="wju-qU-NfZ" firstAttribute="top" secondItem="Ni3-US-Axb" secondAttribute="top" constant="24" id="r0D-Go-K3z"/>
-                                        <constraint firstItem="rh8-9a-Ldk" firstAttribute="leading" secondItem="Ni3-US-Axb" secondAttribute="leading" constant="16" id="xtr-yR-WzQ"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sk4-rt-gYx" userLabel="Section Seasons">
-                                    <rect key="frame" x="0.0" y="513" width="390" height="222"/>
+                                    <rect key="frame" x="0.0" y="537" width="390" height="222"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCL-Bl-SIt" userLabel="Seasons Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="12" width="390" height="24"/>
@@ -359,7 +375,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnC-om-0Tr" userLabel="Section Credits">
-                                    <rect key="frame" x="0.0" y="735" width="390" height="266"/>
+                                    <rect key="frame" x="0.0" y="759" width="390" height="266"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCn-cF-N4o" userLabel="Actors Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="16" width="390" height="24"/>
@@ -432,7 +448,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VOg-ps-3jd" userLabel="Section Gallery">
-                                    <rect key="frame" x="0.0" y="1001" width="390" height="100"/>
+                                    <rect key="frame" x="0.0" y="1025" width="390" height="100"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Apb-3h-i54" userLabel="Gallery Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="32" width="390" height="24"/>
@@ -451,7 +467,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbK-8a-hxP" userLabel="Section Recommend">
-                                    <rect key="frame" x="0.0" y="1101" width="390" height="223"/>
+                                    <rect key="frame" x="0.0" y="1125" width="390" height="223"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRO-VA-K0B" userLabel="Recommend Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="32" width="390" height="24"/>
@@ -547,6 +563,9 @@
         <image name="ic_play_circle" width="60" height="60"/>
         <image name="ic_start_fill" width="24" height="24"/>
         <image name="ic_time_fill" width="24" height="24"/>
+        <namedColor name="ColorAccent">
+            <color red="0.90200001001358032" green="0.0040000001899898052" blue="0.13699999451637268" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="ColorPrimary">
             <color red="0.024000000208616257" green="0.067000001668930054" blue="0.21199999749660492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
