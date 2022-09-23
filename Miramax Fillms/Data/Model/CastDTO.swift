@@ -8,9 +8,9 @@
 import ObjectMapper
 
 struct CastDTO : Mappable {
-    var id: Int!
-    var name: String!
-    var character: String!
+    var id: Int = 0
+    var name: String = ""
+    var character: String = ""
     var profilePath: String?
     
     init?(map: Map) {
@@ -27,6 +27,11 @@ struct CastDTO : Mappable {
 
 extension CastDTO: DomainConvertibleType {
     func asDomain() -> Cast {
-        return Cast(id: id, name: name, character: character, profilePath: profilePath)
+        return Cast(
+            id: id,
+            name: name,
+            character: character,
+            profilePath: profilePath
+        )
     }
 }

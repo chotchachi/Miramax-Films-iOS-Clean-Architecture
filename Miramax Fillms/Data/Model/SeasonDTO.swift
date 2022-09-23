@@ -8,13 +8,13 @@
 import ObjectMapper
 
 struct SeasonDTO : Mappable {
-    var id: Int!
-    var name: String!
-    var overview: String!
+    var id: Int = 0
+    var name: String = ""
+    var overview: String = ""
     var airDate: String?
     var episodeCount: Int?
     var posterPath: String?
-    var seasonNumber: Int!
+    var seasonNumber: Int = 0
     var episodes: [EpisodeDTO]?
     
     init?(map: Map) {
@@ -35,6 +35,15 @@ struct SeasonDTO : Mappable {
 
 extension SeasonDTO: DomainConvertibleType {
     func asDomain() -> Season {
-        return Season(id: id, name: name, overview: overview, airDate: airDate, episodeCount: episodeCount, posterPath: posterPath, seasonNumber: seasonNumber, episodes: episodes?.map { $0.asDomain() })
+        return Season(
+            id: id,
+            name: name,
+            overview: overview,
+            airDate: airDate,
+            episodeCount: episodeCount,
+            posterPath: posterPath,
+            seasonNumber: seasonNumber,
+            episodes: episodes?.map { $0.asDomain() }
+        )
     }
 }

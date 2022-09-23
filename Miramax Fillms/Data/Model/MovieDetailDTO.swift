@@ -8,14 +8,14 @@
 import ObjectMapper
 
 struct MovieDetailDTO : Mappable {
-    var id: Int!
-    var title: String!
+    var id: Int = 0
+    var title: String = ""
     var backdropPath: String?
     var posterPath: String?
-    var genres: [GenreDTO]!
-    var overview: String!
-    var releaseDate: String!
-    var voteAverage: Double!
+    var genres: [GenreDTO] = []
+    var overview: String = ""
+    var releaseDate: String = ""
+    var voteAverage: Double = 0.0
     var runtime: Int?
     var credits: CreditDTO?
     var recommendations: MovieResponseDTO?
@@ -41,6 +41,18 @@ struct MovieDetailDTO : Mappable {
 
 extension MovieDetailDTO: DomainConvertibleType {
     func asDomain() -> MovieDetail {
-        return MovieDetail(id: id, title: title, backdropPath: backdropPath, posterPath: posterPath, genres: genres.map { $0.asDomain() }, overview: overview, releaseDate: releaseDate, voteAverage: voteAverage, runtime: runtime, credits: credits.map { $0.asDomain() }, recommendations: recommendations?.asDomain())
+        return MovieDetail(
+            id: id,
+            title: title,
+            backdropPath: backdropPath,
+            posterPath: posterPath,
+            genres: genres.map { $0.asDomain() },
+            overview: overview,
+            releaseDate: releaseDate,
+            voteAverage: voteAverage,
+            runtime: runtime,
+            credits: credits.map { $0.asDomain() },
+            recommendations: recommendations?.asDomain()
+        )
     }
 }

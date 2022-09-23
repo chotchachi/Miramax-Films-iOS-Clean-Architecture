@@ -11,9 +11,7 @@ struct Episode: Equatable {
     let id: Int
     let name: String
     let overview: String
-    let runtime: Int?
     let episodeNumber: Int
     let seasonNumber: Int
     let airDate: String
-    let voteAverage: Double
 }

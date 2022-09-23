@@ -8,9 +8,9 @@
 import ObjectMapper
 
 struct CrewDTO : Mappable {
-    var id: Int!
-    var name: String!
-    var job: String!
+    var id: Int = 0
+    var name: String = ""
+    var job: String = ""
     var profilePath: String?
     
     init?(map: Map) {
@@ -27,7 +27,12 @@ struct CrewDTO : Mappable {
 
 extension CrewDTO: DomainConvertibleType {
     func asDomain() -> Crew {
-        return Crew(id: id, name: name, job: job, profilePath: profilePath)
+        return Crew(
+            id: id,
+            name: name,
+            job: job,
+            profilePath: profilePath
+        )
     }
 }
 

@@ -8,14 +8,12 @@
 import ObjectMapper
 
 struct EpisodeDTO : Mappable {
-    var id: Int!
-    var name: String!
-    var overview: String!
-    var runtime: Int?
-    var episodeNumber: Int!
-    var seasonNumber: Int!
-    var airDate: String!
-    var voteAverage: Double!
+    var id: Int = 0
+    var name: String = ""
+    var overview: String = ""
+    var episodeNumber: Int = 0
+    var seasonNumber: Int = 0
+    var airDate: String = ""
     
     init?(map: Map) {
         
@@ -25,16 +23,21 @@ struct EpisodeDTO : Mappable {
         id <- map["id"]
         name <- map["name"]
         overview <- map["overview"]
-        runtime <- map["runtime"]
         episodeNumber <- map["episode_number"]
         seasonNumber <- map["season_number"]
         airDate <- map["air_date"]
-        voteAverage <- map["vote_average"]
     }
 }
 
 extension EpisodeDTO: DomainConvertibleType {
     func asDomain() -> Episode {
-        return Episode(id: id, name: name, overview: overview, runtime: runtime, episodeNumber: episodeNumber, seasonNumber: seasonNumber, airDate: airDate, voteAverage: voteAverage)
+        return Episode(
+            id: id,
+            name: name,
+            overview: overview,
+            episodeNumber: episodeNumber,
+            seasonNumber: seasonNumber,
+            airDate: airDate
+        )
     }
 }

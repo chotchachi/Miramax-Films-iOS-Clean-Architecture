@@ -8,18 +8,17 @@
 import ObjectMapper
 
 struct TVShowDetailDTO : Mappable {
-    var id: Int!
-    var name: String!
+    var id: Int = 0
+    var name: String = ""
     var backdropPath: String?
     var posterPath: String?
-    var genres: [GenreDTO]!
-    var overview: String!
-    var firstAirDate: String!
-    var voteAverage: Double!
-    var episodeRuntime: [Int]!
-    var numberOfEpisodes: Int!
-    var numberOfSeasons: Int!
-    var seasons: [SeasonDTO]!
+    var genres: [GenreDTO] = []
+    var overview: String = ""
+    var firstAirDate: String = ""
+    var voteAverage: Double = 0.0
+    var numberOfEpisodes: Int = 0
+    var numberOfSeasons: Int = 0
+    var seasons: [SeasonDTO] = []
     var credits: CreditDTO?
     var recommendations: TVShowResponseDTO?
     
@@ -36,7 +35,6 @@ struct TVShowDetailDTO : Mappable {
         overview <- map["overview"]
         firstAirDate <- map["first_air_date"]
         voteAverage <- map["vote_average"]
-        episodeRuntime <- map["episode_run_time"]
         numberOfEpisodes <- map["number_of_episodes"]
         numberOfSeasons <- map["number_of_seasons"]
         seasons <- map["seasons"]
@@ -47,6 +45,20 @@ struct TVShowDetailDTO : Mappable {
 
 extension TVShowDetailDTO: DomainConvertibleType {
     func asDomain() -> TVShowDetail {
-        return TVShowDetail(id: id, name: name, backdropPath: backdropPath, posterPath: posterPath, genres: genres.map { $0.asDomain() }, overview: overview, firstAirDate: firstAirDate, voteAverage: voteAverage, episodeRuntime: episodeRuntime, numberOfEpisodes: numberOfEpisodes, numberOfSeasons: numberOfSeasons, seasons: seasons.map { $0.asDomain() }, credits: credits?.asDomain(), recommendations: recommendations?.asDomain())
+        return TVShowDetail(
+            id: id,
+            name: name,
+            backdropPath: backdropPath,
+            posterPath: posterPath,
+            genres: genres.map { $0.asDomain() },
+            overview: overview,
+            firstAirDate: firstAirDate,
+            voteAverage: voteAverage,
+            numberOfEpisodes: numberOfEpisodes,
+            numberOfSeasons: numberOfSeasons,
+            seasons: seasons.map { $0.asDomain() },
+            credits: credits?.asDomain(),
+            recommendations: recommendations?.asDomain()
+        )
     }
 }

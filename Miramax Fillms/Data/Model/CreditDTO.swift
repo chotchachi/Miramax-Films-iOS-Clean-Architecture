@@ -8,8 +8,8 @@
 import ObjectMapper
 
 struct CreditDTO : Mappable {
-    var cast: [CastDTO]!
-    var crew: [CrewDTO]!
+    var cast: [CastDTO] = []
+    var crew: [CrewDTO] = []
     
     init?(map: Map) {
         
@@ -23,6 +23,9 @@ struct CreditDTO : Mappable {
 
 extension CreditDTO: DomainConvertibleType {
     func asDomain() -> Credit {
-        return Credit(cast: cast.map { $0.asDomain() }, crew: crew.map { $0.asDomain() })
+        return Credit(
+            cast: cast.map { $0.asDomain() },
+            crew: crew.map { $0.asDomain() }
+        )
     }
 }
