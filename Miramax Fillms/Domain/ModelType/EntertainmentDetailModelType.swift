@@ -14,8 +14,8 @@ protocol EntertainmentDetailModelType {
     var entertainmentRuntime: Int? { get }
     var entertainmentReleaseDate: String { get }
     var entertainmentOverview: String { get }
-    var entertainmentDirectors: [Crew] { get }
-    var entertainmentWriters: [Crew] { get }
+    var entertainmentDirectors: [Crew]? { get }
+    var entertainmentWriters: [Crew]? { get }
     var entertainmentCasts: [Cast] { get }
     var entertainmentRecommends: [EntertainmentModelType] { get }
     var entertainmentSeasons: [Season]? { get }

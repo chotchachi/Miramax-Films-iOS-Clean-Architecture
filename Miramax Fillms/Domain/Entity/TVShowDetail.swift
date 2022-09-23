@@ -74,12 +74,12 @@ extension TVShowDetail: EntertainmentDetailModelType {
         return overview
     }
     
-    var entertainmentDirectors: [Crew] {
-        return directors
+    var entertainmentDirectors: [Crew]? {
+        return directors.isEmpty ? nil : directors
     }
     
-    var entertainmentWriters: [Crew] {
-        return writers
+    var entertainmentWriters: [Crew]? {
+        return writers.isEmpty ? nil : writers
     }
     
     var entertainmentCasts: [Cast] {

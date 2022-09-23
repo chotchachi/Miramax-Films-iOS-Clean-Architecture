@@ -276,11 +276,11 @@ extension EntertainmentDetailsViewController {
 
         lblOverview.text = entertainmentDetail.entertainmentOverview
         
-        let directorsString = entertainmentDetail.entertainmentDirectors.map { $0.name }.joined(separator: ", ")
+        let directorsString = entertainmentDetail.entertainmentDirectors?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
         lblDirector.text = "Director: \(directorsString)"
         lblDirector.highlight(text: directorsString, color: .white.withAlphaComponent(0.5))
         
-        let writersString = entertainmentDetail.entertainmentWriters.map { $0.name }.joined(separator: ", ")
+        let writersString = entertainmentDetail.entertainmentWriters?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
         lblWriters.text = "Writers: \(writersString)"
         lblWriters.highlight(text: writersString, color: .white.withAlphaComponent(0.5))
         
