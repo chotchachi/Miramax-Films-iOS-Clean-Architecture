@@ -41,7 +41,7 @@ extension PeopleApi: TargetType, NetworkConfigurable {
     private func requestPersonDetail() -> Moya.Task {
         let params: [String : Any] = [
             "api_key" : apiKey,
-            "append_to_response" : "movie_credits,images,tv_credits"
+            "append_to_response" : "images,combined_credits"
         ]
         return .requestParameters(parameters: params, encoding: URLEncoding.default)
     }

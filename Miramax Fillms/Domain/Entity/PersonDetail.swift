@@ -13,10 +13,9 @@ struct PersonDetail: Equatable {
     let birthday: String?
     let biography: String
     let profilePath: String?
-    let knownForDepartment: String
     let images: [Image]
-    let movies: [Movie]
-    let tvShows: [TVShow]
+    let castCredits: [PersonCredit]
+    let crewCredits: [PersonCredit]
 }
 
 extension PersonDetail: ImageConfigurable {
@@ -24,5 +23,20 @@ extension PersonDetail: ImageConfigurable {
         guard let profilePath = profilePath else { return nil }
         let urlString = regularImageBaseURLString.appending(profilePath)
         return URL(string: urlString)
+    }
+}
+
+extension PersonDetail {
+    var entertainmentItems: [EntertainmentModelType] {
+        return castCredits + crewCredits
+    }
+    
+    var departments: [String] {
+        var allJobs: [String] = []
+        allJobs.append(contentsOf: crewCredits.compactMap { $0.job })
+        if !castCredits.isEmpty {
+            allJobs.append("Actor")
+        }
+        return Array(Set(allJobs))
     }
 }

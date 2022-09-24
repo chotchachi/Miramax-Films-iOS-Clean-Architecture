@@ -13,11 +13,10 @@ struct PersonDetailDTO : Mappable {
     var birthday: String?
     var biography: String = ""
     var profilePath: String?
-    var knownForDepartment: String = ""
     var images: [ImageDTO] = []
-    var movies: [MovieDTO] = []
-    var tvShows: [TVShowDTO] = []
-    
+    var castCredits: [PersonCreditDTO] = []
+    var crewCredits: [PersonCreditDTO] = []
+
     init?(map: Map) {
         
     }
@@ -28,10 +27,9 @@ struct PersonDetailDTO : Mappable {
         birthday <- map["birthday"]
         biography <- map["biography"]
         profilePath <- map["profile_path"]
-        knownForDepartment <- map["known_for_department"]
         images <- map["images.profiles"]
-        movies <- map["movie_credits.cast"]
-        tvShows <- map["tv_credits.cast"]
+        castCredits <- map["combined_credits.cast"]
+        crewCredits <- map["combined_credits.crew"]
     }
 }
 
@@ -43,10 +41,9 @@ extension PersonDetailDTO: DomainConvertibleType {
             birthday: birthday,
             biography: biography,
             profilePath: profilePath,
-            knownForDepartment: knownForDepartment,
             images: images.map { $0.asDomain() },
-            movies: movies.map { $0.asDomain() },
-            tvShows: tvShows.map { $0.asDomain() }
+            castCredits: castCredits.map { $0.asDomain() },
+            crewCredits: crewCredits.map { $0.asDomain() }
         )
     }
 }
