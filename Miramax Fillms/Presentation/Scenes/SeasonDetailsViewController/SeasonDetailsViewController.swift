@@ -17,10 +17,12 @@ class SeasonDetailsViewController: BaseViewController<SeasonDetailsViewModel> {
     
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var tblEpisodes: UITableView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
     
     private let popViewTriggerS = PublishRelay<Void>()
+    private let retryTriggerS = PublishRelay<Void>()
     private let episodeSelectTriggerS = PublishRelay<Episode>()
     
     override func configView() {
@@ -45,6 +47,7 @@ class SeasonDetailsViewController: BaseViewController<SeasonDetailsViewModel> {
         
         let input = SeasonDetailsViewModel.Input(
             popViewTrigger: popViewTriggerS.asDriverOnErrorJustComplete(),
+            retryTrigger: retryTriggerS.asDriverOnErrorJustComplete(),
             episodeSelectTrigger: episodeSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
@@ -58,6 +61,29 @@ class SeasonDetailsViewController: BaseViewController<SeasonDetailsViewModel> {
         output.episodesData
             .map { [SectionModel(model: "", items: $0)] }
             .drive(tblEpisodes.rx.items(dataSource: dataSource))
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.loading
+            .drive(onNext: { [weak self] isLoading in
+                guard let self = self else { return }
+                isLoading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
+            })
+            .disposed(by: rx.disposeBag)
+        
+        viewModel.error
+            .drive(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.showAlert(
+                    title: "error".localized,
+                    message: "an_error_occurred".localized,
+                    buttonTitles: ["cancel".localized, "try_again".localized]) { buttonIndex in
+                        if buttonIndex == 1 {
+                            self.retryTriggerS.accept(())
+                        } else {
+                            self.popViewTriggerS.accept(())
+                        }
+                    }
+            })
             .disposed(by: rx.disposeBag)
     }
 }

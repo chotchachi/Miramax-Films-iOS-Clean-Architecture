@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SeasonDetailsViewController" customModule="Miramax_Fillms" customModuleProvider="target">
             <connections>
                 <outlet property="appToolbar" destination="JgP-yC-nDj" id="uFa-Zi-KQy"/>
+                <outlet property="loadingIndicator" destination="uRp-9A-4rj" id="jN9-IN-AXm"/>
                 <outlet property="tblEpisodes" destination="jhF-jp-W2I" id="bVV-oC-8UY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -32,12 +33,18 @@
                     <rect key="frame" x="0.0" y="101" width="390" height="709"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="uRp-9A-4rj">
+                    <rect key="frame" x="185" y="445.66666666666669" width="20" height="20"/>
+                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="ColorPrimary"/>
             <constraints>
                 <constraint firstItem="jhF-jp-W2I" firstAttribute="top" secondItem="JgP-yC-nDj" secondAttribute="bottom" id="3s4-Pt-Wlw"/>
+                <constraint firstItem="uRp-9A-4rj" firstAttribute="centerX" secondItem="jhF-jp-W2I" secondAttribute="centerX" id="SF5-6s-wvv"/>
                 <constraint firstItem="JgP-yC-nDj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="SYV-m6-yRI"/>
+                <constraint firstItem="uRp-9A-4rj" firstAttribute="centerY" secondItem="jhF-jp-W2I" secondAttribute="centerY" id="UKr-2c-Lbb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jhF-jp-W2I" secondAttribute="bottom" id="Xt5-bd-wtb"/>
                 <constraint firstItem="JgP-yC-nDj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="YR0-dT-Rgf"/>
                 <constraint firstAttribute="trailing" secondItem="JgP-yC-nDj" secondAttribute="trailing" id="cDN-S6-98h"/>

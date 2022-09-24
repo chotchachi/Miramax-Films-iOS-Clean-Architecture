@@ -12,6 +12,7 @@ import XCoordinator
 class SeasonDetailsViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let popViewTrigger: Driver<Void>
+        let retryTrigger: Driver<Void>
         let episodeSelectTrigger: Driver<Episode>
     }
     
@@ -36,7 +37,10 @@ class SeasonDetailsViewModel: BaseViewModel, ViewModelType {
         let viewTriggerO = trigger
             .take(1)
         
-        let episodesDataD = viewTriggerO
+        let retryTriggerO = input.retryTrigger
+            .asObservable()
+        
+        let episodesDataD = Observable.merge(viewTriggerO, retryTriggerO)
             .flatMapLatest {
                 return self.repositoryProvider
                     .tvShowRepository()
