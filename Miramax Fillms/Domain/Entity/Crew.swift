@@ -21,3 +21,13 @@ extension Crew: ImageConfigurable {
         return URL(string: urlString)
     }
 }
+
+extension Crew: PersonModelType {
+    var personModelProfileURL: URL? {
+        return profileURL
+    }
+    
+    var personModelName: String? {
+        return name
+    }
+}
