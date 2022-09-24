@@ -8,10 +8,10 @@
 import ObjectMapper
 
 struct PersonResponseDTO: Mappable {
-    var page: Int!
-    var results: [PersonDTO]!
-    var totalPages: Int!
-    var totalResults: Int!
+    var page: Int = 0
+    var results: [PersonDTO] = []
+    var totalPages: Int = 0
+    var totalResults: Int = 0
     
     init?(map: Map) {
         
