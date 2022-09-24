@@ -23,6 +23,10 @@ extension Crew: ImageConfigurable {
 }
 
 extension Crew: PersonModelType {
+    var personModelId: Int {
+        return id
+    }
+    
     var personModelProfileURL: URL? {
         return profileURL
     }

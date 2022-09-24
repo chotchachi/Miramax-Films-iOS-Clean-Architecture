@@ -23,6 +23,10 @@ extension Cast: ImageConfigurable {
 }
 
 extension Cast: PersonModelType {
+    var personModelId: Int {
+        return id
+    }
+
     var personModelProfileURL: URL? {
         return profileURL
     }

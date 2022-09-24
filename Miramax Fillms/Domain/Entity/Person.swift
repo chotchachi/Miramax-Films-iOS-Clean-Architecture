@@ -22,6 +22,10 @@ extension Person: ImageConfigurable {
 }
 
 extension Person: PersonModelType {
+    var personModelId: Int {
+        return id
+    }
+    
     var personModelProfileURL: URL? {
         return profileURL
     }

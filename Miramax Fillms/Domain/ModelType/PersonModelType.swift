@@ -8,6 +8,7 @@
 import Foundation
 
 protocol PersonModelType {
+    var personModelId: Int { get }
     var personModelProfileURL: URL? { get }
     var personModelName: String? { get }
 }
