@@ -42,13 +42,13 @@
             <color key="backgroundColor" name="ColorPrimary"/>
             <constraints>
                 <constraint firstItem="jhF-jp-W2I" firstAttribute="top" secondItem="JgP-yC-nDj" secondAttribute="bottom" id="3s4-Pt-Wlw"/>
+                <constraint firstItem="jhF-jp-W2I" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="JCY-Lr-B0H"/>
                 <constraint firstItem="uRp-9A-4rj" firstAttribute="centerX" secondItem="jhF-jp-W2I" secondAttribute="centerX" id="SF5-6s-wvv"/>
                 <constraint firstItem="JgP-yC-nDj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="SYV-m6-yRI"/>
                 <constraint firstItem="uRp-9A-4rj" firstAttribute="centerY" secondItem="jhF-jp-W2I" secondAttribute="centerY" id="UKr-2c-Lbb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jhF-jp-W2I" secondAttribute="bottom" id="Xt5-bd-wtb"/>
                 <constraint firstItem="JgP-yC-nDj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="YR0-dT-Rgf"/>
                 <constraint firstAttribute="trailing" secondItem="JgP-yC-nDj" secondAttribute="trailing" id="cDN-S6-98h"/>
-                <constraint firstAttribute="trailing" secondItem="jhF-jp-W2I" secondAttribute="trailing" id="kt0-wX-kk9"/>
                 <constraint firstItem="jhF-jp-W2I" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pLs-ra-wq7"/>
             </constraints>
             <point key="canvasLocation" x="98" y="21"/>

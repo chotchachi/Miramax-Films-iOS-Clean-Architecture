@@ -64,7 +64,6 @@ class SeasonLargeCell: UITableViewCell {
         lblSeasonName.translatesAutoresizingMaskIntoConstraints = false
         lblSeasonName.textColor = UIColor(hex: 0x0A1231)
         lblSeasonName.font = AppFonts.caption2
-        lblSeasonName.cornerRadius = 3.0
         
         let lblSeasonNameWrapView = UIView()
         lblSeasonNameWrapView.translatesAutoresizingMaskIntoConstraints = false
