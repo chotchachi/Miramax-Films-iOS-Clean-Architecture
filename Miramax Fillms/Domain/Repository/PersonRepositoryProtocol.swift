@@ -8,5 +8,5 @@
 import RxSwift
 
 protocol PersonRepositoryProtocol {
-    
+    func getPersonDetail(personId: Int) -> Single<PersonDetail>
 }

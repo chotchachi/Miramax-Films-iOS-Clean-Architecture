@@ -44,4 +44,7 @@ protocol Api {
     func searchTVShow(query: String, page: Int?) -> Single<TVShowResponseDTO>
     func searchPerson(query: String, page: Int?) -> Single<PersonResponseDTO>
 
+    // MARK: - Person
+    
+    func getPersonDetail(personId: Int) -> Single<PersonDetailDTO>
 }

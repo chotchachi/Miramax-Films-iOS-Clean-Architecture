@@ -15,7 +15,8 @@ final class NetworkAssembly: Assembly {
                 genreNetworking: .getNetworking(),
                 movieNetworking: .getNetworking(),
                 tvShowNetworking: .getNetworking(),
-                searchNetworking: .getNetworking()
+                searchNetworking: .getNetworking(),
+                peopleNetworking: .getNetworking()
             )
         }
     }

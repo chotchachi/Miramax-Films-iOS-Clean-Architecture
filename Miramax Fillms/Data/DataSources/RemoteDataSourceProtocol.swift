@@ -31,4 +31,6 @@ protocol RemoteDataSourceProtocol {
     func searchMovie(query: String, page: Int?) -> Single<MovieResponseDTO>
     func searchTVShow(query: String, page: Int?) -> Single<TVShowResponseDTO>
     func searchPerson(query: String, page: Int?) -> Single<PersonResponseDTO>
+    
+    func getPersonDetail(persondId: Int) -> Single<PersonDetailDTO>
 }

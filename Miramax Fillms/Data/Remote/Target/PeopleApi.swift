@@ -1,5 +1,5 @@
 //
-//  AppApi.swift
+//  PeopleApi.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 24/09/2022.
@@ -7,11 +7,11 @@
 
 import Moya
 
-enum AppApi {
+enum PeopleApi {
     case personDetail(personId: Int)
 }
 
-extension AppApi: TargetType, NetworkConfigurable {
+extension PeopleApi: TargetType, NetworkConfigurable {
     var baseURL: URL {
         return baseApiURL
     }

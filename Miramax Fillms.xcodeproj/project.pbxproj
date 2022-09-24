@@ -20,8 +20,8 @@
 		ED866E2828DEE20B0066E10B /* ImageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E2728DEE20B0066E10B /* ImageDTO.swift */; };
 		ED866E2A28DEE2AC0066E10B /* PersonDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E2928DEE2AC0066E10B /* PersonDetailDTO.swift */; };
 		ED866E2C28DEE8970066E10B /* ImagesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E2B28DEE8970066E10B /* ImagesResponseDTO.swift */; };
-		ED866E2E28DEECD00066E10B /* AppApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E2D28DEECD00066E10B /* AppApi.swift */; };
-		ED866E3028DEED4C0066E10B /* AppNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E2F28DEED4C0066E10B /* AppNetworking.swift */; };
+		ED866E2E28DEECD00066E10B /* PeopleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E2D28DEECD00066E10B /* PeopleApi.swift */; };
+		ED866E3028DEED4C0066E10B /* PeopleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E2F28DEED4C0066E10B /* PeopleNetworking.swift */; };
 		ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62128C6369800D60351 /* AppDelegate.swift */; };
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
 		EDA4475828D41F060037751C /* GenreHorizontalListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475728D41F060037751C /* GenreHorizontalListCellDelegate.swift */; };
@@ -206,8 +206,8 @@
 		ED866E2728DEE20B0066E10B /* ImageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDTO.swift; sourceTree = "<group>"; };
 		ED866E2928DEE2AC0066E10B /* PersonDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailDTO.swift; sourceTree = "<group>"; };
 		ED866E2B28DEE8970066E10B /* ImagesResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesResponseDTO.swift; sourceTree = "<group>"; };
-		ED866E2D28DEECD00066E10B /* AppApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppApi.swift; sourceTree = "<group>"; };
-		ED866E2F28DEED4C0066E10B /* AppNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNetworking.swift; sourceTree = "<group>"; };
+		ED866E2D28DEECD00066E10B /* PeopleApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleApi.swift; sourceTree = "<group>"; };
+		ED866E2F28DEED4C0066E10B /* PeopleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleNetworking.swift; sourceTree = "<group>"; };
 		ED86E61E28C6369800D60351 /* Miramax Fillms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Miramax Fillms.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED86E62128C6369800D60351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED86E62A28C6369B00D60351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -834,7 +834,7 @@
 				EDFAD38E28D2DC0700ED3BCD /* MovieApi.swift */,
 				EDE69B6328D6C3A7002726B0 /* SearchApi.swift */,
 				EDE69B9628D7730B002726B0 /* TVShowApi.swift */,
-				ED866E2D28DEECD00066E10B /* AppApi.swift */,
+				ED866E2D28DEECD00066E10B /* PeopleApi.swift */,
 			);
 			path = Target;
 			sourceTree = "<group>";
@@ -855,7 +855,7 @@
 				EDFAD3AB28D31C9600ED3BCD /* MovieNetworking.swift */,
 				EDE69B6528D6C48F002726B0 /* SearchNetworking.swift */,
 				EDE69B9828D7733B002726B0 /* TVShowNetworking.swift */,
-				ED866E2F28DEED4C0066E10B /* AppNetworking.swift */,
+				ED866E2F28DEED4C0066E10B /* PeopleNetworking.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -1282,7 +1282,7 @@
 				EDC6DB5328D0623E00164EBD /* Movie.swift in Sources */,
 				EDFAD39C28D30E1A00ED3BCD /* RemoteDataSource.swift in Sources */,
 				EDC6DB7428D0841300164EBD /* ReachabilityManager.swift in Sources */,
-				ED866E2E28DEECD00066E10B /* AppApi.swift in Sources */,
+				ED866E2E28DEECD00066E10B /* PeopleApi.swift in Sources */,
 				EDD5300A28DC95740078C6C5 /* SeasonsViewModel.swift in Sources */,
 				EDFAD39128D2E2BF00ED3BCD /* GenreRepositoryProtocol.swift in Sources */,
 				EDC502CA28D376D30047C7C3 /* GenreHorizontalListCell.swift in Sources */,
@@ -1404,7 +1404,7 @@
 				EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */,
 				EDB8780B28D8BFC90016B96B /* Cast.swift in Sources */,
 				EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */,
-				ED866E3028DEED4C0066E10B /* AppNetworking.swift in Sources */,
+				ED866E3028DEED4C0066E10B /* PeopleNetworking.swift in Sources */,
 				EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */,
 				EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */,
 				EDC6DB2F28CF717600164EBD /* MainNavigationController.swift in Sources */,

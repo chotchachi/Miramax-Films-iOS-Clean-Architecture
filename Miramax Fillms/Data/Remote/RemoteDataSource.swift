@@ -93,4 +93,8 @@ final class RemoteDataSource: RemoteDataSourceProtocol {
     func searchPerson(query: String, page: Int?) -> Single<PersonResponseDTO> {
         return apiClient.searchPerson(query: query, page: page)
     }
+    
+    func getPersonDetail(persondId: Int) -> Single<PersonDetailDTO> {
+        return apiClient.getPersonDetail(personId: persondId)
+    }
 }

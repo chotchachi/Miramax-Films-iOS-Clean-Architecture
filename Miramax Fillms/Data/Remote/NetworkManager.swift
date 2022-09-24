@@ -15,17 +15,20 @@ final class NetworkManager: Api {
     private let movieNetworking: MovieNetworking
     private let tvShowNetworking: TVShowNetworking
     private let searchNetworking: SearchNetworking
+    private let peopleNetworking: PeopleNetworking
     
     init(
         genreNetworking: GenreNetworking,
         movieNetworking: MovieNetworking,
         tvShowNetworking: TVShowNetworking,
-        searchNetworking: SearchNetworking
+        searchNetworking: SearchNetworking,
+        peopleNetworking: PeopleNetworking
     ) {
         self.genreNetworking = genreNetworking
         self.movieNetworking = movieNetworking
         self.tvShowNetworking = tvShowNetworking
         self.searchNetworking = searchNetworking
+        self.peopleNetworking = peopleNetworking
     }
     
     // MARK: - Genre
@@ -117,5 +120,11 @@ final class NetworkManager: Api {
     
     func searchPerson(query: String, page: Int?) -> Single<PersonResponseDTO> {
         return searchNetworking.provider.requestObject(.searchPerson(query: query, page: page), type: PersonResponseDTO.self)
+    }
+    
+    // MARK: - Person
+    
+    func getPersonDetail(personId: Int) -> Single<PersonDetailDTO> {
+        return peopleNetworking.provider.requestObject(.personDetail(personId: personId), type: PersonDetailDTO.self)
     }
 }

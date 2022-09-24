@@ -19,4 +19,9 @@ final class PersonRepository: PersonRepositoryProtocol {
         self.localDataSource = localDataSource
     }
     
+    func getPersonDetail(personId: Int) -> Single<PersonDetail> {
+        return remoteDataSource
+            .getPersonDetail(persondId: personId)
+            .map { $0.asDomain() }
+    }
 }
