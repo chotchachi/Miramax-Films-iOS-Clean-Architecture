@@ -280,11 +280,11 @@ extension EntertainmentDetailsViewController {
         
         let directorsString = entertainmentDetail.entertainmentDirectors?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
         lblDirector.text = "Director: \(directorsString)"
-        lblDirector.highlight(text: directorsString, color: .white.withAlphaComponent(0.5))
+        lblDirector.highlight(text: directorsString, color: AppColors.textColorSecondary)
         
         let writersString = entertainmentDetail.entertainmentWriters?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
         lblWriters.text = "Writers: \(writersString)"
-        lblWriters.highlight(text: writersString, color: .white.withAlphaComponent(0.5))
+        lblWriters.highlight(text: writersString, color: AppColors.textColorSecondary)
         
         actorsCollectionView.reloadData()
         recommendCollectionView.reloadData()

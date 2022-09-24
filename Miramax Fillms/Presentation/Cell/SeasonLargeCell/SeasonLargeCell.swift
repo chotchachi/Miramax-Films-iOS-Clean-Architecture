@@ -81,7 +81,7 @@ class SeasonLargeCell: UITableViewCell {
 
         lblAirDate = UILabel()
         lblAirDate.translatesAutoresizingMaskIntoConstraints = false
-        lblAirDate.textColor = .white.withAlphaComponent(0.5)
+        lblAirDate.textColor = AppColors.textColorSecondary
         lblAirDate.font = AppFonts.caption2
         
         // Label overview
