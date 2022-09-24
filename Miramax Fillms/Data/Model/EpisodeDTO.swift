@@ -11,6 +11,7 @@ struct EpisodeDTO : Mappable {
     var id: Int = 0
     var name: String = ""
     var overview: String = ""
+    var stillPath: String?
     var episodeNumber: Int = 0
     var seasonNumber: Int = 0
     var airDate: String = ""
@@ -23,6 +24,7 @@ struct EpisodeDTO : Mappable {
         id <- map["id"]
         name <- map["name"]
         overview <- map["overview"]
+        stillPath <- map["still_path"]
         episodeNumber <- map["episode_number"]
         seasonNumber <- map["season_number"]
         airDate <- map["air_date"]
@@ -35,6 +37,7 @@ extension EpisodeDTO: DomainConvertibleType {
             id: id,
             name: name,
             overview: overview,
+            stillPath: stillPath,
             episodeNumber: episodeNumber,
             seasonNumber: seasonNumber,
             airDate: airDate
