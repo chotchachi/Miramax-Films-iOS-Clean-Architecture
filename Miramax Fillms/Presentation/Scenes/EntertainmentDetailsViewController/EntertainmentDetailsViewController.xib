@@ -312,17 +312,17 @@
                                                 <constraint firstAttribute="height" constant="24" id="t7r-Dc-EKo"/>
                                             </constraints>
                                         </view>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="e2y-Fs-eNq">
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="e2y-Fs-eNq">
                                             <rect key="frame" x="16" y="60" width="358" height="41"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rh8-9a-Ldk" userLabel="Overview Label">
-                                                    <rect key="frame" x="0.0" y="0.0" width="35.333333333333336" height="17"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="358" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="0.50987856080000005" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZk-Bn-NcY">
-                                                    <rect key="frame" x="0.0" y="21" width="66" height="20"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZk-Bn-NcY">
+                                                    <rect key="frame" x="0.0" y="21" width="358" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="ac5-9K-osB"/>
                                                     </constraints>
