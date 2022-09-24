@@ -27,6 +27,7 @@ struct PersonDetailDTO : Mappable {
         name <- map["name"]
         birthday <- map["birthday"]
         biography <- map["biography"]
+        profilePath <- map["profile_path"]
         knownForDepartment <- map["known_for_department"]
         images <- map["images.profiles"]
         movies <- map["movie_credits.cast"]
