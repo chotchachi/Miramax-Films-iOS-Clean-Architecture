@@ -55,6 +55,11 @@ class SeasonDetailsViewController: BaseViewController<SeasonDetailsViewModel> {
         let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Episode>> { dataSource, tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withClass: EpisodeCell.self)
             cell.bind(item)
+            cell.onLayoutChangeNeeded = { [weak self] in
+                guard let self = self else { return }
+                self.tblEpisodes.beginUpdates()
+                self.tblEpisodes.endUpdates()
+            }
             return cell
         }
         

@@ -25,6 +25,8 @@ class EpisodeCell: UITableViewCell {
     // MARK: - Properties
     
     private var lblOverviewShowMore = false
+    
+    var onLayoutChangeNeeded: (() -> ())?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -153,6 +155,7 @@ class EpisodeCell: UITableViewCell {
             self.btnSeeMoreOverview.setTitle(self.lblOverviewShowMore ? "see_more".localized : "see_less".localized, for: .normal)
         }) { _ in
             self.lblOverviewShowMore.toggle()
+            self.onLayoutChangeNeeded?()
         }
     }
 }

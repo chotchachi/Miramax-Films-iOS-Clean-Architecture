@@ -19,4 +19,6 @@ struct DimensionConstants {
 
     static let seasonSmallCellHeight: CGFloat = 80.0
     static let seasonLargeCellRatio: CGFloat = 0.45
+    
+    static let episodeCellThumbnailRatio: CGFloat = 0.42
 }
