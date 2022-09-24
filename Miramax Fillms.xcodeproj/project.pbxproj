@@ -11,6 +11,10 @@
 		ED866E1528DDBB8C0066E10B /* RealmRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E1428DDBB8C0066E10B /* RealmRepresentable.swift */; };
 		ED866E1728DDBBBF0066E10B /* RMMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E1628DDBBBF0066E10B /* RMMovie.swift */; };
 		ED866E1928DDBE490066E10B /* Realm+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E1828DDBE490066E10B /* Realm+Ext.swift */; };
+		ED866E1D28DED76C0066E10B /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E1B28DED76C0066E10B /* PersonDetailsViewController.swift */; };
+		ED866E1E28DED76C0066E10B /* PersonDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED866E1C28DED76C0066E10B /* PersonDetailsViewController.xib */; };
+		ED866E2028DED7AA0066E10B /* PersonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E1F28DED7AA0066E10B /* PersonDetailsViewModel.swift */; };
+		ED866E2228DED8030066E10B /* PersonDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E2128DED8030066E10B /* PersonDetailsCoordinator.swift */; };
 		ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62128C6369800D60351 /* AppDelegate.swift */; };
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
 		EDA4475828D41F060037751C /* GenreHorizontalListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475728D41F060037751C /* GenreHorizontalListCellDelegate.swift */; };
@@ -186,6 +190,10 @@
 		ED866E1428DDBB8C0066E10B /* RealmRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepresentable.swift; sourceTree = "<group>"; };
 		ED866E1628DDBBBF0066E10B /* RMMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMovie.swift; sourceTree = "<group>"; };
 		ED866E1828DDBE490066E10B /* Realm+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Ext.swift"; sourceTree = "<group>"; };
+		ED866E1B28DED76C0066E10B /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
+		ED866E1C28DED76C0066E10B /* PersonDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonDetailsViewController.xib; sourceTree = "<group>"; };
+		ED866E1F28DED7AA0066E10B /* PersonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewModel.swift; sourceTree = "<group>"; };
+		ED866E2128DED8030066E10B /* PersonDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsCoordinator.swift; sourceTree = "<group>"; };
 		ED86E61E28C6369800D60351 /* Miramax Fillms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Miramax Fillms.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED86E62128C6369800D60351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED86E62A28C6369B00D60351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -385,6 +393,17 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		ED866E1A28DED7590066E10B /* PersonDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED866E1F28DED7AA0066E10B /* PersonDetailsViewModel.swift */,
+				ED866E1B28DED76C0066E10B /* PersonDetailsViewController.swift */,
+				ED866E1C28DED76C0066E10B /* PersonDetailsViewController.xib */,
+				ED866E2128DED8030066E10B /* PersonDetailsCoordinator.swift */,
+			);
+			path = PersonDetailsViewController;
+			sourceTree = "<group>";
+		};
 		ED86E61528C6369800D60351 = {
 			isa = PBXGroup;
 			children = (
@@ -496,9 +515,9 @@
 		EDB877FF28D8AA600016B96B /* EntertainmentDetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */,
 				EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */,
 				EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */,
-				EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */,
 				EDB8780628D8AABB0016B96B /* EntertainmentDetailsCoordinator.swift */,
 			);
 			path = EntertainmentDetailsViewController;
@@ -631,6 +650,7 @@
 		EDC6DB2528CF6C1900164EBD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				ED866E1A28DED7590066E10B /* PersonDetailsViewController */,
 				EDD5301D28DCBBF40078C6C5 /* SeasonDetailsViewController */,
 				EDD5300628DC95210078C6C5 /* SeasonsViewController */,
 				EDB877FF28D8AA600016B96B /* EntertainmentDetailsViewController */,
@@ -1162,6 +1182,7 @@
 				EDD52F6728DAC9B70078C6C5 /* Localizable.strings in Resources */,
 				ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */,
 				EDE69B8928D73B97002726B0 /* AiringTodayCell.xib in Resources */,
+				ED866E1E28DED76C0066E10B /* PersonDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1254,7 +1275,9 @@
 				EDD5302A28DCBDC50078C6C5 /* SeasonDetailsCoordinator.swift in Sources */,
 				EDD52F5728DA14930078C6C5 /* UILabel+Ext.swift in Sources */,
 				EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */,
+				ED866E1D28DED76C0066E10B /* PersonDetailsViewController.swift in Sources */,
 				EDD5301C28DCB6D00078C6C5 /* GradientView.swift in Sources */,
+				ED866E2228DED8030066E10B /* PersonDetailsCoordinator.swift in Sources */,
 				EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */,
 				EDD52F6F28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift in Sources */,
 				EDE69B9728D7730B002726B0 /* TVShowApi.swift in Sources */,
@@ -1362,6 +1385,7 @@
 				EDE69B7728D73078002726B0 /* TransitionAnimation+Defaults.swift in Sources */,
 				EDFAD3A528D3143E00ED3BCD /* RepositoryProvider.swift in Sources */,
 				EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */,
+				ED866E2028DED7AA0066E10B /* PersonDetailsViewModel.swift in Sources */,
 				EDB8780D28D8C17D0016B96B /* Credit.swift in Sources */,
 				EDE69B9328D76ECB002726B0 /* TVShowRepositoryProtocol.swift in Sources */,
 				EDE69B5228D6BA58002726B0 /* PersonHorizontalListCell.swift in Sources */,

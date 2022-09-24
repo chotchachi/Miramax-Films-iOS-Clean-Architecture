@@ -12,7 +12,8 @@ enum EntertainmentDetailsRoute: Route {
     case pop
     case search
     case seasonsList(seasons: [Season])
-    case seasonDetail(season: Season)
+    case seasonDetails(season: Season)
+    case personDetails(person: PersonModelType)
 }
 
 class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetailsRoute> {
@@ -48,8 +49,11 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
         case .seasonsList(seasons: let seasons):
             addChild(SeasonsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, tvShowId: entertainment.entertainmentModelId, seasons: seasons))
             return .none()
-        case .seasonDetail(season: let season):
+        case .seasonDetails(season: let season):
             addChild(SeasonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, tvShowId: entertainment.entertainmentModelId, season: season))
+            return .none()
+        case .personDetails(person: let person):
+            addChild(PersonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, personModel: person))
             return .none()
         }
     }

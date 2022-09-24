@@ -63,6 +63,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     private let popViewTriggerS = PublishRelay<Void>()
     private let retryTriggerS = PublishRelay<Void>()
     private let seasonSelectTriggerS = PublishRelay<Season>()
+    private let personSelectTriggerS = PublishRelay<PersonModelType>()
 
     private let seasonsDataS = BehaviorRelay<[Season]>(value: [])
     
@@ -90,6 +91,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             toSeasonListTrigger: seasonsSectionHeaderView.rx.seeMoreButtonTap.asDriver(),
             seasonSelectTrigger: seasonSelectTriggerS.asDriverOnErrorJustComplete(),
+            personSelectTrigger: personSelectTriggerS.asDriverOnErrorJustComplete(),
             shareTrigger: btnShare.rx.tap.asDriver(),
             retryTrigger: retryTriggerS.asDriverOnErrorJustComplete()
         )
@@ -342,7 +344,7 @@ extension EntertainmentDetailsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == actorsCollectionView {
             guard let item = entertainmentDetail?.entertainmentCasts[indexPath.row] else { return }
-
+            personSelectTriggerS.accept(item)
         } else if collectionView == recommendCollectionView {
             guard let item = entertainmentDetail?.entertainmentRecommends[indexPath.row] else { return }
 
