@@ -22,6 +22,8 @@
 		ED866E2C28DEE8970066E10B /* ImagesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E2B28DEE8970066E10B /* ImagesResponseDTO.swift */; };
 		ED866E2E28DEECD00066E10B /* PeopleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E2D28DEECD00066E10B /* PeopleApi.swift */; };
 		ED866E3028DEED4C0066E10B /* PeopleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E2F28DEED4C0066E10B /* PeopleNetworking.swift */; };
+		ED866E3828DF14280066E10B /* PersonCredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E3728DF14280066E10B /* PersonCredit.swift */; };
+		ED866E3C28DF14B70066E10B /* PersonCreditDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E3B28DF14B70066E10B /* PersonCreditDTO.swift */; };
 		ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62128C6369800D60351 /* AppDelegate.swift */; };
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
 		EDA4475828D41F060037751C /* GenreHorizontalListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475728D41F060037751C /* GenreHorizontalListCellDelegate.swift */; };
@@ -208,6 +210,8 @@
 		ED866E2B28DEE8970066E10B /* ImagesResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesResponseDTO.swift; sourceTree = "<group>"; };
 		ED866E2D28DEECD00066E10B /* PeopleApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleApi.swift; sourceTree = "<group>"; };
 		ED866E2F28DEED4C0066E10B /* PeopleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleNetworking.swift; sourceTree = "<group>"; };
+		ED866E3728DF14280066E10B /* PersonCredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCredit.swift; sourceTree = "<group>"; };
+		ED866E3B28DF14B70066E10B /* PersonCreditDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCreditDTO.swift; sourceTree = "<group>"; };
 		ED86E61E28C6369800D60351 /* Miramax Fillms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Miramax Fillms.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED86E62128C6369800D60351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED86E62A28C6369B00D60351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -742,6 +746,7 @@
 				EDD52F6A28DAD1A00078C6C5 /* Episode.swift */,
 				ED866E2328DEDEB70066E10B /* PersonDetail.swift */,
 				ED866E2528DEE1510066E10B /* Image.swift */,
+				ED866E3728DF14280066E10B /* PersonCredit.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -787,6 +792,7 @@
 				EDD52F6C28DAEBB90078C6C5 /* EpisodeDTO.swift */,
 				ED866E2928DEE2AC0066E10B /* PersonDetailDTO.swift */,
 				ED866E2728DEE20B0066E10B /* ImageDTO.swift */,
+				ED866E3B28DF14B70066E10B /* PersonCreditDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1270,6 +1276,7 @@
 				EDB8780228D8AA720016B96B /* EntertainmentDetailsViewController.swift in Sources */,
 				EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */,
 				EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */,
+				ED866E3828DF14280066E10B /* PersonCredit.swift in Sources */,
 				EDE69B6428D6C3A7002726B0 /* SearchApi.swift in Sources */,
 				EDC6DB4628CF98F800164EBD /* MovieViewController.swift in Sources */,
 				EDE69B6028D6C142002726B0 /* PersonDTO.swift in Sources */,
@@ -1422,6 +1429,7 @@
 				EDD52F6D28DAEBB90078C6C5 /* EpisodeDTO.swift in Sources */,
 				EDE69B6A28D71464002726B0 /* SearchCoordinator.swift in Sources */,
 				EDC6DB6128D071F300164EBD /* MovieRepository.swift in Sources */,
+				ED866E3C28DF14B70066E10B /* PersonCreditDTO.swift in Sources */,
 				ED866E2A28DEE2AC0066E10B /* PersonDetailDTO.swift in Sources */,
 				EDA4475828D41F060037751C /* GenreHorizontalListCellDelegate.swift in Sources */,
 				EDC6DB2128CF69DF00164EBD /* BaseViewModel.swift in Sources */,

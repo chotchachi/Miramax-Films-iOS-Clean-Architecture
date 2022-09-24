@@ -35,6 +35,7 @@ PODS:
   - SnapKit (5.0.1)
   - SwifterSwift/UIKit (5.2.0)
   - Swinject (2.8.2)
+  - TagListView (1.4.1)
   - XCoordinator (2.2.0):
     - XCoordinator/Core (= 2.2.0)
   - XCoordinator/Core (2.2.0)
@@ -55,6 +56,7 @@ DEPENDENCIES:
   - SnapKit (~> 5.0.0)
   - SwifterSwift/UIKit
   - Swinject (~> 2.8.2)
+  - TagListView (~> 1.0)
   - XCoordinator (~> 2.2.0)
   - XCoordinator/RxSwift (~> 2.2.0)
 
@@ -76,6 +78,7 @@ SPEC REPOS:
     - SnapKit
     - SwifterSwift
     - Swinject
+    - TagListView
     - XCoordinator
 
 SPEC CHECKSUMS:
@@ -95,8 +98,9 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
   Swinject: b4a11b31992e8668308dc594ba1cb9b3164a37ab
+  TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   XCoordinator: a5f91e43ee944f508529763921165697d3211629
 
-PODFILE CHECKSUM: 3d6892e9bb13f2f315010cc3a05e4a43be742fd2
+PODFILE CHECKSUM: b1f9fb599f355339d66097e1b878ba2596a5347d
 
 COCOAPODS: 1.11.3

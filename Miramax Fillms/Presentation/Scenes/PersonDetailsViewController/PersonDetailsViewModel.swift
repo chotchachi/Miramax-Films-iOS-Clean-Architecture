@@ -18,7 +18,7 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     struct Output {
-        
+        let personDetail: Driver<PersonDetail>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -33,6 +33,22 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
+        let viewTriggerO = trigger
+            .take(1)
+        
+        let retryTriggerO = input.retryTrigger
+            .asObservable()
+        
+        let personDetailD = Observable.merge(viewTriggerO, retryTriggerO)
+            .flatMapLatest {
+                self.repositoryProvider
+                    .personRepository()
+                    .getPersonDetail(personId: self.personModel.personModelId)
+                    .trackError(self.error)
+                    .trackActivity(self.loading)
+                    .asDriverOnErrorJustComplete()
+            }
+            .asDriverOnErrorJustComplete()
         
         input.popViewTrigger
             .drive(onNext: { [weak self] in
@@ -48,6 +64,6 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output()
+        return Output(personDetail: personDetailD)
     }
 }

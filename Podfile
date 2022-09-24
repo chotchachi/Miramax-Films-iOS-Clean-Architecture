@@ -28,5 +28,6 @@ target 'Miramax Fillms' do
   pod 'Moya/RxSwift', '~> 15.0'
   pod 'Swinject', '~> 2.8.2'
   pod 'RealmSwift', '~>10'
-  
+  pod 'TagListView', '~> 1.0'
+
 end
