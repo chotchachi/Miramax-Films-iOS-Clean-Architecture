@@ -28,19 +28,19 @@ extension PersonCredit: EntertainmentModelType {
         return id
     }
     
-    var thumbImageURL: URL? {
-        return posterURL
-    }
-    
-    var backdropImageURL: URL? {
-        return nil
-    }
-    
-    var textName: String {
+    var entertainmentModelName: String {
         return title
     }
     
-    var textDescription: String {
+    var entertainmentModelOverview: String {
         return ""
+    }
+    
+    var entertainmentModelPosterURL: URL? {
+        return posterURL
+    }
+    
+    var entertainmentModelBackdropURL: URL? {
+        return nil
     }
 }

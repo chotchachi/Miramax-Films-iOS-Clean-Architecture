@@ -9,8 +9,8 @@ import Foundation
 
 protocol EntertainmentModelType {
     var entertainmentModelId: Int { get }
-    var thumbImageURL: URL? { get }
-    var backdropImageURL: URL? { get }
-    var textName: String { get }
-    var textDescription: String { get }
+    var entertainmentModelName: String { get }
+    var entertainmentModelOverview: String { get }
+    var entertainmentModelPosterURL: URL? { get }
+    var entertainmentModelBackdropURL: URL? { get }
 }

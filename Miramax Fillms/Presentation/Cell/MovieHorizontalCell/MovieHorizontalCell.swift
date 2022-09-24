@@ -44,8 +44,8 @@ class MovieHorizontalCell: UICollectionViewCell {
     }
     
     func bind(_ item: EntertainmentModelType) {
-        if let thumbImageURL = item.thumbImageURL {
-            ivPoster.kf.setImage(with: thumbImageURL)
+        if let posterURL = item.entertainmentModelPosterURL {
+            ivPoster.kf.setImage(with: posterURL)
         }
     }
 }

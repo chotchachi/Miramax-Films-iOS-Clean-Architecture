@@ -35,19 +35,19 @@ extension Movie: EntertainmentModelType {
         return id
     }
     
-    var thumbImageURL: URL? {
-        return posterURL
-    }
-    
-    var backdropImageURL: URL? {
-        return backdropURL
-    }
-    
-    var textName: String {
+    var entertainmentModelName: String {
         return title
     }
     
-    var textDescription: String {
+    var entertainmentModelOverview: String {
         return overview
+    }
+    
+    var entertainmentModelPosterURL: URL? {
+        return posterURL
+    }
+    
+    var entertainmentModelBackdropURL: URL? {
+        return backdropURL
     }
 }

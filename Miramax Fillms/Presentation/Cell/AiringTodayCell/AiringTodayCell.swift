@@ -113,14 +113,14 @@ class AiringTodayCell: UICollectionViewCell {
     }
     
     private func bind(_ item: EntertainmentModelType) {
-        if let thumbURL = item.thumbImageURL {
-            ivPoster.kf.setImage(with: thumbURL)
+        if let posterURL = item.entertainmentModelPosterURL {
+            ivPoster.kf.setImage(with: posterURL)
         }
-        if let backdropURL = item.backdropImageURL {
+        if let backdropURL = item.entertainmentModelBackdropURL {
             ivBackdrop.kf.setImage(with: backdropURL)
         }
-        lblName.text = item.textName
-        lblDescription.text = item.textDescription
+        lblName.text = item.entertainmentModelName
+        lblDescription.text = item.entertainmentModelOverview
     }
     
     @objc private func btnRetryTapped(_ sender: UIButton) {

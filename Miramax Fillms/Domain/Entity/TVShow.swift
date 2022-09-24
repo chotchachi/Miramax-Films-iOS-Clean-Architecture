@@ -35,19 +35,19 @@ extension TVShow: EntertainmentModelType {
         return id
     }
     
-    var thumbImageURL: URL? {
-        return posterURL
-    }
-    
-    var backdropImageURL: URL? {
-        return backdropURL
-    }
-    
-    var textName: String {
+    var entertainmentModelName: String {
         return name
     }
     
-    var textDescription: String {
+    var entertainmentModelOverview: String {
         return overview
+    }
+    
+    var entertainmentModelPosterURL: URL? {
+        return posterURL
+    }
+    
+    var entertainmentModelBackdropURL: URL? {
+        return backdropURL
     }
 }
