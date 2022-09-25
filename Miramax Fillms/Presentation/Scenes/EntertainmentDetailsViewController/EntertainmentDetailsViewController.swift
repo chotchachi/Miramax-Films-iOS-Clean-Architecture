@@ -237,7 +237,7 @@ extension EntertainmentDetailsViewController {
             .disposed(by: rx.disposeBag)
         
         let seasonDataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Season>> { dataSource, tableView, indexPath, item in
-            let cell = tableView.dequeueReusableCell(withClass: SeasonSmallCell.self)
+            let cell = tableView.dequeueReusableCell(withClass: SeasonSmallCell.self, for: indexPath)
             cell.bind(item, offset: indexPath.row)
             cell.onPlayButtonTapped = { [weak self] in
                 guard let self = self else { return }

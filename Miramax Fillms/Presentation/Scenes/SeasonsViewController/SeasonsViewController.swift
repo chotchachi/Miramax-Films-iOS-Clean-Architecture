@@ -50,7 +50,7 @@ class SeasonsViewController: BaseViewController<SeasonsViewModel> {
         let output = viewModel.transform(input: input)
         
         let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Season>> { dataSource, tableView, indexPath, item in
-            let cell = tableView.dequeueReusableCell(withClass: SeasonLargeCell.self)
+            let cell = tableView.dequeueReusableCell(withClass: SeasonLargeCell.self, for: indexPath)
             cell.bind(item)
             return cell
         }
