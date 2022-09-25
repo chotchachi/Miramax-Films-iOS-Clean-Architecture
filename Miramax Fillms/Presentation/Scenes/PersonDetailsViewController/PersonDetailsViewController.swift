@@ -155,6 +155,14 @@ extension PersonDetailsViewController {
         departmentTagListView.removeAllTags()
         departmentTagListView.addTags(personDetail.departments)
         
+        if let backdropImage = personDetail.images.randomElement(),
+           let backdropImageURL = backdropImage.fileURL {
+            ivBackdrop.kf.setImage(with: backdropImageURL)
+            backdropView.isHidden = false
+        } else {
+            backdropView.isHidden = true
+        }
+        
         if let profileURL = personDetail.profileURL {
             ivProfile.kf.setImage(with: profileURL)
         }
