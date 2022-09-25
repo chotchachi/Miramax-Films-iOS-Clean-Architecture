@@ -16,6 +16,7 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
         let toSeasonListTrigger: Driver<Void>
         let seasonSelectTrigger: Driver<Season>
         let personSelectTrigger: Driver<PersonModelType>
+        let entertainmentSelectTrigger: Driver<EntertainmentModelType>
         let shareTrigger: Driver<Void>
         let retryTrigger: Driver<Void>
     }
@@ -86,6 +87,13 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
                 self.router.trigger(.personDetails(person: item))
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.entertainmentSelectTrigger
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.router.trigger(.entertainmentDetails(entertainment: item))
             })
             .disposed(by: rx.disposeBag)
         

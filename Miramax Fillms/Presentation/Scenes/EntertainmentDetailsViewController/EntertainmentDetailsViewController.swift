@@ -23,35 +23,45 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
+    /// Section title
+    @IBOutlet weak var sectionTitleView: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     
+    /// Section header
+    @IBOutlet weak var sectionHeaderView: UIView!
     @IBOutlet weak var ivPoster: UIImageView!
-    
     @IBOutlet weak var lblRating: UILabel!
     @IBOutlet weak var lblRatingText: UILabel!
-    
     @IBOutlet weak var lblDuration: UILabel!
     @IBOutlet weak var lblDurationText: UILabel!
-
     @IBOutlet weak var lblReleaseDate: UILabel!
     @IBOutlet weak var lblReleaseDateText: UILabel!
 
+    /// Section overview
+    @IBOutlet weak var sectionOverviewView: UIView!
     @IBOutlet weak var overviewSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var lblOverview: UILabel!
     @IBOutlet weak var btnSeeMoreOverview: UIButton!
     
+    /// Section seasons
+    @IBOutlet weak var sectionSeasonsView: UIView!
     @IBOutlet weak var seasonsSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var seasonsTableView: IntrinsicTableView!
     @IBOutlet weak var seasonsTableViewHc: NSLayoutConstraint!
     
+    /// Section credits
+    @IBOutlet weak var sectionCreditsView: UIView!
     @IBOutlet weak var actorsSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var actorsCollectionView: UICollectionView!
-    
     @IBOutlet weak var lblDirector: UILabel!
     @IBOutlet weak var lblWriters: UILabel!
     
+    /// Section gallery
+    @IBOutlet weak var sectionGalleryView: UIView!
     @IBOutlet weak var gallerySectionHeaderView: SectionHeaderView!
 
+    /// Section recommend
+    @IBOutlet weak var sectionRecommendView: UIView!
     @IBOutlet weak var recommendSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
 
@@ -64,20 +74,25 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     private let retryTriggerS = PublishRelay<Void>()
     private let seasonSelectTriggerS = PublishRelay<Season>()
     private let personSelectTriggerS = PublishRelay<PersonModelType>()
+    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
 
     private let seasonsDataS = BehaviorRelay<[Season]>(value: [])
     
     private var entertainmentDetail: EntertainmentDetailModelType?
 
     private var lblOverviewShowMore = false
+    
+    // MARK: - Lifecycle
 
     override func configView() {
         super.configView()
         
         configureAppToolbar()
+        configureTitleSection()
+        configureHeaderSection()
         configureOverviewSection()
         configureSeasonsSection()
-        configureActorsSection()
+        configureCreditsSection()
         configureGallerySection()
         configureRecommendSection()
         configureOthersView()
@@ -92,6 +107,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
             toSeasonListTrigger: seasonsSectionHeaderView.rx.seeMoreButtonTap.asDriver(),
             seasonSelectTrigger: seasonSelectTriggerS.asDriverOnErrorJustComplete(),
             personSelectTrigger: personSelectTriggerS.asDriverOnErrorJustComplete(),
+            entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
             shareTrigger: btnShare.rx.tap.asDriver(),
             retryTrigger: retryTriggerS.asDriverOnErrorJustComplete()
         )
@@ -158,10 +174,39 @@ extension EntertainmentDetailsViewController {
             .disposed(by: rx.disposeBag)
     }
     
+    private func configureTitleSection() {
+        lblTitle.textColor = AppColors.textColorPrimary
+        lblTitle.font = AppFonts.headlineSemiBold
+    }
+    
+    private func configureHeaderSection() {
+        ivPoster.kf.indicatorType = .activity
+        
+        lblRating.textColor = AppColors.textColorPrimary
+        lblRating.font = AppFonts.subheadBold
+        
+        lblRatingText.textColor = AppColors.textColorSecondary
+        lblRatingText.font = AppFonts.caption2
+        
+        lblDuration.textColor = AppColors.textColorPrimary
+        lblDuration.font = AppFonts.subheadBold
+        
+        lblDurationText.textColor = AppColors.textColorSecondary
+        lblDurationText.font = AppFonts.caption2
+        
+        lblReleaseDate.textColor = AppColors.textColorPrimary
+        lblReleaseDate.font = AppFonts.subheadBold
+        
+        lblReleaseDateText.textColor = AppColors.textColorSecondary
+        lblReleaseDateText.font = AppFonts.caption2
+    }
+    
     private func configureOverviewSection() {
         overviewSectionHeaderView.title = "overview".localized
         overviewSectionHeaderView.showSeeMoreButton = false
         
+        lblOverview.textColor = AppColors.textColorSecondary
+        lblOverview.font = AppFonts.caption1
         lblOverview.numberOfLines = kOverviewLabelMaxLines
         
         btnSeeMoreOverview.setTitle("see_more".localized, for: .normal)
@@ -185,11 +230,14 @@ extension EntertainmentDetailsViewController {
     private func configureSeasonsSection() {
         seasonsSectionHeaderView.title = "seasons".localized
 
-        seasonsTableView.delegate = self
+        seasonsTableView.rowHeight = DimensionConstants.seasonSmallCellHeight
         seasonsTableView.separatorStyle = .none
         seasonsTableView.showsVerticalScrollIndicator = false
         seasonsTableView.isScrollEnabled = false
         seasonsTableView.register(cellWithClass: SeasonSmallCell.self)
+        seasonsTableView.rx.modelSelected(Season.self)
+            .bind(to: seasonSelectTriggerS)
+            .disposed(by: rx.disposeBag)
         
         let seasonDataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Season>> { dataSource, tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withClass: SeasonSmallCell.self)
@@ -209,7 +257,7 @@ extension EntertainmentDetailsViewController {
             .disposed(by: rx.disposeBag)
     }
     
-    private func configureActorsSection() {
+    private func configureCreditsSection() {
         actorsSectionHeaderView.title = "actors".localized
         actorsSectionHeaderView.showSeeMoreButton = false
         
@@ -220,6 +268,12 @@ extension EntertainmentDetailsViewController {
         actorsCollectionView.dataSource = self
         actorsCollectionView.delegate = self
         actorsCollectionView.showsHorizontalScrollIndicator = false
+        
+        lblDirector.textColor = AppColors.textColorPrimary
+        lblDirector.font = AppFonts.caption1
+        
+        lblWriters.textColor = AppColors.textColorPrimary
+        lblWriters.font = AppFonts.caption1
     }
     
     private func configureGallerySection() {
@@ -240,7 +294,6 @@ extension EntertainmentDetailsViewController {
     }
     
     private func configureOthersView() {
-        ivPoster.kf.indicatorType = .activity
         scrollView.isHidden = true
         loadingIndicator.startAnimating()
         btnShare.isEnabled = false
@@ -248,15 +301,19 @@ extension EntertainmentDetailsViewController {
     }
     
     private func bindData(_ entertainmentDetail: EntertainmentDetailModelType) {
+        // Entertainment title
+        lblTitle.text = entertainmentDetail.entertainmentDetailTitle
+
+        // Entertainment poster
         if let posterURL = entertainmentDetail.entertainmentPosterURL {
             ivPoster.kf.setImage(with: posterURL)
         }
         
-        lblTitle.text = entertainmentDetail.entertainmentDetailTitle
-        
+        // Entertainment rating
         lblRatingText.text = "rating".localized
         lblRating.text = DataUtils.getRatingText(entertainmentDetail.entertainmentVoteAverage)
         
+        // Entertainment release date
         lblReleaseDateText.text = "year".localized
         if let releaseYear = DataUtils.getReleaseYear(entertainmentDetail.entertainmentReleaseDate) {
             lblReleaseDate.text = "\(releaseYear)"
@@ -264,6 +321,7 @@ extension EntertainmentDetailsViewController {
             lblReleaseDate.text = "unknown".localized
         }
         
+        // Entertainment duration
         if entertainmentDetail is MovieDetail {
             lblDurationText.text = "duration".localized
             lblDuration.text = DataUtils.getDurationText(entertainmentDetail.entertainmentRuntime)
@@ -276,8 +334,16 @@ extension EntertainmentDetailsViewController {
             }
         }
 
+        // Entertainment overview
         lblOverview.text = entertainmentDetail.entertainmentOverview
         
+        // Entertainment seasons
+        sectionSeasonsView.isHidden = entertainmentDetail is MovieDetail
+        seasonsDataS.accept(entertainmentDetail.entertainmentSeasons ?? [])
+
+        // Entertainment credits
+        actorsCollectionView.reloadData()
+
         let directorsString = entertainmentDetail.entertainmentDirectors?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
         lblDirector.text = "Director: \(directorsString)"
         lblDirector.highlight(text: directorsString, color: AppColors.textColorSecondary)
@@ -285,26 +351,12 @@ extension EntertainmentDetailsViewController {
         let writersString = entertainmentDetail.entertainmentWriters?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
         lblWriters.text = "Writers: \(writersString)"
         lblWriters.highlight(text: writersString, color: AppColors.textColorSecondary)
+                
+        // Entertainment gallery
         
-        actorsCollectionView.reloadData()
+        // Entertainment recommend
         recommendCollectionView.reloadData()
-        
-        seasonsDataS.accept(entertainmentDetail.entertainmentSeasons ?? [])
     }
-}
-
-// MARK: - UITableViewDelegate
-
-extension EntertainmentDetailsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return DimensionConstants.seasonSmallCellHeight
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let item = entertainmentDetail?.entertainmentSeasons?[indexPath.row] else { return }
-        seasonSelectTriggerS.accept(item)
-    }
-    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -347,7 +399,7 @@ extension EntertainmentDetailsViewController: UICollectionViewDelegate {
             personSelectTriggerS.accept(item)
         } else if collectionView == recommendCollectionView {
             guard let item = entertainmentDetail?.entertainmentRecommends[indexPath.row] else { return }
-
+            entertainmentSelectTriggerS.accept(item)
         }
     }
     
