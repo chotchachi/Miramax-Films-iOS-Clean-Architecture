@@ -100,8 +100,6 @@ class GenreHorizontalListCell: UICollectionViewCell {
             // set data
             genreItems = array
             genreCollectionView.reloadData()
-        case .empty:
-            break
         case .error:
             loadingIndicatorView.stopAnimating()
             genreCollectionView.isHidden = true

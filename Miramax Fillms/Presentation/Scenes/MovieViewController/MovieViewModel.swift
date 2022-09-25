@@ -62,7 +62,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
                     .genreRepository()
                     .getGenreMovieList()
                     .map { ViewState.populated($0.genres) }
-                    .catchAndReturn(.error(NSError(domain: "", code: 1)))
+                    .catchAndReturn(.error)
             }
             .startWith(.initial)
             .map { MovieViewData.genreViewState(viewState: $0) }
@@ -73,7 +73,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
                     .movieRepository()
                     .getUpComing(genreId: nil, page: nil)
                     .map { ViewState.populated($0.results) }
-                    .catchAndReturn(.error(NSError(domain: "", code: 1)))
+                    .catchAndReturn(.error)
             }
             .startWith(.initial)
             .map { MovieViewData.upComingViewState(viewState: $0) }

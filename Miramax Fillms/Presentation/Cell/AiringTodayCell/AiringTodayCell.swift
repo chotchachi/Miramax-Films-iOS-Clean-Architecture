@@ -103,8 +103,6 @@ class AiringTodayCell: UICollectionViewCell {
                 entertainment = firstItem
                 bind(firstItem)
             }
-        case .empty:
-            break
         case .error:
             loadingIndicatorView.stopAnimating()
             viewMainWrap.isHidden = true

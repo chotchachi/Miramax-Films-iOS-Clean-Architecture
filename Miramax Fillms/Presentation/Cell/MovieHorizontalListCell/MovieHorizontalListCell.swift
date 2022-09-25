@@ -106,8 +106,6 @@ class MovieHorizontalListCell: UICollectionViewCell {
             collectionView.isHidden = false
             btnRetry.isHidden = true
             setData(array)
-        case .empty:
-            break
         case .error:
             loadingIndicatorView.stopAnimating()
             collectionView.isHidden = true
@@ -130,13 +128,20 @@ class MovieHorizontalListCell: UICollectionViewCell {
             collectionView.isHidden = false
             btnRetry.isHidden = true
             setData(array)
-        case .empty:
-            break
         case .error:
             loadingIndicatorView.stopAnimating()
             collectionView.isHidden = true
             btnRetry.isHidden = false
         }
+    }
+    
+    func bind(_ items: [EntertainmentModelType], headerTitle: String) {
+        sectionHeaderView.title = headerTitle
+        
+        loadingIndicatorView.stopAnimating()
+        collectionView.isHidden = false
+        btnRetry.isHidden = true
+        setData(items)
     }
     
     private func setData(_ items: [EntertainmentModelType]) {

@@ -66,7 +66,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                     .genreRepository()
                     .getGenreShowList()
                     .map { ViewState.populated($0.genres) }
-                    .catchAndReturn(.error(NSError(domain: "", code: 1)))
+                    .catchAndReturn(.error)
             }
             .startWith(.initial)
             .map { TVShowViewData.genreViewState(viewState: $0) }
@@ -77,7 +77,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                     .tvShowRepository()
                     .getAiringToday(genreId: nil, page: nil)
                     .map { ViewState.populated($0.results) }
-                    .catchAndReturn(.error(NSError(domain: "", code: 1)))
+                    .catchAndReturn(.error)
             }
             .startWith(.initial)
             .map { TVShowViewData.airingTodayViewState(viewStatte: $0) }
@@ -88,7 +88,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                     .tvShowRepository()
                     .getOnTheAir(genreId: nil, page: nil)
                     .map { ViewState.populated($0.results) }
-                    .catchAndReturn(.error(NSError(domain: "", code: 1)))
+                    .catchAndReturn(.error)
             }
             .startWith(.initial)
             .map { TVShowViewData.onTheAirViewState(viewState: $0) }
