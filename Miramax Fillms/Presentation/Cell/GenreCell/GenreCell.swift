@@ -7,10 +7,17 @@
 
 import UIKit
 import SnapKit
+import SwifterSwift
 
 class GenreCell: UICollectionViewCell {
     private var containerView: UIView!
     private var lblGenreName: UILabel!
+    
+    override var isHighlighted: Bool {
+        didSet {
+            containerView.alpha = isHighlighted ? 0.5 : 1.0
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,9 +27,9 @@ class GenreCell: UICollectionViewCell {
         containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.backgroundColor = UIColor(hex: 0x1A2138)
-        containerView.layer.cornerRadius = 16.0
-        containerView.layer.borderColor = UIColor(hex: 0x354271).cgColor
-        containerView.layer.borderWidth = 1.0
+        containerView.cornerRadius = 16.0
+        containerView.borderColor = UIColor(hex: 0x354271)
+        containerView.borderWidth = 1.0
         
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints { make in
