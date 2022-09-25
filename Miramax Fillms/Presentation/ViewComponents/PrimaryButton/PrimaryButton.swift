@@ -8,6 +8,9 @@
 import UIKit
 import SwifterSwift
 
+fileprivate let kNormalColor: UIColor = AppColors.colorAccent
+fileprivate let kHighlightColor: UIColor = AppColors.colorAccent.withAlphaComponent(0.5)
+
 @IBDesignable
 final class PrimaryButton: UIButton {
     
@@ -23,8 +26,10 @@ final class PrimaryButton: UIButton {
         setup()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+        
+        setup()
     }
     
     override var intrinsicContentSize: CGSize {
@@ -33,14 +38,21 @@ final class PrimaryButton: UIButton {
         return desiredButtonSize
     }
     
+    override var isHighlighted: Bool {
+        didSet {
+            borderColor = isHighlighted ? kHighlightColor : kNormalColor
+        }
+    }
+    
     private func setup() {
         clipsToBounds = true
-        setTitleColor(AppColors.colorAccent, for: .normal)
+        setTitleColor(kNormalColor, for: .normal)
+        setTitleColor(kHighlightColor, for: .highlighted)
         titleLabel?.font = AppFonts.caption1SemiBold
         backgroundColor = .clear
         cornerRadius = 8.0
-        borderColor = AppColors.colorAccent
         borderWidth = 1.0
+        borderColor = kNormalColor
         titleEdgeInsets = .init(top: 8.0, left: 24.0, bottom: 8.0, right: 24.0)
     }
 }
