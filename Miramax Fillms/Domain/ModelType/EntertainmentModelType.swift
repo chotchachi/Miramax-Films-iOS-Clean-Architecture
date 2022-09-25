@@ -7,7 +7,13 @@
 
 import Foundation
 
+enum EntertainmentType {
+    case movie
+    case tvShow
+}
+
 protocol EntertainmentModelType {
+    var entertainmentModelType: EntertainmentType { get }
     var entertainmentModelId: Int { get }
     var entertainmentModelName: String { get }
     var entertainmentModelOverview: String { get }

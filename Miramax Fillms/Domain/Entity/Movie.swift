@@ -31,6 +31,10 @@ extension Movie: ImageConfigurable {
 }
 
 extension Movie: EntertainmentModelType {
+    var entertainmentModelType: EntertainmentType {
+        return .movie
+    }
+    
     var entertainmentModelId: Int {
         return id
     }

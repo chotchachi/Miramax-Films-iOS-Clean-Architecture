@@ -31,6 +31,10 @@ extension TVShow: ImageConfigurable {
 }
 
 extension TVShow: EntertainmentModelType {
+    var entertainmentModelType: EntertainmentType {
+        return .tvShow
+    }
+    
     var entertainmentModelId: Int {
         return id
     }
