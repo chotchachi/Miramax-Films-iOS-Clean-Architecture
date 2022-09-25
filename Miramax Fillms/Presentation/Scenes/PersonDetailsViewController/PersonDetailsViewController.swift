@@ -52,6 +52,7 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel> {
         
         configureAppToolbar()
         configureHeaderSection()
+        configureProfileInfoSection()
         configureMoviesSection()
         configureOthersView()
     }
@@ -124,8 +125,20 @@ extension PersonDetailsViewController {
     }
     
     private func configureHeaderSection() {
+        lblTitle.textColor = AppColors.textColorPrimary
+        lblTitle.font = AppFonts.headlineSemiBold
+        
         departmentTagListView.tagBackgroundColor = AppColors.colorYellow
         departmentTagListView.textColor = AppColors.colorPrimary
+        departmentTagListView.textFont = AppFonts.caption2
+    }
+    
+    private func configureProfileInfoSection() {
+        lblBiography.textColor = AppColors.textColorSecondary
+        lblBiography.font = AppFonts.caption1
+        
+        lblBirthday.textColor = AppColors.textColorPrimary
+        lblBirthday.font = AppFonts.caption1Bold
     }
     
     private func configureMoviesSection() {
@@ -172,7 +185,7 @@ extension PersonDetailsViewController {
         
         let birthDayString = getBirdthdayStringFormatted(personDetail.birthday) ?? "unknown".localized
         lblBirthday.text = "DOB: \(birthDayString)"
-        lblBirthday.highlight(text: birthDayString, color: AppColors.textColorSecondary)
+        lblBirthday.highlight(text: birthDayString, font: AppFonts.caption1)
         
         moviesCollectionView.reloadData()
     }
