@@ -165,7 +165,7 @@ extension EntertainmentDetailsViewController {
         lblOverview.numberOfLines = kOverviewLabelMaxLines
         
         btnSeeMoreOverview.setTitle("see_more".localized, for: .normal)
-        btnSeeMoreOverview.titleLabel?.font = AppFonts.callout
+        btnSeeMoreOverview.titleLabel?.font = AppFonts.caption1
         btnSeeMoreOverview.setTitleColor(AppColors.colorAccent, for: .normal)
         btnSeeMoreOverview.rx.tap
             .subscribe(onNext: { [weak self] in

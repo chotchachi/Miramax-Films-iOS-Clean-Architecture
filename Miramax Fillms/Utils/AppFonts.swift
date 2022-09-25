@@ -41,29 +41,27 @@ struct AppFonts {
 
 extension AppFonts {
     static let headline = AppFonts.regular(withSize: 24.0)
+    static let headlineMedium = AppFonts.medium(withSize: 24.0)
     static let headlineSemiBold = AppFonts.semiBold(withSize: 24.0)
     static let headlineBold = AppFonts.bold(withSize: 24.0)
 
     static let subhead = AppFonts.regular(withSize: 18.0)
-    static let subheadLight = AppFonts.light(withSize: 18.0)
+    static let subheadMedium = AppFonts.medium(withSize: 18.0)
     static let subheadSemiBold = AppFonts.semiBold(withSize: 18.0)
     static let subheadBold = AppFonts.bold(withSize: 18.0)
 
     static let body = AppFonts.regular(withSize: 17.0)
+    static let bodyMedium = AppFonts.medium(withSize: 17.0)
     static let bodySemiBold = AppFonts.semiBold(withSize: 17.0)
     static let bodyBold = AppFonts.bold(withSize: 17.0)
 
-    static let callout = AppFonts.regular(withSize: 14.0)
-    static let calloutMedium = AppFonts.medium(withSize: 14.0)
-    static let calloutLight = AppFonts.light(withSize: 14.0)
-    static let calloutSemiBold = AppFonts.semiBold(withSize: 14.0)
-
     static let caption1 = AppFonts.regular(withSize: 14.0)
     static let caption1Medium = AppFonts.medium(withSize: 14.0)
-    static let caption1Semibold = AppFonts.semiBold(withSize: 14.0)
+    static let caption1SemiBold = AppFonts.semiBold(withSize: 14.0)
     static let caption1Bold = AppFonts.bold(withSize: 14.0)
 
     static let caption2 = AppFonts.regular(withSize: 12.0)
     static let caption2Medium = AppFonts.medium(withSize: 12.0)
-    static let caption2Semibold = AppFonts.semiBold(withSize: 12.0)
+    static let caption2SemiBold = AppFonts.semiBold(withSize: 12.0)
+    static let caption2Bold = AppFonts.bold(withSize: 12.0)
 }

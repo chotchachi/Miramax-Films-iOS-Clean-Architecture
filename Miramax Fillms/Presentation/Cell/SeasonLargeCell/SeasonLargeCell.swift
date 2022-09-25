@@ -89,7 +89,7 @@ class SeasonLargeCell: UITableViewCell {
         lblOverview = UILabel()
         lblOverview.translatesAutoresizingMaskIntoConstraints = false
         lblOverview.textColor = AppColors.textColorPrimary
-        lblOverview.font = AppFonts.caption1Semibold
+        lblOverview.font = AppFonts.caption1SemiBold
         lblOverview.numberOfLines = 2
 
         // Labels stack view

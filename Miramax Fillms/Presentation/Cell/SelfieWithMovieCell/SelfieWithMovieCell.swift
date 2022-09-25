@@ -56,7 +56,7 @@ class SelfieWithMovieCell: UICollectionViewCell {
         lblMessage.translatesAutoresizingMaskIntoConstraints = false
         lblMessage.text = "Take a picture with your \nfavorite movie"
         lblMessage.textColor = AppColors.textColorPrimary
-        lblMessage.font = AppFonts.calloutMedium
+        lblMessage.font = AppFonts.caption1Medium
         lblMessage.textAlignment = .center
         lblMessage.numberOfLines = 2
         

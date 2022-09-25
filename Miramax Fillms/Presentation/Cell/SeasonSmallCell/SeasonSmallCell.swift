@@ -34,7 +34,7 @@ class SeasonSmallCell: UITableViewCell {
         lblOffset = UILabel()
         lblOffset.translatesAutoresizingMaskIntoConstraints = false
         lblOffset.textColor = AppColors.textColorPrimary
-        lblOffset.font = AppFonts.caption1Semibold
+        lblOffset.font = AppFonts.caption1SemiBold
         
         contentView.addSubview(lblOffset)
         lblOffset.snp.makeConstraints { make in
@@ -65,7 +65,7 @@ class SeasonSmallCell: UITableViewCell {
         lblSeasonName = UILabel()
         lblSeasonName.translatesAutoresizingMaskIntoConstraints = false
         lblSeasonName.textColor = AppColors.textColorPrimary
-        lblSeasonName.font = AppFonts.caption1Semibold
+        lblSeasonName.font = AppFonts.caption1SemiBold
         
         // Label air date
         

@@ -58,7 +58,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         btnCancel = UIButton(type: .system)
         btnCancel.setTitle("cancel".localized, for: .normal)
         btnCancel.setTitleColor(AppColors.colorAccent, for: .normal)
-        btnCancel.titleLabel?.font = AppFonts.callout
+        btnCancel.titleLabel?.font = AppFonts.caption1
         view.addSubview(btnCancel)
         btnCancel.snp.makeConstraints { make in
             make.centerY.equalTo(appToolbar.snp.centerY)
@@ -78,7 +78,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         btnClearSearch.isHidden = true
         btnClearSearch.addTarget(self, action: #selector(clearSearchButtonTapped(_:)), for: .touchUpInside)
         
-        lblEmptyMessage.font = AppFonts.caption1Semibold
+        lblEmptyMessage.font = AppFonts.caption1SemiBold
         lblEmptyMessage.textColor = AppColors.textColorPrimary
     }
     

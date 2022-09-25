@@ -101,7 +101,7 @@ class EpisodeCell: UITableViewCell {
         
         btnSeeMoreOverview = UIButton(type: .system)
         btnSeeMoreOverview.setTitle("see_more".localized, for: .normal)
-        btnSeeMoreOverview.titleLabel?.font = AppFonts.callout
+        btnSeeMoreOverview.titleLabel?.font = AppFonts.caption1
         btnSeeMoreOverview.contentHorizontalAlignment = .left
         btnSeeMoreOverview.setTitleColor(AppColors.colorAccent, for: .normal)
         btnSeeMoreOverview.addTarget(self, action: #selector(seeMoreOverViewButtonTapped(_:)), for: .touchUpInside)

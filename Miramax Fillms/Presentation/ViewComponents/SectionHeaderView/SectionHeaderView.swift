@@ -73,7 +73,7 @@ final class SectionHeaderView: UIView {
         btnSeeMore = UIButton(type: .system)
         btnSeeMore.setTitle("See more", for: .normal)
         btnSeeMore.setTitleColor(AppColors.colorAccent, for: .normal)
-        btnSeeMore.titleLabel?.font = AppFonts.callout
+        btnSeeMore.titleLabel?.font = AppFonts.caption1
         btnSeeMore.addTarget(self, action: #selector(seeMoreButtonTapped(_:)), for: .touchUpInside)
         
         addSubview(btnSeeMore)

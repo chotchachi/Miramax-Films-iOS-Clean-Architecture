@@ -36,7 +36,7 @@ final class PrimaryButton: UIButton {
     private func setup() {
         clipsToBounds = true
         setTitleColor(AppColors.colorAccent, for: .normal)
-        titleLabel?.font = AppFonts.calloutSemiBold
+        titleLabel?.font = AppFonts.caption1SemiBold
         backgroundColor = .clear
         cornerRadius = 8.0
         borderColor = AppColors.colorAccent
