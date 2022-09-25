@@ -16,6 +16,7 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
         let toSearchTrigger: Driver<Void>
         let shareTrigger: Driver<Void>
         let toBiographyTrigger: Driver<Void>
+        let entertainmentSelectTrigger: Driver<EntertainmentModelType>
     }
     
     struct Output {
@@ -77,6 +78,13 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
                 self.router.trigger(.biography(personDetail: item))
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.entertainmentSelectTrigger
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.router.trigger(.entertainmentDetails(entertainment: item))
             })
             .disposed(by: rx.disposeBag)
         

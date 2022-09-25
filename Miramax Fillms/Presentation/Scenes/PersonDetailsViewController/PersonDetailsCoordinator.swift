@@ -13,6 +13,7 @@ enum PersonDetailsRoute: Route {
     case search
     case share
     case biography(personDetail: PersonDetail)
+    case entertainmentDetails(entertainment: EntertainmentModelType)
 }
 
 class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
@@ -58,6 +59,9 @@ class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
             return .present(activity)
         case .biography(personDetail: let personDetail):
             addChild(PersonBiographyCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, personDetail: personDetail))
+            return .none()
+        case .entertainmentDetails(entertainment: let entertainment):
+            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
             return .none()
         }
     }

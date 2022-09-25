@@ -12,9 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonDetailsViewController" customModule="Miramax_Fillms" customModuleProvider="target">
             <connections>
                 <outlet property="appToolbar" destination="CSR-c8-MBk" id="OwL-UW-07s"/>
-                <outlet property="backdropView" destination="KOv-bP-THe" id="12v-Qm-Meq"/>
                 <outlet property="btnMoreBiography" destination="w6Y-2S-KeK" id="k7E-23-87A"/>
                 <outlet property="departmentTagListView" destination="W0q-nd-sbB" id="Bkg-ri-zCm"/>
+                <outlet property="gallerySectionHeaderView" destination="cgm-b8-Y4q" id="e0s-m5-FoE"/>
                 <outlet property="ivBackdrop" destination="CAu-Vs-JgV" id="GSW-N6-17O"/>
                 <outlet property="ivProfile" destination="qyG-Cx-yo8" id="Bta-nZ-4wP"/>
                 <outlet property="lblBiography" destination="E0l-jh-TsL" id="iQn-xm-gb3"/>
@@ -24,6 +24,11 @@
                 <outlet property="moviesCollectionView" destination="D1P-rj-ro0" id="shW-il-jI9"/>
                 <outlet property="moviesSectionHeaderView" destination="ddU-eE-LLR" id="Pk3-el-Nrl"/>
                 <outlet property="scrollView" destination="coh-lq-TpG" id="9pZ-AO-whI"/>
+                <outlet property="sectionBackdropView" destination="KOv-bP-THe" id="KLE-rd-Tie"/>
+                <outlet property="sectionGalleryView" destination="FOc-ff-1dM" id="0T1-H5-mTz"/>
+                <outlet property="sectionMoviesView" destination="YOt-27-uIZ" id="Nnx-JZ-mBV"/>
+                <outlet property="sectionProfileInfoView" destination="cS9-Z7-i3C" id="ICW-ZZ-T8m"/>
+                <outlet property="sectionTitleView" destination="tmo-aQ-lAD" id="KDs-nJ-SlA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -43,7 +48,7 @@
                     <rect key="frame" x="0.0" y="101" width="390" height="709"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jWF-eo-8QQ">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="626"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="726"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tmo-aQ-lAD" userLabel="Section Title">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="80.666666666666671"/>
@@ -163,8 +168,27 @@
                                         <constraint firstAttribute="height" constant="8" id="lpo-MW-Qo5"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOc-ff-1dM" userLabel="Section Gallery">
+                                    <rect key="frame" x="0.0" y="419" width="390" height="100"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgm-b8-Y4q" userLabel="Gallery Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="32" width="390" height="24"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="74F-Dc-diT"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="cgm-b8-Y4q" secondAttribute="trailing" id="GTD-Ac-qpJ"/>
+                                        <constraint firstAttribute="height" constant="100" id="ra2-au-lF5"/>
+                                        <constraint firstItem="cgm-b8-Y4q" firstAttribute="leading" secondItem="FOc-ff-1dM" secondAttribute="leading" id="tc2-Yr-3IF"/>
+                                        <constraint firstItem="cgm-b8-Y4q" firstAttribute="top" secondItem="FOc-ff-1dM" secondAttribute="top" constant="32" id="uXZ-EJ-2NG"/>
+                                    </constraints>
+                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOt-27-uIZ" userLabel="Section Movies">
-                                    <rect key="frame" x="0.0" y="419" width="390" height="207"/>
+                                    <rect key="frame" x="0.0" y="519" width="390" height="207"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddU-eE-LLR" userLabel="Movies Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="16" width="390" height="24"/>

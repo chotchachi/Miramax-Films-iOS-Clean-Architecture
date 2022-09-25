@@ -247,10 +247,9 @@ extension EntertainmentDetailsViewController {
         }
         
         seasonsDataS
-            .asDriver()
             .map { Array($0.prefix(kSeasonsMaxItems)) }
             .map { [SectionModel(model: "", items: $0)] }
-            .drive(seasonsTableView.rx.items(dataSource: seasonDataSource))
+            .bind(to: seasonsTableView.rx.items(dataSource: seasonDataSource))
             .disposed(by: rx.disposeBag)
     }
     
