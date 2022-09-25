@@ -65,6 +65,13 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
+        input.shareTrigger
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.router.trigger(.share)
+            })
+            .disposed(by: rx.disposeBag)
+        
         input.toBiographyTrigger
             .withLatestFrom(personDetailD)
             .drive(onNext: { [weak self] item in

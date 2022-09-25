@@ -11,12 +11,14 @@ enum PersonBiographyRoute: Route {
     case initial(personDetail: PersonDetail)
     case pop
     case search
+    case share
 }
 
 class PersonBiographyCoordinator: NavigationCoordinator<PersonBiographyRoute> {
     
     private let appDIContainer: AppDIContainer
-    
+    private let personDetail: PersonDetail
+
     public override var viewController: UIViewController! {
         return autoreleaseController
     }
@@ -25,6 +27,7 @@ class PersonBiographyCoordinator: NavigationCoordinator<PersonBiographyRoute> {
     
     init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, personDetail: PersonDetail) {
         self.appDIContainer = appDIContainer
+        self.personDetail = personDetail
         super.init(rootViewController: rootViewController, initialRoute: nil)
         trigger(.initial(personDetail: personDetail))
     }
@@ -41,6 +44,17 @@ class PersonBiographyCoordinator: NavigationCoordinator<PersonBiographyRoute> {
         case .search:
             addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
             return .none()
+        case .share:
+            guard let url = URL(string: "https://www.themoviedb.org/person/\(personDetail.id)") else {
+                return .none()
+            }
+            let activity = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            if (UIDevice.current.userInterfaceIdiom == .pad) {
+                activity.popoverPresentationController?.sourceView = viewController.view
+                activity.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 768, height: 300)
+            }
+            activity.excludedActivityTypes = [.airDrop, .addToReadingList, .copyToPasteboard]
+            return .present(activity)
         }
     }
 }

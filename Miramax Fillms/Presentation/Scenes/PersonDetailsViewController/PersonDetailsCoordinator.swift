@@ -11,12 +11,14 @@ enum PersonDetailsRoute: Route {
     case initial(personModel: PersonModelType)
     case pop
     case search
+    case share
     case biography(personDetail: PersonDetail)
 }
 
 class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
     
     private let appDIContainer: AppDIContainer
+    private let personModel: PersonModelType
     
     public override var viewController: UIViewController! {
         return autoreleaseController
@@ -26,6 +28,7 @@ class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
     
     init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, personModel: PersonModelType) {
         self.appDIContainer = appDIContainer
+        self.personModel = personModel
         super.init(rootViewController: rootViewController, initialRoute: nil)
         trigger(.initial(personModel: personModel))
     }
@@ -42,6 +45,17 @@ class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
         case .search:
             addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
             return .none()
+        case .share:
+            guard let url = URL(string: "https://www.themoviedb.org/person/\(personModel.personModelId)") else {
+                return .none()
+            }
+            let activity = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            if (UIDevice.current.userInterfaceIdiom == .pad) {
+                activity.popoverPresentationController?.sourceView = viewController.view
+                activity.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 768, height: 300)
+            }
+            activity.excludedActivityTypes = [.airDrop, .addToReadingList, .copyToPasteboard]
+            return .present(activity)
         case .biography(personDetail: let personDetail):
             addChild(PersonBiographyCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, personDetail: personDetail))
             return .none()

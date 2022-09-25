@@ -11,6 +11,7 @@ enum EntertainmentDetailsRoute: Route {
     case initial(entertainment: EntertainmentModelType)
     case pop
     case search
+    case share
     case seasonsList(seasons: [Season])
     case seasonDetails(season: Season)
     case personDetails(person: PersonModelType)
@@ -47,6 +48,18 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
         case .search:
             addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
             return .none()
+        case .share:
+            let typeStr = entertainment.entertainmentModelType == .movie ? "movie" : "tv"
+            guard let url = URL(string: "https://www.themoviedb.org/\(typeStr)/\(entertainment.entertainmentModelId)") else {
+                return .none()
+            }
+            let activity = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            if (UIDevice.current.userInterfaceIdiom == .pad) {
+                activity.popoverPresentationController?.sourceView = viewController.view
+                activity.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 768, height: 300)
+            }
+            activity.excludedActivityTypes = [.airDrop, .addToReadingList, .copyToPasteboard]
+            return .present(activity)
         case .seasonsList(seasons: let seasons):
             addChild(SeasonsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, tvShowId: entertainment.entertainmentModelId, seasons: seasons))
             return .none()
