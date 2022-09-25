@@ -233,7 +233,7 @@ extension EntertainmentDetailsViewController {
         let recommendCollectionViewLayout = UICollectionViewFlowLayout()
         recommendCollectionViewLayout.scrollDirection = .horizontal
         recommendCollectionView.collectionViewLayout = recommendCollectionViewLayout
-        recommendCollectionView.register(cellWithClass: MovieHorizontalCell.self)
+        recommendCollectionView.register(cellWithClass: EntertainmentHorizontalCell.self)
         recommendCollectionView.dataSource = self
         recommendCollectionView.delegate = self
         recommendCollectionView.showsHorizontalScrollIndicator = false
@@ -328,7 +328,7 @@ extension EntertainmentDetailsViewController: UICollectionViewDataSource {
             return cell
         } else if collectionView == recommendCollectionView {
             guard let item = entertainmentDetail?.entertainmentRecommends[indexPath.row] else { return UICollectionViewCell() }
-            let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalCell.self, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
             cell.bind(item)
             return cell
         } else {

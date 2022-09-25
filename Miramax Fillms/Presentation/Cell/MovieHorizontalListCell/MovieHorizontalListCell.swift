@@ -41,7 +41,7 @@ class MovieHorizontalListCell: UICollectionViewCell {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
-        collectionView.register(cellWithClass: MovieHorizontalCell.self)
+        collectionView.register(cellWithClass: EntertainmentHorizontalCell.self)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
@@ -162,7 +162,7 @@ extension MovieHorizontalListCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = modelItems[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalCell.self, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
         cell.bind(item)
         return cell
     }

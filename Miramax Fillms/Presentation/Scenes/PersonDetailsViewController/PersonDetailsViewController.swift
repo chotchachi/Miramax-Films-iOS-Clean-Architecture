@@ -148,7 +148,7 @@ extension PersonDetailsViewController {
         let moviesCollectionViewLayout = UICollectionViewFlowLayout()
         moviesCollectionViewLayout.scrollDirection = .horizontal
         moviesCollectionView.collectionViewLayout = moviesCollectionViewLayout
-        moviesCollectionView.register(cellWithClass: MovieHorizontalCell.self)
+        moviesCollectionView.register(cellWithClass: EntertainmentHorizontalCell.self)
         moviesCollectionView.dataSource = self
         moviesCollectionView.delegate = self
         moviesCollectionView.showsHorizontalScrollIndicator = false
@@ -211,7 +211,7 @@ extension PersonDetailsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let item = personDetail?.entertainmentItems[indexPath.row] else { return UICollectionViewCell() }
-        let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalCell.self, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
         cell.bind(item)
         return cell
     }

@@ -1,5 +1,5 @@
 //
-//  MovieHorizontalCell.swift
+//  EntertainmentHorizontalCell.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 15/09/2022.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class MovieHorizontalCell: UICollectionViewCell {
+class EntertainmentHorizontalCell: UICollectionViewCell {
     
     // MARK: - Views
 

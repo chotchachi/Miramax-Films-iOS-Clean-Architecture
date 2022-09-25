@@ -69,7 +69,7 @@
 		EDC502D028D377CC0047C7C3 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502CF28D377CC0047C7C3 /* GenreCell.swift */; };
 		EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */; };
 		EDC502D528D38C2D0047C7C3 /* Rx+asDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D428D38C2D0047C7C3 /* Rx+asDriver.swift */; };
-		EDC502D828D38EDB0047C7C3 /* MovieHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D728D38EDB0047C7C3 /* MovieHorizontalCell.swift */; };
+		EDC502D828D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D728D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift */; };
 		EDC502DB28D38FEA0047C7C3 /* MovieHorizontalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502DA28D38FEA0047C7C3 /* MovieHorizontalListCell.swift */; };
 		EDC6DB2128CF69DF00164EBD /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB2028CF69DF00164EBD /* BaseViewModel.swift */; };
 		EDC6DB2428CF6A0800164EBD /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */; };
@@ -263,7 +263,7 @@
 		EDC502CF28D377CC0047C7C3 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		EDC502D428D38C2D0047C7C3 /* Rx+asDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+asDriver.swift"; sourceTree = "<group>"; };
-		EDC502D728D38EDB0047C7C3 /* MovieHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHorizontalCell.swift; sourceTree = "<group>"; };
+		EDC502D728D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentHorizontalCell.swift; sourceTree = "<group>"; };
 		EDC502DA28D38FEA0047C7C3 /* MovieHorizontalListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHorizontalListCell.swift; sourceTree = "<group>"; };
 		EDC6DB2028CF69DF00164EBD /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
@@ -568,12 +568,12 @@
 			path = GenreCell;
 			sourceTree = "<group>";
 		};
-		EDC502D628D38E550047C7C3 /* MovieHorizontalCell */ = {
+		EDC502D628D38E550047C7C3 /* EntertainmentHorizontalCell */ = {
 			isa = PBXGroup;
 			children = (
-				EDC502D728D38EDB0047C7C3 /* MovieHorizontalCell.swift */,
+				EDC502D728D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift */,
 			);
-			path = MovieHorizontalCell;
+			path = EntertainmentHorizontalCell;
 			sourceTree = "<group>";
 		};
 		EDC502D928D38FD80047C7C3 /* MovieHorizontalListCell */ = {
@@ -1113,7 +1113,7 @@
 				EDE69B3228D60C9B002726B0 /* TabSelectionCell */,
 				EDA4478628D59EEF0037751C /* SelfieWithMovieCell */,
 				EDC502D928D38FD80047C7C3 /* MovieHorizontalListCell */,
-				EDC502D628D38E550047C7C3 /* MovieHorizontalCell */,
+				EDC502D628D38E550047C7C3 /* EntertainmentHorizontalCell */,
 				EDC502CE28D377B00047C7C3 /* GenreCell */,
 				EDFAD3B828D3766700ED3BCD /* GenreHorizontalListCell */,
 			);
@@ -1375,7 +1375,7 @@
 				EDD52F6528DAC1A90078C6C5 /* AiringTodayCellDelegate.swift in Sources */,
 				EDD5302828DCBDBA0078C6C5 /* SeasonDetailsViewModel.swift in Sources */,
 				EDFAD3AE28D36F4700ED3BCD /* MovieViewData.swift in Sources */,
-				EDC502D828D38EDB0047C7C3 /* MovieHorizontalCell.swift in Sources */,
+				EDC502D828D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift in Sources */,
 				EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */,
 				EDE69B7528D7303D002726B0 /* Animation+Scale.swift in Sources */,
 				ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */,
