@@ -63,7 +63,8 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel> {
             popViewTrigger: popViewTriggerS.asDriverOnErrorJustComplete(),
             retryTrigger: retryTriggerS.asDriverOnErrorJustComplete(),
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
-            shareTrigger: btnShare.rx.tap.asDriver()
+            shareTrigger: btnShare.rx.tap.asDriver(),
+            toBiographyTrigger: btnMoreBiography.rx.tap.asDriver()
         )
         let output = viewModel.transform(input: input)
         

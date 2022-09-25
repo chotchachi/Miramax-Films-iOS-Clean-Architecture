@@ -40,7 +40,8 @@ struct AppFonts {
 }
 
 extension AppFonts {
-    static let headline = AppFonts.semiBold(withSize: 24.0)
+    static let headline = AppFonts.regular(withSize: 24.0)
+    static let headlineSemiBold = AppFonts.semiBold(withSize: 24.0)
     static let headlineBold = AppFonts.bold(withSize: 24.0)
 
     static let subhead = AppFonts.regular(withSize: 18.0)

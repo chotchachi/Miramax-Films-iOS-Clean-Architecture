@@ -15,6 +15,7 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
         let retryTrigger: Driver<Void>
         let toSearchTrigger: Driver<Void>
         let shareTrigger: Driver<Void>
+        let toBiographyTrigger: Driver<Void>
     }
     
     struct Output {
@@ -61,6 +62,14 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.router.trigger(.search)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.toBiographyTrigger
+            .withLatestFrom(personDetailD)
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.router.trigger(.biography(personDetail: item))
             })
             .disposed(by: rx.disposeBag)
         

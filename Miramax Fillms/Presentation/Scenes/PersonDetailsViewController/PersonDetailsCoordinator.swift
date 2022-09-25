@@ -11,6 +11,7 @@ enum PersonDetailsRoute: Route {
     case initial(personModel: PersonModelType)
     case pop
     case search
+    case biography(personDetail: PersonDetail)
 }
 
 class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
@@ -40,6 +41,9 @@ class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
             return .pop()
         case .search:
             addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
+            return .none()
+        case .biography(personDetail: let personDetail):
+            addChild(PersonBiographyCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, personDetail: personDetail))
             return .none()
         }
     }
