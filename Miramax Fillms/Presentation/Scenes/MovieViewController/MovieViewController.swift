@@ -27,10 +27,7 @@ class MovieViewController: BaseViewController<MovieViewModel> {
     private let retryUpComingViewTriggerS = PublishRelay<Void>()
     private let movieSelectTriggerS = PublishRelay<Movie>()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
+    // MARK: - Lifecycle
     
     override func configView() {
         super.configView()
