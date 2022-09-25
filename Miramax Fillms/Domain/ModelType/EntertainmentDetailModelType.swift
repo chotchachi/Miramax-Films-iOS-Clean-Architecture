@@ -8,6 +8,7 @@
 import Foundation
 
 protocol EntertainmentDetailModelType {
+    var entertainmentModelType: EntertainmentType { get }
     var entertainmentDetailTitle: String { get }
     var entertainmentPosterURL: URL? { get }
     var entertainmentVoteAverage: Double { get }

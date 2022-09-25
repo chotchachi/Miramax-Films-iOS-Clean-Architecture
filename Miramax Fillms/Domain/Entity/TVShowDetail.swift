@@ -50,6 +50,10 @@ extension TVShowDetail {
 }
 
 extension TVShowDetail: EntertainmentDetailModelType {
+    var entertainmentModelType: EntertainmentType {
+        return .tvShow
+    }
+    
     var entertainmentDetailTitle: String {
         return name
     }

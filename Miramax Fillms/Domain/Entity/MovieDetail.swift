@@ -48,6 +48,10 @@ extension MovieDetail {
 }
 
 extension MovieDetail: EntertainmentDetailModelType {
+    var entertainmentModelType: EntertainmentType {
+        return .movie
+    }
+    
     var entertainmentDetailTitle: String {
         return title
     }
