@@ -9,7 +9,6 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxDataSources
-import Kingfisher
 import SwifterSwift
 
 fileprivate let kSeasonsMaxItems: Int = 3
@@ -180,8 +179,6 @@ extension EntertainmentDetailsViewController {
     }
     
     private func configureHeaderSection() {
-        ivPoster.kf.indicatorType = .activity
-        
         lblRating.textColor = AppColors.textColorPrimary
         lblRating.font = AppFonts.subheadBold
         
@@ -305,9 +302,7 @@ extension EntertainmentDetailsViewController {
         lblTitle.text = entertainmentDetail.entertainmentDetailTitle
 
         // Entertainment poster
-        if let posterURL = entertainmentDetail.entertainmentPosterURL {
-            ivPoster.kf.setImage(with: posterURL)
-        }
+        ivPoster.setImage(with: entertainmentDetail.entertainmentPosterURL)
         
         // Entertainment rating
         lblRatingText.text = "rating".localized

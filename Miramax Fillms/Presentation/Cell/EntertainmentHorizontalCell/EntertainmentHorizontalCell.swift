@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import Kingfisher
 
 class EntertainmentHorizontalCell: UICollectionViewCell {
     
@@ -26,7 +25,6 @@ class EntertainmentHorizontalCell: UICollectionViewCell {
         ivPoster.translatesAutoresizingMaskIntoConstraints = false
         ivPoster.contentMode = .scaleAspectFill
         ivPoster.clipsToBounds = true
-        ivPoster.kf.indicatorType = .activity
         
         // constraint layout
         
@@ -43,9 +41,14 @@ class EntertainmentHorizontalCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        ivPoster.cancelImageDownload()
+        ivPoster.image = nil
+    }
+    
     func bind(_ item: EntertainmentModelType) {
-        if let posterURL = item.entertainmentModelPosterURL {
-            ivPoster.kf.setImage(with: posterURL)
-        }
+        ivPoster.setImage(with: item.entertainmentModelPosterURL)
     }
 }

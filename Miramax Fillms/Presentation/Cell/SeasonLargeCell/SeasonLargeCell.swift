@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 import SwifterSwift
-import Kingfisher
 
 class SeasonLargeCell: UITableViewCell {
     
@@ -48,7 +47,6 @@ class SeasonLargeCell: UITableViewCell {
         ivPoster = UIImageView()
         ivPoster.translatesAutoresizingMaskIntoConstraints = false
         ivPoster.contentMode = .scaleAspectFill
-        ivPoster.kf.indicatorType = .activity
         
         containerView.addSubview(ivPoster)
         ivPoster.snp.makeConstraints { make in
@@ -129,6 +127,13 @@ class SeasonLargeCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        ivPoster.cancelImageDownload()
+        ivPoster.image = nil
+    }
+    
     func bind(_ item: Season) {
         lblSeasonName.text = item.name
 
@@ -142,9 +147,7 @@ class SeasonLargeCell: UITableViewCell {
         lblOverview.text = item.overview
         lblOverview.isHidden = item.overview.isEmpty
         
-        if let posterURL = item.posterURL {
-            ivPoster.kf.setImage(with: posterURL)
-        }
+        ivPoster.setImage(with: item.posterURL)
     }
     
     private func getAirDateStringFormatted(_ strDate: String?) -> String? {

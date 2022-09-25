@@ -7,15 +7,14 @@
 
 import UIKit
 import SnapKit
-import Kingfisher
 import SwifterSwift
 
 class PersonHorizontalCell: UICollectionViewCell {
     
     // MARK: - Views
 
-    private var ivPersonProfile: UIImageView!
-    private var lblPersonName: UILabel!
+    private var ivProfile: UIImageView!
+    private var lblName: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,34 +23,33 @@ class PersonHorizontalCell: UICollectionViewCell {
         
         // image view profile
         
-        ivPersonProfile = UIImageView()
-        ivPersonProfile.translatesAutoresizingMaskIntoConstraints = false
-        ivPersonProfile.contentMode = .scaleAspectFill
-        ivPersonProfile.clipsToBounds = true
-        ivPersonProfile.kf.indicatorType = .activity
+        ivProfile = UIImageView()
+        ivProfile.translatesAutoresizingMaskIntoConstraints = false
+        ivProfile.contentMode = .scaleAspectFill
+        ivProfile.clipsToBounds = true
         
         // label name
         
-        lblPersonName = UILabel()
-        lblPersonName.translatesAutoresizingMaskIntoConstraints = false
-        lblPersonName.font = AppFonts.caption1
-        lblPersonName.textColor = AppColors.textColorPrimary
-        lblPersonName.numberOfLines = 2
-        lblPersonName.textAlignment = .center
+        lblName = UILabel()
+        lblName.translatesAutoresizingMaskIntoConstraints = false
+        lblName.font = AppFonts.caption1
+        lblName.textColor = AppColors.textColorPrimary
+        lblName.numberOfLines = 2
+        lblName.textAlignment = .center
         
         // constraint layout
         
-        contentView.addSubview(ivPersonProfile)
-        ivPersonProfile.snp.makeConstraints { make in
+        contentView.addSubview(ivProfile)
+        ivProfile.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.trailing.equalToSuperview()
             make.leading.equalToSuperview()
-            make.height.equalTo(ivPersonProfile.snp.width)
+            make.height.equalTo(ivProfile.snp.width)
         }
         
-        contentView.addSubview(lblPersonName)
-        lblPersonName.snp.makeConstraints { make in
-            make.top.equalTo(ivPersonProfile.snp.bottom)
+        contentView.addSubview(lblName)
+        lblName.snp.makeConstraints { make in
+            make.top.equalTo(ivProfile.snp.bottom)
             make.bottom.equalToSuperview()
             make.trailing.equalToSuperview()
             make.leading.equalToSuperview()
@@ -61,18 +59,23 @@ class PersonHorizontalCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        ivPersonProfile.cornerRadius = ivPersonProfile.width / 2.0
+        ivProfile.cornerRadius = ivProfile.width / 2.0
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        ivProfile.cancelImageDownload()
+        ivProfile.image = nil
+    }
+    
     func bind(_ item: PersonModelType) {
-        if let profileURL = item.personModelProfileURL {
-            ivPersonProfile.kf.setImage(with: profileURL)
-        }
-        lblPersonName.text = item.personModelName
+        ivProfile.setImage(with: item.personModelProfileURL)
+        lblName.text = item.personModelName
         
         layoutIfNeeded()
     }

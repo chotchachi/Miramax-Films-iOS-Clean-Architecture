@@ -36,6 +36,7 @@
 		ED866E5328E054240066E10B /* RecentEntertainment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E5228E054240066E10B /* RecentEntertainment.swift */; };
 		ED866E5828E05A0C0066E10B /* RMOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E5728E05A0C0066E10B /* RMOperator.swift */; };
 		ED866E5A28E069280066E10B /* RMEntertainmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E5928E069280066E10B /* RMEntertainmentType.swift */; };
+		ED866E5C28E09AB60066E10B /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E5B28E09AB60066E10B /* UIImageView+Kingfisher.swift */; };
 		ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62128C6369800D60351 /* AppDelegate.swift */; };
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
 		EDA4475828D41F060037751C /* GenreHorizontalListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475728D41F060037751C /* GenreHorizontalListCellDelegate.swift */; };
@@ -236,6 +237,7 @@
 		ED866E5228E054240066E10B /* RecentEntertainment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEntertainment.swift; sourceTree = "<group>"; };
 		ED866E5728E05A0C0066E10B /* RMOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMOperator.swift; sourceTree = "<group>"; };
 		ED866E5928E069280066E10B /* RMEntertainmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEntertainmentType.swift; sourceTree = "<group>"; };
+		ED866E5B28E09AB60066E10B /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		ED86E61E28C6369800D60351 /* Miramax Fillms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Miramax Fillms.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED86E62128C6369800D60351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED86E62A28C6369B00D60351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 				EDE69B7828D730F3002726B0 /* CGAffineTransform+Ext.swift */,
 				EDD52F5628DA14930078C6C5 /* UILabel+Ext.swift */,
 				EDD52F8228DB7D4D0078C6C5 /* Date+Ext.swift */,
+				ED866E5B28E09AB60066E10B /* UIImageView+Kingfisher.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1479,6 +1482,7 @@
 				EDE69B8228D732A1002726B0 /* TVShowCoordinator.swift in Sources */,
 				EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */,
 				EDB8780B28D8BFC90016B96B /* Cast.swift in Sources */,
+				ED866E5C28E09AB60066E10B /* UIImageView+Kingfisher.swift in Sources */,
 				EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */,
 				ED866E3028DEED4C0066E10B /* PeopleNetworking.swift in Sources */,
 				EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */,

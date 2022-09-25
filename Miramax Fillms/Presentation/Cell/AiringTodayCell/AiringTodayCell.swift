@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 import SwifterSwift
-import Kingfisher
 
 class AiringTodayCell: UICollectionViewCell {
     
@@ -38,12 +37,10 @@ class AiringTodayCell: UICollectionViewCell {
         viewMainWrap.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onViewMainTapped(_:))))
         
         ivPoster.contentMode = .scaleAspectFill
-        ivPoster.kf.indicatorType = .activity
         ivPoster.cornerRadius = 8.0
         ivPoster.clipsToBounds = true
         
         ivBackdrop.contentMode = .scaleAspectFill
-        ivBackdrop.kf.indicatorType = .activity
         ivBackdrop.clipsToBounds = true
         
         lblName.font = AppFonts.subheadSemiBold
@@ -85,6 +82,16 @@ class AiringTodayCell: UICollectionViewCell {
             make.center.equalToSuperview()
         }
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        ivBackdrop.cancelImageDownload()
+        ivBackdrop.image = nil
+        
+        ivPoster.cancelImageDownload()
+        ivPoster.image = nil
+    }
 
     func bind(_ viewState: ViewState<TVShow>) {
         switch viewState {
@@ -111,12 +118,9 @@ class AiringTodayCell: UICollectionViewCell {
     }
     
     private func bind(_ item: EntertainmentModelType) {
-        if let posterURL = item.entertainmentModelPosterURL {
-            ivPoster.kf.setImage(with: posterURL)
-        }
-        if let backdropURL = item.entertainmentModelBackdropURL {
-            ivBackdrop.kf.setImage(with: backdropURL)
-        }
+        ivPoster.setImage(with: item.entertainmentModelPosterURL)
+        ivBackdrop.setImage(with: item.entertainmentModelBackdropURL)
+
         lblName.text = item.entertainmentModelName
         lblDescription.text = item.entertainmentModelOverview
     }

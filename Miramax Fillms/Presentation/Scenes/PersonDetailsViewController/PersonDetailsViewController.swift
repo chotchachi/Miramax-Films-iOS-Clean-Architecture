@@ -10,7 +10,6 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 import SwifterSwift
-import Kingfisher
 import TagListView
 
 class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel> {
@@ -155,8 +154,6 @@ extension PersonDetailsViewController {
     }
     
     private func configureOthersView() {
-        ivBackdrop.kf.indicatorType = .activity
-        ivProfile.kf.indicatorType = .activity
         scrollView.isHidden = true
         loadingIndicator.startAnimating()
         btnShare.isEnabled = false
@@ -169,17 +166,14 @@ extension PersonDetailsViewController {
         departmentTagListView.removeAllTags()
         departmentTagListView.addTags(personDetail.departments)
         
-        if let backdropImage = personDetail.images.randomElement(),
-           let backdropImageURL = backdropImage.fileURL {
-            ivBackdrop.kf.setImage(with: backdropImageURL)
+        if let backdropImage = personDetail.images.randomElement() {
+            ivBackdrop.setImage(with: backdropImage.fileURL)
             backdropView.isHidden = false
         } else {
             backdropView.isHidden = true
         }
         
-        if let profileURL = personDetail.profileURL {
-            ivProfile.kf.setImage(with: profileURL)
-        }
+        ivProfile.setImage(with: personDetail.profileURL)
         
         lblBiography.text = personDetail.biography
         

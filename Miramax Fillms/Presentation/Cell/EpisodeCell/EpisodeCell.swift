@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 import SwifterSwift
-import Kingfisher
 
 fileprivate let kOverviewLabelMaxLines: Int = 5
 
@@ -40,7 +39,6 @@ class EpisodeCell: UITableViewCell {
         ivThumbnail.translatesAutoresizingMaskIntoConstraints = false
         ivThumbnail.contentMode = .scaleAspectFill
         ivThumbnail.clipsToBounds = true
-        ivThumbnail.kf.indicatorType = .activity
         contentView.addSubview(ivThumbnail)
         ivThumbnail.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -123,6 +121,13 @@ class EpisodeCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        ivThumbnail.cancelImageDownload()
+        ivThumbnail.image = nil
+    }
+    
     func bind(_ item: Episode) {
         lblEpisodeName.text = item.name
         lblAirDate.text = getAirDateStringFormatted(item.airDate) ?? "unknown".localized
@@ -131,9 +136,7 @@ class EpisodeCell: UITableViewCell {
         lblOverview.isHidden = item.overview.isEmpty
         btnSeeMoreOverview.isHidden = item.overview.isEmpty
 
-        if let posterURL = item.posterURL {
-            ivThumbnail.kf.setImage(with: posterURL)
-        }
+        ivThumbnail.setImage(with: item.posterURL)
     }
     
     private func getAirDateStringFormatted(_ strDate: String?) -> String? {
