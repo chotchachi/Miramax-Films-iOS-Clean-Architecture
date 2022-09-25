@@ -36,4 +36,15 @@ final class SearchRepository: SearchRepositoryProtocol {
             .searchPerson(query: query, page: page)
             .map { $0.asDomain() }
     }
+    
+    func getRecentEntertainment() -> Observable<[RecentEntertainment]> {
+        return localDataSource
+            .getSearchRecentEntertainments()
+            .map { items in items.map { $0.asDomain() } }
+    }
+    
+    func addRecentEntertainment(item: RecentEntertainment) -> Observable<Void> {
+        return localDataSource
+            .saveSearchRecentEntertainments(item: item.asRealm())
+    }
 }

@@ -11,4 +11,6 @@ protocol SearchRepositoryProtocol {
     func searchMovie(query: String, page: Int?) -> Single<MovieResponse>
     func searchTVShow(query: String, page: Int?) -> Single<TVShowResponse>
     func searchPerson(query: String, page: Int?) -> Single<PersonResponse>
+    func getRecentEntertainment() -> Observable<[RecentEntertainment]>
+    func addRecentEntertainment(item: RecentEntertainment) -> Observable<Void>
 }

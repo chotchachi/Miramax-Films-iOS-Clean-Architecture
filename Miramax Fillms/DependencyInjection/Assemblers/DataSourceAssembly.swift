@@ -14,7 +14,7 @@ final class DataSourceAssembly: Assembly {
             return RemoteDataSource(apiClient: resolver.resolve())
         }
         container.register(LocalDataSourceProtocol.self) { _ in
-            return LocalDataSource()
+            return LocalDataSource(dbManager: DBManager())
         }
     }
 }
