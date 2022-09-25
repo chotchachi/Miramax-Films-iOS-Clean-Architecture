@@ -21,6 +21,11 @@ PODS:
     - Differentiator (~> 5.0)
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
+  - RxRealm (5.0.4):
+    - Realm (~> 10.21)
+    - RealmSwift (~> 10.21)
+    - RxCocoa (~> 6.1)
+    - RxSwift (~> 6.1)
   - RxRelay (6.1.0):
     - RxSwift (= 6.1.0)
   - RxSwift (6.1.0)
@@ -51,6 +56,7 @@ DEPENDENCIES:
   - RealmSwift (~> 10)
   - RxCocoa (~> 6.1.0)
   - RxDataSources (~> 5.0.0)
+  - RxRealm (~> 5.0.4)
   - RxSwift (~> 6.1.0)
   - RxSwiftExt (~> 6.0.1)
   - SnapKit (~> 5.0.0)
@@ -72,6 +78,7 @@ SPEC REPOS:
     - RealmSwift
     - RxCocoa
     - RxDataSources
+    - RxRealm
     - RxRelay
     - RxSwift
     - RxSwiftExt
@@ -92,6 +99,7 @@ SPEC CHECKSUMS:
   RealmSwift: 5927726fce21005f43b1fb57c832297a22031bfc
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxRealm: 666c8785327fe2fff972a3093b35dc7055c1ca38
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
   RxSwiftExt: d61c4b9b06e0a448041b1c659e0f1b5c5a035afc
@@ -101,6 +109,6 @@ SPEC CHECKSUMS:
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   XCoordinator: a5f91e43ee944f508529763921165697d3211629
 
-PODFILE CHECKSUM: b1f9fb599f355339d66097e1b878ba2596a5347d
+PODFILE CHECKSUM: b8ecb55037c890f4cb277231e9c8ac7b93e03d5b
 
 COCOAPODS: 1.11.3
