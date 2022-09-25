@@ -322,7 +322,7 @@ extension EntertainmentDetailsViewController {
         }
         
         // Entertainment duration
-        if entertainmentDetail is MovieDetail {
+        if entertainmentDetail.entertainmentModelType == .movie {
             lblDurationText.text = "duration".localized
             lblDuration.text = DataUtils.getDurationText(entertainmentDetail.entertainmentRuntime)
         } else {
@@ -338,7 +338,7 @@ extension EntertainmentDetailsViewController {
         lblOverview.text = entertainmentDetail.entertainmentOverview
         
         // Entertainment seasons
-        sectionSeasonsView.isHidden = entertainmentDetail is MovieDetail
+        sectionSeasonsView.isHidden = entertainmentDetail.entertainmentModelType == .movie
         seasonsDataS.accept(entertainmentDetail.entertainmentSeasons ?? [])
 
         // Entertainment credits

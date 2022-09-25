@@ -101,12 +101,13 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     private func getEntertainmentDetails(_ model: EntertainmentModelType) -> Single<EntertainmentDetailModelType> {
-        if model is Movie {
+        switch model.entertainmentModelType {
+        case .movie:
             return repositoryProvider
                 .movieRepository()
                 .getMovieDetail(movieId: model.entertainmentModelId)
                 .map { $0 as EntertainmentDetailModelType }
-        } else {
+        case .tvShow:
             return repositoryProvider
                 .tvShowRepository()
                 .getTVShowDetail(tvShowId: model.entertainmentModelId)
