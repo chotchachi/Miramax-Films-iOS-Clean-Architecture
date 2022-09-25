@@ -13,7 +13,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let searchTrigger: Driver<String?>
         let cancelTrigger: Driver<Void>
-        let personSelectTrigger: Driver<Person>
+        let personSelectTrigger: Driver<PersonModelType>
         let entertainmentSelectTrigger: Driver<EntertainmentModelType>
     }
     
@@ -31,17 +31,21 @@ class SearchViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let searchTriggerD = input.searchTrigger
+        let searchTriggerO = input.searchTrigger
             .startWith(nil)
             .distinctUntilChanged()
-        
-        let searchViewDataItemsD = searchTriggerD
             .asObservable()
-            .flatMapLatest { query -> Observable<[SearchViewData]> in
+        
+        let recentEntertainmentO = repositoryProvider
+            .searchRepository()
+            .getRecentEntertainment()
+        
+        let searchViewDataItemsD = Observable.combineLatest(searchTriggerO, recentEntertainmentO)
+            .flatMapLatest { (query, recentItems) -> Observable<[SearchViewData]> in
                 if let query = query {
                     return self.search(query)
                 } else {
-                    return self.recent()
+                    return .just([.recent(items: recentItems)])
                 }
             }
             .asDriver(onErrorJustReturn: [])
@@ -65,6 +69,13 @@ class SearchViewModel: BaseViewModel, ViewModelType {
                 guard let self = self else { return }
                 self.router.trigger(.entertainmentDetails(entertainment: item))
             })
+            .disposed(by: rx.disposeBag)
+        
+        // Save recent entertainment
+        input.entertainmentSelectTrigger
+            .asObservable()
+            .flatMapLatest { self.saveRecentEntertainment($0) }
+            .subscribe()
             .disposed(by: rx.disposeBag)
         
         return Output(searchViewDataItems: searchViewDataItemsD)
@@ -115,7 +126,16 @@ class SearchViewModel: BaseViewModel, ViewModelType {
             }
     }
     
-    private func recent() -> Observable<[SearchViewData]> {
-        return .just([.recent(items: [])])
+    private func saveRecentEntertainment(_ item: EntertainmentModelType) -> Observable<Void> {
+        let recentEntertainment = RecentEntertainment(
+            id: item.entertainmentModelId,
+            name: item.entertainmentModelName,
+            posterPath: item.entertainmentModelPosterURL?.path,
+            type: item.entertainmentModelType
+        )
+        return repositoryProvider
+            .searchRepository()
+            .addRecentEntertainment(item: recentEntertainment)
+            .catch { _ in Observable.empty() }
     }
 }

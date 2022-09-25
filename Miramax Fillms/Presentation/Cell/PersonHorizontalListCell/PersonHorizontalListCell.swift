@@ -21,7 +21,7 @@ class PersonHorizontalListCell: UICollectionViewCell {
     // MARK: - Properties
     
     public weak var delegate: PersonHorizontalListCellDelegate?
-    private var personItems: [Person] = []
+    private var personItems: [PersonModelType] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -91,29 +91,16 @@ class PersonHorizontalListCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(_ viewState: ViewState<Person>, headerTitle: String) {
+    func bind(_ items: [PersonModelType], headerTitle: String) {
         sectionHeaderView.title = headerTitle
         
-        switch viewState {
-        case .initial:
-            loadingIndicatorView.startAnimating()
-            personCollectionView.isHidden = true
-            btnRetry.isHidden = true
-        case .paging:
-            break
-        case .populated(let array):
-            loadingIndicatorView.stopAnimating()
-            personCollectionView.isHidden = false
-            btnRetry.isHidden = true
-            // set data
-            personItems = array
-            personCollectionView.reloadData()
-            sectionHeaderView.showSeeMoreButton = array.count >= Constants.defaultPageLimit
-        case .error:
-            loadingIndicatorView.stopAnimating()
-            personCollectionView.isHidden = true
-            btnRetry.isHidden = false
-        }
+        loadingIndicatorView.stopAnimating()
+        personCollectionView.isHidden = false
+        btnRetry.isHidden = true
+        // set data
+        personItems = items
+        personCollectionView.reloadData()
+        sectionHeaderView.showSeeMoreButton = items.count >= Constants.defaultPageLimit
     }
     
     @objc private func btnRetryTapped() {
@@ -132,9 +119,9 @@ extension PersonHorizontalListCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let person = personItems[indexPath.row]
+        let item = personItems[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalCell.self, for: indexPath)
-        cell.bind(person)
+        cell.bind(item)
         return cell
     }
     
@@ -144,8 +131,8 @@ extension PersonHorizontalListCell: UICollectionViewDataSource {
 
 extension PersonHorizontalListCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let person = personItems[indexPath.row]
-        delegate?.personHorizontalList(onItemTapped: person)
+        let item = personItems[indexPath.row]
+        delegate?.personHorizontalList(onItemTapped: item)
     }
     
 }

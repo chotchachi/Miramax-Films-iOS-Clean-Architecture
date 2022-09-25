@@ -8,8 +8,8 @@
 import Foundation
 
 enum SearchViewData {
-    case recent(items: [Movie])
-    case movie(items: [Movie])
-    case tvShow(items: [TVShow])
-    case actor(items: [Person])
+    case recent(items: [EntertainmentModelType])
+    case movie(items: [EntertainmentModelType])
+    case tvShow(items: [EntertainmentModelType])
+    case actor(items: [PersonModelType])
 }

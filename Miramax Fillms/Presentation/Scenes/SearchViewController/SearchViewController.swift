@@ -31,7 +31,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     
     private let searchTriggerS = PublishRelay<String?>()
     private let retryTriggerS = PublishRelay<Void>()
-    private let personSelectTriggerS = PublishRelay<Person>()
+    private let personSelectTriggerS = PublishRelay<PersonModelType>()
     private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
     
     override func viewDidLoad() {
@@ -150,22 +150,22 @@ extension SearchViewController: UICollectionViewDataSource {
         switch item {
         case .recent(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalListCell.self, for: indexPath)
-            cell.bind(.populated(items), headerTitle: "recent".localized)
+            cell.bind(items, headerTitle: "recent".localized)
             cell.delegate = self
             return cell
         case .movie(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalListCell.self, for: indexPath)
-            cell.bind(.populated(items), headerTitle: "movies".localized)
+            cell.bind(items, headerTitle: "movies".localized)
             cell.delegate = self
             return cell
         case .tvShow(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalListCell.self, for: indexPath)
-            cell.bind(.populated(items), headerTitle: "tvshows".localized)
+            cell.bind(items, headerTitle: "tvshows".localized)
             cell.delegate = self
             return cell
         case .actor(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalListCell.self, for: indexPath)
-            cell.bind(.populated(items), headerTitle: "actors".localized)
+            cell.bind(items, headerTitle: "actors".localized)
             cell.delegate = self
             return cell
         }
@@ -218,8 +218,8 @@ extension SearchViewController: PersonHorizontalListCellDelegate {
         
     }
     
-    func personHorizontalList(onItemTapped person: Person) {
-        personSelectTriggerS.accept(person)
+    func personHorizontalList(onItemTapped item: PersonModelType) {
+        personSelectTriggerS.accept(item)
     }
     
     func personHorizontalListSeeMoreButtonTapped() {
