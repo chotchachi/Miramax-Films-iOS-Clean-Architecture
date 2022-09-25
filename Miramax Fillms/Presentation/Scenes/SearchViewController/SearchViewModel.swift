@@ -10,10 +10,11 @@ import RxSwift
 import XCoordinator
 
 class SearchViewModel: BaseViewModel, ViewModelType {
-    
     struct Input {
         let searchTrigger: Driver<String?>
         let cancelTrigger: Driver<Void>
+        let personSelectTrigger: Driver<Person>
+        let entertainmentSelectTrigger: Driver<EntertainmentModelType>
     }
     
     struct Output {
@@ -49,6 +50,20 @@ class SearchViewModel: BaseViewModel, ViewModelType {
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.router.trigger(.dismiss)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.personSelectTrigger
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.router.trigger(.personDetails(person: item))
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.entertainmentSelectTrigger
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.router.trigger(.entertaimentDetails(entertainment: item))
             })
             .disposed(by: rx.disposeBag)
         

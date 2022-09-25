@@ -31,6 +31,8 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     
     private let searchTriggerS = PublishRelay<String?>()
     private let retryTriggerS = PublishRelay<Void>()
+    private let personSelectTriggerS = PublishRelay<Person>()
+    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,11 +56,9 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         collectionView.register(cellWithClass: PersonHorizontalListCell.self)
         
         btnCancel = UIButton(type: .system)
-        btnCancel.setTitle("cancel", for: .normal)
+        btnCancel.setTitle("cancel".localized, for: .normal)
         btnCancel.setTitleColor(AppColors.colorAccent, for: .normal)
         btnCancel.titleLabel?.font = AppFonts.callout
-        btnCancel.addTarget(self, action: #selector(cancelButtonTapped(_:)), for: .touchUpInside)
-        
         view.addSubview(btnCancel)
         btnCancel.snp.makeConstraints { make in
             make.centerY.equalTo(appToolbar.snp.centerY)
@@ -87,7 +87,9 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         
         let input = SearchViewModel.Input(
             searchTrigger: searchTriggerS.asDriverOnErrorJustComplete(),
-            cancelTrigger: btnCancel.rx.tap.asDriver()
+            cancelTrigger: btnCancel.rx.tap.asDriver(),
+            personSelectTrigger: personSelectTriggerS.asDriverOnErrorJustComplete(),
+            entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -110,10 +112,6 @@ class SearchViewController: BaseViewController<SearchViewModel> {
                 isLoading ? self.loadingIndicatorView.startAnimating() : self.loadingIndicatorView.stopAnimating()
             })
             .disposed(by: rx.disposeBag)
-    }
-    
-    @objc private func cancelButtonTapped(_ sender: UIButton) {
-        
     }
     
     @objc private func clearSearchButtonTapped(_ sender: UIButton) {
@@ -175,15 +173,6 @@ extension SearchViewController: UICollectionViewDataSource {
     
 }
 
-// MARK: - UICollectionViewDelegate
-
-extension SearchViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-    
-}
-
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
@@ -213,7 +202,7 @@ extension SearchViewController: MovieHorizontalListCellDelegate {
     }
     
     func movieHorizontalList(onItemTapped item: EntertainmentModelType) {
-        
+        entertainmentSelectTriggerS.accept(item)
     }
     
     func movieHorizontalListSeeMoreButtonTapped() {
@@ -230,7 +219,7 @@ extension SearchViewController: PersonHorizontalListCellDelegate {
     }
     
     func personHorizontalList(onItemTapped person: Person) {
-        
+        personSelectTriggerS.accept(person)
     }
     
     func personHorizontalListSeeMoreButtonTapped() {
