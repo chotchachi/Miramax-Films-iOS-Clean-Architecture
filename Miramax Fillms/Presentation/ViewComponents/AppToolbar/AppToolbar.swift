@@ -115,4 +115,8 @@ extension Reactive where Base: AppToolbar {
     var backButtonTap: ControlEvent<Void> {
         return base.btnBack.rx.tap
     }
+    
+    var title: Binder<String?> {
+        return base.lblTitle.rx.text
+    }
 }
