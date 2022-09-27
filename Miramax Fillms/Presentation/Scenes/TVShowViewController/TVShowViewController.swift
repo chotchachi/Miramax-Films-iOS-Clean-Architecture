@@ -138,7 +138,7 @@ extension TVShowViewController: GridCollectionViewLayoutDelegate {
         let tvShowViewData = tvShowViewDataItems[indexPath.row]
         switch tvShowViewData {
         case .genreViewState:
-            return 50.0
+            return DimensionConstants.genreCellHeight
         case .airingTodayViewState:
             return collectionView.frame.width * DimensionConstants.airingTodayCellRatio
         case .onTheAirViewState:
