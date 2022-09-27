@@ -61,7 +61,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
                 self.repositoryProvider
                     .genreRepository()
                     .getGenreMovieList()
-                    .map { ViewState.populated($0.genres) }
+                    .map { ViewState.populated($0) }
                     .catchAndReturn(.error)
             }
             .startWith(.initial)

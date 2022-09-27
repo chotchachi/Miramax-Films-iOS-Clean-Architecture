@@ -8,6 +8,6 @@
 import RxSwift
 
 protocol GenreRepositoryProtocol {
-    func getGenreMovieList() -> Single<GenreResponse>
-    func getGenreShowList() -> Single<GenreResponse>
+    func getGenreMovieList() -> Single<[Genre]>
+    func getGenreShowList() -> Single<[Genre]>
 }

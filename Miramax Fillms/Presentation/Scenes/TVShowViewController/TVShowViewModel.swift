@@ -65,7 +65,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                 self.repositoryProvider
                     .genreRepository()
                     .getGenreShowList()
-                    .map { ViewState.populated($0.genres) }
+                    .map { ViewState.populated($0) }
                     .catchAndReturn(.error)
             }
             .startWith(.initial)

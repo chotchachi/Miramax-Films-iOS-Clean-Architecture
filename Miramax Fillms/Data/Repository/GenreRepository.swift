@@ -19,15 +19,29 @@ final class GenreRepository: GenreRepositoryProtocol {
         self.localDataSource = localDataSource
     }
     
-    func getGenreMovieList() -> Single<GenreResponse> {
+    func getGenreMovieList() -> Single<[Genre]> {
         return remoteDataSource
             .getGenreMovieList()
-            .map { $0.asDomain() }
+            .map { $0.asDomain().genres }
+            .map { items -> [Genre] in
+                items.map { item -> Genre in
+                    var item = item
+                    item.entertainmentType = .movie
+                    return item
+                }
+            }
     }
     
-    func getGenreShowList() -> Single<GenreResponse> {
+    func getGenreShowList() -> Single<[Genre]> {
         return remoteDataSource
             .getGenreShowList()
-            .map { $0.asDomain() }
+            .map { $0.asDomain().genres }
+            .map { items -> [Genre] in
+                items.map { item -> Genre in
+                    var item = item
+                    item.entertainmentType = .tvShow
+                    return item
+                }
+            }
     }
 }

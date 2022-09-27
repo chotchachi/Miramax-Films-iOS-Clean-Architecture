@@ -8,4 +8,5 @@
 struct Genre: Equatable {
     let id: Int
     let name: String
+    var entertainmentType: EntertainmentType? = nil
 }

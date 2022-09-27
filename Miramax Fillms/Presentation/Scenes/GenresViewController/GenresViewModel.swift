@@ -42,7 +42,6 @@ class GenresViewModel: BaseViewModel, ViewModelType {
                 self.repositoryProvider
                     .genreRepository()
                     .getGenreMovieList()
-                    .map { $0.genres }
                     .trackActivity(self.loading)
                     .trackError(self.error)
                     .catchAndReturn([])
