@@ -132,7 +132,7 @@ extension MovieViewController: GridCollectionViewLayoutDelegate {
         let movieViewData = movieViewDataItems[indexPath.row]
         switch movieViewData {
         case .genreViewState:
-            return 50.0
+            return DimensionConstants.genreCellHeight
         case .upComingViewState:
             return 200.0
         case .selfieWithMovie:

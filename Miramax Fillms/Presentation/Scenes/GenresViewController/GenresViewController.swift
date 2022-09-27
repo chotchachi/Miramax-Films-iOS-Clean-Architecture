@@ -127,7 +127,7 @@ extension GenresViewController: GridCollectionViewLayoutDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, heightForItemAt index: GridIndex, indexPath: IndexPath) -> CGFloat {
-        50.0
+        DimensionConstants.genreCellHeight
     }
     
     func collectionView(_ collectionView: UICollectionView, heightForRow row: Int, inSection section: Int) -> GridCollectionViewLayout.RowHeight {

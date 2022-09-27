@@ -8,6 +8,8 @@
 import Foundation
 
 struct DimensionConstants {
+    static let genreCellHeight: CGFloat = 50.0
+    
     static let entertainmentHorizontalCollectionHeight: CGFloat = 155.0
     static let entertainmentHorizontalCellSpacing: CGFloat = 4.0
     static let entertainmentHorizontalCellRatio: CGFloat = 0.67
