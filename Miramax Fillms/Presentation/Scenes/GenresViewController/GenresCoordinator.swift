@@ -10,6 +10,7 @@ import XCoordinator
 enum GenresRoute: Route {
     case initial
     case search
+    case genreDetails(genre: Genre)
 }
 
 class GenresCoordinator: NavigationCoordinator<GenresRoute> {
@@ -31,6 +32,9 @@ class GenresCoordinator: NavigationCoordinator<GenresRoute> {
             return .push(vc)
         case .search:
             addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
+            return .none()
+        case .genreDetails(genre: let genre):
+            addChild(GenreDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, genre: genre))
             return .none()
         }
     }

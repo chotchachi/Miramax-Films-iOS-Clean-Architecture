@@ -26,6 +26,7 @@ class MovieViewController: BaseViewController<MovieViewModel> {
     private let retryGenreViewTriggerS = PublishRelay<Void>()
     private let retryUpComingViewTriggerS = PublishRelay<Void>()
     private let movieSelectTriggerS = PublishRelay<Movie>()
+    private let genreSelectTriggerS = PublishRelay<Genre>()
 
     // MARK: - Lifecycle
     
@@ -60,7 +61,8 @@ class MovieViewController: BaseViewController<MovieViewModel> {
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             retryGenreTrigger: retryGenreViewTriggerS.asDriverOnErrorJustComplete(),
             retryUpComingTrigger: retryUpComingViewTriggerS.asDriverOnErrorJustComplete(),
-            movieSelectTrigger: movieSelectTriggerS.asDriverOnErrorJustComplete()
+            movieSelectTrigger: movieSelectTriggerS.asDriverOnErrorJustComplete(),
+            genreSelectTrigger: genreSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -164,7 +166,7 @@ extension MovieViewController: GenreHorizontalListCellDelegate {
     }
     
     func genreHorizontalList(onItemTapped genre: Genre) {
-        
+        genreSelectTriggerS.accept(genre)
     }
     
 }

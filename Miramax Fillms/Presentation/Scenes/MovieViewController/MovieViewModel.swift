@@ -16,6 +16,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
         let retryGenreTrigger: Driver<Void>
         let retryUpComingTrigger: Driver<Void>
         let movieSelectTrigger: Driver<Movie>
+        let genreSelectTrigger: Driver<Genre>
     }
     
     struct Output {
@@ -44,9 +45,16 @@ class MovieViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         input.movieSelectTrigger
-            .drive(onNext: { [weak self] in
+            .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.detail(movie: $0))
+                self.router.trigger(.movieDetails(movie: item))
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.genreSelectTrigger
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.router.trigger(.genreDetails(genre: item))
             })
             .disposed(by: rx.disposeBag)
         

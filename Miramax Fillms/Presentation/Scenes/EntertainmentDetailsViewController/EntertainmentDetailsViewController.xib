@@ -97,7 +97,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VRA-Dg-v38">
                                                             <rect key="frame" x="72" y="20.666666666666657" width="88" height="72"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_start_fill" translatesAutoresizingMaskIntoConstraints="NO" id="ovj-W5-Nha">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_red" translatesAutoresizingMaskIntoConstraints="NO" id="ovj-W5-Nha">
                                                                     <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="24" id="WQH-Sb-amI"/>
@@ -543,7 +543,7 @@
     <resources>
         <image name="ic_calendar_fill" width="24" height="24"/>
         <image name="ic_play_circle" width="60" height="60"/>
-        <image name="ic_start_fill" width="24" height="24"/>
+        <image name="ic_star_red" width="24" height="24"/>
         <image name="ic_time_fill" width="24" height="24"/>
         <namedColor name="ColorAccent">
             <color red="0.90200001001358032" green="0.0040000001899898052" blue="0.13699999451637268" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

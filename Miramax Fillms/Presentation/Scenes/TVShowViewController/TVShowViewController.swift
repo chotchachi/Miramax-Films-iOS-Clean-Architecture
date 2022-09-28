@@ -27,7 +27,8 @@ class TVShowViewController: BaseViewController<TVShowViewModel> {
     private let retryAiringTodayTriggerS = PublishRelay<Void>()
     private let retryUpComingViewTriggerS = PublishRelay<Void>()
     private let tvShowSelectTriggerS = PublishRelay<TVShow>()
-
+    private let genreSelectTriggerS = PublishRelay<Genre>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,7 +66,8 @@ class TVShowViewController: BaseViewController<TVShowViewModel> {
             retryGenreTrigger: retryGenreViewTriggerS.asDriverOnErrorJustComplete(),
             retryAiringTodayTrigger: retryAiringTodayTriggerS.asDriverOnErrorJustComplete(),
             retryUpComingTrigger: retryUpComingViewTriggerS.asDriverOnErrorJustComplete(),
-            tvShowSelectTrigger: tvShowSelectTriggerS.asDriverOnErrorJustComplete()
+            tvShowSelectTrigger: tvShowSelectTriggerS.asDriverOnErrorJustComplete(),
+            genreSelectTrigger: genreSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -170,7 +172,7 @@ extension TVShowViewController: GenreHorizontalListCellDelegate {
     }
     
     func genreHorizontalList(onItemTapped genre: Genre) {
-        
+        genreSelectTriggerS.accept(genre)
     }
     
 }

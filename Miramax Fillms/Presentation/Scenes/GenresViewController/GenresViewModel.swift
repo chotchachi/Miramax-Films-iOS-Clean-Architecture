@@ -55,6 +55,13 @@ class GenresViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
+        input.genreSelectTrigger
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.router.trigger(.genreDetails(genre: item))
+            })
+            .disposed(by: rx.disposeBag)
+        
         return Output(genres: genresD)
     }
 }
