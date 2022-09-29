@@ -20,7 +20,6 @@
                 <outlet property="lblBiography" destination="E0l-jh-TsL" id="iQn-xm-gb3"/>
                 <outlet property="lblBirthday" destination="fL0-cd-LgF" id="JFh-t8-P9r"/>
                 <outlet property="lblTitle" destination="zYs-by-e51" id="Igv-kI-Yf6"/>
-                <outlet property="loadingIndicator" destination="MBh-dx-TuX" id="B1B-a8-xaL"/>
                 <outlet property="moviesCollectionView" destination="D1P-rj-ro0" id="shW-il-jI9"/>
                 <outlet property="moviesSectionHeaderView" destination="ddU-eE-LLR" id="Pk3-el-Nrl"/>
                 <outlet property="scrollView" destination="coh-lq-TpG" id="9pZ-AO-whI"/>
@@ -233,18 +232,12 @@
                         <constraint firstAttribute="bottom" secondItem="jWF-eo-8QQ" secondAttribute="bottom" id="z19-X8-JPI"/>
                     </constraints>
                 </scrollView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="MBh-dx-TuX">
-                    <rect key="frame" x="185" y="445.66666666666669" width="20" height="20"/>
-                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="ColorPrimary"/>
             <constraints>
                 <constraint firstItem="coh-lq-TpG" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="405-Nu-IaL"/>
-                <constraint firstItem="MBh-dx-TuX" firstAttribute="centerY" secondItem="coh-lq-TpG" secondAttribute="centerY" id="5Eh-vN-694"/>
                 <constraint firstItem="coh-lq-TpG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ed0-mz-mPc"/>
-                <constraint firstItem="MBh-dx-TuX" firstAttribute="centerX" secondItem="coh-lq-TpG" secondAttribute="centerX" id="Jzt-Fe-u5N"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="coh-lq-TpG" secondAttribute="bottom" id="KHP-GU-5Zk"/>
                 <constraint firstItem="CSR-c8-MBk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eEZ-h4-O00"/>
                 <constraint firstItem="coh-lq-TpG" firstAttribute="top" secondItem="CSR-c8-MBk" secondAttribute="bottom" id="lsJ-uw-14N"/>

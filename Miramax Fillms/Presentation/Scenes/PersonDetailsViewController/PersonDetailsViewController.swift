@@ -12,13 +12,12 @@ import RxDataSources
 import SwifterSwift
 import TagListView
 
-class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel> {
+class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, LoadingDisplayable, ErrorRetryable {
     
     // MARK: - Outlets + Views
     
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     /// Section title
     @IBOutlet weak var sectionTitleView: UIView!
@@ -48,10 +47,11 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel> {
     private var btnSearch: UIButton!
     private var btnShare: UIButton!
     
+    var loaderView: LoadingView = LoadingView()
+    var errorRetryView: ErrorRetryView = ErrorRetryView()
+    
     // MARK: - Properties
     
-    private let popViewTriggerS = PublishRelay<Void>()
-    private let retryTriggerS = PublishRelay<Void>()
     private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
 
     private let entertainmentDataS = BehaviorRelay<[EntertainmentModelType]>(value: [])
@@ -71,8 +71,8 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel> {
         super.bindViewModel()
         
         let input = PersonDetailsViewModel.Input(
-            popViewTrigger: popViewTriggerS.asDriverOnErrorJustComplete(),
-            retryTrigger: retryTriggerS.asDriverOnErrorJustComplete(),
+            popViewTrigger: appToolbar.rx.backButtonTap.asDriver(),
+            retryTrigger: errorRetryView.rx.retryTapped.asDriver(),
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             shareTrigger: btnShare.rx.tap.asDriver(),
             toBiographyTrigger: btnMoreBiography.rx.tap.asDriver(),
@@ -92,24 +92,13 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel> {
         
         viewModel.loading
             .drive(onNext: { [weak self] isLoading in
-                guard let self = self else { return }
-                isLoading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
+                isLoading ? self?.showLoader() : self?.hideLoader()
             })
             .disposed(by: rx.disposeBag)
         
         viewModel.error
             .drive(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                self.showAlert(
-                    title: "error".localized,
-                    message: "an_error_occurred".localized,
-                    buttonTitles: ["cancel".localized, "try_again".localized]) { buttonIndex in
-                        if buttonIndex == 1 {
-                            self.retryTriggerS.accept(())
-                        } else {
-                            self.popViewTriggerS.accept(())
-                        }
-                    }
+                self?.presentErrorRetryView()
             })
             .disposed(by: rx.disposeBag)
     }
@@ -129,9 +118,6 @@ extension PersonDetailsViewController {
         
         appToolbar.showTitleLabel = false
         appToolbar.rightButtons = [btnSearch, btnShare]
-        appToolbar.rx.backButtonTap
-            .bind(to: popViewTriggerS)
-            .disposed(by: rx.disposeBag)
     }
     
     private func configureTitleSection() {
@@ -184,7 +170,6 @@ extension PersonDetailsViewController {
     
     private func configureOthersView() {
         scrollView.isHidden = true
-        loadingIndicator.startAnimating()
         btnShare.isEnabled = false
         btnShare.alpha = 0.5
     }
