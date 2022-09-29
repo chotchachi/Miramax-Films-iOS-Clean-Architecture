@@ -14,7 +14,7 @@ import SwifterSwift
 fileprivate let kSeasonsMaxItems: Int = 3
 fileprivate let kOverviewLabelMaxLines: Int = 5
 
-class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetailsViewModel> {
+class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetailsViewModel>, ErrorRetryable {
     
     // MARK: - Outlets + Views
     
@@ -66,19 +66,17 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
 
     private var btnSearch: UIButton!
     private var btnShare: UIButton!
+    
+    var errorRetryView: ErrorRetryView = ErrorRetryView()
 
     // MARK: - Properties
     
-    private let popViewTriggerS = PublishRelay<Void>()
-    private let retryTriggerS = PublishRelay<Void>()
     private let seasonSelectTriggerS = PublishRelay<Season>()
     private let personSelectTriggerS = PublishRelay<PersonModelType>()
     private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
 
-    private let seasonsDataS = BehaviorRelay<[Season]>(value: [])
+    private let entertainentDetailDataS = PublishRelay<EntertainmentDetailModelType>()
     
-    private var entertainmentDetail: EntertainmentDetailModelType?
-
     private var lblOverviewShowMore = false
     
     // MARK: - Lifecycle
@@ -101,22 +99,23 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         super.bindViewModel()
         
         let input = EntertainmentDetailsViewModel.Input(
-            popViewTrigger: popViewTriggerS.asDriverOnErrorJustComplete(),
+            popViewTrigger: appToolbar.rx.backButtonTap.asDriver(),
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             toSeasonListTrigger: seasonsSectionHeaderView.rx.seeMoreButtonTap.asDriver(),
             seasonSelectTrigger: seasonSelectTriggerS.asDriverOnErrorJustComplete(),
             personSelectTrigger: personSelectTriggerS.asDriverOnErrorJustComplete(),
             entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
             shareTrigger: btnShare.rx.tap.asDriver(),
-            retryTrigger: retryTriggerS.asDriverOnErrorJustComplete()
+            retryTrigger: errorRetryView.rx.retryTapped.asDriver()
         )
         let output = viewModel.transform(input: input)
         
         output.entertainmentDetail
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.entertainmentDetail = item
+                self.entertainentDetailDataS.accept(item)
                 self.bindData(item)
+                self.hideErrorRetryView()
                 self.scrollView.isHidden = false
                 self.btnShare.isEnabled = true
                 self.btnShare.alpha = 1.0
@@ -132,17 +131,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         
         viewModel.error
             .drive(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                self.showAlert(
-                    title: "error".localized,
-                    message: "an_error_occurred".localized,
-                    buttonTitles: ["cancel".localized, "try_again".localized]) { buttonIndex in
-                        if buttonIndex == 1 {
-                            self.retryTriggerS.accept(())
-                        } else {
-                            self.popViewTriggerS.accept(())
-                        }
-                    }
+                self?.presentErrorRetryView()
             })
             .disposed(by: rx.disposeBag)
     }
@@ -168,9 +157,6 @@ extension EntertainmentDetailsViewController {
         
         appToolbar.showTitleLabel = false
         appToolbar.rightButtons = [btnSearch, btnShare]
-        appToolbar.rx.backButtonTap
-            .bind(to: popViewTriggerS)
-            .disposed(by: rx.disposeBag)
     }
     
     private func configureTitleSection() {
@@ -246,7 +232,8 @@ extension EntertainmentDetailsViewController {
             return cell
         }
         
-        seasonsDataS
+        entertainentDetailDataS
+            .map { $0.entertainmentSeasons ?? [] }
             .map { Array($0.prefix(kSeasonsMaxItems)) }
             .map { [SectionModel(model: "", items: $0)] }
             .bind(to: seasonsTableView.rx.items(dataSource: seasonDataSource))
@@ -257,13 +244,32 @@ extension EntertainmentDetailsViewController {
         actorsSectionHeaderView.title = "actors".localized
         actorsSectionHeaderView.showSeeMoreButton = false
         
-        let actorsCollectionViewLayout = UICollectionViewFlowLayout()
-        actorsCollectionViewLayout.scrollDirection = .horizontal
-        actorsCollectionView.collectionViewLayout = actorsCollectionViewLayout
+        let collectionViewLayout = ColumnFlowLayout(
+            cellsPerRow: 1,
+            ratio: DimensionConstants.personHorizontalCellRatio,
+            minimumInteritemSpacing: 0.0,
+            minimumLineSpacing: DimensionConstants.personHorizontalCellSpacing,
+            sectionInset: .init(top: 0, left: 16.0, bottom: 0.0, right: 16.0),
+            scrollDirection: .horizontal
+        )
+        actorsCollectionView.collectionViewLayout = collectionViewLayout
         actorsCollectionView.register(cellWithClass: PersonHorizontalCell.self)
-        actorsCollectionView.dataSource = self
-        actorsCollectionView.delegate = self
         actorsCollectionView.showsHorizontalScrollIndicator = false
+        actorsCollectionView.rx.modelSelected(PersonModelType.self)
+            .bind(to: personSelectTriggerS)
+            .disposed(by: rx.disposeBag)
+        
+        let actorDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, PersonModelType>> { dataSource, collectionView, indexPath, item in
+            let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalCell.self, for: indexPath)
+            cell.bind(item)
+            return cell
+        }
+        
+        entertainentDetailDataS
+            .map { $0.entertainmentCasts }
+            .map { [SectionModel(model: "", items: $0)] }
+            .bind(to: actorsCollectionView.rx.items(dataSource: actorDataSource))
+            .disposed(by: rx.disposeBag)
         
         lblDirector.textColor = AppColors.textColorPrimary
         lblDirector.font = AppFonts.caption1
@@ -280,13 +286,32 @@ extension EntertainmentDetailsViewController {
     private func configureRecommendSection() {
         recommendSectionHeaderView.title = "recommend".localized
 
-        let recommendCollectionViewLayout = UICollectionViewFlowLayout()
-        recommendCollectionViewLayout.scrollDirection = .horizontal
-        recommendCollectionView.collectionViewLayout = recommendCollectionViewLayout
+        let collectionViewLayout = ColumnFlowLayout(
+            cellsPerRow: 1,
+            ratio: DimensionConstants.entertainmentHorizontalCellRatio,
+            minimumInteritemSpacing: 0.0,
+            minimumLineSpacing: DimensionConstants.entertainmentHorizontalCellSpacing,
+            sectionInset: .init(top: 0, left: 16.0, bottom: 0.0, right: 16.0),
+            scrollDirection: .horizontal
+        )
+        recommendCollectionView.collectionViewLayout = collectionViewLayout
         recommendCollectionView.register(cellWithClass: EntertainmentHorizontalCell.self)
-        recommendCollectionView.dataSource = self
-        recommendCollectionView.delegate = self
         recommendCollectionView.showsHorizontalScrollIndicator = false
+        recommendCollectionView.rx.modelSelected(EntertainmentModelType.self)
+            .bind(to: entertainmentSelectTriggerS)
+            .disposed(by: rx.disposeBag)
+        
+        let recommendDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentModelType>> { dataSource, collectionView, indexPath, item in
+            let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
+            cell.bind(item)
+            return cell
+        }
+        
+        entertainentDetailDataS
+            .map { $0.entertainmentRecommends }
+            .map { [SectionModel(model: "", items: $0)] }
+            .bind(to: recommendCollectionView.rx.items(dataSource: recommendDataSource))
+            .disposed(by: rx.disposeBag)
     }
     
     private func configureOthersView() {
@@ -333,11 +358,8 @@ extension EntertainmentDetailsViewController {
         
         // Entertainment seasons
         sectionSeasonsView.isHidden = entertainmentDetail.entertainmentModelType == .movie
-        seasonsDataS.accept(entertainmentDetail.entertainmentSeasons ?? [])
 
         // Entertainment credits
-        actorsCollectionView.reloadData()
-
         let directorsString = entertainmentDetail.entertainmentDirectors?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
         lblDirector.text = "Director: \(directorsString)"
         lblDirector.highlight(text: directorsString, color: AppColors.textColorSecondary)
@@ -348,85 +370,5 @@ extension EntertainmentDetailsViewController {
                 
         // Entertainment gallery
         
-        // Entertainment recommend
-        recommendCollectionView.reloadData()
-    }
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension EntertainmentDetailsViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == actorsCollectionView {
-            return entertainmentDetail?.entertainmentCasts.count ?? 0
-        } else if collectionView == recommendCollectionView {
-            return entertainmentDetail?.entertainmentRecommends.count ?? 0
-        } else {
-            return 0
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == actorsCollectionView {
-            guard let item = entertainmentDetail?.entertainmentCasts[indexPath.row] else { return UICollectionViewCell() }
-            let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalCell.self, for: indexPath)
-            cell.bind(item)
-            return cell
-        } else if collectionView == recommendCollectionView {
-            guard let item = entertainmentDetail?.entertainmentRecommends[indexPath.row] else { return UICollectionViewCell() }
-            let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
-            cell.bind(item)
-            return cell
-        } else {
-            return UICollectionViewCell()
-        }
-    }
-    
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension EntertainmentDetailsViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == actorsCollectionView {
-            guard let item = entertainmentDetail?.entertainmentCasts[indexPath.row] else { return }
-            personSelectTriggerS.accept(item)
-        } else if collectionView == recommendCollectionView {
-            guard let item = entertainmentDetail?.entertainmentRecommends[indexPath.row] else { return }
-            entertainmentSelectTriggerS.accept(item)
-        }
-    }
-    
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension EntertainmentDetailsViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == actorsCollectionView {
-            let itemHeight = collectionView.frame.height
-            let itemWidth = itemHeight * DimensionConstants.personHorizontalCellRatio
-            return .init(width: itemWidth, height: itemHeight)
-        } else if collectionView == recommendCollectionView {
-            let itemHeight = collectionView.frame.height
-            let itemWidth = itemHeight * DimensionConstants.entertainmentHorizontalCellRatio
-            return .init(width: itemWidth, height: itemHeight)
-        } else {
-            return .zero
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 0, left: 16.0, bottom: 0.0, right: 16.0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == actorsCollectionView {
-            return DimensionConstants.personHorizontalCellSpacing
-        } else if collectionView == recommendCollectionView {
-            return DimensionConstants.entertainmentHorizontalCellSpacing
-        } else {
-            return .zero
-        }
     }
 }

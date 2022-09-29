@@ -140,7 +140,8 @@ extension GenreDetailsViewController {
             ratio: DimensionConstants.entertainmentPreviewCellRatio,
             minimumInteritemSpacing: 16.0,
             minimumLineSpacing: 16.0,
-            sectionInset: .init(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0)
+            sectionInset: .init(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0),
+            scrollDirection: .vertical
         )
         
         detailLayout = ColumnFlowLayout(
@@ -148,7 +149,8 @@ extension GenreDetailsViewController {
             ratio: DimensionConstants.entertainmentDetailCellRatio,
             minimumInteritemSpacing: 16.0,
             minimumLineSpacing: 16.0,
-            sectionInset: .init(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0)
+            sectionInset: .init(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0),
+            scrollDirection: .vertical
         )
         
         collectionView.collectionViewLayout = presentationMode == .preview ? previewLayout : detailLayout

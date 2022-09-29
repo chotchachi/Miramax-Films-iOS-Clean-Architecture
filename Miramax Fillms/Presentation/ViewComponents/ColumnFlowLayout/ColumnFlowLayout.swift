@@ -16,7 +16,8 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
          ratio: CGFloat,
          minimumInteritemSpacing: CGFloat = 0,
          minimumLineSpacing: CGFloat = 0,
-         sectionInset: UIEdgeInsets = .zero
+         sectionInset: UIEdgeInsets = .zero,
+         scrollDirection: UICollectionView.ScrollDirection
     ) {
         self.cellsPerRow = cellsPerRow
         self.ratio = ratio
@@ -25,6 +26,7 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         self.minimumInteritemSpacing = minimumInteritemSpacing
         self.minimumLineSpacing = minimumLineSpacing
         self.sectionInset = sectionInset
+        self.scrollDirection = scrollDirection
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -36,9 +38,29 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         
         guard let collectionView = collectionView else { return }
         
-        let marginsAndInsets = sectionInset.left + sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
-        itemSize = CGSize(width: itemWidth, height: itemWidth * ratio)
+        if scrollDirection == .vertical {
+            let marginsAndInsets = sectionInset.left
+            + sectionInset.right
+            + collectionView.safeAreaInsets.left
+            + collectionView.safeAreaInsets.right
+            + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+            
+            let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
+            let itemHeight = itemWidth * ratio
+            
+            itemSize = CGSize(width: itemWidth, height: itemHeight)
+        } else {
+            let marginsAndInsets = sectionInset.top
+            + sectionInset.bottom
+            + collectionView.safeAreaInsets.top
+            + collectionView.safeAreaInsets.bottom
+            + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+            
+            let itemHeight = ((collectionView.bounds.size.height - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
+            let itemWidth = itemHeight * ratio
+            
+            itemSize = CGSize(width: itemWidth, height: itemHeight)
+        }
     }
     
     override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {

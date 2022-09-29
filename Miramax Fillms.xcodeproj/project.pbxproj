@@ -190,6 +190,9 @@
 		EDE92B7628E307010083F33A /* UIRefreshControl+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B7528E307010083F33A /* UIRefreshControl+Ext.swift */; };
 		EDE92B7828E32C930083F33A /* EntertainmentDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B7728E32C930083F33A /* EntertainmentDetailCollectionViewCell.swift */; };
 		EDE92B7C28E350650083F33A /* ColumnFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B7B28E350650083F33A /* ColumnFlowLayout.swift */; };
+		EDE92B8528E5D7CC0083F33A /* ErrorRetryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B8428E5D7CC0083F33A /* ErrorRetryable.swift */; };
+		EDE92B8828E5D97E0083F33A /* ErrorRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B8728E5D97E0083F33A /* ErrorRetryView.swift */; };
+		EDE92B8A28E5DD3D0083F33A /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B8928E5DD3D0083F33A /* Displayable.swift */; };
 		EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */; };
 		EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */; };
 		EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */; };
@@ -406,6 +409,9 @@
 		EDE92B7528E307010083F33A /* UIRefreshControl+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+Ext.swift"; sourceTree = "<group>"; };
 		EDE92B7728E32C930083F33A /* EntertainmentDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		EDE92B7B28E350650083F33A /* ColumnFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnFlowLayout.swift; sourceTree = "<group>"; };
+		EDE92B8428E5D7CC0083F33A /* ErrorRetryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRetryable.swift; sourceTree = "<group>"; };
+		EDE92B8728E5D97E0083F33A /* ErrorRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRetryView.swift; sourceTree = "<group>"; };
+		EDE92B8928E5DD3D0083F33A /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
 		EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTracker.swift; sourceTree = "<group>"; };
@@ -696,6 +702,7 @@
 		EDC6DB1A28CF674300164EBD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				EDE92B8328E5D7730083F33A /* Protocols */,
 				EDC6DB1F28CF69CD00164EBD /* Base */,
 				EDFAD3AF28D3723C00ED3BCD /* Cell */,
 				EDC6DB2228CF69FE00164EBD /* Common */,
@@ -744,7 +751,6 @@
 		EDC6DB2228CF69FE00164EBD /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */,
 				EDFAD38228D2387F00ED3BCD /* ViewState.swift */,
 			);
 			path = Common;
@@ -1180,6 +1186,24 @@
 			path = ColumnFlowLayout;
 			sourceTree = "<group>";
 		};
+		EDE92B8328E5D7730083F33A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */,
+				EDE92B8428E5D7CC0083F33A /* ErrorRetryable.swift */,
+				EDE92B8928E5DD3D0083F33A /* Displayable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		EDE92B8628E5D9680083F33A /* ErrorRetryView */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92B8728E5D97E0083F33A /* ErrorRetryView.swift */,
+			);
+			path = ErrorRetryView;
+			sourceTree = "<group>";
+		};
 		EDFAD36F28D2059600ED3BCD /* Assemblers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1258,6 +1282,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				EDE92B8628E5D9680083F33A /* ErrorRetryView */,
 				EDE92B7A28E350580083F33A /* ColumnFlowLayout */,
 				EDE92B7228E3017A0083F33A /* DefaultRefreshControl */,
 				EDE92B6E28E2DAD80083F33A /* InfiniteCollectionView */,
@@ -1428,6 +1453,7 @@
 				EDFAD38B28D2D90300ED3BCD /* GenreApi.swift in Sources */,
 				EDFAD39328D2E41500ED3BCD /* GenreRepository.swift in Sources */,
 				EDB8780928D8BE900016B96B /* Crew.swift in Sources */,
+				EDE92B8828E5D97E0083F33A /* ErrorRetryView.swift in Sources */,
 				EDE69B4728D6312F002726B0 /* SearchViewData.swift in Sources */,
 				EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */,
 				EDB8781928D8D37C0016B96B /* DataUtils.swift in Sources */,
@@ -1525,6 +1551,7 @@
 				EDC502D828D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift in Sources */,
 				EDE92B7828E32C930083F33A /* EntertainmentDetailCollectionViewCell.swift in Sources */,
 				EDC6DB7828D084AD00164EBD /* DefaultAlamofireSession.swift in Sources */,
+				EDE92B8A28E5DD3D0083F33A /* Displayable.swift in Sources */,
 				EDE69B7528D7303D002726B0 /* Animation+Scale.swift in Sources */,
 				ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */,
 				EDB8781F28D8D8300016B96B /* SeasonDTO.swift in Sources */,
@@ -1580,6 +1607,7 @@
 				EDB8781328D8C2C80016B96B /* CreditDTO.swift in Sources */,
 				EDA4476E28D432350037751C /* AppColors.swift in Sources */,
 				EDD9A19928E0B93000FBA909 /* GenresViewController.swift in Sources */,
+				EDE92B8528E5D7CC0083F33A /* ErrorRetryable.swift in Sources */,
 				EDC502D528D38C2D0047C7C3 /* Rx+asDriver.swift in Sources */,
 				EDC6DB6A28D07C4C00164EBD /* DomainConvertibleType.swift in Sources */,
 				EDC6DB6C28D082E800164EBD /* NetworkManager.swift in Sources */,
