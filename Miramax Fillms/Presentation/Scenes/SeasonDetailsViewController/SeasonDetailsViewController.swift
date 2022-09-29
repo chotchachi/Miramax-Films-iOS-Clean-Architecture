@@ -11,18 +11,18 @@ import RxCocoa
 import RxDataSources
 import SwifterSwift
 
-class SeasonDetailsViewController: BaseViewController<SeasonDetailsViewModel> {
+class SeasonDetailsViewController: BaseViewController<SeasonDetailsViewModel>, LoadingDisplayable, ErrorRetryable {
 
     // MARK: - Outlets + Views
     
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var tblEpisodes: UITableView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
+    var loaderView: LoadingView = LoadingView()
+    var errorRetryView: ErrorRetryView = ErrorRetryView()
     
     // MARK: - Properties
     
-    private let popViewTriggerS = PublishRelay<Void>()
-    private let retryTriggerS = PublishRelay<Void>()
     private let episodeSelectTriggerS = PublishRelay<Episode>()
     
     override func configView() {
@@ -30,9 +30,6 @@ class SeasonDetailsViewController: BaseViewController<SeasonDetailsViewModel> {
         
         // Toolbar
         appToolbar.title = "episodes".localized
-        appToolbar.rx.backButtonTap
-            .bind(to: popViewTriggerS)
-            .disposed(by: rx.disposeBag)
         
         // Seasons table view
         tblEpisodes.separatorStyle = .none
@@ -46,8 +43,8 @@ class SeasonDetailsViewController: BaseViewController<SeasonDetailsViewModel> {
         super.bindViewModel()
         
         let input = SeasonDetailsViewModel.Input(
-            popViewTrigger: popViewTriggerS.asDriverOnErrorJustComplete(),
-            retryTrigger: retryTriggerS.asDriverOnErrorJustComplete(),
+            popViewTrigger: appToolbar.rx.backButtonTap.asDriver(),
+            retryTrigger: errorRetryView.rx.retryTapped.asDriver(),
             episodeSelectTrigger: episodeSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
@@ -70,24 +67,13 @@ class SeasonDetailsViewController: BaseViewController<SeasonDetailsViewModel> {
         
         viewModel.loading
             .drive(onNext: { [weak self] isLoading in
-                guard let self = self else { return }
-                isLoading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
+                isLoading ? self?.showLoader() : self?.hideLoader()
             })
             .disposed(by: rx.disposeBag)
         
         viewModel.error
             .drive(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                self.showAlert(
-                    title: "error".localized,
-                    message: "an_error_occurred".localized,
-                    buttonTitles: ["cancel".localized, "try_again".localized]) { buttonIndex in
-                        if buttonIndex == 1 {
-                            self.retryTriggerS.accept(())
-                        } else {
-                            self.popViewTriggerS.accept(())
-                        }
-                    }
+                self?.presentErrorRetryView()
             })
             .disposed(by: rx.disposeBag)
     }
