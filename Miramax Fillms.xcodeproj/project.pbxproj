@@ -195,6 +195,8 @@
 		EDE92B8A28E5DD3D0083F33A /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B8928E5DD3D0083F33A /* Displayable.swift */; };
 		EDE92B8D28E5EA3B0083F33A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B8C28E5EA3B0083F33A /* LoadingView.swift */; };
 		EDE92B8F28E5EB3F0083F33A /* LoadingDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B8E28E5EB3F0083F33A /* LoadingDisplayable.swift */; };
+		EDE92B9128E5F4A20083F33A /* Shareable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B9028E5F4A20083F33A /* Shareable.swift */; };
+		EDE92B9428E5F5420083F33A /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B9328E5F5420083F33A /* ShareButton.swift */; };
 		EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */; };
 		EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */; };
 		EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */; };
@@ -416,6 +418,8 @@
 		EDE92B8928E5DD3D0083F33A /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
 		EDE92B8C28E5EA3B0083F33A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		EDE92B8E28E5EB3F0083F33A /* LoadingDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDisplayable.swift; sourceTree = "<group>"; };
+		EDE92B9028E5F4A20083F33A /* Shareable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shareable.swift; sourceTree = "<group>"; };
+		EDE92B9328E5F5420083F33A /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTracker.swift; sourceTree = "<group>"; };
@@ -1197,6 +1201,7 @@
 				EDE92B8428E5D7CC0083F33A /* ErrorRetryable.swift */,
 				EDE92B8928E5DD3D0083F33A /* Displayable.swift */,
 				EDE92B8E28E5EB3F0083F33A /* LoadingDisplayable.swift */,
+				EDE92B9028E5F4A20083F33A /* Shareable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1215,6 +1220,14 @@
 				EDE92B8C28E5EA3B0083F33A /* LoadingView.swift */,
 			);
 			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		EDE92B9228E5F50E0083F33A /* ShareButton */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92B9328E5F5420083F33A /* ShareButton.swift */,
+			);
+			path = ShareButton;
 			sourceTree = "<group>";
 		};
 		EDFAD36F28D2059600ED3BCD /* Assemblers */ = {
@@ -1295,6 +1308,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				EDE92B9228E5F50E0083F33A /* ShareButton */,
 				EDE92B8B28E5EA2E0083F33A /* LoadingView */,
 				EDE92B8628E5D9680083F33A /* ErrorRetryView */,
 				EDE92B7A28E350580083F33A /* ColumnFlowLayout */,
@@ -1516,6 +1530,7 @@
 				EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */,
 				EDD52F6F28DAF24A0078C6C5 /* SearchRepositoryProtocol.swift in Sources */,
 				EDE69B9728D7730B002726B0 /* TVShowApi.swift in Sources */,
+				EDE92B9428E5F5420083F33A /* ShareButton.swift in Sources */,
 				EDFAD3B328D3745D00ED3BCD /* GridCollectionViewLayout.swift in Sources */,
 				EDA4478A28D5A15B0037751C /* SelfieWithMovieCellDelegate.swift in Sources */,
 				EDE69B8B28D741CF002726B0 /* TVShowDTO.swift in Sources */,
@@ -1551,6 +1566,7 @@
 				EDD52F5B28DA22250078C6C5 /* EntertainmentDetailModelType.swift in Sources */,
 				EDD9A19C28E0B93A00FBA909 /* GenresCoordinator.swift in Sources */,
 				EDFAD3A328D313EF00ED3BCD /* RepositoryProviderProtocol.swift in Sources */,
+				EDE92B9128E5F4A20083F33A /* Shareable.swift in Sources */,
 				EDC6DB5A28D0649F00164EBD /* GenreResponse.swift in Sources */,
 				EDC6DB3628CF759400164EBD /* SplashViewController.swift in Sources */,
 				EDA4477828D4566E0037751C /* NetworkConfigurable.swift in Sources */,
