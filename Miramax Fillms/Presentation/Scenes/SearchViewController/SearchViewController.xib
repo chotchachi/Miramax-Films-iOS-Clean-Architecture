@@ -15,7 +15,6 @@
                 <outlet property="btnClearSearch" destination="m8p-mk-w7X" id="okK-zB-IRT"/>
                 <outlet property="collectionView" destination="Ecb-nK-L5l" id="Pzg-lv-pUF"/>
                 <outlet property="lblEmptyMessage" destination="Hh4-Iq-zIP" id="Jo5-M5-DOM"/>
-                <outlet property="loadingIndicatorView" destination="YyK-Lr-k1s" id="cYO-f5-r6T"/>
                 <outlet property="tfSearch" destination="U7Q-zs-8IW" id="b9u-wg-KRW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewSearchEmpty" destination="C3y-Si-Hbv" id="zU8-gB-c0D"/>
@@ -114,10 +113,6 @@
                         <constraint firstAttribute="bottom" secondItem="Hh4-Iq-zIP" secondAttribute="bottom" id="vYm-Te-iJW"/>
                     </constraints>
                 </view>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="YyK-Lr-k1s">
-                    <rect key="frame" x="185" y="467.66666666666669" width="20" height="20"/>
-                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="ColorPrimary"/>
@@ -133,8 +128,6 @@
                 <constraint firstItem="a7h-AP-EqN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Mdn-Xw-tJn"/>
                 <constraint firstItem="a7h-AP-EqN" firstAttribute="top" secondItem="36x-RQ-zYG" secondAttribute="bottom" id="TaK-Bp-lWP"/>
                 <constraint firstItem="C3y-Si-Hbv" firstAttribute="centerY" secondItem="Ecb-nK-L5l" secondAttribute="centerY" id="dvb-de-veV"/>
-                <constraint firstItem="YyK-Lr-k1s" firstAttribute="centerY" secondItem="Ecb-nK-L5l" secondAttribute="centerY" id="iwN-yH-hPR"/>
-                <constraint firstItem="YyK-Lr-k1s" firstAttribute="centerX" secondItem="Ecb-nK-L5l" secondAttribute="centerX" id="mLh-pp-9SW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ecb-nK-L5l" secondAttribute="trailing" id="rGn-1L-gQa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ecb-nK-L5l" secondAttribute="bottom" id="wtT-AO-Hcx"/>
             </constraints>

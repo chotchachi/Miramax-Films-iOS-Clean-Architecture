@@ -9,9 +9,10 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 import SwifterSwift
 
-class SearchViewController: BaseViewController<SearchViewModel> {
+class SearchViewController: BaseViewController<SearchViewModel>, LoadingDisplayable {
 
     // MARK: - Outlets + Views
     
@@ -19,11 +20,12 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     @IBOutlet weak var tfSearch: UITextField!
     @IBOutlet weak var btnClearSearch: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var viewSearchEmpty: UIView!
     @IBOutlet weak var lblEmptyMessage: UILabel!
     
     private var btnCancel: UIButton!
+    
+    var loaderView: LoadingView = LoadingView()
     
     // MARK: - Properties
     
@@ -43,43 +45,9 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     override func configView() {
         super.configView()
         
-        appToolbar.title = "search".localized
-        appToolbar.showBackButton = false
-        
-        let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.scrollDirection = .vertical
-        collectionView.collectionViewLayout = collectionViewLayout
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.contentInset = .init(top: 32.0, left: 0.0, bottom: 32.0, right: 0.0)
-        collectionView.register(cellWithClass: MovieHorizontalListCell.self)
-        collectionView.register(cellWithClass: PersonHorizontalListCell.self)
-        
-        btnCancel = UIButton(type: .system)
-        btnCancel.setTitle("cancel".localized, for: .normal)
-        btnCancel.setTitleColor(AppColors.colorAccent, for: .normal)
-        btnCancel.titleLabel?.font = AppFonts.caption1
-        view.addSubview(btnCancel)
-        btnCancel.snp.makeConstraints { make in
-            make.centerY.equalTo(appToolbar.snp.centerY)
-            make.trailing.equalToSuperview().offset(-16.0)
-        }
-        
-        tfSearch.delegate = self
-        tfSearch.returnKeyType = .search
-        tfSearch.clearButtonMode = .never
-        tfSearch.textColor = AppColors.textColorPrimary
-        tfSearch.attributedPlaceholder = NSAttributedString(
-            string: "search_bar_placeholder".localized,
-            attributes: [NSAttributedString.Key.foregroundColor: AppColors.textColorPrimary.withAlphaComponent(0.5)]
-        )
-        tfSearch.addTarget(self, action: #selector(searchTextFieldDidChange(_:)), for: .editingChanged)
-        
-        btnClearSearch.isHidden = true
-        btnClearSearch.addTarget(self, action: #selector(clearSearchButtonTapped(_:)), for: .touchUpInside)
-        
-        lblEmptyMessage.font = AppFonts.caption1SemiBold
-        lblEmptyMessage.textColor = AppColors.textColorPrimary
+        configureAppToolbar()
+        configureCollectionView()
+        configureOtherViews()
     }
     
     override func bindViewModel() {
@@ -108,8 +76,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         
         viewModel.loading
             .drive(onNext: { [weak self] isLoading in
-                guard let self = self else { return }
-                isLoading ? self.loadingIndicatorView.startAnimating() : self.loadingIndicatorView.stopAnimating()
+                isLoading ? self?.showLoader() : self?.hideLoader()
             })
             .disposed(by: rx.disposeBag)
     }
@@ -122,6 +89,55 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     
     @objc private func searchTextFieldDidChange(_ sender: UITextField) {
         btnClearSearch.isHidden = sender.text?.isEmpty ?? true
+    }
+}
+
+// MARK: - Private functions
+
+extension SearchViewController {
+    private func configureAppToolbar() {
+        appToolbar.title = "search".localized
+        appToolbar.showBackButton = false
+        
+    }
+    
+    private func configureCollectionView() {
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.scrollDirection = .vertical
+        collectionView.collectionViewLayout = collectionViewLayout
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.contentInset = .init(top: 32.0, left: 0.0, bottom: 32.0, right: 0.0)
+        collectionView.register(cellWithClass: MovieHorizontalListCell.self)
+        collectionView.register(cellWithClass: PersonHorizontalListCell.self)
+    }
+    
+    private func configureOtherViews() {
+        btnCancel = UIButton(type: .system)
+        btnCancel.setTitle("cancel".localized, for: .normal)
+        btnCancel.setTitleColor(AppColors.colorAccent, for: .normal)
+        btnCancel.titleLabel?.font = AppFonts.caption1
+        view.addSubview(btnCancel)
+        btnCancel.snp.makeConstraints { make in
+            make.centerY.equalTo(appToolbar.snp.centerY)
+            make.trailing.equalToSuperview().offset(-16.0)
+        }
+        
+        tfSearch.delegate = self
+        tfSearch.returnKeyType = .search
+        tfSearch.clearButtonMode = .never
+        tfSearch.textColor = AppColors.textColorPrimary
+        tfSearch.attributedPlaceholder = NSAttributedString(
+            string: "search_bar_placeholder".localized,
+            attributes: [NSAttributedString.Key.foregroundColor: AppColors.textColorPrimary.withAlphaComponent(0.5)]
+        )
+        tfSearch.addTarget(self, action: #selector(searchTextFieldDidChange(_:)), for: .editingChanged)
+        
+        btnClearSearch.isHidden = true
+        btnClearSearch.addTarget(self, action: #selector(clearSearchButtonTapped(_:)), for: .touchUpInside)
+        
+        lblEmptyMessage.font = AppFonts.caption1SemiBold
+        lblEmptyMessage.textColor = AppColors.textColorPrimary
     }
 }
 
