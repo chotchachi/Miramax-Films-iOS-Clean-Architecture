@@ -11,18 +11,17 @@ import RxCocoa
 import RxDataSources
 import SwifterSwift
 
-class GenresViewController: BaseViewController<GenresViewModel> {
+class GenresViewController: BaseViewController<GenresViewModel>, LoadingDisplayable, ErrorRetryable {
 
     // MARK: - Outlets
     
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var errorView: UIView!
-    @IBOutlet weak var lblError: UILabel!
-    @IBOutlet weak var btnRetry: PrimaryButton!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     private var btnSearch: UIButton!
+    
+    var loaderView: LoadingView = LoadingView()
+    var errorRetryView: ErrorRetryView = ErrorRetryView()
     
     // MARK: - Properties
     
@@ -35,7 +34,6 @@ class GenresViewController: BaseViewController<GenresViewModel> {
      
         configureAppToolbar()
         configureCollectionView()
-        configureErrorView()
     }
     
     override func bindViewModel() {
@@ -43,7 +41,7 @@ class GenresViewController: BaseViewController<GenresViewModel> {
         
         let input = GenresViewModel.Input(
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
-            retryTrigger: btnRetry.rx.tap.asDriver(),
+            retryTrigger: errorRetryView.rx.retryTapped.asDriver(),
             genreSelectTrigger: genreSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
@@ -61,20 +59,13 @@ class GenresViewController: BaseViewController<GenresViewModel> {
         
         viewModel.loading
             .drive(onNext: { [weak self] isLoading in
-                guard let self = self else { return }
-                if isLoading {
-                    self.errorView.isHidden = true
-                    self.loadingIndicator.startAnimating()
-                } else {
-                    self.loadingIndicator.stopAnimating()
-                }
+                isLoading ? self?.showLoader() : self?.hideLoader()
             })
             .disposed(by: rx.disposeBag)
         
         viewModel.error
             .drive(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                self.errorView.isHidden = false
+                self?.presentErrorRetryView()
             })
             .disposed(by: rx.disposeBag)
     }
@@ -104,14 +95,6 @@ extension GenresViewController {
         collectionView.rx.modelSelected(Genre.self)
             .bind(to: genreSelectTriggerS)
             .disposed(by: rx.disposeBag)
-    }
-    
-    private func configureErrorView() {
-        lblError.text = "an_error_occurred".localized
-        lblError.textColor = AppColors.textColorSecondary
-        lblError.font = AppFonts.caption1
-        
-        btnRetry.titleText = "retry".localized
     }
 }
 

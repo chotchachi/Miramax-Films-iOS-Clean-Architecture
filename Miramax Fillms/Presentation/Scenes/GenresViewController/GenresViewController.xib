@@ -12,11 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GenresViewController" customModule="Miramax_Fillms" customModuleProvider="target">
             <connections>
                 <outlet property="appToolbar" destination="jfw-23-gEB" id="9wh-RK-AYN"/>
-                <outlet property="btnRetry" destination="mfo-8L-eyi" id="rRu-Pq-aJ9"/>
                 <outlet property="collectionView" destination="Mbc-GB-jhT" id="vu6-ED-MVa"/>
-                <outlet property="errorView" destination="K3z-1l-q1e" id="8Ze-bh-zvc"/>
-                <outlet property="lblError" destination="Dhe-xZ-sxW" id="7PO-zY-nEa"/>
-                <outlet property="loadingIndicator" destination="pHv-BG-i2P" id="Pbx-1M-4rt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -35,35 +31,6 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K3z-1l-q1e">
-                    <rect key="frame" x="16" y="420.33333333333331" width="358" height="70.666666666666686"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhe-xZ-sxW">
-                            <rect key="frame" x="0.0" y="0.0" width="358" height="20.333333333333332"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mfo-8L-eyi" customClass="PrimaryButton" customModule="Miramax_Fillms" customModuleProvider="target">
-                            <rect key="frame" x="141.66666666666666" y="36.333333333333371" width="75" height="34.333333333333343"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="Dhe-xZ-sxW" firstAttribute="top" secondItem="K3z-1l-q1e" secondAttribute="top" id="8VF-yw-iv6"/>
-                        <constraint firstAttribute="bottom" secondItem="mfo-8L-eyi" secondAttribute="bottom" id="D2X-yj-nr7"/>
-                        <constraint firstAttribute="trailing" secondItem="Dhe-xZ-sxW" secondAttribute="trailing" id="bwO-Us-8q9"/>
-                        <constraint firstItem="mfo-8L-eyi" firstAttribute="top" secondItem="Dhe-xZ-sxW" secondAttribute="bottom" constant="16" id="jrY-cw-MK3"/>
-                        <constraint firstItem="Dhe-xZ-sxW" firstAttribute="leading" secondItem="K3z-1l-q1e" secondAttribute="leading" id="npL-eR-xHJ"/>
-                        <constraint firstItem="mfo-8L-eyi" firstAttribute="centerX" secondItem="K3z-1l-q1e" secondAttribute="centerX" id="tr3-19-AR9"/>
-                    </constraints>
-                </view>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="pHv-BG-i2P">
-                    <rect key="frame" x="185" y="445.66666666666669" width="20" height="20"/>
-                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </activityIndicatorView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfw-23-gEB" customClass="AppToolbar" customModule="Miramax_Fillms" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="47" width="390" height="54"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,27 +43,16 @@
             <color key="backgroundColor" name="ColorPrimary"/>
             <constraints>
                 <constraint firstItem="Mbc-GB-jhT" firstAttribute="top" secondItem="jfw-23-gEB" secondAttribute="bottom" id="295-BD-Hd3"/>
-                <constraint firstItem="pHv-BG-i2P" firstAttribute="centerX" secondItem="Mbc-GB-jhT" secondAttribute="centerX" id="5MN-X5-Auc"/>
-                <constraint firstItem="K3z-1l-q1e" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="7r2-j2-HhA"/>
                 <constraint firstItem="jfw-23-gEB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FB0-zq-gqV"/>
-                <constraint firstItem="K3z-1l-q1e" firstAttribute="centerX" secondItem="Mbc-GB-jhT" secondAttribute="centerX" id="Fr1-9c-sZn"/>
-                <constraint firstItem="pHv-BG-i2P" firstAttribute="centerY" secondItem="Mbc-GB-jhT" secondAttribute="centerY" id="N2z-eU-Zas"/>
                 <constraint firstItem="jfw-23-gEB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="U0U-JJ-VQO"/>
                 <constraint firstItem="Mbc-GB-jhT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="a1U-Qf-xIw"/>
                 <constraint firstAttribute="trailing" secondItem="Mbc-GB-jhT" secondAttribute="trailing" id="bzu-hm-rQ4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Mbc-GB-jhT" secondAttribute="bottom" id="h8Y-un-Z0e"/>
-                <constraint firstItem="K3z-1l-q1e" firstAttribute="centerY" secondItem="Mbc-GB-jhT" secondAttribute="centerY" id="koQ-Lg-n2b"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="K3z-1l-q1e" secondAttribute="trailing" constant="16" id="plg-ew-wD7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jfw-23-gEB" secondAttribute="trailing" id="rLL-P9-IHX"/>
             </constraints>
             <point key="canvasLocation" x="96.92307692307692" y="20.616113744075829"/>
         </view>
     </objects>
-    <designables>
-        <designable name="mfo-8L-eyi">
-            <size key="intrinsicContentSize" width="75" height="34.333333333333336"/>
-        </designable>
-    </designables>
     <resources>
         <namedColor name="ColorPrimary">
             <color red="0.024000000208616257" green="0.067000001668930054" blue="0.21199999749660492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
