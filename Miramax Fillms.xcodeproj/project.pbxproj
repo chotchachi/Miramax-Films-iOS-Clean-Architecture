@@ -193,6 +193,8 @@
 		EDE92B8528E5D7CC0083F33A /* ErrorRetryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B8428E5D7CC0083F33A /* ErrorRetryable.swift */; };
 		EDE92B8828E5D97E0083F33A /* ErrorRetryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B8728E5D97E0083F33A /* ErrorRetryView.swift */; };
 		EDE92B8A28E5DD3D0083F33A /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B8928E5DD3D0083F33A /* Displayable.swift */; };
+		EDE92B8D28E5EA3B0083F33A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B8C28E5EA3B0083F33A /* LoadingView.swift */; };
+		EDE92B8F28E5EB3F0083F33A /* LoadingDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92B8E28E5EB3F0083F33A /* LoadingDisplayable.swift */; };
 		EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */; };
 		EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */; };
 		EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */; };
@@ -412,6 +414,8 @@
 		EDE92B8428E5D7CC0083F33A /* ErrorRetryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRetryable.swift; sourceTree = "<group>"; };
 		EDE92B8728E5D97E0083F33A /* ErrorRetryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRetryView.swift; sourceTree = "<group>"; };
 		EDE92B8928E5DD3D0083F33A /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
+		EDE92B8C28E5EA3B0083F33A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		EDE92B8E28E5EB3F0083F33A /* LoadingDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDisplayable.swift; sourceTree = "<group>"; };
 		EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTracker.swift; sourceTree = "<group>"; };
@@ -1192,6 +1196,7 @@
 				EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */,
 				EDE92B8428E5D7CC0083F33A /* ErrorRetryable.swift */,
 				EDE92B8928E5DD3D0083F33A /* Displayable.swift */,
+				EDE92B8E28E5EB3F0083F33A /* LoadingDisplayable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1202,6 +1207,14 @@
 				EDE92B8728E5D97E0083F33A /* ErrorRetryView.swift */,
 			);
 			path = ErrorRetryView;
+			sourceTree = "<group>";
+		};
+		EDE92B8B28E5EA2E0083F33A /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92B8C28E5EA3B0083F33A /* LoadingView.swift */,
+			);
+			path = LoadingView;
 			sourceTree = "<group>";
 		};
 		EDFAD36F28D2059600ED3BCD /* Assemblers */ = {
@@ -1282,6 +1295,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				EDE92B8B28E5EA2E0083F33A /* LoadingView */,
 				EDE92B8628E5D9680083F33A /* ErrorRetryView */,
 				EDE92B7A28E350580083F33A /* ColumnFlowLayout */,
 				EDE92B7228E3017A0083F33A /* DefaultRefreshControl */,
@@ -1512,6 +1526,7 @@
 				ED866E2628DEE1510066E10B /* Image.swift in Sources */,
 				EDD5301628DC99860078C6C5 /* SeasonsCoordinator.swift in Sources */,
 				EDA4475D28D422320037751C /* MovieHorizontalListCellDelegate.swift in Sources */,
+				EDE92B8F28E5EB3F0083F33A /* LoadingDisplayable.swift in Sources */,
 				EDE69B7D28D73214002726B0 /* TVShowViewController.swift in Sources */,
 				EDB8780728D8AABB0016B96B /* EntertainmentDetailsCoordinator.swift in Sources */,
 				EDA4478128D591410037751C /* SectionHeaderView.swift in Sources */,
@@ -1627,6 +1642,7 @@
 				EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */,
 				ED866E2028DED7AA0066E10B /* PersonDetailsViewModel.swift in Sources */,
 				EDB8780D28D8C17D0016B96B /* Credit.swift in Sources */,
+				EDE92B8D28E5EA3B0083F33A /* LoadingView.swift in Sources */,
 				EDE69B9328D76ECB002726B0 /* TVShowRepositoryProtocol.swift in Sources */,
 				ED866E2828DEE20B0066E10B /* ImageDTO.swift in Sources */,
 				EDE69B5228D6BA58002726B0 /* PersonHorizontalListCell.swift in Sources */,

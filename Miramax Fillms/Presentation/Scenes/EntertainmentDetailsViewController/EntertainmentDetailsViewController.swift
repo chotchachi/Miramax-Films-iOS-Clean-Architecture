@@ -14,13 +14,12 @@ import SwifterSwift
 fileprivate let kSeasonsMaxItems: Int = 3
 fileprivate let kOverviewLabelMaxLines: Int = 5
 
-class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetailsViewModel>, ErrorRetryable {
+class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetailsViewModel>, LoadingDisplayable, ErrorRetryable {
     
     // MARK: - Outlets + Views
     
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     /// Section title
     @IBOutlet weak var sectionTitleView: UIView!
@@ -67,15 +66,16 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     private var btnSearch: UIButton!
     private var btnShare: UIButton!
     
+    var loaderView: LoadingView = LoadingView()
     var errorRetryView: ErrorRetryView = ErrorRetryView()
 
     // MARK: - Properties
     
+    private let entertainentDetailDataS = PublishRelay<EntertainmentDetailModelType>()
+
     private let seasonSelectTriggerS = PublishRelay<Season>()
     private let personSelectTriggerS = PublishRelay<PersonModelType>()
     private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
-
-    private let entertainentDetailDataS = PublishRelay<EntertainmentDetailModelType>()
     
     private var lblOverviewShowMore = false
     
@@ -124,8 +124,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         
         viewModel.loading
             .drive(onNext: { [weak self] isLoading in
-                guard let self = self else { return }
-                isLoading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
+                isLoading ? self?.showLoader() : self?.hideLoader()
             })
             .disposed(by: rx.disposeBag)
         
@@ -316,7 +315,6 @@ extension EntertainmentDetailsViewController {
     
     private func configureOthersView() {
         scrollView.isHidden = true
-        loadingIndicator.startAnimating()
         btnShare.isEnabled = false
         btnShare.alpha = 0.5
     }

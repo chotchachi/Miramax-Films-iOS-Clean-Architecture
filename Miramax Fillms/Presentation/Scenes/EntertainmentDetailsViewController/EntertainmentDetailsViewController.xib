@@ -27,7 +27,6 @@
                 <outlet property="lblReleaseDateText" destination="Gc1-cz-Pn9" id="QQM-qY-Ybt"/>
                 <outlet property="lblTitle" destination="bvD-2o-7gq" id="Uu4-oL-fL7"/>
                 <outlet property="lblWriters" destination="eWF-Dy-Yfl" id="Kae-VN-Wsv"/>
-                <outlet property="loadingIndicator" destination="i16-rv-Xon" id="cs2-uk-PxB"/>
                 <outlet property="overviewSectionHeaderView" destination="wju-qU-NfZ" id="6Cu-i9-2HZ"/>
                 <outlet property="recommendCollectionView" destination="dx8-3D-4Ze" id="4m1-ro-1tk"/>
                 <outlet property="recommendSectionHeaderView" destination="pRO-VA-K0B" id="ywc-6Q-H0g"/>
@@ -519,20 +518,14 @@
                         <constraint firstAttribute="trailing" secondItem="4lf-00-G9Z" secondAttribute="trailing" id="t3m-o4-qqW"/>
                     </constraints>
                 </scrollView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="i16-rv-Xon">
-                    <rect key="frame" x="185" y="445.66666666666669" width="20" height="20"/>
-                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="ColorPrimary"/>
             <constraints>
                 <constraint firstItem="KFI-Sc-xE0" firstAttribute="top" secondItem="twN-0J-lwG" secondAttribute="bottom" id="CJm-vr-p74"/>
                 <constraint firstItem="twN-0J-lwG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Lo7-yK-dHE"/>
-                <constraint firstItem="i16-rv-Xon" firstAttribute="centerY" secondItem="KFI-Sc-xE0" secondAttribute="centerY" id="XDg-H7-jL7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KFI-Sc-xE0" secondAttribute="trailing" id="eKf-AO-9pX"/>
                 <constraint firstItem="twN-0J-lwG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eji-zj-2Nx"/>
-                <constraint firstItem="i16-rv-Xon" firstAttribute="centerX" secondItem="KFI-Sc-xE0" secondAttribute="centerX" id="gPt-aD-86q"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="twN-0J-lwG" secondAttribute="trailing" id="iIP-ho-ul3"/>
                 <constraint firstItem="KFI-Sc-xE0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mSn-2Q-Qzp"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="KFI-Sc-xE0" secondAttribute="bottom" id="p1R-oR-vvm"/>
