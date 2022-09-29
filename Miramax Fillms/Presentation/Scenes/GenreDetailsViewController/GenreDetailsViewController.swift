@@ -11,7 +11,7 @@ import RxCocoa
 import RxDataSources
 import SwifterSwift
 
-class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel> {
+class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel>, LoadingDisplayable, ErrorRetryable {
     
     // MARK: - PresentationMode
     
@@ -24,10 +24,12 @@ class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel> {
     
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var btnTogglePresentationMode: UIButton!
     
     private var btnSearch: UIButton!
+    
+    var loaderView: LoadingView = LoadingView()
+    var errorRetryView: ErrorRetryView = ErrorRetryView()
     
     // MARK: - Properties
     
@@ -39,8 +41,6 @@ class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel> {
     private var isAnimatingPresentation: Bool = false
     private var isFetching: Bool = false
     
-    private let popViewTriggerS = PublishRelay<Void>()
-    private let retryTriggerS = PublishRelay<Void>()
     private let refreshTriggerS = PublishRelay<Void>()
     private let loadMoreTriggerS = PublishRelay<Void>()
     private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
@@ -59,9 +59,9 @@ class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel> {
         super.bindViewModel()
         
         let input = GenreDetailsViewModel.Input(
-            popViewTrigger: popViewTriggerS.asDriverOnErrorJustComplete(),
+            popViewTrigger: appToolbar.rx.backButtonTap.asDriver(),
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
-            retryTrigger: retryTriggerS.asDriverOnErrorJustComplete(),
+            retryTrigger: errorRetryView.rx.retryTapped.asDriver(),
             refreshTrigger: refreshTriggerS.asDriverOnErrorJustComplete(),
             loadMoreTrigger: loadMoreTriggerS.asDriverOnErrorJustComplete(),
             entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete()
@@ -93,28 +93,17 @@ class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel> {
         
         viewModel.loading
             .drive(onNext: { [weak self] isLoading in
-                guard let self = self else { return }
-                self.isFetching = isLoading
-                isLoading ? self.loadingIndicator.startAnimating() : self.loadingIndicator.stopAnimating()
+                isLoading ? self?.showLoader() : self?.hideLoader()
+                self?.isFetching = isLoading
                 if !isLoading {
-                    self.collectionView.refreshControl?.endRefreshing(with: 0.5)
+                    self?.collectionView.refreshControl?.endRefreshing(with: 0.5)
                 }
             })
             .disposed(by: rx.disposeBag)
         
         viewModel.error
             .drive(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                self.showAlert(
-                    title: "error".localized,
-                    message: "an_error_occurred".localized,
-                    buttonTitles: ["cancel".localized, "try_again".localized]) { buttonIndex in
-                        if buttonIndex == 1 {
-                            self.retryTriggerS.accept(())
-                        } else {
-                            self.popViewTriggerS.accept(())
-                        }
-                    }
+                self?.presentErrorRetryView()
             })
             .disposed(by: rx.disposeBag)
     }
@@ -129,17 +118,14 @@ extension GenreDetailsViewController {
         btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
         
         appToolbar.rightButtons = [btnSearch]
-        appToolbar.rx.backButtonTap
-            .bind(to: popViewTriggerS)
-            .disposed(by: rx.disposeBag)
     }
     
     private func configureCollectionView() {
         previewLayout = ColumnFlowLayout(
             cellsPerRow: 2,
             ratio: DimensionConstants.entertainmentPreviewCellRatio,
-            minimumInteritemSpacing: 16.0,
-            minimumLineSpacing: 16.0,
+            minimumInteritemSpacing: DimensionConstants.entertainmentPreviewCellSpacing,
+            minimumLineSpacing: DimensionConstants.entertainmentPreviewCellSpacing,
             sectionInset: .init(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0),
             scrollDirection: .vertical
         )
@@ -147,8 +133,8 @@ extension GenreDetailsViewController {
         detailLayout = ColumnFlowLayout(
             cellsPerRow: 1,
             ratio: DimensionConstants.entertainmentDetailCellRatio,
-            minimumInteritemSpacing: 16.0,
-            minimumLineSpacing: 16.0,
+            minimumInteritemSpacing: DimensionConstants.entertainmentDetailCellSpacing,
+            minimumLineSpacing: DimensionConstants.entertainmentDetailCellSpacing,
             sectionInset: .init(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0),
             scrollDirection: .vertical
         )

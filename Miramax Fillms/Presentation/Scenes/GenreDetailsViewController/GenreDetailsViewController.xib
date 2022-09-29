@@ -14,7 +14,6 @@
                 <outlet property="appToolbar" destination="bgt-yy-LRh" id="1hs-1u-osh"/>
                 <outlet property="btnTogglePresentationMode" destination="m5E-KZ-3Vl" id="zWR-S6-8hF"/>
                 <outlet property="collectionView" destination="DyE-32-6jf" id="icp-C6-thZ"/>
-                <outlet property="loadingIndicator" destination="hUH-FV-8A6" id="iL4-5a-7VV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -84,10 +83,6 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="hUH-FV-8A6">
-                    <rect key="frame" x="185" y="474" width="20" height="20"/>
-                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="ColorPrimary"/>
@@ -99,12 +94,10 @@
                 <constraint firstItem="DyE-32-6jf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IHW-jf-HxD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ix9-Xw-9gu" secondAttribute="trailing" id="XA0-bO-Olq"/>
                 <constraint firstItem="bgt-yy-LRh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aSH-ge-no8"/>
-                <constraint firstItem="hUH-FV-8A6" firstAttribute="centerX" secondItem="DyE-32-6jf" secondAttribute="centerX" id="hBP-Lf-DQB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DyE-32-6jf" secondAttribute="trailing" id="hNu-0d-Sz1"/>
                 <constraint firstItem="bgt-yy-LRh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="iK8-iB-7UI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bgt-yy-LRh" secondAttribute="trailing" id="m5i-73-goI"/>
                 <constraint firstItem="DyE-32-6jf" firstAttribute="top" secondItem="Ix9-Xw-9gu" secondAttribute="bottom" id="qif-6N-ifQ"/>
-                <constraint firstItem="hUH-FV-8A6" firstAttribute="centerY" secondItem="DyE-32-6jf" secondAttribute="centerY" id="tyw-YM-tdx"/>
             </constraints>
             <point key="canvasLocation" x="96.92307692307692" y="20.616113744075829"/>
         </view>
