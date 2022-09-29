@@ -11,15 +11,14 @@ import RxCocoa
 import RxDataSources
 import SwifterSwift
 
-class GenresViewController: BaseViewController<GenresViewModel>, LoadingDisplayable, ErrorRetryable {
+class GenresViewController: BaseViewController<GenresViewModel>, LoadingDisplayable, ErrorRetryable, Searchable {
 
     // MARK: - Outlets
     
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var btnSearch: UIButton!
-    
+    var btnSearch: SearchButton = SearchButton()
     var loaderView: LoadingView = LoadingView()
     var errorRetryView: ErrorRetryView = ErrorRetryView()
     
@@ -75,10 +74,6 @@ class GenresViewController: BaseViewController<GenresViewModel>, LoadingDisplaya
 
 extension GenresViewController {
     private func configureAppToolbar() {
-        btnSearch = UIButton(type: .system)
-        btnSearch.translatesAutoresizingMaskIntoConstraints = false
-        btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
-        
         appToolbar.title = "movie_genres".localized
         appToolbar.showBackButton = false
         appToolbar.rightButtons = [btnSearch]

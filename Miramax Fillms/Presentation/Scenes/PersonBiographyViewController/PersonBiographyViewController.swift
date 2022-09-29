@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import TagListView
 
-class PersonBiographyViewController: BaseViewController<PersonBiographyViewModel> {
+class PersonBiographyViewController: BaseViewController<PersonBiographyViewModel>, Searchable, Shareable {
 
     // MARK: - Outlets + Views
     
@@ -22,8 +22,8 @@ class PersonBiographyViewController: BaseViewController<PersonBiographyViewModel
     
     @IBOutlet weak var lblBiography: UILabel!
 
-    private var btnSearch: UIButton!
-    private var btnShare: UIButton!
+    var btnSearch: SearchButton = SearchButton()
+    var btnShare: ShareButton = ShareButton()
     
     // MARK: - Properties
     
@@ -59,14 +59,6 @@ class PersonBiographyViewController: BaseViewController<PersonBiographyViewModel
 
 extension PersonBiographyViewController {
     private func configureAppToolbar() {
-        btnSearch = UIButton(type: .system)
-        btnSearch.translatesAutoresizingMaskIntoConstraints = false
-        btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
-        
-        btnShare = UIButton(type: .system)
-        btnShare.translatesAutoresizingMaskIntoConstraints = false
-        btnShare.setImage(UIImage(named: "ic_toolbar_share"), for: .normal)
-        
         appToolbar.showTitleLabel = false
         appToolbar.rightButtons = [btnSearch, btnShare]
     }

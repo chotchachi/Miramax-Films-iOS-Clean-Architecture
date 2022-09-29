@@ -14,7 +14,7 @@ import SwifterSwift
 fileprivate let kSeasonsMaxItems: Int = 3
 fileprivate let kOverviewLabelMaxLines: Int = 5
 
-class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetailsViewModel>, LoadingDisplayable, ErrorRetryable {
+class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetailsViewModel>, LoadingDisplayable, ErrorRetryable, Searchable, Shareable {
     
     // MARK: - Outlets + Views
     
@@ -62,10 +62,9 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     @IBOutlet weak var sectionRecommendView: UIView!
     @IBOutlet weak var recommendSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
-
-    private var btnSearch: UIButton!
-    private var btnShare: UIButton!
     
+    var btnSearch: SearchButton = SearchButton()
+    var btnShare: ShareButton = ShareButton()
     var loaderView: LoadingView = LoadingView()
     var errorRetryView: ErrorRetryView = ErrorRetryView()
 
@@ -117,8 +116,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
                 self.bindData(item)
                 self.hideErrorRetryView()
                 self.scrollView.isHidden = false
-                self.btnShare.isEnabled = true
-                self.btnShare.alpha = 1.0
+                self.enableShare()
             })
             .disposed(by: rx.disposeBag)
         
@@ -146,14 +144,6 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
 
 extension EntertainmentDetailsViewController {
     private func configureAppToolbar() {
-        btnSearch = UIButton(type: .system)
-        btnSearch.translatesAutoresizingMaskIntoConstraints = false
-        btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
-        
-        btnShare = UIButton(type: .system)
-        btnShare.translatesAutoresizingMaskIntoConstraints = false
-        btnShare.setImage(UIImage(named: "ic_toolbar_share"), for: .normal)
-        
         appToolbar.showTitleLabel = false
         appToolbar.rightButtons = [btnSearch, btnShare]
     }
@@ -315,8 +305,7 @@ extension EntertainmentDetailsViewController {
     
     private func configureOthersView() {
         scrollView.isHidden = true
-        btnShare.isEnabled = false
-        btnShare.alpha = 0.5
+        disableShare()
     }
     
     private func bindData(_ entertainmentDetail: EntertainmentDetailModelType) {

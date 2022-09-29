@@ -20,7 +20,6 @@ class SeasonsViewController: BaseViewController<SeasonsViewModel> {
     
     // MARK: - Properties
     
-    private let popViewTriggerS = PublishRelay<Void>()
     private let seasonSelectTriggerS = PublishRelay<Season>()
 
     override func configView() {
@@ -28,9 +27,6 @@ class SeasonsViewController: BaseViewController<SeasonsViewModel> {
         
         // Toolbar
         appToolbar.title = "seasons".localized
-        appToolbar.rx.backButtonTap
-            .bind(to: popViewTriggerS)
-            .disposed(by: rx.disposeBag)
         
         // Seasons table view
         tblSeasons.separatorStyle = .none
@@ -44,7 +40,7 @@ class SeasonsViewController: BaseViewController<SeasonsViewModel> {
         super.bindViewModel()
         
         let input = SeasonsViewModel.Input(
-            popViewTrigger: popViewTriggerS.asDriverOnErrorJustComplete(),
+            popViewTrigger: appToolbar.rx.backButtonTap.asDriver(),
             seasonSelectTrigger: seasonSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)

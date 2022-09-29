@@ -12,7 +12,7 @@ import RxDataSources
 import SwifterSwift
 import TagListView
 
-class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, LoadingDisplayable, ErrorRetryable {
+class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, LoadingDisplayable, ErrorRetryable, Searchable, Shareable {
     
     // MARK: - Outlets + Views
     
@@ -43,10 +43,9 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, L
     @IBOutlet weak var sectionMoviesView: UIView!
     @IBOutlet weak var moviesSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var moviesCollectionView: UICollectionView!
-        
-    private var btnSearch: UIButton!
-    private var btnShare: UIButton!
     
+    var btnSearch: SearchButton = SearchButton()
+    var btnShare: ShareButton = ShareButton()
     var loaderView: LoadingView = LoadingView()
     var errorRetryView: ErrorRetryView = ErrorRetryView()
     
@@ -108,14 +107,6 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, L
 
 extension PersonDetailsViewController {
     private func configureAppToolbar() {
-        btnSearch = UIButton(type: .system)
-        btnSearch.translatesAutoresizingMaskIntoConstraints = false
-        btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
-        
-        btnShare = UIButton(type: .system)
-        btnShare.translatesAutoresizingMaskIntoConstraints = false
-        btnShare.setImage(UIImage(named: "ic_toolbar_share"), for: .normal)
-        
         appToolbar.showTitleLabel = false
         appToolbar.rightButtons = [btnSearch, btnShare]
     }

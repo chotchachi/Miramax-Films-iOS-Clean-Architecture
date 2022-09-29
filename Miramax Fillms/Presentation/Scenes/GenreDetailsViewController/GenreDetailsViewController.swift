@@ -11,7 +11,7 @@ import RxCocoa
 import RxDataSources
 import SwifterSwift
 
-class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel>, LoadingDisplayable, ErrorRetryable {
+class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel>, LoadingDisplayable, ErrorRetryable, Searchable {
     
     // MARK: - PresentationMode
     
@@ -26,8 +26,7 @@ class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel>, Loa
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var btnTogglePresentationMode: UIButton!
     
-    private var btnSearch: UIButton!
-    
+    var btnSearch: SearchButton = SearchButton()
     var loaderView: LoadingView = LoadingView()
     var errorRetryView: ErrorRetryView = ErrorRetryView()
     
@@ -113,10 +112,6 @@ class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel>, Loa
 
 extension GenreDetailsViewController {
     private func configureAppToolbar() {
-        btnSearch = UIButton(type: .system)
-        btnSearch.translatesAutoresizingMaskIntoConstraints = false
-        btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
-        
         appToolbar.rightButtons = [btnSearch]
     }
     

@@ -10,14 +10,14 @@ import RxSwift
 import RxCocoa
 import SwifterSwift
 
-class TVShowViewController: BaseViewController<TVShowViewModel> {
+class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
 
     // MARK: - Outlets + Views
     
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var btnSearch: UIButton!
+    var btnSearch: SearchButton = SearchButton()
 
     // MARK: - Properties
     
@@ -36,10 +36,6 @@ class TVShowViewController: BaseViewController<TVShowViewModel> {
     
     override func configView() {
         super.configView()
-        
-        btnSearch = UIButton(type: .system)
-        btnSearch.translatesAutoresizingMaskIntoConstraints = false
-        btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
         
         appToolbar.title = "tvshow".localized
         appToolbar.showBackButton = false

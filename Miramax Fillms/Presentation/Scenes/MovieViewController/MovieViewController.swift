@@ -10,14 +10,14 @@ import RxSwift
 import RxCocoa
 import SwifterSwift
 
-class MovieViewController: BaseViewController<MovieViewModel> {
+class MovieViewController: BaseViewController<MovieViewModel>, Searchable {
     
     // MARK: - Outlets + Views
     
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var btnSearch: UIButton!
+    var btnSearch: SearchButton = SearchButton()
 
     // MARK: - Properties
     
@@ -32,10 +32,6 @@ class MovieViewController: BaseViewController<MovieViewModel> {
     
     override func configView() {
         super.configView()
-        
-        btnSearch = UIButton(type: .system)
-        btnSearch.translatesAutoresizingMaskIntoConstraints = false
-        btnSearch.setImage(UIImage(named: "ic_toolbar_search"), for: .normal)
         
         appToolbar.title = "movie".localized
         appToolbar.showBackButton = false
