@@ -11,6 +11,7 @@ enum GenreDetailsRoute: Route {
     case initial(genre: Genre)
     case pop
     case search
+    case entertainmentDetails(entertainment: EntertainmentModelType)
 }
 
 class GenreDetailsCoordinator: NavigationCoordinator<GenreDetailsRoute> {
@@ -40,6 +41,9 @@ class GenreDetailsCoordinator: NavigationCoordinator<GenreDetailsRoute> {
             return .pop()
         case .search:
             addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
+            return .none()
+        case .entertainmentDetails(entertainment: let entertainment):
+            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
             return .none()
         }
     }

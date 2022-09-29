@@ -13,6 +13,13 @@ import SwifterSwift
 
 class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel> {
     
+    // MARK: - PresentationMode
+    
+    enum PresentationMode {
+        case preview
+        case detail
+    }
+    
     // MARK: - Outlets
     
     @IBOutlet weak var appToolbar: AppToolbar!
@@ -56,7 +63,8 @@ class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel> {
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             retryTrigger: retryTriggerS.asDriverOnErrorJustComplete(),
             refreshTrigger: refreshTriggerS.asDriverOnErrorJustComplete(),
-            loadMoreTrigger: loadMoreTriggerS.asDriverOnErrorJustComplete()
+            loadMoreTrigger: loadMoreTriggerS.asDriverOnErrorJustComplete(),
+            entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -110,17 +118,6 @@ class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel> {
             })
             .disposed(by: rx.disposeBag)
     }
-    
-    enum PresentationMode {
-        case preview
-        case detail
-    }
-    
-    struct Constants {
-        static let detailCellHeight: CGFloat = 200.0
-        static let previewLayoutMinColumns: Int = 2
-    }
-    
 }
 
 // MARK: - Private functions

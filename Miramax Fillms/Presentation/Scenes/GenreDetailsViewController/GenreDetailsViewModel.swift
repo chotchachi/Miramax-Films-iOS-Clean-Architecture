@@ -19,6 +19,7 @@ class GenreDetailsViewModel: BaseViewModel, ViewModelType {
         let retryTrigger: Driver<Void>
         let refreshTrigger: Driver<Void>
         let loadMoreTrigger: Driver<Void>
+        let entertainmentSelectTrigger: Driver<EntertainmentModelType>
     }
     
     struct Output {
@@ -86,6 +87,13 @@ class GenreDetailsViewModel: BaseViewModel, ViewModelType {
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.router.trigger(.search)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.entertainmentSelectTrigger
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.router.trigger(.entertainmentDetails(entertainment: item))
             })
             .disposed(by: rx.disposeBag)
         
