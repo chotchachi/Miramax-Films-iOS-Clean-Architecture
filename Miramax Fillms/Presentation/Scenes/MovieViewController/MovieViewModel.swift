@@ -74,9 +74,6 @@ class MovieViewModel: BaseViewModel, ViewModelType {
         let retryUpcomingTriggerO = input.retryUpcomingTrigger
             .asObservable()
         
-        let retryPreviewTriggerO = input.retryPreviewTrigger
-            .asObservable()
-        
         let genresViewStateD = Observable.merge(viewTriggerO, retryGenreTriggerO)
             .flatMapLatest {
                 self.repositoryProvider
@@ -97,9 +94,15 @@ class MovieViewModel: BaseViewModel, ViewModelType {
             }
             .asDriverOnErrorJustComplete()
         
-        let previewViewStateD = input.previewTabTrigger
+        let previewTabTriggerO = input.previewTabTrigger
             .asObservable()
             .startWith(.news)
+        
+        let retryPreviewWithSelectedTabO = input.retryPreviewTrigger
+            .asObservable()
+            .withLatestFrom(previewTabTriggerO)
+        
+        let previewViewStateD = Observable.merge(previewTabTriggerO, retryPreviewWithSelectedTabO)
             .flatMapLatest { tab in
                 self.getPreviewData(with: tab)
                     .map { ViewState.populated($0.results) }

@@ -77,9 +77,9 @@ class MovieViewController: BaseViewController<MovieViewModel>, Searchable {
         
         let input = MovieViewModel.Input(
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
-            retryGenreTrigger: Driver.empty(),
-            retryUpcomingTrigger: Driver.empty(),
-            retryPreviewTrigger: Driver.empty(),
+            retryGenreTrigger: genresRetryButton.rx.tap.asDriver(),
+            retryUpcomingTrigger: upcomingRetryButton.rx.tap.asDriver(),
+            retryPreviewTrigger: previewRetryButton.rx.tap.asDriver(),
             selectionEntertainmentTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
             selectionGenreTrigger: genreSelectTriggerS.asDriverOnErrorJustComplete(),
             previewTabTrigger: previewTabTriggerS.asDriverOnErrorJustComplete()
@@ -94,9 +94,12 @@ class MovieViewController: BaseViewController<MovieViewModel>, Searchable {
                     break
                 case .populated(let items):
                     self.genresLoadingIndicator.stopAnimating()
+                    self.genresCollectionView.isHidden = false
+                    self.genresRetryButton.isHidden = true
                     self.genresDataS.accept(items)
                 case .error:
                     self.genresLoadingIndicator.stopAnimating()
+                    self.genresCollectionView.isHidden = true
                     self.genresRetryButton.isHidden = false
                 }
             })
@@ -110,9 +113,12 @@ class MovieViewController: BaseViewController<MovieViewModel>, Searchable {
                     break
                 case .populated(let items):
                     self.upcomingLoadingIndicator.stopAnimating()
+                    self.upcomingCollectionView.isHidden = false
+                    self.upcomingRetryButton.isHidden = true
                     self.upcomingDataS.accept(items)
                 case .error:
                     self.upcomingLoadingIndicator.stopAnimating()
+                    self.upcomingCollectionView.isHidden = true
                     self.upcomingRetryButton.isHidden = false
                 }
             })
@@ -160,6 +166,14 @@ extension MovieViewController {
         
         genresRetryButton.titleText = "retry".localized
         genresRetryButton.isHidden = true
+        genresRetryButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.genresLoadingIndicator.startAnimating()
+                self.genresRetryButton.isHidden = true
+                self.genresCollectionView.isHidden = true
+            })
+            .disposed(by: rx.disposeBag)
         
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
@@ -192,6 +206,14 @@ extension MovieViewController {
         
         upcomingRetryButton.titleText = "retry".localized
         upcomingRetryButton.isHidden = true
+        upcomingRetryButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.upcomingLoadingIndicator.startAnimating()
+                self.upcomingRetryButton.isHidden = true
+                self.upcomingCollectionView.isHidden = true
+            })
+            .disposed(by: rx.disposeBag)
         
         let collectionViewLayout = ColumnFlowLayout(
             cellsPerRow: 1,
@@ -236,6 +258,14 @@ extension MovieViewController {
         
         previewRetryButton.titleText = "retry".localized
         previewRetryButton.isHidden = true
+        previewRetryButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.previewLoadingIndicator.startAnimating()
+                self.previewRetryButton.isHidden = true
+                self.previewCollectionView.isHidden = true
+            })
+            .disposed(by: rx.disposeBag)
         
         let collectionViewLayout = ColumnFlowLayout(
             cellsPerRow: 2,
