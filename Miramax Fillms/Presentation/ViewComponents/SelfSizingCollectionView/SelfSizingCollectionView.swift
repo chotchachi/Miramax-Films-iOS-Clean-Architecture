@@ -1,13 +1,13 @@
 //
-//  IntrinsicTableView.swift
+//  SelfSizingCollectionView.swift
 //  Miramax Fillms
 //
-//  Created by Thanh Quang on 21/09/2022.
+//  Created by Thanh Quang on 02/10/2022.
 //
 
 import UIKit
 
-class IntrinsicTableView: UITableView {
+final class SelfSizingCollectionView: UICollectionView {
     override var contentSize: CGSize {
         didSet {
             invalidateIntrinsicContentSize()

@@ -61,7 +61,7 @@
 		EDD52F5928DA1B2A0078C6C5 /* DimensionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5828DA1B2A0078C6C5 /* DimensionConstants.swift */; };
 		EDD52F6528DAC1A90078C6C5 /* AiringTodayCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F6428DAC1A90078C6C5 /* AiringTodayCellDelegate.swift */; };
 		EDD52F6728DAC9B70078C6C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDD52F6628DAC9B70078C6C5 /* Localizable.strings */; };
-		EDD52F7B28DB6D260078C6C5 /* IntrinsicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7A28DB6D260078C6C5 /* IntrinsicTableView.swift */; };
+		EDD52F7B28DB6D260078C6C5 /* SelfSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7A28DB6D260078C6C5 /* SelfSizingTableView.swift */; };
 		EDD52F7E28DB6F0E0078C6C5 /* SeasonSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7D28DB6F0E0078C6C5 /* SeasonSmallCell.swift */; };
 		EDD52F8328DB7D4D0078C6C5 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F8228DB7D4D0078C6C5 /* Date+Ext.swift */; };
 		EDD5300A28DC95740078C6C5 /* SeasonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5300928DC95740078C6C5 /* SeasonsViewModel.swift */; };
@@ -129,6 +129,8 @@
 		EDE92D2928E6DB130083F33A /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDE92D2628E6DB130083F33A /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EDE92D2A28E6DB130083F33A /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE92D2728E6DB130083F33A /* Domain.framework */; };
 		EDE92D2B28E6DB130083F33A /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDE92D2728E6DB130083F33A /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EDE92D3028E9823D0083F33A /* SelfieWithMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92D2F28E9823D0083F33A /* SelfieWithMovieView.swift */; };
+		EDE92D3328E98A4B0083F33A /* SelfSizingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92D3228E98A4B0083F33A /* SelfSizingCollectionView.swift */; };
 		EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */; };
 		EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */; };
 		EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */; };
@@ -216,7 +218,7 @@
 		EDD52F5828DA1B2A0078C6C5 /* DimensionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionConstants.swift; sourceTree = "<group>"; };
 		EDD52F6428DAC1A90078C6C5 /* AiringTodayCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiringTodayCellDelegate.swift; sourceTree = "<group>"; };
 		EDD52F6628DAC9B70078C6C5 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		EDD52F7A28DB6D260078C6C5 /* IntrinsicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrinsicTableView.swift; sourceTree = "<group>"; };
+		EDD52F7A28DB6D260078C6C5 /* SelfSizingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizingTableView.swift; sourceTree = "<group>"; };
 		EDD52F7D28DB6F0E0078C6C5 /* SeasonSmallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonSmallCell.swift; sourceTree = "<group>"; };
 		EDD52F8228DB7D4D0078C6C5 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		EDD5300928DC95740078C6C5 /* SeasonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonsViewModel.swift; sourceTree = "<group>"; };
@@ -282,6 +284,8 @@
 		EDE92B9828E5F7F10083F33A /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		EDE92D2628E6DB130083F33A /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE92D2728E6DB130083F33A /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDE92D2F28E9823D0083F33A /* SelfieWithMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieWithMovieView.swift; sourceTree = "<group>"; };
+		EDE92D3228E98A4B0083F33A /* SelfSizingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizingCollectionView.swift; sourceTree = "<group>"; };
 		EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTracker.swift; sourceTree = "<group>"; };
@@ -604,12 +608,12 @@
 			path = MovieViewController;
 			sourceTree = "<group>";
 		};
-		EDD52F7928DB6D1F0078C6C5 /* IntrinsicTableView */ = {
+		EDD52F7928DB6D1F0078C6C5 /* SelfSizingTableView */ = {
 			isa = PBXGroup;
 			children = (
-				EDD52F7A28DB6D260078C6C5 /* IntrinsicTableView.swift */,
+				EDD52F7A28DB6D260078C6C5 /* SelfSizingTableView.swift */,
 			);
-			path = IntrinsicTableView;
+			path = SelfSizingTableView;
 			sourceTree = "<group>";
 		};
 		EDD52F7C28DB6EBA0078C6C5 /* SeasonSmallCell */ = {
@@ -854,6 +858,22 @@
 			path = SearchButton;
 			sourceTree = "<group>";
 		};
+		EDE92D2E28E9822F0083F33A /* SelfieWithMovieView */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92D2F28E9823D0083F33A /* SelfieWithMovieView.swift */,
+			);
+			path = SelfieWithMovieView;
+			sourceTree = "<group>";
+		};
+		EDE92D3128E98A430083F33A /* SelfSizingCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92D3228E98A4B0083F33A /* SelfSizingCollectionView.swift */,
+			);
+			path = SelfSizingCollectionView;
+			sourceTree = "<group>";
+		};
 		EDFAD36F28D2059600ED3BCD /* Assemblers */ = {
 			isa = PBXGroup;
 			children = (
@@ -901,6 +921,9 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				EDD52F7928DB6D1F0078C6C5 /* SelfSizingTableView */,
+				EDE92D3128E98A430083F33A /* SelfSizingCollectionView */,
+				EDE92D2E28E9822F0083F33A /* SelfieWithMovieView */,
 				EDE92B9728E5F7E90083F33A /* SearchButton */,
 				EDE92B9228E5F50E0083F33A /* ShareButton */,
 				EDE92B8B28E5EA2E0083F33A /* LoadingView */,
@@ -909,7 +932,6 @@
 				EDE92B7228E3017A0083F33A /* DefaultRefreshControl */,
 				EDE92B6E28E2DAD80083F33A /* InfiniteCollectionView */,
 				EDD5301A28DCB6C90078C6C5 /* GradientView */,
-				EDD52F7928DB6D1F0078C6C5 /* IntrinsicTableView */,
 				EDE69B3728D60DAF002726B0 /* TabLayout */,
 				EDA4478B28D5A74C0037751C /* AppToolbar */,
 				EDA4477F28D591320037751C /* SectionHeaderView */,
@@ -1107,6 +1129,7 @@
 				EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */,
 				EDE92B9428E5F5420083F33A /* ShareButton.swift in Sources */,
 				EDFAD3B328D3745D00ED3BCD /* GridCollectionViewLayout.swift in Sources */,
+				EDE92D3328E98A4B0083F33A /* SelfSizingCollectionView.swift in Sources */,
 				EDA4478A28D5A15B0037751C /* SelfieWithMovieCellDelegate.swift in Sources */,
 				EDE69B3628D60CF9002726B0 /* TabSelectionCellDelegate.swift in Sources */,
 				EDD5301628DC99860078C6C5 /* SeasonsCoordinator.swift in Sources */,
@@ -1137,6 +1160,7 @@
 				EDE92B7828E32C930083F33A /* EntertainmentDetailCollectionViewCell.swift in Sources */,
 				EDE92B8A28E5DD3D0083F33A /* Displayable.swift in Sources */,
 				EDE69B7528D7303D002726B0 /* Animation+Scale.swift in Sources */,
+				EDE92D3028E9823D0083F33A /* SelfieWithMovieView.swift in Sources */,
 				ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */,
 				EDE69B5428D6BA66002726B0 /* PersonHorizontalListCellDelegate.swift in Sources */,
 				EDE69B3B28D60E5B002726B0 /* TabLayoutDelegate.swift in Sources */,
@@ -1153,7 +1177,7 @@
 				EDFAD37F28D2309C00ED3BCD /* NSObject+Rx.swift in Sources */,
 				EDFAD38128D230C200ED3BCD /* HasDisposeBag.swift in Sources */,
 				EDC6DB4028CF92DE00164EBD /* HomeCoordinator.swift in Sources */,
-				EDD52F7B28DB6D260078C6C5 /* IntrinsicTableView.swift in Sources */,
+				EDD52F7B28DB6D260078C6C5 /* SelfSizingTableView.swift in Sources */,
 				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
 				EDD52F7E28DB6F0E0078C6C5 /* SeasonSmallCell.swift in Sources */,
 				EDC6DB4928CF990900164EBD /* MovieViewModel.swift in Sources */,

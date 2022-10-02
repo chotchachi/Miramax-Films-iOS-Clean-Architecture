@@ -45,7 +45,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     /// Section seasons
     @IBOutlet weak var sectionSeasonsView: UIView!
     @IBOutlet weak var seasonsSectionHeaderView: SectionHeaderView!
-    @IBOutlet weak var seasonsTableView: IntrinsicTableView!
+    @IBOutlet weak var seasonsTableView: SelfSizingTableView!
     @IBOutlet weak var seasonsTableViewHc: NSLayoutConstraint!
     
     /// Section credits
