@@ -12,4 +12,5 @@ enum MovieViewData {
     case upComingViewState(viewState: ViewState<Movie>)
     case selfieWithMovie
     case tabSelection
+    case entertainment(item: EntertainmentModelType)
 }

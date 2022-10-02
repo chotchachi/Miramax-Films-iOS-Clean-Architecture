@@ -40,3 +40,6 @@
 "refresh" = "Refresh";
 "play_trailer" = "Play Trailer";
 "loading" = "Loading";
+"selfie_with_movie" = "Selfie with movie";
+"selfie_with_movie_title" = "Take a picture with your \nfavorite movie";
+"selfie_with_movie_action_button_title" = "Choose frame";

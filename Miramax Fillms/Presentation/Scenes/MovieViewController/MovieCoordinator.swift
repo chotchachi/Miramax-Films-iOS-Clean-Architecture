@@ -11,7 +11,7 @@ import Domain
 enum MovieRoute: Route {
     case initial
     case search
-    case movieDetails(movie: Movie)
+    case entertainmentDetails(entertainment: EntertainmentModelType)
     case genreDetails(genre: Genre)
 }
 
@@ -35,8 +35,8 @@ class MovieCoordinator: NavigationCoordinator<MovieRoute> {
         case .search:
             addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
             return .none()
-        case .movieDetails(movie: let movie):
-            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: movie))
+        case .entertainmentDetails(entertainment: let entertainment):
+            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
             return .none()
         case .genreDetails(genre: let genre):
             addChild(GenreDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, genre: genre))

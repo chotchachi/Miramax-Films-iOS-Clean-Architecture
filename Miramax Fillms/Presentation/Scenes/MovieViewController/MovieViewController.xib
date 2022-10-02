@@ -6,13 +6,32 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieViewController" customModule="Miramax_Fillms" customModuleProvider="target">
             <connections>
                 <outlet property="appToolbar" destination="AUo-Rh-dtV" id="x4C-8m-kiD"/>
-                <outlet property="collectionView" destination="WTZ-oG-Jvn" id="B8L-Hf-0PH"/>
+                <outlet property="genresCollectionView" destination="c0u-HT-Sb5" id="s74-KV-GNU"/>
+                <outlet property="genresLoadingIndicator" destination="5cK-wL-str" id="Le0-pv-7pO"/>
+                <outlet property="genresRetryButton" destination="51D-hQ-Pr0" id="EbR-fk-auV"/>
+                <outlet property="previewCollectionView" destination="bu1-Pm-F5U" id="DRu-wX-agf"/>
+                <outlet property="previewCollectionViewHc" destination="jj8-th-LxD" id="HbM-H3-Ff9"/>
+                <outlet property="previewLoadingIndicator" destination="FHe-aZ-mvL" id="bVm-YD-Xl7"/>
+                <outlet property="previewRetryButton" destination="yqd-gO-rmm" id="ZZ8-d0-vLR"/>
+                <outlet property="scrollView" destination="6Un-DJ-MMp" id="HE1-yI-msZ"/>
+                <outlet property="sectionPreviewView" destination="hkr-ty-ymU" id="IcV-WY-TpS"/>
+                <outlet property="sectionSelfieView" destination="7yo-92-0yh" id="tQZ-V6-fUt"/>
+                <outlet property="sectionTabLayoutView" destination="Kdf-ny-BUF" id="SU5-yA-mP0"/>
+                <outlet property="sectionUpcomingView" destination="1bJ-ca-YYi" id="E0s-rU-4ys"/>
+                <outlet property="selfieSectionHeaderView" destination="rdO-8z-4e9" id="w4y-zp-uEf"/>
+                <outlet property="selfieView" destination="PDY-A6-R49" id="dsF-5J-l9F"/>
+                <outlet property="tabLayout" destination="pMT-js-Qje" id="h1n-WJ-3Mk"/>
+                <outlet property="upcomingCollectionView" destination="yZn-dn-3kv" id="uqr-d0-qK9"/>
+                <outlet property="upcomingLoadingIndicator" destination="9ZT-il-DjK" id="Gqw-QS-XzZ"/>
+                <outlet property="upcomingRetryButton" destination="6Ki-SE-zxR" id="xvb-GQ-V8h"/>
+                <outlet property="upcomingSectionHeaderView" destination="yGc-ja-reU" id="NL1-dC-64R"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,34 +51,234 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showBackButton" value="NO"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="WTZ-oG-Jvn">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Un-DJ-MMp">
                     <rect key="frame" x="0.0" y="113" width="393" height="705"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lU6-Qr-y2d">
-                        <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pwX-Kb-nYr">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="995"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNG-gy-eKX" userLabel="Section Genres">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="82"/>
+                                    <subviews>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="c0u-HT-Sb5">
+                                            <rect key="frame" x="0.0" y="16" width="393" height="50"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="rLm-Xn-OOY"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QW6-8X-vGj">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="5cK-wL-str">
+                                            <rect key="frame" x="186.66666666666666" y="31" width="20" height="20"/>
+                                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </activityIndicatorView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51D-hQ-Pr0" customClass="PrimaryButton" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="159" y="24.000000000000004" width="75" height="34.333333333333343"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="c0u-HT-Sb5" firstAttribute="top" secondItem="vNG-gy-eKX" secondAttribute="top" constant="16" id="DLT-e8-4tx"/>
+                                        <constraint firstItem="51D-hQ-Pr0" firstAttribute="centerY" secondItem="vNG-gy-eKX" secondAttribute="centerY" id="YBC-bT-07G"/>
+                                        <constraint firstAttribute="trailing" secondItem="c0u-HT-Sb5" secondAttribute="trailing" id="h0w-MX-ThR"/>
+                                        <constraint firstItem="51D-hQ-Pr0" firstAttribute="centerX" secondItem="vNG-gy-eKX" secondAttribute="centerX" id="jAu-eZ-XqT"/>
+                                        <constraint firstItem="5cK-wL-str" firstAttribute="centerX" secondItem="vNG-gy-eKX" secondAttribute="centerX" id="lVA-1F-nPj"/>
+                                        <constraint firstAttribute="bottom" secondItem="c0u-HT-Sb5" secondAttribute="bottom" constant="16" id="lyh-22-XKp"/>
+                                        <constraint firstItem="c0u-HT-Sb5" firstAttribute="leading" secondItem="vNG-gy-eKX" secondAttribute="leading" id="rot-4r-Rvm"/>
+                                        <constraint firstItem="5cK-wL-str" firstAttribute="centerY" secondItem="vNG-gy-eKX" secondAttribute="centerY" id="vze-aU-Ijo"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1D-g1-rhA" userLabel="Section Carousel">
+                                    <rect key="frame" x="0.0" y="82" width="393" height="100"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="8xo-Qz-pnJ"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1bJ-ca-YYi" userLabel="Section Upcoming">
+                                    <rect key="frame" x="0.0" y="182" width="393" height="215"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGc-ja-reU" userLabel="Upcoming Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="24" width="393" height="24"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="P0V-lf-dLN"/>
+                                            </constraints>
+                                        </view>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yZn-dn-3kv" userLabel="Upcoming Collection View">
+                                            <rect key="frame" x="0.0" y="60" width="393" height="155"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="155" id="Skg-yD-cMw"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mgl-Rc-Rld">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="9ZT-il-DjK">
+                                            <rect key="frame" x="186.66666666666666" y="127.66666666666669" width="20" height="20"/>
+                                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </activityIndicatorView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ki-SE-zxR" customClass="PrimaryButton" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="159" y="120.3333333333333" width="75" height="34.333333333333329"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="yZn-dn-3kv" firstAttribute="top" secondItem="yGc-ja-reU" secondAttribute="bottom" constant="12" id="2GR-yC-jjP"/>
+                                        <constraint firstAttribute="trailing" secondItem="yZn-dn-3kv" secondAttribute="trailing" id="2HH-GJ-A7w"/>
+                                        <constraint firstItem="yZn-dn-3kv" firstAttribute="leading" secondItem="1bJ-ca-YYi" secondAttribute="leading" id="4CE-eu-MgW"/>
+                                        <constraint firstItem="yGc-ja-reU" firstAttribute="leading" secondItem="1bJ-ca-YYi" secondAttribute="leading" id="Ba7-cy-ale"/>
+                                        <constraint firstItem="9ZT-il-DjK" firstAttribute="centerY" secondItem="yZn-dn-3kv" secondAttribute="centerY" id="FsW-Vu-1Z7"/>
+                                        <constraint firstItem="9ZT-il-DjK" firstAttribute="centerX" secondItem="yZn-dn-3kv" secondAttribute="centerX" id="OQZ-EY-Na3"/>
+                                        <constraint firstItem="6Ki-SE-zxR" firstAttribute="centerX" secondItem="yZn-dn-3kv" secondAttribute="centerX" id="QIG-Oo-ZeS"/>
+                                        <constraint firstItem="6Ki-SE-zxR" firstAttribute="centerY" secondItem="yZn-dn-3kv" secondAttribute="centerY" id="QIl-lD-Y7Q"/>
+                                        <constraint firstAttribute="trailing" secondItem="yGc-ja-reU" secondAttribute="trailing" id="QIm-dC-H0P"/>
+                                        <constraint firstAttribute="bottom" secondItem="yZn-dn-3kv" secondAttribute="bottom" id="bXQ-Wc-5Wm"/>
+                                        <constraint firstItem="yGc-ja-reU" firstAttribute="top" secondItem="1bJ-ca-YYi" secondAttribute="top" constant="24" id="yNN-Rq-B8p"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yo-92-0yh" userLabel="Section Selfie">
+                                    <rect key="frame" x="0.0" y="397" width="393" height="210"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdO-8z-4e9" userLabel="Selfie Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="24" width="393" height="24"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="r5X-xy-LrB"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDY-A6-R49" userLabel="Selfie View" customClass="SelfieWithMovieView" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="60" width="393" height="150"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="150" id="l6b-Fx-J9n"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="rdO-8z-4e9" firstAttribute="leading" secondItem="7yo-92-0yh" secondAttribute="leading" id="HtX-HH-dzB"/>
+                                        <constraint firstAttribute="trailing" secondItem="PDY-A6-R49" secondAttribute="trailing" id="J2A-Mb-zFd"/>
+                                        <constraint firstAttribute="bottom" secondItem="PDY-A6-R49" secondAttribute="bottom" id="Qj6-OG-PDx"/>
+                                        <constraint firstAttribute="trailing" secondItem="rdO-8z-4e9" secondAttribute="trailing" id="T8S-5e-bJe"/>
+                                        <constraint firstItem="PDY-A6-R49" firstAttribute="leading" secondItem="7yo-92-0yh" secondAttribute="leading" id="Tp7-JV-Uup"/>
+                                        <constraint firstItem="PDY-A6-R49" firstAttribute="top" secondItem="rdO-8z-4e9" secondAttribute="bottom" constant="12" id="UCP-f8-GAK"/>
+                                        <constraint firstItem="rdO-8z-4e9" firstAttribute="top" secondItem="7yo-92-0yh" secondAttribute="top" constant="24" id="npa-g5-wpv"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-ny-BUF" userLabel="Section Tab Layout">
+                                    <rect key="frame" x="0.0" y="607" width="393" height="88"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMT-js-Qje" customClass="TabLayout" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="24" y="24" width="345" height="40"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="pd7-pg-emY"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="pMT-js-Qje" secondAttribute="bottom" constant="24" id="Yx3-Ky-c9p"/>
+                                        <constraint firstAttribute="trailing" secondItem="pMT-js-Qje" secondAttribute="trailing" constant="24" id="eqa-HC-m7Z"/>
+                                        <constraint firstItem="pMT-js-Qje" firstAttribute="top" secondItem="Kdf-ny-BUF" secondAttribute="top" constant="24" id="jtT-Le-oOB"/>
+                                        <constraint firstItem="pMT-js-Qje" firstAttribute="leading" secondItem="Kdf-ny-BUF" secondAttribute="leading" constant="24" id="wZI-EO-RzZ"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkr-ty-ymU" userLabel="Section Preview">
+                                    <rect key="frame" x="0.0" y="695" width="393" height="300"/>
+                                    <subviews>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bu1-Pm-F5U" customClass="SelfSizingCollectionView" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="300" id="jj8-th-LxD"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AFm-J1-QyI">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="FHe-aZ-mvL">
+                                            <rect key="frame" x="186.66666666666666" y="32" width="20" height="20"/>
+                                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </activityIndicatorView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yqd-gO-rmm" customClass="PrimaryButton" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="159" y="32" width="75" height="34.333333333333343"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="bu1-Pm-F5U" secondAttribute="bottom" id="4MW-8i-zS3"/>
+                                        <constraint firstItem="FHe-aZ-mvL" firstAttribute="top" secondItem="hkr-ty-ymU" secondAttribute="top" constant="32" id="6CG-PA-V00"/>
+                                        <constraint firstItem="FHe-aZ-mvL" firstAttribute="centerX" secondItem="hkr-ty-ymU" secondAttribute="centerX" id="HEq-cx-f3u"/>
+                                        <constraint firstItem="yqd-gO-rmm" firstAttribute="centerX" secondItem="hkr-ty-ymU" secondAttribute="centerX" id="YCg-0t-qcd"/>
+                                        <constraint firstAttribute="trailing" secondItem="bu1-Pm-F5U" secondAttribute="trailing" id="aNR-zZ-HJX"/>
+                                        <constraint firstItem="bu1-Pm-F5U" firstAttribute="top" secondItem="hkr-ty-ymU" secondAttribute="top" id="joP-4q-CIr"/>
+                                        <constraint firstItem="bu1-Pm-F5U" firstAttribute="leading" secondItem="hkr-ty-ymU" secondAttribute="leading" id="n1C-vN-C1o"/>
+                                        <constraint firstItem="yqd-gO-rmm" firstAttribute="top" secondItem="hkr-ty-ymU" secondAttribute="top" constant="32" id="ueD-Cw-RH9"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="pwX-Kb-nYr" firstAttribute="centerX" secondItem="6Un-DJ-MMp" secondAttribute="centerX" id="AV2-2a-SA6"/>
+                        <constraint firstItem="pwX-Kb-nYr" firstAttribute="top" secondItem="6Un-DJ-MMp" secondAttribute="top" id="Cd1-sg-ExA"/>
+                        <constraint firstAttribute="trailing" secondItem="pwX-Kb-nYr" secondAttribute="trailing" id="Nif-U8-iTO"/>
+                        <constraint firstItem="pwX-Kb-nYr" firstAttribute="leading" secondItem="6Un-DJ-MMp" secondAttribute="leading" id="P61-az-owl"/>
+                        <constraint firstAttribute="bottom" secondItem="pwX-Kb-nYr" secondAttribute="bottom" id="obC-Iv-ZJs"/>
+                    </constraints>
+                </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="ColorPrimary"/>
             <constraints>
-                <constraint firstItem="WTZ-oG-Jvn" firstAttribute="top" secondItem="AUo-Rh-dtV" secondAttribute="bottom" id="8f5-lb-5Dv"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WTZ-oG-Jvn" secondAttribute="trailing" id="ESr-xf-0Nc"/>
                 <constraint firstItem="AUo-Rh-dtV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="H3B-bn-9QF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AUo-Rh-dtV" secondAttribute="trailing" id="Hrs-HN-pYa"/>
-                <constraint firstItem="WTZ-oG-Jvn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aa0-9L-fco"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="WTZ-oG-Jvn" secondAttribute="bottom" id="ost-j9-gdJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6Un-DJ-MMp" secondAttribute="bottom" id="dBY-a7-PSJ"/>
+                <constraint firstItem="6Un-DJ-MMp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hi3-CR-0gC"/>
+                <constraint firstItem="6Un-DJ-MMp" firstAttribute="top" secondItem="AUo-Rh-dtV" secondAttribute="bottom" id="jFj-3k-Cyy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Un-DJ-MMp" secondAttribute="trailing" id="pEz-b2-KUK"/>
                 <constraint firstItem="AUo-Rh-dtV" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="sl9-TS-kRu"/>
             </constraints>
             <point key="canvasLocation" x="109.16030534351144" y="20.422535211267608"/>
         </view>
     </objects>
+    <designables>
+        <designable name="51D-hQ-Pr0">
+            <size key="intrinsicContentSize" width="75" height="34.333333333333336"/>
+        </designable>
+        <designable name="6Ki-SE-zxR">
+            <size key="intrinsicContentSize" width="75" height="34.333333333333336"/>
+        </designable>
+        <designable name="yqd-gO-rmm">
+            <size key="intrinsicContentSize" width="75" height="34.333333333333336"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="ColorPrimary">
             <color red="0.024000000208616257" green="0.067000001668930054" blue="0.21199999749660492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

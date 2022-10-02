@@ -10,23 +10,33 @@ import RxSwift
 import XCoordinator
 import Domain
 
+enum MoviePreviewTab {
+    case topRating
+    case news
+    case trending
+}
+
 class MovieViewModel: BaseViewModel, ViewModelType {
     
     struct Input {
         let toSearchTrigger: Driver<Void>
         let retryGenreTrigger: Driver<Void>
-        let retryUpComingTrigger: Driver<Void>
-        let movieSelectTrigger: Driver<Movie>
-        let genreSelectTrigger: Driver<Genre>
+        let retryUpcomingTrigger: Driver<Void>
+        let retryPreviewTrigger: Driver<Void>
+        let selectionEntertainmentTrigger: Driver<EntertainmentModelType>
+        let selectionGenreTrigger: Driver<Genre>
+        let previewTabTrigger: Driver<MoviePreviewTab>
     }
     
     struct Output {
-        let movieViewDataItems: Driver<[MovieViewData]>
+        let genresViewState: Driver<ViewState<Genre>>
+        let upcomingViewState: Driver<ViewState<Movie>>
+        let previewViewState: Driver<ViewState<Movie>>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
     private let router: UnownedRouter<MovieRoute>
-
+    
     init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<MovieRoute>) {
         self.repositoryProvider = repositoryProvider
         self.router = router
@@ -34,7 +44,6 @@ class MovieViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        
         let viewTriggerO = trigger
             .take(1)
         
@@ -45,14 +54,14 @@ class MovieViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        input.movieSelectTrigger
+        input.selectionEntertainmentTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.movieDetails(movie: item))
+                self.router.trigger(.entertainmentDetails(entertainment: item))
             })
             .disposed(by: rx.disposeBag)
         
-        input.genreSelectTrigger
+        input.selectionGenreTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
                 self.router.trigger(.genreDetails(genre: item))
@@ -62,10 +71,13 @@ class MovieViewModel: BaseViewModel, ViewModelType {
         let retryGenreTriggerO = input.retryGenreTrigger
             .asObservable()
         
-        let retryUpComingTriggerO = input.retryUpComingTrigger
+        let retryUpcomingTriggerO = input.retryUpcomingTrigger
             .asObservable()
         
-        let genreViewStateO = Observable.merge(viewTriggerO, retryGenreTriggerO)
+        let retryPreviewTriggerO = input.retryPreviewTrigger
+            .asObservable()
+        
+        let genresViewStateD = Observable.merge(viewTriggerO, retryGenreTriggerO)
             .flatMapLatest {
                 self.repositoryProvider
                     .genreRepository()
@@ -73,10 +85,9 @@ class MovieViewModel: BaseViewModel, ViewModelType {
                     .map { ViewState.populated($0) }
                     .catchAndReturn(.error)
             }
-            .startWith(.initial)
-            .map { MovieViewData.genreViewState(viewState: $0) }
+            .asDriverOnErrorJustComplete()
         
-        let upComingViewStateO = Observable.merge(viewTriggerO, retryUpComingTriggerO)
+        let upcomingViewStateD = Observable.merge(viewTriggerO, retryUpcomingTriggerO)
             .flatMapLatest {
                 self.repositoryProvider
                     .movieRepository()
@@ -84,16 +95,41 @@ class MovieViewModel: BaseViewModel, ViewModelType {
                     .map { ViewState.populated($0.results) }
                     .catchAndReturn(.error)
             }
-            .startWith(.initial)
-            .map { MovieViewData.upComingViewState(viewState: $0) }
-
-        let movieViewDataItems = Observable.combineLatest(
-            genreViewStateO,
-            upComingViewStateO
-        )
-            .map { [$0.0, $0.1, .selfieWithMovie, .tabSelection] }
-            .asDriver(onErrorJustReturn: [])
+            .asDriverOnErrorJustComplete()
         
-        return Output(movieViewDataItems: movieViewDataItems)
+        let previewViewStateD = input.previewTabTrigger
+            .asObservable()
+            .startWith(.news)
+            .flatMapLatest { tab in
+                self.getPreviewData(with: tab)
+                    .delay(.seconds(5), scheduler: MainScheduler.instance)
+                    .map { ViewState.populated($0.results) }
+                    .catchAndReturn(.error)
+            }
+            .asDriverOnErrorJustComplete()
+        
+        return Output(genresViewState: genresViewStateD,
+                      upcomingViewState: upcomingViewStateD,
+                      previewViewState: previewViewStateD)
+    }
+    
+    private func getPreviewData(with tab: MoviePreviewTab) -> Observable<MovieResponse> {
+        switch tab {
+        case .topRating:
+            return repositoryProvider
+                .movieRepository()
+                .getTopRated(genreId: nil, page: nil)
+                .asObservable()
+        case .news:
+            return repositoryProvider
+                .movieRepository()
+                .getUpComing(genreId: nil, page: nil)
+                .asObservable()
+        case .trending:
+            return repositoryProvider
+                .movieRepository()
+                .getPopular(genreId: nil, page: nil)
+                .asObservable()
+        }
     }
 }
