@@ -6,6 +6,7 @@
 //
 
 import XCoordinator
+import Domain
 
 enum EntertainmentDetailsRoute: Route {
     case initial(entertainment: EntertainmentModelType)

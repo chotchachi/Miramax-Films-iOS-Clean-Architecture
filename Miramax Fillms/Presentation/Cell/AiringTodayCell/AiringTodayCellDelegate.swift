@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Domain
 
 protocol AiringTodayCellDelegate: AnyObject {
     func airingTodayCell(didTapPlayButton item: EntertainmentModelType)

@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 import SwifterSwift
+import Domain
 
 class GenresViewController: BaseViewController<GenresViewModel>, LoadingDisplayable, ErrorRetryable, Searchable {
 
@@ -97,7 +98,7 @@ extension GenresViewController {
 
 extension GenresViewController: GridCollectionViewLayoutDelegate {
     func numberOfColumns(_ collectionView: UICollectionView) -> Int {
-        3
+        UIDevice.current.userInterfaceIdiom == .pad ? 5 : 3
     }
     
     func collectionView(_ collectionView: UICollectionView, columnSpanForItemAt index: GridIndex, indexPath: IndexPath) -> Int {

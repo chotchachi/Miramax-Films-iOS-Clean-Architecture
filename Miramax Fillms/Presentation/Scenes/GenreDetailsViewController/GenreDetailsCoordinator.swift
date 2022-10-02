@@ -6,6 +6,7 @@
 //
 
 import XCoordinator
+import Domain
 
 enum GenreDetailsRoute: Route {
     case initial(genre: Genre)

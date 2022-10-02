@@ -1,0 +1,767 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B746448AFC220D1F449ECB4 /* Pods_Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC7ECF22379BFD65DEF5083 /* Pods_Data.framework */; };
+		EDE92C4128E697920083F33A /* Data.h in Headers */ = {isa = PBXBuildFile; fileRef = EDE92C4028E697920083F33A /* Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EDE92CC928E698E40083F33A /* RepositoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAF28E698E20083F33A /* RepositoryProvider.swift */; };
+		EDE92CCA28E699010083F33A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CC628E698E30083F33A /* ReachabilityManager.swift */; };
+		EDE92CCB28E699010083F33A /* Realm+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CC728E698E30083F33A /* Realm+Ext.swift */; };
+		EDE92CCC28E699050083F33A /* GenreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CC028E698E30083F33A /* GenreRepository.swift */; };
+		EDE92CCD28E699050083F33A /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CC128E698E30083F33A /* MovieRepository.swift */; };
+		EDE92CCE28E699050083F33A /* PersonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CC228E698E30083F33A /* PersonRepository.swift */; };
+		EDE92CCF28E699050083F33A /* TVShowRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CC328E698E30083F33A /* TVShowRepository.swift */; };
+		EDE92CD028E699050083F33A /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CC428E698E30083F33A /* SearchRepository.swift */; };
+		EDE92CD128E6990A0083F33A /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C8828E698E20083F33A /* RemoteDataSource.swift */; };
+		EDE92CD228E6990A0083F33A /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C8628E698E20083F33A /* Api.swift */; };
+		EDE92CD328E6990A0083F33A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C8728E698E20083F33A /* NetworkManager.swift */; };
+		EDE92CD428E6990E0083F33A /* NetworkingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C8A28E698E20083F33A /* NetworkingType.swift */; };
+		EDE92CD528E6990E0083F33A /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C8B28E698E20083F33A /* NetworkProvider.swift */; };
+		EDE92CD628E6990E0083F33A /* DefaultAlamofireSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C8928E698E20083F33A /* DefaultAlamofireSession.swift */; };
+		EDE92CD728E699110083F33A /* MovieNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C8E28E698E20083F33A /* MovieNetworking.swift */; };
+		EDE92CD828E699110083F33A /* SearchNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C8F28E698E20083F33A /* SearchNetworking.swift */; };
+		EDE92CD928E699110083F33A /* TVShowNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9028E698E20083F33A /* TVShowNetworking.swift */; };
+		EDE92CDA28E699110083F33A /* GenreNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C8D28E698E20083F33A /* GenreNetworking.swift */; };
+		EDE92CDB28E699110083F33A /* PeopleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9128E698E20083F33A /* PeopleNetworking.swift */; };
+		EDE92CDC28E699150083F33A /* MovieApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9428E698E20083F33A /* MovieApi.swift */; };
+		EDE92CDD28E699150083F33A /* TVShowApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9628E698E20083F33A /* TVShowApi.swift */; };
+		EDE92CDE28E699150083F33A /* PeopleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9728E698E20083F33A /* PeopleApi.swift */; };
+		EDE92CDF28E699150083F33A /* SearchApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9528E698E20083F33A /* SearchApi.swift */; };
+		EDE92CE028E699150083F33A /* GenreApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9328E698E20083F33A /* GenreApi.swift */; };
+		EDE92CE128E6991D0083F33A /* GenreResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9A28E698E20083F33A /* GenreResponseDTO.swift */; };
+		EDE92CE228E6991D0083F33A /* MovieResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9B28E698E20083F33A /* MovieResponseDTO.swift */; };
+		EDE92CE328E6991D0083F33A /* TVShowResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9D28E698E20083F33A /* TVShowResponseDTO.swift */; };
+		EDE92CE428E6991D0083F33A /* ImagesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9E28E698E20083F33A /* ImagesResponseDTO.swift */; };
+		EDE92CE528E6991D0083F33A /* PersonResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9C28E698E20083F33A /* PersonResponseDTO.swift */; };
+		EDE92CE628E699210083F33A /* MovieDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA728E698E20083F33A /* MovieDetailDTO.swift */; };
+		EDE92CE728E699210083F33A /* SeasonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA928E698E20083F33A /* SeasonDTO.swift */; };
+		EDE92CE828E699210083F33A /* PersonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA228E698E20083F33A /* PersonDTO.swift */; };
+		EDE92CE928E699210083F33A /* PersonCreditDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAD28E698E20083F33A /* PersonCreditDTO.swift */; };
+		EDE92CEA28E699210083F33A /* CastDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA528E698E20083F33A /* CastDTO.swift */; };
+		EDE92CEB28E699210083F33A /* GenreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA028E698E20083F33A /* GenreDTO.swift */; };
+		EDE92CEC28E699210083F33A /* CreditDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA628E698E20083F33A /* CreditDTO.swift */; };
+		EDE92CED28E699210083F33A /* ImageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAC28E698E20083F33A /* ImageDTO.swift */; };
+		EDE92CEE28E699210083F33A /* PersonDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAB28E698E20083F33A /* PersonDetailDTO.swift */; };
+		EDE92CEF28E699210083F33A /* TVShowDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA828E698E20083F33A /* TVShowDetailDTO.swift */; };
+		EDE92CF028E699210083F33A /* EpisodeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAA28E698E20083F33A /* EpisodeDTO.swift */; };
+		EDE92CF128E699210083F33A /* TVShowDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA328E698E20083F33A /* TVShowDTO.swift */; };
+		EDE92CF228E699210083F33A /* MovieDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA128E698E20083F33A /* MovieDTO.swift */; };
+		EDE92CF328E699210083F33A /* CrewDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA428E698E20083F33A /* CrewDTO.swift */; };
+		EDE92CF428E699260083F33A /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CB428E698E30083F33A /* DBManager.swift */; };
+		EDE92CF528E6992B0083F33A /* RecentEntertainmentDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CB628E698E30083F33A /* RecentEntertainmentDao.swift */; };
+		EDE92CF628E6992B0083F33A /* BaseDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CB728E698E30083F33A /* BaseDao.swift */; };
+		EDE92CF728E6992F0083F33A /* RMMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CB928E698E30083F33A /* RMMovie.swift */; };
+		EDE92CF828E6992F0083F33A /* RMTVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CBA28E698E30083F33A /* RMTVShow.swift */; };
+		EDE92CF928E6992F0083F33A /* RMEntertainmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CBC28E698E30083F33A /* RMEntertainmentType.swift */; };
+		EDE92CFA28E6992F0083F33A /* RMRecentEntertainment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CBB28E698E30083F33A /* RMRecentEntertainment.swift */; };
+		EDE92CFB28E699320083F33A /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CBE28E698E30083F33A /* LocalDataSource.swift */; };
+		EDE92CFC28E699360083F33A /* DomainConvertibleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CB028E698E30083F33A /* DomainConvertibleType.swift */; };
+		EDE92CFD28E699360083F33A /* RMOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CB228E698E30083F33A /* RMOperator.swift */; };
+		EDE92CFE28E699360083F33A /* RealmRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CB128E698E30083F33A /* RealmRepresentable.swift */; };
+		EDE92CFF28E6993B0083F33A /* RemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C8328E698E20083F33A /* RemoteDataSourceProtocol.swift */; };
+		EDE92D0028E6993B0083F33A /* LocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C8428E698E20083F33A /* LocalDataSourceProtocol.swift */; };
+		EDE92D1A28E6AF1E0083F33A /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE92D1928E6AF1E0083F33A /* Domain.framework */; };
+		EDE92D1B28E6AF1E0083F33A /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDE92D1928E6AF1E0083F33A /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EDE92D2328E6D84E0083F33A /* NetworkConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92D2228E6D84E0083F33A /* NetworkConfigurable.swift */; };
+		EDE92D2428E6D8580083F33A /* NetworkConfigurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92D2028E6D84E0083F33A /* NetworkConfigurationProtocol.swift */; };
+		EDE92D2528E6D8580083F33A /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92D1F28E6D84E0083F33A /* NetworkConfiguration.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EDE92D1C28E6AF1E0083F33A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EDE92D1B28E6AF1E0083F33A /* Domain.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		165301CCDCFFC2571E460B23 /* Pods-Data.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data.debug.xcconfig"; path = "Target Support Files/Pods-Data/Pods-Data.debug.xcconfig"; sourceTree = "<group>"; };
+		1BC7ECF22379BFD65DEF5083 /* Pods_Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		995489B553BA26EB4BBA55C5 /* Pods-Data.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data.release.xcconfig"; path = "Target Support Files/Pods-Data/Pods-Data.release.xcconfig"; sourceTree = "<group>"; };
+		EDE92C3D28E697920083F33A /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDE92C4028E697920083F33A /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		EDE92C8328E698E20083F33A /* RemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
+		EDE92C8428E698E20083F33A /* LocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSourceProtocol.swift; sourceTree = "<group>"; };
+		EDE92C8628E698E20083F33A /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		EDE92C8728E698E20083F33A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		EDE92C8828E698E20083F33A /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
+		EDE92C8928E698E20083F33A /* DefaultAlamofireSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAlamofireSession.swift; sourceTree = "<group>"; };
+		EDE92C8A28E698E20083F33A /* NetworkingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingType.swift; sourceTree = "<group>"; };
+		EDE92C8B28E698E20083F33A /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		EDE92C8D28E698E20083F33A /* GenreNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreNetworking.swift; sourceTree = "<group>"; };
+		EDE92C8E28E698E20083F33A /* MovieNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNetworking.swift; sourceTree = "<group>"; };
+		EDE92C8F28E698E20083F33A /* SearchNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNetworking.swift; sourceTree = "<group>"; };
+		EDE92C9028E698E20083F33A /* TVShowNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowNetworking.swift; sourceTree = "<group>"; };
+		EDE92C9128E698E20083F33A /* PeopleNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleNetworking.swift; sourceTree = "<group>"; };
+		EDE92C9328E698E20083F33A /* GenreApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreApi.swift; sourceTree = "<group>"; };
+		EDE92C9428E698E20083F33A /* MovieApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieApi.swift; sourceTree = "<group>"; };
+		EDE92C9528E698E20083F33A /* SearchApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApi.swift; sourceTree = "<group>"; };
+		EDE92C9628E698E20083F33A /* TVShowApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowApi.swift; sourceTree = "<group>"; };
+		EDE92C9728E698E20083F33A /* PeopleApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleApi.swift; sourceTree = "<group>"; };
+		EDE92C9A28E698E20083F33A /* GenreResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreResponseDTO.swift; sourceTree = "<group>"; };
+		EDE92C9B28E698E20083F33A /* MovieResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponseDTO.swift; sourceTree = "<group>"; };
+		EDE92C9C28E698E20083F33A /* PersonResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonResponseDTO.swift; sourceTree = "<group>"; };
+		EDE92C9D28E698E20083F33A /* TVShowResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowResponseDTO.swift; sourceTree = "<group>"; };
+		EDE92C9E28E698E20083F33A /* ImagesResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesResponseDTO.swift; sourceTree = "<group>"; };
+		EDE92CA028E698E20083F33A /* GenreDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreDTO.swift; sourceTree = "<group>"; };
+		EDE92CA128E698E20083F33A /* MovieDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDTO.swift; sourceTree = "<group>"; };
+		EDE92CA228E698E20083F33A /* PersonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDTO.swift; sourceTree = "<group>"; };
+		EDE92CA328E698E20083F33A /* TVShowDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDTO.swift; sourceTree = "<group>"; };
+		EDE92CA428E698E20083F33A /* CrewDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewDTO.swift; sourceTree = "<group>"; };
+		EDE92CA528E698E20083F33A /* CastDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastDTO.swift; sourceTree = "<group>"; };
+		EDE92CA628E698E20083F33A /* CreditDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditDTO.swift; sourceTree = "<group>"; };
+		EDE92CA728E698E20083F33A /* MovieDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailDTO.swift; sourceTree = "<group>"; };
+		EDE92CA828E698E20083F33A /* TVShowDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetailDTO.swift; sourceTree = "<group>"; };
+		EDE92CA928E698E20083F33A /* SeasonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDTO.swift; sourceTree = "<group>"; };
+		EDE92CAA28E698E20083F33A /* EpisodeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDTO.swift; sourceTree = "<group>"; };
+		EDE92CAB28E698E20083F33A /* PersonDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailDTO.swift; sourceTree = "<group>"; };
+		EDE92CAC28E698E20083F33A /* ImageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDTO.swift; sourceTree = "<group>"; };
+		EDE92CAD28E698E20083F33A /* PersonCreditDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCreditDTO.swift; sourceTree = "<group>"; };
+		EDE92CAF28E698E20083F33A /* RepositoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProvider.swift; sourceTree = "<group>"; };
+		EDE92CB028E698E30083F33A /* DomainConvertibleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainConvertibleType.swift; sourceTree = "<group>"; };
+		EDE92CB128E698E30083F33A /* RealmRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepresentable.swift; sourceTree = "<group>"; };
+		EDE92CB228E698E30083F33A /* RMOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMOperator.swift; sourceTree = "<group>"; };
+		EDE92CB428E698E30083F33A /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		EDE92CB628E698E30083F33A /* RecentEntertainmentDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEntertainmentDao.swift; sourceTree = "<group>"; };
+		EDE92CB728E698E30083F33A /* BaseDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDao.swift; sourceTree = "<group>"; };
+		EDE92CB928E698E30083F33A /* RMMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMovie.swift; sourceTree = "<group>"; };
+		EDE92CBA28E698E30083F33A /* RMTVShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMTVShow.swift; sourceTree = "<group>"; };
+		EDE92CBB28E698E30083F33A /* RMRecentEntertainment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMRecentEntertainment.swift; sourceTree = "<group>"; };
+		EDE92CBC28E698E30083F33A /* RMEntertainmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEntertainmentType.swift; sourceTree = "<group>"; };
+		EDE92CBE28E698E30083F33A /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
+		EDE92CC028E698E30083F33A /* GenreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreRepository.swift; sourceTree = "<group>"; };
+		EDE92CC128E698E30083F33A /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
+		EDE92CC228E698E30083F33A /* PersonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRepository.swift; sourceTree = "<group>"; };
+		EDE92CC328E698E30083F33A /* TVShowRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowRepository.swift; sourceTree = "<group>"; };
+		EDE92CC428E698E30083F33A /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
+		EDE92CC628E698E30083F33A /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		EDE92CC728E698E30083F33A /* Realm+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Ext.swift"; sourceTree = "<group>"; };
+		EDE92D1928E6AF1E0083F33A /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDE92D1F28E6D84E0083F33A /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
+		EDE92D2028E6D84E0083F33A /* NetworkConfigurationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurationProtocol.swift; sourceTree = "<group>"; };
+		EDE92D2228E6D84E0083F33A /* NetworkConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurable.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDE92C3A28E697920083F33A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDE92D1A28E6AF1E0083F33A /* Domain.framework in Frameworks */,
+				2B746448AFC220D1F449ECB4 /* Pods_Data.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		49F95FD358EB21B864084DAD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92D1928E6AF1E0083F33A /* Domain.framework */,
+				1BC7ECF22379BFD65DEF5083 /* Pods_Data.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A480C3DA78DBA9640DD11E82 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				165301CCDCFFC2571E460B23 /* Pods-Data.debug.xcconfig */,
+				995489B553BA26EB4BBA55C5 /* Pods-Data.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		EDE92C3328E697910083F33A = {
+			isa = PBXGroup;
+			children = (
+				EDE92C3F28E697920083F33A /* Data */,
+				EDE92C3E28E697920083F33A /* Products */,
+				A480C3DA78DBA9640DD11E82 /* Pods */,
+				49F95FD358EB21B864084DAD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EDE92C3E28E697920083F33A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92C3D28E697920083F33A /* Data.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDE92C3F28E697920083F33A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92C8528E698E20083F33A /* DataSources */,
+				EDE92CB328E698E30083F33A /* Convertion */,
+				EDE92CBF28E698E30083F33A /* Local */,
+				EDE92CAE28E698E20083F33A /* Model */,
+				EDE92C9928E698E20083F33A /* Remote */,
+				EDE92CC528E698E30083F33A /* Repository */,
+				EDE92CC828E698E30083F33A /* Utility */,
+				EDE92CAF28E698E20083F33A /* RepositoryProvider.swift */,
+				EDE92C4028E697920083F33A /* Data.h */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		EDE92C8528E698E20083F33A /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92C8328E698E20083F33A /* RemoteDataSourceProtocol.swift */,
+				EDE92C8428E698E20083F33A /* LocalDataSourceProtocol.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		EDE92C8C28E698E20083F33A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92C8928E698E20083F33A /* DefaultAlamofireSession.swift */,
+				EDE92C8A28E698E20083F33A /* NetworkingType.swift */,
+				EDE92C8B28E698E20083F33A /* NetworkProvider.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		EDE92C9228E698E20083F33A /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92C8D28E698E20083F33A /* GenreNetworking.swift */,
+				EDE92C8E28E698E20083F33A /* MovieNetworking.swift */,
+				EDE92C8F28E698E20083F33A /* SearchNetworking.swift */,
+				EDE92C9028E698E20083F33A /* TVShowNetworking.swift */,
+				EDE92C9128E698E20083F33A /* PeopleNetworking.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		EDE92C9828E698E20083F33A /* Target */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92C9328E698E20083F33A /* GenreApi.swift */,
+				EDE92C9428E698E20083F33A /* MovieApi.swift */,
+				EDE92C9528E698E20083F33A /* SearchApi.swift */,
+				EDE92C9628E698E20083F33A /* TVShowApi.swift */,
+				EDE92C9728E698E20083F33A /* PeopleApi.swift */,
+			);
+			path = Target;
+			sourceTree = "<group>";
+		};
+		EDE92C9928E698E20083F33A /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92C8628E698E20083F33A /* Api.swift */,
+				EDE92C8728E698E20083F33A /* NetworkManager.swift */,
+				EDE92C8828E698E20083F33A /* RemoteDataSource.swift */,
+				EDE92D2228E6D84E0083F33A /* NetworkConfigurable.swift */,
+				EDE92D2128E6D84E0083F33A /* NetworkConfiguration */,
+				EDE92C8C28E698E20083F33A /* Helper */,
+				EDE92C9228E698E20083F33A /* Provider */,
+				EDE92C9828E698E20083F33A /* Target */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		EDE92C9F28E698E20083F33A /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92C9A28E698E20083F33A /* GenreResponseDTO.swift */,
+				EDE92C9B28E698E20083F33A /* MovieResponseDTO.swift */,
+				EDE92C9C28E698E20083F33A /* PersonResponseDTO.swift */,
+				EDE92C9D28E698E20083F33A /* TVShowResponseDTO.swift */,
+				EDE92C9E28E698E20083F33A /* ImagesResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		EDE92CAE28E698E20083F33A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92C9F28E698E20083F33A /* Response */,
+				EDE92CA028E698E20083F33A /* GenreDTO.swift */,
+				EDE92CA128E698E20083F33A /* MovieDTO.swift */,
+				EDE92CA228E698E20083F33A /* PersonDTO.swift */,
+				EDE92CA328E698E20083F33A /* TVShowDTO.swift */,
+				EDE92CA428E698E20083F33A /* CrewDTO.swift */,
+				EDE92CA528E698E20083F33A /* CastDTO.swift */,
+				EDE92CA628E698E20083F33A /* CreditDTO.swift */,
+				EDE92CA728E698E20083F33A /* MovieDetailDTO.swift */,
+				EDE92CA828E698E20083F33A /* TVShowDetailDTO.swift */,
+				EDE92CA928E698E20083F33A /* SeasonDTO.swift */,
+				EDE92CAA28E698E20083F33A /* EpisodeDTO.swift */,
+				EDE92CAB28E698E20083F33A /* PersonDetailDTO.swift */,
+				EDE92CAC28E698E20083F33A /* ImageDTO.swift */,
+				EDE92CAD28E698E20083F33A /* PersonCreditDTO.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EDE92CB328E698E30083F33A /* Convertion */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92CB028E698E30083F33A /* DomainConvertibleType.swift */,
+				EDE92CB128E698E30083F33A /* RealmRepresentable.swift */,
+				EDE92CB228E698E30083F33A /* RMOperator.swift */,
+			);
+			path = Convertion;
+			sourceTree = "<group>";
+		};
+		EDE92CB528E698E30083F33A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92CB428E698E30083F33A /* DBManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		EDE92CB828E698E30083F33A /* Dao */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92CB628E698E30083F33A /* RecentEntertainmentDao.swift */,
+				EDE92CB728E698E30083F33A /* BaseDao.swift */,
+			);
+			path = Dao;
+			sourceTree = "<group>";
+		};
+		EDE92CBD28E698E30083F33A /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92CB928E698E30083F33A /* RMMovie.swift */,
+				EDE92CBA28E698E30083F33A /* RMTVShow.swift */,
+				EDE92CBB28E698E30083F33A /* RMRecentEntertainment.swift */,
+				EDE92CBC28E698E30083F33A /* RMEntertainmentType.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		EDE92CBF28E698E30083F33A /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92CB528E698E30083F33A /* Manager */,
+				EDE92CB828E698E30083F33A /* Dao */,
+				EDE92CBD28E698E30083F33A /* Entities */,
+				EDE92CBE28E698E30083F33A /* LocalDataSource.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		EDE92CC528E698E30083F33A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92CC028E698E30083F33A /* GenreRepository.swift */,
+				EDE92CC128E698E30083F33A /* MovieRepository.swift */,
+				EDE92CC228E698E30083F33A /* PersonRepository.swift */,
+				EDE92CC328E698E30083F33A /* TVShowRepository.swift */,
+				EDE92CC428E698E30083F33A /* SearchRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		EDE92CC828E698E30083F33A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92CC628E698E30083F33A /* ReachabilityManager.swift */,
+				EDE92CC728E698E30083F33A /* Realm+Ext.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		EDE92D2128E6D84E0083F33A /* NetworkConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				EDE92D1F28E6D84E0083F33A /* NetworkConfiguration.swift */,
+				EDE92D2028E6D84E0083F33A /* NetworkConfigurationProtocol.swift */,
+			);
+			path = NetworkConfiguration;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		EDE92C3828E697920083F33A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDE92C4128E697920083F33A /* Data.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		EDE92C3C28E697920083F33A /* Data */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDE92C4428E697920083F33A /* Build configuration list for PBXNativeTarget "Data" */;
+			buildPhases = (
+				DBFF6B0E7BFD85C639D4F2AA /* [CP] Check Pods Manifest.lock */,
+				EDE92C3828E697920083F33A /* Headers */,
+				EDE92C3928E697920083F33A /* Sources */,
+				EDE92C3A28E697920083F33A /* Frameworks */,
+				EDE92C3B28E697920083F33A /* Resources */,
+				EDE92D1C28E6AF1E0083F33A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Data;
+			productName = Data;
+			productReference = EDE92C3D28E697920083F33A /* Data.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDE92C3428E697910083F33A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					EDE92C3C28E697920083F33A = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = EDE92C3728E697910083F33A /* Build configuration list for PBXProject "Data" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDE92C3328E697910083F33A;
+			productRefGroup = EDE92C3E28E697920083F33A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDE92C3C28E697920083F33A /* Data */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDE92C3B28E697920083F33A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DBFF6B0E7BFD85C639D4F2AA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Data-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDE92C3928E697920083F33A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDE92CFA28E6992F0083F33A /* RMRecentEntertainment.swift in Sources */,
+				EDE92CEA28E699210083F33A /* CastDTO.swift in Sources */,
+				EDE92CCF28E699050083F33A /* TVShowRepository.swift in Sources */,
+				EDE92CE328E6991D0083F33A /* TVShowResponseDTO.swift in Sources */,
+				EDE92CD628E6990E0083F33A /* DefaultAlamofireSession.swift in Sources */,
+				EDE92CD528E6990E0083F33A /* NetworkProvider.swift in Sources */,
+				EDE92CCE28E699050083F33A /* PersonRepository.swift in Sources */,
+				EDE92CDD28E699150083F33A /* TVShowApi.swift in Sources */,
+				EDE92CCA28E699010083F33A /* ReachabilityManager.swift in Sources */,
+				EDE92CCC28E699050083F33A /* GenreRepository.swift in Sources */,
+				EDE92CE828E699210083F33A /* PersonDTO.swift in Sources */,
+				EDE92CF528E6992B0083F33A /* RecentEntertainmentDao.swift in Sources */,
+				EDE92CE228E6991D0083F33A /* MovieResponseDTO.swift in Sources */,
+				EDE92CFD28E699360083F33A /* RMOperator.swift in Sources */,
+				EDE92CDB28E699110083F33A /* PeopleNetworking.swift in Sources */,
+				EDE92CEC28E699210083F33A /* CreditDTO.swift in Sources */,
+				EDE92CDC28E699150083F33A /* MovieApi.swift in Sources */,
+				EDE92CE528E6991D0083F33A /* PersonResponseDTO.swift in Sources */,
+				EDE92CD328E6990A0083F33A /* NetworkManager.swift in Sources */,
+				EDE92CE928E699210083F33A /* PersonCreditDTO.swift in Sources */,
+				EDE92D2528E6D8580083F33A /* NetworkConfiguration.swift in Sources */,
+				EDE92CF928E6992F0083F33A /* RMEntertainmentType.swift in Sources */,
+				EDE92CE728E699210083F33A /* SeasonDTO.swift in Sources */,
+				EDE92CF828E6992F0083F33A /* RMTVShow.swift in Sources */,
+				EDE92D2428E6D8580083F33A /* NetworkConfigurationProtocol.swift in Sources */,
+				EDE92CD128E6990A0083F33A /* RemoteDataSource.swift in Sources */,
+				EDE92CD728E699110083F33A /* MovieNetworking.swift in Sources */,
+				EDE92CE628E699210083F33A /* MovieDetailDTO.swift in Sources */,
+				EDE92CE028E699150083F33A /* GenreApi.swift in Sources */,
+				EDE92CCB28E699010083F33A /* Realm+Ext.swift in Sources */,
+				EDE92CCD28E699050083F33A /* MovieRepository.swift in Sources */,
+				EDE92CC928E698E40083F33A /* RepositoryProvider.swift in Sources */,
+				EDE92CDE28E699150083F33A /* PeopleApi.swift in Sources */,
+				EDE92CD428E6990E0083F33A /* NetworkingType.swift in Sources */,
+				EDE92CF028E699210083F33A /* EpisodeDTO.swift in Sources */,
+				EDE92CD228E6990A0083F33A /* Api.swift in Sources */,
+				EDE92CD028E699050083F33A /* SearchRepository.swift in Sources */,
+				EDE92CE428E6991D0083F33A /* ImagesResponseDTO.swift in Sources */,
+				EDE92D2328E6D84E0083F33A /* NetworkConfigurable.swift in Sources */,
+				EDE92CF328E699210083F33A /* CrewDTO.swift in Sources */,
+				EDE92CEB28E699210083F33A /* GenreDTO.swift in Sources */,
+				EDE92CF728E6992F0083F33A /* RMMovie.swift in Sources */,
+				EDE92CD928E699110083F33A /* TVShowNetworking.swift in Sources */,
+				EDE92D0028E6993B0083F33A /* LocalDataSourceProtocol.swift in Sources */,
+				EDE92CED28E699210083F33A /* ImageDTO.swift in Sources */,
+				EDE92CF228E699210083F33A /* MovieDTO.swift in Sources */,
+				EDE92CFE28E699360083F33A /* RealmRepresentable.swift in Sources */,
+				EDE92CF128E699210083F33A /* TVShowDTO.swift in Sources */,
+				EDE92CFB28E699320083F33A /* LocalDataSource.swift in Sources */,
+				EDE92CD828E699110083F33A /* SearchNetworking.swift in Sources */,
+				EDE92CE128E6991D0083F33A /* GenreResponseDTO.swift in Sources */,
+				EDE92CFC28E699360083F33A /* DomainConvertibleType.swift in Sources */,
+				EDE92CEF28E699210083F33A /* TVShowDetailDTO.swift in Sources */,
+				EDE92CEE28E699210083F33A /* PersonDetailDTO.swift in Sources */,
+				EDE92CDF28E699150083F33A /* SearchApi.swift in Sources */,
+				EDE92CF628E6992B0083F33A /* BaseDao.swift in Sources */,
+				EDE92CDA28E699110083F33A /* GenreNetworking.swift in Sources */,
+				EDE92CF428E699260083F33A /* DBManager.swift in Sources */,
+				EDE92CFF28E6993B0083F33A /* RemoteDataSourceProtocol.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		EDE92C4228E697920083F33A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EDE92C4328E697920083F33A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		EDE92C4528E697920083F33A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 165301CCDCFFC2571E460B23 /* Pods-Data.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.base.Data;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDE92C4628E697920083F33A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 995489B553BA26EB4BBA55C5 /* Pods-Data.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.base.Data;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDE92C3728E697910083F33A /* Build configuration list for PBXProject "Data" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDE92C4228E697920083F33A /* Debug */,
+				EDE92C4328E697920083F33A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDE92C4428E697920083F33A /* Build configuration list for PBXNativeTarget "Data" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDE92C4528E697920083F33A /* Debug */,
+				EDE92C4628E697920083F33A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDE92C3428E697910083F33A /* Project object */;
+}

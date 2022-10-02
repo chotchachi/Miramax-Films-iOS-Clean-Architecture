@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SwifterSwift
+import Domain
 
 class GenreCell: UICollectionViewCell {
     private var containerView: UIView!

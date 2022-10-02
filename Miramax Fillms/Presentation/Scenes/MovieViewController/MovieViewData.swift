@@ -5,7 +5,7 @@
 //  Created by Thanh Quang on 15/09/2022.
 //
 
-import Foundation
+import Domain
 
 enum MovieViewData {
     case genreViewState(viewState: ViewState<Genre>)

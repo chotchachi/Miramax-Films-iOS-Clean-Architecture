@@ -5,6 +5,8 @@
 //  Created by Thanh Quang on 18/09/2022.
 //
 
+import Domain
+
 protocol PersonHorizontalListCellDelegate: AnyObject {
     func personHorizontalListRetryButtonTapped()
     func personHorizontalList(onItemTapped item: PersonModelType)

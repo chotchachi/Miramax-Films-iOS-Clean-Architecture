@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 import SwifterSwift
+import Domain
 
 class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel>, LoadingDisplayable, ErrorRetryable, Searchable {
     

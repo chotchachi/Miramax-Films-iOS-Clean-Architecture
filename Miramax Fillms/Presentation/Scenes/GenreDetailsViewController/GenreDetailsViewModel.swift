@@ -8,6 +8,7 @@
 import RxSwift
 import RxCocoa
 import XCoordinator
+import Domain
 
 fileprivate typealias QueryParams = (page: Int, isRefresh: Bool)
 

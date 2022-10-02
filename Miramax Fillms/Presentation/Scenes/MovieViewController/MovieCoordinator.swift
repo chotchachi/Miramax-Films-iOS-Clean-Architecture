@@ -6,6 +6,7 @@
 //
 
 import XCoordinator
+import Domain
 
 enum MovieRoute: Route {
     case initial

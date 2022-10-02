@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SwifterSwift
+import Domain
 
 fileprivate let kOverviewLabelMaxLines: Int = 5
 

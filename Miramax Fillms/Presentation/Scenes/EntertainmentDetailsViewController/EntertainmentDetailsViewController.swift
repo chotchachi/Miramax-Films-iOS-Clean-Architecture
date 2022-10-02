@@ -10,6 +10,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import SwifterSwift
+import Domain
 
 fileprivate let kSeasonsMaxItems: Int = 3
 fileprivate let kOverviewLabelMaxLines: Int = 5

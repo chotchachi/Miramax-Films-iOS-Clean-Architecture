@@ -8,6 +8,7 @@
 import RxSwift
 import RxCocoa
 import XCoordinator
+import Domain
 
 class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
     struct Input {

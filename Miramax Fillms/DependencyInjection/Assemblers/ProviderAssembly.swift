@@ -6,6 +6,8 @@
 //
 
 import Swinject
+import Domain
+import Data
 
 final class ProviderAssembly: Assembly {
     

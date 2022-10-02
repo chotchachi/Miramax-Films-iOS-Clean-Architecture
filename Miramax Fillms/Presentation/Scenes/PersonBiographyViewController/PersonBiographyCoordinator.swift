@@ -6,6 +6,7 @@
 //
 
 import XCoordinator
+import Domain
 
 enum PersonBiographyRoute: Route {
     case initial(personDetail: PersonDetail)

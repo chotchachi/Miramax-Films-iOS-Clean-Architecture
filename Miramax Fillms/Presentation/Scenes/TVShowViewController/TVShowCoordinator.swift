@@ -6,6 +6,7 @@
 //
 
 import XCoordinator
+import Domain
 
 enum TVShowRoute: Route {
     case initial

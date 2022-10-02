@@ -6,6 +6,7 @@
 //
 
 import XCoordinator
+import Domain
 
 enum SearchRoute: Route {
     case initial

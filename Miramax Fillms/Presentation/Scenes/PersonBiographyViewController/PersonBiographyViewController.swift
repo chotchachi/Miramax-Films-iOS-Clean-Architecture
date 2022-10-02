@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import TagListView
+import Domain
 
 class PersonBiographyViewController: BaseViewController<PersonBiographyViewModel>, Searchable, Shareable {
 

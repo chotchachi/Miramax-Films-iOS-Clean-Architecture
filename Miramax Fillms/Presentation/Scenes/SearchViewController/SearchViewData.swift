@@ -5,7 +5,7 @@
 //  Created by Thanh Quang on 17/09/2022.
 //
 
-import Foundation
+import Domain
 
 enum SearchViewData {
     case recent(items: [EntertainmentModelType])

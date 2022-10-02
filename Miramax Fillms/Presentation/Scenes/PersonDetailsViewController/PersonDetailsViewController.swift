@@ -11,6 +11,7 @@ import RxCocoa
 import RxDataSources
 import SwifterSwift
 import TagListView
+import Domain
 
 class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, LoadingDisplayable, ErrorRetryable, Searchable, Shareable {
     

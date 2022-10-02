@@ -6,6 +6,7 @@
 //
 
 import XCoordinator
+import Domain
 
 enum SeasonDetailsRoute: Route {
     case initial(season: Season)

@@ -1,12 +1,26 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '11.2'
+
+workspace 'Miramax Fillms.xcworkspace'
+project 'Miramax Fillms.xcodeproj'
+
+use_frameworks!
+
+target 'Domain' do
+  project 'Domain/Domain.project'
+
+  pod 'RxSwift', '~> 6.1.0'
+end
+
+target 'Data' do
+  project 'Data/Data.project'
+
+  pod 'RxSwift', '~> 6.1.0'
+  pod 'Moya/RxSwift', '~> 15.0'
+  pod "RxRealm", '~> 5.0.4'
+  pod 'ObjectMapper', '~> 4.2.0'
+end
 
 target 'Miramax Fillms' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-  
-  # Pods for Miramax Fillms
-  
   # rx
   pod 'RxSwift', '~> 6.1.0'
   pod 'RxCocoa', '~> 6.1.0'

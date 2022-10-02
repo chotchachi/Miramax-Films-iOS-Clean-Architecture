@@ -8,6 +8,7 @@
 import RxCocoa
 import RxSwift
 import XCoordinator
+import Domain
 
 class SearchViewModel: BaseViewModel, ViewModelType {
     struct Input {

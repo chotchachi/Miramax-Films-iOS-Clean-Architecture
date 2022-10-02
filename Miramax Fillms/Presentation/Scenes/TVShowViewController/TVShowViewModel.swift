@@ -8,6 +8,7 @@
 import RxCocoa
 import RxSwift
 import XCoordinator
+import Domain
 
 class TVShowViewModel: BaseViewModel, ViewModelType {
     

@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SwifterSwift
+import Domain
 
 class MovieViewController: BaseViewController<MovieViewModel>, Searchable {
     
