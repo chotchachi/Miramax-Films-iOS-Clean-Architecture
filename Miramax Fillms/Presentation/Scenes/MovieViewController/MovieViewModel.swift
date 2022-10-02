@@ -102,7 +102,6 @@ class MovieViewModel: BaseViewModel, ViewModelType {
             .startWith(.news)
             .flatMapLatest { tab in
                 self.getPreviewData(with: tab)
-                    .delay(.seconds(5), scheduler: MainScheduler.instance)
                     .map { ViewState.populated($0.results) }
                     .catchAndReturn(.error)
             }
