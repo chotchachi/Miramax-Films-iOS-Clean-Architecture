@@ -268,7 +268,7 @@ extension MovieViewController {
             .disposed(by: rx.disposeBag)
         
         let collectionViewLayout = ColumnFlowLayout(
-            cellsPerRow: 2,
+            cellsPerRow: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2,
             ratio: DimensionConstants.entertainmentPreviewCellRatio,
             minimumInteritemSpacing: DimensionConstants.entertainmentPreviewCellSpacing,
             minimumLineSpacing: DimensionConstants.entertainmentPreviewCellSpacing,
