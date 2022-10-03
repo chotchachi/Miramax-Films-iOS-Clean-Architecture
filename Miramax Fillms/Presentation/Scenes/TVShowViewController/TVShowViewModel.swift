@@ -10,19 +10,30 @@ import RxSwift
 import XCoordinator
 import Domain
 
+enum TVShowPreviewTab {
+    case topRating
+    case news
+    case trending
+}
+
 class TVShowViewModel: BaseViewModel, ViewModelType {
     
     struct Input {
         let toSearchTrigger: Driver<Void>
         let retryGenreTrigger: Driver<Void>
-        let retryAiringTodayTrigger: Driver<Void>
-        let retryUpComingTrigger: Driver<Void>
-        let tvShowSelectTrigger: Driver<TVShow>
-        let genreSelectTrigger: Driver<Genre>
+        let retryAiringTrigger: Driver<Void>
+        let retryUpcomingTrigger: Driver<Void>
+        let retryPreviewTrigger: Driver<Void>
+        let selectionEntertainmentTrigger: Driver<EntertainmentModelType>
+        let selectionGenreTrigger: Driver<Genre>
+        let previewTabTrigger: Driver<TVShowPreviewTab>
     }
     
     struct Output {
-        let tvShowViewDataItems: Driver<[TVShowViewData]>
+        let genresViewState: Driver<ViewState<Genre>>
+        let airingViewState: Driver<ViewState<TVShow>>
+        let upcomingViewState: Driver<ViewState<TVShow>>
+        let previewViewState: Driver<ViewState<TVShow>>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -35,7 +46,6 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        
         let viewTriggerO = trigger
             .take(1)
         
@@ -46,14 +56,14 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        input.tvShowSelectTrigger
+        input.selectionEntertainmentTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.tvShowDetails(tvShow: item))
+                self.router.trigger(.entertainmentDetails(entertainment: item))
             })
             .disposed(by: rx.disposeBag)
         
-        input.genreSelectTrigger
+        input.selectionGenreTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
                 self.router.trigger(.genreDetails(genre: item))
@@ -63,13 +73,13 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         let retryGenreTriggerO = input.retryGenreTrigger
             .asObservable()
         
-        let retryAiringTodayTriggerO = input.retryAiringTodayTrigger
+        let retryAiringTriggerO = input.retryAiringTrigger
             .asObservable()
         
-        let retryUpComingTriggerO = input.retryUpComingTrigger
+        let retryUpcomingTriggerO = input.retryUpcomingTrigger
             .asObservable()
         
-        let genreViewStateO = Observable.merge(viewTriggerO, retryGenreTriggerO)
+        let genresViewStateD = Observable.merge(viewTriggerO, retryGenreTriggerO)
             .flatMapLatest {
                 self.repositoryProvider
                     .genreRepository()
@@ -77,10 +87,9 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                     .map { ViewState.populated($0) }
                     .catchAndReturn(.error)
             }
-            .startWith(.initial)
-            .map { TVShowViewData.genreViewState(viewState: $0) }
+            .asDriverOnErrorJustComplete()
         
-        let airingTodayViewStateO = Observable.merge(viewTriggerO, retryAiringTodayTriggerO)
+        let airingViewStateD = Observable.merge(viewTriggerO, retryAiringTriggerO)
             .flatMapLatest {
                 self.repositoryProvider
                     .tvShowRepository()
@@ -88,10 +97,9 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                     .map { ViewState.populated($0.results) }
                     .catchAndReturn(.error)
             }
-            .startWith(.initial)
-            .map { TVShowViewData.airingTodayViewState(viewStatte: $0) }
+            .asDriverOnErrorJustComplete()
         
-        let onTheAirViewStateO = Observable.merge(viewTriggerO, retryUpComingTriggerO)
+        let upcomingViewStateD = Observable.merge(viewTriggerO, retryUpcomingTriggerO)
             .flatMapLatest {
                 self.repositoryProvider
                     .tvShowRepository()
@@ -99,17 +107,47 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                     .map { ViewState.populated($0.results) }
                     .catchAndReturn(.error)
             }
-            .startWith(.initial)
-            .map { TVShowViewData.onTheAirViewState(viewState: $0) }
-
-        let tvShowViewDataItems = Observable.combineLatest(
-            genreViewStateO,
-            airingTodayViewStateO,
-            onTheAirViewStateO
-        )
-            .map { [$0.0, $0.1, $0.2, .tabSelection] }
-            .asDriver(onErrorJustReturn: [])
+            .asDriverOnErrorJustComplete()
         
-        return Output(tvShowViewDataItems: tvShowViewDataItems)
+        let previewTabTriggerO = input.previewTabTrigger
+            .asObservable()
+            .startWith(.news)
+        
+        let retryPreviewWithSelectedTabO = input.retryPreviewTrigger
+            .asObservable()
+            .withLatestFrom(previewTabTriggerO)
+        
+        let previewViewStateD = Observable.merge(previewTabTriggerO, retryPreviewWithSelectedTabO)
+            .flatMapLatest { tab in
+                self.getPreviewData(with: tab)
+                    .map { ViewState.populated($0.results) }
+                    .catchAndReturn(.error)
+            }
+            .asDriverOnErrorJustComplete()
+        
+        return Output(genresViewState: genresViewStateD,
+                      airingViewState: airingViewStateD,
+                      upcomingViewState: upcomingViewStateD,
+                      previewViewState: previewViewStateD)
+    }
+    
+    private func getPreviewData(with tab: TVShowPreviewTab) -> Observable<TVShowResponse> {
+        switch tab {
+        case .topRating:
+            return repositoryProvider
+                .tvShowRepository()
+                .getTopRated(genreId: nil, page: nil)
+                .asObservable()
+        case .news:
+            return repositoryProvider
+                .tvShowRepository()
+                .getOnTheAir(genreId: nil, page: nil)
+                .asObservable()
+        case .trending:
+            return repositoryProvider
+                .tvShowRepository()
+                .getPopular(genreId: nil, page: nil)
+                .asObservable()
+        }
     }
 }

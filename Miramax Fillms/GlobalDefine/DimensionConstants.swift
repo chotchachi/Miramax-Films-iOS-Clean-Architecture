@@ -25,8 +25,6 @@ struct DimensionConstants {
     static let personHorizontalCellSpacing: CGFloat = 16.0
     static let personHorizontalCellRatio: CGFloat = 0.65
     
-    static let airingTodayCellRatio: CGFloat = 0.85
-
     static let seasonSmallCellHeight: CGFloat = 80.0
     static let seasonLargeCellRatio: CGFloat = 0.45
     
