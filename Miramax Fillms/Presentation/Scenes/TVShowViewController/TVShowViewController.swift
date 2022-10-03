@@ -12,6 +12,8 @@ import RxDataSources
 import SwifterSwift
 import Domain
 
+fileprivate let kUpcomingMaxItems: Int = 6
+
 class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
 
     // MARK: - Outlets + Views
@@ -37,6 +39,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
     @IBOutlet weak var upcomingSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var upcomingTableView: SelfSizingTableView!
     @IBOutlet weak var upcomingTableViewHc: NSLayoutConstraint!
+    @IBOutlet weak var upcomingViewAllButton: PrimaryButton!
     @IBOutlet weak var upcomingLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var upcomingRetryButton: PrimaryButton!
     
@@ -136,24 +139,24 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
             })
             .disposed(by: rx.disposeBag)
         
-//        output.upcomingViewState
-//            .drive(onNext: { [weak self] viewState in
-//                guard let self = self else { return }
-//                switch viewState {
-//                case .initial, .paging:
-//                    break
-//                case .populated(let items):
-//                    self.upcomingLoadingIndicator.stopAnimating()
-//                    self.upcomingCollectionView.isHidden = false
-//                    self.upcomingRetryButton.isHidden = true
-//                    self.upcomingDataS.accept(items)
-//                case .error:
-//                    self.upcomingLoadingIndicator.stopAnimating()
-//                    self.upcomingCollectionView.isHidden = true
-//                    self.upcomingRetryButton.isHidden = false
-//                }
-//            })
-//            .disposed(by: rx.disposeBag)
+        output.upcomingViewState
+            .drive(onNext: { [weak self] viewState in
+                guard let self = self else { return }
+                switch viewState {
+                case .initial, .paging:
+                    break
+                case .populated(let items):
+                    self.upcomingLoadingIndicator.stopAnimating()
+                    self.upcomingTableView.isHidden = false
+                    self.upcomingRetryButton.isHidden = true
+                    self.upcomingDataS.accept(items)
+                case .error:
+                    self.upcomingLoadingIndicator.stopAnimating()
+                    self.upcomingTableView.isHidden = true
+                    self.upcomingRetryButton.isHidden = false
+                }
+            })
+            .disposed(by: rx.disposeBag)
         
         output.previewViewState
             .drive(onNext: { [weak self] viewState in
@@ -180,6 +183,9 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
         
         let previewContentHeight = previewCollectionView.intrinsicContentSize.height
         previewCollectionViewHc.constant = previewContentHeight < DimensionConstants.moviePreviewCollectionViewMinHeight ? DimensionConstants.moviePreviewCollectionViewMinHeight : previewContentHeight
+        
+        let upcomingContentHeight = upcomingTableView.intrinsicContentSize.height
+        upcomingTableViewHc.constant = upcomingContentHeight < DimensionConstants.showUpcomingTableViewMinHeight ? DimensionConstants.showUpcomingTableViewMinHeight : upcomingContentHeight
     }
 }
 
@@ -254,45 +260,45 @@ extension TVShowViewController {
     
     private func configureSectionUpcoming() {
         upcomingSectionHeaderView.title = "upcoming".localized
+        upcomingSectionHeaderView.showSeeMoreButton = false
 
+        upcomingViewAllButton.titleText = "view_all".localized
+        
         upcomingLoadingIndicator.startAnimating()
         
         upcomingRetryButton.titleText = "retry".localized
         upcomingRetryButton.isHidden = true
-//        upcomingRetryButton.rx.tap
-//            .subscribe(onNext: { [weak self] in
-//                guard let self = self else { return }
-//                self.upcomingLoadingIndicator.startAnimating()
-//                self.upcomingRetryButton.isHidden = true
-//                self.upcomingCollectionView.isHidden = true
-//            })
-//            .disposed(by: rx.disposeBag)
-//
-//        let collectionViewLayout = ColumnFlowLayout(
-//            cellsPerRow: 1,
-//            ratio: DimensionConstants.entertainmentHorizontalCellRatio,
-//            minimumInteritemSpacing: 0.0,
-//            minimumLineSpacing: DimensionConstants.entertainmentHorizontalCellSpacing,
-//            sectionInset: .init(top: 0, left: 16.0, bottom: 0.0, right: 16.0),
-//            scrollDirection: .horizontal
-//        )
-//        upcomingCollectionView.collectionViewLayout = collectionViewLayout
-//        upcomingCollectionView.showsHorizontalScrollIndicator = false
-//        upcomingCollectionView.register(cellWithClass: EntertainmentHorizontalCell.self)
-//        upcomingCollectionView.rx.modelSelected(EntertainmentModelType.self)
-//            .bind(to: entertainmentSelectTriggerS)
-//            .disposed(by: rx.disposeBag)
-//
-//        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentModelType>> { dataSource, collectionView, indexPath, item in
-//            let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
-//            cell.bind(item)
-//            return cell
-//        }
-//
-//        upcomingDataS
-//            .map { [SectionModel(model: "", items: $0)] }
-//            .bind(to: upcomingCollectionView.rx.items(dataSource: dataSource))
-//            .disposed(by: rx.disposeBag)
+        upcomingRetryButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.upcomingLoadingIndicator.startAnimating()
+                self.upcomingRetryButton.isHidden = true
+                self.upcomingTableView.isHidden = true
+            })
+            .disposed(by: rx.disposeBag)
+
+
+        upcomingTableView.separatorStyle = .none
+        upcomingTableView.register(cellWithClass: EntertainmentRankTableViewCell.self)
+        upcomingTableView.rx.modelSelected(EntertainmentModelType.self)
+            .bind(to: entertainmentSelectTriggerS)
+            .disposed(by: rx.disposeBag)
+        
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, EntertainmentModelType>> { datasource, tableView, indexPath, item in
+            let cell = tableView.dequeueReusableCell(withClass: EntertainmentRankTableViewCell.self, for: indexPath)
+            cell.bind(item, offset: indexPath.row)
+            cell.onPlayButtonTapped = { [weak self] in
+                guard let self = self else { return }
+                self.entertainmentSelectTriggerS.accept(item)
+            }
+            return cell
+        }
+
+        upcomingDataS
+            .map { Array($0.prefix(kUpcomingMaxItems)) }
+            .map { [SectionModel(model: "", items: $0)] }
+            .bind(to: upcomingTableView.rx.items(dataSource: dataSource))
+            .disposed(by: rx.disposeBag)
     }
     
     private func configureSectionTabLayout() {
