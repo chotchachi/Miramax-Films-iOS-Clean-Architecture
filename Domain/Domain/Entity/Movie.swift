@@ -63,4 +63,8 @@ extension Movie: EntertainmentModelType {
     public var entertainmentModelBackdropURL: URL? {
         return backdropURL
     }
+    
+    public var entertainmentModelRating: Double? {
+        return voteAverage
+    }
 }

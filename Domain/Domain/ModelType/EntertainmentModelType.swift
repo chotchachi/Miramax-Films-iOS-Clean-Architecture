@@ -19,4 +19,5 @@ public protocol EntertainmentModelType {
     var entertainmentModelOverview: String { get }
     var entertainmentModelPosterURL: URL? { get }
     var entertainmentModelBackdropURL: URL? { get }
+    var entertainmentModelRating: Double? { get }
 }

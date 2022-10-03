@@ -53,5 +53,9 @@ extension RecentEntertainment: EntertainmentModelType {
     public var entertainmentModelBackdropURL: URL? {
         return nil
     }
+    
+    public var entertainmentModelRating: Double? {
+        return nil
+    }
 }
 
