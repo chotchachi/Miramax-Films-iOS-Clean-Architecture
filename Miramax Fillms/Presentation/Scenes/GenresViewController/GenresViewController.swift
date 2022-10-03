@@ -60,6 +60,9 @@ class GenresViewController: BaseViewController<GenresViewModel>, LoadingDisplaya
         viewModel.loading
             .drive(onNext: { [weak self] isLoading in
                 isLoading ? self?.showLoader() : self?.hideLoader()
+                if isLoading {
+                    self?.hideErrorRetryView()
+                }
             })
             .disposed(by: rx.disposeBag)
         
