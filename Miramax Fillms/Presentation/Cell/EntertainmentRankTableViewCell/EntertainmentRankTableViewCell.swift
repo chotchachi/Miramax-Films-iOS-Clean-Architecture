@@ -116,24 +116,11 @@ class EntertainmentRankTableViewCell: UITableViewCell {
     func bind(_ item: EntertainmentModelType, offset: Int) {
         lblOffset.text = "\(offset + 1)"
         lblName.text = item.entertainmentModelName
-        lblRating.attributedText = setRatingLabel(ratingText: DataUtils.getRatingText(7.5))
-    }
-    
-    private func setRatingLabel(ratingText: String) -> NSAttributedString? {
-        let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(named: "ic_star_yellow")
-        // Set bound to reposition
-        imageAttachment.bounds = CGRect(x: 0.0, y: -1.5, width: 12.0, height: 12.0)
-        // Create string with attachment
-        let attachmentString = NSAttributedString(attachment: imageAttachment)
-        // Initialize mutable string
-        let completeText = NSMutableAttributedString(string: "")
-        // Add your text to mutable string
-        let textBeforeIcon = NSAttributedString(string: ratingText)
-        completeText.append(textBeforeIcon)
-        // Add image to mutable string
-        completeText.append(attachmentString)
-        return completeText
+        
+        if let rating = item.entertainmentModelRating {
+            let ratingText = DataUtils.getRatingText(rating)
+            lblRating.setText(ratingText, before: UIImage(named: "ic_star_yellow"))
+        }
     }
     
     private func getAirDateStringFormatted(_ strDate: String?) -> String? {
