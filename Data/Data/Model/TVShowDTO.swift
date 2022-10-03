@@ -15,7 +15,8 @@ public struct TVShowDTO : Mappable {
     public var posterPath: String?
     public var overview: String = ""
     public var voteAverage: Double = 0.0
-    
+    public var firstAirDate: String = ""
+
     public init?(map: Map) {
         
     }
@@ -27,6 +28,7 @@ public struct TVShowDTO : Mappable {
         posterPath <- map["poster_path"]
         overview <- map["overview"]
         voteAverage <- map["vote_average"]
+        firstAirDate <- map["first_air_date"]
     }
 }
 
@@ -38,7 +40,8 @@ extension TVShowDTO: DomainConvertibleType {
             backdropPath: backdropPath,
             posterPath: posterPath,
             overview: overview,
-            voteAverage: voteAverage
+            voteAverage: voteAverage,
+            firstAirDate: firstAirDate
         )
     }
 }

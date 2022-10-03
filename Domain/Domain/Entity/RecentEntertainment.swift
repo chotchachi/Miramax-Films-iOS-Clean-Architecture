@@ -57,5 +57,9 @@ extension RecentEntertainment: EntertainmentModelType {
     public var entertainmentModelRating: Double? {
         return nil
     }
+    
+    public var entertainmentModelReleaseDate: String? {
+        return nil
+    }
 }
 

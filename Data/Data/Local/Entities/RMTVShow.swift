@@ -15,6 +15,7 @@ public final class RMTVShow: Object {
     @Persisted var posterPath: String?
     @Persisted var overview: String = ""
     @Persisted var voteAverage: Double = 0.0
+    @Persisted var firstAirDate: String = ""
 }
 
 extension RMTVShow: DomainConvertibleType {
@@ -25,7 +26,8 @@ extension RMTVShow: DomainConvertibleType {
             backdropPath: backdropPath,
             posterPath: posterPath,
             overview: overview,
-            voteAverage: voteAverage
+            voteAverage: voteAverage,
+            firstAirDate: firstAirDate
         )
     }
 }
@@ -39,6 +41,7 @@ extension TVShow: RealmRepresentable {
             object.posterPath = posterPath
             object.overview = overview
             object.voteAverage = voteAverage
+            object.firstAirDate = firstAirDate
         }
     }
 }

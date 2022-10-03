@@ -15,7 +15,8 @@ public struct MovieDTO : Mappable {
     public var posterPath: String?
     public var overview: String = ""
     public var voteAverage: Double = 0
-    
+    public var releaseDate: String = ""
+
     public init?(map: Map) {
         
     }
@@ -27,6 +28,7 @@ public struct MovieDTO : Mappable {
         posterPath <- map["poster_path"]
         overview <- map["overview"]
         voteAverage <- map["vote_average"]
+        releaseDate <- map["release_date"]
     }
 }
 
@@ -38,7 +40,8 @@ extension MovieDTO: DomainConvertibleType {
             backdropPath: backdropPath,
             posterPath: posterPath,
             overview: overview,
-            voteAverage: voteAverage
+            voteAverage: voteAverage,
+            releaseDate: releaseDate
         )
     }
 }

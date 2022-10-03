@@ -15,6 +15,7 @@ public final class RMMovie: Object {
     @Persisted var posterPath: String?
     @Persisted var overview: String = ""
     @Persisted var voteAverage: Double = 0.0
+    @Persisted var releaseDate: String = ""
 }
 
 extension RMMovie: DomainConvertibleType {
@@ -25,7 +26,8 @@ extension RMMovie: DomainConvertibleType {
             backdropPath: backdropPath,
             posterPath: posterPath,
             overview: overview,
-            voteAverage: voteAverage
+            voteAverage: voteAverage,
+            releaseDate: releaseDate
         )
     }
 }
@@ -39,6 +41,7 @@ extension Movie: RealmRepresentable {
             object.posterPath = posterPath
             object.overview = overview
             object.voteAverage = voteAverage
+            object.releaseDate = releaseDate
         }
     }
 }

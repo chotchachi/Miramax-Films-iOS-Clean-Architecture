@@ -14,14 +14,16 @@ public struct Movie: Equatable {
     public let posterPath: String?
     public let overview: String
     public let voteAverage: Double
-    
-    public init(id: Int, title: String, backdropPath: String?, posterPath: String?, overview: String, voteAverage: Double) {
+    public let releaseDate: String
+
+    public init(id: Int, title: String, backdropPath: String?, posterPath: String?, overview: String, voteAverage: Double, releaseDate: String) {
         self.id = id
         self.title = title
         self.backdropPath = backdropPath
         self.posterPath = posterPath
         self.overview = overview
         self.voteAverage = voteAverage
+        self.releaseDate = releaseDate
     }
 }
 
@@ -66,5 +68,9 @@ extension Movie: EntertainmentModelType {
     
     public var entertainmentModelRating: Double? {
         return voteAverage
+    }
+    
+    public var entertainmentModelReleaseDate: String? {
+        return releaseDate
     }
 }

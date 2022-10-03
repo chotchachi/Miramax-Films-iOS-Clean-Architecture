@@ -14,14 +14,16 @@ public struct TVShow: Equatable {
     public let posterPath: String?
     public let overview: String
     public let voteAverage: Double
-    
-    public init(id: Int, name: String, backdropPath: String?, posterPath: String?, overview: String, voteAverage: Double) {
+    public let firstAirDate: String
+
+    public init(id: Int, name: String, backdropPath: String?, posterPath: String?, overview: String, voteAverage: Double, firstAirDate: String) {
         self.id = id
         self.name = name
         self.backdropPath = backdropPath
         self.posterPath = posterPath
         self.overview = overview
         self.voteAverage = voteAverage
+        self.firstAirDate = firstAirDate
     }
 }
 
@@ -66,5 +68,9 @@ extension TVShow: EntertainmentModelType {
     
     public var entertainmentModelRating: Double? {
         return voteAverage
+    }
+    
+    public var entertainmentModelReleaseDate: String? {
+        return firstAirDate
     }
 }
