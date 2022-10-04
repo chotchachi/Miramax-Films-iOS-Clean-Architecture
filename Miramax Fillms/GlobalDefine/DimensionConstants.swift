@@ -8,7 +8,7 @@
 import Foundation
 
 struct DimensionConstants {
-    static let genreCellHeight: CGFloat = 50.0
+    static let genreCellHeight: CGFloat = 48.0
     
     static let moviePreviewCollectionViewMinHeight: CGFloat = 500.0
     

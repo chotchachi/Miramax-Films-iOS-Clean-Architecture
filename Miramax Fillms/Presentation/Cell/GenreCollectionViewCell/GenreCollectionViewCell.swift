@@ -1,5 +1,5 @@
 //
-//  GenreCell.swift
+//  GenreCollectionViewCell.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 15/09/2022.
@@ -10,7 +10,7 @@ import SnapKit
 import SwifterSwift
 import Domain
 
-class GenreCell: UICollectionViewCell {
+class GenreCollectionViewCell: UICollectionViewCell {
     private var containerView: UIView!
     private var lblGenreName: UILabel!
     

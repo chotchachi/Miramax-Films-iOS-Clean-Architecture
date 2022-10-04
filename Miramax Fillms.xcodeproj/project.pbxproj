@@ -35,7 +35,7 @@
 		EDB8780528D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */; };
 		EDB8780728D8AABB0016B96B /* EntertainmentDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780628D8AABB0016B96B /* EntertainmentDetailsCoordinator.swift */; };
 		EDB8781928D8D37C0016B96B /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8781828D8D37C0016B96B /* DataUtils.swift */; };
-		EDC502D028D377CC0047C7C3 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502CF28D377CC0047C7C3 /* GenreCell.swift */; };
+		EDC502D028D377CC0047C7C3 /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502CF28D377CC0047C7C3 /* GenreCollectionViewCell.swift */; };
 		EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */; };
 		EDC502D528D38C2D0047C7C3 /* Rx+asDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D428D38C2D0047C7C3 /* Rx+asDriver.swift */; };
 		EDC502D828D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D728D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift */; };
@@ -182,7 +182,7 @@
 		EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsViewModel.swift; sourceTree = "<group>"; };
 		EDB8780628D8AABB0016B96B /* EntertainmentDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsCoordinator.swift; sourceTree = "<group>"; };
 		EDB8781828D8D37C0016B96B /* DataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
-		EDC502CF28D377CC0047C7C3 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
+		EDC502CF28D377CC0047C7C3 /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
 		EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		EDC502D428D38C2D0047C7C3 /* Rx+asDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+asDriver.swift"; sourceTree = "<group>"; };
 		EDC502D728D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentHorizontalCell.swift; sourceTree = "<group>"; };
@@ -420,12 +420,12 @@
 			path = EntertainmentDetailsViewController;
 			sourceTree = "<group>";
 		};
-		EDC502CE28D377B00047C7C3 /* GenreCell */ = {
+		EDC502CE28D377B00047C7C3 /* GenreCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				EDC502CF28D377CC0047C7C3 /* GenreCell.swift */,
+				EDC502CF28D377CC0047C7C3 /* GenreCollectionViewCell.swift */,
 			);
-			path = GenreCell;
+			path = GenreCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		EDC502D628D38E550047C7C3 /* EntertainmentHorizontalCell */ = {
@@ -868,7 +868,7 @@
 				EDE69B4C28D63A63002726B0 /* PersonHorizontalCell */,
 				EDC502D928D38FD80047C7C3 /* MovieHorizontalListCell */,
 				EDC502D628D38E550047C7C3 /* EntertainmentHorizontalCell */,
-				EDC502CE28D377B00047C7C3 /* GenreCell */,
+				EDC502CE28D377B00047C7C3 /* GenreCollectionViewCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1109,7 +1109,7 @@
 				EDE69B7328D7303D002726B0 /* Animation+Modal.swift in Sources */,
 				EDFAD39E28D30E7200ED3BCD /* DataSourceAssembly.swift in Sources */,
 				EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */,
-				EDC502D028D377CC0047C7C3 /* GenreCell.swift in Sources */,
+				EDC502D028D377CC0047C7C3 /* GenreCollectionViewCell.swift in Sources */,
 				EDE69B7128D7303D002726B0 /* Animation+Swirl.swift in Sources */,
 				EDE69B4228D62943002726B0 /* SearchViewController.swift in Sources */,
 				EDFAD37F28D2309C00ED3BCD /* NSObject+Rx.swift in Sources */,

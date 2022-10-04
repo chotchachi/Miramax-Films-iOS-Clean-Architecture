@@ -182,13 +182,13 @@ extension MovieViewController {
         collectionViewLayout.minimumLineSpacing = 12.0
         genresCollectionView.collectionViewLayout = collectionViewLayout
         genresCollectionView.showsHorizontalScrollIndicator = false
-        genresCollectionView.register(cellWithClass: GenreCell.self)
+        genresCollectionView.register(cellWithClass: GenreCollectionViewCell.self)
         genresCollectionView.rx.modelSelected(Genre.self)
             .bind(to: genreSelectTriggerS)
             .disposed(by: rx.disposeBag)
 
         let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Genre>> { dataSource, collectionView, indexPath, item in
-            let cell = collectionView.dequeueReusableCell(withClass: GenreCell.self, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withClass: GenreCollectionViewCell.self, for: indexPath)
             cell.bind(item)
             return cell
         }

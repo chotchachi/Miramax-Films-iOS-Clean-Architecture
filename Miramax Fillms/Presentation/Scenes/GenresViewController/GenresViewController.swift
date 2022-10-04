@@ -47,7 +47,7 @@ class GenresViewController: BaseViewController<GenresViewModel>, LoadingDisplaya
         let output = viewModel.transform(input: input)
         
         let genreDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Genre>> { dataSource, collectionView, indexPath, item in
-            let cell = collectionView.dequeueReusableCell(withClass: GenreCell.self, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withClass: GenreCollectionViewCell.self, for: indexPath)
             cell.bind(item)
             return cell
         }
@@ -90,7 +90,7 @@ extension GenresViewController {
         gridCollectionViewLayout.delegate = self
         collectionView.collectionViewLayout = gridCollectionViewLayout
         collectionView.contentInset = .init(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0)
-        collectionView.register(cellWithClass: GenreCell.self)
+        collectionView.register(cellWithClass: GenreCollectionViewCell.self)
         collectionView.rx.modelSelected(Genre.self)
             .bind(to: genreSelectTriggerS)
             .disposed(by: rx.disposeBag)
