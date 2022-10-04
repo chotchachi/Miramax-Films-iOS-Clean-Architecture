@@ -207,13 +207,13 @@ extension EntertainmentDetailsViewController {
         seasonsTableView.separatorStyle = .none
         seasonsTableView.showsVerticalScrollIndicator = false
         seasonsTableView.isScrollEnabled = false
-        seasonsTableView.register(cellWithClass: SeasonSmallCell.self)
+        seasonsTableView.register(cellWithClass: SeasonSmallTableViewCell.self)
         seasonsTableView.rx.modelSelected(Season.self)
             .bind(to: seasonSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
         let seasonDataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Season>> { dataSource, tableView, indexPath, item in
-            let cell = tableView.dequeueReusableCell(withClass: SeasonSmallCell.self, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withClass: SeasonSmallTableViewCell.self, for: indexPath)
             cell.bind(item, offset: indexPath.row)
             cell.onPlayButtonTapped = { [weak self] in
                 guard let self = self else { return }

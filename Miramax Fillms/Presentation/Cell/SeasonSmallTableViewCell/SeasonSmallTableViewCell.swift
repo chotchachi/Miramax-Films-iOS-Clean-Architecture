@@ -1,5 +1,5 @@
 //
-//  SeasonSmallCell.swift
+//  SeasonSmallTableViewCell.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 21/09/2022.
@@ -10,7 +10,7 @@ import SnapKit
 import SwifterSwift
 import Domain
 
-class SeasonSmallCell: UITableViewCell {
+class SeasonSmallTableViewCell: UITableViewCell {
     
     // MARK: - Views
     

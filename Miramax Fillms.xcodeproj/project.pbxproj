@@ -58,7 +58,7 @@
 		EDD52F5928DA1B2A0078C6C5 /* DimensionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F5828DA1B2A0078C6C5 /* DimensionConstants.swift */; };
 		EDD52F6728DAC9B70078C6C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDD52F6628DAC9B70078C6C5 /* Localizable.strings */; };
 		EDD52F7B28DB6D260078C6C5 /* SelfSizingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7A28DB6D260078C6C5 /* SelfSizingTableView.swift */; };
-		EDD52F7E28DB6F0E0078C6C5 /* SeasonSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7D28DB6F0E0078C6C5 /* SeasonSmallCell.swift */; };
+		EDD52F7E28DB6F0E0078C6C5 /* SeasonSmallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F7D28DB6F0E0078C6C5 /* SeasonSmallTableViewCell.swift */; };
 		EDD52F8328DB7D4D0078C6C5 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD52F8228DB7D4D0078C6C5 /* Date+Ext.swift */; };
 		EDD5300A28DC95740078C6C5 /* SeasonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5300928DC95740078C6C5 /* SeasonsViewModel.swift */; };
 		EDD5301328DC97650078C6C5 /* SeasonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5301128DC97650078C6C5 /* SeasonsViewController.swift */; };
@@ -205,7 +205,7 @@
 		EDD52F5828DA1B2A0078C6C5 /* DimensionConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimensionConstants.swift; sourceTree = "<group>"; };
 		EDD52F6628DAC9B70078C6C5 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EDD52F7A28DB6D260078C6C5 /* SelfSizingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizingTableView.swift; sourceTree = "<group>"; };
-		EDD52F7D28DB6F0E0078C6C5 /* SeasonSmallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonSmallCell.swift; sourceTree = "<group>"; };
+		EDD52F7D28DB6F0E0078C6C5 /* SeasonSmallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonSmallTableViewCell.swift; sourceTree = "<group>"; };
 		EDD52F8228DB7D4D0078C6C5 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		EDD5300928DC95740078C6C5 /* SeasonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonsViewModel.swift; sourceTree = "<group>"; };
 		EDD5301128DC97650078C6C5 /* SeasonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonsViewController.swift; sourceTree = "<group>"; };
@@ -594,12 +594,12 @@
 			path = SelfSizingTableView;
 			sourceTree = "<group>";
 		};
-		EDD52F7C28DB6EBA0078C6C5 /* SeasonSmallCell */ = {
+		EDD52F7C28DB6EBA0078C6C5 /* SeasonSmallTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				EDD52F7D28DB6F0E0078C6C5 /* SeasonSmallCell.swift */,
+				EDD52F7D28DB6F0E0078C6C5 /* SeasonSmallTableViewCell.swift */,
 			);
-			path = SeasonSmallCell;
+			path = SeasonSmallTableViewCell;
 			sourceTree = "<group>";
 		};
 		EDD5300628DC95210078C6C5 /* SeasonsViewController */ = {
@@ -863,7 +863,7 @@
 				EDE92B6228E28EEC0083F33A /* EntertainmentPreviewCollectionViewCell */,
 				EDD5302B28DCBFE10078C6C5 /* EpisodeTableViewCell */,
 				EDD5301728DCA0300078C6C5 /* SeasonLargeTableViewCell */,
-				EDD52F7C28DB6EBA0078C6C5 /* SeasonSmallCell */,
+				EDD52F7C28DB6EBA0078C6C5 /* SeasonSmallTableViewCell */,
 				EDE69B4928D63A31002726B0 /* PersonHorizontalListCell */,
 				EDE69B4C28D63A63002726B0 /* PersonHorizontalCell */,
 				EDC502D928D38FD80047C7C3 /* MovieHorizontalListCell */,
@@ -1117,7 +1117,7 @@
 				EDC6DB4028CF92DE00164EBD /* HomeCoordinator.swift in Sources */,
 				EDD52F7B28DB6D260078C6C5 /* SelfSizingTableView.swift in Sources */,
 				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
-				EDD52F7E28DB6F0E0078C6C5 /* SeasonSmallCell.swift in Sources */,
+				EDD52F7E28DB6F0E0078C6C5 /* SeasonSmallTableViewCell.swift in Sources */,
 				EDC6DB4928CF990900164EBD /* MovieViewModel.swift in Sources */,
 				EDC6DB3228CF724A00164EBD /* AppCoordinator.swift in Sources */,
 				EDE69B7428D7303D002726B0 /* Animation+Fade.swift in Sources */,
