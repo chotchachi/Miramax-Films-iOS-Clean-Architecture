@@ -1,5 +1,5 @@
 //
-//  EpisodeCell.swift
+//  EpisodeTableViewCell.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 22/09/2022.
@@ -12,7 +12,7 @@ import Domain
 
 fileprivate let kOverviewLabelMaxLines: Int = 5
 
-class EpisodeCell: UITableViewCell {
+class EpisodeTableViewCell: UITableViewCell {
  
     // MARK: - Views
     
@@ -45,7 +45,7 @@ class EpisodeCell: UITableViewCell {
             make.top.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.height.equalTo(ivThumbnail.snp.width).multipliedBy(DimensionConstants.episodeCellThumbnailRatio)
+            make.height.equalTo(ivThumbnail.snp.width).multipliedBy(0.42)
         }
         
         // Label air date

@@ -70,7 +70,7 @@
 		EDD5302628DCBDA50078C6C5 /* SeasonDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD5302428DCBDA50078C6C5 /* SeasonDetailsViewController.xib */; };
 		EDD5302828DCBDBA0078C6C5 /* SeasonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5302728DCBDBA0078C6C5 /* SeasonDetailsViewModel.swift */; };
 		EDD5302A28DCBDC50078C6C5 /* SeasonDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5302928DCBDC50078C6C5 /* SeasonDetailsCoordinator.swift */; };
-		EDD5302D28DCC01A0078C6C5 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5302C28DCC01A0078C6C5 /* EpisodeCell.swift */; };
+		EDD5302D28DCC01A0078C6C5 /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD5302C28DCC01A0078C6C5 /* EpisodeTableViewCell.swift */; };
 		EDD9A19628E0B92600FBA909 /* GenresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD9A19528E0B92600FBA909 /* GenresViewModel.swift */; };
 		EDD9A19928E0B93000FBA909 /* GenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD9A19728E0B93000FBA909 /* GenresViewController.swift */; };
 		EDD9A19A28E0B93000FBA909 /* GenresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDD9A19828E0B93000FBA909 /* GenresViewController.xib */; };
@@ -217,7 +217,7 @@
 		EDD5302428DCBDA50078C6C5 /* SeasonDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasonDetailsViewController.xib; sourceTree = "<group>"; };
 		EDD5302728DCBDBA0078C6C5 /* SeasonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailsViewModel.swift; sourceTree = "<group>"; };
 		EDD5302928DCBDC50078C6C5 /* SeasonDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailsCoordinator.swift; sourceTree = "<group>"; };
-		EDD5302C28DCC01A0078C6C5 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		EDD5302C28DCC01A0078C6C5 /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		EDD9A19528E0B92600FBA909 /* GenresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewModel.swift; sourceTree = "<group>"; };
 		EDD9A19728E0B93000FBA909 /* GenresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewController.swift; sourceTree = "<group>"; };
 		EDD9A19828E0B93000FBA909 /* GenresViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenresViewController.xib; sourceTree = "<group>"; };
@@ -640,12 +640,12 @@
 			path = SeasonDetailsViewController;
 			sourceTree = "<group>";
 		};
-		EDD5302B28DCBFE10078C6C5 /* EpisodeCell */ = {
+		EDD5302B28DCBFE10078C6C5 /* EpisodeTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				EDD5302C28DCC01A0078C6C5 /* EpisodeCell.swift */,
+				EDD5302C28DCC01A0078C6C5 /* EpisodeTableViewCell.swift */,
 			);
-			path = EpisodeCell;
+			path = EpisodeTableViewCell;
 			sourceTree = "<group>";
 		};
 		EDD9A19428E0B91200FBA909 /* GenresViewController */ = {
@@ -861,7 +861,7 @@
 				ED5BA69E28EB19370030F4B0 /* EntertainmentRankTableViewCell */,
 				EDE92B7928E32C9D0083F33A /* EntertainmentDetailCollectionViewCell */,
 				EDE92B6228E28EEC0083F33A /* EntertainmentPreviewCollectionViewCell */,
-				EDD5302B28DCBFE10078C6C5 /* EpisodeCell */,
+				EDD5302B28DCBFE10078C6C5 /* EpisodeTableViewCell */,
 				EDD5301728DCA0300078C6C5 /* SeasonLargeCell */,
 				EDD52F7C28DB6EBA0078C6C5 /* SeasonSmallCell */,
 				EDE69B4928D63A31002726B0 /* PersonHorizontalListCell */,
@@ -1091,7 +1091,7 @@
 				EDD9A19C28E0B93A00FBA909 /* GenresCoordinator.swift in Sources */,
 				EDE92B9128E5F4A20083F33A /* Shareable.swift in Sources */,
 				EDC6DB3628CF759400164EBD /* SplashViewController.swift in Sources */,
-				EDD5302D28DCC01A0078C6C5 /* EpisodeCell.swift in Sources */,
+				EDD5302D28DCC01A0078C6C5 /* EpisodeTableViewCell.swift in Sources */,
 				EDD5301928DCA03F0078C6C5 /* SeasonLargeCell.swift in Sources */,
 				EDD5302828DCBDBA0078C6C5 /* SeasonDetailsViewModel.swift in Sources */,
 				EDC502D828D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift in Sources */,

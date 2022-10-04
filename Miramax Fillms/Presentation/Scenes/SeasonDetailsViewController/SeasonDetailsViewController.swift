@@ -34,7 +34,7 @@ class SeasonDetailsViewController: BaseViewController<SeasonDetailsViewModel>, L
         
         // Seasons table view
         tblEpisodes.separatorStyle = .none
-        tblEpisodes.register(cellWithClass: EpisodeCell.self)
+        tblEpisodes.register(cellWithClass: EpisodeTableViewCell.self)
         tblEpisodes.rx.modelSelected(Episode.self)
             .bind(to: episodeSelectTriggerS)
             .disposed(by: rx.disposeBag)
@@ -51,7 +51,7 @@ class SeasonDetailsViewController: BaseViewController<SeasonDetailsViewModel>, L
         let output = viewModel.transform(input: input)
         
         let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Episode>> { dataSource, tableView, indexPath, item in
-            let cell = tableView.dequeueReusableCell(withClass: EpisodeCell.self, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withClass: EpisodeTableViewCell.self, for: indexPath)
             cell.bind(item)
             cell.onLayoutChangeNeeded = { [weak self] in
                 guard let self = self else { return }
