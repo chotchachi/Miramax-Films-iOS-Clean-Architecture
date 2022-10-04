@@ -861,13 +861,13 @@
 				ED5BA69E28EB19370030F4B0 /* EntertainmentRankTableViewCell */,
 				EDE92B7928E32C9D0083F33A /* EntertainmentDetailCollectionViewCell */,
 				EDE92B6228E28EEC0083F33A /* EntertainmentPreviewCollectionViewCell */,
+				EDC502D628D38E550047C7C3 /* EntertainmentHorizontalCell */,
+				EDC502D928D38FD80047C7C3 /* MovieHorizontalListCell */,
 				EDD5302B28DCBFE10078C6C5 /* EpisodeTableViewCell */,
 				EDD5301728DCA0300078C6C5 /* SeasonLargeTableViewCell */,
 				EDD52F7C28DB6EBA0078C6C5 /* SeasonSmallTableViewCell */,
 				EDE69B4928D63A31002726B0 /* PersonHorizontalListCell */,
 				EDE69B4C28D63A63002726B0 /* PersonHorizontalCell */,
-				EDC502D928D38FD80047C7C3 /* MovieHorizontalListCell */,
-				EDC502D628D38E550047C7C3 /* EntertainmentHorizontalCell */,
 				EDC502CE28D377B00047C7C3 /* GenreCollectionViewCell */,
 			);
 			path = Cell;

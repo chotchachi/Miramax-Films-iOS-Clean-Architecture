@@ -28,11 +28,14 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
     
     /// Section banner
     @IBOutlet weak var sectionBannerView: UIView!
+    @IBOutlet weak var bannerMainView: UIView!
     @IBOutlet weak var bannerBackdropImageView: UIImageView!
     @IBOutlet weak var bannerPosterImageView: UIImageView!
     @IBOutlet weak var bannerPosterWrapView: UIView!
     @IBOutlet weak var bannerNameLabel: UILabel!
     @IBOutlet weak var bannerDescriptionLabel: UILabel!
+    @IBOutlet weak var bannerLoadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var bannerRetryButton: PrimaryButton!
     
     /// Section upcoming
     @IBOutlet weak var sectionUpcomingView: UIView!
@@ -66,6 +69,8 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
     private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
     private let genreSelectTriggerS = PublishRelay<Genre>()
     
+    private var airingEntertertainmentItem: EntertainmentModelType?
+    
     // MARK: - Lifecycle
 
     override func configView() {
@@ -85,7 +90,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
         let input = TVShowViewModel.Input(
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             retryGenreTrigger: genresRetryButton.rx.tap.asDriver(),
-            retryAiringTrigger: Driver.empty(),
+            retryAiringTrigger: bannerRetryButton.rx.tap.asDriver(),
             retryUpcomingTrigger: upcomingRetryButton.rx.tap.asDriver(),
             retryPreviewTrigger: previewRetryButton.rx.tap.asDriver(),
             selectionEntertainmentTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
@@ -120,20 +125,20 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
                 case .initial, .paging:
                     break
                 case .populated(let items):
-//                    self.genresLoadingIndicator.stopAnimating()
-//                    self.genresCollectionView.isHidden = false
-//                    self.genresRetryButton.isHidden = true
-//                    self.genresDataS.accept(items)
+                    self.bannerLoadingIndicator.stopAnimating()
+                    self.bannerMainView.isHidden = false
+                    self.bannerRetryButton.isHidden = true
                     if let firstItem = items.first {
+                        self.airingEntertertainmentItem = firstItem
                         self.bannerPosterImageView.setImage(with: firstItem.entertainmentModelPosterURL)
                         self.bannerBackdropImageView.setImage(with: firstItem.entertainmentModelBackdropURL)
                         self.bannerNameLabel.text = firstItem.entertainmentModelName
                         self.bannerDescriptionLabel.text = firstItem.entertainmentModelOverview
                     }
                 case .error:
-//                    self.genresLoadingIndicator.stopAnimating()
-//                    self.genresCollectionView.isHidden = true
-//                    self.genresRetryButton.isHidden = false
+                    self.bannerLoadingIndicator.stopAnimating()
+                    self.bannerMainView.isHidden = true
+                    self.bannerRetryButton.isHidden = false
                     break
                 }
             })
@@ -237,8 +242,8 @@ extension TVShowViewController {
     }
     
     private func configureSectionBanner() {
-//        viewMainWrap.isUserInteractionEnabled = true
-//        viewMainWrap.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onViewMainTapped(_:))))
+        bannerMainView.isUserInteractionEnabled = true
+        bannerMainView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onBannerMainViewTapped(_:))))
         
         bannerPosterImageView.cornerRadius = 8.0
                 
@@ -256,6 +261,19 @@ extension TVShowViewController {
         bannerPosterWrapView.shadowRadius = 10.0
         bannerPosterWrapView.shadowOpacity = 1.0
         bannerPosterWrapView.layer.masksToBounds = false
+        
+        bannerLoadingIndicator.startAnimating()
+        
+        bannerRetryButton.titleText = "retry".localized
+        bannerRetryButton.isHidden = true
+        bannerRetryButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.bannerLoadingIndicator.startAnimating()
+                self.bannerRetryButton.isHidden = true
+                self.bannerMainView.isHidden = true
+            })
+            .disposed(by: rx.disposeBag)
     }
     
     private func configureSectionUpcoming() {
@@ -348,6 +366,11 @@ extension TVShowViewController {
             .map { [SectionModel(model: "", items: $0)] }
             .bind(to: previewCollectionView.rx.items(dataSource: dataSource))
             .disposed(by: rx.disposeBag)
+    }
+    
+    @objc private func onBannerMainViewTapped(_ sender: UITapGestureRecognizer) {
+        guard let item = airingEntertertainmentItem else { return }
+        entertainmentSelectTriggerS.accept(item)
     }
 }
 
