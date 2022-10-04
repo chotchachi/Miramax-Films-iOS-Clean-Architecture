@@ -18,7 +18,7 @@ class EntertainmentRankTableViewCell: UITableViewCell {
     private var ivIcon: UIImageView!
     private var lblName: UILabel!
     private var lblRating: UILabel!
-//    private var lblAirDate: UILabel!
+    private var lblReleaseDate: UILabel!
     private var btnPlay: UIButton!
     
     // MARK: - Properties
@@ -73,18 +73,19 @@ class EntertainmentRankTableViewCell: UITableViewCell {
         lblRating.textColor = AppColors.colorYellow
         lblRating.font = AppFonts.caption2SemiBold
         
-        // Label air date
+        // Label release date
         
-//        lblAirDate = UILabel()
-//        lblAirDate.translatesAutoresizingMaskIntoConstraints = false
-//        lblAirDate.textColor = AppColors.textColorSecondary
-//        lblAirDate.font = AppFonts.caption2
+        lblReleaseDate = UILabel()
+        lblReleaseDate.translatesAutoresizingMaskIntoConstraints = false
+        lblReleaseDate.textColor = AppColors.textColorPrimary
+        lblReleaseDate.font = AppFonts.caption2
         
         // Labels stack view
         
-        let labelsStackView = UIStackView(arrangedSubviews: [lblName, lblRating], axis: .vertical, spacing: 6.0, alignment: .leading)
-        labelsStackView.translatesAutoresizingMaskIntoConstraints = false
+        let labelsBottomStackView = UIStackView(arrangedSubviews: [lblRating, lblReleaseDate], axis: .horizontal, spacing: 2.0)
         
+        let labelsStackView = UIStackView(arrangedSubviews: [lblName, labelsBottomStackView], axis: .vertical, spacing: 6.0, alignment: .leading)
+        labelsStackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(labelsStackView)
         labelsStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8.0)
@@ -98,7 +99,6 @@ class EntertainmentRankTableViewCell: UITableViewCell {
         btnPlay.translatesAutoresizingMaskIntoConstraints = false
         btnPlay.setImage(UIImage(named: "ic_play_fill"), for: .normal)
         btnPlay.addTarget(self, action: #selector(onPlayButtonTapped(_:)), for: .touchUpInside)
-        
         contentView.addSubview(btnPlay)
         btnPlay.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -121,13 +121,16 @@ class EntertainmentRankTableViewCell: UITableViewCell {
             let ratingText = DataUtils.getRatingText(rating)
             lblRating.setText(ratingText, before: UIImage(named: "ic_star_yellow"))
         }
+        
+        let releaseDateStr = getReleaseDateStringFormatted(item.entertainmentModelReleaseDate)
+        lblReleaseDate.text = "• \(releaseDateStr ?? "unknown".localized)"
     }
     
-    private func getAirDateStringFormatted(_ strDate: String?) -> String? {
+    private func getReleaseDateStringFormatted(_ strDate: String?) -> String? {
         if let strDate = strDate,
            let date = DataUtils.getApiResponseDate(strDate) {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMM d, yyyy"
+            dateFormatter.dateFormat = "yyyy"
             return dateFormatter.string(from: date)
         } else {
             return nil

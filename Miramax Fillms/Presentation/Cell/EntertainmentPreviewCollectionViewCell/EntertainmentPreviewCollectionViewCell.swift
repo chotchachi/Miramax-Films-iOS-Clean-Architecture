@@ -17,7 +17,7 @@ class EntertainmentPreviewCollectionViewCell: UICollectionViewCell {
     private var ivPoster: UIImageView!
     private var lblName: UILabel!
     private var lblRating: UILabel!
-    private var lblDescription: UILabel!
+    private var lblReleaseDate: UILabel!
     
     // MARK: - Lifecycle
     
@@ -121,13 +121,18 @@ class EntertainmentPreviewCollectionViewCell: UICollectionViewCell {
             make.bottom.equalToSuperview().offset(-12.0)
         }
         
-        // Label description
+        // Label release date
         
-        lblDescription = UILabel()
-        lblDescription.translatesAutoresizingMaskIntoConstraints = false
-        lblDescription.alpha = 0.8
-        lblDescription.textColor = AppColors.textColorPrimary
-        lblDescription.font = AppFonts.caption2
+        lblReleaseDate = UILabel()
+        lblReleaseDate.translatesAutoresizingMaskIntoConstraints = false
+        lblReleaseDate.alpha = 0.8
+        lblReleaseDate.textColor = AppColors.textColorPrimary
+        lblReleaseDate.font = AppFonts.caption2
+        bottomWrapView.addSubview(lblReleaseDate)
+        lblReleaseDate.snp.makeConstraints { make in
+            make.centerY.equalTo(lblRating.snp.centerY)
+            make.leading.equalTo(lblRating.snp.trailing).offset(2.0)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -144,9 +149,24 @@ class EntertainmentPreviewCollectionViewCell: UICollectionViewCell {
     func bind(_ item: EntertainmentModelType) {
         ivPoster.setImage(with: item.entertainmentModelPosterURL)
         lblName.text = item.entertainmentModelName
+        
         if let rating = item.entertainmentModelRating {
             let ratingText = DataUtils.getRatingText(rating)
             lblRating.setText(ratingText, before: UIImage(named: "ic_star_yellow"))
+        }
+        
+        let releaseDateStr = getReleaseDateStringFormatted(item.entertainmentModelReleaseDate)
+        lblReleaseDate.text = "• \(releaseDateStr ?? "unknown".localized)"
+    }
+    
+    private func getReleaseDateStringFormatted(_ strDate: String?) -> String? {
+        if let strDate = strDate,
+           let date = DataUtils.getApiResponseDate(strDate) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy"
+            return dateFormatter.string(from: date)
+        } else {
+            return nil
         }
     }
 }

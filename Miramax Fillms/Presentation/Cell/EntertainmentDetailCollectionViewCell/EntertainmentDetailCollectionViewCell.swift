@@ -17,6 +17,7 @@ class EntertainmentDetailCollectionViewCell: UICollectionViewCell {
     private var ivPoster: UIImageView!
     private var lblName: UILabel!
     private var lblRating: UILabel!
+    private var lblReleaseDate: UILabel!
     private var lblOverview: UILabel!
     
     // MARK: - Lifecycle
@@ -56,7 +57,15 @@ class EntertainmentDetailCollectionViewCell: UICollectionViewCell {
         lblRating.textColor = AppColors.colorYellow
         lblRating.font = AppFonts.caption2SemiBold
         
-        // Label description
+        // Label release date
+        
+        lblReleaseDate = UILabel()
+        lblReleaseDate.translatesAutoresizingMaskIntoConstraints = false
+        lblReleaseDate.alpha = 0.8
+        lblReleaseDate.textColor = AppColors.textColorPrimary
+        lblReleaseDate.font = AppFonts.caption2
+        
+        // Label overview
         
         lblOverview = UILabel()
         lblOverview.translatesAutoresizingMaskIntoConstraints = false
@@ -103,10 +112,18 @@ class EntertainmentDetailCollectionViewCell: UICollectionViewCell {
         
         // Details stack view
         
-        let detailsStackView = UIStackView(arrangedSubviews: [lblName, lblRating, lblOverview, playTrailerView])
-        detailsStackView.axis = .vertical
-        detailsStackView.spacing = 6.0
-        detailsStackView.alignment = .leading
+        let labelsCenterStackView = UIStackView(
+            arrangedSubviews: [lblRating, lblReleaseDate],
+            axis: .horizontal,
+            spacing: 2.0
+        )
+        
+        let detailsStackView = UIStackView(
+            arrangedSubviews: [lblName, labelsCenterStackView, lblOverview, playTrailerView],
+            axis: .vertical,
+            spacing: 6.0,
+            alignment: .leading
+        )
         detailsStackView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(detailsStackView)
         detailsStackView.snp.makeConstraints { make in
@@ -135,9 +152,24 @@ class EntertainmentDetailCollectionViewCell: UICollectionViewCell {
         ivPoster.setImage(with: item.entertainmentModelPosterURL)
         lblName.text = item.entertainmentModelName
         lblOverview.text = item.entertainmentModelOverview
+        
         if let rating = item.entertainmentModelRating {
             let ratingText = DataUtils.getRatingText(rating)
             lblRating.setText(ratingText, before: UIImage(named: "ic_star_yellow"))
+        }
+        
+        let releaseDateStr = getReleaseDateStringFormatted(item.entertainmentModelReleaseDate)
+        lblReleaseDate.text = "• \(releaseDateStr ?? "unknown".localized)"
+    }
+    
+    private func getReleaseDateStringFormatted(_ strDate: String?) -> String? {
+        if let strDate = strDate,
+           let date = DataUtils.getApiResponseDate(strDate) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy"
+            return dateFormatter.string(from: date)
+        } else {
+            return nil
         }
     }
 }
