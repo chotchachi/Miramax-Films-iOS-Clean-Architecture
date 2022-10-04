@@ -115,7 +115,6 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
                 guard let self = self else { return }
                 self.entertainentDetailDataS.accept(item)
                 self.bindData(item)
-                self.hideErrorRetryView()
                 self.scrollView.isHidden = false
                 self.enableShare()
             })
@@ -124,6 +123,9 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         viewModel.loading
             .drive(onNext: { [weak self] isLoading in
                 isLoading ? self?.showLoader() : self?.hideLoader()
+                if isLoading {
+                    self?.hideErrorRetryView()
+                }
             })
             .disposed(by: rx.disposeBag)
         
