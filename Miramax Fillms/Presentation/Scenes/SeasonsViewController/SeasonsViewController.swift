@@ -31,7 +31,7 @@ class SeasonsViewController: BaseViewController<SeasonsViewModel> {
         
         // Seasons table view
         tblSeasons.separatorStyle = .none
-        tblSeasons.register(cellWithClass: SeasonLargeCell.self)
+        tblSeasons.register(cellWithClass: SeasonLargeTableViewCell.self)
         tblSeasons.rx.modelSelected(Season.self)
             .bind(to: seasonSelectTriggerS)
             .disposed(by: rx.disposeBag)
@@ -47,7 +47,7 @@ class SeasonsViewController: BaseViewController<SeasonsViewModel> {
         let output = viewModel.transform(input: input)
         
         let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Season>> { dataSource, tableView, indexPath, item in
-            let cell = tableView.dequeueReusableCell(withClass: SeasonLargeCell.self, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withClass: SeasonLargeTableViewCell.self, for: indexPath)
             cell.bind(item)
             return cell
         }

@@ -1,5 +1,5 @@
 //
-//  SeasonLargeCell.swift
+//  SeasonLargeTableViewCell.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 22/09/2022.
@@ -10,7 +10,7 @@ import SnapKit
 import SwifterSwift
 import Domain
 
-class SeasonLargeCell: UITableViewCell {
+class SeasonLargeTableViewCell: UITableViewCell {
     
     // MARK: - Views
     
@@ -40,7 +40,7 @@ class SeasonLargeCell: UITableViewCell {
             make.bottom.equalToSuperview().offset(-8.0)
             make.leading.equalToSuperview().offset(16.0)
             make.trailing.equalToSuperview().offset(-16.0)
-            make.height.equalTo(containerView.snp.width).multipliedBy(DimensionConstants.seasonLargeCellRatio)
+            make.height.equalTo(containerView.snp.width).multipliedBy(0.45)
         }
         
         // Image view poster
