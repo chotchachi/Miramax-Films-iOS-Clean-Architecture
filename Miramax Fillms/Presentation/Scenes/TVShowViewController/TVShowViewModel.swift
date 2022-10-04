@@ -27,6 +27,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         let selectionEntertainmentTrigger: Driver<EntertainmentModelType>
         let selectionGenreTrigger: Driver<Genre>
         let previewTabTrigger: Driver<TVShowPreviewTab>
+        let seeMoreUpcomingTrigger: Driver<Void>
     }
     
     struct Output {
@@ -66,7 +67,14 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         input.selectionGenreTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.genreDetails(genre: item))
+                self.router.trigger(.entertainmentList(type: .discover(genre: item)))
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.seeMoreUpcomingTrigger
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.router.trigger(.entertainmentList(type: .showUpcoming))
             })
             .disposed(by: rx.disposeBag)
         

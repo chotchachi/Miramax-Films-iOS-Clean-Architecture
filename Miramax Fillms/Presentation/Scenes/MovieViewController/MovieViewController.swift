@@ -82,7 +82,8 @@ class MovieViewController: BaseViewController<MovieViewModel>, Searchable {
             retryPreviewTrigger: previewRetryButton.rx.tap.asDriver(),
             selectionEntertainmentTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
             selectionGenreTrigger: genreSelectTriggerS.asDriverOnErrorJustComplete(),
-            previewTabTrigger: previewTabTriggerS.asDriverOnErrorJustComplete()
+            previewTabTrigger: previewTabTriggerS.asDriverOnErrorJustComplete(),
+            seeMoreUpcomingTrigger: upcomingSectionHeaderView.rx.seeMoreButtonTap.asDriver()
         )
         let output = viewModel.transform(input: input)
         

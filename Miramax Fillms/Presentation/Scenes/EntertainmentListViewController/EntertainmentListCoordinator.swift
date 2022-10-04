@@ -1,5 +1,5 @@
 //
-//  GenreDetailsCoordinator.swift
+//  EntertainmentListCoordinator.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 27/09/2022.
@@ -8,14 +8,14 @@
 import XCoordinator
 import Domain
 
-enum GenreDetailsRoute: Route {
-    case initial(genre: Genre)
+enum EntertainmentListRoute: Route {
+    case initial(type: EntertainmentListType)
     case pop
     case search
     case entertainmentDetails(entertainment: EntertainmentModelType)
 }
 
-class GenreDetailsCoordinator: NavigationCoordinator<GenreDetailsRoute> {
+class EntertainmentListCoordinator: NavigationCoordinator<EntertainmentListRoute> {
     
     private let appDIContainer: AppDIContainer
 
@@ -25,17 +25,17 @@ class GenreDetailsCoordinator: NavigationCoordinator<GenreDetailsRoute> {
     
     private weak var autoreleaseController: UIViewController?
 
-    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, genre: Genre) {
+    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, type: EntertainmentListType) {
         self.appDIContainer = appDIContainer
         super.init(rootViewController: rootViewController, initialRoute: nil)
-        trigger(.initial(genre: genre))
+        trigger(.initial(type: type))
     }
     
-    override func prepareTransition(for route: GenreDetailsRoute) -> NavigationTransition {
+    override func prepareTransition(for route: EntertainmentListRoute) -> NavigationTransition {
         switch route {
-        case .initial(genre: let genre):
-            let vc = GenreDetailsViewController()
-            vc.viewModel = GenreDetailsViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter, genre: genre)
+        case .initial(type: let type):
+            let vc = EntertainmentListViewController()
+            vc.viewModel = EntertainmentListViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter, type: type)
             autoreleaseController = vc
             return .push(vc)
         case .pop:

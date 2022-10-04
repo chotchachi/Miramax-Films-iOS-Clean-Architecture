@@ -12,7 +12,7 @@ enum TVShowRoute: Route {
     case initial
     case search
     case entertainmentDetails(entertainment: EntertainmentModelType)
-    case genreDetails(genre: Genre)
+    case entertainmentList(type: EntertainmentListType)
 }
 
 class TVShowCoordinator: NavigationCoordinator<TVShowRoute> {
@@ -38,8 +38,8 @@ class TVShowCoordinator: NavigationCoordinator<TVShowRoute> {
         case .entertainmentDetails(entertainment: let entertainment):
             addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
             return .none()
-        case .genreDetails(genre: let genre):
-            addChild(GenreDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, genre: genre))
+        case .entertainmentList(type: let type):
+            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, type: type))
             return .none()
         }
     }

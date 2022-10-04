@@ -1,5 +1,5 @@
 //
-//  GenreDetailsViewController.swift
+//  EntertainmentListViewController.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 27/09/2022.
@@ -12,7 +12,7 @@ import RxDataSources
 import SwifterSwift
 import Domain
 
-class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel>, LoadingDisplayable, ErrorRetryable, Searchable {
+class EntertainmentListViewController: BaseViewController<EntertainmentListViewModel>, LoadingDisplayable, ErrorRetryable, Searchable {
     
     // MARK: - PresentationMode
     
@@ -58,7 +58,7 @@ class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel>, Loa
     override func bindViewModel() {
         super.bindViewModel()
         
-        let input = GenreDetailsViewModel.Input(
+        let input = EntertainmentListViewModel.Input(
             popViewTrigger: appToolbar.rx.backButtonTap.asDriver(),
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             retryTrigger: errorRetryView.rx.retryTapped.asDriver(),
@@ -81,10 +81,10 @@ class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel>, Loa
             }
         }
         
-        output.genre
-            .map { $0.name }
-            .drive(appToolbar.rx.title)
-            .disposed(by: rx.disposeBag)
+//        output.genre
+//            .map { $0.name }
+//            .drive(appToolbar.rx.title)
+//            .disposed(by: rx.disposeBag)
         
         output.entertainmentData
             .map { [SectionModel(model: "", items: $0)] }
@@ -97,6 +97,8 @@ class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel>, Loa
                 self?.isFetching = isLoading
                 if !isLoading {
                     self?.collectionView.refreshControl?.endRefreshing(with: 0.5)
+                } else {
+                    self?.hideErrorRetryView()
                 }
             })
             .disposed(by: rx.disposeBag)
@@ -111,7 +113,7 @@ class GenreDetailsViewController: BaseViewController<GenreDetailsViewModel>, Loa
 
 // MARK: - Private functions
 
-extension GenreDetailsViewController {
+extension EntertainmentListViewController {
     private func configureAppToolbar() {
         appToolbar.rightButtons = [btnSearch]
     }
@@ -184,7 +186,7 @@ extension GenreDetailsViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension GenreDetailsViewController: UICollectionViewDelegate {
+extension EntertainmentListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == collectionView.numberOfItems(inSection: indexPath.section) - 1 && !isFetching {
             loadMoreTriggerS.accept(())

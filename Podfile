@@ -27,6 +27,7 @@ target 'Miramax Fillms' do
   pod 'RxDataSources', '~> 5.0.0'
   pod 'RxSwiftExt', '~> 6.0.1'
   pod "RxRealm", '~> 5.0.4'
+  pod 'Action', '~> 5.0.0'
 
   # XCoordinator
   pod 'XCoordinator', '~> 2.2.0'

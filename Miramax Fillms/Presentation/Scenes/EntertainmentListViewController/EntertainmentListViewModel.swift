@@ -1,5 +1,5 @@
 //
-//  GenreDetailsViewModel.swift
+//  EntertainmentListViewModel.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 27/09/2022.
@@ -12,7 +12,7 @@ import Domain
 
 fileprivate typealias QueryParams = (page: Int, isRefresh: Bool)
 
-class GenreDetailsViewModel: BaseViewModel, ViewModelType {
+class EntertainmentListViewModel: BaseViewModel, ViewModelType {
     
     struct Input {
         let popViewTrigger: Driver<Void>
@@ -24,26 +24,26 @@ class GenreDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     struct Output {
-        let genre: Driver<Genre>
+        let type: Driver<EntertainmentListType>
         let entertainmentData: Driver<[EntertainmentModelType]>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
-    private let router: UnownedRouter<GenreDetailsRoute>
-    private let genre: Genre
+    private let router: UnownedRouter<EntertainmentListRoute>
+    private let type: EntertainmentListType
     
     private var currentPage: Int = 1
     private var hasNextPage: Bool = false
 
-    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<GenreDetailsRoute>, genre: Genre) {
+    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<EntertainmentListRoute>, type: EntertainmentListType) {
         self.repositoryProvider = repositoryProvider
         self.router = router
-        self.genre = genre
+        self.type = type
         super.init()
     }
     
     func transform(input: Input) -> Output {
-        let genreD = Driver.just(genre)
+        let typeD = Driver.just(type)
         
         let refreshTriggerO = input.refreshTrigger
             .asObservable()
@@ -63,7 +63,7 @@ class GenreDetailsViewModel: BaseViewModel, ViewModelType {
         
         let entertainmentDataD = Observable.merge(queryOptionsO, retryTriggerO)
             .flatMapLatest {
-                self.getGenreEntertainmentData(with: $0)
+                self.getEntertainmentData(with: $0)
                     .trackError(self.error)
                     .trackActivity(self.loading)
                     .catch { _ in Observable.empty() }
@@ -99,36 +99,60 @@ class GenreDetailsViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         return Output(
-            genre: genreD,
+            type: typeD,
             entertainmentData: entertainmentDataD
         )
     }
     
-    private func getGenreEntertainmentData(with params: QueryParams) -> Single<(data: [EntertainmentModelType], isRefresh: Bool)> {
-        let genreId = genre.id
+    private func getEntertainmentData(with params: QueryParams) -> Single<(data: [EntertainmentModelType], isRefresh: Bool)> {
         let (page, isRefresh) = params
-        if genre.entertainmentType == .movie {
+        switch type {
+        case .discover(let genre):
+            if genre.entertainmentType == .movie {
+                return repositoryProvider
+                    .movieRepository()
+                    .getByGenre(genreId: genre.id, page: page)
+                    .do(onSuccess: { [weak self] in
+                        guard let self = self else { return }
+                        self.currentPage = $0.page
+                        self.hasNextPage = $0.page < $0.totalPages
+                    })
+                        .map { $0.results as [EntertainmentModelType] }
+                        .map { ($0, isRefresh) }
+            } else {
+                return repositoryProvider
+                    .tvShowRepository()
+                    .getByGenre(genreId: genre.id, page: page)
+                    .do(onSuccess: { [weak self] in
+                        guard let self = self else { return }
+                        self.currentPage = $0.page
+                        self.hasNextPage = $0.page < $0.totalPages
+                    })
+                    .map { $0.results as [EntertainmentModelType] }
+                    .map { ($0, isRefresh) }
+            }
+        case .movieUpcoming:
             return repositoryProvider
                 .movieRepository()
-                .getByGenre(genreId: genreId, page: page)
+                .getUpComing(genreId: nil, page: page)
                 .do(onSuccess: { [weak self] in
                     guard let self = self else { return }
                     self.currentPage = $0.page
                     self.hasNextPage = $0.page < $0.totalPages
                 })
-                .map { $0.results as [EntertainmentModelType] }
-                .map { ($0, isRefresh) }
-        } else {
+                    .map { $0.results as [EntertainmentModelType] }
+                    .map { ($0, isRefresh) }
+        case .showUpcoming:
             return repositoryProvider
                 .tvShowRepository()
-                .getByGenre(genreId: genreId, page: page)
+                .getAiringToday(genreId: nil, page: page)
                 .do(onSuccess: { [weak self] in
                     guard let self = self else { return }
                     self.currentPage = $0.page
                     self.hasNextPage = $0.page < $0.totalPages
                 })
-                .map { $0.results as [EntertainmentModelType] }
-                .map { ($0, isRefresh) }
+                    .map { $0.results as [EntertainmentModelType] }
+                    .map { ($0, isRefresh) }
         }
     }
 }

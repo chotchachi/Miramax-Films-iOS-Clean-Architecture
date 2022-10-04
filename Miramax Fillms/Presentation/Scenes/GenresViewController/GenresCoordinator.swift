@@ -35,7 +35,7 @@ class GenresCoordinator: NavigationCoordinator<GenresRoute> {
             addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
             return .none()
         case .genreDetails(genre: let genre):
-            addChild(GenreDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, genre: genre))
+            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, type: .discover(genre: genre)))
             return .none()
         }
     }

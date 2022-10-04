@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GenreDetailsViewController" customModule="Miramax_Fillms" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EntertainmentListViewController" customModule="Miramax_Fillms" customModuleProvider="target">
             <connections>
                 <outlet property="appToolbar" destination="bgt-yy-LRh" id="1hs-1u-osh"/>
                 <outlet property="btnTogglePresentationMode" destination="m5E-KZ-3Vl" id="zWR-S6-8hF"/>

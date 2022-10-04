@@ -1,4 +1,7 @@
 PODS:
+  - Action (5.0.0):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - Alamofire (5.6.2)
   - Differentiator (5.0.0)
   - Kingfisher (6.3.1)
@@ -49,6 +52,7 @@ PODS:
     - XCoordinator/Core
 
 DEPENDENCIES:
+  - Action (~> 5.0.0)
   - Kingfisher
   - MKProgress
   - Moya/RxSwift (~> 15.0)
@@ -68,6 +72,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Action
     - Alamofire
     - Differentiator
     - Kingfisher
@@ -89,6 +94,7 @@ SPEC REPOS:
     - XCoordinator
 
 SPEC CHECKSUMS:
+  Action: 47f1825511907b4fcd79dd7a7db9526c20f78018
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
@@ -109,6 +115,6 @@ SPEC CHECKSUMS:
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   XCoordinator: a5f91e43ee944f508529763921165697d3211629
 
-PODFILE CHECKSUM: df9400adc667ce0ffd9a6ef0a0b46aea4567d8ab
+PODFILE CHECKSUM: 4196295f8f5c5c6220e2f4e7731fcb90aa610bd1
 
 COCOAPODS: 1.11.3
