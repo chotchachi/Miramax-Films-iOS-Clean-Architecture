@@ -69,7 +69,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
     private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
     private let genreSelectTriggerS = PublishRelay<Genre>()
     
-    private var airingEntertertainmentItem: EntertainmentModelType?
+    private var bannerEntertertainmentItem: EntertainmentModelType?
     
     // MARK: - Lifecycle
 
@@ -90,7 +90,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
         let input = TVShowViewModel.Input(
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             retryGenreTrigger: genresRetryButton.rx.tap.asDriver(),
-            retryAiringTrigger: bannerRetryButton.rx.tap.asDriver(),
+            retryBannerTrigger: bannerRetryButton.rx.tap.asDriver(),
             retryUpcomingTrigger: upcomingRetryButton.rx.tap.asDriver(),
             retryPreviewTrigger: previewRetryButton.rx.tap.asDriver(),
             selectionEntertainmentTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
@@ -118,7 +118,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
             })
             .disposed(by: rx.disposeBag)
         
-        output.airingViewState
+        output.bannerViewState
             .drive(onNext: { [weak self] viewState in
                 guard let self = self else { return }
                 switch viewState {
@@ -129,7 +129,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
                     self.bannerMainView.isHidden = false
                     self.bannerRetryButton.isHidden = true
                     if let firstItem = items.first {
-                        self.airingEntertertainmentItem = firstItem
+                        self.bannerEntertertainmentItem = firstItem
                         self.bannerPosterImageView.setImage(with: firstItem.entertainmentModelPosterURL)
                         self.bannerBackdropImageView.setImage(with: firstItem.entertainmentModelBackdropURL)
                         self.bannerNameLabel.text = firstItem.entertainmentModelName
@@ -369,7 +369,7 @@ extension TVShowViewController {
     }
     
     @objc private func onBannerMainViewTapped(_ sender: UITapGestureRecognizer) {
-        guard let item = airingEntertertainmentItem else { return }
+        guard let item = bannerEntertertainmentItem else { return }
         entertainmentSelectTriggerS.accept(item)
     }
 }

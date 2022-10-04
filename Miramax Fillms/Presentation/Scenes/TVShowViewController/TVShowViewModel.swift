@@ -21,7 +21,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let toSearchTrigger: Driver<Void>
         let retryGenreTrigger: Driver<Void>
-        let retryAiringTrigger: Driver<Void>
+        let retryBannerTrigger: Driver<Void>
         let retryUpcomingTrigger: Driver<Void>
         let retryPreviewTrigger: Driver<Void>
         let selectionEntertainmentTrigger: Driver<EntertainmentModelType>
@@ -31,7 +31,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
     
     struct Output {
         let genresViewState: Driver<ViewState<Genre>>
-        let airingViewState: Driver<ViewState<TVShow>>
+        let bannerViewState: Driver<ViewState<TVShow>>
         let upcomingViewState: Driver<ViewState<TVShow>>
         let previewViewState: Driver<ViewState<TVShow>>
     }
@@ -73,7 +73,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         let retryGenreTriggerO = input.retryGenreTrigger
             .asObservable()
         
-        let retryAiringTriggerO = input.retryAiringTrigger
+        let retryBannerTriggerO = input.retryBannerTrigger
             .asObservable()
         
         let retryUpcomingTriggerO = input.retryUpcomingTrigger
@@ -89,7 +89,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
             }
             .asDriverOnErrorJustComplete()
         
-        let airingViewStateD = Observable.merge(viewTriggerO, retryAiringTriggerO)
+        let bannerViewStateD = Observable.merge(viewTriggerO, retryBannerTriggerO)
             .flatMapLatest {
                 self.repositoryProvider
                     .tvShowRepository()
@@ -126,7 +126,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
             .asDriverOnErrorJustComplete()
         
         return Output(genresViewState: genresViewStateD,
-                      airingViewState: airingViewStateD,
+                      bannerViewState: bannerViewStateD,
                       upcomingViewState: upcomingViewStateD,
                       previewViewState: previewViewStateD)
     }
