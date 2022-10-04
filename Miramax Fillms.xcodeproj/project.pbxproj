@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		61D73C8110AE141D057D3229 /* Pods_Miramax_Fillms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C90E95A357C070699EC3983 /* Pods_Miramax_Fillms.framework */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
+		ED7A095328EC71370035E099 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094F28EC711D0035E099 /* Roboto-Bold.ttf */; };
+		ED7A095428EC71370035E099 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */; };
+		ED7A095528EC71370035E099 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A095028EC711D0035E099 /* Roboto-Medium.ttf */; };
+		ED7A095628EC71370035E099 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094D28EC711D0035E099 /* Roboto-Black.ttf */; };
+		ED7A095728EC71370035E099 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A095128EC711D0035E099 /* Roboto-Light.ttf */; };
+		ED7A095828EC71370035E099 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A095228EC711D0035E099 /* Roboto-Thin.ttf */; };
 		ED866E1D28DED76C0066E10B /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E1B28DED76C0066E10B /* PersonDetailsViewController.swift */; };
 		ED866E1E28DED76C0066E10B /* PersonDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED866E1C28DED76C0066E10B /* PersonDetailsViewController.xib */; };
 		ED866E2028DED7AA0066E10B /* PersonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E1F28DED7AA0066E10B /* PersonDetailsViewModel.swift */; };
@@ -154,6 +160,12 @@
 		4758F1EC2A08D665697C22E4 /* Pods-Miramax Fillms.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Miramax Fillms.release.xcconfig"; path = "Target Support Files/Pods-Miramax Fillms/Pods-Miramax Fillms.release.xcconfig"; sourceTree = "<group>"; };
 		53B990CD2AA8BFC87184AC0E /* Pods-Miramax Fillms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Miramax Fillms.debug.xcconfig"; path = "Target Support Files/Pods-Miramax Fillms/Pods-Miramax Fillms.debug.xcconfig"; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
+		ED7A094D28EC711D0035E099 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		ED7A094F28EC711D0035E099 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		ED7A095028EC711D0035E099 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		ED7A095128EC711D0035E099 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		ED7A095228EC711D0035E099 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		ED866E1B28DED76C0066E10B /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
 		ED866E1C28DED76C0066E10B /* PersonDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonDetailsViewController.xib; sourceTree = "<group>"; };
 		ED866E1F28DED7AA0066E10B /* PersonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -308,6 +320,19 @@
 				ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */,
 			);
 			path = EntertainmentRankTableViewCell;
+			sourceTree = "<group>";
+		};
+		ED7A094C28EC70D30035E099 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				ED7A094D28EC711D0035E099 /* Roboto-Black.ttf */,
+				ED7A094F28EC711D0035E099 /* Roboto-Bold.ttf */,
+				ED7A095128EC711D0035E099 /* Roboto-Light.ttf */,
+				ED7A095028EC711D0035E099 /* Roboto-Medium.ttf */,
+				ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */,
+				ED7A095228EC711D0035E099 /* Roboto-Thin.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		ED866E1A28DED7590066E10B /* PersonDetailsViewController */ = {
@@ -483,6 +508,7 @@
 		EDC6DB1928CF669F00164EBD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ED7A094C28EC70D30035E099 /* Fonts */,
 				ED86E62A28C6369B00D60351 /* Assets.xcassets */,
 				EDD52F6628DAC9B70078C6C5 /* Localizable.strings */,
 			);
@@ -975,17 +1001,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED7A095528EC71370035E099 /* Roboto-Medium.ttf in Resources */,
+				ED7A095328EC71370035E099 /* Roboto-Bold.ttf in Resources */,
 				EDD9A19A28E0B93000FBA909 /* GenresViewController.xib in Resources */,
 				EDC6DB4728CF98F800164EBD /* MovieViewController.xib in Resources */,
 				EDC6DB3728CF759400164EBD /* SplashViewController.xib in Resources */,
+				ED7A095628EC71370035E099 /* Roboto-Black.ttf in Resources */,
 				EDD5301428DC97650078C6C5 /* SeasonsViewController.xib in Resources */,
 				ED866E4128E01C300066E10B /* PersonBiographyViewController.xib in Resources */,
+				ED7A095728EC71370035E099 /* Roboto-Light.ttf in Resources */,
 				EDE69B4328D62943002726B0 /* SearchViewController.xib in Resources */,
 				EDE69B7E28D73214002726B0 /* TVShowViewController.xib in Resources */,
 				EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */,
 				EDD5302628DCBDA50078C6C5 /* SeasonDetailsViewController.xib in Resources */,
 				EDE92B6928E292110083F33A /* GenreDetailsViewController.xib in Resources */,
+				ED7A095828EC71370035E099 /* Roboto-Thin.ttf in Resources */,
 				EDD52F6728DAC9B70078C6C5 /* Localizable.strings in Resources */,
+				ED7A095428EC71370035E099 /* Roboto-Regular.ttf in Resources */,
 				ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */,
 				ED866E1E28DED76C0066E10B /* PersonDetailsViewController.xib in Resources */,
 			);

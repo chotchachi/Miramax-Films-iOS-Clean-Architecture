@@ -9,31 +9,37 @@ import UIKit
 
 struct AppFonts {
     static func bold(withSize size: CGFloat, dynamic: Bool = true) -> UIFont {
-        let font = UIFont.systemFont(ofSize: size, weight: UIFont.Weight.bold)
+        let font = UIFont(name: "Roboto-Black", size: size) ?? .systemFont(ofSize: size, weight: .bold)
         if !dynamic { return font }
         return UIFontMetrics.default.scaledFont(for: font)
     }
 
     static func semiBold(withSize size: CGFloat, dynamic: Bool = true) -> UIFont {
-        let font = UIFont.systemFont(ofSize: size, weight: UIFont.Weight.semibold)
+        let font = UIFont(name: "Roboto-Bold", size: size) ?? .systemFont(ofSize: size, weight: .semibold)
         if !dynamic { return font }
         return UIFontMetrics.default.scaledFont(for: font)
     }
 
+    static func thin(withSize size: CGFloat, dynamic: Bool = true) -> UIFont {
+        let font = UIFont(name: "Roboto-Thin", size: size) ?? .systemFont(ofSize: size, weight: .thin)
+        if !dynamic { return font }
+        return UIFontMetrics.default.scaledFont(for: font)
+    }
+    
     static func light(withSize size: CGFloat, dynamic: Bool = true) -> UIFont {
-        let font = UIFont.systemFont(ofSize: size, weight: UIFont.Weight.light)
+        let font = UIFont(name: "Roboto-Light", size: size) ?? .systemFont(ofSize: size, weight: .light)
         if !dynamic { return font }
         return UIFontMetrics.default.scaledFont(for: font)
     }
     
     static func medium(withSize size: CGFloat, dynamic: Bool = true) -> UIFont {
-        let font = UIFont.systemFont(ofSize: size, weight: UIFont.Weight.medium)
+        let font = UIFont(name: "Roboto-Medium", size: size) ?? .systemFont(ofSize: size, weight: .medium)
         if !dynamic { return font }
         return UIFontMetrics.default.scaledFont(for: font)
     }
 
     static func regular(withSize size: CGFloat, dynamic: Bool = true) -> UIFont {
-        let font = UIFont.systemFont(ofSize: size, weight: UIFont.Weight.regular)
+        let font = UIFont(name: "Roboto-Regular", size: size) ?? .systemFont(ofSize: size, weight: .regular)
         if !dynamic { return font }
         return UIFontMetrics.default.scaledFont(for: font)
     }
