@@ -106,7 +106,8 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
             personSelectTrigger: personSelectTriggerS.asDriverOnErrorJustComplete(),
             entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
             shareTrigger: btnShare.rx.tap.asDriver(),
-            retryTrigger: errorRetryView.rx.retryTapped.asDriver()
+            retryTrigger: errorRetryView.rx.retryTapped.asDriver(),
+            seeMoreRecommendTrigger: recommendSectionHeaderView.rx.seeMoreButtonTap.asDriver()
         )
         let output = viewModel.transform(input: input)
         

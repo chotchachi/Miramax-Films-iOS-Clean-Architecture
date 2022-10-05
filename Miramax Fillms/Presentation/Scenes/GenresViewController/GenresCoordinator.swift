@@ -11,7 +11,7 @@ import Domain
 enum GenresRoute: Route {
     case initial
     case search
-    case genreDetails(genre: Genre)
+    case discover(genre: Genre)
 }
 
 class GenresCoordinator: NavigationCoordinator<GenresRoute> {
@@ -34,8 +34,8 @@ class GenresCoordinator: NavigationCoordinator<GenresRoute> {
         case .search:
             addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
             return .none()
-        case .genreDetails(genre: let genre):
-            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, type: .discover(genre: genre)))
+        case .discover(genre: let genre):
+            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, responseRoute: .discover(genre: genre)))
             return .none()
         }
     }

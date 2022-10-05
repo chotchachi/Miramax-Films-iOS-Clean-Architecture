@@ -81,10 +81,19 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
             }
         }
         
-//        output.genre
-//            .map { $0.name }
-//            .drive(appToolbar.rx.title)
-//            .disposed(by: rx.disposeBag)
+        output.responseRoute
+            .drive(onNext: { [weak self] route in
+                guard let self = self else { return }
+                switch route {
+                case .discover(genre: let genre):
+                    self.appToolbar.title = genre.name
+                case .recommendations:
+                    self.appToolbar.title = "recommend".localized
+                case .movieUpcoming, .showUpcoming:
+                    self.appToolbar.title = "upcoming".localized
+                }
+            })
+            .disposed(by: rx.disposeBag)
         
         output.entertainmentData
             .map { [SectionModel(model: "", items: $0)] }

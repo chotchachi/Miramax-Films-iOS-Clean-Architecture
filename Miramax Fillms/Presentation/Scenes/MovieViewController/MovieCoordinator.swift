@@ -13,7 +13,7 @@ enum MovieRoute: Route {
     case initial
     case search
     case entertainmentDetails(entertainment: EntertainmentModelType)
-    case entertainmentList(type: EntertainmentListType)
+    case entertainmentList(responseRoute: EntertainmentsResponseRoute)
 }
 
 class MovieCoordinator: NavigationCoordinator<MovieRoute> {
@@ -39,8 +39,8 @@ class MovieCoordinator: NavigationCoordinator<MovieRoute> {
         case .entertainmentDetails(entertainment: let entertainment):
             addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
             return .none()
-        case .entertainmentList(type: let type):
-            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, type: type))
+        case .entertainmentList(responseRoute: let responseRoute):
+            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, responseRoute: responseRoute))
             return .none()
         }
     }

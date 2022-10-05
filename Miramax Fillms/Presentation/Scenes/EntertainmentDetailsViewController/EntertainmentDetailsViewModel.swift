@@ -20,6 +20,7 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
         let entertainmentSelectTrigger: Driver<EntertainmentModelType>
         let shareTrigger: Driver<Void>
         let retryTrigger: Driver<Void>
+        let seeMoreRecommendTrigger: Driver<Void>
     }
     
     struct Output {
@@ -102,6 +103,13 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.router.trigger(.share)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.seeMoreRecommendTrigger
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.router.trigger(.recommendations)
             })
             .disposed(by: rx.disposeBag)
         

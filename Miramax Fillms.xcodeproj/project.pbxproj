@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		61D73C8110AE141D057D3229 /* Pods_Miramax_Fillms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C90E95A357C070699EC3983 /* Pods_Miramax_Fillms.framework */; };
-		ED1F03AD28EC92360083B088 /* EntertainmentListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03AC28EC92360083B088 /* EntertainmentListType.swift */; };
+		ED1F03AD28EC92360083B088 /* EntertainmentsResponseRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03AC28EC92360083B088 /* EntertainmentsResponseRoute.swift */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
 		ED7A095328EC71370035E099 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094F28EC711D0035E099 /* Roboto-Bold.ttf */; };
 		ED7A095428EC71370035E099 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */; };
@@ -160,7 +160,7 @@
 		2C90E95A357C070699EC3983 /* Pods_Miramax_Fillms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Miramax_Fillms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4758F1EC2A08D665697C22E4 /* Pods-Miramax Fillms.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Miramax Fillms.release.xcconfig"; path = "Target Support Files/Pods-Miramax Fillms/Pods-Miramax Fillms.release.xcconfig"; sourceTree = "<group>"; };
 		53B990CD2AA8BFC87184AC0E /* Pods-Miramax Fillms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Miramax Fillms.debug.xcconfig"; path = "Target Support Files/Pods-Miramax Fillms/Pods-Miramax Fillms.debug.xcconfig"; sourceTree = "<group>"; };
-		ED1F03AC28EC92360083B088 /* EntertainmentListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentListType.swift; sourceTree = "<group>"; };
+		ED1F03AC28EC92360083B088 /* EntertainmentsResponseRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentsResponseRoute.swift; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
 		ED7A094D28EC711D0035E099 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -340,7 +340,6 @@
 		ED7A095B28EC84D80035E099 /* EntertainmentListViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ED1F03AC28EC92360083B088 /* EntertainmentListType.swift */,
 				ED7A095C28EC84D80035E099 /* EntertainmentListViewModel.swift */,
 				ED7A095F28EC84D80035E099 /* EntertainmentListViewController.swift */,
 				ED7A095D28EC84D80035E099 /* EntertainmentListViewController.xib */,
@@ -555,6 +554,7 @@
 		EDC6DB2228CF69FE00164EBD /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				ED1F03AC28EC92360083B088 /* EntertainmentsResponseRoute.swift */,
 				EDFAD38228D2387F00ED3BCD /* ViewState.swift */,
 			);
 			path = Common;
@@ -1157,7 +1157,7 @@
 				EDE69B7428D7303D002726B0 /* Animation+Fade.swift in Sources */,
 				EDE69B7928D730F3002726B0 /* CGAffineTransform+Ext.swift in Sources */,
 				EDB8780528D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift in Sources */,
-				ED1F03AD28EC92360083B088 /* EntertainmentListType.swift in Sources */,
+				ED1F03AD28EC92360083B088 /* EntertainmentsResponseRoute.swift in Sources */,
 				EDD52F5928DA1B2A0078C6C5 /* DimensionConstants.swift in Sources */,
 				EDE92B9928E5F7F10083F33A /* SearchButton.swift in Sources */,
 				EDA4476E28D432350037751C /* AppColors.swift in Sources */,

@@ -17,6 +17,7 @@ enum EntertainmentDetailsRoute: Route {
     case seasonDetails(season: Season)
     case personDetails(person: PersonModelType)
     case entertainmentDetails(entertainment: EntertainmentModelType)
+    case recommendations
 }
 
 class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetailsRoute> {
@@ -72,6 +73,9 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
             return .none()
         case .entertainmentDetails(entertainment: let entertainment):
             addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
+            return .none()
+        case .recommendations:
+            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, responseRoute: .recommendations(entertainment: entertainment)))
             return .none()
         }
     }
