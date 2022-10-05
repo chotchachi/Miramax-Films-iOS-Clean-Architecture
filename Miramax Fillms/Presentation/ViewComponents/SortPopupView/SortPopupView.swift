@@ -88,12 +88,12 @@ final class SortPopupView: UIView {
         }        
     }
     
-    func setSortOptions(_ options: [SortOption]) {
+    func setSortOptions(_ options: [SortOption], selectedOption: SortOption?) {
         sortOptions = options
         
         optionsStackView.removeArrangedSubviews()
         options.enumerated().forEach { (offset, item) in
-            let optionButton = createOptionButton(sortOption: item, offset: offset)
+            let optionButton = createOptionButton(sortOption: item, offset: offset, isSelected: item == selectedOption)
             optionsStackView.addArrangedSubview(optionButton)
             optionButton.snp.makeConstraints { make in
                 make.width.equalToSuperview()
@@ -110,14 +110,19 @@ final class SortPopupView: UIView {
         }
     }
     
-    private func createOptionButton(sortOption: SortOption, offset: Int) -> UIButton {
+    private func createOptionButton(sortOption: SortOption, offset: Int, isSelected: Bool) -> UIButton {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tag = offset
         button.setTitle(sortOption.text, for: .normal)
-        button.setTitleColor(AppColors.colorAccent, for: .selected)
-        button.setTitleColor(AppColors.textColorPrimary, for: .normal)
         button.addTarget(self, action: #selector(sortOptionButtonTapped(_:)), for: .touchUpInside)
+        if isSelected {
+            button.titleLabel?.font = AppFonts.bodySemiBold
+            button.setTitleColor(AppColors.colorAccent, for: .normal)
+        } else {
+            button.titleLabel?.font = AppFonts.body
+            button.setTitleColor(AppColors.textColorPrimary, for: .normal)
+        }
         return button
     }
     
