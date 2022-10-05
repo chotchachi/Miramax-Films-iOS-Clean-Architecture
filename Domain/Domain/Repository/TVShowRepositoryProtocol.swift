@@ -12,7 +12,7 @@ public protocol TVShowRepositoryProtocol {
     func getOnTheAir(genreId: Int?, page: Int?) -> Single<TVShowResponse>
     func getTopRated(genreId: Int?, page: Int?) -> Single<TVShowResponse>
     func getPopular(genreId: Int?, page: Int?) -> Single<TVShowResponse>
-    func getByGenre(genreId: Int?, page: Int?) -> Single<TVShowResponse>
+    func getByGenre(genreId: Int, page: Int?) -> Single<TVShowResponse>
     func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetail>
     func getTVShowSeasonDetails(tvShowId: Int, seasonNumber: Int) -> Single<Season>
 }
