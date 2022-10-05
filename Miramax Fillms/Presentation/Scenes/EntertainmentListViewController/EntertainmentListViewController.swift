@@ -12,14 +12,12 @@ import RxDataSources
 import SwifterSwift
 import Domain
 
+enum PresentationMode: String, Codable {
+    case preview
+    case detail
+}
+
 class EntertainmentListViewController: BaseViewController<EntertainmentListViewModel>, LoadingDisplayable, ErrorRetryable, Searchable {
-    
-    // MARK: - PresentationMode
-    
-    enum PresentationMode {
-        case preview
-        case detail
-    }
     
     // MARK: - Outlets
     
@@ -36,7 +34,15 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
     private var previewLayout: ColumnFlowLayout!
     private var detailLayout: ColumnFlowLayout!
     
-    private var presentationMode: PresentationMode = .preview
+    private var presentationMode: PresentationMode {
+        get {
+            Defaults.shared.get(for: .presentationModel) ?? .preview
+        }
+        set {
+            Defaults.shared.set(newValue, for: .presentationModel)
+            updateButtonTogglePresentationModeIcon(newValue)
+        }
+    }
     
     private var isAnimatingPresentation: Bool = false
     private var isFetching: Bool = false
@@ -160,6 +166,8 @@ extension EntertainmentListViewController {
     }
     
     private func configureHeaderView() {
+        updateButtonTogglePresentationModeIcon(presentationMode)
+        
         btnTogglePresentationMode.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -174,13 +182,16 @@ extension EntertainmentListViewController {
         switch presentationMode {
         case .preview:
             presentationMode = .detail
-            btnTogglePresentationMode.setImage(UIImage(named: "ic_grid_mode"), for: .normal)
             updateCollectionViewLayout(detailLayout)
         case .detail:
             presentationMode = .preview
-            btnTogglePresentationMode.setImage(UIImage(named: "ic_list_mode"), for: .normal)
             updateCollectionViewLayout(previewLayout)
         }
+    }
+    
+    private func updateButtonTogglePresentationModeIcon(_ mode: PresentationMode) {
+        let icon = mode == .preview ? UIImage(named: "ic_list_mode") : UIImage(named: "ic_grid_mode")
+        btnTogglePresentationMode.setImage(icon, for: .normal)
     }
     
     private func updateCollectionViewLayout(_ layout: UICollectionViewLayout) {

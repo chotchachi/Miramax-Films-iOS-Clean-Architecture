@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		61D73C8110AE141D057D3229 /* Pods_Miramax_Fillms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C90E95A357C070699EC3983 /* Pods_Miramax_Fillms.framework */; };
 		ED1F03AD28EC92360083B088 /* EntertainmentsResponseRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03AC28EC92360083B088 /* EntertainmentsResponseRoute.swift */; };
+		ED1F03B828EDBD370083B088 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03B728EDBD370083B088 /* Defaults.swift */; };
+		ED1F03BA28EDBD550083B088 /* DefaultsContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03B928EDBD550083B088 /* DefaultsContants.swift */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
 		ED7A095328EC71370035E099 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094F28EC711D0035E099 /* Roboto-Bold.ttf */; };
 		ED7A095428EC71370035E099 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */; };
@@ -161,6 +163,8 @@
 		4758F1EC2A08D665697C22E4 /* Pods-Miramax Fillms.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Miramax Fillms.release.xcconfig"; path = "Target Support Files/Pods-Miramax Fillms/Pods-Miramax Fillms.release.xcconfig"; sourceTree = "<group>"; };
 		53B990CD2AA8BFC87184AC0E /* Pods-Miramax Fillms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Miramax Fillms.debug.xcconfig"; path = "Target Support Files/Pods-Miramax Fillms/Pods-Miramax Fillms.debug.xcconfig"; sourceTree = "<group>"; };
 		ED1F03AC28EC92360083B088 /* EntertainmentsResponseRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentsResponseRoute.swift; sourceTree = "<group>"; };
+		ED1F03B728EDBD370083B088 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		ED1F03B928EDBD550083B088 /* DefaultsContants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsContants.swift; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
 		ED7A094D28EC711D0035E099 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -316,6 +320,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		ED1F03B628EDBD2B0083B088 /* DefaultsKit */ = {
+			isa = PBXGroup;
+			children = (
+				ED1F03B728EDBD370083B088 /* Defaults.swift */,
+				ED1F03B928EDBD550083B088 /* DefaultsContants.swift */,
+			);
+			path = DefaultsKit;
+			sourceTree = "<group>";
+		};
 		ED5BA69E28EB19370030F4B0 /* EntertainmentRankTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +426,7 @@
 		EDA4476A28D431D00037751C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				ED1F03B628EDBD2B0083B088 /* DefaultsKit */,
 				EDE69B6B28D7303D002726B0 /* XCoordinator+Animations */,
 				EDA4476B28D431DC0037751C /* AppFonts.swift */,
 				EDA4476D28D432350037751C /* AppColors.swift */,
@@ -1138,11 +1152,13 @@
 				EDE69B3B28D60E5B002726B0 /* TabLayoutDelegate.swift in Sources */,
 				EDA4478328D59A090037751C /* Constants.swift in Sources */,
 				EDFAD3A728D3149500ED3BCD /* ProviderAssembly.swift in Sources */,
+				ED1F03B828EDBD370083B088 /* Defaults.swift in Sources */,
 				EDFAD38328D2387F00ED3BCD /* ViewState.swift in Sources */,
 				EDE92B7C28E350650083F33A /* ColumnFlowLayout.swift in Sources */,
 				EDE69B7328D7303D002726B0 /* Animation+Modal.swift in Sources */,
 				EDFAD39E28D30E7200ED3BCD /* DataSourceAssembly.swift in Sources */,
 				EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */,
+				ED1F03BA28EDBD550083B088 /* DefaultsContants.swift in Sources */,
 				EDC502D028D377CC0047C7C3 /* GenreCollectionViewCell.swift in Sources */,
 				EDE69B7128D7303D002726B0 /* Animation+Swirl.swift in Sources */,
 				EDE69B4228D62943002726B0 /* SearchViewController.swift in Sources */,
