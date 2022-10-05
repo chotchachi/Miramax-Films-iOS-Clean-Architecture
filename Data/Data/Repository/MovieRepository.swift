@@ -47,9 +47,15 @@ public final class MovieRepository: MovieRepositoryProtocol {
             .map { $0.asDomain() }
     }
     
-    public func getMovieDetail(movieId: Int) -> Single<MovieDetail> {
+    public func getDetail(movieId: Int) -> Single<MovieDetail> {
         return remoteDataSource
             .getMovieDetail(movieId: movieId)
+            .map { $0.asDomain() }
+    }
+    
+    public func getRecommendations(movieId: Int, page: Int?) -> Single<MovieResponse> {
+        return remoteDataSource
+            .getMovieRecommendations(movieId: movieId, page: page)
             .map { $0.asDomain() }
     }
 }

@@ -61,6 +61,10 @@ public final class NetworkManager: Api {
         return movieNetworking.provider.requestObject(.detail(movieId: movieId), type: MovieDetailDTO.self)
     }
     
+    public func getMovieRecommendations(movieId: Int, page: Int?) -> Single<MovieResponseDTO> {
+        return movieNetworking.provider.requestObject(.recommendations(movieId: movieId, page: page), type: MovieResponseDTO.self)
+    }
+    
     // MARK: - Show
 
     public func getTVShowAiringToday(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO> {
@@ -87,12 +91,15 @@ public final class NetworkManager: Api {
         return tvShowNetworking.provider.requestObject(.detail(tvShowId: tvShowId), type: TVShowDetailDTO.self)
     }
     
+    public func getTVShowRecommendations(tvShowId: Int, page: Int?) -> Single<TVShowResponseDTO> {
+        return tvShowNetworking.provider.requestObject(.recommendations(tvShowId: tvShowId, page: page), type: TVShowResponseDTO.self)
+    }
+    
     // MARK: - TV Season
     
     public func getTVSeasonDetails(tvShowId: Int, seasonNumber: Int) -> Single<SeasonDTO> {
         return tvShowNetworking.provider.requestObject(.season(tvShowId: tvShowId, seasonNumber: seasonNumber), type: SeasonDTO.self)
     }
-
     
     // MARK: - Search
     

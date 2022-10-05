@@ -14,6 +14,7 @@ enum MovieApi {
     case upComing(genreId: Int?, page: Int?)
     case byGenre(genreId: Int, page: Int?)
     case detail(movieId: Int)
+    case recommendations(movieId: Int, page: Int?)
 }
 
 extension MovieApi: TargetType, NetworkConfigurable {
@@ -35,6 +36,8 @@ extension MovieApi: TargetType, NetworkConfigurable {
             return "discover/movie"
         case .detail(movieId: let movieId):
             return "movie/\(movieId)"
+        case .recommendations(movieId: let movieId, page: _):
+            return "movie/\(movieId)/recommendations"
         }
     }
     
@@ -56,6 +59,14 @@ extension MovieApi: TargetType, NetworkConfigurable {
             return requestWithGenreIdAndPageTask(genreId, page)
         case .detail:
             return requestMovieDetail()
+        case .recommendations(movieId: _, page: let page):
+            var params: [String : Any] = [
+                "api_key" : apiKey
+            ]
+            if page != nil {
+                params["page"] = page
+            }
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     

@@ -14,6 +14,7 @@ enum TVShowApi {
     case popular(genreId: Int?, page: Int?)
     case byGenre(genreId: Int, page: Int?)
     case detail(tvShowId: Int)
+    case recommendations(tvShowId: Int, page: Int?)
     case season(tvShowId: Int, seasonNumber: Int)
 }
 
@@ -36,6 +37,8 @@ extension TVShowApi: TargetType, NetworkConfigurable {
             return "discover/tv"
         case .detail(tvShowId: let tvShowId):
             return "tv/\(tvShowId)"
+        case .recommendations(tvShowId: let tvShowId, page: _):
+            return "tv/\(tvShowId)/recommendations"
         case .season(tvShowId: let tvShowId, seasonNumber: let seasonNumber):
             return "tv/\(tvShowId)/season/\(seasonNumber)"
         }
@@ -59,6 +62,14 @@ extension TVShowApi: TargetType, NetworkConfigurable {
             return requestWithGenreIdAndPageTask(genreId, page)
         case .detail:
             return requestTvShowDetail()
+        case .recommendations(tvShowId: _, page: let page):
+            var params: [String : Any] = [
+                "api_key" : apiKey
+            ]
+            if page != nil {
+                params["page"] = page
+            }
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         case .season:
             return requestTvShowSeason()
         }

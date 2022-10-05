@@ -113,12 +113,12 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
         case .movie:
             return repositoryProvider
                 .movieRepository()
-                .getMovieDetail(movieId: model.entertainmentModelId)
+                .getDetail(movieId: model.entertainmentModelId)
                 .map { $0 as EntertainmentDetailModelType }
         case .tvShow:
             return repositoryProvider
                 .tvShowRepository()
-                .getTVShowDetail(tvShowId: model.entertainmentModelId)
+                .getDetail(tvShowId: model.entertainmentModelId)
                 .map { $0 as EntertainmentDetailModelType }
         }
     }

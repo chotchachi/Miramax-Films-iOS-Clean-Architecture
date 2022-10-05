@@ -47,13 +47,19 @@ public final class TVShowRepository: TVShowRepositoryProtocol {
             .map { $0.asDomain() }
     }
     
-    public func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetail> {
+    public func getDetail(tvShowId: Int) -> Single<TVShowDetail> {
         return remoteDataSource
             .getTVShowDetail(tvShowId: tvShowId)
             .map { $0.asDomain() }
     }
     
-    public func getTVShowSeasonDetails(tvShowId: Int, seasonNumber: Int) -> Single<Season> {
+    public func getRecommendations(tvShowId: Int, page: Int?) -> Single<TVShowResponse> {
+        return remoteDataSource
+            .getTVShowRecommendations(tvShowId: tvShowId, page: page)
+            .map { $0.asDomain() }
+    }
+    
+    public func getSeasonDetails(tvShowId: Int, seasonNumber: Int) -> Single<Season> {
         return remoteDataSource
             .getTVShowSeasonDetails(tvShowId: tvShowId, seasonNumber: seasonNumber)
             .map { $0.asDomain() }

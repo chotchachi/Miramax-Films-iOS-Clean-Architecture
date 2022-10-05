@@ -13,5 +13,6 @@ public protocol MovieRepositoryProtocol {
     func getPopular(genreId: Int?, page: Int?) -> Single<MovieResponse>
     func getUpComing(genreId: Int?, page: Int?) -> Single<MovieResponse>
     func getByGenre(genreId: Int, page: Int?) -> Single<MovieResponse>
-    func getMovieDetail(movieId: Int) -> Single<MovieDetail>
+    func getDetail(movieId: Int) -> Single<MovieDetail>
+    func getRecommendations(movieId: Int, page: Int?) -> Single<MovieResponse>
 }

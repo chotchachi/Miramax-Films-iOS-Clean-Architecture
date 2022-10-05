@@ -45,7 +45,7 @@ class SeasonDetailsViewModel: BaseViewModel, ViewModelType {
             .flatMapLatest {
                 return self.repositoryProvider
                     .tvShowRepository()
-                    .getTVShowSeasonDetails(tvShowId: self.tvShowId, seasonNumber: self.season.seasonNumber)
+                    .getSeasonDetails(tvShowId: self.tvShowId, seasonNumber: self.season.seasonNumber)
                     .map { $0.episodes ?? [] }
                     .trackError(self.error)
                     .trackActivity(self.loading)
