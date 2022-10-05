@@ -12,7 +12,7 @@ enum TVShowApi {
     case onTheAir(genreId: Int?, page: Int?)
     case topRated(genreId: Int?, page: Int?)
     case popular(genreId: Int?, page: Int?)
-    case byGenre(genreId: Int?, page: Int?)
+    case byGenre(genreId: Int, page: Int?)
     case detail(tvShowId: Int)
     case season(tvShowId: Int, seasonNumber: Int)
 }

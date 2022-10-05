@@ -20,7 +20,7 @@ public protocol Api {
     func getMovieTopRated(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
     func getMoviePopular(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
     func getMovieUpcoming(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
-    func getMovieByGenre(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
+    func getMovieByGenre(genreId: Int, page: Int?) -> Single<MovieResponseDTO>
     func getMovieDetail(movieId: Int) -> Single<MovieDetailDTO>
 
     // MARK: - TV
@@ -29,7 +29,7 @@ public protocol Api {
     func getTVShowOnTheAir(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowToprated(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowPopular(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
-    func getTVShowByGenre(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
+    func getTVShowByGenre(genreId: Int, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetailDTO>
 
     // MARK: - TV Season

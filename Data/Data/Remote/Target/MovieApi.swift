@@ -12,7 +12,7 @@ enum MovieApi {
     case topRated(genreId: Int?, page: Int?)
     case popular(genreId: Int?, page: Int?)
     case upComing(genreId: Int?, page: Int?)
-    case byGenre(genreId: Int?, page: Int?)
+    case byGenre(genreId: Int, page: Int?)
     case detail(movieId: Int)
 }
 
