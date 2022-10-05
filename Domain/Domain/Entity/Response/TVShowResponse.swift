@@ -18,3 +18,21 @@ public struct TVShowResponse: Equatable {
         self.totalResults = totalResults
     }
 }
+
+extension TVShowResponse: EntertainmentResponseModelType {
+    public var entertainmentResponsePage: Int {
+        return page
+    }
+    
+    public var entertainmentResponseResult: [EntertainmentModelType] {
+        return results
+    }
+    
+    public var entertainmentResponseTotalPages: Int {
+        return totalPages
+    }
+    
+    public var entertainmentResponseTotalResults: Int {
+        return totalResults
+    }
+}

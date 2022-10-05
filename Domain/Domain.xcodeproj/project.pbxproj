@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		852BB03D8276C7F5302167D4 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ED6D4749F90C47FB5168CE8 /* Pods_Domain.framework */; };
+		ED1F03B228ED24900083B088 /* EntertainmentResponseModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03B128ED24900083B088 /* EntertainmentResponseModelType.swift */; };
 		EDE92C2D28E6977D0083F33A /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = EDE92C2C28E6977D0083F33A /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDE92C4828E698660083F33A /* RepositoryProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C4728E698660083F33A /* RepositoryProviderProtocol.swift */; };
 		EDE92C6828E698990083F33A /* MovieRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C4A28E698860083F33A /* MovieRepositoryProtocol.swift */; };
@@ -44,6 +45,7 @@
 		0ED6D4749F90C47FB5168CE8 /* Pods_Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4C9EA52EECE17CD8D49192 /* Pods-Domain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.debug.xcconfig"; path = "Target Support Files/Pods-Domain/Pods-Domain.debug.xcconfig"; sourceTree = "<group>"; };
 		EB9D5FFB0C3D16CC1E1C0E34 /* Pods-Domain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.release.xcconfig"; path = "Target Support Files/Pods-Domain/Pods-Domain.release.xcconfig"; sourceTree = "<group>"; };
+		ED1F03B128ED24900083B088 /* EntertainmentResponseModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentResponseModelType.swift; sourceTree = "<group>"; };
 		EDE92C2928E6977D0083F33A /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE92C2C28E6977D0083F33A /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		EDE92C4728E698660083F33A /* RepositoryProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProviderProtocol.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 		EDE92C6728E698860083F33A /* ModelType */ = {
 			isa = PBXGroup;
 			children = (
+				ED1F03B128ED24900083B088 /* EntertainmentResponseModelType.swift */,
 				EDE92C6428E698860083F33A /* EntertainmentDetailModelType.swift */,
 				EDE92C6528E698860083F33A /* EntertainmentModelType.swift */,
 				EDE92C6628E698860083F33A /* PersonModelType.swift */,
@@ -320,6 +323,7 @@
 				EDE92C6928E698990083F33A /* PersonRepositoryProtocol.swift in Sources */,
 				EDE92C7228E698A70083F33A /* Genre.swift in Sources */,
 				EDE92C4828E698660083F33A /* RepositoryProviderProtocol.swift in Sources */,
+				ED1F03B228ED24900083B088 /* EntertainmentResponseModelType.swift in Sources */,
 				EDE92C6B28E698990083F33A /* TVShowRepositoryProtocol.swift in Sources */,
 				EDE92C6D28E698A00083F33A /* EntertainmentDetailModelType.swift in Sources */,
 				EDE92C8028E698AB0083F33A /* TVShowResponse.swift in Sources */,
