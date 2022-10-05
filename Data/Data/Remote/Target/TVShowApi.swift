@@ -12,7 +12,7 @@ enum TVShowApi {
     case onTheAir(genreId: Int?, page: Int?)
     case topRated(genreId: Int?, page: Int?)
     case popular(genreId: Int?, page: Int?)
-    case byGenre(genreId: Int, page: Int?)
+    case byGenre(genreId: Int, sortBy: String, page: Int?)
     case detail(tvShowId: Int)
     case recommendations(tvShowId: Int, page: Int?)
     case season(tvShowId: Int, seasonNumber: Int)
@@ -51,15 +51,15 @@ extension TVShowApi: TargetType, NetworkConfigurable {
     var task: Moya.Task {
         switch self {
         case .airingToday(genreId: let genreId, page: let page):
-            return requestWithGenreIdAndPageTask(genreId, page)
+            return requestWithParams(genreId, nil, page)
         case .onTheAir(genreId: let genreId, page: let page):
-            return requestWithGenreIdAndPageTask(genreId, page)
+            return requestWithParams(genreId, nil, page)
         case .topRated(genreId: let genreId, page: let page):
-            return requestWithGenreIdAndPageTask(genreId, page)
+            return requestWithParams(genreId, nil, page)
         case .popular(genreId: let genreId, page: let page):
-            return requestWithGenreIdAndPageTask(genreId, page)
-        case .byGenre(genreId: let genreId, page: let page):
-            return requestWithGenreIdAndPageTask(genreId, page)
+            return requestWithParams(genreId, nil, page)
+        case .byGenre(genreId: let genreId, sortBy: let sortBy, page: let page):
+            return requestWithParams(genreId, sortBy, page)
         case .detail:
             return requestTvShowDetail()
         case .recommendations(tvShowId: _, page: let page):
@@ -79,12 +79,15 @@ extension TVShowApi: TargetType, NetworkConfigurable {
         nil
     }
     
-    private func requestWithGenreIdAndPageTask(_ genreId: Int?, _ page: Int?) -> Moya.Task {
+    private func requestWithParams(_ genreId: Int? = nil, _ sortBy: String? = nil, _ page: Int? = nil) -> Moya.Task {
         var params: [String : Any] = [
             "api_key" : apiKey
         ]
         if genreId != nil {
             params["with_genres"] = genreId
+        }
+        if sortBy != nil {
+            params["sort_by"] = sortBy
         }
         if page != nil {
             params["page"] = page

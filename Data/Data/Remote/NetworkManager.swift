@@ -53,8 +53,8 @@ public final class NetworkManager: Api {
         return movieNetworking.provider.requestObject(.upComing(genreId: genreId, page: page), type: MovieResponseDTO.self)
     }
     
-    public func getMovieByGenre(genreId: Int, page: Int?) -> Single<MovieResponseDTO> {
-        return movieNetworking.provider.requestObject(.byGenre(genreId: genreId, page: page), type: MovieResponseDTO.self)
+    public func getMovieByGenre(genreId: Int, sortBy: String, page: Int?) -> Single<MovieResponseDTO> {
+        return movieNetworking.provider.requestObject(.byGenre(genreId: genreId, sortBy: sortBy, page: page), type: MovieResponseDTO.self)
     }
     
     public func getMovieDetail(movieId: Int) -> Single<MovieDetailDTO> {
@@ -83,8 +83,8 @@ public final class NetworkManager: Api {
         return tvShowNetworking.provider.requestObject(.popular(genreId: genreId, page: page), type: TVShowResponseDTO.self)
     }
     
-    public func getTVShowByGenre(genreId: Int, page: Int?) -> Single<TVShowResponseDTO> {
-        return tvShowNetworking.provider.requestObject(.byGenre(genreId: genreId, page: page), type: TVShowResponseDTO.self)
+    public func getTVShowByGenre(genreId: Int, sortBy: String, page: Int?) -> Single<TVShowResponseDTO> {
+        return tvShowNetworking.provider.requestObject(.byGenre(genreId: genreId, sortBy: sortBy, page: page), type: TVShowResponseDTO.self)
     }
     
     public func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetailDTO> {
