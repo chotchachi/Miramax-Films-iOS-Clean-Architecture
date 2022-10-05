@@ -12,7 +12,6 @@ enum MovieApi {
     case topRated(genreId: Int?, page: Int?)
     case popular(genreId: Int?, page: Int?)
     case upComing(genreId: Int?, page: Int?)
-    case latest(genreId: Int?, page: Int?)
     case byGenre(genreId: Int?, page: Int?)
     case detail(movieId: Int)
 }
@@ -32,8 +31,6 @@ extension MovieApi: TargetType, NetworkConfigurable {
             return "movie/popular"
         case .upComing:
             return "movie/upcoming"
-        case .latest:
-            return "movie/latest"
         case .byGenre:
             return "discover/movie"
         case .detail(movieId: let movieId):
@@ -54,8 +51,6 @@ extension MovieApi: TargetType, NetworkConfigurable {
         case .popular(genreId: let genreId, page: let page):
             return requestWithGenreIdAndPageTask(genreId, page)
         case .upComing(genreId: let genreId, page: let page):
-            return requestWithGenreIdAndPageTask(genreId, page)
-        case .latest(genreId: let genreId, page: let page):
             return requestWithGenreIdAndPageTask(genreId, page)
         case .byGenre(genreId: let genreId, page: let page):
             return requestWithGenreIdAndPageTask(genreId, page)

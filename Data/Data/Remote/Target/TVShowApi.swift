@@ -12,7 +12,6 @@ enum TVShowApi {
     case onTheAir(genreId: Int?, page: Int?)
     case topRated(genreId: Int?, page: Int?)
     case popular(genreId: Int?, page: Int?)
-    case latest(genreId: Int?, page: Int?)
     case byGenre(genreId: Int?, page: Int?)
     case detail(tvShowId: Int)
     case season(tvShowId: Int, seasonNumber: Int)
@@ -33,8 +32,6 @@ extension TVShowApi: TargetType, NetworkConfigurable {
             return "tv/top_rated"
         case .popular:
             return "tv/popular"
-        case .latest:
-            return "/tv/latest"
         case .byGenre:
             return "discover/tv"
         case .detail(tvShowId: let tvShowId):
@@ -57,8 +54,6 @@ extension TVShowApi: TargetType, NetworkConfigurable {
         case .topRated(genreId: let genreId, page: let page):
             return requestWithGenreIdAndPageTask(genreId, page)
         case .popular(genreId: let genreId, page: let page):
-            return requestWithGenreIdAndPageTask(genreId, page)
-        case .latest(genreId: let genreId, page: let page):
             return requestWithGenreIdAndPageTask(genreId, page)
         case .byGenre(genreId: let genreId, page: let page):
             return requestWithGenreIdAndPageTask(genreId, page)
