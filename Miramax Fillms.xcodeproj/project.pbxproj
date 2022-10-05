@@ -11,6 +11,7 @@
 		ED1F03AD28EC92360083B088 /* EntertainmentsResponseRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03AC28EC92360083B088 /* EntertainmentsResponseRoute.swift */; };
 		ED1F03B828EDBD370083B088 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03B728EDBD370083B088 /* Defaults.swift */; };
 		ED1F03BA28EDBD550083B088 /* DefaultsContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03B928EDBD550083B088 /* DefaultsContants.swift */; };
+		ED1F03BD28EDD64E0083B088 /* SortPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03BC28EDD64E0083B088 /* SortPopupView.swift */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
 		ED7A095328EC71370035E099 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094F28EC711D0035E099 /* Roboto-Bold.ttf */; };
 		ED7A095428EC71370035E099 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */; };
@@ -165,6 +166,7 @@
 		ED1F03AC28EC92360083B088 /* EntertainmentsResponseRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentsResponseRoute.swift; sourceTree = "<group>"; };
 		ED1F03B728EDBD370083B088 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		ED1F03B928EDBD550083B088 /* DefaultsContants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsContants.swift; sourceTree = "<group>"; };
+		ED1F03BC28EDD64E0083B088 /* SortPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortPopupView.swift; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
 		ED7A094D28EC711D0035E099 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -327,6 +329,14 @@
 				ED1F03B928EDBD550083B088 /* DefaultsContants.swift */,
 			);
 			path = DefaultsKit;
+			sourceTree = "<group>";
+		};
+		ED1F03BB28EDD6440083B088 /* SortPopupView */ = {
+			isa = PBXGroup;
+			children = (
+				ED1F03BC28EDD64E0083B088 /* SortPopupView.swift */,
+			);
+			path = SortPopupView;
 			sourceTree = "<group>";
 		};
 		ED5BA69E28EB19370030F4B0 /* EntertainmentRankTableViewCell */ = {
@@ -919,6 +929,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				ED1F03BB28EDD6440083B088 /* SortPopupView */,
 				EDD52F7928DB6D1F0078C6C5 /* SelfSizingTableView */,
 				EDE92D3128E98A430083F33A /* SelfSizingCollectionView */,
 				EDE92D2E28E9822F0083F33A /* SelfieWithMovieView */,
@@ -1145,6 +1156,7 @@
 				EDC502D828D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift in Sources */,
 				EDE92B7828E32C930083F33A /* EntertainmentDetailCollectionViewCell.swift in Sources */,
 				EDE92B8A28E5DD3D0083F33A /* Displayable.swift in Sources */,
+				ED1F03BD28EDD64E0083B088 /* SortPopupView.swift in Sources */,
 				EDE69B7528D7303D002726B0 /* Animation+Scale.swift in Sources */,
 				EDE92D3028E9823D0083F33A /* SelfieWithMovieView.swift in Sources */,
 				ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */,
