@@ -24,7 +24,8 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var btnTogglePresentationMode: UIButton!
-    
+    @IBOutlet weak var btnOptions: UIButton!
+
     var btnSearch: SearchButton = SearchButton()
     var loaderView: LoadingView = LoadingView()
     var errorRetryView: ErrorRetryView = ErrorRetryView()
@@ -93,10 +94,13 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
                 switch route {
                 case .discover(genre: let genre):
                     self.appToolbar.title = genre.name
+                    self.btnOptions.isHidden = false
                 case .recommendations:
                     self.appToolbar.title = "recommend".localized
+                    self.btnOptions.isHidden = true
                 case .movieUpcoming, .showUpcoming:
                     self.appToolbar.title = "upcoming".localized
+                    self.btnOptions.isHidden = true
                 }
             })
             .disposed(by: rx.disposeBag)
