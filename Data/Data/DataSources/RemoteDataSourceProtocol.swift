@@ -15,7 +15,6 @@ public protocol RemoteDataSourceProtocol {
     func getMovieTopRated(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
     func getMoviePopular(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
     func getMovieUpcoming(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
-    func getMovieLatest(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
     func getMovieByGenre(genreId: Int?, page: Int?) -> Single<MovieResponseDTO>
     func getMovieDetail(movieId: Int) -> Single<MovieDetailDTO>
     
@@ -23,7 +22,6 @@ public protocol RemoteDataSourceProtocol {
     func getTVShowOnTheAir(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowTopRated(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowPopular(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
-    func getTVShowLatest(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowByGenre(genreId: Int?, page: Int?) -> Single<TVShowResponseDTO>
     func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetailDTO>
     func getTVShowSeasonDetails(tvShowId: Int, seasonNumber: Int) -> Single<SeasonDTO>
