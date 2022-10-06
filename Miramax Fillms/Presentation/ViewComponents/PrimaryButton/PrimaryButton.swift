@@ -44,9 +44,16 @@ final class PrimaryButton: UIButton {
         }
     }
     
+    override var isEnabled: Bool {
+        didSet {
+            alpha = isEnabled ? 1.0 : 0.5
+        }
+    }
+    
     private func setup() {
         clipsToBounds = true
         setTitleColor(kNormalColor, for: .normal)
+        setTitleColor(kNormalColor, for: .disabled)
         setTitleColor(kHighlightColor, for: .highlighted)
         titleLabel?.font = AppFonts.caption1SemiBold
         backgroundColor = .clear
