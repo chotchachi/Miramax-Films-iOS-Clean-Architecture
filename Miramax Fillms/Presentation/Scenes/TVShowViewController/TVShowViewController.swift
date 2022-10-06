@@ -13,6 +13,8 @@ import SwifterSwift
 import Domain
 
 fileprivate let kUpcomingMaxItems: Int = 6
+fileprivate let kUpcomingTableViewMinHeight: CGFloat = 200.0
+fileprivate let kPreviewCollectionViewMinHeight: CGFloat = 500.0
 
 class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
 
@@ -188,10 +190,10 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
         super.viewWillLayoutSubviews()
         
         let previewContentHeight = previewCollectionView.intrinsicContentSize.height
-        previewCollectionViewHc.constant = previewContentHeight < DimensionConstants.moviePreviewCollectionViewMinHeight ? DimensionConstants.moviePreviewCollectionViewMinHeight : previewContentHeight
+        previewCollectionViewHc.constant = previewContentHeight < kPreviewCollectionViewMinHeight ? kPreviewCollectionViewMinHeight : previewContentHeight
         
         let upcomingContentHeight = upcomingTableView.intrinsicContentSize.height
-        upcomingTableViewHc.constant = upcomingContentHeight < DimensionConstants.showUpcomingTableViewMinHeight ? DimensionConstants.showUpcomingTableViewMinHeight : upcomingContentHeight
+        upcomingTableViewHc.constant = upcomingContentHeight < kUpcomingTableViewMinHeight ? kUpcomingTableViewMinHeight : upcomingContentHeight
     }
 }
 

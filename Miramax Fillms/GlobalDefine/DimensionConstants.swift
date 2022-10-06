@@ -12,11 +12,7 @@ struct DimensionConstants {
     
     static let genreCellHeight: CGFloat = 48.0
     static let genreCellWidth: CGFloat = 100.0
-
-    static let moviePreviewCollectionViewMinHeight: CGFloat = 500.0
-    
-    static let showUpcomingTableViewMinHeight: CGFloat = 200.0
-    
+        
     static let entertainmentHorizontalCollectionHeight: CGFloat = 155.0
     static let entertainmentHorizontalCellSpacing: CGFloat = 4.0
     static let entertainmentHorizontalCellRatio: CGFloat = 0.67

@@ -12,6 +12,8 @@ import RxDataSources
 import SwifterSwift
 import Domain
 
+fileprivate let kPreviewCollectionViewMinHeight: CGFloat = 500.0
+
 class MovieViewController: BaseViewController<MovieViewModel>, Searchable {
     
     // MARK: - Outlets + Views
@@ -149,7 +151,7 @@ class MovieViewController: BaseViewController<MovieViewModel>, Searchable {
         super.viewWillLayoutSubviews()
         
         let previewContentHeight = previewCollectionView.intrinsicContentSize.height
-        previewCollectionViewHc.constant = previewContentHeight < DimensionConstants.moviePreviewCollectionViewMinHeight ? DimensionConstants.moviePreviewCollectionViewMinHeight : previewContentHeight
+        previewCollectionViewHc.constant = previewContentHeight < kPreviewCollectionViewMinHeight ? kPreviewCollectionViewMinHeight : previewContentHeight
     }
 }
 
