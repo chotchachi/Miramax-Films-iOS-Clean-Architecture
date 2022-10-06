@@ -323,9 +323,9 @@ extension TVShowViewController {
     }
     
     private func configureSectionTabLayout() {
-        tabLayout.titles = ["top_rating".localized, "news".localized, "trending".localized]
+        tabLayout.titles = TVShowPreviewTab.allCases.map { $0.title }
         tabLayout.delegate = self
-        tabLayout.selectionTitle(index: 1, animated: false)
+        tabLayout.selectionTitle(index: TVShowPreviewTab.defaultTab.index ?? 1, animated: false)
     }
     
     private func configureSectionPreview() {

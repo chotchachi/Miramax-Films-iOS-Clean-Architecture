@@ -251,9 +251,9 @@ extension MovieViewController {
     }
     
     private func configureSectionTabLayout() {
-        tabLayout.titles = ["top_rating".localized, "news".localized, "trending".localized]
+        tabLayout.titles = MoviePreviewTab.allCases.map { $0.title }
         tabLayout.delegate = self
-        tabLayout.selectionTitle(index: 1, animated: false)
+        tabLayout.selectionTitle(index: MoviePreviewTab.defaultTab.index ?? 1, animated: false)
     }
     
     private func configureSectionPreview() {
@@ -311,7 +311,7 @@ extension MovieViewController: TabLayoutDelegate {
         case 0:
             previewTabTriggerS.accept(.topRating)
         case 1:
-            previewTabTriggerS.accept(.news)
+            previewTabTriggerS.accept(.nowPlaying)
         case 2:
             previewTabTriggerS.accept(.trending)
         default:

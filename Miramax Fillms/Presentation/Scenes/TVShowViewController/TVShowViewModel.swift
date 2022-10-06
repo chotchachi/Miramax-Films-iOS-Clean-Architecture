@@ -10,12 +10,6 @@ import RxSwift
 import XCoordinator
 import Domain
 
-enum TVShowPreviewTab {
-    case topRating
-    case news
-    case trending
-}
-
 class TVShowViewModel: BaseViewModel, ViewModelType {
     
     struct Input {
@@ -119,7 +113,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         
         let previewTabTriggerO = input.previewTabTrigger
             .asObservable()
-            .startWith(.news)
+            .startWith(TVShowPreviewTab.defaultTab)
         
         let retryPreviewWithSelectedTabO = input.retryPreviewTrigger
             .asObservable()

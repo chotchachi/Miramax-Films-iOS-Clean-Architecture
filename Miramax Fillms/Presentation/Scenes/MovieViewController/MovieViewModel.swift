@@ -10,12 +10,6 @@ import RxSwift
 import XCoordinator
 import Domain
 
-enum MoviePreviewTab {
-    case topRating
-    case news
-    case trending
-}
-
 class MovieViewModel: BaseViewModel, ViewModelType {
     
     struct Input {
@@ -104,7 +98,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
         
         let previewTabTriggerO = input.previewTabTrigger
             .asObservable()
-            .startWith(.news)
+            .startWith(MoviePreviewTab.defaultTab)
         
         let retryPreviewWithSelectedTabO = input.retryPreviewTrigger
             .asObservable()
@@ -130,10 +124,10 @@ class MovieViewModel: BaseViewModel, ViewModelType {
                 .movieRepository()
                 .getTopRated(genreId: nil, page: nil)
                 .asObservable()
-        case .news:
+        case .nowPlaying:
             return repositoryProvider
                 .movieRepository()
-                .getUpComing(genreId: nil, page: nil)
+                .getNowPlaying(genreId: nil, page: nil)
                 .asObservable()
         case .trending:
             return repositoryProvider

@@ -17,6 +17,7 @@
 "top_rating" = "Top rating";
 "news" = "News";
 "trending" = "Trending";
+"now_playing" = "Now playing";
 "on_the_air" = "On The Air";
 "search" = "Search";
 "search_bar_placeholder" = "Movies, TV Shows, Actor,...";
