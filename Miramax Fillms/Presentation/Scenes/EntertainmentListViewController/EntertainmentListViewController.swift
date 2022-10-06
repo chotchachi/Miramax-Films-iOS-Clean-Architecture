@@ -107,13 +107,13 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
                 case .movieUpcoming, .showUpcoming:
                     self.appToolbar.title = "upcoming".localized
                     self.btnOptions.isHidden = true
-                case .movieTopRating:
+                case .movieTopRating, .showTopRating:
                     self.appToolbar.title = "top_rating".localized
                     self.btnOptions.isHidden = true
-                case .movieNowPlaying:
-                    self.appToolbar.title = "now_playing".localized
+                case .movieNews, .showNews:
+                    self.appToolbar.title = "news".localized
                     self.btnOptions.isHidden = true
-                case .movieTrending:
+                case .movieTrending, .showTrending:
                     self.appToolbar.title = "trending".localized
                     self.btnOptions.isHidden = true
                 }

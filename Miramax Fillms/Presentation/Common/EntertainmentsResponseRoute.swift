@@ -12,7 +12,10 @@ enum EntertainmentsResponseRoute {
     case recommendations(entertainment: EntertainmentModelType)
     case movieUpcoming
     case movieTopRating
-    case movieNowPlaying
+    case movieNews
     case movieTrending
     case showUpcoming
+    case showTopRating
+    case showNews
+    case showTrending
 }

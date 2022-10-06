@@ -120,8 +120,8 @@ class MovieViewModel: BaseViewModel, ViewModelType {
                 switch tab {
                 case .topRating:
                     self.router.trigger(.entertainmentList(responseRoute: .movieTopRating))
-                case .nowPlaying:
-                    self.router.trigger(.entertainmentList(responseRoute: .movieNowPlaying))
+                case .news:
+                    self.router.trigger(.entertainmentList(responseRoute: .movieNews))
                 case .trending:
                     self.router.trigger(.entertainmentList(responseRoute: .movieTrending))
                 }
@@ -140,7 +140,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
                 .movieRepository()
                 .getTopRated(genreId: nil, page: nil)
                 .asObservable()
-        case .nowPlaying:
+        case .news:
             return repositoryProvider
                 .movieRepository()
                 .getNowPlaying(genreId: nil, page: nil)

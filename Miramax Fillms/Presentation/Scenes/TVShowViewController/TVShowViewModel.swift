@@ -22,6 +22,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         let selectionGenreTrigger: Driver<Genre>
         let previewTabTrigger: Driver<TVShowPreviewTab>
         let seeMoreUpcomingTrigger: Driver<Void>
+        let seeMorePreviewTrigger: Driver<Void>
     }
     
     struct Output {
@@ -43,34 +44,6 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
     func transform(input: Input) -> Output {
         let viewTriggerO = trigger
             .take(1)
-        
-        input.toSearchTrigger
-            .drive(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.router.trigger(.search)
-            })
-            .disposed(by: rx.disposeBag)
-        
-        input.selectionEntertainmentTrigger
-            .drive(onNext: { [weak self] item in
-                guard let self = self else { return }
-                self.router.trigger(.entertainmentDetails(entertainment: item))
-            })
-            .disposed(by: rx.disposeBag)
-        
-        input.selectionGenreTrigger
-            .drive(onNext: { [weak self] item in
-                guard let self = self else { return }
-                self.router.trigger(.entertainmentList(responseRoute: .discover(genre: item)))
-            })
-            .disposed(by: rx.disposeBag)
-        
-        input.seeMoreUpcomingTrigger
-            .drive(onNext: { [weak self] in
-                guard let self = self else { return }
-                self.router.trigger(.entertainmentList(responseRoute: .showUpcoming))
-            })
-            .disposed(by: rx.disposeBag)
         
         let retryGenreTriggerO = input.retryGenreTrigger
             .asObservable()
@@ -126,6 +99,49 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                     .catchAndReturn(.error)
             }
             .asDriverOnErrorJustComplete()
+        
+        input.toSearchTrigger
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.router.trigger(.search)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.selectionEntertainmentTrigger
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.router.trigger(.entertainmentDetails(entertainment: item))
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.selectionGenreTrigger
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.router.trigger(.entertainmentList(responseRoute: .discover(genre: item)))
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.seeMoreUpcomingTrigger
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.router.trigger(.entertainmentList(responseRoute: .showUpcoming))
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.seeMorePreviewTrigger
+            .withLatestFrom(previewTabTriggerO.asDriverOnErrorJustComplete())
+            .drive(onNext: { [weak self] tab in
+                guard let self = self else { return }
+                switch tab {
+                case .topRating:
+                    self.router.trigger(.entertainmentList(responseRoute: .showTopRating))
+                case .news:
+                    self.router.trigger(.entertainmentList(responseRoute: .showNews))
+                case .trending:
+                    self.router.trigger(.entertainmentList(responseRoute: .showTrending))
+                }
+            })
+            .disposed(by: rx.disposeBag)
         
         return Output(genresViewState: genresViewStateD,
                       bannerViewState: bannerViewStateD,

@@ -59,6 +59,10 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
     @IBOutlet weak var previewLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var previewRetryButton: PrimaryButton!
     
+    /// Section preview see more
+    @IBOutlet weak var sectionPreviewSeeMoreView: UIView!
+    @IBOutlet weak var previewSeeMoreButton: PrimaryButton!
+    
     var btnSearch: SearchButton = SearchButton()
 
     // MARK: - Properties
@@ -84,6 +88,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
         configureSectionUpcoming()
         configureSectionTabLayout()
         configureSectionPreview()
+        configureSectionPreviewSeeMore()
     }
     
     override func bindViewModel() {
@@ -98,7 +103,8 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
             selectionEntertainmentTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
             selectionGenreTrigger: genreSelectTriggerS.asDriverOnErrorJustComplete(),
             previewTabTrigger: previewTabTriggerS.asDriverOnErrorJustComplete(),
-            seeMoreUpcomingTrigger: upcomingViewAllButton.rx.tap.asDriver()
+            seeMoreUpcomingTrigger: upcomingViewAllButton.rx.tap.asDriver(),
+            seeMorePreviewTrigger: previewSeeMoreButton.rx.tap.asDriver()
         )
         let output = viewModel.transform(input: input)
         
@@ -176,11 +182,13 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
                     self.previewLoadingIndicator.stopAnimating()
                     self.previewCollectionView.isHidden = false
                     self.previewRetryButton.isHidden = true
+                    self.sectionPreviewSeeMoreView.isHidden = false
                     self.previewDataS.accept(items)
                 case .error:
                     self.previewLoadingIndicator.stopAnimating()
                     self.previewCollectionView.isHidden = true
                     self.previewRetryButton.isHidden = false
+                    self.sectionPreviewSeeMoreView.isHidden = true
                 }
             })
             .disposed(by: rx.disposeBag)
@@ -371,6 +379,12 @@ extension TVShowViewController {
             .disposed(by: rx.disposeBag)
     }
     
+    private func configureSectionPreviewSeeMore() {
+        sectionPreviewSeeMoreView.isHidden = true
+        
+        previewSeeMoreButton.titleText = "see_more".localized
+    }
+    
     @objc private func onBannerMainViewTapped(_ sender: UITapGestureRecognizer) {
         guard let item = bannerEntertertainmentItem else { return }
         entertainmentSelectTriggerS.accept(item)
@@ -384,15 +398,9 @@ extension TVShowViewController: TabLayoutDelegate {
         previewLoadingIndicator.startAnimating()
         previewRetryButton.isHidden = true
         previewCollectionView.isHidden = true
-        switch index {
-        case 0:
-            previewTabTriggerS.accept(.topRating)
-        case 1:
-            previewTabTriggerS.accept(.news)
-        case 2:
-            previewTabTriggerS.accept(.trending)
-        default:
-            break
+        
+        if let tab = TVShowPreviewTab.element(index) {
+            previewTabTriggerS.accept(tab)
         }
     }
 }

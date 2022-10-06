@@ -157,7 +157,7 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
                 .movieRepository()
                 .getTopRated(genreId: nil, page: page)
                 .map { $0 as EntertainmentResponseModelType }
-        case .movieNowPlaying:
+        case .movieNews:
             return repositoryProvider
                 .movieRepository()
                 .getNowPlaying(genreId: nil, page: page)
@@ -171,6 +171,21 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
             return repositoryProvider
                 .tvShowRepository()
                 .getOnTheAir(genreId: nil, page: page)
+                .map { $0 as EntertainmentResponseModelType }
+        case .showTopRating:
+            return repositoryProvider
+                .tvShowRepository()
+                .getTopRated(genreId: nil, page: page)
+                .map { $0 as EntertainmentResponseModelType }
+        case .showNews:
+            return repositoryProvider
+                .tvShowRepository()
+                .getOnTheAir(genreId: nil, page: page)
+                .map { $0 as EntertainmentResponseModelType }
+        case .showTrending:
+            return repositoryProvider
+                .tvShowRepository()
+                .getPopular(genreId: nil, page: page)
                 .map { $0 as EntertainmentResponseModelType }
         }
     }

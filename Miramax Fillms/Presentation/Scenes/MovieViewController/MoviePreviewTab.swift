@@ -7,19 +7,19 @@
 
 enum MoviePreviewTab: CaseIterable {
     case topRating
-    case nowPlaying
+    case news
     case trending
     
     var title: String {
         switch self {
         case .topRating:
             return "top_rating".localized
-        case .nowPlaying:
-            return "now_playing".localized
+        case .news:
+            return "news".localized
         case .trending:
             return "trending".localized
         }
     }
     
-    static var defaultTab: MoviePreviewTab = .nowPlaying
+    static var defaultTab: MoviePreviewTab = .news
 }
