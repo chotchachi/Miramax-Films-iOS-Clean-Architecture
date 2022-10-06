@@ -152,6 +152,21 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
                 .movieRepository()
                 .getUpComing(genreId: nil, page: page)
                 .map { $0 as EntertainmentResponseModelType }
+        case .movieTopRating:
+            return repositoryProvider
+                .movieRepository()
+                .getTopRated(genreId: nil, page: page)
+                .map { $0 as EntertainmentResponseModelType }
+        case .movieNowPlaying:
+            return repositoryProvider
+                .movieRepository()
+                .getNowPlaying(genreId: nil, page: page)
+                .map { $0 as EntertainmentResponseModelType }
+        case .movieTrending:
+            return repositoryProvider
+                .movieRepository()
+                .getPopular(genreId: nil, page: page)
+                .map { $0 as EntertainmentResponseModelType }
         case .showUpcoming:
             return repositoryProvider
                 .tvShowRepository()

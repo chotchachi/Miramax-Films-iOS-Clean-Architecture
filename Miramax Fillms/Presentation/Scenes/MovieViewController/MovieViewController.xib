@@ -20,7 +20,9 @@
                 <outlet property="previewCollectionViewHc" destination="jj8-th-LxD" id="HbM-H3-Ff9"/>
                 <outlet property="previewLoadingIndicator" destination="FHe-aZ-mvL" id="bVm-YD-Xl7"/>
                 <outlet property="previewRetryButton" destination="yqd-gO-rmm" id="ZZ8-d0-vLR"/>
+                <outlet property="previewSeeMoreButton" destination="c5V-aK-oyu" id="TB5-Dt-6ZU"/>
                 <outlet property="scrollView" destination="6Un-DJ-MMp" id="HE1-yI-msZ"/>
+                <outlet property="sectionPreviewSeeMoreView" destination="CIe-SI-eue" id="IdJ-iI-yUB"/>
                 <outlet property="sectionPreviewView" destination="hkr-ty-ymU" id="IcV-WY-TpS"/>
                 <outlet property="sectionSelfieView" destination="7yo-92-0yh" id="tQZ-V6-fUt"/>
                 <outlet property="sectionTabLayoutView" destination="Kdf-ny-BUF" id="SU5-yA-mP0"/>
@@ -40,19 +42,22 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AUo-Rh-dtV" customClass="AppToolbar" customModule="Miramax_Fillms" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="59" width="393" height="54"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUo-Rh-dtV" customClass="AppToolbar" customModule="Miramax_Fillms" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="59" width="393" height="55"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="2XC-Ub-Wgk"/>
+                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="title" value="Discover"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showBackButton" value="NO"/>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Un-DJ-MMp">
-                    <rect key="frame" x="0.0" y="113" width="393" height="705"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Un-DJ-MMp">
+                    <rect key="frame" x="0.0" y="114" width="393" height="704"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pwX-Kb-nYr">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="995"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="1077.3333333333333"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNG-gy-eKX" userLabel="Section Genres">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="82"/>
@@ -233,6 +238,22 @@
                                         <constraint firstItem="yqd-gO-rmm" firstAttribute="top" secondItem="hkr-ty-ymU" secondAttribute="top" constant="32" id="ueD-Cw-RH9"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIe-SI-eue" userLabel="Section Preview See More">
+                                    <rect key="frame" x="0.0" y="995.00000000000011" width="393" height="82.333333333333371"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5V-aK-oyu" customClass="PrimaryButton" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="159" y="24.000000000000004" width="75" height="34.333333333333343"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="c5V-aK-oyu" firstAttribute="top" secondItem="CIe-SI-eue" secondAttribute="top" constant="24" id="ASl-kx-8qR"/>
+                                        <constraint firstAttribute="bottom" secondItem="c5V-aK-oyu" secondAttribute="bottom" constant="24" id="T6s-8h-SdE"/>
+                                        <constraint firstItem="c5V-aK-oyu" firstAttribute="centerX" secondItem="CIe-SI-eue" secondAttribute="centerX" id="efA-RZ-0rI"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                         </stackView>
                     </subviews>
@@ -264,6 +285,9 @@
             <size key="intrinsicContentSize" width="75" height="34.333333333333336"/>
         </designable>
         <designable name="6Ki-SE-zxR">
+            <size key="intrinsicContentSize" width="75" height="34.333333333333336"/>
+        </designable>
+        <designable name="c5V-aK-oyu">
             <size key="intrinsicContentSize" width="75" height="34.333333333333336"/>
         </designable>
         <designable name="yqd-gO-rmm">

@@ -49,6 +49,10 @@ class MovieViewController: BaseViewController<MovieViewModel>, Searchable {
     @IBOutlet weak var previewLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var previewRetryButton: PrimaryButton!
     
+    /// Section preview see more
+    @IBOutlet weak var sectionPreviewSeeMoreView: UIView!
+    @IBOutlet weak var previewSeeMoreButton: PrimaryButton!
+
     var btnSearch: SearchButton = SearchButton()
 
     // MARK: - Properties
@@ -72,6 +76,7 @@ class MovieViewController: BaseViewController<MovieViewModel>, Searchable {
         configureSelfieView()
         configureSectionTabLayout()
         configureSectionPreview()
+        configureSectionPreviewSeeMore()
     }
     
     override func bindViewModel() {
@@ -85,7 +90,8 @@ class MovieViewController: BaseViewController<MovieViewModel>, Searchable {
             selectionEntertainmentTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
             selectionGenreTrigger: genreSelectTriggerS.asDriverOnErrorJustComplete(),
             previewTabTrigger: previewTabTriggerS.asDriverOnErrorJustComplete(),
-            seeMoreUpcomingTrigger: upcomingSectionHeaderView.rx.seeMoreButtonTap.asDriver()
+            seeMoreUpcomingTrigger: upcomingSectionHeaderView.rx.seeMoreButtonTap.asDriver(),
+            seeMorePreviewTrigger: previewSeeMoreButton.rx.tap.asDriver()
         )
         let output = viewModel.transform(input: input)
         
@@ -137,11 +143,13 @@ class MovieViewController: BaseViewController<MovieViewModel>, Searchable {
                     self.previewLoadingIndicator.stopAnimating()
                     self.previewCollectionView.isHidden = false
                     self.previewRetryButton.isHidden = true
+                    self.sectionPreviewSeeMoreView.isHidden = false
                     self.previewDataS.accept(items)
                 case .error:
                     self.previewLoadingIndicator.stopAnimating()
                     self.previewCollectionView.isHidden = true
                     self.previewRetryButton.isHidden = false
+                    self.sectionPreviewSeeMoreView.isHidden = true
                 }
             })
             .disposed(by: rx.disposeBag)
@@ -298,6 +306,12 @@ extension MovieViewController {
             .bind(to: previewCollectionView.rx.items(dataSource: dataSource))
             .disposed(by: rx.disposeBag)
     }
+    
+    private func configureSectionPreviewSeeMore() {
+        sectionPreviewSeeMoreView.isHidden = true
+        
+        previewSeeMoreButton.titleText = "see_more".localized
+    }
 }
 
 // MARK: - TabLayoutDelegate
@@ -307,15 +321,9 @@ extension MovieViewController: TabLayoutDelegate {
         previewLoadingIndicator.startAnimating()
         previewRetryButton.isHidden = true
         previewCollectionView.isHidden = true
-        switch index {
-        case 0:
-            previewTabTriggerS.accept(.topRating)
-        case 1:
-            previewTabTriggerS.accept(.nowPlaying)
-        case 2:
-            previewTabTriggerS.accept(.trending)
-        default:
-            break
+        
+        if let tab = MoviePreviewTab.element(index) {
+            previewTabTriggerS.accept(tab)
         }
     }
 }
