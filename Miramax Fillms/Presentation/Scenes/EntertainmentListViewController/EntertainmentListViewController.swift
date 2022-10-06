@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 import SwifterSwift
+import SnapKit
 import Domain
 
 enum PresentationMode: String, Codable {
@@ -48,8 +49,12 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
     private var isAnimatingPresentation: Bool = false
     private var isFetching: Bool = false
     
+    private var isShowingSortPopup: Bool = false
+    private var sortPopupView: SortPopupView?
+    
     private let refreshTriggerS = PublishRelay<Void>()
     private let loadMoreTriggerS = PublishRelay<Void>()
+    private let sortOptionTriggerS = PublishRelay<SortOption>()
     private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
     
     // MARK: - Lifecycle
@@ -71,6 +76,7 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
             retryTrigger: errorRetryView.rx.retryTapped.asDriver(),
             refreshTrigger: refreshTriggerS.asDriverOnErrorJustComplete(),
             loadMoreTrigger: loadMoreTriggerS.asDriverOnErrorJustComplete(),
+            sortOptionTrigger: sortOptionTriggerS.asDriverOnErrorJustComplete(),
             entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
@@ -105,8 +111,15 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
             })
             .disposed(by: rx.disposeBag)
         
-        output.entertainmentData
-            .map { [SectionModel(model: "", items: $0)] }
+        output.viewResult
+//            .do(onNext: { viewResult in
+//                if viewResult.isRefresh {
+//                    DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+//                        self.collectionView.safeScrollToItem(at: .init(item: 0, section: 0), at: .top, animated: false)
+//                    }
+//                }
+//            })
+            .map { [SectionModel(model: "", items: $0.data)] }
             .drive(collectionView.rx.items(dataSource: entertainmentDataSource))
             .disposed(by: rx.disposeBag)
         
@@ -127,6 +140,21 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
                 self?.presentErrorRetryView()
             })
             .disposed(by: rx.disposeBag)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        guard let location = touches.first?.location(in: view), let sortPopupView = sortPopupView else { return }
+        if !sortPopupView.frame.contains(location) {
+            dismissSortPopupView()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        dismissSortPopupView()
     }
 }
 
@@ -178,6 +206,13 @@ extension EntertainmentListViewController {
                 self.togglePresentationMode()
             })
             .disposed(by: rx.disposeBag)
+        
+        btnOptions.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.toggleSortPopupView()
+            })
+            .disposed(by: rx.disposeBag)
     }
     
     private func togglePresentationMode() {
@@ -206,6 +241,46 @@ extension EntertainmentListViewController {
             self.isAnimatingPresentation = !completed
         }
     }
+    
+    private func toggleSortPopupView() {
+        if !isShowingSortPopup {
+            sortPopupView = SortPopupView()
+            sortPopupView!.delegate = self
+            sortPopupView!.setSortOptions(SortOption.allCases, selectedOption: viewModel.currentSortOption)
+            showSortPopupView()
+        } else {
+            dismissSortPopupView()
+        }
+    }
+    
+    private func showSortPopupView() {
+        guard !isShowingSortPopup else { return }
+
+        UIView.transition(with: view, duration: 0.25, options: .transitionCrossDissolve, animations: {
+            self.view.addSubview(self.sortPopupView!)
+            self.sortPopupView!.snp.makeConstraints { make in
+                make.top.equalTo(self.btnOptions.snp.bottom).offset(12.0)
+                make.trailing.equalTo(self.btnOptions.snp.trailing)
+                make.width.equalTo(151)
+            }
+        })
+        
+        btnOptions.tintColor = AppColors.colorAccent
+        isShowingSortPopup = true
+    }
+    
+    private func dismissSortPopupView() {
+        guard isShowingSortPopup else { return }
+        
+        UIView.transition(with: self.view, duration: 0.25, options: .transitionCrossDissolve, animations: {
+            self.sortPopupView?.removeFromSuperview()
+        }, completion: { _ in
+            self.sortPopupView = nil
+        })
+        
+        btnOptions.tintColor = .white
+        isShowingSortPopup = false
+    }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -215,5 +290,18 @@ extension EntertainmentListViewController: UICollectionViewDelegate {
         if indexPath.row == collectionView.numberOfItems(inSection: indexPath.section) - 1 && !isFetching {
             loadMoreTriggerS.accept(())
         }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        dismissSortPopupView()
+    }
+}
+
+// MARK: - SortPopupViewDelegate
+
+extension EntertainmentListViewController: SortPopupViewDelegate {
+    func sortPopupView(onSortOptionSelect sortOption: SortOption) {
+        dismissSortPopupView()
+        sortOptionTriggerS.accept(sortOption)
     }
 }

@@ -10,7 +10,7 @@ import RxCocoa
 import XCoordinator
 import Domain
 
-fileprivate typealias QueryParams = (page: Int, isRefresh: Bool)
+typealias EntertainmentListViewResult = (data: [EntertainmentModelType], isRefresh: Bool)
 
 class EntertainmentListViewModel: BaseViewModel, ViewModelType {
     
@@ -20,12 +20,13 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
         let retryTrigger: Driver<Void>
         let refreshTrigger: Driver<Void>
         let loadMoreTrigger: Driver<Void>
+        let sortOptionTrigger: Driver<SortOption>
         let entertainmentSelectTrigger: Driver<EntertainmentModelType>
     }
     
     struct Output {
         let responseRoute: Driver<EntertainmentsResponseRoute>
-        let entertainmentData: Driver<[EntertainmentModelType]>
+        let viewResult: Driver<EntertainmentListViewResult>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -34,6 +35,7 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
     
     private var currentPage: Int = 1
     private var hasNextPage: Bool = false
+    public var currentSortOption: SortOption = .nameA_Z
 
     init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<EntertainmentListRoute>, responseRoute: EntertainmentsResponseRoute) {
         self.repositoryProvider = repositoryProvider
@@ -43,27 +45,34 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let responseRouteD = Driver.just(responseRoute)
-        
         let refreshTriggerO = input.refreshTrigger
             .asObservable()
-            .map { (1, true) }
+            .map { (1, self.currentSortOption, true) }
                 
         let loadMoreTriggerO = input.loadMoreTrigger
             .asObservable()
             .filter { self.hasNextPage }
-            .map { (self.currentPage + 1, false) }
+            .map { (self.currentPage + 1, self.currentSortOption, false) }
         
-        let queryOptionsO = Observable.merge(refreshTriggerO, loadMoreTriggerO)
-            .startWith((1, true))
+        let sortOptionTriggerO = input.sortOptionTrigger
+            .asObservable()
+            .distinctUntilChanged()
+            .do(onNext: { sortOption in
+                self.currentSortOption = sortOption
+            })
+            .mapToVoid()
+            .map { (1, self.currentSortOption, true) }
+
+        let queryOptionsO = Observable.merge(sortOptionTriggerO, refreshTriggerO, loadMoreTriggerO)
+            .startWith((1, self.currentSortOption, true))
         
         let retryTriggerO = input.retryTrigger
             .asObservable()
             .withLatestFrom(queryOptionsO)
         
-        let entertainmentDataD = Observable.merge(queryOptionsO, retryTriggerO)
-            .flatMapLatest { (page, isRefresh) -> Observable<(data: [EntertainmentModelType], isRefresh: Bool)> in
-                self.getEntertainmentData(page: page)
+        let viewResultD = Observable.merge(queryOptionsO, retryTriggerO)
+            .flatMapLatest { (page, sortOption, isRefresh) -> Observable<(data: [EntertainmentModelType], isRefresh: Bool)> in
+                self.getEntertainmentData(page: page, sortOption: sortOption)
                     .do(onSuccess: { [weak self] in
                         guard let self = self else { return }
                         self.currentPage = $0.entertainmentResponsePage
@@ -75,13 +84,14 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
                     .trackActivity(self.loading)
                     .catch { _ in Observable.empty() }
             }
-            .scan([]) { acc, change -> [EntertainmentModelType] in
+            .scan(([], true)) { acc, change -> EntertainmentListViewResult in
                 if change.isRefresh {
-                    return change.data
+                    return (change.data, change.isRefresh)
                 } else {
-                    return acc + change.data
+                    return (acc.0 + change.data, change.isRefresh)
                 }
             }
+            .map { $0 as EntertainmentListViewResult }
             .asDriverOnErrorJustComplete()
         
         input.popViewTrigger
@@ -106,23 +116,23 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         return Output(
-            responseRoute: responseRouteD,
-            entertainmentData: entertainmentDataD
+            responseRoute: Driver.just(responseRoute),
+            viewResult: viewResultD
         )
     }
     
-    private func getEntertainmentData(page: Int) -> Single<EntertainmentResponseModelType> {
+    private func getEntertainmentData(page: Int, sortOption: SortOption) -> Single<EntertainmentResponseModelType> {
         switch responseRoute {
         case .discover(genre: let genre):
             if genre.entertainmentType == .movie {
                 return repositoryProvider
                     .movieRepository()
-                    .getByGenre(genreId: genre.id, page: page)
+                    .getByGenre(genreId: genre.id, sortBy: sortOption.value, page: page)
                     .map { $0 as EntertainmentResponseModelType }
             } else {
                 return repositoryProvider
                     .tvShowRepository()
-                    .getByGenre(genreId: genre.id, page: page)
+                    .getByGenre(genreId: genre.id, sortBy: sortOption.value, page: page)
                     .map { $0 as EntertainmentResponseModelType }
             }
         case .recommendations(entertainment: let entertainment):
