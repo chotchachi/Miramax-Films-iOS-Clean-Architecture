@@ -12,13 +12,14 @@ enum HomeTabRoute: Route {
     case tvShow
     case geners
 //    case wishlist
-//    case setting
+    case setting
 }
 
 class HomeCoordinator: TabBarCoordinator<HomeTabRoute> {
     private let movieRoute: StrongRouter<MovieRoute>
     private let tvShowRoute: StrongRouter<TVShowRoute>
     private let genresRoute: StrongRouter<GenresRoute>
+    private let settingRoute: StrongRouter<SettingRoute>
     
     init(appDIContainer: AppDIContainer) {
         let movieCoordinator = MovieCoordinator(appDIContainer: appDIContainer)
@@ -33,7 +34,11 @@ class HomeCoordinator: TabBarCoordinator<HomeTabRoute> {
         genresCoordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 2)
         genresRoute = genresCoordinator.strongRouter
         
-        super.init(tabs: [movieRoute, tvShowRoute, genresRoute], select: movieRoute)
+        let settingCoordinator = SettingCoordinator(appDIContainer: appDIContainer)
+        settingCoordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 3)
+        settingRoute = settingCoordinator.strongRouter
+        
+        super.init(tabs: [movieRoute, tvShowRoute, genresRoute, settingRoute], select: movieRoute)
     }
     
     override func prepareTransition(for route: HomeTabRoute) -> TabBarTransition {
@@ -46,8 +51,8 @@ class HomeCoordinator: TabBarCoordinator<HomeTabRoute> {
             return .select(genresRoute)
 //        case .wishlist:
 //            <#code#>
-//        case .setting:
-//            <#code#>
+        case .setting:
+            return .select(settingRoute)
         }
     }
 }

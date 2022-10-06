@@ -12,6 +12,10 @@
 		ED1F03B828EDBD370083B088 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03B728EDBD370083B088 /* Defaults.swift */; };
 		ED1F03BA28EDBD550083B088 /* DefaultsContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03B928EDBD550083B088 /* DefaultsContants.swift */; };
 		ED1F03BD28EDD64E0083B088 /* SortPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03BC28EDD64E0083B088 /* SortPopupView.swift */; };
+		ED1F03CB28EF0F060083B088 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03CA28EF0F060083B088 /* SettingCoordinator.swift */; };
+		ED1F03CF28EF0F590083B088 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03CD28EF0F590083B088 /* SettingViewController.swift */; };
+		ED1F03D028EF0F590083B088 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED1F03CE28EF0F590083B088 /* SettingViewController.xib */; };
+		ED1F03D228EF0F650083B088 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03D128EF0F650083B088 /* SettingViewModel.swift */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
 		ED7A095328EC71370035E099 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094F28EC711D0035E099 /* Roboto-Bold.ttf */; };
 		ED7A095428EC71370035E099 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */; };
@@ -167,6 +171,10 @@
 		ED1F03B728EDBD370083B088 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		ED1F03B928EDBD550083B088 /* DefaultsContants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsContants.swift; sourceTree = "<group>"; };
 		ED1F03BC28EDD64E0083B088 /* SortPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortPopupView.swift; sourceTree = "<group>"; };
+		ED1F03CA28EF0F060083B088 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
+		ED1F03CD28EF0F590083B088 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		ED1F03CE28EF0F590083B088 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		ED1F03D128EF0F650083B088 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
 		ED7A094D28EC711D0035E099 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -337,6 +345,17 @@
 				ED1F03BC28EDD64E0083B088 /* SortPopupView.swift */,
 			);
 			path = SortPopupView;
+			sourceTree = "<group>";
+		};
+		ED1F03C928EF0EEE0083B088 /* SettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED1F03D128EF0F650083B088 /* SettingViewModel.swift */,
+				ED1F03CD28EF0F590083B088 /* SettingViewController.swift */,
+				ED1F03CE28EF0F590083B088 /* SettingViewController.xib */,
+				ED1F03CA28EF0F060083B088 /* SettingCoordinator.swift */,
+			);
+			path = SettingViewController;
 			sourceTree = "<group>";
 		};
 		ED5BA69E28EB19370030F4B0 /* EntertainmentRankTableViewCell */ = {
@@ -587,6 +606,7 @@
 		EDC6DB2528CF6C1900164EBD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				ED1F03C928EF0EEE0083B088 /* SettingViewController */,
 				EDD9A19428E0B91200FBA909 /* GenresViewController */,
 				ED866E3D28E01C1B0066E10B /* PersonBiographyViewController */,
 				ED866E1A28DED7590066E10B /* PersonDetailsViewController */,
@@ -1040,6 +1060,7 @@
 				ED7A095728EC71370035E099 /* Roboto-Light.ttf in Resources */,
 				ED7A096128EC84D80035E099 /* EntertainmentListViewController.xib in Resources */,
 				EDE69B4328D62943002726B0 /* SearchViewController.xib in Resources */,
+				ED1F03D028EF0F590083B088 /* SettingViewController.xib in Resources */,
 				EDE69B7E28D73214002726B0 /* TVShowViewController.xib in Resources */,
 				EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */,
 				EDD5302628DCBDA50078C6C5 /* SeasonDetailsViewController.xib in Resources */,
@@ -1101,6 +1122,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDE92B8828E5D97E0083F33A /* ErrorRetryView.swift in Sources */,
+				ED1F03D228EF0F650083B088 /* SettingViewModel.swift in Sources */,
 				EDE69B4728D6312F002726B0 /* SearchViewData.swift in Sources */,
 				ED7A096028EC84D80035E099 /* EntertainmentListViewModel.swift in Sources */,
 				EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */,
@@ -1169,6 +1191,7 @@
 				EDE92B7C28E350650083F33A /* ColumnFlowLayout.swift in Sources */,
 				EDE69B7328D7303D002726B0 /* Animation+Modal.swift in Sources */,
 				EDFAD39E28D30E7200ED3BCD /* DataSourceAssembly.swift in Sources */,
+				ED1F03CF28EF0F590083B088 /* SettingViewController.swift in Sources */,
 				EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */,
 				ED1F03BA28EDBD550083B088 /* DefaultsContants.swift in Sources */,
 				EDC502D028D377CC0047C7C3 /* GenreCollectionViewCell.swift in Sources */,
@@ -1201,6 +1224,7 @@
 				EDC6DB2F28CF717600164EBD /* MainNavigationController.swift in Sources */,
 				EDE69B7728D73078002726B0 /* TransitionAnimation+Defaults.swift in Sources */,
 				EDE92B7428E301820083F33A /* DefaultRefreshControl.swift in Sources */,
+				ED1F03CB28EF0F060083B088 /* SettingCoordinator.swift in Sources */,
 				EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */,
 				ED7A096328EC84D80035E099 /* EntertainmentListViewController.swift in Sources */,
 				ED866E2028DED7AA0066E10B /* PersonDetailsViewModel.swift in Sources */,
