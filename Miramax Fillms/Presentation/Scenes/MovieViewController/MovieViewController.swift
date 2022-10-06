@@ -178,7 +178,7 @@ extension MovieViewController {
         
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
-        collectionViewLayout.itemSize = .init(width: 96.0, height: DimensionConstants.genreCellHeight)
+        collectionViewLayout.itemSize = .init(width: DimensionConstants.genreCellWidth, height: DimensionConstants.genreCellHeight)
         collectionViewLayout.sectionInset = .init(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
         collectionViewLayout.minimumLineSpacing = 12.0
         genresCollectionView.collectionViewLayout = collectionViewLayout
