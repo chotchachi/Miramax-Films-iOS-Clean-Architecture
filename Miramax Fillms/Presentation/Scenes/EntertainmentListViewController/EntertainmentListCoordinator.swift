@@ -41,8 +41,8 @@ class EntertainmentListCoordinator: NavigationCoordinator<EntertainmentListRoute
         case .pop:
             return .pop()
         case .search:
-            addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
-            return .none()
+            let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
+            return .presentFullScreen(searchCoordinator, animation: .fade)
         case .entertainmentDetails(entertainment: let entertainment):
             addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
             return .none()

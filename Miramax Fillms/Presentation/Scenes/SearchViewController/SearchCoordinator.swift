@@ -18,9 +18,11 @@ enum SearchRoute: Route {
 class SearchCoordinator: NavigationCoordinator<SearchRoute> {
     private let appDIContainer: AppDIContainer
 
-    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController) {
+    init(appDIContainer: AppDIContainer) {
         self.appDIContainer = appDIContainer
-        super.init(rootViewController: rootViewController, initialRoute: .initial)
+        super.init(initialRoute: .initial)
+        
+        rootViewController.setNavigationBarHidden(true, animated: false)
     }
     
     override func prepareTransition(for route: SearchRoute) -> NavigationTransition {
@@ -30,7 +32,7 @@ class SearchCoordinator: NavigationCoordinator<SearchRoute> {
             vc.viewModel = SearchViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter)
             return .push(vc)
         case .dismiss:
-            return .pop(animation: .fade)
+            return .dismiss(animation: .fade)
         case .entertainmentDetails(entertainment: let entertainment):
             addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
             return .none()

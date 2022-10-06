@@ -33,8 +33,8 @@ class TVShowCoordinator: NavigationCoordinator<TVShowRoute> {
             vc.viewModel = TVShowViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter)
             return .push(vc)
         case .search:
-            addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
-            return .none()
+            let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
+            return .presentFullScreen(searchCoordinator, animation: .fade)
         case .entertainmentDetails(entertainment: let entertainment):
             addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
             return .none()

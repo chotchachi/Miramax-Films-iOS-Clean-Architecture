@@ -45,8 +45,8 @@ class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
         case .pop:
             return .pop()
         case .search:
-            addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
-            return .none()
+            let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
+            return .presentFullScreen(searchCoordinator, animation: .fade)
         case .share:
             guard let url = URL(string: "https://www.themoviedb.org/person/\(personModel.personModelId)") else {
                 return .none()

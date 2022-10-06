@@ -31,8 +31,8 @@ class SettingCoordinator: NavigationCoordinator<SettingRoute> {
             vc.viewModel = SettingViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter)
             return .push(vc)
         case .search:
-            addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
-            return .none()
+            let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
+            return .presentFullScreen(searchCoordinator, animation: .fade)
         }
     }
 }

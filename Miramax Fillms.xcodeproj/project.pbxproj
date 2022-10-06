@@ -19,6 +19,7 @@
 		ED31388528EF2FD100EC759C /* MoviePreviewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31388428EF2FD100EC759C /* MoviePreviewTab.swift */; };
 		ED31388728EF31E400EC759C /* CaseIterable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31388628EF31E400EC759C /* CaseIterable+Ext.swift */; };
 		ED31388928EF320100EC759C /* TVShowPreviewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31388828EF320100EC759C /* TVShowPreviewTab.swift */; };
+		ED31388F28EF434C00EC759C /* Transition+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31388E28EF434C00EC759C /* Transition+Ext.swift */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
 		ED7A095328EC71370035E099 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094F28EC711D0035E099 /* Roboto-Bold.ttf */; };
 		ED7A095428EC71370035E099 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */; };
@@ -181,6 +182,7 @@
 		ED31388428EF2FD100EC759C /* MoviePreviewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePreviewTab.swift; sourceTree = "<group>"; };
 		ED31388628EF31E400EC759C /* CaseIterable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaseIterable+Ext.swift"; sourceTree = "<group>"; };
 		ED31388828EF320100EC759C /* TVShowPreviewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowPreviewTab.swift; sourceTree = "<group>"; };
+		ED31388E28EF434C00EC759C /* Transition+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Ext.swift"; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
 		ED7A094D28EC711D0035E099 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				ED866E5B28E09AB60066E10B /* UIImageView+Kingfisher.swift */,
 				EDE92B7528E307010083F33A /* UIRefreshControl+Ext.swift */,
 				ED31388628EF31E400EC759C /* CaseIterable+Ext.swift */,
+				ED31388E28EF434C00EC759C /* Transition+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1242,6 +1245,7 @@
 				ED866E2028DED7AA0066E10B /* PersonDetailsViewModel.swift in Sources */,
 				EDE92B8D28E5EA3B0083F33A /* LoadingView.swift in Sources */,
 				EDE69B5228D6BA58002726B0 /* PersonHorizontalListCell.swift in Sources */,
+				ED31388F28EF434C00EC759C /* Transition+Ext.swift in Sources */,
 				EDD5302528DCBDA50078C6C5 /* SeasonDetailsViewController.swift in Sources */,
 				EDE92B7628E307010083F33A /* UIRefreshControl+Ext.swift in Sources */,
 				ED7A096228EC84D80035E099 /* EntertainmentListCoordinator.swift in Sources */,

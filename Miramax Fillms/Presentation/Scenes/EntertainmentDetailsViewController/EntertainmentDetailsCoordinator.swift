@@ -48,8 +48,8 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
         case .pop:
             return .pop()
         case .search:
-            addChild(SearchCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController))
-            return .none()
+            let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
+            return .presentFullScreen(searchCoordinator, animation: .fade)
         case .share:
             let typeStr = entertainment.entertainmentModelType == .movie ? "movie" : "tv"
             guard let url = URL(string: "https://www.themoviedb.org/\(typeStr)/\(entertainment.entertainmentModelId)") else {
