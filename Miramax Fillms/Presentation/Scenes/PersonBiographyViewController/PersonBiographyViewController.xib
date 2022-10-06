@@ -25,14 +25,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFN-iA-iAt" customClass="AppToolbar" customModule="Miramax_Fillms" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="47" width="390" height="54"/>
+                    <rect key="frame" x="0.0" y="47" width="390" height="55"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="54" id="UpJ-PF-V0n"/>
-                    </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djG-zj-uhz">
-                    <rect key="frame" x="0.0" y="101" width="390" height="709"/>
+                    <rect key="frame" x="0.0" y="102" width="390" height="708"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JWy-7T-yMD">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="272.66666666666669"/>
@@ -115,6 +112,9 @@
     <designables>
         <designable name="aEy-sS-LOj">
             <size key="intrinsicContentSize" width="358" height="16"/>
+        </designable>
+        <designable name="rFN-iA-iAt">
+            <size key="intrinsicContentSize" width="-1" height="55"/>
         </designable>
     </designables>
     <resources>

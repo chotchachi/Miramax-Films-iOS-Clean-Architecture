@@ -61,6 +61,14 @@ final class AppToolbar: UIView {
         setup()
     }
     
+    override var intrinsicContentSize: CGSize {
+        return CGSizeMake(UIView.noIntrinsicMetric, DimensionConstants.appToolbarHeight)
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        invalidateIntrinsicContentSize()
+    }
+    
     private func setup() {
         btnBack = UIButton(type: .system)
         btnBack.translatesAutoresizingMaskIntoConstraints = false

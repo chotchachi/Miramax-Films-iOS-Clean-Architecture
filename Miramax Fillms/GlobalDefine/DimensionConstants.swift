@@ -8,6 +8,8 @@
 import Foundation
 
 struct DimensionConstants {
+    static let appToolbarHeight: CGFloat = 55.0
+    
     static let genreCellHeight: CGFloat = 48.0
     
     static let moviePreviewCollectionViewMinHeight: CGFloat = 500.0

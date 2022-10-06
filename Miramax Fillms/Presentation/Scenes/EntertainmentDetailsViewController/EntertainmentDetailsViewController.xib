@@ -50,18 +50,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="twN-0J-lwG" customClass="AppToolbar" customModule="Miramax_Fillms" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="47" width="390" height="54"/>
+                    <rect key="frame" x="0.0" y="47" width="390" height="55"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="54" id="Ech-D1-jvq"/>
-                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showBackButton" value="YES"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showTitleLabel" value="NO"/>
                     </userDefinedRuntimeAttributes>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KFI-Sc-xE0">
-                    <rect key="frame" x="0.0" y="101" width="390" height="709"/>
+                    <rect key="frame" x="0.0" y="102" width="390" height="708"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4lf-00-G9Z">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="1357"/>
@@ -533,6 +530,11 @@
             <point key="canvasLocation" x="116.92307692307692" y="20.616113744075829"/>
         </view>
     </objects>
+    <designables>
+        <designable name="twN-0J-lwG">
+            <size key="intrinsicContentSize" width="-1" height="55"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ic_calendar_fill" width="24" height="24"/>
         <image name="ic_play_circle" width="60" height="60"/>

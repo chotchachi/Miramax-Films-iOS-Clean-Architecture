@@ -37,14 +37,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CSR-c8-MBk" customClass="AppToolbar" customModule="Miramax_Fillms" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="47" width="390" height="54"/>
+                    <rect key="frame" x="0.0" y="47" width="390" height="55"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="54" id="JHL-Qj-FIS"/>
-                    </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="coh-lq-TpG">
-                    <rect key="frame" x="0.0" y="101" width="390" height="709"/>
+                    <rect key="frame" x="0.0" y="102" width="390" height="708"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jWF-eo-8QQ">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="726"/>
@@ -248,6 +245,9 @@
         </view>
     </objects>
     <designables>
+        <designable name="CSR-c8-MBk">
+            <size key="intrinsicContentSize" width="-1" height="55"/>
+        </designable>
         <designable name="W0q-nd-sbB">
             <size key="intrinsicContentSize" width="358" height="16"/>
         </designable>

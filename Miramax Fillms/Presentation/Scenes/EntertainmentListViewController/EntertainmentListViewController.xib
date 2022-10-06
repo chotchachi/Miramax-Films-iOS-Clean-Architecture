@@ -24,14 +24,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgt-yy-LRh" customClass="AppToolbar" customModule="Miramax_Fillms" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="47" width="390" height="54"/>
+                    <rect key="frame" x="0.0" y="47" width="390" height="55"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="54" id="4dw-fZ-WdX"/>
-                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ix9-Xw-9gu">
-                    <rect key="frame" x="0.0" y="101" width="390" height="61"/>
+                    <rect key="frame" x="0.0" y="102" width="390" height="61"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1SK-je-ORL" userLabel="Divider">
                             <rect key="frame" x="16" y="60" width="358" height="1"/>
@@ -77,7 +74,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="DyE-32-6jf">
-                    <rect key="frame" x="0.0" y="162" width="390" height="648"/>
+                    <rect key="frame" x="0.0" y="163" width="390" height="647"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KBh-mi-NXi">
                         <size key="itemSize" width="128" height="128"/>
@@ -105,6 +102,11 @@
             <point key="canvasLocation" x="96.92307692307692" y="20.616113744075829"/>
         </view>
     </objects>
+    <designables>
+        <designable name="bgt-yy-LRh">
+            <size key="intrinsicContentSize" width="-1" height="55"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ic_filter" width="24" height="24"/>
         <image name="ic_list_mode" width="24" height="24"/>

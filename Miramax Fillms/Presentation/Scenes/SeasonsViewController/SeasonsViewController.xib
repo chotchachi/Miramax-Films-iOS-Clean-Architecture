@@ -22,14 +22,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wQQ-c8-tFh" customClass="AppToolbar" customModule="Miramax_Fillms" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="59" width="393" height="54"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="55"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="54" id="zK1-oE-kkE"/>
-                    </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9p6-T7-Vy6">
-                    <rect key="frame" x="0.0" y="113" width="393" height="705"/>
+                    <rect key="frame" x="0.0" y="114" width="393" height="704"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
@@ -47,6 +44,11 @@
             <point key="canvasLocation" x="98" y="21"/>
         </view>
     </objects>
+    <designables>
+        <designable name="wQQ-c8-tFh">
+            <size key="intrinsicContentSize" width="-1" height="55"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="ColorPrimary">
             <color red="0.024000000208616257" green="0.067000001668930054" blue="0.21199999749660492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

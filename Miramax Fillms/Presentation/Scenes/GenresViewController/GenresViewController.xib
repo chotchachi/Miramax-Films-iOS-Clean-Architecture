@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Mbc-GB-jhT">
-                    <rect key="frame" x="0.0" y="101" width="390" height="709"/>
+                    <rect key="frame" x="0.0" y="102" width="390" height="708"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nSn-A3-99A">
                         <size key="itemSize" width="128" height="128"/>
@@ -32,11 +32,8 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfw-23-gEB" customClass="AppToolbar" customModule="Miramax_Fillms" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="47" width="390" height="54"/>
+                    <rect key="frame" x="0.0" y="47" width="390" height="55"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="54" id="jWy-ru-aQl"/>
-                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -53,6 +50,11 @@
             <point key="canvasLocation" x="96.92307692307692" y="20.616113744075829"/>
         </view>
     </objects>
+    <designables>
+        <designable name="jfw-23-gEB">
+            <size key="intrinsicContentSize" width="-1" height="55"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="ColorPrimary">
             <color red="0.024000000208616257" green="0.067000001668930054" blue="0.21199999749660492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
