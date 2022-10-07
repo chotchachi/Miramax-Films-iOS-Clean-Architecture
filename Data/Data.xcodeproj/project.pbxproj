@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2B746448AFC220D1F449ECB4 /* Pods_Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC7ECF22379BFD65DEF5083 /* Pods_Data.framework */; };
+		ED31389528EFE87200EC759C /* OptionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31389428EFE87200EC759C /* OptionsRepository.swift */; };
 		EDE92C4128E697920083F33A /* Data.h in Headers */ = {isa = PBXBuildFile; fileRef = EDE92C4028E697920083F33A /* Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDE92CC928E698E40083F33A /* RepositoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAF28E698E20083F33A /* RepositoryProvider.swift */; };
 		EDE92CCA28E699010083F33A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CC628E698E30083F33A /* ReachabilityManager.swift */; };
@@ -90,6 +91,7 @@
 		165301CCDCFFC2571E460B23 /* Pods-Data.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data.debug.xcconfig"; path = "Target Support Files/Pods-Data/Pods-Data.debug.xcconfig"; sourceTree = "<group>"; };
 		1BC7ECF22379BFD65DEF5083 /* Pods_Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		995489B553BA26EB4BBA55C5 /* Pods-Data.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data.release.xcconfig"; path = "Target Support Files/Pods-Data/Pods-Data.release.xcconfig"; sourceTree = "<group>"; };
+		ED31389428EFE87200EC759C /* OptionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsRepository.swift; sourceTree = "<group>"; };
 		EDE92C3D28E697920083F33A /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE92C4028E697920083F33A /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		EDE92C8328E698E20083F33A /* RemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				EDE92CC228E698E30083F33A /* PersonRepository.swift */,
 				EDE92CC328E698E30083F33A /* TVShowRepository.swift */,
 				EDE92CC428E698E30083F33A /* SearchRepository.swift */,
+				ED31389428EFE87200EC759C /* OptionsRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				EDE92D0028E6993B0083F33A /* LocalDataSourceProtocol.swift in Sources */,
 				EDE92CED28E699210083F33A /* ImageDTO.swift in Sources */,
 				EDE92CF228E699210083F33A /* MovieDTO.swift in Sources */,
+				ED31389528EFE87200EC759C /* OptionsRepository.swift in Sources */,
 				EDE92CFE28E699360083F33A /* RealmRepresentable.swift in Sources */,
 				EDE92CF128E699210083F33A /* TVShowDTO.swift in Sources */,
 				EDE92CFB28E699320083F33A /* LocalDataSource.swift in Sources */,

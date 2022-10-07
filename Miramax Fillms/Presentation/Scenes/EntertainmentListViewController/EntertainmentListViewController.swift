@@ -255,7 +255,7 @@ extension EntertainmentListViewController {
         if !isShowingSortPopup {
             sortPopupView = SortPopupView()
             sortPopupView!.delegate = self
-            sortPopupView!.setSortOptions(SortOption.allCases, selectedOption: viewModel.currentSortOption)
+            sortPopupView!.setSortOptions(viewModel.sortOptions, selectedOption: viewModel.currentSortOption)
             showSortPopupView()
         } else {
             dismissSortPopupView()

@@ -11,4 +11,5 @@ public protocol RepositoryProviderProtocol {
     func tvShowRepository() -> TVShowRepositoryProtocol
     func personRepository() -> PersonRepositoryProtocol
     func searchRepository() -> SearchRepositoryProtocol
+    func optionsRepository() -> OptionsRepositoryProtocol
 }

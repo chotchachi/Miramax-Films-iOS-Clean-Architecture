@@ -35,12 +35,19 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
     
     private var currentPage: Int = 1
     private var hasNextPage: Bool = false
-    public var currentSortOption: SortOption = .nameA_Z
+    
+    public var currentSortOption: SortOption
+    public let sortOptions: [SortOption]
 
     init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<EntertainmentListRoute>, responseRoute: EntertainmentsResponseRoute) {
         self.repositoryProvider = repositoryProvider
         self.router = router
         self.responseRoute = responseRoute
+        let sortOptions = repositoryProvider
+            .optionsRepository()
+            .getSortOptions()
+        self.sortOptions = sortOptions
+        self.currentSortOption = sortOptions.first!
         super.init()
     }
     
@@ -127,12 +134,12 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
             if genre.entertainmentType == .movie {
                 return repositoryProvider
                     .movieRepository()
-                    .getByGenre(genreId: genre.id, sortBy: sortOption.value, page: page)
+                    .getByGenre(genreId: genre.id, sortOption: sortOption, page: page)
                     .map { $0 as EntertainmentResponseModelType }
             } else {
                 return repositoryProvider
                     .tvShowRepository()
-                    .getByGenre(genreId: genre.id, sortBy: sortOption.value, page: page)
+                    .getByGenre(genreId: genre.id, sortOption: sortOption, page: page)
                     .map { $0 as EntertainmentResponseModelType }
             }
         case .recommendations(entertainment: let entertainment):

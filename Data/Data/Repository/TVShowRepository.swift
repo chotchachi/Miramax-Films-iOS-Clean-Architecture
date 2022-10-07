@@ -41,9 +41,9 @@ public final class TVShowRepository: TVShowRepositoryProtocol {
             .map { $0.asDomain() }
     }
     
-    public func getByGenre(genreId: Int, sortBy: String, page: Int?) -> Single<TVShowResponse> {
+    public func getByGenre(genreId: Int, sortOption: SortOption, page: Int?) -> Single<TVShowResponse> {
         return remoteDataSource
-            .getTVShowByGenre(genreId: genreId, sortBy: sortBy, page: page)
+            .getTVShowByGenre(genreId: genreId, sortBy: sortOption.value, page: page)
             .map { $0.asDomain() }
     }
     

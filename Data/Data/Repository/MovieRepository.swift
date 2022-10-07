@@ -41,9 +41,9 @@ public final class MovieRepository: MovieRepositoryProtocol {
             .map { $0.asDomain() }
     }
     
-    public func getByGenre(genreId: Int, sortBy: String, page: Int?) -> Single<MovieResponse> {
+    public func getByGenre(genreId: Int, sortOption: SortOption, page: Int?) -> Single<MovieResponse> {
         return remoteDataSource
-            .getMovieByGenre(genreId: genreId, sortBy: sortBy, page: page)
+            .getMovieByGenre(genreId: genreId, sortBy: sortOption.value, page: page)
             .map { $0.asDomain() }
     }
     

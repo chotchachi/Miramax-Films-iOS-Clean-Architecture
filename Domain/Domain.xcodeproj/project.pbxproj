@@ -10,6 +10,7 @@
 		852BB03D8276C7F5302167D4 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ED6D4749F90C47FB5168CE8 /* Pods_Domain.framework */; };
 		ED1F03B228ED24900083B088 /* EntertainmentResponseModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03B128ED24900083B088 /* EntertainmentResponseModelType.swift */; };
 		ED1F03BF28EDE20D0083B088 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03BE28EDE20D0083B088 /* SortOption.swift */; };
+		ED31389328EFE84800EC759C /* OptionsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31389228EFE84800EC759C /* OptionsRepositoryProtocol.swift */; };
 		EDE92C2D28E6977D0083F33A /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = EDE92C2C28E6977D0083F33A /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDE92C4828E698660083F33A /* RepositoryProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C4728E698660083F33A /* RepositoryProviderProtocol.swift */; };
 		EDE92C6828E698990083F33A /* MovieRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C4A28E698860083F33A /* MovieRepositoryProtocol.swift */; };
@@ -48,6 +49,7 @@
 		EB9D5FFB0C3D16CC1E1C0E34 /* Pods-Domain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.release.xcconfig"; path = "Target Support Files/Pods-Domain/Pods-Domain.release.xcconfig"; sourceTree = "<group>"; };
 		ED1F03B128ED24900083B088 /* EntertainmentResponseModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentResponseModelType.swift; sourceTree = "<group>"; };
 		ED1F03BE28EDE20D0083B088 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
+		ED31389228EFE84800EC759C /* OptionsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsRepositoryProtocol.swift; sourceTree = "<group>"; };
 		EDE92C2928E6977D0083F33A /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE92C2C28E6977D0083F33A /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		EDE92C4728E698660083F33A /* RepositoryProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProviderProtocol.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				EDE92C4B28E698860083F33A /* PersonRepositoryProtocol.swift */,
 				EDE92C4C28E698860083F33A /* TVShowRepositoryProtocol.swift */,
 				EDE92C4D28E698860083F33A /* SearchRepositoryProtocol.swift */,
+				ED31389228EFE84800EC759C /* OptionsRepositoryProtocol.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				EDE92C7628E698A70083F33A /* TVShowDetail.swift in Sources */,
 				EDE92C7B28E698A70083F33A /* MovieDetail.swift in Sources */,
 				EDE92C8228E698AB0083F33A /* MovieResponse.swift in Sources */,
+				ED31389328EFE84800EC759C /* OptionsRepositoryProtocol.swift in Sources */,
 				EDE92C6A28E698990083F33A /* GenreRepositoryProtocol.swift in Sources */,
 				EDE92C7128E698A70083F33A /* Cast.swift in Sources */,
 				EDE92C7F28E698AB0083F33A /* PersonResponse.swift in Sources */,
