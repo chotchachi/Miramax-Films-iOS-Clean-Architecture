@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		61D73C8110AE141D057D3229 /* Pods_Miramax_Fillms.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C90E95A357C070699EC3983 /* Pods_Miramax_Fillms.framework */; };
+		ED13B6BA28F092F9007B7A1D /* WishlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED13B6B928F092F9007B7A1D /* WishlistViewModel.swift */; };
+		ED13B6BD28F09303007B7A1D /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED13B6BB28F09303007B7A1D /* WishlistViewController.swift */; };
+		ED13B6BE28F09303007B7A1D /* WishlistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED13B6BC28F09303007B7A1D /* WishlistViewController.xib */; };
+		ED13B6C028F09314007B7A1D /* WishlistCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED13B6BF28F09314007B7A1D /* WishlistCoordinator.swift */; };
 		ED1F03AD28EC92360083B088 /* EntertainmentsResponseRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03AC28EC92360083B088 /* EntertainmentsResponseRoute.swift */; };
 		ED1F03B828EDBD370083B088 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03B728EDBD370083B088 /* Defaults.swift */; };
 		ED1F03BA28EDBD550083B088 /* DefaultsContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03B928EDBD550083B088 /* DefaultsContants.swift */; };
@@ -172,6 +176,10 @@
 		2C90E95A357C070699EC3983 /* Pods_Miramax_Fillms.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Miramax_Fillms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4758F1EC2A08D665697C22E4 /* Pods-Miramax Fillms.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Miramax Fillms.release.xcconfig"; path = "Target Support Files/Pods-Miramax Fillms/Pods-Miramax Fillms.release.xcconfig"; sourceTree = "<group>"; };
 		53B990CD2AA8BFC87184AC0E /* Pods-Miramax Fillms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Miramax Fillms.debug.xcconfig"; path = "Target Support Files/Pods-Miramax Fillms/Pods-Miramax Fillms.debug.xcconfig"; sourceTree = "<group>"; };
+		ED13B6B928F092F9007B7A1D /* WishlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewModel.swift; sourceTree = "<group>"; };
+		ED13B6BB28F09303007B7A1D /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
+		ED13B6BC28F09303007B7A1D /* WishlistViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WishlistViewController.xib; sourceTree = "<group>"; };
+		ED13B6BF28F09314007B7A1D /* WishlistCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistCoordinator.swift; sourceTree = "<group>"; };
 		ED1F03AC28EC92360083B088 /* EntertainmentsResponseRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentsResponseRoute.swift; sourceTree = "<group>"; };
 		ED1F03B728EDBD370083B088 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		ED1F03B928EDBD550083B088 /* DefaultsContants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsContants.swift; sourceTree = "<group>"; };
@@ -338,6 +346,17 @@
 				4758F1EC2A08D665697C22E4 /* Pods-Miramax Fillms.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		ED13B6B828F092E5007B7A1D /* WishlistViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED13B6B928F092F9007B7A1D /* WishlistViewModel.swift */,
+				ED13B6BB28F09303007B7A1D /* WishlistViewController.swift */,
+				ED13B6BC28F09303007B7A1D /* WishlistViewController.xib */,
+				ED13B6BF28F09314007B7A1D /* WishlistCoordinator.swift */,
+			);
+			path = WishlistViewController;
 			sourceTree = "<group>";
 		};
 		ED1F03B628EDBD2B0083B088 /* DefaultsKit */ = {
@@ -626,6 +645,7 @@
 		EDC6DB2528CF6C1900164EBD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				ED13B6B828F092E5007B7A1D /* WishlistViewController */,
 				ED1F03C928EF0EEE0083B088 /* SettingViewController */,
 				EDD9A19428E0B91200FBA909 /* GenresViewController */,
 				ED866E3D28E01C1B0066E10B /* PersonBiographyViewController */,
@@ -1080,6 +1100,7 @@
 				ED7A095628EC71370035E099 /* Roboto-Black.ttf in Resources */,
 				EDD5301428DC97650078C6C5 /* SeasonsViewController.xib in Resources */,
 				ED866E4128E01C300066E10B /* PersonBiographyViewController.xib in Resources */,
+				ED13B6BE28F09303007B7A1D /* WishlistViewController.xib in Resources */,
 				ED7A095728EC71370035E099 /* Roboto-Light.ttf in Resources */,
 				ED7A096128EC84D80035E099 /* EntertainmentListViewController.xib in Resources */,
 				EDE69B4328D62943002726B0 /* SearchViewController.xib in Resources */,
@@ -1190,6 +1211,7 @@
 				ED31388528EF2FD100EC759C /* MoviePreviewTab.swift in Sources */,
 				EDE69B7228D7303D002726B0 /* Animation+Navigation.swift in Sources */,
 				ED31388728EF31E400EC759C /* CaseIterable+Ext.swift in Sources */,
+				ED13B6BD28F09303007B7A1D /* WishlistViewController.swift in Sources */,
 				EDE92B9628E5F7CE0083F33A /* Searchable.swift in Sources */,
 				EDD5301328DC97650078C6C5 /* SeasonsViewController.swift in Sources */,
 				EDC6DB2C28CF70F500164EBD /* AppDIContainer.swift in Sources */,
@@ -1202,6 +1224,7 @@
 				EDD5302828DCBDBA0078C6C5 /* SeasonDetailsViewModel.swift in Sources */,
 				EDC502D828D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift in Sources */,
 				EDE92B7828E32C930083F33A /* EntertainmentDetailCollectionViewCell.swift in Sources */,
+				ED13B6C028F09314007B7A1D /* WishlistCoordinator.swift in Sources */,
 				EDE92B8A28E5DD3D0083F33A /* Displayable.swift in Sources */,
 				ED1F03BD28EDD64E0083B088 /* SortPopupView.swift in Sources */,
 				EDE69B7528D7303D002726B0 /* Animation+Scale.swift in Sources */,
@@ -1245,6 +1268,7 @@
 				EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */,
 				ED866E5C28E09AB60066E10B /* UIImageView+Kingfisher.swift in Sources */,
 				EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */,
+				ED13B6BA28F092F9007B7A1D /* WishlistViewModel.swift in Sources */,
 				ED31389A28F08AE600EC759C /* MainTabBarController.swift in Sources */,
 				EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */,
 				EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */,

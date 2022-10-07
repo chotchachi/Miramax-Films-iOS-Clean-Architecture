@@ -11,7 +11,7 @@ enum HomeTabRoute: Route {
     case movie
     case tvShow
     case geners
-//    case wishlist
+    case wishlist
     case setting
 }
 
@@ -19,6 +19,7 @@ class HomeCoordinator: TabBarCoordinator<HomeTabRoute> {
     private let movieRoute: StrongRouter<MovieRoute>
     private let tvShowRoute: StrongRouter<TVShowRoute>
     private let genresRoute: StrongRouter<GenresRoute>
+    private let wishlistRoute: StrongRouter<WishlistRoute>
     private let settingRoute: StrongRouter<SettingRoute>
     
     init(appDIContainer: AppDIContainer) {
@@ -34,11 +35,15 @@ class HomeCoordinator: TabBarCoordinator<HomeTabRoute> {
         genresCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "genres".localized, image: UIImage(named: "ic_tab_genres"), tag: 2)
         genresRoute = genresCoordinator.strongRouter
         
+        let wishlistCoordinator = WishlistCoordinator(appDIContainer: appDIContainer)
+        wishlistCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "wishlist".localized, image: UIImage(named: "ic_tab_bookmark"), tag: 3)
+        wishlistRoute = wishlistCoordinator.strongRouter
+        
         let settingCoordinator = SettingCoordinator(appDIContainer: appDIContainer)
-        settingCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "setting".localized, image: UIImage(named: "ic_tab_setting"), tag: 3)
+        settingCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "setting".localized, image: UIImage(named: "ic_tab_setting"), tag: 4)
         settingRoute = settingCoordinator.strongRouter
         
-        super.init(rootViewController: MainTabBarController(), tabs: [movieRoute, tvShowRoute, genresRoute, settingRoute], select: movieRoute)        
+        super.init(rootViewController: MainTabBarController(), tabs: [movieRoute, tvShowRoute, genresRoute, wishlistRoute, settingRoute], select: movieRoute)
     }
     
     override func prepareTransition(for route: HomeTabRoute) -> TabBarTransition {
@@ -49,8 +54,8 @@ class HomeCoordinator: TabBarCoordinator<HomeTabRoute> {
             return .select(tvShowRoute)
         case .geners:
             return .select(genresRoute)
-//        case .wishlist:
-//            <#code#>
+        case .wishlist:
+            return .select(wishlistRoute)
         case .setting:
             return .select(settingRoute)
         }
