@@ -16,7 +16,7 @@ fileprivate let kUpcomingMaxItems: Int = 6
 fileprivate let kUpcomingTableViewMinHeight: CGFloat = 200.0
 fileprivate let kPreviewCollectionViewMinHeight: CGFloat = 500.0
 
-class TVShowViewController: BaseViewController<TVShowViewModel>, Searchable {
+class TVShowViewController: BaseViewController<TVShowViewModel>, TabBarSelectable, Searchable {
 
     // MARK: - Outlets + Views
     
@@ -388,6 +388,14 @@ extension TVShowViewController {
     @objc private func onBannerMainViewTapped(_ sender: UITapGestureRecognizer) {
         guard let item = bannerEntertertainmentItem else { return }
         entertainmentSelectTriggerS.accept(item)
+    }
+}
+
+// MARK: - TabBarSelectable
+
+extension TVShowViewController {
+    func handleTabBarSelection() {
+        scrollView.scrollToTop()
     }
 }
 

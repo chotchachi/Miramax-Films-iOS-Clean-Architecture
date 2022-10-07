@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import SwifterSwift
 
-class SettingViewController: BaseViewController<SettingViewModel>, Searchable {
+class SettingViewController: BaseViewController<SettingViewModel>, TabBarSelectable, Searchable {
 
     // MARK: - Outlets
     
@@ -91,5 +91,13 @@ extension SettingViewController {
         } else if view == viewShareApp {
             print("share")
         }
+    }
+}
+
+// MARK: - TabBarSelectable
+
+extension SettingViewController {
+    func handleTabBarSelection() {
+        
     }
 }

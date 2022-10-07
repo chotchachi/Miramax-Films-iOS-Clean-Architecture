@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import SwifterSwift
 
-class WishlistViewController: BaseViewController<WishlistViewModel>, Searchable {
+class WishlistViewController: BaseViewController<WishlistViewModel>, TabBarSelectable, Searchable {
 
     // MARK: - Outlets
     
@@ -45,5 +45,13 @@ extension WishlistViewController {
         appToolbar.title = "wishlist".localized
         appToolbar.showBackButton = false
         appToolbar.rightButtons = [btnSearch]
+    }
+}
+
+// MARK: - TabBarSelectable
+
+extension WishlistViewController {
+    func handleTabBarSelection() {
+        
     }
 }

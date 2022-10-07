@@ -14,7 +14,7 @@ import Domain
 
 fileprivate let kPreviewCollectionViewMinHeight: CGFloat = 500.0
 
-class MovieViewController: BaseViewController<MovieViewModel>, Searchable {
+class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable, Searchable {
     
     // MARK: - Outlets + Views
     
@@ -311,6 +311,14 @@ extension MovieViewController {
         sectionPreviewSeeMoreView.isHidden = true
         
         previewSeeMoreButton.titleText = "see_more".localized
+    }
+}
+
+// MARK: - TabBarSelectable
+
+extension MovieViewController {
+    func handleTabBarSelection() {
+        scrollView.scrollToTop()
     }
 }
 

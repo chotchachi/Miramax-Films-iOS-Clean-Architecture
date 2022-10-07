@@ -18,6 +18,8 @@ class MainTabBarController: UITabBarController {
         return view
     }()
     
+    private var currentSelectedItemIndex: Int!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,5 +83,17 @@ extension MainTabBarController: UITabBarControllerDelegate {
         }
         
         moveIndicator(index: index, animate: true)
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        guard let currentTabBarIndex = viewControllers?.firstIndex(of: viewController),
+            currentTabBarIndex == selectedIndex,
+            selectedIndex == currentSelectedItemIndex else {
+                currentSelectedItemIndex = selectedIndex
+                return
+        }
+        guard let navigationController = viewController as? UINavigationController,
+            let tabBarScrollable = navigationController.topViewController as? TabBarSelectable else { return }
+        tabBarScrollable.handleTabBarSelection()
     }
 }

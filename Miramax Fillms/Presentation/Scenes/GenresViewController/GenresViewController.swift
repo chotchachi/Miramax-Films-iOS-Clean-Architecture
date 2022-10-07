@@ -12,7 +12,7 @@ import RxDataSources
 import SwifterSwift
 import Domain
 
-class GenresViewController: BaseViewController<GenresViewModel>, LoadingDisplayable, ErrorRetryable, Searchable {
+class GenresViewController: BaseViewController<GenresViewModel>, TabBarSelectable, LoadingDisplayable, ErrorRetryable, Searchable {
 
     // MARK: - Outlets
     
@@ -94,6 +94,14 @@ extension GenresViewController {
         collectionView.rx.modelSelected(Genre.self)
             .bind(to: genreSelectTriggerS)
             .disposed(by: rx.disposeBag)
+    }
+}
+
+// MARK: - TabBarSelectable
+
+extension GenresViewController {
+    func handleTabBarSelection() {
+        
     }
 }
 
