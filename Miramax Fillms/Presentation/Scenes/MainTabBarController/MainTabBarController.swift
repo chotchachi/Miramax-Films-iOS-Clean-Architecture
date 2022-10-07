@@ -27,7 +27,7 @@ class MainTabBarController: UITabBarController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        moveIndicator(index: 0, animate: false)
+        moveIndicator(index: selectedIndex, animate: false)
         indicator.isHidden = false
     }
     
