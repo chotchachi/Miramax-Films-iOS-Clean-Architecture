@@ -23,22 +23,22 @@ class HomeCoordinator: TabBarCoordinator<HomeTabRoute> {
     
     init(appDIContainer: AppDIContainer) {
         let movieCoordinator = MovieCoordinator(appDIContainer: appDIContainer)
-        movieCoordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 0)
+        movieCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "movie".localized, image: UIImage(named: "ic_tab_home"), tag: 0)
         movieRoute = movieCoordinator.strongRouter
 
         let tvShowCoordinator = TVShowCoordinator(appDIContainer: appDIContainer)
-        tvShowCoordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
+        tvShowCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "tvshow".localized, image: UIImage(named: "ic_tab_tv"), tag: 1)
         tvShowRoute = tvShowCoordinator.strongRouter
         
         let genresCoordinator = GenresCoordinator(appDIContainer: appDIContainer)
-        genresCoordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 2)
+        genresCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "genres".localized, image: UIImage(named: "ic_tab_genres"), tag: 2)
         genresRoute = genresCoordinator.strongRouter
         
         let settingCoordinator = SettingCoordinator(appDIContainer: appDIContainer)
-        settingCoordinator.rootViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 3)
+        settingCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "setting".localized, image: UIImage(named: "ic_tab_setting"), tag: 3)
         settingRoute = settingCoordinator.strongRouter
         
-        super.init(tabs: [movieRoute, tvShowRoute, genresRoute, settingRoute], select: movieRoute)
+        super.init(rootViewController: MainTabBarController(), tabs: [movieRoute, tvShowRoute, genresRoute, settingRoute], select: movieRoute)        
     }
     
     override func prepareTransition(for route: HomeTabRoute) -> TabBarTransition {
