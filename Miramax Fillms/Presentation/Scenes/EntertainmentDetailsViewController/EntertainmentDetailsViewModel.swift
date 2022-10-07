@@ -24,7 +24,7 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     struct Output {
-        let entertainmentDetail: Driver<EntertainmentDetailModelType>
+        let entertainment: Driver<EntertainmentModelType>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -45,7 +45,7 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
         let retryTriggerO = input.retryTrigger
             .asObservable()
         
-        let entertainmentDetailD = Observable.merge(viewTriggerO, retryTriggerO)
+        let entertainmentD = Observable.merge(viewTriggerO, retryTriggerO)
             .flatMapLatest {
                 self.getEntertainmentDetails(self.entertainmentModel)
                     .trackError(self.error)
@@ -69,10 +69,10 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         input.toSeasonListTrigger
-            .withLatestFrom(entertainmentDetailD)
+            .withLatestFrom(entertainmentD)
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                if let seasons = item.entertainmentSeasons {
+                if let seasons = item.entertainmentModelSeasons {
                     self.router.trigger(.seasonsList(seasons: seasons))
                 }
             })
@@ -113,21 +113,21 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output(entertainmentDetail: entertainmentDetailD)
+        return Output(entertainment: entertainmentD)
     }
     
-    private func getEntertainmentDetails(_ model: EntertainmentModelType) -> Single<EntertainmentDetailModelType> {
+    private func getEntertainmentDetails(_ model: EntertainmentModelType) -> Single<EntertainmentModelType> {
         switch model.entertainmentModelType {
         case .movie:
             return repositoryProvider
                 .movieRepository()
                 .getDetail(movieId: model.entertainmentModelId)
-                .map { $0 as EntertainmentDetailModelType }
+                .map { $0 as EntertainmentModelType }
         case .tvShow:
             return repositoryProvider
                 .tvShowRepository()
                 .getDetail(tvShowId: model.entertainmentModelId)
-                .map { $0 as EntertainmentDetailModelType }
+                .map { $0 as EntertainmentModelType }
         }
     }
 }

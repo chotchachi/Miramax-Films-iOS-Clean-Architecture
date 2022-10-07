@@ -47,7 +47,7 @@ public final class TVShowRepository: TVShowRepositoryProtocol {
             .map { $0.asDomain() }
     }
     
-    public func getDetail(tvShowId: Int) -> Single<TVShowDetail> {
+    public func getDetail(tvShowId: Int) -> Single<TVShow> {
         return remoteDataSource
             .getTVShowDetail(tvShowId: tvShowId)
             .map { $0.asDomain() }

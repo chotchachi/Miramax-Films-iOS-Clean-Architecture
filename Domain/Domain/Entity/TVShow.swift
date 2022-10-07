@@ -10,20 +10,32 @@ import Foundation
 public struct TVShow: Equatable {
     public let id: Int
     public let name: String
-    public let backdropPath: String?
-    public let posterPath: String?
     public let overview: String
     public let voteAverage: Double
     public let firstAirDate: String
-
-    public init(id: Int, name: String, backdropPath: String?, posterPath: String?, overview: String, voteAverage: Double, firstAirDate: String) {
+    public let backdropPath: String?
+    public let posterPath: String?
+    public let genres: [Genre]?
+    public let numberOfEpisodes: Int?
+    public let numberOfSeasons: Int?
+    public let seasons: [Season]?
+    public let credits: Credit?
+    public let recommendations: TVShowResponse?
+    
+    public init(id: Int, name: String, overview: String, voteAverage: Double, firstAirDate: String, backdropPath: String?, posterPath: String?, genres: [Genre]?, numberOfEpisodes: Int?, numberOfSeasons: Int?, seasons: [Season]?, credits: Credit?, recommendations: TVShowResponse?) {
         self.id = id
         self.name = name
-        self.backdropPath = backdropPath
-        self.posterPath = posterPath
         self.overview = overview
         self.voteAverage = voteAverage
         self.firstAirDate = firstAirDate
+        self.backdropPath = backdropPath
+        self.posterPath = posterPath
+        self.genres = genres
+        self.numberOfEpisodes = numberOfEpisodes
+        self.numberOfSeasons = numberOfSeasons
+        self.seasons = seasons
+        self.credits = credits
+        self.recommendations = recommendations
     }
 }
 
@@ -58,19 +70,44 @@ extension TVShow: EntertainmentModelType {
         return overview
     }
     
-    public var entertainmentModelPosterURL: URL? {
-        return posterURL
+    public var entertainmentModelRating: Double {
+        return voteAverage
+    }
+    
+    public var entertainmentModelReleaseDate: String {
+        return firstAirDate
     }
     
     public var entertainmentModelBackdropURL: URL? {
         return backdropURL
     }
     
-    public var entertainmentModelRating: Double? {
-        return voteAverage
+    public var entertainmentModelPosterURL: URL? {
+        return posterURL
     }
     
-    public var entertainmentModelReleaseDate: String? {
-        return firstAirDate
+    public var entertainmentModelRuntime: Int? {
+        return numberOfEpisodes
+    }
+    
+    public var entertainmentModelDirectors: [Crew]? {
+        return credits?.crew.filter { $0.job == "Director" }
+    }
+    
+    public var entertainmentModelWriters: [Crew]? {
+        return credits?.crew.filter { $0.job == "Screenplay" || $0.job == "Writer" }
+    }
+    
+    public var entertainmentModelCasts: [Cast]? {
+        return credits?.cast
+    }
+    
+    public var entertainmentModelSeasons: [Season]? {
+        return seasons
+    }
+    
+    public var entertainmentModelRecommends: [EntertainmentModelType]? {
+        return recommendations?.results
     }
 }
+

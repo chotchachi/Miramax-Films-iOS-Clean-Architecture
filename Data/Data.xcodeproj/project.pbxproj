@@ -39,7 +39,6 @@
 		EDE92CE328E6991D0083F33A /* TVShowResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9D28E698E20083F33A /* TVShowResponseDTO.swift */; };
 		EDE92CE428E6991D0083F33A /* ImagesResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9E28E698E20083F33A /* ImagesResponseDTO.swift */; };
 		EDE92CE528E6991D0083F33A /* PersonResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C9C28E698E20083F33A /* PersonResponseDTO.swift */; };
-		EDE92CE628E699210083F33A /* MovieDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA728E698E20083F33A /* MovieDetailDTO.swift */; };
 		EDE92CE728E699210083F33A /* SeasonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA928E698E20083F33A /* SeasonDTO.swift */; };
 		EDE92CE828E699210083F33A /* PersonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA228E698E20083F33A /* PersonDTO.swift */; };
 		EDE92CE928E699210083F33A /* PersonCreditDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAD28E698E20083F33A /* PersonCreditDTO.swift */; };
@@ -48,7 +47,6 @@
 		EDE92CEC28E699210083F33A /* CreditDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA628E698E20083F33A /* CreditDTO.swift */; };
 		EDE92CED28E699210083F33A /* ImageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAC28E698E20083F33A /* ImageDTO.swift */; };
 		EDE92CEE28E699210083F33A /* PersonDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAB28E698E20083F33A /* PersonDetailDTO.swift */; };
-		EDE92CEF28E699210083F33A /* TVShowDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA828E698E20083F33A /* TVShowDetailDTO.swift */; };
 		EDE92CF028E699210083F33A /* EpisodeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAA28E698E20083F33A /* EpisodeDTO.swift */; };
 		EDE92CF128E699210083F33A /* TVShowDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA328E698E20083F33A /* TVShowDTO.swift */; };
 		EDE92CF228E699210083F33A /* MovieDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA128E698E20083F33A /* MovieDTO.swift */; };
@@ -124,8 +122,6 @@
 		EDE92CA428E698E20083F33A /* CrewDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewDTO.swift; sourceTree = "<group>"; };
 		EDE92CA528E698E20083F33A /* CastDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastDTO.swift; sourceTree = "<group>"; };
 		EDE92CA628E698E20083F33A /* CreditDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditDTO.swift; sourceTree = "<group>"; };
-		EDE92CA728E698E20083F33A /* MovieDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailDTO.swift; sourceTree = "<group>"; };
-		EDE92CA828E698E20083F33A /* TVShowDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetailDTO.swift; sourceTree = "<group>"; };
 		EDE92CA928E698E20083F33A /* SeasonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDTO.swift; sourceTree = "<group>"; };
 		EDE92CAA28E698E20083F33A /* EpisodeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDTO.swift; sourceTree = "<group>"; };
 		EDE92CAB28E698E20083F33A /* PersonDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailDTO.swift; sourceTree = "<group>"; };
@@ -303,8 +299,6 @@
 				EDE92CA428E698E20083F33A /* CrewDTO.swift */,
 				EDE92CA528E698E20083F33A /* CastDTO.swift */,
 				EDE92CA628E698E20083F33A /* CreditDTO.swift */,
-				EDE92CA728E698E20083F33A /* MovieDetailDTO.swift */,
-				EDE92CA828E698E20083F33A /* TVShowDetailDTO.swift */,
 				EDE92CA928E698E20083F33A /* SeasonDTO.swift */,
 				EDE92CAA28E698E20083F33A /* EpisodeDTO.swift */,
 				EDE92CAB28E698E20083F33A /* PersonDetailDTO.swift */,
@@ -527,7 +521,6 @@
 				EDE92D2428E6D8580083F33A /* NetworkConfigurationProtocol.swift in Sources */,
 				EDE92CD128E6990A0083F33A /* RemoteDataSource.swift in Sources */,
 				EDE92CD728E699110083F33A /* MovieNetworking.swift in Sources */,
-				EDE92CE628E699210083F33A /* MovieDetailDTO.swift in Sources */,
 				EDE92CE028E699150083F33A /* GenreApi.swift in Sources */,
 				EDE92CCB28E699010083F33A /* Realm+Ext.swift in Sources */,
 				EDE92CCD28E699050083F33A /* MovieRepository.swift in Sources */,
@@ -553,7 +546,6 @@
 				EDE92CD828E699110083F33A /* SearchNetworking.swift in Sources */,
 				EDE92CE128E6991D0083F33A /* GenreResponseDTO.swift in Sources */,
 				EDE92CFC28E699360083F33A /* DomainConvertibleType.swift in Sources */,
-				EDE92CEF28E699210083F33A /* TVShowDetailDTO.swift in Sources */,
 				EDE92CEE28E699210083F33A /* PersonDetailDTO.swift in Sources */,
 				EDE92CDF28E699150083F33A /* SearchApi.swift in Sources */,
 				EDE92CF628E6992B0083F33A /* BaseDao.swift in Sources */,

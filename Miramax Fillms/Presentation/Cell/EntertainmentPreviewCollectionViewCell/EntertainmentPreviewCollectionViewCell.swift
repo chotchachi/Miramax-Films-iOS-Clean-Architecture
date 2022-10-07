@@ -13,7 +13,7 @@ import Domain
 class EntertainmentPreviewCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Views
-
+    
     private var ivPoster: UIImageView!
     private var lblName: UILabel!
     private var lblRating: UILabel!
@@ -150,10 +150,8 @@ class EntertainmentPreviewCollectionViewCell: UICollectionViewCell {
         ivPoster.setImage(with: item.entertainmentModelPosterURL)
         lblName.text = item.entertainmentModelName
         
-        if let rating = item.entertainmentModelRating {
-            let ratingText = DataUtils.getRatingText(rating)
-            lblRating.setText(ratingText, before: UIImage(named: "ic_star_yellow"))
-        }
+        let ratingText = DataUtils.getRatingText(item.entertainmentModelRating)
+        lblRating.setText(ratingText, before: UIImage(named: "ic_star_yellow"))
         
         let releaseDateStr = getReleaseDateStringFormatted(item.entertainmentModelReleaseDate)
         lblReleaseDate.text = "• \(releaseDateStr ?? "unknown".localized)"

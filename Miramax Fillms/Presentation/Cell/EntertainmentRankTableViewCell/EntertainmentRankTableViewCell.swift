@@ -11,7 +11,7 @@ import SwifterSwift
 import Domain
 
 class EntertainmentRankTableViewCell: UITableViewCell {
-
+    
     // MARK: - Views
     
     private var lblOffset: UILabel!
@@ -24,7 +24,7 @@ class EntertainmentRankTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     var onPlayButtonTapped: (() -> ())?
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -117,10 +117,8 @@ class EntertainmentRankTableViewCell: UITableViewCell {
         lblOffset.text = "\(offset + 1)"
         lblName.text = item.entertainmentModelName
         
-        if let rating = item.entertainmentModelRating {
-            let ratingText = DataUtils.getRatingText(rating)
-            lblRating.setText(ratingText, before: UIImage(named: "ic_star_yellow"))
-        }
+        let ratingText = DataUtils.getRatingText(item.entertainmentModelRating)
+        lblRating.setText(ratingText, before: UIImage(named: "ic_star_yellow"))
         
         let releaseDateStr = getReleaseDateStringFormatted(item.entertainmentModelReleaseDate)
         lblReleaseDate.text = "• \(releaseDateStr ?? "unknown".localized)"

@@ -17,8 +17,14 @@ public protocol EntertainmentModelType {
     var entertainmentModelId: Int { get }
     var entertainmentModelName: String { get }
     var entertainmentModelOverview: String { get }
-    var entertainmentModelPosterURL: URL? { get }
+    var entertainmentModelRating: Double { get }
+    var entertainmentModelReleaseDate: String { get }
     var entertainmentModelBackdropURL: URL? { get }
-    var entertainmentModelRating: Double? { get }
-    var entertainmentModelReleaseDate: String? { get }
+    var entertainmentModelPosterURL: URL? { get }
+    var entertainmentModelRuntime: Int? { get }
+    var entertainmentModelDirectors: [Crew]? { get }
+    var entertainmentModelWriters: [Crew]? { get }
+    var entertainmentModelCasts: [Cast]? { get }
+    var entertainmentModelSeasons: [Season]? { get }
+    var entertainmentModelRecommends: [EntertainmentModelType]? { get }
 }

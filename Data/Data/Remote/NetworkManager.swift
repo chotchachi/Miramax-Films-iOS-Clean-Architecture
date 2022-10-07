@@ -57,8 +57,8 @@ public final class NetworkManager: Api {
         return movieNetworking.provider.requestObject(.byGenre(genreId: genreId, sortBy: sortBy, page: page), type: MovieResponseDTO.self)
     }
     
-    public func getMovieDetail(movieId: Int) -> Single<MovieDetailDTO> {
-        return movieNetworking.provider.requestObject(.detail(movieId: movieId), type: MovieDetailDTO.self)
+    public func getMovieDetail(movieId: Int) -> Single<MovieDTO> {
+        return movieNetworking.provider.requestObject(.detail(movieId: movieId), type: MovieDTO.self)
     }
     
     public func getMovieRecommendations(movieId: Int, page: Int?) -> Single<MovieResponseDTO> {
@@ -87,8 +87,8 @@ public final class NetworkManager: Api {
         return tvShowNetworking.provider.requestObject(.byGenre(genreId: genreId, sortBy: sortBy, page: page), type: TVShowResponseDTO.self)
     }
     
-    public func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetailDTO> {
-        return tvShowNetworking.provider.requestObject(.detail(tvShowId: tvShowId), type: TVShowDetailDTO.self)
+    public func getTVShowDetail(tvShowId: Int) -> Single<TVShowDTO> {
+        return tvShowNetworking.provider.requestObject(.detail(tvShowId: tvShowId), type: TVShowDTO.self)
     }
     
     public func getTVShowRecommendations(tvShowId: Int, page: Int?) -> Single<TVShowResponseDTO> {

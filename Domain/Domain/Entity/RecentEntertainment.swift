@@ -46,19 +46,43 @@ extension RecentEntertainment: EntertainmentModelType {
         return ""
     }
     
-    public var entertainmentModelPosterURL: URL? {
-        return posterURL
+    public var entertainmentModelRating: Double {
+        return 0
+    }
+    
+    public var entertainmentModelReleaseDate: String {
+        return ""
     }
     
     public var entertainmentModelBackdropURL: URL? {
         return nil
     }
     
-    public var entertainmentModelRating: Double? {
+    public var entertainmentModelPosterURL: URL? {
+        return posterURL
+    }
+    
+    public var entertainmentModelRuntime: Int? {
         return nil
     }
     
-    public var entertainmentModelReleaseDate: String? {
+    public var entertainmentModelDirectors: [Crew]? {
+        return nil
+    }
+    
+    public var entertainmentModelWriters: [Crew]? {
+        return nil
+    }
+    
+    public var entertainmentModelCasts: [Cast]? {
+        return nil
+    }
+    
+    public var entertainmentModelSeasons: [Season]? {
+        return nil
+    }
+    
+    public var entertainmentModelRecommends: [EntertainmentModelType]? {
         return nil
     }
 }

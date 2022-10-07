@@ -153,10 +153,8 @@ class EntertainmentDetailCollectionViewCell: UICollectionViewCell {
         lblName.text = item.entertainmentModelName
         lblOverview.text = item.entertainmentModelOverview
         
-        if let rating = item.entertainmentModelRating {
-            let ratingText = DataUtils.getRatingText(rating)
-            lblRating.setText(ratingText, before: UIImage(named: "ic_star_yellow"))
-        }
+        let ratingText = DataUtils.getRatingText(item.entertainmentModelRating)
+        lblRating.setText(ratingText, before: UIImage(named: "ic_star_yellow"))
         
         let releaseDateStr = getReleaseDateStringFormatted(item.entertainmentModelReleaseDate)
         lblReleaseDate.text = "• \(releaseDateStr ?? "unknown".localized)"

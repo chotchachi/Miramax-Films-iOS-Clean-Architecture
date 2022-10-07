@@ -71,7 +71,9 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
 
     // MARK: - Properties
     
-    private let entertainentDetailDataS = PublishRelay<EntertainmentDetailModelType>()
+    private let entertainentSeasonsS = BehaviorRelay<[Season]>(value: [])
+    private let entertainentCastsS = BehaviorRelay<[PersonModelType]>(value: [])
+    private let entertainentRecommendationsS = BehaviorRelay<[EntertainmentModelType]>(value: [])
 
     private let seasonSelectTriggerS = PublishRelay<Season>()
     private let personSelectTriggerS = PublishRelay<PersonModelType>()
@@ -111,10 +113,9 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         )
         let output = viewModel.transform(input: input)
         
-        output.entertainmentDetail
+        output.entertainment
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.entertainentDetailDataS.accept(item)
                 self.bindData(item)
                 self.scrollView.isHidden = false
                 self.enableShare()
@@ -225,8 +226,7 @@ extension EntertainmentDetailsViewController {
             return cell
         }
         
-        entertainentDetailDataS
-            .map { $0.entertainmentSeasons ?? [] }
+        entertainentSeasonsS
             .map { Array($0.prefix(kSeasonsMaxItems)) }
             .map { [SectionModel(model: "", items: $0)] }
             .bind(to: seasonsTableView.rx.items(dataSource: seasonDataSource))
@@ -258,8 +258,7 @@ extension EntertainmentDetailsViewController {
             return cell
         }
         
-        entertainentDetailDataS
-            .map { $0.entertainmentCasts }
+        entertainentCastsS
             .map { [SectionModel(model: "", items: $0)] }
             .bind(to: actorsCollectionView.rx.items(dataSource: actorDataSource))
             .disposed(by: rx.disposeBag)
@@ -300,8 +299,7 @@ extension EntertainmentDetailsViewController {
             return cell
         }
         
-        entertainentDetailDataS
-            .map { $0.entertainmentRecommends }
+        entertainentRecommendationsS
             .map { [SectionModel(model: "", items: $0)] }
             .bind(to: recommendCollectionView.rx.items(dataSource: recommendDataSource))
             .disposed(by: rx.disposeBag)
@@ -312,32 +310,32 @@ extension EntertainmentDetailsViewController {
         disableShare()
     }
     
-    private func bindData(_ entertainmentDetail: EntertainmentDetailModelType) {
+    private func bindData(_ item: EntertainmentModelType) {
         // Entertainment title
-        lblTitle.text = entertainmentDetail.entertainmentDetailTitle
+        lblTitle.text = item.entertainmentModelName
 
         // Entertainment poster
-        ivPoster.setImage(with: entertainmentDetail.entertainmentPosterURL)
+        ivPoster.setImage(with: item.entertainmentModelPosterURL)
         
         // Entertainment rating
         lblRatingText.text = "rating".localized
-        lblRating.text = DataUtils.getRatingText(entertainmentDetail.entertainmentVoteAverage)
+        lblRating.text = DataUtils.getRatingText(item.entertainmentModelRating)
         
         // Entertainment release date
         lblReleaseDateText.text = "year".localized
-        if let releaseYear = DataUtils.getReleaseYear(entertainmentDetail.entertainmentReleaseDate) {
+        if let releaseYear = DataUtils.getReleaseYear(item.entertainmentModelReleaseDate) {
             lblReleaseDate.text = "\(releaseYear)"
         } else {
             lblReleaseDate.text = "unknown".localized
         }
         
         // Entertainment duration
-        if entertainmentDetail.entertainmentModelType == .movie {
+        if item.entertainmentModelType == .movie {
             lblDurationText.text = "duration".localized
-            lblDuration.text = DataUtils.getDurationText(entertainmentDetail.entertainmentRuntime)
+            lblDuration.text = DataUtils.getDurationText(item.entertainmentModelRuntime)
         } else {
             lblDurationText.text = "episodes".localized
-            if let numsOfEpisodes = entertainmentDetail.entertainmentRuntime {
+            if let numsOfEpisodes = item.entertainmentModelRuntime {
                 lblDuration.text = "\(numsOfEpisodes)"
             } else {
                 lblDuration.text = "unknown".localized
@@ -345,21 +343,27 @@ extension EntertainmentDetailsViewController {
         }
 
         // Entertainment overview
-        lblOverview.text = entertainmentDetail.entertainmentOverview
+        lblOverview.text = item.entertainmentModelOverview
         
         // Entertainment seasons
-        sectionSeasonsView.isHidden = entertainmentDetail.entertainmentModelType == .movie
+        sectionSeasonsView.isHidden = item.entertainmentModelType == .movie
+        entertainentSeasonsS.accept(item.entertainmentModelSeasons ?? [])
 
         // Entertainment credits
-        let directorsString = entertainmentDetail.entertainmentDirectors?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
+        entertainentCastsS.accept(item.entertainmentModelCasts ?? [])
+        
+        let directorsString = item.entertainmentModelDirectors?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
         lblDirector.text = "Director: \(directorsString)"
         lblDirector.highlight(text: directorsString, color: AppColors.textColorSecondary)
         
-        let writersString = entertainmentDetail.entertainmentWriters?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
+        let writersString = item.entertainmentModelWriters?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
         lblWriters.text = "Writers: \(writersString)"
         lblWriters.highlight(text: writersString, color: AppColors.textColorSecondary)
                 
         // Entertainment gallery
         
+        
+        // Entertainemtn recommend
+        entertainentRecommendationsS.accept(item.entertainmentModelRecommends ?? [])
     }
 }

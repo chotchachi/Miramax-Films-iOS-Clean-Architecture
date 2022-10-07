@@ -43,7 +43,7 @@ public final class RemoteDataSource: RemoteDataSourceProtocol {
         return apiClient.getMovieByGenre(genreId: genreId, sortBy: sortBy, page: page)
     }
     
-    public func getMovieDetail(movieId: Int) -> Single<MovieDetailDTO> {
+    public func getMovieDetail(movieId: Int) -> Single<MovieDTO> {
         return apiClient.getMovieDetail(movieId: movieId)
     }
     
@@ -71,7 +71,7 @@ public final class RemoteDataSource: RemoteDataSourceProtocol {
         return apiClient.getTVShowByGenre(genreId: genreId, sortBy: sortBy, page: page)
     }
     
-    public func getTVShowDetail(tvShowId: Int) -> Single<TVShowDetailDTO> {
+    public func getTVShowDetail(tvShowId: Int) -> Single<TVShowDTO> {
         return apiClient.getTVShowDetail(tvShowId: tvShowId)
     }
     
