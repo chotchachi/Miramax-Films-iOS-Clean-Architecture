@@ -346,6 +346,7 @@ extension EntertainmentDetailsViewController {
 
         // Entertainment overview
         lblOverview.text = item.entertainmentModelOverview
+        sectionOverviewView.isHidden = item.entertainmentModelOverview.isEmpty /// Hide section overview if overview empty
         
         // Entertainment seasons
         sectionSeasonsView.isHidden = item.entertainmentModelType == .movie
@@ -365,7 +366,9 @@ extension EntertainmentDetailsViewController {
         // Entertainment gallery
         
         
-        // Entertainemtn recommend
-        entertainentRecommendationsS.accept(item.entertainmentModelRecommends ?? [])
+        // Entertainment recommend
+        let recommendations = item.entertainmentModelRecommends ?? []
+        entertainentRecommendationsS.accept(recommendations)
+        sectionRecommendView.isHidden = recommendations.isEmpty /// Hide section recommend if result empty
     }
 }
