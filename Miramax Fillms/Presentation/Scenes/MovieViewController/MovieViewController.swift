@@ -99,9 +99,7 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
             .drive(onNext: { [weak self] viewState in
                 guard let self = self else { return }
                 switch viewState {
-                case .initial, .paging:
-                    break
-                case .populated(let items):
+                case .success(let items):
                     self.genresLoadingIndicator.stopAnimating()
                     self.genresCollectionView.isHidden = false
                     self.genresRetryButton.isHidden = true
@@ -118,9 +116,7 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
             .drive(onNext: { [weak self] viewState in
                 guard let self = self else { return }
                 switch viewState {
-                case .initial, .paging:
-                    break
-                case .populated(let items):
+                case .success(let items):
                     self.upcomingLoadingIndicator.stopAnimating()
                     self.upcomingCollectionView.isHidden = false
                     self.upcomingRetryButton.isHidden = true
@@ -137,9 +133,7 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
             .drive(onNext: { [weak self] viewState in
                 guard let self = self else { return }
                 switch viewState {
-                case .initial, .paging:
-                    break
-                case .populated(let items):
+                case .success(let items):
                     self.previewLoadingIndicator.stopAnimating()
                     self.previewCollectionView.isHidden = false
                     self.previewRetryButton.isHidden = true

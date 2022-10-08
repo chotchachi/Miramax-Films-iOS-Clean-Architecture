@@ -59,7 +59,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                 self.repositoryProvider
                     .genreRepository()
                     .getGenreShowList()
-                    .map { ViewState.populated($0) }
+                    .map { ViewState.success($0) }
                     .catchAndReturn(.error)
             }
             .asDriverOnErrorJustComplete()
@@ -69,7 +69,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                 self.repositoryProvider
                     .tvShowRepository()
                     .getAiringToday(genreId: nil, page: nil)
-                    .map { ViewState.populated($0.results) }
+                    .map { ViewState.success($0.results) }
                     .catchAndReturn(.error)
             }
             .asDriverOnErrorJustComplete()
@@ -79,7 +79,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                 self.repositoryProvider
                     .tvShowRepository()
                     .getOnTheAir(genreId: nil, page: nil)
-                    .map { ViewState.populated($0.results) }
+                    .map { ViewState.success($0.results) }
                     .catchAndReturn(.error)
             }
             .asDriverOnErrorJustComplete()
@@ -95,7 +95,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         let previewViewStateD = Observable.merge(previewTabTriggerO, retryPreviewWithSelectedTabO)
             .flatMapLatest { tab in
                 self.getPreviewData(with: tab)
-                    .map { ViewState.populated($0.results) }
+                    .map { ViewState.success($0.results) }
                     .catchAndReturn(.error)
             }
             .asDriverOnErrorJustComplete()

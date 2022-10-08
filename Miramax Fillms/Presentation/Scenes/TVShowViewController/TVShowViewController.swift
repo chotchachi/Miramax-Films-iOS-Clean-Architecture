@@ -112,9 +112,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, TabBarSelectabl
             .drive(onNext: { [weak self] viewState in
                 guard let self = self else { return }
                 switch viewState {
-                case .initial, .paging:
-                    break
-                case .populated(let items):
+                case .success(let items):
                     self.genresLoadingIndicator.stopAnimating()
                     self.genresCollectionView.isHidden = false
                     self.genresRetryButton.isHidden = true
@@ -131,9 +129,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, TabBarSelectabl
             .drive(onNext: { [weak self] viewState in
                 guard let self = self else { return }
                 switch viewState {
-                case .initial, .paging:
-                    break
-                case .populated(let items):
+                case .success(let items):
                     self.bannerLoadingIndicator.stopAnimating()
                     self.bannerMainView.isHidden = false
                     self.bannerRetryButton.isHidden = true
@@ -157,9 +153,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, TabBarSelectabl
             .drive(onNext: { [weak self] viewState in
                 guard let self = self else { return }
                 switch viewState {
-                case .initial, .paging:
-                    break
-                case .populated(let items):
+                case .success(let items):
                     self.upcomingLoadingIndicator.stopAnimating()
                     self.upcomingTableView.isHidden = false
                     self.upcomingRetryButton.isHidden = true
@@ -176,9 +170,7 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, TabBarSelectabl
             .drive(onNext: { [weak self] viewState in
                 guard let self = self else { return }
                 switch viewState {
-                case .initial, .paging:
-                    break
-                case .populated(let items):
+                case .success(let items):
                     self.previewLoadingIndicator.stopAnimating()
                     self.previewCollectionView.isHidden = false
                     self.previewRetryButton.isHidden = true
