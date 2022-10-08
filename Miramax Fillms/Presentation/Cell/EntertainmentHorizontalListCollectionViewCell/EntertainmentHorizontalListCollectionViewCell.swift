@@ -92,9 +92,11 @@ class EntertainmentHorizontalListCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(_ items: [EntertainmentModelType], headerTitle: String) {
+    func bind(_ items: [EntertainmentModelType], headerTitle: String, headerActionButtonTitle: String, forceShowActionButton: Bool = false) {
         sectionHeaderView.title = headerTitle
-        
+        sectionHeaderView.actionButtonTittle = headerActionButtonTitle
+        sectionHeaderView.showActionButton = items.count >= Constants.defaultPageLimit || forceShowActionButton
+
         loadingIndicatorView.stopAnimating()
         collectionView.isHidden = false
         btnRetry.isHidden = true
@@ -104,7 +106,6 @@ class EntertainmentHorizontalListCollectionViewCell: UICollectionViewCell {
     private func setData(_ items: [EntertainmentModelType]) {
         modelItems = items
         collectionView.reloadData()
-        sectionHeaderView.showSeeMoreButton = items.count >= Constants.defaultPageLimit
     }
     
     @objc private func btnRetryTapped() {

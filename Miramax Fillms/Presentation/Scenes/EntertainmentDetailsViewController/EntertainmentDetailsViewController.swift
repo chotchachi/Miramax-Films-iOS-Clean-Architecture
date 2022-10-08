@@ -103,13 +103,13 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         let input = EntertainmentDetailsViewModel.Input(
             popViewTrigger: appToolbar.rx.backButtonTap.asDriver(),
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
-            toSeasonListTrigger: seasonsSectionHeaderView.rx.seeMoreButtonTap.asDriver(),
+            toSeasonListTrigger: seasonsSectionHeaderView.rx.actionButtonTap.asDriver(),
             seasonSelectTrigger: seasonSelectTriggerS.asDriverOnErrorJustComplete(),
             personSelectTrigger: personSelectTriggerS.asDriverOnErrorJustComplete(),
             entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
             shareTrigger: btnShare.rx.tap.asDriver(),
             retryTrigger: errorRetryView.rx.retryTapped.asDriver(),
-            seeMoreRecommendTrigger: recommendSectionHeaderView.rx.seeMoreButtonTap.asDriver()
+            seeMoreRecommendTrigger: recommendSectionHeaderView.rx.actionButtonTap.asDriver()
         )
         let output = viewModel.transform(input: input)
         
@@ -180,7 +180,7 @@ extension EntertainmentDetailsViewController {
     
     private func configureOverviewSection() {
         overviewSectionHeaderView.title = "overview".localized
-        overviewSectionHeaderView.showSeeMoreButton = false
+        overviewSectionHeaderView.showActionButton = false
         
         lblOverview.textColor = AppColors.textColorSecondary
         lblOverview.font = AppFonts.caption1
@@ -206,6 +206,7 @@ extension EntertainmentDetailsViewController {
     
     private func configureSeasonsSection() {
         seasonsSectionHeaderView.title = "seasons".localized
+        seasonsSectionHeaderView.actionButtonTittle = "see_more".localized
 
         seasonsTableView.rowHeight = DimensionConstants.seasonSmallCellHeight
         seasonsTableView.separatorStyle = .none
@@ -235,7 +236,7 @@ extension EntertainmentDetailsViewController {
     
     private func configureCreditsSection() {
         actorsSectionHeaderView.title = "actors".localized
-        actorsSectionHeaderView.showSeeMoreButton = false
+        actorsSectionHeaderView.showActionButton = false
         
         let collectionViewLayout = ColumnFlowLayout(
             cellsPerRow: 1,
@@ -272,12 +273,13 @@ extension EntertainmentDetailsViewController {
     
     private func configureGallerySection() {
         gallerySectionHeaderView.title = "gallery".localized
-
+        gallerySectionHeaderView.actionButtonTittle = "see_more".localized
     }
     
     private func configureRecommendSection() {
         recommendSectionHeaderView.title = "recommend".localized
-
+        recommendSectionHeaderView.actionButtonTittle = "see_more".localized
+        
         let collectionViewLayout = ColumnFlowLayout(
             cellsPerRow: 1,
             ratio: DimensionConstants.entertainmentHorizontalCellRatio,

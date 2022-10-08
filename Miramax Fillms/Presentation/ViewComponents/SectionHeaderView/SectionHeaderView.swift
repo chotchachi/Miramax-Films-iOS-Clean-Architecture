@@ -15,7 +15,7 @@ final class SectionHeaderView: UIView {
     // MARK: - Views
     
     fileprivate var lblHeaderTitle: UILabel!
-    fileprivate var btnSeeMore: UIButton!
+    fileprivate var btnAction: UIButton!
     
     // MARK: - Properties
     
@@ -27,9 +27,15 @@ final class SectionHeaderView: UIView {
         }
     }
     
-    @IBInspectable var showSeeMoreButton: Bool = true {
+    @IBInspectable var actionButtonTittle: String? {
         didSet {
-            btnSeeMore.isHidden = !showSeeMoreButton
+            btnAction.setTitle(actionButtonTittle ?? "see_more".localized, for: .normal)
+        }
+    }
+    
+    @IBInspectable var showActionButton: Bool = true {
+        didSet {
+            btnAction.isHidden = !showActionButton
         }
     }
     
@@ -70,26 +76,26 @@ final class SectionHeaderView: UIView {
             make.centerY.equalToSuperview()
         }
         
-        btnSeeMore = UIButton(type: .system)
-        btnSeeMore.setTitle("See more", for: .normal)
-        btnSeeMore.setTitleColor(AppColors.colorAccent, for: .normal)
-        btnSeeMore.titleLabel?.font = AppFonts.caption1
-        btnSeeMore.addTarget(self, action: #selector(seeMoreButtonTapped(_:)), for: .touchUpInside)
+        btnAction = UIButton(type: .system)
+        btnAction.setTitle(actionButtonTittle ?? "see_more".localized, for: .normal)
+        btnAction.setTitleColor(AppColors.colorAccent, for: .normal)
+        btnAction.titleLabel?.font = AppFonts.caption1
+        btnAction.addTarget(self, action: #selector(actionButtonTapped(_:)), for: .touchUpInside)
         
-        addSubview(btnSeeMore)
-        btnSeeMore.snp.makeConstraints { make in
+        addSubview(btnAction)
+        btnAction.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().offset(-16.0)
         }
     }
     
-    @objc private func seeMoreButtonTapped(_ sender: UIButton) {
+    @objc private func actionButtonTapped(_ sender: UIButton) {
         delegate?.sectionHeaderView(onSeeMoreButtonTapped: sender)
     }
 }
 
 extension Reactive where Base: SectionHeaderView {
-    var seeMoreButtonTap: ControlEvent<Void> {
-        return base.btnSeeMore.rx.tap
+    var actionButtonTap: ControlEvent<Void> {
+        return base.btnAction.rx.tap
     }
 }

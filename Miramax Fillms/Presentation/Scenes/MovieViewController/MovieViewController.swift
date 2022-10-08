@@ -90,7 +90,7 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
             selectionEntertainmentTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
             selectionGenreTrigger: genreSelectTriggerS.asDriverOnErrorJustComplete(),
             previewTabTrigger: previewTabTriggerS.asDriverOnErrorJustComplete(),
-            seeMoreUpcomingTrigger: upcomingSectionHeaderView.rx.seeMoreButtonTap.asDriver(),
+            seeMoreUpcomingTrigger: upcomingSectionHeaderView.rx.actionButtonTap.asDriver(),
             seeMorePreviewTrigger: previewSeeMoreButton.rx.tap.asDriver()
         )
         let output = viewModel.transform(input: input)
@@ -212,6 +212,7 @@ extension MovieViewController {
     
     private func configureSectionUpcoming() {
         upcomingSectionHeaderView.title = "upcoming".localized
+        upcomingSectionHeaderView.actionButtonTittle = "see_more".localized
 
         upcomingLoadingIndicator.startAnimating()
         
@@ -255,7 +256,7 @@ extension MovieViewController {
     
     private func configureSelfieView() {
         selfieSectionHeaderView.title = "selfie_with_movie".localized
-        selfieSectionHeaderView.showSeeMoreButton = false
+        selfieSectionHeaderView.showActionButton = false
     }
     
     private func configureSectionTabLayout() {

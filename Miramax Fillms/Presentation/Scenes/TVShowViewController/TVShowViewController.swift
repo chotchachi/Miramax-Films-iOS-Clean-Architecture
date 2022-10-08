@@ -289,7 +289,7 @@ extension TVShowViewController {
     
     private func configureSectionUpcoming() {
         upcomingSectionHeaderView.title = "upcoming".localized
-        upcomingSectionHeaderView.showSeeMoreButton = false
+        upcomingSectionHeaderView.showActionButton = false
 
         upcomingViewAllButton.titleText = "view_all".localized
         

@@ -92,8 +92,9 @@ class PersonHorizontalListCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(_ items: [PersonModelType], headerTitle: String) {
+    func bind(_ items: [PersonModelType], headerTitle: String, headerActionButtonTitle: String) {
         sectionHeaderView.title = headerTitle
+        sectionHeaderView.actionButtonTittle = headerActionButtonTitle
         
         loadingIndicatorView.stopAnimating()
         personCollectionView.isHidden = false
@@ -101,7 +102,7 @@ class PersonHorizontalListCell: UICollectionViewCell {
         // set data
         personItems = items
         personCollectionView.reloadData()
-        sectionHeaderView.showSeeMoreButton = items.count >= Constants.defaultPageLimit
+        sectionHeaderView.showActionButton = items.count >= Constants.defaultPageLimit
     }
     
     @objc private func btnRetryTapped() {

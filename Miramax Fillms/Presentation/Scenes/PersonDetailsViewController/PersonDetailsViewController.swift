@@ -134,12 +134,12 @@ extension PersonDetailsViewController {
     
     private func configureGallerySection() {
         gallerySectionHeaderView.title = "gallery".localized
-
+        gallerySectionHeaderView.actionButtonTittle = "see_more".localized
     }
     
     private func configureMoviesSection() {
         moviesSectionHeaderView.title = "movies".localized
-        moviesSectionHeaderView.showSeeMoreButton = false
+        moviesSectionHeaderView.showActionButton = false
         
         let moviesCollectionViewLayout = UICollectionViewFlowLayout()
         moviesCollectionViewLayout.scrollDirection = .horizontal

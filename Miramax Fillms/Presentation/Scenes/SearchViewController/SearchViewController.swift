@@ -167,22 +167,22 @@ extension SearchViewController: UICollectionViewDataSource {
         switch item {
         case .recent(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
-            cell.bind(items, headerTitle: "recent".localized)
+            cell.bind(items, headerTitle: "recent".localized, headerActionButtonTitle: "clear".localized, forceShowActionButton: true)
             cell.delegate = self
             return cell
         case .movie(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
-            cell.bind(items, headerTitle: "movies".localized)
+            cell.bind(items, headerTitle: "movies".localized, headerActionButtonTitle: "see_more".localized)
             cell.delegate = self
             return cell
         case .tvShow(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
-            cell.bind(items, headerTitle: "tvshows".localized)
+            cell.bind(items, headerTitle: "tvshows".localized, headerActionButtonTitle: "see_more".localized)
             cell.delegate = self
             return cell
         case .actor(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalListCell.self, for: indexPath)
-            cell.bind(items, headerTitle: "actors".localized)
+            cell.bind(items, headerTitle: "actors".localized, headerActionButtonTitle: "see_more".localized)
             cell.delegate = self
             return cell
         }
