@@ -38,6 +38,7 @@ extension RecentEntertainment: RealmRepresentable {
             object._id = id
             object.name = name
             object.posterPath = posterPath
+            object.type = type == .movie ? .movie : .tvShow
         }
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		852BB03D8276C7F5302167D4 /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ED6D4749F90C47FB5168CE8 /* Pods_Domain.framework */; };
+		ED13B6C828F09CF2007B7A1D /* EntertainmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED13B6C728F09CF2007B7A1D /* EntertainmentType.swift */; };
 		ED1F03B228ED24900083B088 /* EntertainmentResponseModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03B128ED24900083B088 /* EntertainmentResponseModelType.swift */; };
 		ED1F03BF28EDE20D0083B088 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03BE28EDE20D0083B088 /* SortOption.swift */; };
 		ED31389328EFE84800EC759C /* OptionsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31389228EFE84800EC759C /* OptionsRepositoryProtocol.swift */; };
@@ -44,6 +45,7 @@
 		0ED6D4749F90C47FB5168CE8 /* Pods_Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE4C9EA52EECE17CD8D49192 /* Pods-Domain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.debug.xcconfig"; path = "Target Support Files/Pods-Domain/Pods-Domain.debug.xcconfig"; sourceTree = "<group>"; };
 		EB9D5FFB0C3D16CC1E1C0E34 /* Pods-Domain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.release.xcconfig"; path = "Target Support Files/Pods-Domain/Pods-Domain.release.xcconfig"; sourceTree = "<group>"; };
+		ED13B6C728F09CF2007B7A1D /* EntertainmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentType.swift; sourceTree = "<group>"; };
 		ED1F03B128ED24900083B088 /* EntertainmentResponseModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentResponseModelType.swift; sourceTree = "<group>"; };
 		ED1F03BE28EDE20D0083B088 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		ED31389228EFE84800EC759C /* OptionsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				EDE92C6028E698860083F33A /* Image.swift */,
 				EDE92C6128E698860083F33A /* PersonCredit.swift */,
 				ED1F03BE28EDE20D0083B088 /* SortOption.swift */,
+				ED13B6C728F09CF2007B7A1D /* EntertainmentType.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				EDE92C6828E698990083F33A /* MovieRepositoryProtocol.swift in Sources */,
 				EDE92D1E28E6C7960083F33A /* ImageConfigurable.swift in Sources */,
 				EDE92C8128E698AB0083F33A /* GenreResponse.swift in Sources */,
+				ED13B6C828F09CF2007B7A1D /* EntertainmentType.swift in Sources */,
 				EDE92C6928E698990083F33A /* PersonRepositoryProtocol.swift in Sources */,
 				EDE92C7228E698A70083F33A /* Genre.swift in Sources */,
 				EDE92C4828E698660083F33A /* RepositoryProviderProtocol.swift in Sources */,
