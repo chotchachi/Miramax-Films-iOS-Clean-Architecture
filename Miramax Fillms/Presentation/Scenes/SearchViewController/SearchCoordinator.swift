@@ -13,6 +13,7 @@ enum SearchRoute: Route {
     case dismiss
     case entertainmentDetails(entertainment: EntertainmentModelType)
     case personDetails(person: PersonModelType)
+    case entertainmentList(responseRoute: EntertainmentsResponseRoute)
 }
 
 class SearchCoordinator: NavigationCoordinator<SearchRoute> {
@@ -34,10 +35,13 @@ class SearchCoordinator: NavigationCoordinator<SearchRoute> {
         case .dismiss:
             return .dismiss(animation: .fade)
         case .entertainmentDetails(entertainment: let entertainment):
-            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
+            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment, fromSearch: true))
             return .none()
         case .personDetails(person: let person):
             addChild(PersonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, personModel: person))
+            return .none()
+        case .entertainmentList(responseRoute: let responseRoute):
+            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, responseRoute: responseRoute))
             return .none()
         }
     }

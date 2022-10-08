@@ -116,6 +116,9 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
                 case .movieTrending, .showTrending:
                     self.appToolbar.title = "trending".localized
                     self.btnOptions.isHidden = true
+                case .search:
+                    self.appToolbar.title = "search".localized
+                    self.btnOptions.isHidden = true
                 }
             })
             .disposed(by: rx.disposeBag)

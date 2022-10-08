@@ -18,4 +18,5 @@ enum EntertainmentsResponseRoute {
     case showTopRating
     case showNews
     case showTrending
+    case search(query: String, entertainmentType: EntertainmentType)
 }
