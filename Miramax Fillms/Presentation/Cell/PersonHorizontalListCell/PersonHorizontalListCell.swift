@@ -22,6 +22,7 @@ class PersonHorizontalListCell: UICollectionViewCell {
     // MARK: - Properties
     
     public weak var delegate: PersonHorizontalListCellDelegate?
+    private var indexPath: IndexPath?
     private var personItems: [PersonModelType] = []
     
     override init(frame: CGRect) {
@@ -92,7 +93,14 @@ class PersonHorizontalListCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(_ items: [PersonModelType], headerTitle: String, headerActionButtonTitle: String) {
+    func bind(
+        _ items: [PersonModelType],
+        indexPath: IndexPath,
+        headerTitle: String,
+        headerActionButtonTitle: String
+    ) {
+        self.indexPath = indexPath
+        
         sectionHeaderView.title = headerTitle
         sectionHeaderView.actionButtonTittle = headerActionButtonTitle
         
@@ -109,7 +117,8 @@ class PersonHorizontalListCell: UICollectionViewCell {
         loadingIndicatorView.startAnimating()
         personCollectionView.isHidden = true
         btnRetry.isHidden = true
-        delegate?.personHorizontalListRetryButtonTapped()
+        guard let indexPath = indexPath else { return }
+        delegate?.personHorizontalList(onRetryButtonTapped: indexPath)
     }
 }
 
@@ -160,7 +169,8 @@ extension PersonHorizontalListCell: UICollectionViewDelegateFlowLayout {
 // MARK: - SectionHeaderViewDelegate
 
 extension PersonHorizontalListCell: SectionHeaderViewDelegate {
-    func sectionHeaderView(onSeeMoreButtonTapped button: UIButton) {
-        delegate?.personHorizontalListSeeMoreButtonTapped()
+    func sectionHeaderView(onActionButtonTapped button: UIButton) {
+        guard let indexPath = indexPath else { return }
+        delegate?.personHorizontalList(onActionButtonTapped: indexPath)
     }
 }

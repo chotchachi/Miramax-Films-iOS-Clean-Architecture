@@ -22,6 +22,7 @@ class EntertainmentHorizontalListCollectionViewCell: UICollectionViewCell {
     // MARK: - Properties
     
     public weak var delegate: EntertainmentHorizontalListCollectionViewCellDelegate?
+    private var indexPath: IndexPath?
     private var modelItems: [EntertainmentModelType] = []
     
     override init(frame: CGRect) {
@@ -92,14 +93,23 @@ class EntertainmentHorizontalListCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(_ items: [EntertainmentModelType], headerTitle: String, headerActionButtonTitle: String, forceShowActionButton: Bool = false) {
+    func bind(
+        _ items: [EntertainmentModelType],
+        indexPath: IndexPath,
+        headerTitle: String,
+        headerActionButtonTitle: String,
+        forceShowActionButton: Bool = false
+    ) {
+        self.indexPath = indexPath
+        
         sectionHeaderView.title = headerTitle
         sectionHeaderView.actionButtonTittle = headerActionButtonTitle
         sectionHeaderView.showActionButton = items.count >= Constants.defaultPageLimit || forceShowActionButton
-
+        
         loadingIndicatorView.stopAnimating()
         collectionView.isHidden = false
         btnRetry.isHidden = true
+        
         setData(items)
     }
     
@@ -112,7 +122,8 @@ class EntertainmentHorizontalListCollectionViewCell: UICollectionViewCell {
         loadingIndicatorView.startAnimating()
         collectionView.isHidden = true
         btnRetry.isHidden = true
-        delegate?.entertainmentHorizontalListRetryButtonTapped()
+        guard let indexPath = indexPath else { return }
+        delegate?.entertainmentHorizontalList(onRetryButtonTapped: indexPath)
     }
 }
 
@@ -163,7 +174,8 @@ extension EntertainmentHorizontalListCollectionViewCell: UICollectionViewDelegat
 // MARK: - SectionHeaderViewDelegate
 
 extension EntertainmentHorizontalListCollectionViewCell: SectionHeaderViewDelegate {
-    func sectionHeaderView(onSeeMoreButtonTapped button: UIButton) {
-        delegate?.entertainmentHorizontalListSeeMoreButtonTapped()
+    func sectionHeaderView(onActionButtonTapped button: UIButton) {
+        guard let indexPath = indexPath else { return }
+        delegate?.entertainmentHorizontalList(onActionButtonTapped: indexPath)
     }
 }

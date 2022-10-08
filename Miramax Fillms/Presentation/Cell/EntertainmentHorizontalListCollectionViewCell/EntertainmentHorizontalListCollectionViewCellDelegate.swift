@@ -8,7 +8,7 @@
 import Domain
 
 protocol EntertainmentHorizontalListCollectionViewCellDelegate: AnyObject {
-    func entertainmentHorizontalListRetryButtonTapped()
     func entertainmentHorizontalList(onItemTapped item: EntertainmentModelType)
-    func entertainmentHorizontalListSeeMoreButtonTapped()
+    func entertainmentHorizontalList(onActionButtonTapped indexPath: IndexPath)
+    func entertainmentHorizontalList(onRetryButtonTapped indexPath: IndexPath)
 }

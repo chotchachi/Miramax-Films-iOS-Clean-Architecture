@@ -8,5 +8,5 @@
 import UIKit
 
 protocol SectionHeaderViewDelegate: AnyObject {
-    func sectionHeaderView(onSeeMoreButtonTapped button: UIButton)
+    func sectionHeaderView(onActionButtonTapped button: UIButton)
 }

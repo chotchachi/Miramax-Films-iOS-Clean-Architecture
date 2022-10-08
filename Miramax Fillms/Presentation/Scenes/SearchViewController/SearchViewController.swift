@@ -99,7 +99,6 @@ extension SearchViewController {
     private func configureAppToolbar() {
         appToolbar.title = "search".localized
         appToolbar.showBackButton = false
-        
     }
     
     private func configureCollectionView() {
@@ -167,22 +166,22 @@ extension SearchViewController: UICollectionViewDataSource {
         switch item {
         case .recent(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
-            cell.bind(items, headerTitle: "recent".localized, headerActionButtonTitle: "clear".localized, forceShowActionButton: true)
+            cell.bind(items, indexPath: indexPath, headerTitle: "recent".localized, headerActionButtonTitle: "clear".localized, forceShowActionButton: true)
             cell.delegate = self
             return cell
         case .movie(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
-            cell.bind(items, headerTitle: "movies".localized, headerActionButtonTitle: "see_more".localized)
+            cell.bind(items, indexPath: indexPath, headerTitle: "movies".localized, headerActionButtonTitle: "see_more".localized)
             cell.delegate = self
             return cell
         case .tvShow(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
-            cell.bind(items, headerTitle: "tvshows".localized, headerActionButtonTitle: "see_more".localized)
+            cell.bind(items, indexPath: indexPath, headerTitle: "tvshows".localized, headerActionButtonTitle: "see_more".localized)
             cell.delegate = self
             return cell
         case .actor(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalListCell.self, for: indexPath)
-            cell.bind(items, headerTitle: "actors".localized, headerActionButtonTitle: "see_more".localized)
+            cell.bind(items, indexPath: indexPath, headerTitle: "actors".localized, headerActionButtonTitle: "see_more".localized)
             cell.delegate = self
             return cell
         }
@@ -214,15 +213,15 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - EntertainmentHorizontalListCollectionViewCellDelegate
 
 extension SearchViewController: EntertainmentHorizontalListCollectionViewCellDelegate {
-    func entertainmentHorizontalListRetryButtonTapped() {
-        
-    }
-    
     func entertainmentHorizontalList(onItemTapped item: EntertainmentModelType) {
         entertainmentSelectTriggerS.accept(item)
     }
     
-    func entertainmentHorizontalListSeeMoreButtonTapped() {
+    func entertainmentHorizontalList(onActionButtonTapped indexPath: IndexPath) {
+        
+    }
+    
+    func entertainmentHorizontalList(onRetryButtonTapped indexPath: IndexPath) {
         
     }
 }
@@ -230,15 +229,15 @@ extension SearchViewController: EntertainmentHorizontalListCollectionViewCellDel
 // MARK: - PersonHorizontalListCellDelegate
 
 extension SearchViewController: PersonHorizontalListCellDelegate {
-    func personHorizontalListRetryButtonTapped() {
-        
-    }
-    
     func personHorizontalList(onItemTapped item: PersonModelType) {
         personSelectTriggerS.accept(item)
     }
     
-    func personHorizontalListSeeMoreButtonTapped() {
+    func personHorizontalList(onActionButtonTapped indexPath: IndexPath) {
+        
+    }
+    
+    func personHorizontalList(onRetryButtonTapped indexPath: IndexPath) {
         
     }
 }

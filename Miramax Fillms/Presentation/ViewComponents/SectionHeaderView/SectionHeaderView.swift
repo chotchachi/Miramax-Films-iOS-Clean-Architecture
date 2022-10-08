@@ -90,7 +90,7 @@ final class SectionHeaderView: UIView {
     }
     
     @objc private func actionButtonTapped(_ sender: UIButton) {
-        delegate?.sectionHeaderView(onSeeMoreButtonTapped: sender)
+        delegate?.sectionHeaderView(onActionButtonTapped: sender)
     }
 }
 
