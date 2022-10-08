@@ -8,11 +8,11 @@
 import RxSwift
 
 public protocol MovieRepositoryProtocol {
-    func getNowPlaying(genreId: Int?, page: Int?) -> Single<MovieResponse>
-    func getTopRated(genreId: Int?, page: Int?) -> Single<MovieResponse>
-    func getPopular(genreId: Int?, page: Int?) -> Single<MovieResponse>
-    func getUpComing(genreId: Int?, page: Int?) -> Single<MovieResponse>
-    func getByGenre(genreId: Int, sortOption: SortOption, page: Int?) -> Single<MovieResponse>
+    func getNowPlaying(genreId: Int?, page: Int?) -> Single<BaseResponse<Movie>>
+    func getTopRated(genreId: Int?, page: Int?) -> Single<BaseResponse<Movie>>
+    func getPopular(genreId: Int?, page: Int?) -> Single<BaseResponse<Movie>>
+    func getUpComing(genreId: Int?, page: Int?) -> Single<BaseResponse<Movie>>
+    func getByGenre(genreId: Int, sortOption: SortOption, page: Int?) -> Single<BaseResponse<Movie>>
     func getDetail(movieId: Int) -> Single<Movie>
-    func getRecommendations(movieId: Int, page: Int?) -> Single<MovieResponse>
+    func getRecommendations(movieId: Int, page: Int?) -> Single<BaseResponse<Movie>>
 }

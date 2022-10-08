@@ -20,13 +20,13 @@ public final class SearchRepository: SearchRepositoryProtocol {
     public func searchMovie(query: String, page: Int?) -> Single<BaseResponse<Movie>> {
         return remoteDataSource
             .searchMovie(query: query, page: page)
-            .map { $0.asBaseResponse() }
+            .map { $0.asDomain() }
     }
     
     public func searchTVShow(query: String, page: Int?) -> Single<BaseResponse<TVShow>> {
         return remoteDataSource
             .searchTVShow(query: query, page: page)
-            .map { $0.asBaseResponse() }
+            .map { $0.asDomain() }
     }
     
     public func searchPerson(query: String, page: Int?) -> Single<BaseResponse<Person>> {

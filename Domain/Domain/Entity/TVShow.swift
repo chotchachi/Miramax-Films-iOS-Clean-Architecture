@@ -20,9 +20,9 @@ public struct TVShow: Equatable {
     public let numberOfSeasons: Int?
     public let seasons: [Season]?
     public let credits: Credit?
-    public let recommendations: TVShowResponse?
+    public let recommendations: BaseResponse<TVShow>?
     
-    public init(id: Int, name: String, overview: String, voteAverage: Double, firstAirDate: String, backdropPath: String?, posterPath: String?, genres: [Genre]?, numberOfEpisodes: Int?, numberOfSeasons: Int?, seasons: [Season]?, credits: Credit?, recommendations: TVShowResponse?) {
+    public init(id: Int, name: String, overview: String, voteAverage: Double, firstAirDate: String, backdropPath: String?, posterPath: String?, genres: [Genre]?, numberOfEpisodes: Int?, numberOfSeasons: Int?, seasons: [Season]?, credits: Credit?, recommendations: BaseResponse<TVShow>?) {
         self.id = id
         self.name = name
         self.overview = overview

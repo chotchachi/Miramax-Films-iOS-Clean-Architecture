@@ -281,8 +281,8 @@
 			children = (
 				EDE92C9A28E698E20083F33A /* GenreResponseDTO.swift */,
 				EDE92C9B28E698E20083F33A /* MovieResponseDTO.swift */,
-				EDE92C9C28E698E20083F33A /* PersonResponseDTO.swift */,
 				EDE92C9D28E698E20083F33A /* TVShowResponseDTO.swift */,
+				EDE92C9C28E698E20083F33A /* PersonResponseDTO.swift */,
 				EDE92C9E28E698E20083F33A /* ImagesResponseDTO.swift */,
 			);
 			path = Response;
@@ -362,8 +362,8 @@
 			children = (
 				EDE92CC028E698E30083F33A /* GenreRepository.swift */,
 				EDE92CC128E698E30083F33A /* MovieRepository.swift */,
-				EDE92CC228E698E30083F33A /* PersonRepository.swift */,
 				EDE92CC328E698E30083F33A /* TVShowRepository.swift */,
+				EDE92CC228E698E30083F33A /* PersonRepository.swift */,
 				EDE92CC428E698E30083F33A /* SearchRepository.swift */,
 				ED31389428EFE87200EC759C /* OptionsRepository.swift */,
 			);

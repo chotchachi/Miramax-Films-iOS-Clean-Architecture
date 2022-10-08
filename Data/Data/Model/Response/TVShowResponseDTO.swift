@@ -27,16 +27,7 @@ public struct TVShowResponseDTO: Mappable {
 }
 
 extension TVShowResponseDTO: DomainConvertibleType {
-    public func asDomain() -> TVShowResponse {
-        return TVShowResponse(
-            page: page,
-            results: results.map { $0.asDomain() },
-            totalPages: totalPages,
-            totalResults: totalResults
-        )
-    }
-    
-    public func asBaseResponse() -> BaseResponse<TVShow> {
+    public func asDomain() -> BaseResponse<TVShow> {
         return BaseResponse(page: page, results: results.map { $0.asDomain() }, totalPages: totalPages, totalResults: totalResults)
     }
 }

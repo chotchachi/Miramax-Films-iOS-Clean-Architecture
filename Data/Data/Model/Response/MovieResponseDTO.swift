@@ -27,16 +27,7 @@ public struct MovieResponseDTO: Mappable {
 }
 
 extension MovieResponseDTO: DomainConvertibleType {
-    public func asDomain() -> MovieResponse {
-        return MovieResponse(
-            page: page,
-            results: results.map { $0.asDomain() },
-            totalPages: totalPages,
-            totalResults: totalResults
-        )
-    }
-    
-    public func asBaseResponse() -> BaseResponse<Movie> {
+    public func asDomain() -> BaseResponse<Movie> {
         return BaseResponse(page: page, results: results.map { $0.asDomain() }, totalPages: totalPages, totalResults: totalResults)
     }
 }

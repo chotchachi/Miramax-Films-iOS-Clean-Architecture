@@ -52,6 +52,7 @@
 		ED866E5C28E09AB60066E10B /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E5B28E09AB60066E10B /* UIImageView+Kingfisher.swift */; };
 		ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62128C6369800D60351 /* AppDelegate.swift */; };
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
+		ED9EC0B728F160D100465623 /* EntertainmentViewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0B628F160D100465623 /* EntertainmentViewResponse.swift */; };
 		EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475A28D41FFC0037751C /* PrimaryButton.swift */; };
 		EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476B28D431DC0037751C /* AppFonts.swift */; };
 		EDA4476E28D432350037751C /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476D28D432350037751C /* AppColors.swift */; };
@@ -225,6 +226,7 @@
 		ED86E62128C6369800D60351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED86E62A28C6369B00D60351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED86E62F28C6369B00D60351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED9EC0B628F160D100465623 /* EntertainmentViewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentViewResponse.swift; sourceTree = "<group>"; };
 		EDA4475A28D41FFC0037751C /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		EDA4476B28D431DC0037751C /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		EDA4476D28D432350037751C /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -496,6 +498,14 @@
 			path = "Miramax Fillms";
 			sourceTree = "<group>";
 		};
+		ED9EC0B528F160AC00465623 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ED9EC0B628F160D100465623 /* EntertainmentViewResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EDA4475928D41FE50037751C /* PrimaryButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -622,6 +632,7 @@
 			isa = PBXGroup;
 			children = (
 				EDE92B8328E5D7730083F33A /* Protocols */,
+				ED9EC0B528F160AC00465623 /* Model */,
 				EDC6DB1F28CF69CD00164EBD /* Base */,
 				EDFAD3AF28D3723C00ED3BCD /* Cell */,
 				EDC6DB2228CF69FE00164EBD /* Common */,
@@ -1268,6 +1279,7 @@
 				EDC6DB3228CF724A00164EBD /* AppCoordinator.swift in Sources */,
 				EDE69B7428D7303D002726B0 /* Animation+Fade.swift in Sources */,
 				EDE69B7928D730F3002726B0 /* CGAffineTransform+Ext.swift in Sources */,
+				ED9EC0B728F160D100465623 /* EntertainmentViewResponse.swift in Sources */,
 				EDB8780528D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift in Sources */,
 				ED1F03AD28EC92360083B088 /* EntertainmentsResponseRoute.swift in Sources */,
 				EDD52F5928DA1B2A0078C6C5 /* DimensionConstants.swift in Sources */,

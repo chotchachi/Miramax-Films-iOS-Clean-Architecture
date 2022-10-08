@@ -17,31 +17,31 @@ public final class MovieRepository: MovieRepositoryProtocol {
         self.localDataSource = localDataSource
     }
     
-    public func getNowPlaying(genreId: Int?, page: Int?) -> Single<MovieResponse> {
+    public func getNowPlaying(genreId: Int?, page: Int?) -> Single<BaseResponse<Movie>> {
         return remoteDataSource
             .getMovieNowPlaying(genreId: genreId, page: page)
             .map { $0.asDomain() }
     }
     
-    public func getTopRated(genreId: Int?, page: Int?) -> Single<MovieResponse> {
+    public func getTopRated(genreId: Int?, page: Int?) -> Single<BaseResponse<Movie>> {
         return remoteDataSource
             .getMovieTopRated(genreId: genreId, page: page)
             .map { $0.asDomain() }
     }
     
-    public func getPopular(genreId: Int?, page: Int?) -> Single<MovieResponse> {
+    public func getPopular(genreId: Int?, page: Int?) -> Single<BaseResponse<Movie>> {
         return remoteDataSource
             .getMoviePopular(genreId: genreId, page: page)
             .map { $0.asDomain() }
     }
     
-    public func getUpComing(genreId: Int?, page: Int?) -> Single<MovieResponse> {
+    public func getUpComing(genreId: Int?, page: Int?) -> Single<BaseResponse<Movie>> {
         return remoteDataSource
             .getMovieUpcoming(genreId: genreId, page: page)
             .map { $0.asDomain() }
     }
     
-    public func getByGenre(genreId: Int, sortOption: SortOption, page: Int?) -> Single<MovieResponse> {
+    public func getByGenre(genreId: Int, sortOption: SortOption, page: Int?) -> Single<BaseResponse<Movie>> {
         return remoteDataSource
             .getMovieByGenre(genreId: genreId, sortBy: sortOption.value, page: page)
             .map { $0.asDomain() }
@@ -53,7 +53,7 @@ public final class MovieRepository: MovieRepositoryProtocol {
             .map { $0.asDomain() }
     }
     
-    public func getRecommendations(movieId: Int, page: Int?) -> Single<MovieResponse> {
+    public func getRecommendations(movieId: Int, page: Int?) -> Single<BaseResponse<Movie>> {
         return remoteDataSource
             .getMovieRecommendations(movieId: movieId, page: page)
             .map { $0.asDomain() }

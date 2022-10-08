@@ -149,7 +149,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                       previewViewState: previewViewStateD)
     }
     
-    private func getPreviewData(with tab: TVShowPreviewTab) -> Observable<TVShowResponse> {
+    private func getPreviewData(with tab: TVShowPreviewTab) -> Observable<BaseResponse<TVShow>> {
         switch tab {
         case .topRating:
             return repositoryProvider

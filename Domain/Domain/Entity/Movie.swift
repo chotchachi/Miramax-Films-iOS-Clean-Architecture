@@ -18,9 +18,9 @@ public struct Movie: Equatable {
     public let genres: [Genre]?
     public let runtime: Int?
     public let credits: Credit?
-    public let recommendations: MovieResponse?
+    public let recommendations: BaseResponse<Movie>?
     
-    public init(id: Int, title: String, overview: String, voteAverage: Double, releaseDate: String, backdropPath: String?, posterPath: String?, genres: [Genre]?, runtime: Int?, credits: Credit?, recommendations: MovieResponse?) {
+    public init(id: Int, title: String, overview: String, voteAverage: Double, releaseDate: String, backdropPath: String?, posterPath: String?, genres: [Genre]?, runtime: Int?, credits: Credit?, recommendations: BaseResponse<Movie>?) {
         self.id = id
         self.title = title
         self.overview = overview

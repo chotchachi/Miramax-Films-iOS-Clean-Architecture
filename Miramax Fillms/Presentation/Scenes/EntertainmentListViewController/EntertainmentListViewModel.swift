@@ -82,10 +82,10 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
                 self.getEntertainmentData(page: page, sortOption: sortOption)
                     .do(onSuccess: { [weak self] in
                         guard let self = self else { return }
-                        self.currentPage = $0.entertainmentResponsePage
-                        self.hasNextPage = $0.entertainmentResponsePage < $0.entertainmentResponseTotalPages
+                        self.currentPage = $0.page
+                        self.hasNextPage = $0.page < $0.totalPages
                     })
-                    .map { $0.entertainmentResponseResult }
+                    .map { $0.results }
                     .map { ($0, isRefresh) }
                     .trackError(self.error)
                     .trackActivity(self.loading)
@@ -128,72 +128,72 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
         )
     }
     
-    private func getEntertainmentData(page: Int, sortOption: SortOption) -> Single<EntertainmentResponseModelType> {
+    private func getEntertainmentData(page: Int, sortOption: SortOption) -> Single<EntertainmentViewResponse> {
         switch responseRoute {
         case .discover(genre: let genre):
             if genre.entertainmentType == .movie {
                 return repositoryProvider
                     .movieRepository()
                     .getByGenre(genreId: genre.id, sortOption: sortOption, page: page)
-                    .map { $0 as EntertainmentResponseModelType }
+                    .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
             } else {
                 return repositoryProvider
                     .tvShowRepository()
                     .getByGenre(genreId: genre.id, sortOption: sortOption, page: page)
-                    .map { $0 as EntertainmentResponseModelType }
+                    .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
             }
         case .recommendations(entertainment: let entertainment):
             if entertainment.entertainmentModelType == .movie {
                 return repositoryProvider
                     .movieRepository()
                     .getRecommendations(movieId: entertainment.entertainmentModelId, page: page)
-                    .map { $0 as EntertainmentResponseModelType }
+                    .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
             } else {
                 return repositoryProvider
                     .tvShowRepository()
                     .getRecommendations(tvShowId: entertainment.entertainmentModelId, page: page)
-                    .map { $0 as EntertainmentResponseModelType }
+                    .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
             }
         case .movieUpcoming:
             return repositoryProvider
                 .movieRepository()
                 .getUpComing(genreId: nil, page: page)
-                .map { $0 as EntertainmentResponseModelType }
+                .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
         case .movieTopRating:
             return repositoryProvider
                 .movieRepository()
                 .getTopRated(genreId: nil, page: page)
-                .map { $0 as EntertainmentResponseModelType }
+                .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
         case .movieNews:
             return repositoryProvider
                 .movieRepository()
                 .getNowPlaying(genreId: nil, page: page)
-                .map { $0 as EntertainmentResponseModelType }
+                .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
         case .movieTrending:
             return repositoryProvider
                 .movieRepository()
                 .getPopular(genreId: nil, page: page)
-                .map { $0 as EntertainmentResponseModelType }
+                .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
         case .showUpcoming:
             return repositoryProvider
                 .tvShowRepository()
                 .getOnTheAir(genreId: nil, page: page)
-                .map { $0 as EntertainmentResponseModelType }
+                .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
         case .showTopRating:
             return repositoryProvider
                 .tvShowRepository()
                 .getTopRated(genreId: nil, page: page)
-                .map { $0 as EntertainmentResponseModelType }
+                .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
         case .showNews:
             return repositoryProvider
                 .tvShowRepository()
                 .getOnTheAir(genreId: nil, page: page)
-                .map { $0 as EntertainmentResponseModelType }
+                .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
         case .showTrending:
             return repositoryProvider
                 .tvShowRepository()
                 .getPopular(genreId: nil, page: page)
-                .map { $0 as EntertainmentResponseModelType }
+                .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
         }
     }
 }

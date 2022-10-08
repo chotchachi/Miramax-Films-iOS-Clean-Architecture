@@ -133,7 +133,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
                       previewViewState: previewViewStateD)
     }
     
-    private func getPreviewData(with tab: MoviePreviewTab) -> Observable<MovieResponse> {
+    private func getPreviewData(with tab: MoviePreviewTab) -> Observable<BaseResponse<Movie>> {
         switch tab {
         case .topRating:
             return repositoryProvider
