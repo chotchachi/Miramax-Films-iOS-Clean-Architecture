@@ -100,7 +100,8 @@ class SearchViewModel: BaseViewModel, ViewModelType {
                 return self.repositoryProvider
                     .searchRepository()
                     .searchMovie(query: $0, page: nil)
-                    .catchAndReturn(MovieResponse.emptyResponse)
+                    .asObservable()
+                    .catchAndReturn(BaseResponse.emptyResponse())
             }
         
         let searchTVShowO = Observable.just(query)
@@ -108,7 +109,8 @@ class SearchViewModel: BaseViewModel, ViewModelType {
                 return self.repositoryProvider
                     .searchRepository()
                     .searchTVShow(query: $0, page: nil)
-                    .catchAndReturn(TVShowResponse.emptyResponse)
+                    .asObservable()
+                    .catchAndReturn(BaseResponse.emptyResponse())
             }
         
         let searchPersonO = Observable.just(query)
@@ -116,27 +118,23 @@ class SearchViewModel: BaseViewModel, ViewModelType {
                 return self.repositoryProvider
                     .searchRepository()
                     .searchPerson(query: $0, page: nil)
-                    .catchAndReturn(PersonResponse.emptyResponse)
+                    .asObservable()
+                    .catchAndReturn(BaseResponse.emptyResponse())
             }
-
-        return Observable.zip(searchMovieO, searchTVShowO, searchPersonO)
-            .trackActivity(loading)
-            .map { (movieResponse, tvShowResponse, personResponse) in
-                var searchViewDataItems: [SearchViewData] = []
-                if !movieResponse.results.isEmpty {
-                    let hasNextPage = movieResponse.entertainmentResponsePage < movieResponse.entertainmentResponseTotalPages
-                    searchViewDataItems.append(.movie(items: movieResponse.results, hasNextPage: hasNextPage))
-                }
-                if !tvShowResponse.results.isEmpty {
-                    let hasNextPage = tvShowResponse.entertainmentResponsePage < movieResponse.entertainmentResponseTotalPages
-                    searchViewDataItems.append(.tvShow(items: tvShowResponse.results, hasNextPage: hasNextPage))
-                }
-                if !personResponse.results.isEmpty {
-                    let hasNextPage = personResponse.page < personResponse.totalPages
-                    searchViewDataItems.append(.actor(items: personResponse.results, hasNextPage: hasNextPage))
-                }
-                return searchViewDataItems
+        
+        return Observable.zip(searchMovieO, searchTVShowO, searchPersonO, resultSelector: { movieResponse, tvShowResponse, personResponse in
+            var searchViewDataItems: [SearchViewData] = []
+            if !movieResponse.results.isEmpty {
+                searchViewDataItems.append(.movie(items: movieResponse.results, hasNextPage: movieResponse.hasNextPage))
             }
+            if !tvShowResponse.results.isEmpty {
+                searchViewDataItems.append(.tvShow(items: tvShowResponse.results, hasNextPage: tvShowResponse.hasNextPage))
+            }
+            if !personResponse.results.isEmpty {
+                searchViewDataItems.append(.actor(items: personResponse.results, hasNextPage: personResponse.hasNextPage))
+            }
+            return searchViewDataItems
+        }).trackActivity(loading)
     }
     
     private func saveRecentEntertainment(_ item: EntertainmentModelType) -> Observable<Void> {

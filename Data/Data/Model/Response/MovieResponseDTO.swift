@@ -35,4 +35,8 @@ extension MovieResponseDTO: DomainConvertibleType {
             totalResults: totalResults
         )
     }
+    
+    public func asBaseResponse() -> BaseResponse<Movie> {
+        return BaseResponse(page: page, results: results.map { $0.asDomain() }, totalPages: totalPages, totalResults: totalResults)
+    }
 }

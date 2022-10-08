@@ -17,19 +17,19 @@ public final class SearchRepository: SearchRepositoryProtocol {
         self.localDataSource = localDataSource
     }
     
-    public func searchMovie(query: String, page: Int?) -> Single<MovieResponse> {
+    public func searchMovie(query: String, page: Int?) -> Single<BaseResponse<Movie>> {
         return remoteDataSource
             .searchMovie(query: query, page: page)
-            .map { $0.asDomain() }
+            .map { $0.asBaseResponse() }
     }
     
-    public func searchTVShow(query: String, page: Int?) -> Single<TVShowResponse> {
+    public func searchTVShow(query: String, page: Int?) -> Single<BaseResponse<TVShow>> {
         return remoteDataSource
             .searchTVShow(query: query, page: page)
-            .map { $0.asDomain() }
+            .map { $0.asBaseResponse() }
     }
     
-    public func searchPerson(query: String, page: Int?) -> Single<PersonResponse> {
+    public func searchPerson(query: String, page: Int?) -> Single<BaseResponse<Person>> {
         return remoteDataSource
             .searchPerson(query: query, page: page)
             .map { $0.asDomain() }

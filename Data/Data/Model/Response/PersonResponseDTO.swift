@@ -27,12 +27,7 @@ public struct PersonResponseDTO: Mappable {
 }
 
 extension PersonResponseDTO: DomainConvertibleType {
-    public func asDomain() -> PersonResponse {
-        return PersonResponse(
-            page: page,
-            results: results.map { $0.asDomain() },
-            totalPages: totalPages,
-            totalResults: totalResults
-        )
+    public func asDomain() -> BaseResponse<Person> {
+        return BaseResponse(page: page, results: results.map { $0.asDomain() }, totalPages: totalPages, totalResults: totalResults)
     }
 }
