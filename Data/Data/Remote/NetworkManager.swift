@@ -117,7 +117,7 @@ public final class NetworkManager: Api {
     
     // MARK: - Person
     
-    public func getPersonDetail(personId: Int) -> Single<PersonDetailDTO> {
-        return peopleNetworking.provider.requestObject(.personDetail(personId: personId), type: PersonDetailDTO.self)
+    public func getPersonDetail(personId: Int) -> Single<PersonDTO> {
+        return peopleNetworking.provider.requestObject(.personDetail(personId: personId), type: PersonDTO.self)
     }
 }

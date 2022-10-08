@@ -9,7 +9,7 @@ import XCoordinator
 import Domain
 
 enum PersonBiographyRoute: Route {
-    case initial(personDetail: PersonDetail)
+    case initial(person: Person)
     case pop
     case search
     case share
@@ -18,7 +18,7 @@ enum PersonBiographyRoute: Route {
 class PersonBiographyCoordinator: NavigationCoordinator<PersonBiographyRoute> {
     
     private let appDIContainer: AppDIContainer
-    private let personDetail: PersonDetail
+    private let person: Person
 
     public override var viewController: UIViewController! {
         return autoreleaseController
@@ -26,18 +26,18 @@ class PersonBiographyCoordinator: NavigationCoordinator<PersonBiographyRoute> {
     
     private weak var autoreleaseController: UIViewController?
     
-    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, personDetail: PersonDetail) {
+    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, person: Person) {
         self.appDIContainer = appDIContainer
-        self.personDetail = personDetail
+        self.person = person
         super.init(rootViewController: rootViewController, initialRoute: nil)
-        trigger(.initial(personDetail: personDetail))
+        trigger(.initial(person: person))
     }
     
     override func prepareTransition(for route: PersonBiographyRoute) -> NavigationTransition {
         switch route {
-        case .initial(personDetail: let personDetail):
+        case .initial(person: let person):
             let vc = PersonBiographyViewController()
-            vc.viewModel = PersonBiographyViewModel(router: unownedRouter, personDetail: personDetail)
+            vc.viewModel = PersonBiographyViewModel(router: unownedRouter, person: person)
             autoreleaseController = vc
             return .push(vc)
         case .pop:
@@ -46,7 +46,7 @@ class PersonBiographyCoordinator: NavigationCoordinator<PersonBiographyRoute> {
             let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
             return .presentFullScreen(searchCoordinator, animation: .fade)
         case .share:
-            guard let url = URL(string: "https://www.themoviedb.org/person/\(personDetail.id)") else {
+            guard let url = URL(string: "https://www.themoviedb.org/person/\(person.id)") else {
                 return .none()
             }
             let activity = UIActivityViewController(activityItems: [url], applicationActivities: nil)

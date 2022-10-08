@@ -18,20 +18,20 @@ class PersonBiographyViewModel: BaseViewModel, ViewModelType {
     }
     
     struct Output {
-        let personDetail: Driver<PersonDetail>
+        let person: Driver<Person>
     }
     
     private let router: UnownedRouter<PersonBiographyRoute>
-    private let personDetail: PersonDetail
+    private let person: Person
 
-    init(router: UnownedRouter<PersonBiographyRoute>, personDetail: PersonDetail) {
+    init(router: UnownedRouter<PersonBiographyRoute>, person: Person) {
         self.router = router
-        self.personDetail = personDetail
+        self.person = person
         super.init()
     }
     
     func transform(input: Input) -> Output {
-        let personDetailD = Driver.just(personDetail)
+        let personD = Driver.just(person)
         
         input.popViewTrigger
             .drive(onNext: { [weak self] in
@@ -54,6 +54,6 @@ class PersonBiographyViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output(personDetail: personDetailD)
+        return Output(person: personD)
     }
 }

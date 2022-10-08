@@ -21,7 +21,7 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     struct Output {
-        let personDetail: Driver<PersonDetail>
+        let person: Driver<Person>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -42,7 +42,7 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
         let retryTriggerO = input.retryTrigger
             .asObservable()
         
-        let personDetailD = Observable.merge(viewTriggerO, retryTriggerO)
+        let personD = Observable.merge(viewTriggerO, retryTriggerO)
             .flatMapLatest {
                 self.repositoryProvider
                     .personRepository()
@@ -75,10 +75,10 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         input.toBiographyTrigger
-            .withLatestFrom(personDetailD)
+            .withLatestFrom(personD)
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.biography(personDetail: item))
+                self.router.trigger(.biography(person: item))
             })
             .disposed(by: rx.disposeBag)
         
@@ -89,6 +89,6 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output(personDetail: personDetailD)
+        return Output(person: personD)
     }
 }

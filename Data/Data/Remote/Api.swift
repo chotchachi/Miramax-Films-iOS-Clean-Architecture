@@ -46,5 +46,5 @@ public protocol Api {
 
     // MARK: - Person
     
-    func getPersonDetail(personId: Int) -> Single<PersonDetailDTO>
+    func getPersonDetail(personId: Int) -> Single<PersonDTO>
 }

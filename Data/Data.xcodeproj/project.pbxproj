@@ -46,7 +46,6 @@
 		EDE92CEB28E699210083F33A /* GenreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA028E698E20083F33A /* GenreDTO.swift */; };
 		EDE92CEC28E699210083F33A /* CreditDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA628E698E20083F33A /* CreditDTO.swift */; };
 		EDE92CED28E699210083F33A /* ImageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAC28E698E20083F33A /* ImageDTO.swift */; };
-		EDE92CEE28E699210083F33A /* PersonDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAB28E698E20083F33A /* PersonDetailDTO.swift */; };
 		EDE92CF028E699210083F33A /* EpisodeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAA28E698E20083F33A /* EpisodeDTO.swift */; };
 		EDE92CF128E699210083F33A /* TVShowDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA328E698E20083F33A /* TVShowDTO.swift */; };
 		EDE92CF228E699210083F33A /* MovieDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CA128E698E20083F33A /* MovieDTO.swift */; };
@@ -124,7 +123,6 @@
 		EDE92CA628E698E20083F33A /* CreditDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditDTO.swift; sourceTree = "<group>"; };
 		EDE92CA928E698E20083F33A /* SeasonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDTO.swift; sourceTree = "<group>"; };
 		EDE92CAA28E698E20083F33A /* EpisodeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDTO.swift; sourceTree = "<group>"; };
-		EDE92CAB28E698E20083F33A /* PersonDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailDTO.swift; sourceTree = "<group>"; };
 		EDE92CAC28E698E20083F33A /* ImageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDTO.swift; sourceTree = "<group>"; };
 		EDE92CAD28E698E20083F33A /* PersonCreditDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCreditDTO.swift; sourceTree = "<group>"; };
 		EDE92CAF28E698E20083F33A /* RepositoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProvider.swift; sourceTree = "<group>"; };
@@ -301,7 +299,6 @@
 				EDE92CA628E698E20083F33A /* CreditDTO.swift */,
 				EDE92CA928E698E20083F33A /* SeasonDTO.swift */,
 				EDE92CAA28E698E20083F33A /* EpisodeDTO.swift */,
-				EDE92CAB28E698E20083F33A /* PersonDetailDTO.swift */,
 				EDE92CAC28E698E20083F33A /* ImageDTO.swift */,
 				EDE92CAD28E698E20083F33A /* PersonCreditDTO.swift */,
 			);
@@ -546,7 +543,6 @@
 				EDE92CD828E699110083F33A /* SearchNetworking.swift in Sources */,
 				EDE92CE128E6991D0083F33A /* GenreResponseDTO.swift in Sources */,
 				EDE92CFC28E699360083F33A /* DomainConvertibleType.swift in Sources */,
-				EDE92CEE28E699210083F33A /* PersonDetailDTO.swift in Sources */,
 				EDE92CDF28E699150083F33A /* SearchApi.swift in Sources */,
 				EDE92CF628E6992B0083F33A /* BaseDao.swift in Sources */,
 				EDE92CDA28E699110083F33A /* GenreNetworking.swift in Sources */,

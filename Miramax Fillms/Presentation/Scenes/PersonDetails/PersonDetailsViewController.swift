@@ -24,6 +24,7 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, L
     @IBOutlet weak var sectionTitleView: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var departmentTagListView: TagListView!
+    @IBOutlet weak var btnBookmark: BookmarkButton!
     
     /// Section backdrop image
     @IBOutlet weak var sectionBackdropView: UIView!
@@ -80,7 +81,7 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, L
         )
         let output = viewModel.transform(input: input)
         
-        output.personDetail
+        output.person
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
                 self.bindData(item)
@@ -169,16 +170,16 @@ extension PersonDetailsViewController {
         btnShare.alpha = 0.5
     }
     
-    private func bindData(_ personDetail: PersonDetail) {
+    private func bindData(_ person: Person) {
         // Person title
-        lblTitle.text = personDetail.name
+        lblTitle.text = person.name
         
         // Person departments
         departmentTagListView.removeAllTags()
-        departmentTagListView.addTags(personDetail.departments)
+        departmentTagListView.addTags(person.departments ?? [])
         
         // Person backdrop image
-        if let backdropImage = personDetail.images.randomElement() {
+        if let backdropImage = person.images?.randomElement() {
             ivBackdrop.setImage(with: backdropImage.fileURL)
             sectionBackdropView.isHidden = false
         } else {
@@ -186,18 +187,18 @@ extension PersonDetailsViewController {
         }
         
         // Person profile image
-        ivProfile.setImage(with: personDetail.profileURL)
+        ivProfile.setImage(with: person.profileURL)
         
         // Person biography
-        lblBiography.text = personDetail.biography
+        lblBiography.text = person.biography
         
         // Person birthday
-        let birthDayString = getBirdthdayStringFormatted(personDetail.birthday) ?? "unknown".localized
+        let birthDayString = getBirdthdayStringFormatted(person.birthday) ?? "unknown".localized
         lblBirthday.text = "DOB: \(birthDayString)"
         lblBirthday.highlight(text: birthDayString, font: AppFonts.caption1)
         
         // Person movies
-        entertainmentDataS.accept(personDetail.castEntertainments)
+        entertainmentDataS.accept(person.castEntertainments)
     }
     
     private func getBirdthdayStringFormatted(_ strDate: String?) -> String? {

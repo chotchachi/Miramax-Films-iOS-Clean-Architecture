@@ -47,7 +47,7 @@ class PersonBiographyViewController: BaseViewController<PersonBiographyViewModel
         )
         let output = viewModel.transform(input: input)
         
-        output.personDetail
+        output.person
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
                 self.bindData(item)
@@ -76,12 +76,12 @@ extension PersonBiographyViewController {
         lblBiography.font = AppFonts.caption1
     }
     
-    private func bindData(_ personDetail: PersonDetail) {
-        lblTitle.text = personDetail.name
+    private func bindData(_ person: Person) {
+        lblTitle.text = person.name
         
         departmentTagListView.removeAllTags()
-        departmentTagListView.addTags(personDetail.departments)
+        departmentTagListView.addTags(person.departments ?? [])
         
-        lblBiography.text = personDetail.biography
+        lblBiography.text = person.biography
     }
 }

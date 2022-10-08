@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonDetailsViewController" customModule="Miramax_Fillms" customModuleProvider="target">
             <connections>
                 <outlet property="appToolbar" destination="CSR-c8-MBk" id="OwL-UW-07s"/>
+                <outlet property="btnBookmark" destination="V1N-2w-Otc" id="0ZQ-TF-AAN"/>
                 <outlet property="btnMoreBiography" destination="w6Y-2S-KeK" id="k7E-23-87A"/>
                 <outlet property="departmentTagListView" destination="W0q-nd-sbB" id="Bkg-ri-zCm"/>
                 <outlet property="gallerySectionHeaderView" destination="cgm-b8-Y4q" id="e0s-m5-FoE"/>
@@ -50,13 +51,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="80.666666666666671"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bob Odenkirk" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYs-by-e51" userLabel="Label Name">
-                                            <rect key="frame" x="16" y="16" width="358" height="28.666666666666671"/>
+                                            <rect key="frame" x="16" y="16" width="147.66666666666666" height="28.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0q-nd-sbB" customClass="TagListView" customModule="TagListView">
-                                            <rect key="frame" x="16" y="48.666666666666657" width="358" height="20"/>
+                                            <rect key="frame" x="16" y="48.666666666666657" width="310" height="20"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -64,16 +65,23 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1N-2w-Otc" customClass="BookmarkButton" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="338" y="16" width="36" height="36"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain"/>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="V1N-2w-Otc" firstAttribute="leading" secondItem="W0q-nd-sbB" secondAttribute="trailing" constant="12" id="1A9-J3-vTZ"/>
+                                        <constraint firstItem="V1N-2w-Otc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zYs-by-e51" secondAttribute="trailing" constant="12" id="3oV-vA-RKZ"/>
+                                        <constraint firstItem="V1N-2w-Otc" firstAttribute="top" secondItem="zYs-by-e51" secondAttribute="top" id="72v-J2-oVO"/>
                                         <constraint firstItem="W0q-nd-sbB" firstAttribute="top" secondItem="zYs-by-e51" secondAttribute="bottom" constant="4" id="99J-aD-cXq"/>
+                                        <constraint firstAttribute="trailing" secondItem="V1N-2w-Otc" secondAttribute="trailing" constant="16" id="Abv-gs-xCN"/>
                                         <constraint firstItem="zYs-by-e51" firstAttribute="leading" secondItem="tmo-aQ-lAD" secondAttribute="leading" constant="16" id="TLk-TD-wjt"/>
                                         <constraint firstAttribute="bottom" secondItem="W0q-nd-sbB" secondAttribute="bottom" constant="12" id="Tyb-wR-gLd"/>
-                                        <constraint firstAttribute="trailing" secondItem="zYs-by-e51" secondAttribute="trailing" constant="16" id="Wfy-hk-1Ro"/>
                                         <constraint firstItem="W0q-nd-sbB" firstAttribute="leading" secondItem="tmo-aQ-lAD" secondAttribute="leading" constant="16" id="mzd-4h-FCb"/>
                                         <constraint firstItem="zYs-by-e51" firstAttribute="top" secondItem="tmo-aQ-lAD" secondAttribute="top" constant="16" id="sLA-eD-lJH"/>
-                                        <constraint firstAttribute="trailing" secondItem="W0q-nd-sbB" secondAttribute="trailing" constant="16" id="xzJ-HW-Uxu"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOv-bP-THe" userLabel="Section Backdrop Image">
@@ -248,8 +256,11 @@
         <designable name="CSR-c8-MBk">
             <size key="intrinsicContentSize" width="-1" height="55"/>
         </designable>
+        <designable name="V1N-2w-Otc">
+            <size key="intrinsicContentSize" width="36" height="36"/>
+        </designable>
         <designable name="W0q-nd-sbB">
-            <size key="intrinsicContentSize" width="358" height="16"/>
+            <size key="intrinsicContentSize" width="310" height="16"/>
         </designable>
     </designables>
     <resources>

@@ -13,7 +13,7 @@ enum PersonDetailsRoute: Route {
     case pop
     case search
     case share
-    case biography(personDetail: PersonDetail)
+    case biography(person: Person)
     case entertainmentDetails(entertainment: EntertainmentModelType)
 }
 
@@ -64,8 +64,8 @@ class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
             }
             activity.excludedActivityTypes = [.airDrop, .addToReadingList, .copyToPasteboard]
             return .present(activity)
-        case .biography(personDetail: let personDetail):
-            addChild(PersonBiographyCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, personDetail: personDetail))
+        case .biography(person: let person):
+            addChild(PersonBiographyCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, person: person))
             return .none()
         case .entertainmentDetails(entertainment: let entertainment):
             addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
