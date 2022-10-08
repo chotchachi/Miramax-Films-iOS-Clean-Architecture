@@ -49,4 +49,20 @@ extension Reactive where Base == Realm {
             return Disposables.create()
         }
     }
+    
+    func delete<R: RMOperator>(entities: [R]) -> Observable<Void> where R: Object {
+        return Observable.create { observer in
+            do {
+                try self.base.write {
+                    self.base.delete(entities)
+                }
+                
+                observer.onNext(())
+                observer.onCompleted()
+            } catch {
+                observer.onError(error)
+            }
+            return Disposables.create()
+        }
+    }
 }

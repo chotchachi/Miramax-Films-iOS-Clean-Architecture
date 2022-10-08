@@ -10,4 +10,5 @@ import RxSwift
 public protocol LocalDataSourceProtocol {
     func getSearchRecentEntertainments() -> Observable<[RMRecentEntertainment]>
     func saveSearchRecentEntertainments(item: RMRecentEntertainment) -> Observable<Void>
+    func removeAllRecentEntertainment() -> Observable<Void>
 }

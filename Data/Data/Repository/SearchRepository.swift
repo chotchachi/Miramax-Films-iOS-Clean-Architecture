@@ -46,4 +46,9 @@ public final class SearchRepository: SearchRepositoryProtocol {
         return localDataSource
             .saveSearchRecentEntertainments(item: item.asRealm())
     }
+    
+    public func removeAllRecentEntertainment() -> Observable<Void> {
+        return localDataSource
+            .removeAllRecentEntertainment()
+    }
 }

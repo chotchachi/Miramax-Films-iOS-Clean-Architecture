@@ -50,4 +50,12 @@ final class RecentEntertainmentDao: BaseDao {
                 .map { _ in }
         }
     }
+    
+    func deleteAll() -> Observable<Void> {
+        return Observable.deferred {
+            let realm = self.realmInstance()
+            let objects = realm.objects(RMRecentEntertainment.self)
+            return realm.rx.delete(entities: objects.toArray())
+        }
+    }
 }

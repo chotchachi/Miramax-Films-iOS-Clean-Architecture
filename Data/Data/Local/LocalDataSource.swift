@@ -23,4 +23,9 @@ public final class LocalDataSource: LocalDataSourceProtocol {
         return dbManager.getDao(RecentEntertainmentDao.self)
             .save(entity: item)
     }
+    
+    public func removeAllRecentEntertainment() -> Observable<Void> {
+        return dbManager.getDao(RecentEntertainmentDao.self)
+            .deleteAll()
+    }
 }
