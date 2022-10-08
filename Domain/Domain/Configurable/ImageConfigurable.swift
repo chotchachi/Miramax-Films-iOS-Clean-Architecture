@@ -5,17 +5,17 @@
 //  Created by Thanh Quang on 16/09/2022.
 //
 
-protocol ImageConfigurable {
+public protocol ImageConfigurable {
     var regularImageBaseURLString: String { get }
     var backdropImageBaseURLString: String { get }
 }
 
 extension ImageConfigurable {
-    var regularImageBaseURLString: String {
+    public var regularImageBaseURLString: String {
         return "https://image.tmdb.org/t/p/w185"
     }
 
-    var backdropImageBaseURLString: String {
+    public var backdropImageBaseURLString: String {
         return "https://image.tmdb.org/t/p/w1280"
     }
 }

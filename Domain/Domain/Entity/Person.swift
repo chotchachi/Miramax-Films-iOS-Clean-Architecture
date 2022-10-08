@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Person: Equatable {
+public struct Person: PersonModelType {
     public let id: Int
     public let name: String
     public let profilePath: String?
@@ -16,27 +16,5 @@ public struct Person: Equatable {
         self.id = id
         self.name = name
         self.profilePath = profilePath
-    }
-}
-
-extension Person: ImageConfigurable {
-    public var profileURL: URL? {
-        guard let posterPath = profilePath else { return nil }
-        let urlString = regularImageBaseURLString.appending(posterPath)
-        return URL(string: urlString)
-    }
-}
-
-extension Person: PersonModelType {
-    public var personModelId: Int {
-        return id
-    }
-    
-    public var personModelProfileURL: URL? {
-        return profileURL
-    }
-    
-    public var personModelName: String? {
-        return name
     }
 }

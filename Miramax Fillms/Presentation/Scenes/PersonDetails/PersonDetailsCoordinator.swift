@@ -9,7 +9,7 @@ import XCoordinator
 import Domain
 
 enum PersonDetailsRoute: Route {
-    case initial(personModel: PersonModelType)
+    case initial(personId: Int)
     case pop
     case search
     case share
@@ -20,7 +20,7 @@ enum PersonDetailsRoute: Route {
 class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
     
     private let appDIContainer: AppDIContainer
-    private let personModel: PersonModelType
+    private let personId: Int
     private let fromSearch: Bool
 
     public override var viewController: UIViewController! {
@@ -29,19 +29,19 @@ class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
     
     private weak var autoreleaseController: UIViewController?
     
-    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, personModel: PersonModelType, fromSearch: Bool = false) {
+    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, personId: Int, fromSearch: Bool = false) {
         self.appDIContainer = appDIContainer
-        self.personModel = personModel
+        self.personId = personId
         self.fromSearch = fromSearch
         super.init(rootViewController: rootViewController, initialRoute: nil)
-        trigger(.initial(personModel: personModel))
+        trigger(.initial(personId: personId))
     }
     
     override func prepareTransition(for route: PersonDetailsRoute) -> NavigationTransition {
         switch route {
-        case .initial(personModel: let personModel):
+        case .initial(personId: let personId):
             let vc = PersonDetailsViewController()
-            vc.viewModel = PersonDetailsViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter, personModel: personModel)
+            vc.viewModel = PersonDetailsViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter, personId: personId)
             autoreleaseController = vc
             return .push(vc)
         case .pop:
@@ -54,7 +54,7 @@ class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
                 return .presentFullScreen(searchCoordinator, animation: .fade)
             }
         case .share:
-            guard let url = URL(string: "https://www.themoviedb.org/person/\(personModel.personModelId)") else {
+            guard let url = URL(string: "https://www.themoviedb.org/person/\(personId)") else {
                 return .none()
             }
             let activity = UIActivityViewController(activityItems: [url], applicationActivities: nil)

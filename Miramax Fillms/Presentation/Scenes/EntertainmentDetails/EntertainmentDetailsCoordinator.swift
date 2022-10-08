@@ -15,7 +15,7 @@ enum EntertainmentDetailsRoute: Route {
     case share
     case seasonsList(seasons: [Season])
     case seasonDetails(season: Season)
-    case personDetails(person: PersonModelType)
+    case castDetails(cast: Cast)
     case entertainmentDetails(entertainment: EntertainmentModelType)
     case recommendations
 }
@@ -74,8 +74,8 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
         case .seasonDetails(season: let season):
             addChild(SeasonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, tvShowId: entertainment.entertainmentModelId, season: season))
             return .none()
-        case .personDetails(person: let person):
-            addChild(PersonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, personModel: person))
+        case .castDetails(cast: let cast):
+            addChild(PersonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, personId: cast.id))
             return .none()
         case .entertainmentDetails(entertainment: let entertainment):
             addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))

@@ -26,12 +26,12 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
     
     private let repositoryProvider: RepositoryProviderProtocol
     private let router: UnownedRouter<PersonDetailsRoute>
-    private let personModel: PersonModelType
+    private let personId: Int
 
-    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<PersonDetailsRoute>, personModel: PersonModelType) {
+    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<PersonDetailsRoute>, personId: Int) {
         self.repositoryProvider = repositoryProvider
         self.router = router
-        self.personModel = personModel
+        self.personId = personId
         super.init()
     }
     
@@ -46,7 +46,7 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
             .flatMapLatest {
                 self.repositoryProvider
                     .personRepository()
-                    .getPersonDetail(personId: self.personModel.personModelId)
+                    .getPersonDetail(personId: self.personId)
                     .trackError(self.error)
                     .trackActivity(self.loading)
                     .asDriverOnErrorJustComplete()

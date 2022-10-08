@@ -8,7 +8,7 @@
 import Domain
 
 protocol PersonHorizontalListCellDelegate: AnyObject {
-    func personHorizontalList(onItemTapped item: PersonModelType)
+    func personHorizontalList(onItemTapped item: Person)
     func personHorizontalList(onActionButtonTapped indexPath: IndexPath)
     func personHorizontalList(onRetryButtonTapped indexPath: IndexPath)
 }

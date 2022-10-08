@@ -23,7 +23,7 @@ class PersonHorizontalListCell: UICollectionViewCell {
     
     public weak var delegate: PersonHorizontalListCellDelegate?
     private var indexPath: IndexPath?
-    private var personItems: [PersonModelType] = []
+    private var personItems: [Person] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -94,7 +94,7 @@ class PersonHorizontalListCell: UICollectionViewCell {
     }
     
     func bind(
-        _ items: [PersonModelType],
+        _ items: [Person],
         indexPath: IndexPath,
         headerTitle: String,
         headerActionButtonTitle: String,

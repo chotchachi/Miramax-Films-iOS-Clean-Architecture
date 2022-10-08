@@ -72,11 +72,11 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     // MARK: - Properties
     
     private let entertainentSeasonsS = BehaviorRelay<[Season]>(value: [])
-    private let entertainentCastsS = BehaviorRelay<[PersonModelType]>(value: [])
+    private let entertainentCastsS = BehaviorRelay<[Cast]>(value: [])
     private let entertainentRecommendationsS = BehaviorRelay<[EntertainmentModelType]>(value: [])
 
     private let seasonSelectTriggerS = PublishRelay<Season>()
-    private let personSelectTriggerS = PublishRelay<PersonModelType>()
+    private let castSelectTriggerS = PublishRelay<Cast>()
     private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
     
     private var lblOverviewShowMore = false
@@ -105,7 +105,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             toSeasonListTrigger: seasonsSectionHeaderView.rx.actionButtonTap.asDriver(),
             seasonSelectTrigger: seasonSelectTriggerS.asDriverOnErrorJustComplete(),
-            personSelectTrigger: personSelectTriggerS.asDriverOnErrorJustComplete(),
+            castSelectTrigger: castSelectTriggerS.asDriverOnErrorJustComplete(),
             entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
             shareTrigger: btnShare.rx.tap.asDriver(),
             retryTrigger: errorRetryView.rx.retryTapped.asDriver(),
@@ -249,11 +249,11 @@ extension EntertainmentDetailsViewController {
         actorsCollectionView.collectionViewLayout = collectionViewLayout
         actorsCollectionView.register(cellWithClass: PersonHorizontalCell.self)
         actorsCollectionView.showsHorizontalScrollIndicator = false
-        actorsCollectionView.rx.modelSelected(PersonModelType.self)
-            .bind(to: personSelectTriggerS)
+        actorsCollectionView.rx.modelSelected(Cast.self)
+            .bind(to: castSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
-        let actorDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, PersonModelType>> { dataSource, collectionView, indexPath, item in
+        let actorDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Cast>> { dataSource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalCell.self, for: indexPath)
             cell.bind(item)
             return cell

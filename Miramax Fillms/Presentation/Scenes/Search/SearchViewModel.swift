@@ -14,7 +14,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let searchTrigger: Driver<String?>
         let cancelTrigger: Driver<Void>
-        let personSelectTrigger: Driver<PersonModelType>
+        let personSelectTrigger: Driver<Person>
         let entertainmentSelectTrigger: Driver<EntertainmentModelType>
         let clearAllSearchRecentTrigger: Driver<Void>
         let seeMoreMovieTrigger: Driver<Void>
