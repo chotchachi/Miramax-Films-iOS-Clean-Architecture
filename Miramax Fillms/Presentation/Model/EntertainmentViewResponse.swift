@@ -8,8 +8,8 @@
 import Domain
 
 struct EntertainmentViewResponse {
-    public let page: Int
-    public let results: [EntertainmentModelType]
-    public let totalPages: Int
-    public let totalResults: Int
+    let page: Int
+    let results: [EntertainmentModelType]
+    let totalPages: Int
+    let totalResults: Int
 }
