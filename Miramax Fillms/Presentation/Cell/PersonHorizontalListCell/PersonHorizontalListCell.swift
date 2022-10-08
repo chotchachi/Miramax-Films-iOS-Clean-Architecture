@@ -97,7 +97,8 @@ class PersonHorizontalListCell: UICollectionViewCell {
         _ items: [PersonModelType],
         indexPath: IndexPath,
         headerTitle: String,
-        headerActionButtonTitle: String
+        headerActionButtonTitle: String,
+        showActionButton: Bool
     ) {
         self.indexPath = indexPath
         
@@ -110,7 +111,7 @@ class PersonHorizontalListCell: UICollectionViewCell {
         // set data
         personItems = items
         personCollectionView.reloadData()
-        sectionHeaderView.showActionButton = items.count >= Constants.defaultPageLimit
+        sectionHeaderView.showActionButton = showActionButton
     }
     
     @objc private func btnRetryTapped() {

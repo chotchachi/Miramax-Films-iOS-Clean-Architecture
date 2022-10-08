@@ -36,6 +36,7 @@ class SearchViewController: BaseViewController<SearchViewModel>, LoadingDisplaya
     private let retryTriggerS = PublishRelay<Void>()
     private let personSelectTriggerS = PublishRelay<PersonModelType>()
     private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
+    private let clearAllSearchRecentTriggerS = PublishRelay<Void>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +59,8 @@ class SearchViewController: BaseViewController<SearchViewModel>, LoadingDisplaya
             searchTrigger: searchTriggerS.asDriverOnErrorJustComplete(),
             cancelTrigger: btnCancel.rx.tap.asDriver(),
             personSelectTrigger: personSelectTriggerS.asDriverOnErrorJustComplete(),
-            entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete()
+            entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
+            clearAllSearchRecentTrigger: clearAllSearchRecentTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -166,22 +168,22 @@ extension SearchViewController: UICollectionViewDataSource {
         switch item {
         case .recent(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
-            cell.bind(items, indexPath: indexPath, headerTitle: "recent".localized, headerActionButtonTitle: "clear".localized, forceShowActionButton: true)
+            cell.bind(items, indexPath: indexPath, headerTitle: "recent".localized, headerActionButtonTitle: "clear".localized, showActionButton: !items.isEmpty)
             cell.delegate = self
             return cell
         case .movie(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
-            cell.bind(items, indexPath: indexPath, headerTitle: "movies".localized, headerActionButtonTitle: "see_more".localized)
+            cell.bind(items, indexPath: indexPath, headerTitle: "movies".localized, headerActionButtonTitle: "see_more".localized, showActionButton: items.count >= Constants.defaultPageLimit)
             cell.delegate = self
             return cell
         case .tvShow(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
-            cell.bind(items, indexPath: indexPath, headerTitle: "tvshows".localized, headerActionButtonTitle: "see_more".localized)
+            cell.bind(items, indexPath: indexPath, headerTitle: "tvshows".localized, headerActionButtonTitle: "see_more".localized, showActionButton: items.count >= Constants.defaultPageLimit)
             cell.delegate = self
             return cell
         case .actor(items: let items):
             let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalListCell.self, for: indexPath)
-            cell.bind(items, indexPath: indexPath, headerTitle: "actors".localized, headerActionButtonTitle: "see_more".localized)
+            cell.bind(items, indexPath: indexPath, headerTitle: "actors".localized, headerActionButtonTitle: "see_more".localized, showActionButton: items.count >= Constants.defaultPageLimit)
             cell.delegate = self
             return cell
         }
@@ -218,7 +220,17 @@ extension SearchViewController: EntertainmentHorizontalListCollectionViewCellDel
     }
     
     func entertainmentHorizontalList(onActionButtonTapped indexPath: IndexPath) {
-        
+        let item = searchViewDataItems[indexPath.row]
+        switch item {
+        case .recent:
+            clearAllSearchRecentTriggerS.accept(())
+        case .movie(items: let items):
+            break
+        case .tvShow(items: let items):
+            break
+        case .actor(items: let items):
+            break
+        }
     }
     
     func entertainmentHorizontalList(onRetryButtonTapped indexPath: IndexPath) {

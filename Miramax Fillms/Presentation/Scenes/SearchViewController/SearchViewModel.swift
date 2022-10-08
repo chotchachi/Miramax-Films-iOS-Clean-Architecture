@@ -16,6 +16,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
         let cancelTrigger: Driver<Void>
         let personSelectTrigger: Driver<PersonModelType>
         let entertainmentSelectTrigger: Driver<EntertainmentModelType>
+        let clearAllSearchRecentTrigger: Driver<Void>
     }
     
     struct Output {
@@ -50,6 +51,17 @@ class SearchViewModel: BaseViewModel, ViewModelType {
                 }
             }
             .asDriver(onErrorJustReturn: [])
+        
+        input.clearAllSearchRecentTrigger
+            .asObservable()
+            .flatMapLatest {
+                self.repositoryProvider
+                    .searchRepository()
+                    .removeAllRecentEntertainment()
+                    .catch { _ in Observable.empty() }
+            }
+            .subscribe()
+            .disposed(by: rx.disposeBag)
         
         input.cancelTrigger
             .drive(onNext: { [weak self] in

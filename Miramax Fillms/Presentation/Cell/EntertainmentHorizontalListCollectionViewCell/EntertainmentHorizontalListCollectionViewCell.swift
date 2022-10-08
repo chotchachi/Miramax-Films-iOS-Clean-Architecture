@@ -98,13 +98,13 @@ class EntertainmentHorizontalListCollectionViewCell: UICollectionViewCell {
         indexPath: IndexPath,
         headerTitle: String,
         headerActionButtonTitle: String,
-        forceShowActionButton: Bool = false
+        showActionButton: Bool
     ) {
         self.indexPath = indexPath
         
         sectionHeaderView.title = headerTitle
         sectionHeaderView.actionButtonTittle = headerActionButtonTitle
-        sectionHeaderView.showActionButton = items.count >= Constants.defaultPageLimit || forceShowActionButton
+        sectionHeaderView.showActionButton = showActionButton
         
         loadingIndicatorView.stopAnimating()
         collectionView.isHidden = false
