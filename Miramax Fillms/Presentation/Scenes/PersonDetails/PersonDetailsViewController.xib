@@ -44,7 +44,7 @@
                     <rect key="frame" x="0.0" y="102" width="390" height="708"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jWF-eo-8QQ">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="726"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="742"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tmo-aQ-lAD" userLabel="Section Title">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="80.666666666666671"/>
@@ -184,7 +184,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOt-27-uIZ" userLabel="Section Movies">
-                                    <rect key="frame" x="0.0" y="519" width="390" height="207"/>
+                                    <rect key="frame" x="0.0" y="519" width="390" height="223"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddU-eE-LLR" userLabel="Movies Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="16" width="390" height="24"/>
@@ -212,7 +212,7 @@
                                         <constraint firstItem="D1P-rj-ro0" firstAttribute="leading" secondItem="YOt-27-uIZ" secondAttribute="leading" id="9Ct-iL-4NL"/>
                                         <constraint firstItem="D1P-rj-ro0" firstAttribute="top" secondItem="ddU-eE-LLR" secondAttribute="bottom" constant="12" id="E8Q-ld-95Z"/>
                                         <constraint firstAttribute="trailing" secondItem="D1P-rj-ro0" secondAttribute="trailing" id="UqP-js-zsn"/>
-                                        <constraint firstAttribute="bottom" secondItem="D1P-rj-ro0" secondAttribute="bottom" id="mJy-mg-fUR"/>
+                                        <constraint firstAttribute="bottom" secondItem="D1P-rj-ro0" secondAttribute="bottom" constant="16" id="mJy-mg-fUR"/>
                                         <constraint firstItem="ddU-eE-LLR" firstAttribute="leading" secondItem="YOt-27-uIZ" secondAttribute="leading" id="r0s-Fy-dac"/>
                                         <constraint firstAttribute="trailing" secondItem="ddU-eE-LLR" secondAttribute="trailing" id="sfa-Ek-Obc"/>
                                         <constraint firstItem="ddU-eE-LLR" firstAttribute="top" secondItem="YOt-27-uIZ" secondAttribute="top" constant="16" id="tuo-gc-Unc"/>

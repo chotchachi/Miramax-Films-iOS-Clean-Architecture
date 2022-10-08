@@ -7,18 +7,18 @@
 
 import Foundation
 
-public struct PersonDetail: Equatable {
+public struct PersonDetail {
     public let id: Int
     public let name: String
     public let birthday: String?
-    public let biography: String
+    public let biography: String?
     public let profilePath: String?
     public let images: [Image]
     public let departments: [String]
-//    let castCredits: [PersonCredit]
-//    let crewCredits: [PersonCredit]
+    public let castMovies: [Movie]
+    public let castTVShows: [TVShow]
     
-    public init(id: Int, name: String, birthday: String?, biography: String, profilePath: String?, images: [Image], departments: [String]) {
+    public init(id: Int, name: String, birthday: String?, biography: String?, profilePath: String?, images: [Image], departments: [String], castMovies: [Movie], castTVShows: [TVShow]) {
         self.id = id
         self.name = name
         self.birthday = birthday
@@ -26,6 +26,8 @@ public struct PersonDetail: Equatable {
         self.profilePath = profilePath
         self.images = images
         self.departments = departments
+        self.castMovies = castMovies
+        self.castTVShows = castTVShows
     }
 }
 
@@ -38,17 +40,7 @@ extension PersonDetail: ImageConfigurable {
 }
 
 extension PersonDetail {
-    public var entertainmentItems: [EntertainmentModelType] {
-//        return castCredits + crewCredits
-        return []
+    public var castEntertainments: [EntertainmentModelType] {
+        return castMovies + castTVShows
     }
-    
-//    var departments: [String] {
-//        var allJobs: [String] = []
-//        allJobs.append(contentsOf: crewCredits.compactMap { $0.job })
-//        if !castCredits.isEmpty {
-//            allJobs.append("Actor")
-//        }
-//        return Array(Set(allJobs))
-//    }
 }

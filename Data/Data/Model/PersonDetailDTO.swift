@@ -43,9 +43,9 @@ extension PersonDetailDTO: DomainConvertibleType {
             biography: biography,
             profilePath: profilePath,
             images: images.map { $0.asDomain() },
-//            castCredits: castCredits.map { $0.asDomain() },
-//            crewCredits: crewCredits.map { $0.asDomain() }
-            departments: getDepartments()
+            departments: getDepartments(),
+            castMovies: getMoviesCast(),
+            castTVShows: getTVShowCast()
         )
     }
     
@@ -56,5 +56,21 @@ extension PersonDetailDTO: DomainConvertibleType {
             allJobs.append("Actor")
         }
         return Array(Set(allJobs))
+    }
+    
+    private func getMoviesCast() -> [Movie] {
+        let castCredits = castCredits.filter { $0.mediaType == "movie" }
+            .map { item -> Movie in
+                return Movie(id: item.id, title: item.title, overview: item.overview, voteAverage: item.voteAverage, releaseDate: item.releaseDate, backdropPath: item.backdropPath, posterPath: item.posterPath, genres: nil, runtime: nil, credits: nil, recommendations: nil)
+            }
+        return castCredits
+    }
+    
+    private func getTVShowCast() -> [TVShow] {
+        let castCredits = castCredits.filter { $0.mediaType == "tv" }
+            .map { item -> TVShow in
+                return TVShow(id: item.id, name: item.title, overview: item.overview, voteAverage: item.voteAverage, firstAirDate: item.firstAirDate, backdropPath: item.backdropPath, posterPath: item.posterPath, genres: nil, numberOfEpisodes: nil, numberOfSeasons: nil, seasons: nil, credits: nil, recommendations: nil)
+            }
+        return castCredits
     }
 }

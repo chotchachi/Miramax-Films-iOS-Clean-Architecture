@@ -197,7 +197,7 @@ extension PersonDetailsViewController {
         lblBirthday.highlight(text: birthDayString, font: AppFonts.caption1)
         
         // Person movies
-        entertainmentDataS.accept(personDetail.entertainmentItems)
+        entertainmentDataS.accept(personDetail.castEntertainments)
     }
     
     private func getBirdthdayStringFormatted(_ strDate: String?) -> String? {
