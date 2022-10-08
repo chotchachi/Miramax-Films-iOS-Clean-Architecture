@@ -22,9 +22,10 @@ class EntertainmentHorizontalListCollectionViewCell: UICollectionViewCell {
     // MARK: - Properties
     
     public weak var delegate: EntertainmentHorizontalListCollectionViewCellDelegate?
-    private var indexPath: IndexPath?
-    private var modelItems: [EntertainmentModelType] = []
     
+    private var items: [EntertainmentModelType] = []
+    private var indexPath: IndexPath?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -100,6 +101,7 @@ class EntertainmentHorizontalListCollectionViewCell: UICollectionViewCell {
         headerActionButtonTitle: String,
         showActionButton: Bool
     ) {
+        self.items = items
         self.indexPath = indexPath
         
         sectionHeaderView.title = headerTitle
@@ -110,11 +112,6 @@ class EntertainmentHorizontalListCollectionViewCell: UICollectionViewCell {
         collectionView.isHidden = false
         btnRetry.isHidden = true
         
-        setData(items)
-    }
-    
-    private func setData(_ items: [EntertainmentModelType]) {
-        modelItems = items
         collectionView.reloadData()
     }
     
@@ -131,11 +128,11 @@ class EntertainmentHorizontalListCollectionViewCell: UICollectionViewCell {
 
 extension EntertainmentHorizontalListCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return modelItems.count
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let item = modelItems[indexPath.row]
+        let item = items[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
         cell.bind(item)
         return cell
@@ -147,7 +144,7 @@ extension EntertainmentHorizontalListCollectionViewCell: UICollectionViewDataSou
 
 extension EntertainmentHorizontalListCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = modelItems[indexPath.row]
+        let item = items[indexPath.row]
         delegate?.entertainmentHorizontalList(onItemTapped: item)
     }
     
