@@ -39,6 +39,7 @@ public final class SearchRepository: SearchRepositoryProtocol {
         return localDataSource
             .getSearchRecentEntertainments()
             .map { items in items.map { $0.asDomain() } }
+            .map { items in items.sorted { $0.createAt > $1.createAt } } // sort by createAt
     }
     
     public func addRecentEntertainment(item: RecentEntertainment) -> Observable<Void> {

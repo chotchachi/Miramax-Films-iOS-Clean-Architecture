@@ -12,12 +12,14 @@ public struct RecentEntertainment: Equatable {
     public let name: String
     public let posterPath: String?
     public let type: EntertainmentType
+    public let createAt: Date
     
-    public init(id: Int, name: String, posterPath: String?, type: EntertainmentType) {
+    public init(id: Int, name: String, posterPath: String?, type: EntertainmentType, createAt: Date) {
         self.id = id
         self.name = name
         self.posterPath = posterPath
         self.type = type
+        self.createAt = createAt
     }
 }
 

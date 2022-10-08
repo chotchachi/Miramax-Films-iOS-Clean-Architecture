@@ -13,6 +13,7 @@ public final class RMRecentEntertainment: Object {
     @Persisted var name: String = ""
     @Persisted var posterPath: String?
     @Persisted var type: RMEntertainmentType = .movie
+    @Persisted var createAt: Date = Date()
 }
 
 extension RMRecentEntertainment: RMOperator {
@@ -27,7 +28,8 @@ extension RMRecentEntertainment: DomainConvertibleType {
             id: _id,
             name: name,
             posterPath: posterPath,
-            type: type.asDomain()
+            type: type.asDomain(),
+            createAt: createAt
         )
     }
 }
@@ -39,6 +41,7 @@ extension RecentEntertainment: RealmRepresentable {
             object.name = name
             object.posterPath = posterPath
             object.type = type.asRealm()
+            object.createAt = createAt
         }
     }
 }

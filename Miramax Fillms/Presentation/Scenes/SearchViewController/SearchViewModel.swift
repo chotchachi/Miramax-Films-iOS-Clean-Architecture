@@ -132,7 +132,8 @@ class SearchViewModel: BaseViewModel, ViewModelType {
             id: item.entertainmentModelId,
             name: item.entertainmentModelName,
             posterPath: item.entertainmentModelPosterURL?.path,
-            type: item.entertainmentModelType
+            type: item.entertainmentModelType,
+            createAt: Date()
         )
         return repositoryProvider
             .searchRepository()
