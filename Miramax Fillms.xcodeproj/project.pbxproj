@@ -15,6 +15,8 @@
 		ED13B6C228F0972E007B7A1D /* TabBarSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED13B6C128F0972E007B7A1D /* TabBarSelectable.swift */; };
 		ED13B6C428F09886007B7A1D /* UIScrollView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED13B6C328F09886007B7A1D /* UIScrollView+Ext.swift */; };
 		ED13B6C628F09A83007B7A1D /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED13B6C528F09A83007B7A1D /* UICollectionView+Ext.swift */; };
+		ED13B6CC28F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED13B6CA28F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCell.swift */; };
+		ED13B6CD28F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED13B6CB28F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCellDelegate.swift */; };
 		ED1F03AD28EC92360083B088 /* EntertainmentsResponseRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03AC28EC92360083B088 /* EntertainmentsResponseRoute.swift */; };
 		ED1F03B828EDBD370083B088 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03B728EDBD370083B088 /* Defaults.swift */; };
 		ED1F03BA28EDBD550083B088 /* DefaultsContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1F03B928EDBD550083B088 /* DefaultsContants.swift */; };
@@ -51,7 +53,6 @@
 		ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62128C6369800D60351 /* AppDelegate.swift */; };
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
 		EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475A28D41FFC0037751C /* PrimaryButton.swift */; };
-		EDA4475D28D422320037751C /* MovieHorizontalListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475C28D422320037751C /* MovieHorizontalListCellDelegate.swift */; };
 		EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476B28D431DC0037751C /* AppFonts.swift */; };
 		EDA4476E28D432350037751C /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476D28D432350037751C /* AppColors.swift */; };
 		EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4477D28D58D0E0037751C /* Resolver+resolveOrThrow.swift */; };
@@ -69,7 +70,6 @@
 		EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */; };
 		EDC502D528D38C2D0047C7C3 /* Rx+asDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D428D38C2D0047C7C3 /* Rx+asDriver.swift */; };
 		EDC502D828D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D728D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift */; };
-		EDC502DB28D38FEA0047C7C3 /* MovieHorizontalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502DA28D38FEA0047C7C3 /* MovieHorizontalListCell.swift */; };
 		EDC6DB2128CF69DF00164EBD /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB2028CF69DF00164EBD /* BaseViewModel.swift */; };
 		EDC6DB2428CF6A0800164EBD /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */; };
 		EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB2628CF6C3300164EBD /* BaseViewController.swift */; };
@@ -186,6 +186,8 @@
 		ED13B6C128F0972E007B7A1D /* TabBarSelectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarSelectable.swift; sourceTree = "<group>"; };
 		ED13B6C328F09886007B7A1D /* UIScrollView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ext.swift"; sourceTree = "<group>"; };
 		ED13B6C528F09A83007B7A1D /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
+		ED13B6CA28F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntertainmentHorizontalListCollectionViewCell.swift; sourceTree = "<group>"; };
+		ED13B6CB28F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntertainmentHorizontalListCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
 		ED1F03AC28EC92360083B088 /* EntertainmentsResponseRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentsResponseRoute.swift; sourceTree = "<group>"; };
 		ED1F03B728EDBD370083B088 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		ED1F03B928EDBD550083B088 /* DefaultsContants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsContants.swift; sourceTree = "<group>"; };
@@ -224,7 +226,6 @@
 		ED86E62A28C6369B00D60351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED86E62F28C6369B00D60351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDA4475A28D41FFC0037751C /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
-		EDA4475C28D422320037751C /* MovieHorizontalListCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHorizontalListCellDelegate.swift; sourceTree = "<group>"; };
 		EDA4476B28D431DC0037751C /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		EDA4476D28D432350037751C /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		EDA4477D28D58D0E0037751C /* Resolver+resolveOrThrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resolver+resolveOrThrow.swift"; sourceTree = "<group>"; };
@@ -242,7 +243,6 @@
 		EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		EDC502D428D38C2D0047C7C3 /* Rx+asDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+asDriver.swift"; sourceTree = "<group>"; };
 		EDC502D728D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentHorizontalCell.swift; sourceTree = "<group>"; };
-		EDC502DA28D38FEA0047C7C3 /* MovieHorizontalListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieHorizontalListCell.swift; sourceTree = "<group>"; };
 		EDC6DB2028CF69DF00164EBD /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		EDC6DB2628CF6C3300164EBD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -363,6 +363,15 @@
 				ED13B6BF28F09314007B7A1D /* WishlistCoordinator.swift */,
 			);
 			path = WishlistViewController;
+			sourceTree = "<group>";
+		};
+		ED13B6C928F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				ED13B6CA28F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCell.swift */,
+				ED13B6CB28F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCellDelegate.swift */,
+			);
+			path = EntertainmentHorizontalListCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		ED1F03B628EDBD2B0083B088 /* DefaultsKit */ = {
@@ -558,15 +567,6 @@
 				EDC502D728D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift */,
 			);
 			path = EntertainmentHorizontalCell;
-			sourceTree = "<group>";
-		};
-		EDC502D928D38FD80047C7C3 /* MovieHorizontalListCell */ = {
-			isa = PBXGroup;
-			children = (
-				EDC502DA28D38FEA0047C7C3 /* MovieHorizontalListCell.swift */,
-				EDA4475C28D422320037751C /* MovieHorizontalListCellDelegate.swift */,
-			);
-			path = MovieHorizontalListCell;
 			sourceTree = "<group>";
 		};
 		EDC6DB1528CF664D00164EBD /* GlobalDefine */ = {
@@ -987,7 +987,7 @@
 				EDE92B7928E32C9D0083F33A /* EntertainmentDetailCollectionViewCell */,
 				EDE92B6228E28EEC0083F33A /* EntertainmentPreviewCollectionViewCell */,
 				EDC502D628D38E550047C7C3 /* EntertainmentHorizontalCell */,
-				EDC502D928D38FD80047C7C3 /* MovieHorizontalListCell */,
+				ED13B6C928F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCell */,
 				EDD5302B28DCBFE10078C6C5 /* EpisodeTableViewCell */,
 				EDD5301728DCA0300078C6C5 /* SeasonLargeTableViewCell */,
 				EDD52F7C28DB6EBA0078C6C5 /* SeasonSmallTableViewCell */,
@@ -1178,6 +1178,7 @@
 				ED1F03D228EF0F650083B088 /* SettingViewModel.swift in Sources */,
 				EDE69B4728D6312F002726B0 /* SearchViewData.swift in Sources */,
 				ED7A096028EC84D80035E099 /* EntertainmentListViewModel.swift in Sources */,
+				ED13B6CD28F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCellDelegate.swift in Sources */,
 				EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */,
 				EDB8781928D8D37C0016B96B /* DataUtils.swift in Sources */,
 				EDE69B5828D6BE1A002726B0 /* PersonHorizontalCell.swift in Sources */,
@@ -1191,7 +1192,6 @@
 				EDD5300A28DC95740078C6C5 /* SeasonsViewModel.swift in Sources */,
 				EDA4478D28D5A7640037751C /* AppToolbar.swift in Sources */,
 				EDD52F8328DB7D4D0078C6C5 /* Date+Ext.swift in Sources */,
-				EDC502DB28D38FEA0047C7C3 /* MovieHorizontalListCell.swift in Sources */,
 				EDE69B5028D643A6002726B0 /* String+Ext.swift in Sources */,
 				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
 				EDE69B4528D6294D002726B0 /* SearchViewModel.swift in Sources */,
@@ -1210,7 +1210,6 @@
 				EDE92D3328E98A4B0083F33A /* SelfSizingCollectionView.swift in Sources */,
 				EDD5301628DC99860078C6C5 /* SeasonsCoordinator.swift in Sources */,
 				ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */,
-				EDA4475D28D422320037751C /* MovieHorizontalListCellDelegate.swift in Sources */,
 				EDE92B8F28E5EB3F0083F33A /* LoadingDisplayable.swift in Sources */,
 				EDE69B7D28D73214002726B0 /* TVShowViewController.swift in Sources */,
 				EDB8780728D8AABB0016B96B /* EntertainmentDetailsCoordinator.swift in Sources */,
@@ -1221,6 +1220,7 @@
 				ED31388528EF2FD100EC759C /* MoviePreviewTab.swift in Sources */,
 				EDE69B7228D7303D002726B0 /* Animation+Navigation.swift in Sources */,
 				ED31388728EF31E400EC759C /* CaseIterable+Ext.swift in Sources */,
+				ED13B6CC28F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCell.swift in Sources */,
 				ED13B6BD28F09303007B7A1D /* WishlistViewController.swift in Sources */,
 				EDE92B9628E5F7CE0083F33A /* Searchable.swift in Sources */,
 				EDD5301328DC97650078C6C5 /* SeasonsViewController.swift in Sources */,

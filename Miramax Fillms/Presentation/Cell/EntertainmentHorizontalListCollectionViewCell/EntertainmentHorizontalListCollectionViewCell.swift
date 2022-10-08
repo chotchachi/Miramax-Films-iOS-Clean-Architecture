@@ -1,5 +1,5 @@
 //
-//  MovieHorizontalListCell.swift
+//  EntertainmentHorizontalListCollectionViewCell.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 15/09/2022.
@@ -10,7 +10,7 @@ import SnapKit
 import SwifterSwift
 import Domain
 
-class MovieHorizontalListCell: UICollectionViewCell {
+class EntertainmentHorizontalListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Views
     
@@ -21,7 +21,7 @@ class MovieHorizontalListCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    public weak var delegate: MovieHorizontalListCellDelegate?
+    public weak var delegate: EntertainmentHorizontalListCollectionViewCellDelegate?
     private var modelItems: [EntertainmentModelType] = []
     
     override init(frame: CGRect) {
@@ -92,50 +92,6 @@ class MovieHorizontalListCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(_ viewState: ViewState<Movie>, headerTitle: String) {
-        sectionHeaderView.title = headerTitle
-        
-        switch viewState {
-        case .initial:
-            loadingIndicatorView.startAnimating()
-            collectionView.isHidden = true
-            btnRetry.isHidden = true
-        case .paging:
-            break
-        case .populated(let array):
-            loadingIndicatorView.stopAnimating()
-            collectionView.isHidden = false
-            btnRetry.isHidden = true
-            setData(array)
-        case .error:
-            loadingIndicatorView.stopAnimating()
-            collectionView.isHidden = true
-            btnRetry.isHidden = false
-        }
-    }
-    
-    func bind(_ viewState: ViewState<TVShow>, headerTitle: String) {
-        sectionHeaderView.title = headerTitle
-        
-        switch viewState {
-        case .initial:
-            loadingIndicatorView.startAnimating()
-            collectionView.isHidden = true
-            btnRetry.isHidden = true
-        case .paging:
-            break
-        case .populated(let array):
-            loadingIndicatorView.stopAnimating()
-            collectionView.isHidden = false
-            btnRetry.isHidden = true
-            setData(array)
-        case .error:
-            loadingIndicatorView.stopAnimating()
-            collectionView.isHidden = true
-            btnRetry.isHidden = false
-        }
-    }
-    
     func bind(_ items: [EntertainmentModelType], headerTitle: String) {
         sectionHeaderView.title = headerTitle
         
@@ -155,13 +111,13 @@ class MovieHorizontalListCell: UICollectionViewCell {
         loadingIndicatorView.startAnimating()
         collectionView.isHidden = true
         btnRetry.isHidden = true
-        delegate?.movieHorizontalListRetryButtonTapped()
+        delegate?.entertainmentHorizontalListRetryButtonTapped()
     }
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension MovieHorizontalListCell: UICollectionViewDataSource {
+extension EntertainmentHorizontalListCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return modelItems.count
     }
@@ -177,17 +133,17 @@ extension MovieHorizontalListCell: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension MovieHorizontalListCell: UICollectionViewDelegate {
+extension EntertainmentHorizontalListCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = modelItems[indexPath.row]
-        delegate?.movieHorizontalList(onItemTapped: item)
+        delegate?.entertainmentHorizontalList(onItemTapped: item)
     }
     
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension MovieHorizontalListCell: UICollectionViewDelegateFlowLayout {
+extension EntertainmentHorizontalListCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemHeight = collectionView.frame.height
         let itemWidth = itemHeight * DimensionConstants.entertainmentHorizontalCellRatio
@@ -205,8 +161,8 @@ extension MovieHorizontalListCell: UICollectionViewDelegateFlowLayout {
 
 // MARK: - SectionHeaderViewDelegate
 
-extension MovieHorizontalListCell: SectionHeaderViewDelegate {
+extension EntertainmentHorizontalListCollectionViewCell: SectionHeaderViewDelegate {
     func sectionHeaderView(onSeeMoreButtonTapped button: UIButton) {
-        delegate?.movieHorizontalListSeeMoreButtonTapped()
+        delegate?.entertainmentHorizontalListSeeMoreButtonTapped()
     }
 }

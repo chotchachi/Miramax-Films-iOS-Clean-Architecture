@@ -109,7 +109,7 @@ extension SearchViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.contentInset = .init(top: 32.0, left: 0.0, bottom: 32.0, right: 0.0)
-        collectionView.register(cellWithClass: MovieHorizontalListCell.self)
+        collectionView.register(cellWithClass: EntertainmentHorizontalListCollectionViewCell.self)
         collectionView.register(cellWithClass: PersonHorizontalListCell.self)
     }
     
@@ -166,17 +166,17 @@ extension SearchViewController: UICollectionViewDataSource {
         let item = searchViewDataItems[indexPath.row]
         switch item {
         case .recent(items: let items):
-            let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalListCell.self, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
             cell.bind(items, headerTitle: "recent".localized)
             cell.delegate = self
             return cell
         case .movie(items: let items):
-            let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalListCell.self, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
             cell.bind(items, headerTitle: "movies".localized)
             cell.delegate = self
             return cell
         case .tvShow(items: let items):
-            let cell = collectionView.dequeueReusableCell(withClass: MovieHorizontalListCell.self, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
             cell.bind(items, headerTitle: "tvshows".localized)
             cell.delegate = self
             return cell
@@ -211,21 +211,20 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - MovieHorizontalListCellDelegate
+// MARK: - EntertainmentHorizontalListCollectionViewCellDelegate
 
-extension SearchViewController: MovieHorizontalListCellDelegate {
-    func movieHorizontalListRetryButtonTapped() {
+extension SearchViewController: EntertainmentHorizontalListCollectionViewCellDelegate {
+    func entertainmentHorizontalListRetryButtonTapped() {
         
     }
     
-    func movieHorizontalList(onItemTapped item: EntertainmentModelType) {
+    func entertainmentHorizontalList(onItemTapped item: EntertainmentModelType) {
         entertainmentSelectTriggerS.accept(item)
     }
     
-    func movieHorizontalListSeeMoreButtonTapped() {
+    func entertainmentHorizontalListSeeMoreButtonTapped() {
         
     }
-    
 }
 
 // MARK: - PersonHorizontalListCellDelegate
@@ -242,5 +241,4 @@ extension SearchViewController: PersonHorizontalListCellDelegate {
     func personHorizontalListSeeMoreButtonTapped() {
         
     }
-    
 }
