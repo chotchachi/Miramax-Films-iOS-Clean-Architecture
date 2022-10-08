@@ -38,10 +38,10 @@ class SearchCoordinator: NavigationCoordinator<SearchRoute> {
             addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment, fromSearch: true))
             return .none()
         case .personDetails(person: let person):
-            addChild(PersonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, personModel: person))
+            addChild(PersonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, personModel: person, fromSearch: true))
             return .none()
         case .entertainmentList(responseRoute: let responseRoute):
-            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, responseRoute: responseRoute))
+            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, responseRoute: responseRoute, fromSearch: true))
             return .none()
         }
     }

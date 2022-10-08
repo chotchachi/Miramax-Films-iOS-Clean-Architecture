@@ -18,6 +18,7 @@ enum EntertainmentListRoute: Route {
 class EntertainmentListCoordinator: NavigationCoordinator<EntertainmentListRoute> {
     
     private let appDIContainer: AppDIContainer
+    private let fromSearch: Bool
 
     public override var viewController: UIViewController! {
         return autoreleaseController
@@ -25,8 +26,9 @@ class EntertainmentListCoordinator: NavigationCoordinator<EntertainmentListRoute
     
     private weak var autoreleaseController: UIViewController?
 
-    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, responseRoute: EntertainmentsResponseRoute) {
+    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, responseRoute: EntertainmentsResponseRoute, fromSearch: Bool = false) {
         self.appDIContainer = appDIContainer
+        self.fromSearch = fromSearch
         super.init(rootViewController: rootViewController, initialRoute: nil)
         trigger(.initial(responseRoute: responseRoute))
     }
@@ -41,8 +43,12 @@ class EntertainmentListCoordinator: NavigationCoordinator<EntertainmentListRoute
         case .pop:
             return .pop()
         case .search:
-            let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
-            return .presentFullScreen(searchCoordinator, animation: .fade)
+            if fromSearch {
+                return .pop()
+            } else {
+                let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
+                return .presentFullScreen(searchCoordinator, animation: .fade)
+            }
         case .entertainmentDetails(entertainment: let entertainment):
             addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
             return .none()

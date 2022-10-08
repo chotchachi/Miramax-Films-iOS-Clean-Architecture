@@ -21,16 +21,18 @@ class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
     
     private let appDIContainer: AppDIContainer
     private let personModel: PersonModelType
-    
+    private let fromSearch: Bool
+
     public override var viewController: UIViewController! {
         return autoreleaseController
     }
     
     private weak var autoreleaseController: UIViewController?
     
-    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, personModel: PersonModelType) {
+    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, personModel: PersonModelType, fromSearch: Bool = false) {
         self.appDIContainer = appDIContainer
         self.personModel = personModel
+        self.fromSearch = fromSearch
         super.init(rootViewController: rootViewController, initialRoute: nil)
         trigger(.initial(personModel: personModel))
     }
@@ -45,8 +47,12 @@ class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
         case .pop:
             return .pop()
         case .search:
-            let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
-            return .presentFullScreen(searchCoordinator, animation: .fade)
+            if fromSearch {
+                return .pop()
+            } else {
+                let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
+                return .presentFullScreen(searchCoordinator, animation: .fade)
+            }
         case .share:
             guard let url = URL(string: "https://www.themoviedb.org/person/\(personModel.personModelId)") else {
                 return .none()
