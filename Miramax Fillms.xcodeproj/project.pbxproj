@@ -53,6 +53,7 @@
 		ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62128C6369800D60351 /* AppDelegate.swift */; };
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
 		ED9EC0B728F160D100465623 /* EntertainmentViewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0B628F160D100465623 /* EntertainmentViewResponse.swift */; };
+		ED9EC0BE28F1B95700465623 /* BookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0BD28F1B95700465623 /* BookmarkButton.swift */; };
 		EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475A28D41FFC0037751C /* PrimaryButton.swift */; };
 		EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476B28D431DC0037751C /* AppFonts.swift */; };
 		EDA4476E28D432350037751C /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476D28D432350037751C /* AppColors.swift */; };
@@ -227,6 +228,7 @@
 		ED86E62A28C6369B00D60351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED86E62F28C6369B00D60351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED9EC0B628F160D100465623 /* EntertainmentViewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentViewResponse.swift; sourceTree = "<group>"; };
+		ED9EC0BD28F1B95700465623 /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
 		EDA4475A28D41FFC0037751C /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		EDA4476B28D431DC0037751C /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		EDA4476D28D432350037751C /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -505,6 +507,14 @@
 				ED9EC0B628F160D100465623 /* EntertainmentViewResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		ED9EC0BC28F1B94300465623 /* BookmarkButton */ = {
+			isa = PBXGroup;
+			children = (
+				ED9EC0BD28F1B95700465623 /* BookmarkButton.swift */,
+			);
+			path = BookmarkButton;
 			sourceTree = "<group>";
 		};
 		EDA4475928D41FE50037751C /* PrimaryButton */ = {
@@ -1012,6 +1022,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				ED9EC0BC28F1B94300465623 /* BookmarkButton */,
 				ED1F03BB28EDD6440083B088 /* SortPopupView */,
 				EDD52F7928DB6D1F0078C6C5 /* SelfSizingTableView */,
 				EDE92D3128E98A430083F33A /* SelfSizingCollectionView */,
@@ -1195,6 +1206,7 @@
 				EDE69B5828D6BE1A002726B0 /* PersonHorizontalCell.swift in Sources */,
 				EDB8780228D8AA720016B96B /* EntertainmentDetailsViewController.swift in Sources */,
 				EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */,
+				ED9EC0BE28F1B95700465623 /* BookmarkButton.swift in Sources */,
 				EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */,
 				EDC6DB4628CF98F800164EBD /* MovieViewController.swift in Sources */,
 				EDE69B8028D7321F002726B0 /* TVShowViewModel.swift in Sources */,
