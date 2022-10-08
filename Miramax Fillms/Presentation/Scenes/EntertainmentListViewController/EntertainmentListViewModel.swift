@@ -194,6 +194,18 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
                 .tvShowRepository()
                 .getPopular(genreId: nil, page: page)
                 .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
+        case .search(query: let query, entertainmentType: let entertainmentType):
+            if entertainmentType == .movie {
+                return repositoryProvider
+                    .searchRepository()
+                    .searchMovie(query: query, page: page)
+                    .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
+            } else {
+                return repositoryProvider
+                    .searchRepository()
+                    .searchTVShow(query: query, page: page)
+                    .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
+            }
         }
     }
 }

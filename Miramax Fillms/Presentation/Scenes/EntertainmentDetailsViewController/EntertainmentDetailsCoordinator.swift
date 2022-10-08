@@ -24,6 +24,7 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
     
     private let appDIContainer: AppDIContainer
     private let entertainment: EntertainmentModelType
+    private let fromSearch: Bool
     
     public override var viewController: UIViewController! {
         return autoreleaseController
@@ -31,9 +32,10 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
     
     private weak var autoreleaseController: UIViewController?
     
-    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, entertainment: EntertainmentModelType) {
+    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, entertainment: EntertainmentModelType, fromSearch: Bool = false) {
         self.appDIContainer = appDIContainer
         self.entertainment = entertainment
+        self.fromSearch = fromSearch
         super.init(rootViewController: rootViewController, initialRoute: nil)
         trigger(.initial(entertainment: entertainment))
     }
@@ -48,8 +50,12 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
         case .pop:
             return .pop()
         case .search:
-            let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
-            return .presentFullScreen(searchCoordinator, animation: .fade)
+            if fromSearch {
+                return .pop()
+            } else {
+                let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
+                return .presentFullScreen(searchCoordinator, animation: .fade)
+            }
         case .share:
             let typeStr = entertainment.entertainmentModelType == .movie ? "movie" : "tv"
             guard let url = URL(string: "https://www.themoviedb.org/\(typeStr)/\(entertainment.entertainmentModelId)") else {

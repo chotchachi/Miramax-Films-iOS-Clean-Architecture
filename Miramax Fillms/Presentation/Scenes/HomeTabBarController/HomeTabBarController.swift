@@ -1,5 +1,5 @@
 //
-//  MainTabBarController.swift
+//  HomeTabBarController.swift
 //  Miramax Fillms
 //
 //  Created by Thanh Quang on 07/10/2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class HomeTabBarController: UITabBarController {
     private let indicator: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -73,7 +73,7 @@ class MainTabBarController: UITabBarController {
 
 // MARK: - UITabBarControllerDelegate
 
-extension MainTabBarController: UITabBarControllerDelegate {
+extension HomeTabBarController: UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         guard
             let items = tabBar.items,

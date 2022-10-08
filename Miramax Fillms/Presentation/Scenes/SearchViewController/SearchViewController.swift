@@ -37,6 +37,8 @@ class SearchViewController: BaseViewController<SearchViewModel>, LoadingDisplaya
     private let personSelectTriggerS = PublishRelay<PersonModelType>()
     private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
     private let clearAllSearchRecentTriggerS = PublishRelay<Void>()
+    private let seeMoreMovieTriggerS = PublishRelay<Void>()
+    private let seeMoreTVShowTriggerS = PublishRelay<Void>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +62,9 @@ class SearchViewController: BaseViewController<SearchViewModel>, LoadingDisplaya
             cancelTrigger: btnCancel.rx.tap.asDriver(),
             personSelectTrigger: personSelectTriggerS.asDriverOnErrorJustComplete(),
             entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
-            clearAllSearchRecentTrigger: clearAllSearchRecentTriggerS.asDriverOnErrorJustComplete()
+            clearAllSearchRecentTrigger: clearAllSearchRecentTriggerS.asDriverOnErrorJustComplete(),
+            seeMoreMovieTrigger: seeMoreMovieTriggerS.asDriverOnErrorJustComplete(),
+            seeMoreTVShowTrigger: seeMoreTVShowTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -225,9 +229,9 @@ extension SearchViewController: EntertainmentHorizontalListCollectionViewCellDel
         case .recent:
             clearAllSearchRecentTriggerS.accept(())
         case .movie:
-            break
+            seeMoreMovieTriggerS.accept(())
         case .tvShow:
-            break
+            seeMoreTVShowTriggerS.accept(())
         case .actor:
             break
         }

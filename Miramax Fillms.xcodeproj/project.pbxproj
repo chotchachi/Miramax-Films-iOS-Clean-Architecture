@@ -29,7 +29,7 @@
 		ED31388728EF31E400EC759C /* CaseIterable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31388628EF31E400EC759C /* CaseIterable+Ext.swift */; };
 		ED31388928EF320100EC759C /* TVShowPreviewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31388828EF320100EC759C /* TVShowPreviewTab.swift */; };
 		ED31388F28EF434C00EC759C /* Transition+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31388E28EF434C00EC759C /* Transition+Ext.swift */; };
-		ED31389A28F08AE600EC759C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31389928F08AE600EC759C /* MainTabBarController.swift */; };
+		ED31389A28F08AE600EC759C /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31389928F08AE600EC759C /* HomeTabBarController.swift */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
 		ED7A095328EC71370035E099 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094F28EC711D0035E099 /* Roboto-Bold.ttf */; };
 		ED7A095428EC71370035E099 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */; };
@@ -201,7 +201,7 @@
 		ED31388628EF31E400EC759C /* CaseIterable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaseIterable+Ext.swift"; sourceTree = "<group>"; };
 		ED31388828EF320100EC759C /* TVShowPreviewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowPreviewTab.swift; sourceTree = "<group>"; };
 		ED31388E28EF434C00EC759C /* Transition+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Ext.swift"; sourceTree = "<group>"; };
-		ED31389928F08AE600EC759C /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		ED31389928F08AE600EC759C /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
 		ED7A094D28EC711D0035E099 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -404,12 +404,13 @@
 			path = SettingViewController;
 			sourceTree = "<group>";
 		};
-		ED31389828F08AAF00EC759C /* MainTabBarController */ = {
+		ED31389828F08AAF00EC759C /* HomeTabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				ED31389928F08AE600EC759C /* MainTabBarController.swift */,
+				ED31389928F08AE600EC759C /* HomeTabBarController.swift */,
+				EDC6DB3F28CF92DE00164EBD /* HomeCoordinator.swift */,
 			);
-			path = MainTabBarController;
+			path = HomeTabBarController;
 			sourceTree = "<group>";
 		};
 		ED5BA69E28EB19370030F4B0 /* EntertainmentRankTableViewCell */ = {
@@ -677,7 +678,7 @@
 				EDE69B7A28D731FB002726B0 /* TVShowViewController */,
 				EDC6DB4328CF98E500164EBD /* MovieViewController */,
 				EDC6DB3328CF758100164EBD /* SplashViewController */,
-				ED31389828F08AAF00EC759C /* MainTabBarController */,
+				ED31389828F08AAF00EC759C /* HomeTabBarController */,
 				EDC6DB2D28CF715800164EBD /* MainNavigationController */,
 			);
 			path = Scenes;
@@ -704,7 +705,6 @@
 			isa = PBXGroup;
 			children = (
 				EDC6DB3128CF724A00164EBD /* AppCoordinator.swift */,
-				EDC6DB3F28CF92DE00164EBD /* HomeCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -1293,7 +1293,7 @@
 				ED866E5C28E09AB60066E10B /* UIImageView+Kingfisher.swift in Sources */,
 				EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */,
 				ED13B6BA28F092F9007B7A1D /* WishlistViewModel.swift in Sources */,
-				ED31389A28F08AE600EC759C /* MainTabBarController.swift in Sources */,
+				ED31389A28F08AE600EC759C /* HomeTabBarController.swift in Sources */,
 				EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */,
 				EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */,
 				EDC6DB2F28CF717600164EBD /* MainNavigationController.swift in Sources */,

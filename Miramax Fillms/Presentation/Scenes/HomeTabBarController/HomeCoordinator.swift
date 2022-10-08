@@ -43,7 +43,7 @@ class HomeCoordinator: TabBarCoordinator<HomeTabRoute> {
         settingCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "setting".localized, image: UIImage(named: "ic_tab_setting"), tag: 4)
         settingRoute = settingCoordinator.strongRouter
         
-        super.init(rootViewController: MainTabBarController(), tabs: [movieRoute, tvShowRoute, genresRoute, wishlistRoute, settingRoute], select: movieRoute)
+        super.init(rootViewController: HomeTabBarController(), tabs: [movieRoute, tvShowRoute, genresRoute, wishlistRoute, settingRoute], select: movieRoute)
     }
     
     override func prepareTransition(for route: HomeTabRoute) -> TabBarTransition {
