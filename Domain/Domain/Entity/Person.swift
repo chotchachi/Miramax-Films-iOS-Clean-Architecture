@@ -18,6 +18,8 @@ public struct Person: PersonModelType {
     public let castMovies: [Movie]?
     public let castTVShows: [TVShow]?
     
+    public var isBookmark: Bool = false
+    
     public init(id: Int, name: String, profilePath: String?, birthday: String?, biography: String?, images: [Image]?, departments: [String]?, castMovies: [Movie]?, castTVShows: [TVShow]?) {
         self.id = id
         self.name = name
@@ -28,6 +30,10 @@ public struct Person: PersonModelType {
         self.departments = departments
         self.castMovies = castMovies
         self.castTVShows = castTVShows
+    }
+    
+    public func copy() -> Person {
+        return Person(id: id, name: name, profilePath: profilePath, birthday: birthday, biography: biography, images: images, departments: departments, castMovies: castMovies, castTVShows: castTVShows)
     }
 }
 

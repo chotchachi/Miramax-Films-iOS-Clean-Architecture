@@ -77,7 +77,8 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, L
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             shareTrigger: btnShare.rx.tap.asDriver(),
             toBiographyTrigger: btnMoreBiography.rx.tap.asDriver(),
-            entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete()
+            entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
+            toggleBookmarkTrigger: btnBookmark.rx.tap.asDriver()
         )
         let output = viewModel.transform(input: input)
         
@@ -177,6 +178,9 @@ extension PersonDetailsViewController {
         // Person departments
         departmentTagListView.removeAllTags()
         departmentTagListView.addTags(person.departments ?? [])
+        
+        // Person is bookmark
+        btnBookmark.isBookmark = person.isBookmark
         
         // Person backdrop image
         if let backdropImage = person.images?.randomElement() {

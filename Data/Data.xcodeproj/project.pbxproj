@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2B746448AFC220D1F449ECB4 /* Pods_Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BC7ECF22379BFD65DEF5083 /* Pods_Data.framework */; };
 		ED31389528EFE87200EC759C /* OptionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31389428EFE87200EC759C /* OptionsRepository.swift */; };
+		ED9EC0C028F1D41E00465623 /* RMBookmarkPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0BF28F1D41E00465623 /* RMBookmarkPerson.swift */; };
+		ED9EC0C228F1D5D700465623 /* BookmarkPersonDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0C128F1D5D700465623 /* BookmarkPersonDao.swift */; };
 		EDE92C4128E697920083F33A /* Data.h in Headers */ = {isa = PBXBuildFile; fileRef = EDE92C4028E697920083F33A /* Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDE92CC928E698E40083F33A /* RepositoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAF28E698E20083F33A /* RepositoryProvider.swift */; };
 		EDE92CCA28E699010083F33A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CC628E698E30083F33A /* ReachabilityManager.swift */; };
@@ -89,6 +91,8 @@
 		1BC7ECF22379BFD65DEF5083 /* Pods_Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		995489B553BA26EB4BBA55C5 /* Pods-Data.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Data.release.xcconfig"; path = "Target Support Files/Pods-Data/Pods-Data.release.xcconfig"; sourceTree = "<group>"; };
 		ED31389428EFE87200EC759C /* OptionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsRepository.swift; sourceTree = "<group>"; };
+		ED9EC0BF28F1D41E00465623 /* RMBookmarkPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBookmarkPerson.swift; sourceTree = "<group>"; };
+		ED9EC0C128F1D5D700465623 /* BookmarkPersonDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkPersonDao.swift; sourceTree = "<group>"; };
 		EDE92C3D28E697920083F33A /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE92C4028E697920083F33A /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		EDE92C8328E698E20083F33A /* RemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
@@ -326,6 +330,7 @@
 		EDE92CB828E698E30083F33A /* Dao */ = {
 			isa = PBXGroup;
 			children = (
+				ED9EC0C128F1D5D700465623 /* BookmarkPersonDao.swift */,
 				EDE92CB628E698E30083F33A /* RecentEntertainmentDao.swift */,
 				EDE92CB728E698E30083F33A /* BaseDao.swift */,
 			);
@@ -339,6 +344,7 @@
 				EDE92CBA28E698E30083F33A /* RMTVShow.swift */,
 				EDE92CBB28E698E30083F33A /* RMRecentEntertainment.swift */,
 				EDE92CBC28E698E30083F33A /* RMEntertainmentType.swift */,
+				ED9EC0BF28F1D41E00465623 /* RMBookmarkPerson.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -519,6 +525,7 @@
 				EDE92CD128E6990A0083F33A /* RemoteDataSource.swift in Sources */,
 				EDE92CD728E699110083F33A /* MovieNetworking.swift in Sources */,
 				EDE92CE028E699150083F33A /* GenreApi.swift in Sources */,
+				ED9EC0C228F1D5D700465623 /* BookmarkPersonDao.swift in Sources */,
 				EDE92CCB28E699010083F33A /* Realm+Ext.swift in Sources */,
 				EDE92CCD28E699050083F33A /* MovieRepository.swift in Sources */,
 				EDE92CC928E698E40083F33A /* RepositoryProvider.swift in Sources */,
@@ -546,6 +553,7 @@
 				EDE92CDF28E699150083F33A /* SearchApi.swift in Sources */,
 				EDE92CF628E6992B0083F33A /* BaseDao.swift in Sources */,
 				EDE92CDA28E699110083F33A /* GenreNetworking.swift in Sources */,
+				ED9EC0C028F1D41E00465623 /* RMBookmarkPerson.swift in Sources */,
 				EDE92CF428E699260083F33A /* DBManager.swift in Sources */,
 				EDE92CFF28E6993B0083F33A /* RemoteDataSourceProtocol.swift in Sources */,
 			);

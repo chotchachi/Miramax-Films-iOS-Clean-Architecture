@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 @IBDesignable
 final class BookmarkButton: UIButton {
@@ -23,7 +25,7 @@ final class BookmarkButton: UIButton {
             alpha = isHighlighted ? 0.5 : 1.0
         }
     }
-
+    
     // MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -33,7 +35,7 @@ final class BookmarkButton: UIButton {
     }
     
     required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
+        super.init(coder: aDecoder)
         
         setup()
     }
@@ -50,6 +52,7 @@ final class BookmarkButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         
         setTitle("", for: .normal)
+        addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         
         setBookmarkIcon()
     }
@@ -57,5 +60,24 @@ final class BookmarkButton: UIButton {
     private func setBookmarkIcon() {
         let icon = isBookmark ? UIImage(named: "ic_bookmark_fill") : UIImage(named: "ic_unbookmark_fill")
         setImage(icon, for: .normal)
+    }
+    
+    @objc private func buttonTapped() {
+        isBookmark.toggle()
+        sendActions(for: .valueChanged)
+    }
+}
+
+extension Reactive where Base: BookmarkButton {
+    var isBookmark: ControlProperty<Bool> {
+        return base.rx.controlProperty(
+            editingEvents: .valueChanged,
+            getter: { view in
+                return view.isBookmark
+            },
+            setter: { (view, newValue) in
+                view.isBookmark = newValue
+            }
+        )
     }
 }

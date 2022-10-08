@@ -22,4 +22,25 @@ public final class PersonRepository: PersonRepositoryProtocol {
             .getPersonDetail(persondId: personId)
             .map { $0.asDomain() }
     }
+    
+    public func getBookmarkPersons() -> Observable<[BookmarkPerson]> {
+        return localDataSource
+            .getBookmarkPersons()
+            .map { items in items.map { $0.asDomain() } }
+    }
+    
+    public func saveBookmarkPerson(item: BookmarkPerson) -> Observable<Void> {
+        return localDataSource
+            .saveBookmarkPerson(item: item.asRealm())
+    }
+    
+    public func removeBookmarkPerson(item: BookmarkPerson) -> Observable<Void> {
+        return localDataSource
+            .removeBookmarkPerson(item: item.asRealm())
+    }
+    
+    public func removeAllBookmarkPerson() -> Observable<Void> {
+        return localDataSource
+            .removeAllBookmarkPerson()
+    }
 }

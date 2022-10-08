@@ -9,4 +9,8 @@ import RxSwift
 
 public protocol PersonRepositoryProtocol {
     func getPersonDetail(personId: Int) -> Single<Person>
+    func getBookmarkPersons() -> Observable<[BookmarkPerson]>
+    func saveBookmarkPerson(item: BookmarkPerson) -> Observable<Void>
+    func removeBookmarkPerson(item: BookmarkPerson) -> Observable<Void>
+    func removeAllBookmarkPerson() -> Observable<Void>
 }

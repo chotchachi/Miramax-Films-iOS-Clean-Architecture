@@ -28,4 +28,24 @@ public final class LocalDataSource: LocalDataSourceProtocol {
         return dbManager.getDao(RecentEntertainmentDao.self)
             .deleteAll()
     }
+    
+    public func getBookmarkPersons() -> Observable<[RMBookmarkPerson]> {
+        return dbManager.getDao(BookmarkPersonDao.self)
+            .queryAll()
+    }
+    
+    public func saveBookmarkPerson(item: RMBookmarkPerson) -> Observable<Void> {
+        return dbManager.getDao(BookmarkPersonDao.self)
+            .save(entity: item)
+    }
+    
+    public func removeBookmarkPerson(item: RMBookmarkPerson) -> Observable<Void> {
+        return dbManager.getDao(BookmarkPersonDao.self)
+            .delete(entity: item)
+    }
+    
+    public func removeAllBookmarkPerson() -> Observable<Void> {
+        return dbManager.getDao(BookmarkPersonDao.self)
+            .deleteAll()
+    }
 }
