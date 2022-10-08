@@ -8,6 +8,5 @@
 import Foundation
 
 final class Constants {
-    static let defaultPageLimit: Int = 20
     static let apiDateResponseFormat: String = "yyyy-MM-dd"
 }

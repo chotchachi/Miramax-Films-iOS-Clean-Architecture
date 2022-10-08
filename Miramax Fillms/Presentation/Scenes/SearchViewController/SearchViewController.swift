@@ -171,19 +171,19 @@ extension SearchViewController: UICollectionViewDataSource {
             cell.bind(items, indexPath: indexPath, headerTitle: "recent".localized, headerActionButtonTitle: "clear".localized, showActionButton: !items.isEmpty)
             cell.delegate = self
             return cell
-        case .movie(items: let items):
+        case .movie(items: let items, hasNextPage: let hasNextPage):
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
-            cell.bind(items, indexPath: indexPath, headerTitle: "movies".localized, headerActionButtonTitle: "see_more".localized, showActionButton: items.count >= Constants.defaultPageLimit)
+            cell.bind(items, indexPath: indexPath, headerTitle: "movies".localized, headerActionButtonTitle: "see_more".localized, showActionButton: hasNextPage)
             cell.delegate = self
             return cell
-        case .tvShow(items: let items):
+        case .tvShow(items: let items, hasNextPage: let hasNextPage):
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalListCollectionViewCell.self, for: indexPath)
-            cell.bind(items, indexPath: indexPath, headerTitle: "tvshows".localized, headerActionButtonTitle: "see_more".localized, showActionButton: items.count >= Constants.defaultPageLimit)
+            cell.bind(items, indexPath: indexPath, headerTitle: "tvshows".localized, headerActionButtonTitle: "see_more".localized, showActionButton: hasNextPage)
             cell.delegate = self
             return cell
-        case .actor(items: let items):
+        case .actor(items: let items, hasNextPage: let hasNextPage):
             let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalListCell.self, for: indexPath)
-            cell.bind(items, indexPath: indexPath, headerTitle: "actors".localized, headerActionButtonTitle: "see_more".localized, showActionButton: items.count >= Constants.defaultPageLimit)
+            cell.bind(items, indexPath: indexPath, headerTitle: "actors".localized, headerActionButtonTitle: "see_more".localized, showActionButton: hasNextPage)
             cell.delegate = self
             return cell
         }
@@ -224,11 +224,11 @@ extension SearchViewController: EntertainmentHorizontalListCollectionViewCellDel
         switch item {
         case .recent:
             clearAllSearchRecentTriggerS.accept(())
-        case .movie(items: let items):
+        case .movie:
             break
-        case .tvShow(items: let items):
+        case .tvShow:
             break
-        case .actor(items: let items):
+        case .actor:
             break
         }
     }

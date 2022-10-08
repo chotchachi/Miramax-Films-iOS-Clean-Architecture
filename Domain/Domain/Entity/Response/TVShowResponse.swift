@@ -17,6 +17,8 @@ public struct TVShowResponse: Equatable {
         self.totalPages = totalPages
         self.totalResults = totalResults
     }
+    
+    public static let emptyResponse = TVShowResponse(page: 0, results: [], totalPages: 0, totalResults: 0)
 }
 
 extension TVShowResponse: EntertainmentResponseModelType {

@@ -17,4 +17,6 @@ public struct PersonResponse: Equatable {
         self.totalPages = totalPages
         self.totalResults = totalResults
     }
+    
+    public static let emptyResponse = PersonResponse(page: 0, results: [], totalPages: 0, totalResults: 0)
 }

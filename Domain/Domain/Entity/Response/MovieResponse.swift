@@ -17,6 +17,8 @@ public struct MovieResponse: Equatable {
         self.totalPages = totalPages
         self.totalResults = totalResults
     }
+    
+    public static let emptyResponse = MovieResponse(page: 0, results: [], totalPages: 0, totalResults: 0)
 }
 
 extension MovieResponse: EntertainmentResponseModelType {
