@@ -12,7 +12,7 @@ final class BookmarkButton: UIButton {
     
     // MARK: - Properties
     
-    @IBInspectable var isBookmark: Bool = true {
+    @IBInspectable var isBookmark: Bool = false {
         didSet {
             setBookmarkIcon()
         }
