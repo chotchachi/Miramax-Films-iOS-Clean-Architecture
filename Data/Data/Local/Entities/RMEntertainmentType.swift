@@ -22,3 +22,12 @@ extension RMEntertainmentType: DomainConvertibleType {
         }
     }
 }
+
+extension EntertainmentType: RealmRepresentable {
+    public func asRealm() -> RMEntertainmentType {
+        switch self {
+        case .movie: return .movie
+        case .tvShow: return .tvShow
+        }
+    }
+}
