@@ -11,6 +11,8 @@
 		ED31389528EFE87200EC759C /* OptionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31389428EFE87200EC759C /* OptionsRepository.swift */; };
 		ED9EC0C028F1D41E00465623 /* RMBookmarkPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0BF28F1D41E00465623 /* RMBookmarkPerson.swift */; };
 		ED9EC0C228F1D5D700465623 /* BookmarkPersonDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0C128F1D5D700465623 /* BookmarkPersonDao.swift */; };
+		ED9EC0CB28F2860500465623 /* RMBookmarkEntertainment.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0CA28F2860500465623 /* RMBookmarkEntertainment.swift */; };
+		ED9EC0CF28F2890F00465623 /* BookmarkEntertainmentDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0CE28F2890F00465623 /* BookmarkEntertainmentDao.swift */; };
 		EDE92C4128E697920083F33A /* Data.h in Headers */ = {isa = PBXBuildFile; fileRef = EDE92C4028E697920083F33A /* Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDE92CC928E698E40083F33A /* RepositoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAF28E698E20083F33A /* RepositoryProvider.swift */; };
 		EDE92CCA28E699010083F33A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CC628E698E30083F33A /* ReachabilityManager.swift */; };
@@ -55,8 +57,6 @@
 		EDE92CF428E699260083F33A /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CB428E698E30083F33A /* DBManager.swift */; };
 		EDE92CF528E6992B0083F33A /* RecentEntertainmentDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CB628E698E30083F33A /* RecentEntertainmentDao.swift */; };
 		EDE92CF628E6992B0083F33A /* BaseDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CB728E698E30083F33A /* BaseDao.swift */; };
-		EDE92CF728E6992F0083F33A /* RMMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CB928E698E30083F33A /* RMMovie.swift */; };
-		EDE92CF828E6992F0083F33A /* RMTVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CBA28E698E30083F33A /* RMTVShow.swift */; };
 		EDE92CF928E6992F0083F33A /* RMEntertainmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CBC28E698E30083F33A /* RMEntertainmentType.swift */; };
 		EDE92CFA28E6992F0083F33A /* RMRecentEntertainment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CBB28E698E30083F33A /* RMRecentEntertainment.swift */; };
 		EDE92CFB28E699320083F33A /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CBE28E698E30083F33A /* LocalDataSource.swift */; };
@@ -93,6 +93,8 @@
 		ED31389428EFE87200EC759C /* OptionsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsRepository.swift; sourceTree = "<group>"; };
 		ED9EC0BF28F1D41E00465623 /* RMBookmarkPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBookmarkPerson.swift; sourceTree = "<group>"; };
 		ED9EC0C128F1D5D700465623 /* BookmarkPersonDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkPersonDao.swift; sourceTree = "<group>"; };
+		ED9EC0CA28F2860500465623 /* RMBookmarkEntertainment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBookmarkEntertainment.swift; sourceTree = "<group>"; };
+		ED9EC0CE28F2890F00465623 /* BookmarkEntertainmentDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkEntertainmentDao.swift; sourceTree = "<group>"; };
 		EDE92C3D28E697920083F33A /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE92C4028E697920083F33A /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		EDE92C8328E698E20083F33A /* RemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
@@ -136,8 +138,6 @@
 		EDE92CB428E698E30083F33A /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		EDE92CB628E698E30083F33A /* RecentEntertainmentDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentEntertainmentDao.swift; sourceTree = "<group>"; };
 		EDE92CB728E698E30083F33A /* BaseDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDao.swift; sourceTree = "<group>"; };
-		EDE92CB928E698E30083F33A /* RMMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMMovie.swift; sourceTree = "<group>"; };
-		EDE92CBA28E698E30083F33A /* RMTVShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMTVShow.swift; sourceTree = "<group>"; };
 		EDE92CBB28E698E30083F33A /* RMRecentEntertainment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMRecentEntertainment.swift; sourceTree = "<group>"; };
 		EDE92CBC28E698E30083F33A /* RMEntertainmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMEntertainmentType.swift; sourceTree = "<group>"; };
 		EDE92CBE28E698E30083F33A /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
@@ -330,9 +330,10 @@
 		EDE92CB828E698E30083F33A /* Dao */ = {
 			isa = PBXGroup;
 			children = (
-				ED9EC0C128F1D5D700465623 /* BookmarkPersonDao.swift */,
-				EDE92CB628E698E30083F33A /* RecentEntertainmentDao.swift */,
 				EDE92CB728E698E30083F33A /* BaseDao.swift */,
+				EDE92CB628E698E30083F33A /* RecentEntertainmentDao.swift */,
+				ED9EC0C128F1D5D700465623 /* BookmarkPersonDao.swift */,
+				ED9EC0CE28F2890F00465623 /* BookmarkEntertainmentDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -340,11 +341,10 @@
 		EDE92CBD28E698E30083F33A /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				EDE92CB928E698E30083F33A /* RMMovie.swift */,
-				EDE92CBA28E698E30083F33A /* RMTVShow.swift */,
-				EDE92CBB28E698E30083F33A /* RMRecentEntertainment.swift */,
 				EDE92CBC28E698E30083F33A /* RMEntertainmentType.swift */,
+				EDE92CBB28E698E30083F33A /* RMRecentEntertainment.swift */,
 				ED9EC0BF28F1D41E00465623 /* RMBookmarkPerson.swift */,
+				ED9EC0CA28F2860500465623 /* RMBookmarkEntertainment.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -520,7 +520,6 @@
 				EDE92D2528E6D8580083F33A /* NetworkConfiguration.swift in Sources */,
 				EDE92CF928E6992F0083F33A /* RMEntertainmentType.swift in Sources */,
 				EDE92CE728E699210083F33A /* SeasonDTO.swift in Sources */,
-				EDE92CF828E6992F0083F33A /* RMTVShow.swift in Sources */,
 				EDE92D2428E6D8580083F33A /* NetworkConfigurationProtocol.swift in Sources */,
 				EDE92CD128E6990A0083F33A /* RemoteDataSource.swift in Sources */,
 				EDE92CD728E699110083F33A /* MovieNetworking.swift in Sources */,
@@ -531,6 +530,7 @@
 				EDE92CC928E698E40083F33A /* RepositoryProvider.swift in Sources */,
 				EDE92CDE28E699150083F33A /* PeopleApi.swift in Sources */,
 				EDE92CD428E6990E0083F33A /* NetworkingType.swift in Sources */,
+				ED9EC0CB28F2860500465623 /* RMBookmarkEntertainment.swift in Sources */,
 				EDE92CF028E699210083F33A /* EpisodeDTO.swift in Sources */,
 				EDE92CD228E6990A0083F33A /* Api.swift in Sources */,
 				EDE92CD028E699050083F33A /* SearchRepository.swift in Sources */,
@@ -538,10 +538,10 @@
 				EDE92D2328E6D84E0083F33A /* NetworkConfigurable.swift in Sources */,
 				EDE92CF328E699210083F33A /* CrewDTO.swift in Sources */,
 				EDE92CEB28E699210083F33A /* GenreDTO.swift in Sources */,
-				EDE92CF728E6992F0083F33A /* RMMovie.swift in Sources */,
 				EDE92CD928E699110083F33A /* TVShowNetworking.swift in Sources */,
 				EDE92D0028E6993B0083F33A /* LocalDataSourceProtocol.swift in Sources */,
 				EDE92CED28E699210083F33A /* ImageDTO.swift in Sources */,
+				ED9EC0CF28F2890F00465623 /* BookmarkEntertainmentDao.swift in Sources */,
 				EDE92CF228E699210083F33A /* MovieDTO.swift in Sources */,
 				ED31389528EFE87200EC759C /* OptionsRepository.swift in Sources */,
 				EDE92CFE28E699360083F33A /* RealmRepresentable.swift in Sources */,

@@ -58,4 +58,25 @@ public final class MovieRepository: MovieRepositoryProtocol {
             .getMovieRecommendations(movieId: movieId, page: page)
             .map { $0.asDomain() }
     }
+    
+    public func getBookmarkMovies() -> Observable<[BookmarkEntertainment]> {
+        return localDataSource
+            .getBookmarkMovies()
+            .map { items in items.map { $0.asDomain()} }
+    }
+    
+    public func saveBookmarkMovie(item: BookmarkEntertainment) -> Observable<Void> {
+        return localDataSource
+            .saveBookmarkMovie(item: item.asRealm())
+    }
+    
+    public func removeBookmarkMovie(item: BookmarkEntertainment) -> Observable<Void> {
+        return localDataSource
+            .removeBookmarkMovie(item: item.asRealm())
+    }
+    
+    public func removeAllBookmarkMovie() -> Observable<Void> {
+        return localDataSource
+            .removeAllBookmarkMovie()
+    }
 }

@@ -16,4 +16,8 @@ public protocol TVShowRepositoryProtocol {
     func getDetail(tvShowId: Int) -> Single<TVShow>
     func getRecommendations(tvShowId: Int, page: Int?) -> Single<BaseResponse<TVShow>>
     func getSeasonDetails(tvShowId: Int, seasonNumber: Int) -> Single<Season>
+    func getBookmarkTVShows() -> Observable<[BookmarkEntertainment]>
+    func saveBookmarkTVShow(item: BookmarkEntertainment) -> Observable<Void>
+    func removeBookmarkTVShow(item: BookmarkEntertainment) -> Observable<Void>
+    func removeAllBookmarkTVShow() -> Observable<Void>
 }
