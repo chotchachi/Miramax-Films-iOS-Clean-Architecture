@@ -9,12 +9,12 @@ import XCoordinator
 import Domain
 
 enum PersonDetailsRoute: Route {
-    case initial(personId: Int)
+    case initial
     case pop
     case search
     case share
     case biography(person: Person)
-    case entertainmentDetails(entertainment: EntertainmentModelType)
+    case entertainmentDetail(entertainmentId: Int, entertainmentType: EntertainmentType)
 }
 
 class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
@@ -34,12 +34,12 @@ class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
         self.personId = personId
         self.fromSearch = fromSearch
         super.init(rootViewController: rootViewController, initialRoute: nil)
-        trigger(.initial(personId: personId))
+        trigger(.initial)
     }
     
     override func prepareTransition(for route: PersonDetailsRoute) -> NavigationTransition {
         switch route {
-        case .initial(personId: let personId):
+        case .initial:
             let vc = PersonDetailsViewController()
             vc.viewModel = PersonDetailsViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter, personId: personId)
             autoreleaseController = vc
@@ -67,8 +67,8 @@ class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
         case .biography(person: let person):
             addChild(PersonBiographyCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, person: person))
             return .none()
-        case .entertainmentDetails(entertainment: let entertainment):
-            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
+        case .entertainmentDetail(entertainmentId: let entertainmentId, entertainmentType: let entertainmentType):
+            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainmentId: entertainmentId, entertainmentType: entertainmentType))
             return .none()
         }
     }

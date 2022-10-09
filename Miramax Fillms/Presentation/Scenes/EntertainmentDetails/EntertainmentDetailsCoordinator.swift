@@ -9,21 +9,22 @@ import XCoordinator
 import Domain
 
 enum EntertainmentDetailsRoute: Route {
-    case initial(entertainment: EntertainmentModelType)
+    case initial
     case pop
     case search
     case share
     case seasonsList(seasons: [Season])
-    case seasonDetails(season: Season)
-    case castDetails(cast: Cast)
-    case entertainmentDetails(entertainment: EntertainmentModelType)
+    case seasonDetail(seasonNumber: Int)
+    case personDetail(personId: Int)
+    case entertainmentDetail(entertainmentId: Int, entertainmentType: EntertainmentType)
     case recommendations
 }
 
 class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetailsRoute> {
     
     private let appDIContainer: AppDIContainer
-    private let entertainment: EntertainmentModelType
+    private let entertainmentId: Int
+    private let entertainmentType: EntertainmentType
     private let fromSearch: Bool
     
     public override var viewController: UIViewController! {
@@ -32,19 +33,20 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
     
     private weak var autoreleaseController: UIViewController?
     
-    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, entertainment: EntertainmentModelType, fromSearch: Bool = false) {
+    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, entertainmentId: Int, entertainmentType: EntertainmentType, fromSearch: Bool = false) {
         self.appDIContainer = appDIContainer
-        self.entertainment = entertainment
+        self.entertainmentId = entertainmentId
+        self.entertainmentType = entertainmentType
         self.fromSearch = fromSearch
         super.init(rootViewController: rootViewController, initialRoute: nil)
-        trigger(.initial(entertainment: entertainment))
+        trigger(.initial)
     }
     
     override func prepareTransition(for route: EntertainmentDetailsRoute) -> NavigationTransition {
         switch route {
-        case .initial(entertainment: let entertainment):
+        case .initial:
             let vc = EntertainmentDetailsViewController()
-            vc.viewModel = EntertainmentDetailsViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter, entertainmentModel: entertainment)
+            vc.viewModel = EntertainmentDetailsViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter, entertainmentId: entertainmentId, entertainmentType: entertainmentType)
             autoreleaseController = vc
             return .push(vc)
         case .pop:
@@ -57,8 +59,8 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
                 return .presentFullScreen(searchCoordinator, animation: .fade)
             }
         case .share:
-            let typeStr = entertainment.entertainmentModelType == .movie ? "movie" : "tv"
-            guard let url = URL(string: "https://www.themoviedb.org/\(typeStr)/\(entertainment.entertainmentModelId)") else {
+            let typeStr = entertainmentType == .movie ? "movie" : "tv"
+            guard let url = URL(string: "https://www.themoviedb.org/\(typeStr)/\(entertainmentId)") else {
                 return .none()
             }
             let activity = UIActivityViewController(activityItems: [url], applicationActivities: nil)
@@ -69,19 +71,19 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
             activity.excludedActivityTypes = [.airDrop, .addToReadingList, .copyToPasteboard]
             return .present(activity)
         case .seasonsList(seasons: let seasons):
-            addChild(SeasonsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, tvShowId: entertainment.entertainmentModelId, seasons: seasons))
+            addChild(SeasonsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, tvShowId: entertainmentId, seasons: seasons))
             return .none()
-        case .seasonDetails(season: let season):
-            addChild(SeasonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, tvShowId: entertainment.entertainmentModelId, season: season))
+        case .seasonDetail(seasonNumber: let seasonNumber):
+            addChild(SeasonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, tvShowId: entertainmentId, seasonNumber: seasonNumber))
             return .none()
-        case .castDetails(cast: let cast):
-            addChild(PersonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, personId: cast.id))
+        case .personDetail(personId: let personId):
+            addChild(PersonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, personId: personId))
             return .none()
-        case .entertainmentDetails(entertainment: let entertainment):
-            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
+        case .entertainmentDetail(entertainmentId: let entertainmentId, entertainmentType: let entertainmentType):
+            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainmentId: entertainmentId, entertainmentType: entertainmentType))
             return .none()
         case .recommendations:
-            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, responseRoute: .recommendations(entertainment: entertainment)))
+            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, responseRoute: .recommendations(entertainmentId: entertainmentId, entertainmentType: entertainmentType)))
             return .none()
         }
     }

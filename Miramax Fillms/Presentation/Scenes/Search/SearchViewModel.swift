@@ -75,14 +75,14 @@ class SearchViewModel: BaseViewModel, ViewModelType {
         input.personSelectTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.personDetails(person: item))
+                self.router.trigger(.personDetail(personId: item.id))
             })
             .disposed(by: rx.disposeBag)
         
         input.entertainmentSelectTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.entertainmentDetails(entertainment: item))
+                self.router.trigger(.entertainmentDetail(entertainmentId: item.entertainmentModelId, entertainmentType: item.entertainmentModelType))
             })
             .disposed(by: rx.disposeBag)
         

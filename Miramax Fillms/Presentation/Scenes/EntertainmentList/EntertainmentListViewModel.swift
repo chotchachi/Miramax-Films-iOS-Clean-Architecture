@@ -118,7 +118,7 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
         input.entertainmentSelectTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.entertainmentDetails(entertainment: item))
+                self.router.trigger(.entertainmentDetail(entertainmentId: item.entertainmentModelId, entertainmentType: item.entertainmentModelType))
             })
             .disposed(by: rx.disposeBag)
         
@@ -142,16 +142,16 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
                     .getByGenre(genreId: genre.id, sortOption: sortOption, page: page)
                     .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
             }
-        case .recommendations(entertainment: let entertainment):
-            if entertainment.entertainmentModelType == .movie {
+        case .recommendations(entertainmentId: let entertainmentId, entertainmentType: let entertainmentType):
+            if entertainmentType == .movie {
                 return repositoryProvider
                     .movieRepository()
-                    .getRecommendations(movieId: entertainment.entertainmentModelId, page: page)
+                    .getRecommendations(movieId: entertainmentId, page: page)
                     .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
             } else {
                 return repositoryProvider
                     .tvShowRepository()
-                    .getRecommendations(tvShowId: entertainment.entertainmentModelId, page: page)
+                    .getRecommendations(tvShowId: entertainmentId, page: page)
                     .map { EntertainmentViewResponse(page: $0.page, results: $0.results, totalPages: $0.totalPages, totalResults: $0.totalResults) }
             }
         case .movieUpcoming:

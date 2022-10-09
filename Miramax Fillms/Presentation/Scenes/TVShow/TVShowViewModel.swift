@@ -110,7 +110,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         input.selectionEntertainmentTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.entertainmentDetails(entertainment: item))
+                self.router.trigger(.entertainmentDetail(entertainmentId: item.entertainmentModelId, entertainmentType: item.entertainmentModelType))
             })
             .disposed(by: rx.disposeBag)
         

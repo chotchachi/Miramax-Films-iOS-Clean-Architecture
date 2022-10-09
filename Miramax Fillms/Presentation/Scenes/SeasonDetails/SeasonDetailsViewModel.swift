@@ -24,13 +24,13 @@ class SeasonDetailsViewModel: BaseViewModel, ViewModelType {
     private let repositoryProvider: RepositoryProviderProtocol
     private let router: UnownedRouter<SeasonDetailsRoute>
     private let tvShowId: Int
-    private let season: Season
+    private let seasonNumber: Int
 
-    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<SeasonDetailsRoute>, tvShowId: Int, season: Season) {
+    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<SeasonDetailsRoute>, tvShowId: Int, seasonNumber: Int) {
         self.repositoryProvider = repositoryProvider
         self.router = router
         self.tvShowId = tvShowId
-        self.season = season
+        self.seasonNumber = seasonNumber
         super.init()
     }
     
@@ -45,7 +45,7 @@ class SeasonDetailsViewModel: BaseViewModel, ViewModelType {
             .flatMapLatest {
                 return self.repositoryProvider
                     .tvShowRepository()
-                    .getSeasonDetails(tvShowId: self.tvShowId, seasonNumber: self.season.seasonNumber)
+                    .getSeasonDetails(tvShowId: self.tvShowId, seasonNumber: self.seasonNumber)
                     .map { $0.episodes ?? [] }
                     .trackError(self.error)
                     .trackActivity(self.loading)

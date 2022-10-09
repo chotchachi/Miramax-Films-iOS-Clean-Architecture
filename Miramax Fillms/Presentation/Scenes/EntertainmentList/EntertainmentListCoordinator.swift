@@ -12,7 +12,7 @@ enum EntertainmentListRoute: Route {
     case initial(responseRoute: EntertainmentsResponseRoute)
     case pop
     case search
-    case entertainmentDetails(entertainment: EntertainmentModelType)
+    case entertainmentDetail(entertainmentId: Int, entertainmentType: EntertainmentType)
 }
 
 class EntertainmentListCoordinator: NavigationCoordinator<EntertainmentListRoute> {
@@ -49,8 +49,8 @@ class EntertainmentListCoordinator: NavigationCoordinator<EntertainmentListRoute
                 let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
                 return .presentFullScreen(searchCoordinator, animation: .fade)
             }
-        case .entertainmentDetails(entertainment: let entertainment):
-            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
+        case .entertainmentDetail(entertainmentId: let entertainmentId, entertainmentType: let entertainmentType):
+            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainmentId: entertainmentId, entertainmentType: entertainmentType))
             return .none()
         }
     }

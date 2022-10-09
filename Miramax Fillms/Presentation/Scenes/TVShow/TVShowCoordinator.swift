@@ -11,7 +11,7 @@ import Domain
 enum TVShowRoute: Route {
     case initial
     case search
-    case entertainmentDetails(entertainment: EntertainmentModelType)
+    case entertainmentDetail(entertainmentId: Int, entertainmentType: EntertainmentType)
     case entertainmentList(responseRoute: EntertainmentsResponseRoute)
 }
 
@@ -35,8 +35,8 @@ class TVShowCoordinator: NavigationCoordinator<TVShowRoute> {
         case .search:
             let searchCoordinator = SearchCoordinator(appDIContainer: appDIContainer)
             return .presentFullScreen(searchCoordinator, animation: .fade)
-        case .entertainmentDetails(entertainment: let entertainment):
-            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainment: entertainment))
+        case .entertainmentDetail(entertainmentId: let entertainmentId, entertainmentType: let entertainmentType):
+            addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainmentId: entertainmentId, entertainmentType: entertainmentType))
             return .none()
         case .entertainmentList(responseRoute: let responseRoute):
             addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, responseRoute: responseRoute))

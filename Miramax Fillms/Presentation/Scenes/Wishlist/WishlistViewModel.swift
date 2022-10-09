@@ -59,9 +59,9 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
                 guard let self = self else { return }
                 switch item {
                 case .movie(item: let item):
-                    self.router.trigger(.entertainmentDetail(entertainment: item))
+                    self.router.trigger(.entertainmentDetail(entertainmentId: item.entertainmentModelId, entertainmentType: item.entertainmentModelType))
                 case .tvShow(item: let item):
-                    self.router.trigger(.entertainmentDetail(entertainment: item))
+                    self.router.trigger(.entertainmentDetail(entertainmentId: item.entertainmentModelId, entertainmentType: item.entertainmentModelType))
                 case .actor(item: let item):
                     self.router.trigger(.personDetail(personId: item.id))
                 }

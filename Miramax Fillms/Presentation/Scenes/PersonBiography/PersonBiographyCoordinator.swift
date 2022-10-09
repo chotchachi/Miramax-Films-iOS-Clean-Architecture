@@ -9,7 +9,7 @@ import XCoordinator
 import Domain
 
 enum PersonBiographyRoute: Route {
-    case initial(person: Person)
+    case initial
     case pop
     case search
     case share
@@ -30,12 +30,12 @@ class PersonBiographyCoordinator: NavigationCoordinator<PersonBiographyRoute> {
         self.appDIContainer = appDIContainer
         self.person = person
         super.init(rootViewController: rootViewController, initialRoute: nil)
-        trigger(.initial(person: person))
+        trigger(.initial)
     }
     
     override func prepareTransition(for route: PersonBiographyRoute) -> NavigationTransition {
         switch route {
-        case .initial(person: let person):
+        case .initial:
             let vc = PersonBiographyViewController()
             vc.viewModel = PersonBiographyViewModel(router: unownedRouter, person: person)
             autoreleaseController = vc

@@ -9,7 +9,7 @@ import Domain
 
 enum EntertainmentsResponseRoute {
     case discover(genre: Genre)
-    case recommendations(entertainment: EntertainmentModelType)
+    case recommendations(entertainmentId: Int, entertainmentType: EntertainmentType)
     case movieUpcoming
     case movieTopRating
     case movieNews

@@ -29,12 +29,14 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
     
     private let repositoryProvider: RepositoryProviderProtocol
     private let router: UnownedRouter<EntertainmentDetailsRoute>
-    private let entertainmentModel: EntertainmentModelType
+    private let entertainmentId: Int
+    private let entertainmentType: EntertainmentType
 
-    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<EntertainmentDetailsRoute>, entertainmentModel: EntertainmentModelType) {
+    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<EntertainmentDetailsRoute>, entertainmentId: Int, entertainmentType: EntertainmentType) {
         self.repositoryProvider = repositoryProvider
         self.router = router
-        self.entertainmentModel = entertainmentModel
+        self.entertainmentId = entertainmentId
+        self.entertainmentType = entertainmentType
         super.init()
     }
     
@@ -81,21 +83,21 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
         input.seasonSelectTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.seasonDetails(season: item))
+                self.router.trigger(.seasonDetail(seasonNumber: item.seasonNumber))
             })
             .disposed(by: rx.disposeBag)
         
         input.castSelectTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.castDetails(cast: item))
+                self.router.trigger(.personDetail(personId: item.id))
             })
             .disposed(by: rx.disposeBag)
         
         input.entertainmentSelectTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.entertainmentDetails(entertainment: item))
+                self.router.trigger(.entertainmentDetail(entertainmentId: item.entertainmentModelId, entertainmentType: item.entertainmentModelType))
             })
             .disposed(by: rx.disposeBag)
         
@@ -116,17 +118,17 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
         return Output(entertainment: entertainmentD)
     }
     
-    private func getEntertainmentDetails(_ model: EntertainmentModelType) -> Single<EntertainmentModelType> {
-        switch model.entertainmentModelType {
+    private func getEntertainmentDetails() -> Single<EntertainmentModelType> {
+        switch entertainmentType {
         case .movie:
             return repositoryProvider
                 .movieRepository()
-                .getDetail(movieId: model.entertainmentModelId)
+                .getDetail(movieId: entertainmentId)
                 .map { $0 as EntertainmentModelType }
         case .tvShow:
             return repositoryProvider
                 .tvShowRepository()
-                .getDetail(tvShowId: model.entertainmentModelId)
+                .getDetail(tvShowId: entertainmentId)
                 .map { $0 as EntertainmentModelType }
         }
     }

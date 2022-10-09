@@ -11,7 +11,7 @@ import Domain
 enum SeasonsRoute: Route {
     case initial(seasons: [Season])
     case pop
-    case seasonDetail(season: Season)
+    case seasonDetail(seasonNumber: Int)
 }
 
 class SeasonsCoordinator: NavigationCoordinator<SeasonsRoute> {
@@ -41,8 +41,8 @@ class SeasonsCoordinator: NavigationCoordinator<SeasonsRoute> {
             return .push(vc)
         case .pop:
             return .pop()
-        case .seasonDetail(season: let season):
-            addChild(SeasonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, tvShowId: tvShowId, season: season))
+        case .seasonDetail(seasonNumber: let seasonNumber):
+            addChild(SeasonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, tvShowId: tvShowId, seasonNumber: seasonNumber))
             return .none()
         }
     }

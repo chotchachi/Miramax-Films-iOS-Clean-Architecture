@@ -44,7 +44,7 @@ class SeasonsViewModel: BaseViewModel, ViewModelType {
         input.seasonSelectTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.seasonDetail(season: item))
+                self.router.trigger(.seasonDetail(seasonNumber: item.seasonNumber))
             })
             .disposed(by: rx.disposeBag)
         
