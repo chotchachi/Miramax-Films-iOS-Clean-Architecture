@@ -157,6 +157,8 @@ open class PMAlertController: UIViewController {
         
         alertDescription.textColor = AppColors.colorPrimary.withAlphaComponent(0.5)
         alertDescription.font = AppFonts.caption1
+        
+        alertMaskBackground.backgroundColor = UIColor(hex: 0x1A2138).withAlphaComponent(0.6)
     }
     
     fileprivate func loadNibAlertController() -> [AnyObject]?{
