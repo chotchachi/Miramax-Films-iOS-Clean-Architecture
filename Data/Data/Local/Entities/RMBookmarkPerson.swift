@@ -12,6 +12,8 @@ public final class RMBookmarkPerson: Object {
     @Persisted(primaryKey: true) var _id: Int = 0
     @Persisted var name: String = ""
     @Persisted var profilePath: String?
+    @Persisted var birthday: String?
+    @Persisted var biography: String?
     @Persisted var createAt: Date = Date()
 }
 
@@ -23,7 +25,7 @@ extension RMBookmarkPerson: RMOperator {
 
 extension RMBookmarkPerson: DomainConvertibleType {
     public func asDomain() -> BookmarkPerson {
-        return BookmarkPerson(id: _id, name: name, profilePath: profilePath, createAt: createAt)
+        return BookmarkPerson(id: _id, name: name, profilePath: profilePath, birthday: birthday, biography: biography, createAt: createAt)
     }
 }
 
@@ -33,6 +35,8 @@ extension BookmarkPerson: RealmRepresentable {
             object._id = id
             object.name = name
             object.profilePath = profilePath
+            object.birthday = birthday
+            object.biography = biography
             object.createAt = createAt
         }
     }

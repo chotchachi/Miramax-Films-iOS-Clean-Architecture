@@ -115,7 +115,7 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     private func toggleBookmarkPerson(with item: Person) -> Observable<Void> {
-        let bookmarkPerson = BookmarkPerson(id: item.id, name: item.name, profilePath: item.profilePath, createAt: Date())
+        let bookmarkPerson = BookmarkPerson(id: item.id, name: item.name, profilePath: item.profilePath, birthday: item.birthday, biography: item.biography, createAt: Date())
         if !item.isBookmark {
             return repositoryProvider
                 .personRepository()
