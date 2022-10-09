@@ -45,5 +45,6 @@ target 'Miramax Fillms' do
   pod 'Swinject', '~> 2.8.2'
   pod 'RealmSwift', '~>10'
   pod 'TagListView', '~> 1.0'
+  pod 'PMAlertController'
 
 end

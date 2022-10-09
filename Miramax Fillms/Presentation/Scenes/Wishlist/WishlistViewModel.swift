@@ -39,13 +39,32 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let previewTabTriggerO = input.previewTabTrigger
-            .asObservable()
-            .startWith(WishlistPreviewTab.defaultTab)
+        let viewTriggerO = trigger
+            .take(1)
+        
+        let previewTabTriggerO = viewTriggerO
+            .flatMapLatest {
+                input.previewTabTrigger
+                    .asObservable()
+                    .startWith(WishlistPreviewTab.defaultTab)
+            }
         
         let wishlistViewDataD = previewTabTriggerO
-            .flatMapLatest { self.getPreviewData(with: $0) }
-            .asDriver(onErrorJustReturn: [])
+            .flatMapLatest {
+                self.getPreviewData(with: $0)
+                    .catchAndReturn([])
+            }
+            .asDriverOnErrorJustComplete()
+        
+        input.removeAllTrigger
+            .asObservable()
+            .withLatestFrom(previewTabTriggerO)
+            .flatMapLatest {
+                self.removeAllWishlist(with: $0)
+                    .catch { _ in Observable.empty() }
+            }
+            .subscribe()
+            .disposed(by: rx.disposeBag)
         
         input.toSearchTrigger
             .drive(onNext: { [weak self] in
@@ -77,20 +96,34 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
             return repositoryProvider
                 .entertainmentRepository()
                 .getAllBookmarkEntertainmentMovie()
-                .catchAndReturn([])
                 .map { items in items.map { WishlistViewItem.movie(item: $0) } }
         case .shows:
             return repositoryProvider
                 .entertainmentRepository()
                 .getAllBookmarkEntertainmentTVShow()
-                .catchAndReturn([])
                 .map { items in items.map { WishlistViewItem.tvShow(item: $0) } }
         case .actors:
             return repositoryProvider
                 .personRepository()
                 .getBookmarkPersons()
-                .catchAndReturn([])
                 .map { items in items.map { WishlistViewItem.actor(item: $0) } }
+        }
+    }
+    
+    private func removeAllWishlist(with tab: WishlistPreviewTab) -> Observable<Void> {
+        switch tab {
+        case .movies:
+            return repositoryProvider
+                .entertainmentRepository()
+                .removeAllBookmarkEntertainmentMovie()
+        case .shows:
+            return repositoryProvider
+                .entertainmentRepository()
+                .removeAllBookmarkEntertainmentTVShow()
+        case .actors:
+            return repositoryProvider
+                .personRepository()
+                .removeAllBookmarkPerson()
         }
     }
 }

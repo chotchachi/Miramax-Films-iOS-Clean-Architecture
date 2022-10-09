@@ -10,9 +10,10 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import SwifterSwift
+import PMAlertController
 
 class WishlistViewController: BaseViewController<WishlistViewModel>, TabBarSelectable, Searchable {
-
+    
     // MARK: - Outlets
     
     @IBOutlet weak var appToolbar: AppToolbar!
@@ -35,12 +36,12 @@ class WishlistViewController: BaseViewController<WishlistViewModel>, TabBarSelec
     private let previewTabTriggerS = PublishRelay<WishlistPreviewTab>()
     private let removeAllTriggerS = PublishRelay<Void>()
     private let wishlistItemSelectTriggerS = PublishRelay<WishlistViewItem>()
-
+    
     // MARK: - Lifecycle
     
     override func configView() {
         super.configView()
-     
+        
         configureAppToolbar()
         configureHeader()
         configureCollectionView()
@@ -149,7 +150,13 @@ extension WishlistViewController {
     }
     
     private func presentRemoveAllAlert() {
-        
+        let alertVC = PMAlertController(title: "remove_all_wishlist_alert_title".localized, description: "remove_all_wishlist_alert_message".localized, image: nil, style: .alert)
+        alertVC.gravityDismissAnimation = false
+        alertVC.addAction(PMAlertAction(title: "remove".localized, style: .default, action: {
+            self.removeAllTriggerS.accept(())
+        }))
+        alertVC.addAction(PMAlertAction(title: "cancel".localized, style: .cancel))
+        present(alertVC, animated: true)
     }
 }
 
