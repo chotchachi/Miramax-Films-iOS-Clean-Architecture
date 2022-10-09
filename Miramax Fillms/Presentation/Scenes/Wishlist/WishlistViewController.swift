@@ -177,7 +177,7 @@ extension WishlistViewController {
         let alertVC = PMAlertController(title: "remove_item_wishlist_alert_title".localized, description: "remove_item_wishlist_alert_message".localized, image: nil, style: .alert)
         alertVC.gravityDismissAnimation = false
         alertVC.addAction(PMAlertAction(title: "remove".localized, style: .default, action: {
-            
+            self.removeItemTriggerS.accept(item)
         }))
         alertVC.addAction(PMAlertAction(title: "cancel".localized, style: .cancel))
         present(alertVC, animated: true)

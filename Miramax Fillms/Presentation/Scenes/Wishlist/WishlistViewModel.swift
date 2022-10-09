@@ -67,6 +67,15 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
             .subscribe()
             .disposed(by: rx.disposeBag)
         
+        input.removeItemTrigger
+            .asObservable()
+            .flatMapLatest {
+                self.removeWishlistItem(with: $0)
+                    .catch { _ in Observable.empty() }
+            }
+            .subscribe()
+            .disposed(by: rx.disposeBag)
+        
         input.toSearchTrigger
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -125,6 +134,23 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
             return repositoryProvider
                 .personRepository()
                 .removeAllBookmarkPerson()
+        }
+    }
+    
+    private func removeWishlistItem(with item: WishlistViewItem) -> Observable<Void> {
+        switch item {
+        case .movie(let item):
+            return repositoryProvider
+                .entertainmentRepository()
+                .removeBookmarkEntertainment(item: item)
+        case .tvShow(let item):
+            return repositoryProvider
+                .entertainmentRepository()
+                .removeBookmarkEntertainment(item: item)
+        case .actor(let item):
+            return repositoryProvider
+                .personRepository()
+                .removeBookmarkPerson(item: item)
         }
     }
 }
