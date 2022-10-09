@@ -27,6 +27,7 @@ public final class PersonRepository: PersonRepositoryProtocol {
         return localDataSource
             .getBookmarkPersons()
             .map { items in items.map { $0.asDomain() } }
+            .map { items in items.sorted { $0.createAt > $1.createAt } } // sort by createAt
     }
     
     public func saveBookmarkPerson(item: BookmarkPerson) -> Observable<Void> {

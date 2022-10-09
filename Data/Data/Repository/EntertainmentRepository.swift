@@ -21,20 +21,17 @@ public final class EntertainmentRepository: EntertainmentRepositoryProtocol {
         return localDataSource
             .getBookmarkEntertainments()
             .map { items in items.map { $0.asDomain() } }
+            .map { items in items.sorted { $0.createAt > $1.createAt } } // sort by createAt
     }
     
     public func getAllBookmarkEntertainmentMovie() -> Observable<[BookmarkEntertainment]> {
-        return localDataSource
-            .getBookmarkEntertainments()
+        return getAllBookmarkEntertainment()
             .map { items in items.filter { $0.type == .movie } }
-            .map { items in items.map { $0.asDomain() } }
     }
     
     public func getAllBookmarkEntertainmentTVShow() -> Observable<[BookmarkEntertainment]> {
-        return localDataSource
-            .getBookmarkEntertainments()
+        return getAllBookmarkEntertainment()
             .map { items in items.filter { $0.type == .tvShow } }
-            .map { items in items.map { $0.asDomain() } }
     }
     
     public func saveBookmarkEntertainment(item: BookmarkEntertainment) -> Observable<Void> {
