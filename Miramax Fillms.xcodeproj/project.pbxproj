@@ -58,6 +58,9 @@
 		ED9EC0C928F279AE00465623 /* WishlistPreviewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0C828F279AE00465623 /* WishlistPreviewTab.swift */; };
 		ED9EC0D628F30FC300465623 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0D528F30FC300465623 /* UIView+Ext.swift */; };
 		ED9EC0DB28F31F8500465623 /* EntertainmentWishlistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0DA28F31F8500465623 /* EntertainmentWishlistCollectionViewCell.swift */; };
+		ED9EC0E028F32FE700465623 /* PMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0DD28F32FE700465623 /* PMAlertController.swift */; };
+		ED9EC0E128F32FE700465623 /* PMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0DE28F32FE700465623 /* PMAlertAction.swift */; };
+		ED9EC0E228F32FE700465623 /* PMAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED9EC0DF28F32FE700465623 /* PMAlertController.xib */; };
 		EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475A28D41FFC0037751C /* PrimaryButton.swift */; };
 		EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476B28D431DC0037751C /* AppFonts.swift */; };
 		EDA4476E28D432350037751C /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476D28D432350037751C /* AppColors.swift */; };
@@ -237,6 +240,9 @@
 		ED9EC0C828F279AE00465623 /* WishlistPreviewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistPreviewTab.swift; sourceTree = "<group>"; };
 		ED9EC0D528F30FC300465623 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		ED9EC0DA28F31F8500465623 /* EntertainmentWishlistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentWishlistCollectionViewCell.swift; sourceTree = "<group>"; };
+		ED9EC0DD28F32FE700465623 /* PMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMAlertController.swift; sourceTree = "<group>"; };
+		ED9EC0DE28F32FE700465623 /* PMAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMAlertAction.swift; sourceTree = "<group>"; };
+		ED9EC0DF28F32FE700465623 /* PMAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMAlertController.xib; sourceTree = "<group>"; };
 		EDA4475A28D41FFC0037751C /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		EDA4476B28D431DC0037751C /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		EDA4476D28D432350037751C /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -540,6 +546,16 @@
 				ED9EC0DA28F31F8500465623 /* EntertainmentWishlistCollectionViewCell.swift */,
 			);
 			path = EntertainmentWishlistCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		ED9EC0DC28F32FC900465623 /* PMAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				ED9EC0DE28F32FE700465623 /* PMAlertAction.swift */,
+				ED9EC0DD28F32FE700465623 /* PMAlertController.swift */,
+				ED9EC0DF28F32FE700465623 /* PMAlertController.xib */,
+			);
+			path = PMAlertController;
 			sourceTree = "<group>";
 		};
 		EDA4475928D41FE50037751C /* PrimaryButton */ = {
@@ -1050,6 +1066,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				ED9EC0DC28F32FC900465623 /* PMAlertController */,
 				ED9EC0BC28F1B94300465623 /* BookmarkButton */,
 				ED1F03BB28EDD6440083B088 /* SortPopupView */,
 				EDD52F7928DB6D1F0078C6C5 /* SelfSizingTableView */,
@@ -1164,6 +1181,7 @@
 				ED7A096128EC84D80035E099 /* EntertainmentListViewController.xib in Resources */,
 				EDE69B4328D62943002726B0 /* SearchViewController.xib in Resources */,
 				ED1F03D028EF0F590083B088 /* SettingViewController.xib in Resources */,
+				ED9EC0E228F32FE700465623 /* PMAlertController.xib in Resources */,
 				EDE69B7E28D73214002726B0 /* TVShowViewController.xib in Resources */,
 				EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */,
 				EDD5302628DCBDA50078C6C5 /* SeasonDetailsViewController.xib in Resources */,
@@ -1245,6 +1263,7 @@
 				EDD52F8328DB7D4D0078C6C5 /* Date+Ext.swift in Sources */,
 				EDE69B5028D643A6002726B0 /* String+Ext.swift in Sources */,
 				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
+				ED9EC0E128F32FE700465623 /* PMAlertAction.swift in Sources */,
 				EDE69B4528D6294D002726B0 /* SearchViewModel.swift in Sources */,
 				ED9EC0D628F30FC300465623 /* UIView+Ext.swift in Sources */,
 				EDA4478F28D5A7740037751C /* AppToolbarDelegate.swift in Sources */,
@@ -1327,6 +1346,7 @@
 				EDE92B9928E5F7F10083F33A /* SearchButton.swift in Sources */,
 				ED9EC0C928F279AE00465623 /* WishlistPreviewTab.swift in Sources */,
 				EDA4476E28D432350037751C /* AppColors.swift in Sources */,
+				ED9EC0E028F32FE700465623 /* PMAlertController.swift in Sources */,
 				EDD9A19928E0B93000FBA909 /* GenresViewController.swift in Sources */,
 				EDE92B8528E5D7CC0083F33A /* ErrorRetryable.swift in Sources */,
 				EDC502D528D38C2D0047C7C3 /* Rx+asDriver.swift in Sources */,

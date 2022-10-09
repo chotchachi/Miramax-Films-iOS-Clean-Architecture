@@ -10,7 +10,6 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import SwifterSwift
-import PMAlertController
 
 class WishlistViewController: BaseViewController<WishlistViewModel>, TabBarSelectable, Searchable {
     
@@ -164,8 +163,9 @@ extension WishlistViewController {
     }
     
     private func presentRemoveAllAlert() {
-        let alertVC = PMAlertController(title: "remove_all_wishlist_alert_title".localized, description: "remove_all_wishlist_alert_message".localized, image: nil, style: .alert)
+        let alertVC = PMAlertController(title: "remove_all_wishlist_alert_title".localized, description: "remove_all_wishlist_alert_message".localized)
         alertVC.gravityDismissAnimation = false
+        alertVC.dismissWithBackgroudTouch = true
         alertVC.addAction(PMAlertAction(title: "remove".localized, style: .default, action: {
             self.removeAllTriggerS.accept(())
         }))
@@ -174,8 +174,9 @@ extension WishlistViewController {
     }
     
     private func presentRemoveItemAlert(with item: WishlistViewItem) {
-        let alertVC = PMAlertController(title: "remove_item_wishlist_alert_title".localized, description: "remove_item_wishlist_alert_message".localized, image: nil, style: .alert)
+        let alertVC = PMAlertController(title: "remove_item_wishlist_alert_title".localized, description: "remove_item_wishlist_alert_message".localized)
         alertVC.gravityDismissAnimation = false
+        alertVC.dismissWithBackgroudTouch = true
         alertVC.addAction(PMAlertAction(title: "remove".localized, style: .default, action: {
             self.removeItemTriggerS.accept(item)
         }))

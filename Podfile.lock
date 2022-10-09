@@ -12,7 +12,6 @@ PODS:
     - Moya/Core
     - RxSwift (~> 6.0)
   - ObjectMapper (4.2.0)
-  - PMAlertController (4.0.1)
   - Realm (10.28.6):
     - Realm/Headers (= 10.28.6)
   - Realm/Headers (10.28.6)
@@ -58,7 +57,6 @@ DEPENDENCIES:
   - MKProgress
   - Moya/RxSwift (~> 15.0)
   - ObjectMapper (~> 4.2.0)
-  - PMAlertController
   - RealmSwift (~> 10)
   - RxCocoa (~> 6.1.0)
   - RxDataSources (~> 5.0.0)
@@ -81,7 +79,6 @@ SPEC REPOS:
     - MKProgress
     - Moya
     - ObjectMapper
-    - PMAlertController
     - Realm
     - RealmSwift
     - RxCocoa
@@ -104,7 +101,6 @@ SPEC CHECKSUMS:
   MKProgress: 260d166200323f3d991190a73ab2dc3a04b0f52f
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
-  PMAlertController: ab5fcf4d085b7878c9451466d701449c4bf6efb8
   Realm: 9b12f16a14446d7d46a9e36225d0a0332a6ec739
   RealmSwift: 5927726fce21005f43b1fb57c832297a22031bfc
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
@@ -119,6 +115,6 @@ SPEC CHECKSUMS:
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   XCoordinator: a5f91e43ee944f508529763921165697d3211629
 
-PODFILE CHECKSUM: fce36f6db78d38293f8c7b42e5886c5a4e785e00
+PODFILE CHECKSUM: 4629d1358b7fbdf8811db2473b76cd9d928ca121
 
 COCOAPODS: 1.11.3
