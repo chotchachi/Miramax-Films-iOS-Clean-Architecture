@@ -10,13 +10,22 @@ import RxCocoa
 import XCoordinator
 import Domain
 
+enum WishlistViewItem {
+    case movie(item: BookmarkPerson)
+    case tvShow(item: BookmarkPerson)
+    case actor(item: BookmarkPerson)
+}
+
 class WishlistViewModel: BaseViewModel, ViewModelType {
     
     struct Input {
         let toSearchTrigger: Driver<Void>
+        let previewTabTrigger: Driver<WishlistPreviewTab>
+        let removeAllTrigger: Driver<Void>
     }
     
     struct Output {
+        let wishlistViewData: Driver<[WishlistViewItem]>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -29,6 +38,14 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
+        let previewTabTriggerO = input.previewTabTrigger
+            .asObservable()
+            .startWith(WishlistPreviewTab.defaultTab)
+        
+        let wishlistViewDataD = previewTabTriggerO
+            .flatMapLatest { self.getPreviewData(with: $0) }
+            .asDriver(onErrorJustReturn: [])
+        
         input.toSearchTrigger
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -36,6 +53,29 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output()
+        return Output(wishlistViewData: wishlistViewDataD)
+    }
+    
+    private func getPreviewData(with tab: WishlistPreviewTab) -> Observable<[WishlistViewItem]> {
+        switch tab {
+        case .movies:
+            return repositoryProvider
+                .personRepository()
+                .getBookmarkPersons()
+                .catchAndReturn([])
+                .map { items in items.map { WishlistViewItem.movie(item: $0) } }
+        case .shows:
+            return repositoryProvider
+                .personRepository()
+                .getBookmarkPersons()
+                .catchAndReturn([])
+                .map { items in items.map { WishlistViewItem.tvShow(item: $0) } }
+        case .actors:
+            return repositoryProvider
+                .personRepository()
+                .getBookmarkPersons()
+                .catchAndReturn([])
+                .map { items in items.map { WishlistViewItem.actor(item: $0) } }
+        }
     }
 }

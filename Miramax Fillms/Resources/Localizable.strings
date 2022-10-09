@@ -52,3 +52,5 @@
 "genres" = "Genres";
 "wishlist" = "Wishlist";
 "clear" = "Clear";
+"added_to_wishlist" = "Added to wishlist";
+"remove_all" = "Remove All";
