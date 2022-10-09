@@ -57,4 +57,7 @@
 "wishlist_result_empty" = "No items added to wishlist";
 "remove_all_wishlist_alert_title" = "Remove All Wishlist";
 "remove_all_wishlist_alert_message" = "Are you sure you would like to remove all items from the favorite";
+"remove_item_wishlist_alert_title" = "Remove Wishlist";
+"remove_item_wishlist_alert_message" = "Are you sure you would like to remove this item from the favorite";
 "remove" = "Remove";
+"delete" = "Delete";

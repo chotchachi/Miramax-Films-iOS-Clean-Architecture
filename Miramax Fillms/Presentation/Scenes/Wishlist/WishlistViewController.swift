@@ -35,6 +35,7 @@ class WishlistViewController: BaseViewController<WishlistViewModel>, TabBarSelec
     private var currentPreviewTab: WishlistPreviewTab = .defaultTab
     private let previewTabTriggerS = PublishRelay<WishlistPreviewTab>()
     private let removeAllTriggerS = PublishRelay<Void>()
+    private let removeItemTriggerS = PublishRelay<WishlistViewItem>()
     private let wishlistItemSelectTriggerS = PublishRelay<WishlistViewItem>()
     
     // MARK: - Lifecycle
@@ -55,23 +56,33 @@ class WishlistViewController: BaseViewController<WishlistViewModel>, TabBarSelec
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             previewTabTrigger: previewTabTriggerS.asDriverOnErrorJustComplete(),
             removeAllTrigger: removeAllTriggerS.asDriverOnErrorJustComplete(),
+            removeItemTrigger: removeItemTriggerS.asDriverOnErrorJustComplete(),
             wishlistItemSelectionTrigger: wishlistItemSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
-        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, WishlistViewItem>> { dataSource, collectionView, indexPath, item in
-            switch item {
+        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, WishlistViewItem>> { dataSource, collectionView, indexPath, viewItem in
+            switch viewItem {
             case .movie(item: let item):
-                let cell = collectionView.dequeueReusableCell(withClass: EntertainmentDetailCollectionViewCell.self, for: indexPath)
-                cell.bind(item, showPlayTrailer: false)
+                let cell = collectionView.dequeueReusableCell(withClass: EntertainmentWishlistCollectionViewCell.self, for: indexPath)
+                cell.bind(item)
+                cell.onDeleteButtonTapped = { [weak self] in
+                    self?.presentRemoveItemAlert(with: viewItem)
+                }
                 return cell
             case .tvShow(item: let item):
-                let cell = collectionView.dequeueReusableCell(withClass: EntertainmentDetailCollectionViewCell.self, for: indexPath)
-                cell.bind(item, showPlayTrailer: false)
+                let cell = collectionView.dequeueReusableCell(withClass: EntertainmentWishlistCollectionViewCell.self, for: indexPath)
+                cell.bind(item)
+                cell.onDeleteButtonTapped = { [weak self] in
+                    self?.presentRemoveItemAlert(with: viewItem)
+                }
                 return cell
             case .actor(item: let item):
-                let cell = collectionView.dequeueReusableCell(withClass: PersonDetailCollectionViewCell.self, for: indexPath)
+                let cell = collectionView.dequeueReusableCell(withClass: PersonWishlistCollectionViewCell.self, for: indexPath)
                 cell.bind(item)
+                cell.onDeleteButtonTapped = { [weak self] in
+                    self?.presentRemoveItemAlert(with: viewItem)
+                }
                 return cell
             }
         }
@@ -134,8 +145,8 @@ extension WishlistViewController {
         
         collectionView.collectionViewLayout = layout
         collectionView.delegate = self
-        collectionView.register(cellWithClass: EntertainmentDetailCollectionViewCell.self)
-        collectionView.register(cellWithClass: PersonDetailCollectionViewCell.self)
+        collectionView.register(cellWithClass: EntertainmentWishlistCollectionViewCell.self)
+        collectionView.register(cellWithClass: PersonWishlistCollectionViewCell.self)
         collectionView.rx.modelSelected(WishlistViewItem.self)
             .bind(to: wishlistItemSelectTriggerS)
             .disposed(by: rx.disposeBag)
@@ -157,6 +168,16 @@ extension WishlistViewController {
         alertVC.gravityDismissAnimation = false
         alertVC.addAction(PMAlertAction(title: "remove".localized, style: .default, action: {
             self.removeAllTriggerS.accept(())
+        }))
+        alertVC.addAction(PMAlertAction(title: "cancel".localized, style: .cancel))
+        present(alertVC, animated: true)
+    }
+    
+    private func presentRemoveItemAlert(with item: WishlistViewItem) {
+        let alertVC = PMAlertController(title: "remove_item_wishlist_alert_title".localized, description: "remove_item_wishlist_alert_message".localized, image: nil, style: .alert)
+        alertVC.gravityDismissAnimation = false
+        alertVC.addAction(PMAlertAction(title: "remove".localized, style: .default, action: {
+            
         }))
         alertVC.addAction(PMAlertAction(title: "cancel".localized, style: .cancel))
         present(alertVC, animated: true)

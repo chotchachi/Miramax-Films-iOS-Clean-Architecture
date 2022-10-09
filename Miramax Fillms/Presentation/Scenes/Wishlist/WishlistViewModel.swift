@@ -22,6 +22,7 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
         let toSearchTrigger: Driver<Void>
         let previewTabTrigger: Driver<WishlistPreviewTab>
         let removeAllTrigger: Driver<Void>
+        let removeItemTrigger: Driver<WishlistViewItem>
         let wishlistItemSelectionTrigger: Driver<WishlistViewItem>
     }
     

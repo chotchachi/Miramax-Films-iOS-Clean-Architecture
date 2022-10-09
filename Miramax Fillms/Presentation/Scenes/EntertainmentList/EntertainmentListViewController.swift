@@ -89,7 +89,7 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
                 return cell
             case .detail:
                 let cell = collectionView.dequeueReusableCell(withClass: EntertainmentDetailCollectionViewCell.self, for: indexPath)
-                cell.bind(item, showPlayTrailer: true)
+                cell.bind(item)
                 return cell
             }
         }

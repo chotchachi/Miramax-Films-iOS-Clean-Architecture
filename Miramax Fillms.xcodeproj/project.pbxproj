@@ -54,8 +54,10 @@
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
 		ED9EC0B728F160D100465623 /* EntertainmentViewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0B628F160D100465623 /* EntertainmentViewResponse.swift */; };
 		ED9EC0BE28F1B95700465623 /* BookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0BD28F1B95700465623 /* BookmarkButton.swift */; };
-		ED9EC0C628F1E62E00465623 /* PersonDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0C528F1E62E00465623 /* PersonDetailCollectionViewCell.swift */; };
+		ED9EC0C628F1E62E00465623 /* PersonWishlistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0C528F1E62E00465623 /* PersonWishlistCollectionViewCell.swift */; };
 		ED9EC0C928F279AE00465623 /* WishlistPreviewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0C828F279AE00465623 /* WishlistPreviewTab.swift */; };
+		ED9EC0D628F30FC300465623 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0D528F30FC300465623 /* UIView+Ext.swift */; };
+		ED9EC0DB28F31F8500465623 /* EntertainmentWishlistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0DA28F31F8500465623 /* EntertainmentWishlistCollectionViewCell.swift */; };
 		EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475A28D41FFC0037751C /* PrimaryButton.swift */; };
 		EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476B28D431DC0037751C /* AppFonts.swift */; };
 		EDA4476E28D432350037751C /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476D28D432350037751C /* AppColors.swift */; };
@@ -231,8 +233,10 @@
 		ED86E62F28C6369B00D60351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED9EC0B628F160D100465623 /* EntertainmentViewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentViewResponse.swift; sourceTree = "<group>"; };
 		ED9EC0BD28F1B95700465623 /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
-		ED9EC0C528F1E62E00465623 /* PersonDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		ED9EC0C528F1E62E00465623 /* PersonWishlistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonWishlistCollectionViewCell.swift; sourceTree = "<group>"; };
 		ED9EC0C828F279AE00465623 /* WishlistPreviewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistPreviewTab.swift; sourceTree = "<group>"; };
+		ED9EC0D528F30FC300465623 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		ED9EC0DA28F31F8500465623 /* EntertainmentWishlistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentWishlistCollectionViewCell.swift; sourceTree = "<group>"; };
 		EDA4475A28D41FFC0037751C /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		EDA4476B28D431DC0037751C /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		EDA4476D28D432350037751C /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -522,12 +526,20 @@
 			path = BookmarkButton;
 			sourceTree = "<group>";
 		};
-		ED9EC0C728F1E63200465623 /* PersonDetailCollectionViewCell */ = {
+		ED9EC0C728F1E63200465623 /* PersonWishlistCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				ED9EC0C528F1E62E00465623 /* PersonDetailCollectionViewCell.swift */,
+				ED9EC0C528F1E62E00465623 /* PersonWishlistCollectionViewCell.swift */,
 			);
-			path = PersonDetailCollectionViewCell;
+			path = PersonWishlistCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		ED9EC0D928F31F7600465623 /* EntertainmentWishlistCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				ED9EC0DA28F31F8500465623 /* EntertainmentWishlistCollectionViewCell.swift */,
+			);
+			path = EntertainmentWishlistCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		EDA4475928D41FE50037751C /* PrimaryButton */ = {
@@ -638,6 +650,7 @@
 				ED31388E28EF434C00EC759C /* Transition+Ext.swift */,
 				ED13B6C328F09886007B7A1D /* UIScrollView+Ext.swift */,
 				ED13B6C528F09A83007B7A1D /* UICollectionView+Ext.swift */,
+				ED9EC0D528F30FC300465623 /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1017,6 +1030,7 @@
 		EDFAD3AF28D3723C00ED3BCD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				ED9EC0D928F31F7600465623 /* EntertainmentWishlistCollectionViewCell */,
 				ED5BA69E28EB19370030F4B0 /* EntertainmentRankTableViewCell */,
 				EDE92B7928E32C9D0083F33A /* EntertainmentDetailCollectionViewCell */,
 				EDE92B6228E28EEC0083F33A /* EntertainmentPreviewCollectionViewCell */,
@@ -1025,7 +1039,7 @@
 				EDD5302B28DCBFE10078C6C5 /* EpisodeTableViewCell */,
 				EDD5301728DCA0300078C6C5 /* SeasonLargeTableViewCell */,
 				EDD52F7C28DB6EBA0078C6C5 /* SeasonSmallTableViewCell */,
-				ED9EC0C728F1E63200465623 /* PersonDetailCollectionViewCell */,
+				ED9EC0C728F1E63200465623 /* PersonWishlistCollectionViewCell */,
 				EDE69B4928D63A31002726B0 /* PersonHorizontalListCell */,
 				EDE69B4C28D63A63002726B0 /* PersonHorizontalCell */,
 				EDC502CE28D377B00047C7C3 /* GenreCollectionViewCell */,
@@ -1232,6 +1246,7 @@
 				EDE69B5028D643A6002726B0 /* String+Ext.swift in Sources */,
 				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
 				EDE69B4528D6294D002726B0 /* SearchViewModel.swift in Sources */,
+				ED9EC0D628F30FC300465623 /* UIView+Ext.swift in Sources */,
 				EDA4478F28D5A7740037751C /* AppToolbarDelegate.swift in Sources */,
 				ED13B6C228F0972E007B7A1D /* TabBarSelectable.swift in Sources */,
 				EDD5302A28DCBDC50078C6C5 /* SeasonDetailsCoordinator.swift in Sources */,
@@ -1323,7 +1338,8 @@
 				ED31389A28F08AE600EC759C /* HomeTabBarController.swift in Sources */,
 				EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */,
 				EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */,
-				ED9EC0C628F1E62E00465623 /* PersonDetailCollectionViewCell.swift in Sources */,
+				ED9EC0DB28F31F8500465623 /* EntertainmentWishlistCollectionViewCell.swift in Sources */,
+				ED9EC0C628F1E62E00465623 /* PersonWishlistCollectionViewCell.swift in Sources */,
 				EDC6DB2F28CF717600164EBD /* MainNavigationController.swift in Sources */,
 				EDE69B7728D73078002726B0 /* TransitionAnimation+Defaults.swift in Sources */,
 				EDE92B7428E301820083F33A /* DefaultRefreshControl.swift in Sources */,
