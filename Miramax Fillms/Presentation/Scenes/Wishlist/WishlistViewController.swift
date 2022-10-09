@@ -55,11 +55,11 @@ class WishlistViewController: BaseViewController<WishlistViewModel>, TabBarSelec
         let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, WishlistViewItem>> { dataSource, collectionView, indexPath, item in
             switch item {
             case .movie(item: let item):
-                let cell = collectionView.dequeueReusableCell(withClass: PersonDetailCollectionViewCell.self, for: indexPath)
+                let cell = collectionView.dequeueReusableCell(withClass: EntertainmentDetailCollectionViewCell.self, for: indexPath)
                 cell.bind(item)
                 return cell
             case .tvShow(item: let item):
-                let cell = collectionView.dequeueReusableCell(withClass: PersonDetailCollectionViewCell.self, for: indexPath)
+                let cell = collectionView.dequeueReusableCell(withClass: EntertainmentDetailCollectionViewCell.self, for: indexPath)
                 cell.bind(item)
                 return cell
             case .actor(item: let item):

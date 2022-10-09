@@ -52,7 +52,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="CY9-IB-mCs">
-                    <rect key="frame" x="0.0" y="199" width="390" height="611"/>
+                    <rect key="frame" x="0.0" y="205" width="390" height="605"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gDz-4H-pf2">
                         <size key="itemSize" width="128" height="128"/>
@@ -62,17 +62,17 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUC-rl-XMv">
-                    <rect key="frame" x="0.0" y="142" width="390" height="57"/>
+                    <rect key="frame" x="0.0" y="142" width="390" height="63"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ng2-Nf-AyZ" userLabel="Divider">
-                            <rect key="frame" x="16" y="56" width="358" height="1"/>
+                            <rect key="frame" x="16" y="62" width="358" height="1"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="yX9-97-xlj"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81e-JQ-VrP">
-                            <rect key="frame" x="278" y="16.666666666666657" width="96" height="24"/>
+                            <rect key="frame" x="278" y="19.666666666666657" width="96" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="tintColor" name="ColorAccent"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -81,13 +81,13 @@
                             </state>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFB-Iu-7R8">
-                            <rect key="frame" x="16" y="6" width="46" height="17"/>
+                            <rect key="frame" x="16" y="12" width="46" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added to wishlist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyA-0J-i7k">
-                            <rect key="frame" x="16" y="25" width="97" height="15"/>
+                            <rect key="frame" x="16" y="31" width="97" height="15"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -96,7 +96,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="ng2-Nf-AyZ" secondAttribute="trailing" constant="16" id="DJX-NO-Dv9"/>
-                        <constraint firstItem="JFB-Iu-7R8" firstAttribute="top" secondItem="hUC-rl-XMv" secondAttribute="top" constant="6" id="GQN-23-mWL"/>
+                        <constraint firstItem="JFB-Iu-7R8" firstAttribute="top" secondItem="hUC-rl-XMv" secondAttribute="top" constant="12" id="GQN-23-mWL"/>
                         <constraint firstAttribute="trailing" secondItem="81e-JQ-VrP" secondAttribute="trailing" constant="16" id="Yc9-ut-TGc"/>
                         <constraint firstItem="zyA-0J-i7k" firstAttribute="leading" secondItem="hUC-rl-XMv" secondAttribute="leading" constant="16" id="bjs-G2-TDS"/>
                         <constraint firstItem="JFB-Iu-7R8" firstAttribute="leading" secondItem="hUC-rl-XMv" secondAttribute="leading" constant="16" id="bo5-oa-umg"/>

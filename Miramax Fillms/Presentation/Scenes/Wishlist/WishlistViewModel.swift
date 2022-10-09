@@ -11,8 +11,8 @@ import XCoordinator
 import Domain
 
 enum WishlistViewItem {
-    case movie(item: BookmarkPerson)
-    case tvShow(item: BookmarkPerson)
+    case movie(item: BookmarkEntertainment)
+    case tvShow(item: BookmarkEntertainment)
     case actor(item: BookmarkPerson)
 }
 
@@ -60,14 +60,14 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
         switch tab {
         case .movies:
             return repositoryProvider
-                .personRepository()
-                .getBookmarkPersons()
+                .movieRepository()
+                .getBookmarkMovies()
                 .catchAndReturn([])
                 .map { items in items.map { WishlistViewItem.movie(item: $0) } }
         case .shows:
             return repositoryProvider
-                .personRepository()
-                .getBookmarkPersons()
+                .tvShowRepository()
+                .getBookmarkTVShows()
                 .catchAndReturn([])
                 .map { items in items.map { WishlistViewItem.tvShow(item: $0) } }
         case .actors:
