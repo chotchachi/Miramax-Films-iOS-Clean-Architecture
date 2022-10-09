@@ -110,6 +110,9 @@ extension WishlistViewController {
         lblItemsCountDes.text = "added_to_wishlist".localized
         
         btnRemoveAll.setTitle("remove_all".localized, for: .normal)
+        btnRemoveAll.tintColor = AppColors.colorAccent
+        btnRemoveAll.setTitleColor(AppColors.colorAccent, for: .normal)
+        btnRemoveAll.setTitleColor(AppColors.colorAccent.withAlphaComponent(0.5), for: .highlighted)
         btnRemoveAll.titleLabel?.font = AppFonts.caption1
         btnRemoveAll.rx.tap
             .subscribe(onNext: { [weak self] in
