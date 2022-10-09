@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bi_bookmark-check-fill.png",
+      "filename" : "bi_bookmark-plus-fill.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bi_bookmark-check-fill@2x.png",
+      "filename" : "bi_bookmark-plus-fill@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bi_bookmark-check-fill@3x.png",
+      "filename" : "bi_bookmark-plus-fill@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

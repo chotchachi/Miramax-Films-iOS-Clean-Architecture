@@ -20,6 +20,12 @@ final class BookmarkButton: UIButton {
         }
     }
     
+    @IBInspectable var unbookmarkBlackTint: Bool = false {
+        didSet {
+            setBookmarkIcon()
+        }
+    }
+    
     override var isHighlighted: Bool {
         didSet {
             alpha = isHighlighted ? 0.5 : 1.0
@@ -58,7 +64,9 @@ final class BookmarkButton: UIButton {
     }
     
     private func setBookmarkIcon() {
-        let icon = isBookmark ? UIImage(named: "ic_bookmark_fill") : UIImage(named: "ic_unbookmark_fill")
+        let icon = isBookmark
+        ? UIImage(named: "ic_bookmark_fill")
+        : (unbookmarkBlackTint ? UIImage(named: "ic_unbookmark_fill_black") : UIImage(named: "ic_unbookmark_fill_white"))
         setImage(icon, for: .normal)
     }
     
