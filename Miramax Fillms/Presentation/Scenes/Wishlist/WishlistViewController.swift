@@ -31,6 +31,7 @@ class WishlistViewController: BaseViewController<WishlistViewModel>, TabBarSelec
     private var currentPreviewTab: WishlistPreviewTab = .defaultTab
     private let previewTabTriggerS = PublishRelay<WishlistPreviewTab>()
     private let removeAllTriggerS = PublishRelay<Void>()
+    private let wishlistItemSelectTriggerS = PublishRelay<WishlistViewItem>()
 
     // MARK: - Lifecycle
     
@@ -48,7 +49,8 @@ class WishlistViewController: BaseViewController<WishlistViewModel>, TabBarSelec
         let input = WishlistViewModel.Input(
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             previewTabTrigger: previewTabTriggerS.asDriverOnErrorJustComplete(),
-            removeAllTrigger: removeAllTriggerS.asDriverOnErrorJustComplete()
+            removeAllTrigger: removeAllTriggerS.asDriverOnErrorJustComplete(),
+            wishlistItemSelectionTrigger: wishlistItemSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -125,9 +127,9 @@ extension WishlistViewController {
         collectionView.delegate = self
         collectionView.register(cellWithClass: EntertainmentDetailCollectionViewCell.self)
         collectionView.register(cellWithClass: PersonDetailCollectionViewCell.self)
-//        collectionView.rx.modelSelected(EntertainmentModelType.self)
-//            .bind(to: entertainmentSelectTriggerS)
-//            .disposed(by: rx.disposeBag)
+        collectionView.rx.modelSelected(WishlistViewItem.self)
+            .bind(to: wishlistItemSelectTriggerS)
+            .disposed(by: rx.disposeBag)
     }
     
     private func updateHeaderView(with items: [WishlistViewItem]) {

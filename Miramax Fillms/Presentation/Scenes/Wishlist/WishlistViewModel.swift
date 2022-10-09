@@ -22,6 +22,7 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
         let toSearchTrigger: Driver<Void>
         let previewTabTrigger: Driver<WishlistPreviewTab>
         let removeAllTrigger: Driver<Void>
+        let wishlistItemSelectionTrigger: Driver<WishlistViewItem>
     }
     
     struct Output {
@@ -50,6 +51,20 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.router.trigger(.search)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.wishlistItemSelectionTrigger
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                switch item {
+                case .movie(item: let item):
+                    self.router.trigger(.entertainmentDetail(entertainment: item))
+                case .tvShow(item: let item):
+                    self.router.trigger(.entertainmentDetail(entertainment: item))
+                case .actor(item: let item):
+                    self.router.trigger(.personDetail(personId: item.id))
+                }
             })
             .disposed(by: rx.disposeBag)
         
