@@ -17,13 +17,9 @@ public protocol LocalDataSourceProtocol {
     func removeBookmarkPerson(item: RMBookmarkPerson) -> Observable<Void>
     func removeAllBookmarkPerson() -> Observable<Void>
     
-    func getBookmarkMovies() -> Observable<[RMBookmarkEntertainment]>
-    func saveBookmarkMovie(item: RMBookmarkEntertainment) -> Observable<Void>
-    func removeBookmarkMovie(item: RMBookmarkEntertainment) -> Observable<Void>
-    func removeAllBookmarkMovie() -> Observable<Void>
-    
-    func getBookmarkTVShows() -> Observable<[RMBookmarkEntertainment]>
-    func saveBookmarkTVShow(item: RMBookmarkEntertainment) -> Observable<Void>
-    func removeBookmarkTVShow(item: RMBookmarkEntertainment) -> Observable<Void>
-    func removeAllBookmarkTVShow() -> Observable<Void>
+    func getBookmarkEntertainments() -> Observable<[RMBookmarkEntertainment]>
+    func saveBookmarkEntertainment(item: RMBookmarkEntertainment) -> Observable<Void>
+    func removeBookmarkEntertainment(item: RMBookmarkEntertainment) -> Observable<Void>
+    func removeAllBookmarkEntertainmentMovie() -> Observable<Void>
+    func removeAllBookmarkEntertainmentTVShow() -> Observable<Void>
 }

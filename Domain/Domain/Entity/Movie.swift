@@ -20,6 +20,8 @@ public struct Movie: Equatable {
     public let credits: Credit?
     public let recommendations: BaseResponse<Movie>?
     
+    public var isBookmark: Bool = false
+
     public init(id: Int, title: String, overview: String, voteAverage: Double, releaseDate: String, backdropPath: String?, posterPath: String?, genres: [Genre]?, runtime: Int?, credits: Credit?, recommendations: BaseResponse<Movie>?) {
         self.id = id
         self.title = title
@@ -104,5 +106,9 @@ extension Movie: EntertainmentModelType {
     
     public var entertainmentModelRecommends: [EntertainmentModelType]? {
         return recommendations?.results
+    }
+    
+    public var entertainmentModelIsBookmark: Bool {
+        return isBookmark
     }
 }

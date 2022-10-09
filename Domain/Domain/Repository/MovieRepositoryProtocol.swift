@@ -15,8 +15,4 @@ public protocol MovieRepositoryProtocol {
     func getByGenre(genreId: Int, sortOption: SortOption, page: Int?) -> Single<BaseResponse<Movie>>
     func getDetail(movieId: Int) -> Single<Movie>
     func getRecommendations(movieId: Int, page: Int?) -> Single<BaseResponse<Movie>>
-    func getBookmarkMovies() -> Observable<[BookmarkEntertainment]>
-    func saveBookmarkMovie(item: BookmarkEntertainment) -> Observable<Void>
-    func removeBookmarkMovie(item: BookmarkEntertainment) -> Observable<Void>
-    func removeAllBookmarkMovie() -> Observable<Void>
 }

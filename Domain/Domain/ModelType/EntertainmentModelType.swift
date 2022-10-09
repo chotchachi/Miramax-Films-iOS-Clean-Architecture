@@ -22,4 +22,5 @@ public protocol EntertainmentModelType {
     var entertainmentModelCasts: [Cast]? { get }
     var entertainmentModelSeasons: [Season]? { get }
     var entertainmentModelRecommends: [EntertainmentModelType]? { get }
+    var entertainmentModelIsBookmark: Bool { get }
 }

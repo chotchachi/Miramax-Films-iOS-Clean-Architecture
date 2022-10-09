@@ -22,6 +22,8 @@ public struct TVShow: Equatable {
     public let credits: Credit?
     public let recommendations: BaseResponse<TVShow>?
     
+    public var isBookmark: Bool = false
+
     public init(id: Int, name: String, overview: String, voteAverage: Double, firstAirDate: String, backdropPath: String?, posterPath: String?, genres: [Genre]?, numberOfEpisodes: Int?, numberOfSeasons: Int?, seasons: [Season]?, credits: Credit?, recommendations: BaseResponse<TVShow>?) {
         self.id = id
         self.name = name
@@ -108,6 +110,10 @@ extension TVShow: EntertainmentModelType {
     
     public var entertainmentModelRecommends: [EntertainmentModelType]? {
         return recommendations?.results
+    }
+    
+    public var entertainmentModelIsBookmark: Bool {
+        return isBookmark
     }
 }
 

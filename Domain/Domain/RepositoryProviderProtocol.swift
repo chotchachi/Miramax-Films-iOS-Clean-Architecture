@@ -12,4 +12,5 @@ public protocol RepositoryProviderProtocol {
     func personRepository() -> PersonRepositoryProtocol
     func searchRepository() -> SearchRepositoryProtocol
     func optionsRepository() -> OptionsRepositoryProtocol
+    func entertainmentRepository() -> EntertainmentRepositoryProtocol
 }

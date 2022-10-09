@@ -39,4 +39,8 @@ public final class RepositoryProvider: RepositoryProviderProtocol {
     public func optionsRepository() -> OptionsRepositoryProtocol {
         return OptionsRepository()
     }
+    
+    public func entertainmentRepository() -> EntertainmentRepositoryProtocol {
+        return EntertainmentRepository(remoteDataSource: remoteDataSource, localDataSource: localDataSource)
+    }
 }

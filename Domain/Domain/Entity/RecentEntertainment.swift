@@ -87,5 +87,9 @@ extension RecentEntertainment: EntertainmentModelType {
     public var entertainmentModelRecommends: [EntertainmentModelType]? {
         return nil
     }
+    
+    public var entertainmentModelIsBookmark: Bool {
+        return false
+    }
 }
 

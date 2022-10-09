@@ -56,11 +56,11 @@ class WishlistViewController: BaseViewController<WishlistViewModel>, TabBarSelec
             switch item {
             case .movie(item: let item):
                 let cell = collectionView.dequeueReusableCell(withClass: EntertainmentDetailCollectionViewCell.self, for: indexPath)
-                cell.bind(item)
+                cell.bind(item, showPlayTrailer: false)
                 return cell
             case .tvShow(item: let item):
                 let cell = collectionView.dequeueReusableCell(withClass: EntertainmentDetailCollectionViewCell.self, for: indexPath)
-                cell.bind(item)
+                cell.bind(item, showPlayTrailer: false)
                 return cell
             case .actor(item: let item):
                 let cell = collectionView.dequeueReusableCell(withClass: PersonDetailCollectionViewCell.self, for: indexPath)

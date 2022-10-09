@@ -19,6 +19,7 @@ class EntertainmentDetailCollectionViewCell: UICollectionViewCell {
     private var lblRating: UILabel!
     private var lblReleaseDate: UILabel!
     private var lblOverview: UILabel!
+    private var playTrailerView: UIView!
     
     // MARK: - Lifecycle
     
@@ -75,7 +76,7 @@ class EntertainmentDetailCollectionViewCell: UICollectionViewCell {
         
         // Button play trailer
         
-        let playTrailerView = UIView()
+        playTrailerView = UIView()
         playTrailerView.translatesAutoresizingMaskIntoConstraints = false
         playTrailerView.backgroundColor = .clear
         playTrailerView.cornerRadius = 16.0
@@ -148,7 +149,7 @@ class EntertainmentDetailCollectionViewCell: UICollectionViewCell {
         ivPoster.image = nil
     }
     
-    func bind(_ item: EntertainmentModelType) {
+    func bind(_ item: EntertainmentModelType, showPlayTrailer: Bool) {
         ivPoster.setImage(with: item.entertainmentModelPosterURL)
         lblName.text = item.entertainmentModelName
         lblOverview.text = item.entertainmentModelOverview
@@ -158,6 +159,8 @@ class EntertainmentDetailCollectionViewCell: UICollectionViewCell {
         
         let releaseDateStr = getReleaseDateStringFormatted(item.entertainmentModelReleaseDate)
         lblReleaseDate.text = "• \(releaseDateStr ?? "unknown".localized)"
+        
+        playTrailerView.isHidden = !showPlayTrailer
     }
     
     private func getReleaseDateStringFormatted(_ strDate: String?) -> String? {

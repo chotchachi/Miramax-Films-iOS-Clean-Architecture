@@ -60,14 +60,14 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
         switch tab {
         case .movies:
             return repositoryProvider
-                .movieRepository()
-                .getBookmarkMovies()
+                .entertainmentRepository()
+                .getAllBookmarkEntertainmentMovie()
                 .catchAndReturn([])
                 .map { items in items.map { WishlistViewItem.movie(item: $0) } }
         case .shows:
             return repositoryProvider
-                .tvShowRepository()
-                .getBookmarkTVShows()
+                .entertainmentRepository()
+                .getAllBookmarkEntertainmentTVShow()
                 .catchAndReturn([])
                 .map { items in items.map { WishlistViewItem.tvShow(item: $0) } }
         case .actors:

@@ -64,25 +64,4 @@ public final class TVShowRepository: TVShowRepositoryProtocol {
             .getTVShowSeasonDetails(tvShowId: tvShowId, seasonNumber: seasonNumber)
             .map { $0.asDomain() }
     }
-    
-    public func getBookmarkTVShows() -> Observable<[BookmarkEntertainment]> {
-        return localDataSource
-            .getBookmarkTVShows()
-            .map { items in items.map { $0.asDomain() } }
-    }
-    
-    public func saveBookmarkTVShow(item: BookmarkEntertainment) -> Observable<Void> {
-        return localDataSource
-            .saveBookmarkTVShow(item: item.asRealm())
-    }
-    
-    public func removeBookmarkTVShow(item: BookmarkEntertainment) -> Observable<Void> {
-        return localDataSource
-            .removeBookmarkTVShow(item: item.asRealm())
-    }
-    
-    public func removeAllBookmarkTVShow() -> Observable<Void> {
-        return localDataSource
-            .removeAllBookmarkTVShow()
-    }
 }

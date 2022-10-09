@@ -49,44 +49,27 @@ public final class LocalDataSource: LocalDataSourceProtocol {
             .deleteAll()
     }
     
-    public func getBookmarkMovies() -> Observable<[RMBookmarkEntertainment]> {
+    public func getBookmarkEntertainments() -> Observable<[RMBookmarkEntertainment]> {
         return dbManager.getDao(BookmarkEntertainmentDao.self)
             .queryAll()
-            .map { items in items.filter { $0.type == .movie } }
     }
     
-    public func saveBookmarkMovie(item: RMBookmarkEntertainment) -> Observable<Void> {
+    public func saveBookmarkEntertainment(item: RMBookmarkEntertainment) -> Observable<Void> {
         return dbManager.getDao(BookmarkEntertainmentDao.self)
             .save(entity: item)
     }
     
-    public func removeBookmarkMovie(item: RMBookmarkEntertainment) -> Observable<Void> {
+    public func removeBookmarkEntertainment(item: RMBookmarkEntertainment) -> Observable<Void> {
         return dbManager.getDao(BookmarkEntertainmentDao.self)
             .delete(entity: item)
     }
     
-    public func removeAllBookmarkMovie() -> Observable<Void> {
+    public func removeAllBookmarkEntertainmentMovie() -> Observable<Void> {
         return dbManager.getDao(BookmarkEntertainmentDao.self)
             .deleteAllMovies()
     }
     
-    public func getBookmarkTVShows() -> Observable<[RMBookmarkEntertainment]> {
-        return dbManager.getDao(BookmarkEntertainmentDao.self)
-            .queryAll()
-            .map { items in items.filter { $0.type == .tvShow } }
-    }
-    
-    public func saveBookmarkTVShow(item: RMBookmarkEntertainment) -> Observable<Void> {
-        return dbManager.getDao(BookmarkEntertainmentDao.self)
-            .save(entity: item)
-    }
-    
-    public func removeBookmarkTVShow(item: RMBookmarkEntertainment) -> Observable<Void> {
-        return dbManager.getDao(BookmarkEntertainmentDao.self)
-            .delete(entity: item)
-    }
-    
-    public func removeAllBookmarkTVShow() -> Observable<Void> {
+    public func removeAllBookmarkEntertainmentTVShow() -> Observable<Void> {
         return dbManager.getDao(BookmarkEntertainmentDao.self)
             .deleteAllTVShows()
     }
