@@ -24,6 +24,9 @@ class WishlistViewController: BaseViewController<WishlistViewModel>, TabBarSelec
     @IBOutlet weak var lblItemsCountDes: UILabel!
     @IBOutlet weak var btnRemoveAll: UIButton!
     
+    @IBOutlet weak var emptyView: UIView!
+    @IBOutlet weak var lblEmpty: UILabel!
+    
     var btnSearch: SearchButton = SearchButton()
     
     // MARK: - Properties
@@ -41,6 +44,7 @@ class WishlistViewController: BaseViewController<WishlistViewModel>, TabBarSelec
         configureAppToolbar()
         configureHeader()
         configureCollectionView()
+        configureEmptyView()
     }
     
     override func bindViewModel() {
@@ -75,6 +79,7 @@ class WishlistViewController: BaseViewController<WishlistViewModel>, TabBarSelec
             .do(onNext: { [weak self] items in
                 guard let self = self else { return }
                 self.updateHeaderView(with: items)
+                self.emptyView.isHidden = !items.isEmpty
             })
             .map { [SectionModel(model: "", items: $0)] }
             .drive(collectionView.rx.items(dataSource: dataSource))
@@ -130,6 +135,12 @@ extension WishlistViewController {
         collectionView.rx.modelSelected(WishlistViewItem.self)
             .bind(to: wishlistItemSelectTriggerS)
             .disposed(by: rx.disposeBag)
+    }
+    
+    private func configureEmptyView() {
+        lblEmpty.textColor = AppColors.textColorPrimary
+        lblEmpty.font = AppFonts.caption1SemiBold
+        lblEmpty.text = "wishlist_result_empty".localized
     }
     
     private func updateHeaderView(with items: [WishlistViewItem]) {

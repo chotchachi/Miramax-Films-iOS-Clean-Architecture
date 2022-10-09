@@ -54,3 +54,4 @@
 "clear" = "Clear";
 "added_to_wishlist" = "Added to wishlist";
 "remove_all" = "Remove All";
+"wishlist_result_empty" = "No items added to wishlist";
