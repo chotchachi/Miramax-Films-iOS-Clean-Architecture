@@ -8,8 +8,8 @@
 import Domain
 
 enum SearchViewData {
-    case recent(items: [EntertainmentModelType])
-    case movie(items: [EntertainmentModelType], hasNextPage: Bool)
-    case tvShow(items: [EntertainmentModelType], hasNextPage: Bool)
+    case recent(items: [RecentEntertainment])
+    case movie(items: [Movie], hasNextPage: Bool)
+    case tvShow(items: [TVShow], hasNextPage: Bool)
     case actor(items: [Person], hasNextPage: Bool)
 }
