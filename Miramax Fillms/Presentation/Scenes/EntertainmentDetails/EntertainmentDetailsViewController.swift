@@ -115,7 +115,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
         )
         let output = viewModel.transform(input: input)
         
-        output.entertainment
+        output.entertainmentViewModel
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
                 self.bindData(item)

@@ -82,7 +82,7 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, L
         )
         let output = viewModel.transform(input: input)
         
-        output.person
+        output.personViewModel
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
                 self.bindData(item)
@@ -171,19 +171,19 @@ extension PersonDetailsViewController {
         btnShare.alpha = 0.5
     }
     
-    private func bindData(_ person: Person) {
+    private func bindData(_ item: PersonViewModel) {
         // Person title
-        lblTitle.text = person.name
+        lblTitle.text = item.name
         
         // Person departments
         departmentTagListView.removeAllTags()
-        departmentTagListView.addTags(person.departments ?? [])
+        departmentTagListView.addTags(item.departments ?? [])
         
         // Person is bookmark
-        btnBookmark.isBookmark = person.isBookmark
+        btnBookmark.isBookmark = item.isBookmark
         
         // Person backdrop image
-        if let backdropImage = person.images?.randomElement() {
+        if let backdropImage = item.images?.randomElement() {
             ivBackdrop.setImage(with: backdropImage.fileURL)
             sectionBackdropView.isHidden = false
         } else {
@@ -191,18 +191,18 @@ extension PersonDetailsViewController {
         }
         
         // Person profile image
-        ivProfile.setImage(with: person.profileURL)
+        ivProfile.setImage(with: item.profileURL)
         
         // Person biography
-        lblBiography.text = person.biography
+        lblBiography.text = item.biography
         
         // Person birthday
-        let birthDayString = getBirdthdayStringFormatted(person.birthday) ?? "unknown".localized
+        let birthDayString = getBirdthdayStringFormatted(item.birthday) ?? "unknown".localized
         lblBirthday.text = "DOB: \(birthDayString)"
         lblBirthday.highlight(text: birthDayString, font: AppFonts.caption1)
         
         // Person movies
-        entertainmentDataS.accept(getCombineCastEntertainment(from: person))
+        entertainmentDataS.accept(getCombineCastEntertainment(from: item))
     }
     
     private func getBirdthdayStringFormatted(_ strDate: String?) -> String? {
@@ -216,9 +216,9 @@ extension PersonDetailsViewController {
         }
     }
     
-    private func getCombineCastEntertainment(from person: Person) -> [EntertainmentViewModel] {
-        let castMovies = person.castMovies?.map { $0.asPresentation() } ?? []
-        let castTvShows = person.castTVShows?.map { $0.asPresentation() } ?? []
+    private func getCombineCastEntertainment(from person: PersonViewModel) -> [EntertainmentViewModel] {
+        let castMovies = person.castMovies ?? []
+        let castTvShows = person.castTVShows ?? []
         return castMovies + castTvShows
     }
 }

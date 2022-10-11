@@ -22,7 +22,7 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     struct Output {
-        let person: Driver<Person>
+        let personViewModel: Driver<PersonViewModel>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -37,18 +37,13 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let viewTriggerO = trigger
+        let viewTrigger = trigger
             .take(1)
         
-        let retryTriggerO = input.retryTrigger
+        let retryTrigger = input.retryTrigger
             .asObservable()
         
-        let bookmarkPersonsO = repositoryProvider
-            .personRepository()
-            .getBookmarkPersons()
-            .catchAndReturn([])
-        
-        let personO = Observable.merge(viewTriggerO, retryTriggerO)
+        let personData = Observable.merge(viewTrigger, retryTrigger)
             .flatMapLatest {
                 self.repositoryProvider
                     .personRepository()
@@ -58,19 +53,25 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
                     .catch { _ in Observable.empty() }
             }
         
-        let personWithBookmarkO = Observable.combineLatest(personO, bookmarkPersonsO) { person, bookmarkPersons -> Person in
+        let bookmarkPersonsData = repositoryProvider
+            .personRepository()
+            .getBookmarkPersons()
+            .catchAndReturn([])
+        
+        let personWithBookmark = Observable.combineLatest(personData, bookmarkPersonsData) { person, bookmarkPersons -> Person in
             var newPerson = person.copy()
             newPerson.isBookmark = bookmarkPersons.map { $0.id }.contains(newPerson.id)
             return newPerson
         }
         
-        let personWithBookmarkD = personWithBookmarkO
+        let personViewModel = personWithBookmark
+            .map { $0.asPresentation() }
             .take(1)
             .asDriverOnErrorJustComplete()
         
         input.toggleBookmarkTrigger
             .asObservable()
-            .withLatestFrom(personWithBookmarkO)
+            .withLatestFrom(personWithBookmark)
             .flatMapLatest { self.toggleBookmarkPerson(with: $0) }
             .subscribe()
             .disposed(by: rx.disposeBag)
@@ -97,7 +98,9 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         input.toBiographyTrigger
-            .withLatestFrom(personO.asDriverOnErrorJustComplete())
+            .asObservable()
+            .withLatestFrom(personData)
+            .asDriverOnErrorJustComplete()
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
                 self.router.trigger(.biography(person: item))
@@ -111,11 +114,18 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output(person: personWithBookmarkD)
+        return Output(personViewModel: personViewModel)
     }
     
     private func toggleBookmarkPerson(with item: Person) -> Observable<Void> {
-        let bookmarkPerson = BookmarkPerson(id: item.id, name: item.name, profilePath: item.profilePath, birthday: item.birthday, biography: item.biography, createAt: Date())
+        let bookmarkPerson = BookmarkPerson(
+            id: item.id,
+            name: item.name,
+            profilePath: item.profilePath,
+            birthday: item.birthday,
+            biography: item.biography,
+            createAt: Date()
+        )
         if !item.isBookmark {
             return repositoryProvider
                 .personRepository()

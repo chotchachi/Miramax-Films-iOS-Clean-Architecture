@@ -39,6 +39,10 @@ public struct TVShow: EntertainmentModelType {
         self.credits = credits
         self.recommendations = recommendations
     }
+    
+    public func copy() -> TVShow {
+        return TVShow(id: id, name: name, overview: overview, voteAverage: voteAverage, firstAirDate: firstAirDate, backdropPath: backdropPath, posterPath: posterPath, genres: genres, numberOfEpisodes: numberOfEpisodes, numberOfSeasons: numberOfSeasons, seasons: seasons, credits: credits, recommendations: recommendations)
+    }
 }
 
 extension TVShow {

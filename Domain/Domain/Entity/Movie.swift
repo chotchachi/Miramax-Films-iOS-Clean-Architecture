@@ -35,6 +35,10 @@ public struct Movie: EntertainmentModelType {
         self.credits = credits
         self.recommendations = recommendations
     }
+    
+    public func copy() -> Movie {
+        return Movie(id: id, title: title, overview: overview, voteAverage: voteAverage, releaseDate: releaseDate, backdropPath: backdropPath, posterPath: posterPath, genres: genres, runtime: runtime, credits: credits, recommendations: recommendations)
+    }
 }
 
 extension Movie {

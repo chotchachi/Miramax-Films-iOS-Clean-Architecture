@@ -25,7 +25,7 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     struct Output {
-        let entertainment: Driver<EntertainmentViewModel>
+        let entertainmentViewModel: Driver<EntertainmentViewModel>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -42,39 +42,56 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let viewTriggerO = trigger
+        let viewTrigger = trigger
             .take(1)
         
-        let retryTriggerO = input.retryTrigger
+        let retryTrigger = input.retryTrigger
             .asObservable()
         
-        let bookmarkEntertainmentO = repositoryProvider
-            .entertainmentRepository()
-            .getAllBookmarkEntertainment()
-            .catchAndReturn([])
-        
-        let entertainmentD = Observable.merge(viewTriggerO, retryTriggerO)
+        let entertainmentData = Observable.merge(viewTrigger, retryTrigger)
             .flatMapLatest {
                 self.getEntertainmentDetails()
                     .trackError(self.error)
                     .trackActivity(self.loading)
                     .catch { _ in Observable.empty() }
             }
-            .asDriverOnErrorJustComplete()
 
-//        let entertainmentWithBookmarkO = Observable.combineLatest(entertainmentO, bookmarkEntertainmentO) { entertainment, bookmarkEntertainment -> Ent in
-//            var newPerson = person.copy()
-//            newPerson.isBookmark = bookmarkPersons.map { $0.id }.contains(newPerson.id)
-//            return newPerson
-//        }
-//
-//        let personWithBookmarkD = personWithBookmarkO
-//            .take(1)
-//            .asDriverOnErrorJustComplete()
+        let bookmarkEntertainmentData = repositoryProvider
+            .entertainmentRepository()
+            .getAllBookmarkEntertainment()
+            .catchAndReturn([])
+        
+        let entertainmentWithBookmark = Observable.combineLatest(entertainmentData, bookmarkEntertainmentData) { entertainment, bookmarkEntertainment -> Any? in
+            if let movie = entertainment as? Movie {
+                var newMovie = movie.copy()
+                newMovie.isBookmark = bookmarkEntertainment.filter { $0.type == .movie }.map { $0.id }.contains(newMovie.id)
+                return newMovie
+            } else if let tvShow = entertainment as? TVShow {
+                var newTVShow = tvShow.copy()
+                newTVShow.isBookmark = bookmarkEntertainment.filter { $0.type == .tvShow }.map { $0.id }.contains(newTVShow.id)
+                return newTVShow
+            } else {
+                return nil
+            }
+        }
+
+        let entertainmentViewModel = entertainmentWithBookmark
+            .compactMap { item -> EntertainmentViewModel? in
+                if let movie = item as? Movie {
+                    return movie.asPresentation()
+                } else if let tvShow = item as? TVShow {
+                    return tvShow.asPresentation()
+                } else {
+                    return nil
+                }
+            }
+            .take(1)
+            .asDriverOnErrorJustComplete()
         
         input.toggleBookmarkTrigger
             .asObservable()
-            .withLatestFrom(entertainmentD)
+            .withLatestFrom(entertainmentWithBookmark)
+            .compactMap { $0 }
             .flatMapLatest { self.toggleBookmarkEntertainment(with: $0) }
             .subscribe()
             .disposed(by: rx.disposeBag)
@@ -94,7 +111,10 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         input.toSeasonListTrigger
-            .withLatestFrom(entertainmentD)
+            .asObservable()
+            .withLatestFrom(entertainmentData)
+            .compactMap { $0 as? TVShow }
+            .asDriverOnErrorJustComplete()
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
                 if let seasons = item.seasons {
@@ -138,37 +158,57 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output(entertainment: entertainmentD)
+        return Output(entertainmentViewModel: entertainmentViewModel)
     }
     
-    private func getEntertainmentDetails() -> Single<EntertainmentViewModel> {
+    private func getEntertainmentDetails() -> Single<Any> {
         switch entertainmentType {
         case .movie:
             return repositoryProvider
                 .movieRepository()
                 .getDetail(movieId: entertainmentId)
-                .map { $0.asPresentation() }
+                .map { $0 as Any}
         case .tvShow:
             return repositoryProvider
                 .tvShowRepository()
                 .getDetail(tvShowId: entertainmentId)
-                .map { $0.asPresentation() }
+                .map { $0 as Any}
         }
     }
     
-    private func toggleBookmarkEntertainment(with item: EntertainmentViewModel) -> Observable<Void> {
-        let bookmarkEntertainment = BookmarkEntertainment(
-            id: item.id,
-            name: item.name,
-            overview: item.overview,
-            rating: item.rating,
-            releaseDate: item.releaseDate,
-            backdropPath: item.backdropURL?.path,
-            posterPath: item.posterURL?.path,
-            type: item.type,
-            createAt: Date()
-        )
-        if !item.isBookmark {
+    private func toggleBookmarkEntertainment(with item: Any) -> Observable<Void> {
+        var bookmarkEntertainment: BookmarkEntertainment!
+        var isBookmark: Bool!
+        if let movie = item as? Movie {
+            bookmarkEntertainment = BookmarkEntertainment(
+                id: movie.id,
+                name: movie.title,
+                overview: movie.overview,
+                rating: movie.voteAverage,
+                releaseDate: movie.releaseDate,
+                backdropPath: movie.backdropURL?.path,
+                posterPath: movie.posterURL?.path,
+                type: .movie,
+                createAt: Date()
+            )
+            isBookmark = movie.isBookmark
+        } else if let tvShow = item as? TVShow {
+            bookmarkEntertainment = BookmarkEntertainment(
+                id: tvShow.id,
+                name: tvShow.name,
+                overview: tvShow.overview,
+                rating: tvShow.voteAverage,
+                releaseDate: tvShow.firstAirDate,
+                backdropPath: tvShow.backdropURL?.path,
+                posterPath: tvShow.posterURL?.path,
+                type: .tvShow,
+                createAt: Date()
+            )
+            isBookmark = tvShow.isBookmark
+        } else {
+            return Observable.just(())
+        }
+        if !isBookmark {
             return repositoryProvider
                 .entertainmentRepository()
                 .saveBookmarkEntertainment(item: bookmarkEntertainment)
