@@ -38,7 +38,7 @@
                     <rect key="frame" x="0.0" y="102" width="390" height="40"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9i-fx-sLX" customClass="TabLayout" customModule="Miramax_Fillms" customModuleProvider="target">
-                            <rect key="frame" x="24" y="0.0" width="342" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="uZA-Jj-rnJ"/>
@@ -47,9 +47,9 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="D9i-fx-sLX" firstAttribute="leading" secondItem="hla-yO-hiN" secondAttribute="leading" constant="24" id="IrU-kt-nqa"/>
+                        <constraint firstItem="D9i-fx-sLX" firstAttribute="leading" secondItem="hla-yO-hiN" secondAttribute="leading" id="IrU-kt-nqa"/>
                         <constraint firstItem="D9i-fx-sLX" firstAttribute="top" secondItem="hla-yO-hiN" secondAttribute="top" id="KeN-gp-C5U"/>
-                        <constraint firstAttribute="trailing" secondItem="D9i-fx-sLX" secondAttribute="trailing" constant="24" id="NJP-VN-WeG"/>
+                        <constraint firstAttribute="trailing" secondItem="D9i-fx-sLX" secondAttribute="trailing" id="NJP-VN-WeG"/>
                         <constraint firstAttribute="bottom" secondItem="D9i-fx-sLX" secondAttribute="bottom" id="wL4-rc-XCv"/>
                     </constraints>
                 </view>

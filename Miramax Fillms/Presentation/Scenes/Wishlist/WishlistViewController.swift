@@ -109,6 +109,7 @@ extension WishlistViewController {
     
     private func configureHeader() {
         tabLayout.titles = WishlistPreviewTab.allCases.map { $0.title }
+        tabLayout.scrollStyle = .scrollable
         tabLayout.delegate = self
         tabLayout.selectionTitle(index: WishlistPreviewTab.defaultTab.index ?? 1, animated: false)
         

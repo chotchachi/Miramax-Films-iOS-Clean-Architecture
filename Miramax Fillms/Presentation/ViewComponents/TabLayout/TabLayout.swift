@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 import SnapKit
 
+public enum TabLayoutScrollStyle {
+    case fixed
+    case scrollable
+}
+
 class TabLayout: UIView {
     
     // MARK: - Views
@@ -37,6 +42,12 @@ class TabLayout: UIView {
     // MARK: - Properties
     
     var titles: [String] = [] {
+        didSet {
+            reloadView()
+        }
+    }
+    
+    var scrollStyle: TabLayoutScrollStyle = .fixed {
         didSet {
             reloadView()
         }
@@ -125,7 +136,12 @@ extension TabLayout {
         for (i, title) in titles.enumerated() {
             let labelX = (titleLabels.last?.frame.maxX ?? 0)
             let labelY = (bounds.maxY - font.lineHeight) / 2
-            let width = frame.width / CGFloat(titles.count)
+            var width = frame.width / CGFloat(titles.count)
+            let margin = 16.0
+            
+            if scrollStyle == .scrollable {
+                width = labelSizeToFit(title, font: font) + margin * 2
+            }
             
             let labelFrame = CGRect(x: labelX, y: labelY, width: width, height: font.lineHeight)
             
@@ -203,5 +219,11 @@ extension TabLayout {
                 selectionTitle(index: i)
             }
         }
+    }
+    
+    private func labelSizeToFit(_ text: String, font: UIFont) -> CGFloat {
+        let titleText = text as String
+        let width = titleText.boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: 0.0), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil).width
+        return width
     }
 }
