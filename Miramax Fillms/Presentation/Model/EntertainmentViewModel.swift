@@ -23,7 +23,7 @@ struct EntertainmentViewModel {
     let writers: [PersonViewModel]?
     let casts: [PersonViewModel]?
     let seasons: [Season]?
-    let recommend: EntertainmentResponseViewModel?
+    let recommendations: [EntertainmentViewModel]?
     let isBookmark: Bool
 }
 
@@ -44,7 +44,7 @@ extension Movie: PresentationConvertibleType {
             writers: writers?.map { $0.asPresentation() },
             casts: casts?.map { $0.asPresentation() },
             seasons: nil,
-            recommend: nil,
+            recommendations: recommendations?.results.map { $0.asPresentation() },
             isBookmark: isBookmark
         )
     }
@@ -67,7 +67,7 @@ extension TVShow: PresentationConvertibleType {
             writers: writers?.map { $0.asPresentation() },
             casts: casts?.map { $0.asPresentation() },
             seasons: seasons,
-            recommend: nil,
+            recommendations: recommendations?.results.map { $0.asPresentation() },
             isBookmark: isBookmark
         )
     }
@@ -90,7 +90,7 @@ extension BookmarkEntertainment: PresentationConvertibleType {
             writers: nil,
             casts: nil,
             seasons: nil,
-            recommend: nil,
+            recommendations: nil,
             isBookmark: true
         )
     }
@@ -113,7 +113,7 @@ extension RecentEntertainment {
             writers: nil,
             casts: nil,
             seasons: nil,
-            recommend: nil,
+            recommendations: nil,
             isBookmark: false
         )
     }

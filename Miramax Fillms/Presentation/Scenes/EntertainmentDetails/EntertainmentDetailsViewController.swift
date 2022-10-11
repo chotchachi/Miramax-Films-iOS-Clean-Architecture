@@ -400,7 +400,7 @@ extension EntertainmentDetailsViewController {
         
         
         // Entertainment recommend
-        let recommendations = item.recommend?.results ?? []
+        let recommendations = item.recommendations ?? []
         entertainentRecommendationsS.accept(recommendations)
         sectionRecommendView.isHidden = recommendations.isEmpty /// Hide section recommend if result empty
     }
