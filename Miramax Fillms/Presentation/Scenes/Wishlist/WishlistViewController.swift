@@ -135,9 +135,9 @@ extension WishlistViewController {
     private func configureCollectionView() {
         let layout = ColumnFlowLayout(
             cellsPerRow: 1,
-            ratio: DimensionConstants.entertainmentDetailCellRatio,
-            minimumInteritemSpacing: DimensionConstants.entertainmentDetailCellSpacing,
-            minimumLineSpacing: DimensionConstants.entertainmentDetailCellSpacing,
+            ratio: DimensionConstants.wishlistCellRatio,
+            minimumInteritemSpacing: DimensionConstants.wishlistCellSpacing,
+            minimumLineSpacing: DimensionConstants.wishlistCellSpacing,
             sectionInset: .init(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0),
             scrollDirection: .vertical
         )

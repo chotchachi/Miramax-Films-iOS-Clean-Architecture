@@ -26,4 +26,7 @@ struct DimensionConstants {
     static let personHorizontalCellRatio: CGFloat = 0.65
     
     static let seasonSmallCellHeight: CGFloat = 80.0
+    
+    static let wishlistCellRatio: CGFloat = 1.5
+    static let wishlistCellSpacing: CGFloat = 16.0
 }
