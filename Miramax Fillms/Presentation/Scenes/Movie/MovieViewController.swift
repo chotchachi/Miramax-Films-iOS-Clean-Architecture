@@ -64,6 +64,7 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
     private let previewTabTriggerS = PublishRelay<MoviePreviewTab>()
     private let entertainmentSelectTriggerS = PublishRelay<EntertainmentViewModel>()
     private let genreSelectTriggerS = PublishRelay<Genre>()
+    private let toggleBookmarkTriggerS = PublishRelay<EntertainmentViewModel>()
 
     // MARK: - Lifecycle
     
@@ -91,7 +92,8 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
             selectionGenreTrigger: genreSelectTriggerS.asDriverOnErrorJustComplete(),
             previewTabTrigger: previewTabTriggerS.asDriverOnErrorJustComplete(),
             seeMoreUpcomingTrigger: upcomingSectionHeaderView.rx.actionButtonTap.asDriver(),
-            seeMorePreviewTrigger: previewSeeMoreButton.rx.tap.asDriver()
+            seeMorePreviewTrigger: previewSeeMoreButton.rx.tap.asDriver(),
+            toggleBookmarkTrigger: toggleBookmarkTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -293,6 +295,9 @@ extension MovieViewController {
         let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentPreviewCollectionViewCell.self, for: indexPath)
             cell.bind(item)
+            cell.onButtonBookmarkTapped = { [weak self] in
+                self?.toggleBookmarkTriggerS.accept(item)
+            }
             return cell
         }
         

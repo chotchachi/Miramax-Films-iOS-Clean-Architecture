@@ -19,6 +19,10 @@ class EntertainmentPreviewCollectionViewCell: UICollectionViewCell {
     private var lblRating: UILabel!
     private var lblReleaseDate: UILabel!
     private var btnBookmark: BookmarkButton!
+    
+    // MARK: - Properties
+    
+    var onButtonBookmarkTapped: (()->())?
 
     // MARK: - Lifecycle
     
@@ -140,6 +144,7 @@ class EntertainmentPreviewCollectionViewCell: UICollectionViewCell {
         btnBookmark = BookmarkButton()
         btnBookmark.translatesAutoresizingMaskIntoConstraints = false
         btnBookmark.unbookmarkBlackTint = true
+        btnBookmark.addTarget(self, action: #selector(buttonBookmarkTapped(_:)), for: .touchUpInside)
         contentView.addSubview(btnBookmark)
         btnBookmark.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -167,6 +172,8 @@ class EntertainmentPreviewCollectionViewCell: UICollectionViewCell {
         
         let releaseDateStr = getReleaseDateStringFormatted(item.releaseDate)
         lblReleaseDate.text = "• \(releaseDateStr ?? "unknown".localized)"
+        
+        btnBookmark.isBookmark = item.isBookmark
     }
     
     private func getReleaseDateStringFormatted(_ strDate: String?) -> String? {
@@ -178,5 +185,9 @@ class EntertainmentPreviewCollectionViewCell: UICollectionViewCell {
         } else {
             return nil
         }
+    }
+    
+    @objc private func buttonBookmarkTapped(_ sender: BookmarkButton) {
+        onButtonBookmarkTapped?()
     }
 }

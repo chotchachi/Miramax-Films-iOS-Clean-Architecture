@@ -22,6 +22,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
         let previewTabTrigger: Driver<MoviePreviewTab>
         let seeMoreUpcomingTrigger: Driver<Void>
         let seeMorePreviewTrigger: Driver<Void>
+        let toggleBookmarkTrigger: Driver<EntertainmentViewModel>
     }
     
     struct Output {
@@ -40,16 +41,16 @@ class MovieViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let viewTriggerO = trigger
+        let viewTrigger = trigger
             .take(1)
         
-        let retryGenreTriggerO = input.retryGenreTrigger
+        let retryGenreTrigger = input.retryGenreTrigger
             .asObservable()
         
-        let retryUpcomingTriggerO = input.retryUpcomingTrigger
+        let retryUpcomingTrigger = input.retryUpcomingTrigger
             .asObservable()
         
-        let genresViewStateD = Observable.merge(viewTriggerO, retryGenreTriggerO)
+        let genresViewState = Observable.merge(viewTrigger, retryGenreTrigger)
             .flatMapLatest {
                 self.repositoryProvider
                     .genreRepository()
@@ -59,7 +60,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
             }
             .asDriverOnErrorJustComplete()
         
-        let upcomingViewStateD = Observable.merge(viewTriggerO, retryUpcomingTriggerO)
+        let upcomingViewState = Observable.merge(viewTrigger, retryUpcomingTrigger)
             .flatMapLatest {
                 self.repositoryProvider
                     .movieRepository()
@@ -70,21 +71,36 @@ class MovieViewModel: BaseViewModel, ViewModelType {
             }
             .asDriverOnErrorJustComplete()
         
-        let previewTabTriggerO = input.previewTabTrigger
+        let bookmarkMovieData = repositoryProvider
+            .entertainmentRepository()
+            .getAllBookmarkEntertainmentMovie()
+            .catchAndReturn([])
+        
+        let previewTabTrigger = input.previewTabTrigger
             .asObservable()
             .startWith(MoviePreviewTab.defaultTab)
         
-        let retryPreviewWithSelectedTabO = input.retryPreviewTrigger
+        let retryPreviewWithSelectedTab = input.retryPreviewTrigger
             .asObservable()
-            .withLatestFrom(previewTabTriggerO)
+            .withLatestFrom(previewTabTrigger)
         
-        let previewViewStateD = Observable.merge(previewTabTriggerO, retryPreviewWithSelectedTabO)
+        let previewViewState = Observable.merge(previewTabTrigger, retryPreviewWithSelectedTab)
             .flatMapLatest { tab in
-                self.getPreviewData(with: tab)
+                return Observable.combineLatest(
+                    self.getPreviewData(with: tab).asObservable(),
+                    bookmarkMovieData
+                ) { self.combinePreviewDataWithBookmark(data: $0, bookmarkData: $1) }
+                    .map { items in items.map { $0.asPresentation() } }
                     .map { ViewState.success($0) }
                     .catchAndReturn(.error)
             }
             .asDriverOnErrorJustComplete()
+        
+        input.toggleBookmarkTrigger
+            .asObservable()
+            .flatMapLatest { self.toggleBookmarkItem(with: $0) }
+            .subscribe()
+            .disposed(by: rx.disposeBag)
         
         input.toSearchTrigger
             .drive(onNext: { [weak self] in
@@ -115,7 +131,9 @@ class MovieViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         input.seeMorePreviewTrigger
-            .withLatestFrom(previewTabTriggerO.asDriverOnErrorJustComplete())
+            .asObservable()
+            .withLatestFrom(previewTabTrigger)
+            .asDriverOnErrorJustComplete()
             .drive(onNext: { [weak self] tab in
                 guard let self = self else { return }
                 switch tab {
@@ -129,28 +147,61 @@ class MovieViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output(genresViewState: genresViewStateD,
-                      upcomingViewState: upcomingViewStateD,
-                      previewViewState: previewViewStateD)
+        return Output(genresViewState: genresViewState,
+                      upcomingViewState: upcomingViewState,
+                      previewViewState: previewViewState)
     }
     
-    private func getPreviewData(with tab: MoviePreviewTab) -> Single<[EntertainmentViewModel]> {
+    private func getPreviewData(with tab: MoviePreviewTab) -> Single<[Movie]> {
         switch tab {
         case .topRating:
             return repositoryProvider
                 .movieRepository()
                 .getTopRated(genreId: nil, page: nil)
-                .map { response in response.results.map { $0.asPresentation() } }
+                .map { $0.results }
         case .news:
             return repositoryProvider
                 .movieRepository()
                 .getNowPlaying(genreId: nil, page: nil)
-                .map { response in response.results.map { $0.asPresentation() } }
+                .map { $0.results }
         case .trending:
             return repositoryProvider
                 .movieRepository()
                 .getPopular(genreId: nil, page: nil)
-                .map { response in response.results.map { $0.asPresentation() } }
+                .map { $0.results }
+        }
+    }
+    
+    private func combinePreviewDataWithBookmark(data: [Movie], bookmarkData: [BookmarkEntertainment]) -> [Movie] {
+        return data.map { item in
+            var newItem = item.copy()
+            newItem.isBookmark = bookmarkData.map { $0.id }.contains(newItem.id)
+            return newItem
+        }
+    }
+    
+    private func toggleBookmarkItem(with item: EntertainmentViewModel) -> Observable<Void> {
+        let bookmarkEntertainment = BookmarkEntertainment(
+            id: item.id,
+            name: item.name,
+            overview: item.overview,
+            rating: item.rating,
+            releaseDate: item.releaseDate,
+            backdropPath: item.backdropURL?.path,
+            posterPath: item.posterURL?.path,
+            type: .movie,
+            createAt: Date()
+        )
+        if !item.isBookmark {
+            return repositoryProvider
+                .entertainmentRepository()
+                .saveBookmarkEntertainment(item: bookmarkEntertainment)
+                .catch { _ in Observable.empty() }
+        } else {
+            return repositoryProvider
+                .entertainmentRepository()
+                .removeBookmarkEntertainment(item: bookmarkEntertainment)
+                .catch { _ in Observable.empty() }
         }
     }
 }

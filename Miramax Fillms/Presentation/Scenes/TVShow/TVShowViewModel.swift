@@ -23,6 +23,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         let previewTabTrigger: Driver<TVShowPreviewTab>
         let seeMoreUpcomingTrigger: Driver<Void>
         let seeMorePreviewTrigger: Driver<Void>
+        let toggleBookmarkTrigger: Driver<EntertainmentViewModel>
     }
     
     struct Output {
@@ -42,19 +43,19 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let viewTriggerO = trigger
+        let viewTrigger = trigger
             .take(1)
         
-        let retryGenreTriggerO = input.retryGenreTrigger
+        let retryGenreTrigger = input.retryGenreTrigger
             .asObservable()
         
-        let retryBannerTriggerO = input.retryBannerTrigger
+        let retryBannerTrigger = input.retryBannerTrigger
             .asObservable()
         
-        let retryUpcomingTriggerO = input.retryUpcomingTrigger
+        let retryUpcomingTrigger = input.retryUpcomingTrigger
             .asObservable()
         
-        let genresViewStateD = Observable.merge(viewTriggerO, retryGenreTriggerO)
+        let genresViewState = Observable.merge(viewTrigger, retryGenreTrigger)
             .flatMapLatest {
                 self.repositoryProvider
                     .genreRepository()
@@ -64,7 +65,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
             }
             .asDriverOnErrorJustComplete()
         
-        let bannerViewStateD = Observable.merge(viewTriggerO, retryBannerTriggerO)
+        let bannerViewState = Observable.merge(viewTrigger, retryBannerTrigger)
             .flatMapLatest {
                 self.repositoryProvider
                     .tvShowRepository()
@@ -75,7 +76,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
             }
             .asDriverOnErrorJustComplete()
         
-        let upcomingViewStateD = Observable.merge(viewTriggerO, retryUpcomingTriggerO)
+        let upcomingViewState = Observable.merge(viewTrigger, retryUpcomingTrigger)
             .flatMapLatest {
                 self.repositoryProvider
                     .tvShowRepository()
@@ -86,21 +87,36 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
             }
             .asDriverOnErrorJustComplete()
         
-        let previewTabTriggerO = input.previewTabTrigger
+        let bookmarkTVShowData = repositoryProvider
+            .entertainmentRepository()
+            .getAllBookmarkEntertainmentTVShow()
+            .catchAndReturn([])
+        
+        let previewTabTrigger = input.previewTabTrigger
             .asObservable()
             .startWith(TVShowPreviewTab.defaultTab)
         
-        let retryPreviewWithSelectedTabO = input.retryPreviewTrigger
+        let retryPreviewWithSelectedTab = input.retryPreviewTrigger
             .asObservable()
-            .withLatestFrom(previewTabTriggerO)
+            .withLatestFrom(previewTabTrigger)
         
-        let previewViewStateD = Observable.merge(previewTabTriggerO, retryPreviewWithSelectedTabO)
+        let previewViewState = Observable.merge(previewTabTrigger, retryPreviewWithSelectedTab)
             .flatMapLatest { tab in
-                self.getPreviewData(with: tab)
+                return Observable.combineLatest(
+                    self.getPreviewData(with: tab).asObservable(),
+                    bookmarkTVShowData
+                ) { self.combinePreviewDataWithBookmark(data: $0, bookmarkData: $1) }
+                    .map { items in items.map { $0.asPresentation() } }
                     .map { ViewState.success($0) }
                     .catchAndReturn(.error)
             }
             .asDriverOnErrorJustComplete()
+        
+        input.toggleBookmarkTrigger
+            .asObservable()
+            .flatMapLatest { self.toggleBookmarkItem(with: $0) }
+            .subscribe()
+            .disposed(by: rx.disposeBag)
         
         input.toSearchTrigger
             .drive(onNext: { [weak self] in
@@ -131,7 +147,9 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         input.seeMorePreviewTrigger
-            .withLatestFrom(previewTabTriggerO.asDriverOnErrorJustComplete())
+            .asObservable()
+            .withLatestFrom(previewTabTrigger)
+            .asDriverOnErrorJustComplete()
             .drive(onNext: { [weak self] tab in
                 guard let self = self else { return }
                 switch tab {
@@ -145,29 +163,62 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output(genresViewState: genresViewStateD,
-                      bannerViewState: bannerViewStateD,
-                      upcomingViewState: upcomingViewStateD,
-                      previewViewState: previewViewStateD)
+        return Output(genresViewState: genresViewState,
+                      bannerViewState: bannerViewState,
+                      upcomingViewState: upcomingViewState,
+                      previewViewState: previewViewState)
     }
     
-    private func getPreviewData(with tab: TVShowPreviewTab) -> Single<[EntertainmentViewModel]> {
+    private func getPreviewData(with tab: TVShowPreviewTab) -> Single<[TVShow]> {
         switch tab {
         case .topRating:
             return repositoryProvider
                 .tvShowRepository()
                 .getTopRated(genreId: nil, page: nil)
-                .map { response in response.results.map { $0.asPresentation() } }
+                .map { $0.results }
         case .news:
             return repositoryProvider
                 .tvShowRepository()
                 .getOnTheAir(genreId: nil, page: nil)
-                .map { response in response.results.map { $0.asPresentation() } }
+                .map { $0.results }
         case .trending:
             return repositoryProvider
                 .tvShowRepository()
                 .getPopular(genreId: nil, page: nil)
-                .map { response in response.results.map { $0.asPresentation() } }
+                .map { $0.results }
+        }
+    }
+    
+    private func combinePreviewDataWithBookmark(data: [TVShow], bookmarkData: [BookmarkEntertainment]) -> [TVShow] {
+        return data.map { item in
+            var newItem = item.copy()
+            newItem.isBookmark = bookmarkData.map { $0.id }.contains(newItem.id)
+            return newItem
+        }
+    }
+    
+    private func toggleBookmarkItem(with item: EntertainmentViewModel) -> Observable<Void> {
+        let bookmarkEntertainment = BookmarkEntertainment(
+            id: item.id,
+            name: item.name,
+            overview: item.overview,
+            rating: item.rating,
+            releaseDate: item.releaseDate,
+            backdropPath: item.backdropURL?.path,
+            posterPath: item.posterURL?.path,
+            type: .tvShow,
+            createAt: Date()
+        )
+        if !item.isBookmark {
+            return repositoryProvider
+                .entertainmentRepository()
+                .saveBookmarkEntertainment(item: bookmarkEntertainment)
+                .catch { _ in Observable.empty() }
+        } else {
+            return repositoryProvider
+                .entertainmentRepository()
+                .removeBookmarkEntertainment(item: bookmarkEntertainment)
+                .catch { _ in Observable.empty() }
         }
     }
 }
