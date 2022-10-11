@@ -18,6 +18,7 @@ struct EntertainmentViewModel {
     let runtime: Int?
     let backdropURL: URL?
     let posterURL: URL?
+    let genres: [Genre]?
     let directors: [PersonViewModel]?
     let writers: [PersonViewModel]?
     let casts: [PersonViewModel]?
@@ -38,6 +39,7 @@ extension Movie: PresentationConvertibleType {
             runtime: runtime,
             backdropURL: backdropURL,
             posterURL: posterURL,
+            genres: genres,
             directors: directors?.map { $0.asPresentation() },
             writers: writers?.map { $0.asPresentation() },
             casts: casts?.map { $0.asPresentation() },
@@ -60,6 +62,7 @@ extension TVShow: PresentationConvertibleType {
             runtime: numberOfEpisodes,
             backdropURL: backdropURL,
             posterURL: posterURL,
+            genres: genres,
             directors: directors?.map { $0.asPresentation() },
             writers: writers?.map { $0.asPresentation() },
             casts: casts?.map { $0.asPresentation() },
@@ -82,6 +85,7 @@ extension BookmarkEntertainment: PresentationConvertibleType {
             runtime: nil,
             backdropURL: nil,
             posterURL: posterURL,
+            genres: nil,
             directors: nil,
             writers: nil,
             casts: nil,
@@ -104,6 +108,7 @@ extension RecentEntertainment {
             runtime: nil,
             backdropURL: nil,
             posterURL: posterURL,
+            genres: nil,
             directors: nil,
             writers: nil,
             casts: nil,
