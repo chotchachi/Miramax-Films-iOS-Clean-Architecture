@@ -14,6 +14,7 @@
                 <outlet property="actorsCollectionView" destination="qWn-yn-d4z" id="Xa2-L5-zC0"/>
                 <outlet property="actorsSectionHeaderView" destination="aCn-cF-N4o" id="2b5-0u-0Db"/>
                 <outlet property="appToolbar" destination="twN-0J-lwG" id="PRk-5G-clh"/>
+                <outlet property="btnBookmark" destination="QuS-6K-4Ki" id="bBS-Fx-9mq"/>
                 <outlet property="btnSeeMoreOverview" destination="lZk-Bn-NcY" id="HGL-TE-30e"/>
                 <outlet property="gallerySectionHeaderView" destination="Apb-3h-i54" id="WrG-AD-Puq"/>
                 <outlet property="ivPoster" destination="lyU-Xt-BQn" id="2HV-Y7-Jpe"/>
@@ -67,18 +68,26 @@
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="89.333333333333329"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hotel Transylvania 3: Summer Vacation" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvD-2o-7gq">
-                                            <rect key="frame" x="16" y="16.000000000000004" width="358" height="57.333333333333343"/>
+                                            <rect key="frame" x="16.000000000000014" y="16.000000000000004" width="231.33333333333337" height="57.333333333333343"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuS-6K-4Ki" customClass="BookmarkButton" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="338" y="16" width="36" height="36"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain"/>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="QuS-6K-4Ki" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bvD-2o-7gq" secondAttribute="trailing" constant="12" id="65I-BS-esU"/>
                                         <constraint firstItem="bvD-2o-7gq" firstAttribute="top" secondItem="dhj-Go-AHS" secondAttribute="top" constant="16" id="Zhf-IQ-gpg"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QuS-6K-4Ki" secondAttribute="bottom" constant="16" id="bGf-I6-Fua"/>
                                         <constraint firstItem="bvD-2o-7gq" firstAttribute="leading" secondItem="dhj-Go-AHS" secondAttribute="leading" constant="16" id="ege-H7-Q6S"/>
                                         <constraint firstAttribute="bottom" secondItem="bvD-2o-7gq" secondAttribute="bottom" constant="16" id="kub-xv-Vft"/>
-                                        <constraint firstAttribute="trailing" secondItem="bvD-2o-7gq" secondAttribute="trailing" constant="16" id="moE-Yz-sdc"/>
+                                        <constraint firstItem="QuS-6K-4Ki" firstAttribute="top" secondItem="bvD-2o-7gq" secondAttribute="top" id="n6z-p6-ph2"/>
+                                        <constraint firstAttribute="trailing" secondItem="QuS-6K-4Ki" secondAttribute="trailing" constant="16" id="qEI-Ok-DkF"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cco-bo-EMk" userLabel="Section Header">
@@ -531,6 +540,9 @@
         </view>
     </objects>
     <designables>
+        <designable name="QuS-6K-4Ki">
+            <size key="intrinsicContentSize" width="36" height="36"/>
+        </designable>
         <designable name="twN-0J-lwG">
             <size key="intrinsicContentSize" width="-1" height="55"/>
         </designable>

@@ -16,15 +16,16 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
         let toSearchTrigger: Driver<Void>
         let toSeasonListTrigger: Driver<Void>
         let seasonSelectTrigger: Driver<Season>
-        let castSelectTrigger: Driver<Cast>
-        let entertainmentSelectTrigger: Driver<EntertainmentModelType>
+        let castSelectTrigger: Driver<PersonViewModel>
+        let entertainmentSelectTrigger: Driver<EntertainmentViewModel>
         let shareTrigger: Driver<Void>
         let retryTrigger: Driver<Void>
         let seeMoreRecommendTrigger: Driver<Void>
+        let toggleBookmarkTrigger: Driver<Void>
     }
     
     struct Output {
-        let entertainment: Driver<EntertainmentModelType>
+        let entertainment: Driver<EntertainmentViewModel>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -47,14 +48,36 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
         let retryTriggerO = input.retryTrigger
             .asObservable()
         
+        let bookmarkEntertainmentO = repositoryProvider
+            .entertainmentRepository()
+            .getAllBookmarkEntertainment()
+            .catchAndReturn([])
+        
         let entertainmentD = Observable.merge(viewTriggerO, retryTriggerO)
             .flatMapLatest {
-                self.getEntertainmentDetails(self.entertainmentModel)
+                self.getEntertainmentDetails()
                     .trackError(self.error)
                     .trackActivity(self.loading)
-                    .asDriverOnErrorJustComplete()
+                    .catch { _ in Observable.empty() }
             }
             .asDriverOnErrorJustComplete()
+
+//        let entertainmentWithBookmarkO = Observable.combineLatest(entertainmentO, bookmarkEntertainmentO) { entertainment, bookmarkEntertainment -> Ent in
+//            var newPerson = person.copy()
+//            newPerson.isBookmark = bookmarkPersons.map { $0.id }.contains(newPerson.id)
+//            return newPerson
+//        }
+//
+//        let personWithBookmarkD = personWithBookmarkO
+//            .take(1)
+//            .asDriverOnErrorJustComplete()
+        
+        input.toggleBookmarkTrigger
+            .asObservable()
+            .withLatestFrom(entertainmentD)
+            .flatMapLatest { self.toggleBookmarkEntertainment(with: $0) }
+            .subscribe()
+            .disposed(by: rx.disposeBag)
         
         input.popViewTrigger
             .drive(onNext: { [weak self] in
@@ -74,7 +97,7 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
             .withLatestFrom(entertainmentD)
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                if let seasons = item.entertainmentModelSeasons {
+                if let seasons = item.seasons {
                     self.router.trigger(.seasonsList(seasons: seasons))
                 }
             })
@@ -97,7 +120,7 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
         input.entertainmentSelectTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.entertainmentDetail(entertainmentId: item.entertainmentModelId, entertainmentType: item.entertainmentModelType))
+                self.router.trigger(.entertainmentDetail(entertainmentId: item.id, entertainmentType: item.type))
             })
             .disposed(by: rx.disposeBag)
         
@@ -118,18 +141,43 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
         return Output(entertainment: entertainmentD)
     }
     
-    private func getEntertainmentDetails() -> Single<EntertainmentModelType> {
+    private func getEntertainmentDetails() -> Single<EntertainmentViewModel> {
         switch entertainmentType {
         case .movie:
             return repositoryProvider
                 .movieRepository()
                 .getDetail(movieId: entertainmentId)
-                .map { $0 as EntertainmentModelType }
+                .map { $0.asPresentation() }
         case .tvShow:
             return repositoryProvider
                 .tvShowRepository()
                 .getDetail(tvShowId: entertainmentId)
-                .map { $0 as EntertainmentModelType }
+                .map { $0.asPresentation() }
+        }
+    }
+    
+    private func toggleBookmarkEntertainment(with item: EntertainmentViewModel) -> Observable<Void> {
+        let bookmarkEntertainment = BookmarkEntertainment(
+            id: item.id,
+            name: item.name,
+            overview: item.overview,
+            rating: item.rating,
+            releaseDate: item.releaseDate,
+            backdropPath: item.backdropURL?.path,
+            posterPath: item.posterURL?.path,
+            type: item.type,
+            createAt: Date()
+        )
+        if !item.isBookmark {
+            return repositoryProvider
+                .entertainmentRepository()
+                .saveBookmarkEntertainment(item: bookmarkEntertainment)
+                .catch { _ in Observable.empty() }
+        } else {
+            return repositoryProvider
+                .entertainmentRepository()
+                .removeBookmarkEntertainment(item: bookmarkEntertainment)
+                .catch { _ in Observable.empty() }
         }
     }
 }

@@ -11,9 +11,9 @@ import XCoordinator
 import Domain
 
 enum WishlistViewItem {
-    case movie(item: BookmarkEntertainment)
-    case tvShow(item: BookmarkEntertainment)
-    case actor(item: BookmarkPerson)
+    case movie(item: EntertainmentViewModel)
+    case tvShow(item: EntertainmentViewModel)
+    case actor(item: PersonViewModel)
 }
 
 class WishlistViewModel: BaseViewModel, ViewModelType {
@@ -88,9 +88,9 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
                 guard let self = self else { return }
                 switch item {
                 case .movie(item: let item):
-                    self.router.trigger(.entertainmentDetail(entertainmentId: item.entertainmentModelId, entertainmentType: item.entertainmentModelType))
+                    self.router.trigger(.entertainmentDetail(entertainmentId: item.id, entertainmentType: item.type))
                 case .tvShow(item: let item):
-                    self.router.trigger(.entertainmentDetail(entertainmentId: item.entertainmentModelId, entertainmentType: item.entertainmentModelType))
+                    self.router.trigger(.entertainmentDetail(entertainmentId: item.id, entertainmentType: item.type))
                 case .actor(item: let item):
                     self.router.trigger(.personDetail(personId: item.id))
                 }
@@ -106,17 +106,17 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
             return repositoryProvider
                 .entertainmentRepository()
                 .getAllBookmarkEntertainmentMovie()
-                .map { items in items.map { WishlistViewItem.movie(item: $0) } }
+                .map { items in items.map { WishlistViewItem.movie(item: $0.asPresentation()) } }
         case .shows:
             return repositoryProvider
                 .entertainmentRepository()
                 .getAllBookmarkEntertainmentTVShow()
-                .map { items in items.map { WishlistViewItem.tvShow(item: $0) } }
+                .map { items in items.map { WishlistViewItem.tvShow(item: $0.asPresentation()) } }
         case .actors:
             return repositoryProvider
                 .personRepository()
                 .getBookmarkPersons()
-                .map { items in items.map { WishlistViewItem.actor(item: $0) } }
+                .map { items in items.map { WishlistViewItem.actor(item: $0.asPresentation()) } }
         }
     }
     
@@ -140,17 +140,20 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
     private func removeWishlistItem(with item: WishlistViewItem) -> Observable<Void> {
         switch item {
         case .movie(let item):
+            let bookmarkItem = BookmarkEntertainment(id: item.id, name: item.name, overview: item.overview, rating: item.rating, releaseDate: item.releaseDate, backdropPath: item.backdropURL?.path, posterPath: item.posterURL?.path, type: item.type, createAt: Date())
             return repositoryProvider
                 .entertainmentRepository()
-                .removeBookmarkEntertainment(item: item)
+                .removeBookmarkEntertainment(item: bookmarkItem)
         case .tvShow(let item):
+            let bookmarkItem = BookmarkEntertainment(id: item.id, name: item.name, overview: item.overview, rating: item.rating, releaseDate: item.releaseDate, backdropPath: item.backdropURL?.path, posterPath: item.posterURL?.path, type: item.type, createAt: Date())
             return repositoryProvider
                 .entertainmentRepository()
-                .removeBookmarkEntertainment(item: item)
+                .removeBookmarkEntertainment(item: bookmarkItem)
         case .actor(let item):
+            let bookmarkItem = BookmarkPerson(id: item.id, name: item.name, profilePath: item.profileURL?.path, birthday: item.birthday, biography: item.biography, createAt: Date())
             return repositoryProvider
                 .personRepository()
-                .removeBookmarkPerson(item: item)
+                .removeBookmarkPerson(item: bookmarkItem)
         }
     }
 }

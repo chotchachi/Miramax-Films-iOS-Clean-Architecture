@@ -49,7 +49,7 @@ class EntertainmentHorizontalCell: UICollectionViewCell {
         ivPoster.image = nil
     }
     
-    func bind(_ item: EntertainmentModelType) {
-        ivPoster.setImage(with: item.entertainmentModelPosterURL)
+    func bind(_ item: EntertainmentViewModel) {
+        ivPoster.setImage(with: item.posterURL)
     }
 }

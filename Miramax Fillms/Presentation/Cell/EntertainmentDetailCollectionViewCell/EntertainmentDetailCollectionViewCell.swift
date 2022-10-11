@@ -148,15 +148,15 @@ class EntertainmentDetailCollectionViewCell: UICollectionViewCell {
         ivPoster.image = nil
     }
     
-    func bind(_ item: EntertainmentModelType) {
-        ivPoster.setImage(with: item.entertainmentModelPosterURL)
-        lblName.text = item.entertainmentModelName
-        lblOverview.text = item.entertainmentModelOverview
+    func bind(_ item: EntertainmentViewModel) {
+        ivPoster.setImage(with: item.posterURL)
+        lblName.text = item.name
+        lblOverview.text = item.overview
         
-        let ratingText = DataUtils.getRatingText(item.entertainmentModelRating)
+        let ratingText = DataUtils.getRatingText(item.rating)
         lblRating.setText(ratingText, before: UIImage(named: "ic_star_yellow"))
         
-        let releaseDateStr = getReleaseDateStringFormatted(item.entertainmentModelReleaseDate)
+        let releaseDateStr = getReleaseDateStringFormatted(item.releaseDate)
         lblReleaseDate.text = "• \(releaseDateStr ?? "unknown".localized)"
     }
     

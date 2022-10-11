@@ -143,7 +143,7 @@ class PersonWishlistCollectionViewCell: UICollectionViewCell, UIGestureRecognize
         addGestureRecognizer(panGesture)
     }
     
-    func bind(_ item: BookmarkPerson) {
+    func bind(_ item: PersonViewModel) {
         ivPoster.setImage(with: item.profileURL)
         lblName.text = item.name
         lblOverview.text = item.biography

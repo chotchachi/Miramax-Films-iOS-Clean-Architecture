@@ -55,7 +55,7 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
     private let refreshTriggerS = PublishRelay<Void>()
     private let loadMoreTriggerS = PublishRelay<Void>()
     private let sortOptionTriggerS = PublishRelay<SortOption>()
-    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
+    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentViewModel>()
     
     // MARK: - Lifecycle
     
@@ -81,7 +81,7 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
         )
         let output = viewModel.transform(input: input)
         
-        let entertainmentDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentModelType>> { dataSource, collectionView, indexPath, item in
+        let entertainmentDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
             switch self.presentationMode {
             case .preview:
                 let cell = collectionView.dequeueReusableCell(withClass: EntertainmentPreviewCollectionViewCell.self, for: indexPath)
@@ -200,7 +200,7 @@ extension EntertainmentListViewController {
         collectionView.delegate = self
         collectionView.register(cellWithClass: EntertainmentPreviewCollectionViewCell.self)
         collectionView.register(cellWithClass: EntertainmentDetailCollectionViewCell.self)
-        collectionView.rx.modelSelected(EntertainmentModelType.self)
+        collectionView.rx.modelSelected(EntertainmentViewModel.self)
             .bind(to: entertainmentSelectTriggerS)
             .disposed(by: rx.disposeBag)
         

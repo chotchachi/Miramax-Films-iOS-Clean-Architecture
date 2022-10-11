@@ -8,8 +8,6 @@
 import Foundation
 
 public protocol PersonModelType: Equatable, ImageConfigurable {
-    var id: Int { get }
-    var name: String { get }
     var profilePath: String? { get }
 }
 

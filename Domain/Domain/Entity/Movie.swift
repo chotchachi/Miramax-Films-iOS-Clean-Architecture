@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Movie: Equatable {
+public struct Movie: EntertainmentModelType {
     public let id: Int
     public let title: String
     public let overview: String
@@ -37,78 +37,16 @@ public struct Movie: Equatable {
     }
 }
 
-extension Movie: ImageConfigurable {
-    public var posterURL: URL? {
-        guard let posterPath = posterPath else { return nil }
-        let urlString = regularImageBaseURLString.appending(posterPath)
-        return URL(string: urlString)
-    }
-    
-    public var backdropURL: URL? {
-        guard let backdropPath = backdropPath else { return nil }
-        let urlString = backdropImageBaseURLString.appending(backdropPath)
-        return URL(string: urlString)
-    }
-}
-
-extension Movie: EntertainmentModelType {
-    public var entertainmentModelType: EntertainmentType {
-        return .movie
-    }
-    
-    public var entertainmentModelId: Int {
-        return id
-    }
-    
-    public var entertainmentModelName: String {
-        return title
-    }
-    
-    public var entertainmentModelOverview: String {
-        return overview
-    }
-    
-    public var entertainmentModelRating: Double {
-        return voteAverage
-    }
-    
-    public var entertainmentModelReleaseDate: String {
-        return releaseDate
-    }
-    
-    public var entertainmentModelBackdropURL: URL? {
-        return backdropURL
-    }
-    
-    public var entertainmentModelPosterURL: URL? {
-        return posterURL
-    }
-    
-    public var entertainmentModelRuntime: Int? {
-        return runtime
-    }
-    
-    public var entertainmentModelDirectors: [Crew]? {
+extension Movie {
+    public var directors: [Crew]? {
         return credits?.crew.filter { $0.job == "Director" }
     }
     
-    public var entertainmentModelWriters: [Crew]? {
+    public var writers: [Crew]? {
         return credits?.crew.filter { $0.job == "Screenplay" || $0.job == "Writer" }
     }
     
-    public var entertainmentModelCasts: [Cast]? {
+    public var casts: [Cast]? {
         return credits?.cast
-    }
-    
-    public var entertainmentModelSeasons: [Season]? {
-        return nil
-    }
-    
-    public var entertainmentModelRecommends: [EntertainmentModelType]? {
-        return recommendations?.results
-    }
-    
-    public var entertainmentModelIsBookmark: Bool {
-        return isBookmark
     }
 }

@@ -58,11 +58,11 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
     // MARK: - Properties
     
     private let genresDataS = BehaviorRelay<[Genre]>(value: [])
-    private let upcomingDataS = BehaviorRelay<[EntertainmentModelType]>(value: [])
-    private let previewDataS = BehaviorRelay<[EntertainmentModelType]>(value: [])
+    private let upcomingDataS = BehaviorRelay<[EntertainmentViewModel]>(value: [])
+    private let previewDataS = BehaviorRelay<[EntertainmentViewModel]>(value: [])
 
     private let previewTabTriggerS = PublishRelay<MoviePreviewTab>()
-    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
+    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentViewModel>()
     private let genreSelectTriggerS = PublishRelay<Genre>()
 
     // MARK: - Lifecycle
@@ -232,11 +232,11 @@ extension MovieViewController {
         upcomingCollectionView.collectionViewLayout = collectionViewLayout
         upcomingCollectionView.showsHorizontalScrollIndicator = false
         upcomingCollectionView.register(cellWithClass: EntertainmentHorizontalCell.self)
-        upcomingCollectionView.rx.modelSelected(EntertainmentModelType.self)
+        upcomingCollectionView.rx.modelSelected(EntertainmentViewModel.self)
             .bind(to: entertainmentSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
-        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentModelType>> { dataSource, collectionView, indexPath, item in
+        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
             cell.bind(item)
             return cell
@@ -286,11 +286,11 @@ extension MovieViewController {
         previewCollectionView.isScrollEnabled = false
         previewCollectionView.showsVerticalScrollIndicator = false
         previewCollectionView.register(cellWithClass: EntertainmentPreviewCollectionViewCell.self)
-        previewCollectionView.rx.modelSelected(EntertainmentModelType.self)
+        previewCollectionView.rx.modelSelected(EntertainmentViewModel.self)
             .bind(to: entertainmentSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
-        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentModelType>> { dataSource, collectionView, indexPath, item in
+        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentPreviewCollectionViewCell.self, for: indexPath)
             cell.bind(item)
             return cell

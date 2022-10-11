@@ -34,8 +34,8 @@ class SearchViewController: BaseViewController<SearchViewModel>, LoadingDisplaya
     
     private let searchTriggerS = PublishRelay<String?>()
     private let retryTriggerS = PublishRelay<Void>()
-    private let personSelectTriggerS = PublishRelay<Person>()
-    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
+    private let personSelectTriggerS = PublishRelay<PersonViewModel>()
+    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentViewModel>()
     private let clearAllSearchRecentTriggerS = PublishRelay<Void>()
     private let seeMoreMovieTriggerS = PublishRelay<Void>()
     private let seeMoreTVShowTriggerS = PublishRelay<Void>()
@@ -219,7 +219,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - EntertainmentHorizontalListCollectionViewCellDelegate
 
 extension SearchViewController: EntertainmentHorizontalListCollectionViewCellDelegate {
-    func entertainmentHorizontalList(onItemTapped item: EntertainmentModelType) {
+    func entertainmentHorizontalList(onItemTapped item: EntertainmentViewModel) {
         entertainmentSelectTriggerS.accept(item)
     }
     
@@ -245,7 +245,7 @@ extension SearchViewController: EntertainmentHorizontalListCollectionViewCellDel
 // MARK: - PersonHorizontalListCellDelegate
 
 extension SearchViewController: PersonHorizontalListCellDelegate {
-    func personHorizontalList(onItemTapped item: Person) {
+    func personHorizontalList(onItemTapped item: PersonViewModel) {
         personSelectTriggerS.accept(item)
     }
     

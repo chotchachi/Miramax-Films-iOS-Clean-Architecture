@@ -14,8 +14,8 @@ class SearchViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let searchTrigger: Driver<String?>
         let cancelTrigger: Driver<Void>
-        let personSelectTrigger: Driver<Person>
-        let entertainmentSelectTrigger: Driver<EntertainmentModelType>
+        let personSelectTrigger: Driver<PersonViewModel>
+        let entertainmentSelectTrigger: Driver<EntertainmentViewModel>
         let clearAllSearchRecentTrigger: Driver<Void>
         let seeMoreMovieTrigger: Driver<Void>
         let seeMoreTVShowTrigger: Driver<Void>
@@ -49,7 +49,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
                 if let query = query {
                     return self.search(query)
                 } else {
-                    return .just([.recent(items: recentItems)])
+                    return .just([.recent(items: recentItems.map { $0.asPresentation() })])
                 }
             }
             .asDriver(onErrorJustReturn: [])
@@ -82,7 +82,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
         input.entertainmentSelectTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.entertainmentDetail(entertainmentId: item.entertainmentModelId, entertainmentType: item.entertainmentModelType))
+                self.router.trigger(.entertainmentDetail(entertainmentId: item.id, entertainmentType: item.type))
             })
             .disposed(by: rx.disposeBag)
         
@@ -145,24 +145,25 @@ class SearchViewModel: BaseViewModel, ViewModelType {
         return Observable.zip(searchMovieO, searchTVShowO, searchPersonO, resultSelector: { movieResponse, tvShowResponse, personResponse in
             var searchViewDataItems: [SearchViewData] = []
             if !movieResponse.results.isEmpty {
-                searchViewDataItems.append(.movie(items: movieResponse.results, hasNextPage: movieResponse.hasNextPage))
+                searchViewDataItems.append(.movie(items: movieResponse.results.map { $0.asPresentation() }, hasNextPage: movieResponse.hasNextPage))
             }
             if !tvShowResponse.results.isEmpty {
-                searchViewDataItems.append(.tvShow(items: tvShowResponse.results, hasNextPage: tvShowResponse.hasNextPage))
+                searchViewDataItems.append(.tvShow(items: tvShowResponse.results.map { $0.asPresentation() }, hasNextPage: tvShowResponse.hasNextPage))
             }
             if !personResponse.results.isEmpty {
-                searchViewDataItems.append(.actor(items: personResponse.results, hasNextPage: personResponse.hasNextPage))
+                searchViewDataItems.append(.actor(items: personResponse.results.map { $0.asPresentation() }, hasNextPage: personResponse.hasNextPage))
             }
             return searchViewDataItems
         }).trackActivity(loading)
     }
     
-    private func saveRecentEntertainment(_ item: EntertainmentModelType) -> Observable<Void> {
+    private func saveRecentEntertainment(_ item: EntertainmentViewModel) -> Observable<Void> {
         let recentEntertainment = RecentEntertainment(
-            id: item.entertainmentModelId,
-            name: item.entertainmentModelName,
-            posterPath: item.entertainmentModelPosterURL?.path,
-            type: item.entertainmentModelType,
+            id: item.id,
+            name: item.name,
+            backdropPath: item.backdropURL?.path,
+            posterPath: item.posterURL?.path,
+            type: item.type,
             createAt: Date()
         )
         return repositoryProvider

@@ -74,14 +74,7 @@ class PersonHorizontalCell: UICollectionViewCell {
         ivProfile.image = nil
     }
     
-    func bind(_ item: Person) {
-        ivProfile.setImage(with: item.profileURL)
-        lblName.text = item.name
-        
-        layoutIfNeeded()
-    }
-    
-    func bind(_ item: Cast) {
+    func bind(_ item: PersonViewModel) {
         ivProfile.setImage(with: item.profileURL)
         lblName.text = item.name
         

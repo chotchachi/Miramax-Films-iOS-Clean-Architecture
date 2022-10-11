@@ -52,7 +52,7 @@
 		ED866E5C28E09AB60066E10B /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E5B28E09AB60066E10B /* UIImageView+Kingfisher.swift */; };
 		ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62128C6369800D60351 /* AppDelegate.swift */; };
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
-		ED9EC0B728F160D100465623 /* EntertainmentViewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0B628F160D100465623 /* EntertainmentViewResponse.swift */; };
+		ED9EC0B728F160D100465623 /* EntertainmentResponseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0B628F160D100465623 /* EntertainmentResponseViewModel.swift */; };
 		ED9EC0BE28F1B95700465623 /* BookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0BD28F1B95700465623 /* BookmarkButton.swift */; };
 		ED9EC0C628F1E62E00465623 /* PersonWishlistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0C528F1E62E00465623 /* PersonWishlistCollectionViewCell.swift */; };
 		ED9EC0C928F279AE00465623 /* WishlistPreviewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0C828F279AE00465623 /* WishlistPreviewTab.swift */; };
@@ -61,6 +61,9 @@
 		ED9EC0E028F32FE700465623 /* PMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0DD28F32FE700465623 /* PMAlertController.swift */; };
 		ED9EC0E128F32FE700465623 /* PMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0DE28F32FE700465623 /* PMAlertAction.swift */; };
 		ED9EC0E228F32FE700465623 /* PMAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED9EC0DF28F32FE700465623 /* PMAlertController.xib */; };
+		ED9EC14A28F3FBCD00465623 /* EntertainmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC14928F3FBCD00465623 /* EntertainmentViewModel.swift */; };
+		ED9EC14C28F41A2400465623 /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC14B28F41A2400465623 /* PersonViewModel.swift */; };
+		ED9EC16928F5A48400465623 /* PresentationConvertibleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC16828F5A48400465623 /* PresentationConvertibleType.swift */; };
 		EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475A28D41FFC0037751C /* PrimaryButton.swift */; };
 		EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476B28D431DC0037751C /* AppFonts.swift */; };
 		EDA4476E28D432350037751C /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476D28D432350037751C /* AppColors.swift */; };
@@ -234,7 +237,7 @@
 		ED86E62128C6369800D60351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED86E62A28C6369B00D60351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED86E62F28C6369B00D60351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED9EC0B628F160D100465623 /* EntertainmentViewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentViewResponse.swift; sourceTree = "<group>"; };
+		ED9EC0B628F160D100465623 /* EntertainmentResponseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentResponseViewModel.swift; sourceTree = "<group>"; };
 		ED9EC0BD28F1B95700465623 /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
 		ED9EC0C528F1E62E00465623 /* PersonWishlistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonWishlistCollectionViewCell.swift; sourceTree = "<group>"; };
 		ED9EC0C828F279AE00465623 /* WishlistPreviewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistPreviewTab.swift; sourceTree = "<group>"; };
@@ -243,6 +246,9 @@
 		ED9EC0DD28F32FE700465623 /* PMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMAlertController.swift; sourceTree = "<group>"; };
 		ED9EC0DE28F32FE700465623 /* PMAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMAlertAction.swift; sourceTree = "<group>"; };
 		ED9EC0DF28F32FE700465623 /* PMAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMAlertController.xib; sourceTree = "<group>"; };
+		ED9EC14928F3FBCD00465623 /* EntertainmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentViewModel.swift; sourceTree = "<group>"; };
+		ED9EC14B28F41A2400465623 /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
+		ED9EC16828F5A48400465623 /* PresentationConvertibleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationConvertibleType.swift; sourceTree = "<group>"; };
 		EDA4475A28D41FFC0037751C /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		EDA4476B28D431DC0037751C /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		EDA4476D28D432350037751C /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -519,7 +525,9 @@
 		ED9EC0B528F160AC00465623 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ED9EC0B628F160D100465623 /* EntertainmentViewResponse.swift */,
+				ED9EC0B628F160D100465623 /* EntertainmentResponseViewModel.swift */,
+				ED9EC14928F3FBCD00465623 /* EntertainmentViewModel.swift */,
+				ED9EC14B28F41A2400465623 /* PersonViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -556,6 +564,14 @@
 				ED9EC0DF28F32FE700465623 /* PMAlertController.xib */,
 			);
 			path = PMAlertController;
+			sourceTree = "<group>";
+		};
+		ED9EC16728F5A46400465623 /* Convertion */ = {
+			isa = PBXGroup;
+			children = (
+				ED9EC16828F5A48400465623 /* PresentationConvertibleType.swift */,
+			);
+			path = Convertion;
 			sourceTree = "<group>";
 		};
 		EDA4475928D41FE50037751C /* PrimaryButton */ = {
@@ -684,6 +700,7 @@
 		EDC6DB1A28CF674300164EBD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				ED9EC16728F5A46400465623 /* Convertion */,
 				EDE92B8328E5D7730083F33A /* Protocols */,
 				ED9EC0B528F160AC00465623 /* Model */,
 				EDC6DB1F28CF69CD00164EBD /* Base */,
@@ -1245,6 +1262,7 @@
 				EDE92B8828E5D97E0083F33A /* ErrorRetryView.swift in Sources */,
 				ED1F03D228EF0F650083B088 /* SettingViewModel.swift in Sources */,
 				EDE69B4728D6312F002726B0 /* SearchViewData.swift in Sources */,
+				ED9EC14A28F3FBCD00465623 /* EntertainmentViewModel.swift in Sources */,
 				ED7A096028EC84D80035E099 /* EntertainmentListViewModel.swift in Sources */,
 				ED13B6CD28F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCellDelegate.swift in Sources */,
 				EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */,
@@ -1261,6 +1279,7 @@
 				EDD5300A28DC95740078C6C5 /* SeasonsViewModel.swift in Sources */,
 				EDA4478D28D5A7640037751C /* AppToolbar.swift in Sources */,
 				EDD52F8328DB7D4D0078C6C5 /* Date+Ext.swift in Sources */,
+				ED9EC16928F5A48400465623 /* PresentationConvertibleType.swift in Sources */,
 				EDE69B5028D643A6002726B0 /* String+Ext.swift in Sources */,
 				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
 				ED9EC0E128F32FE700465623 /* PMAlertAction.swift in Sources */,
@@ -1307,6 +1326,7 @@
 				EDC502D828D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift in Sources */,
 				EDE92B7828E32C930083F33A /* EntertainmentDetailCollectionViewCell.swift in Sources */,
 				ED13B6C028F09314007B7A1D /* WishlistCoordinator.swift in Sources */,
+				ED9EC14C28F41A2400465623 /* PersonViewModel.swift in Sources */,
 				EDE92B8A28E5DD3D0083F33A /* Displayable.swift in Sources */,
 				ED1F03BD28EDD64E0083B088 /* SortPopupView.swift in Sources */,
 				EDE69B7528D7303D002726B0 /* Animation+Scale.swift in Sources */,
@@ -1339,7 +1359,7 @@
 				EDC6DB3228CF724A00164EBD /* AppCoordinator.swift in Sources */,
 				EDE69B7428D7303D002726B0 /* Animation+Fade.swift in Sources */,
 				EDE69B7928D730F3002726B0 /* CGAffineTransform+Ext.swift in Sources */,
-				ED9EC0B728F160D100465623 /* EntertainmentViewResponse.swift in Sources */,
+				ED9EC0B728F160D100465623 /* EntertainmentResponseViewModel.swift in Sources */,
 				EDB8780528D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift in Sources */,
 				ED1F03AD28EC92360083B088 /* EntertainmentsResponseRoute.swift in Sources */,
 				EDD52F5928DA1B2A0078C6C5 /* DimensionConstants.swift in Sources */,

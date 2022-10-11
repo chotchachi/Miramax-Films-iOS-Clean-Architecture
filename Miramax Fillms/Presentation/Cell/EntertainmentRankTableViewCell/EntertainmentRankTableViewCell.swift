@@ -113,14 +113,14 @@ class EntertainmentRankTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
-    func bind(_ item: EntertainmentModelType, offset: Int) {
+    func bind(_ item: EntertainmentViewModel, offset: Int) {
         lblOffset.text = "\(offset + 1)"
-        lblName.text = item.entertainmentModelName
+        lblName.text = item.name
         
-        let ratingText = DataUtils.getRatingText(item.entertainmentModelRating)
+        let ratingText = DataUtils.getRatingText(item.rating)
         lblRating.setText(ratingText, before: UIImage(named: "ic_star_yellow"))
         
-        let releaseDateStr = getReleaseDateStringFormatted(item.entertainmentModelReleaseDate)
+        let releaseDateStr = getReleaseDateStringFormatted(item.releaseDate)
         lblReleaseDate.text = "• \(releaseDateStr ?? "unknown".localized)"
     }
     

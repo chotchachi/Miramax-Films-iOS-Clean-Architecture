@@ -18,7 +18,8 @@ class EntertainmentPreviewCollectionViewCell: UICollectionViewCell {
     private var lblName: UILabel!
     private var lblRating: UILabel!
     private var lblReleaseDate: UILabel!
-    
+    private var btnBookmark: BookmarkButton!
+
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
@@ -133,6 +134,17 @@ class EntertainmentPreviewCollectionViewCell: UICollectionViewCell {
             make.centerY.equalTo(lblRating.snp.centerY)
             make.leading.equalTo(lblRating.snp.trailing).offset(2.0)
         }
+        
+        // Button bookmark
+        
+        btnBookmark = BookmarkButton()
+        btnBookmark.translatesAutoresizingMaskIntoConstraints = false
+        btnBookmark.unbookmarkBlackTint = true
+        contentView.addSubview(btnBookmark)
+        btnBookmark.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.trailing.equalToSuperview().offset(4.5)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -146,14 +158,14 @@ class EntertainmentPreviewCollectionViewCell: UICollectionViewCell {
         ivPoster.image = nil
     }
     
-    func bind(_ item: EntertainmentModelType) {
-        ivPoster.setImage(with: item.entertainmentModelPosterURL)
-        lblName.text = item.entertainmentModelName
+    func bind(_ item: EntertainmentViewModel) {
+        ivPoster.setImage(with: item.posterURL)
+        lblName.text = item.name
         
-        let ratingText = DataUtils.getRatingText(item.entertainmentModelRating)
+        let ratingText = DataUtils.getRatingText(item.rating)
         lblRating.setText(ratingText, before: UIImage(named: "ic_star_yellow"))
         
-        let releaseDateStr = getReleaseDateStringFormatted(item.entertainmentModelReleaseDate)
+        let releaseDateStr = getReleaseDateStringFormatted(item.releaseDate)
         lblReleaseDate.text = "• \(releaseDateStr ?? "unknown".localized)"
     }
     

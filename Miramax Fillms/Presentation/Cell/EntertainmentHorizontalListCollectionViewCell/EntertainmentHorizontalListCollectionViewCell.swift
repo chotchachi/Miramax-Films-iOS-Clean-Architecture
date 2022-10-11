@@ -23,7 +23,7 @@ class EntertainmentHorizontalListCollectionViewCell: UICollectionViewCell {
     
     public weak var delegate: EntertainmentHorizontalListCollectionViewCellDelegate?
     
-    private var items: [EntertainmentModelType] = []
+    private var items: [EntertainmentViewModel] = []
     private var indexPath: IndexPath?
 
     override init(frame: CGRect) {
@@ -95,7 +95,7 @@ class EntertainmentHorizontalListCollectionViewCell: UICollectionViewCell {
     }
     
     func bind(
-        _ items: [EntertainmentModelType],
+        _ items: [EntertainmentViewModel],
         indexPath: IndexPath,
         headerTitle: String,
         headerActionButtonTitle: String,

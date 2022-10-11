@@ -25,7 +25,8 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     /// Section title
     @IBOutlet weak var sectionTitleView: UIView!
     @IBOutlet weak var lblTitle: UILabel!
-    
+    @IBOutlet weak var btnBookmark: BookmarkButton!
+
     /// Section header
     @IBOutlet weak var sectionHeaderView: UIView!
     @IBOutlet weak var ivPoster: UIImageView!
@@ -72,12 +73,12 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     // MARK: - Properties
     
     private let entertainentSeasonsS = BehaviorRelay<[Season]>(value: [])
-    private let entertainentCastsS = BehaviorRelay<[Cast]>(value: [])
-    private let entertainentRecommendationsS = BehaviorRelay<[EntertainmentModelType]>(value: [])
+    private let entertainentCastsS = BehaviorRelay<[PersonViewModel]>(value: [])
+    private let entertainentRecommendationsS = BehaviorRelay<[EntertainmentViewModel]>(value: [])
 
     private let seasonSelectTriggerS = PublishRelay<Season>()
-    private let castSelectTriggerS = PublishRelay<Cast>()
-    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
+    private let castSelectTriggerS = PublishRelay<PersonViewModel>()
+    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentViewModel>()
     
     private var lblOverviewShowMore = false
     
@@ -109,7 +110,8 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
             entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
             shareTrigger: btnShare.rx.tap.asDriver(),
             retryTrigger: errorRetryView.rx.retryTapped.asDriver(),
-            seeMoreRecommendTrigger: recommendSectionHeaderView.rx.actionButtonTap.asDriver()
+            seeMoreRecommendTrigger: recommendSectionHeaderView.rx.actionButtonTap.asDriver(),
+            toggleBookmarkTrigger: btnBookmark.rx.tap.asDriver()
         )
         let output = viewModel.transform(input: input)
         
@@ -249,11 +251,11 @@ extension EntertainmentDetailsViewController {
         actorsCollectionView.collectionViewLayout = collectionViewLayout
         actorsCollectionView.register(cellWithClass: PersonHorizontalCell.self)
         actorsCollectionView.showsHorizontalScrollIndicator = false
-        actorsCollectionView.rx.modelSelected(Cast.self)
+        actorsCollectionView.rx.modelSelected(PersonViewModel.self)
             .bind(to: castSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
-        let actorDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Cast>> { dataSource, collectionView, indexPath, item in
+        let actorDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, PersonViewModel>> { dataSource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalCell.self, for: indexPath)
             cell.bind(item)
             return cell
@@ -291,11 +293,11 @@ extension EntertainmentDetailsViewController {
         recommendCollectionView.collectionViewLayout = collectionViewLayout
         recommendCollectionView.register(cellWithClass: EntertainmentHorizontalCell.self)
         recommendCollectionView.showsHorizontalScrollIndicator = false
-        recommendCollectionView.rx.modelSelected(EntertainmentModelType.self)
+        recommendCollectionView.rx.modelSelected(EntertainmentViewModel.self)
             .bind(to: entertainmentSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
-        let recommendDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentModelType>> { dataSource, collectionView, indexPath, item in
+        let recommendDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
             cell.bind(item)
             return cell
@@ -312,32 +314,35 @@ extension EntertainmentDetailsViewController {
         disableShare()
     }
     
-    private func bindData(_ item: EntertainmentModelType) {
+    private func bindData(_ item: EntertainmentViewModel) {
         // Entertainment title
-        lblTitle.text = item.entertainmentModelName
+        lblTitle.text = item.name
+        
+        // Entertainment is bookmark
+        btnBookmark.isBookmark = item.isBookmark
 
         // Entertainment poster
-        ivPoster.setImage(with: item.entertainmentModelPosterURL)
+        ivPoster.setImage(with: item.posterURL)
         
         // Entertainment rating
         lblRatingText.text = "rating".localized
-        lblRating.text = DataUtils.getRatingText(item.entertainmentModelRating)
+        lblRating.text = DataUtils.getRatingText(item.rating)
         
         // Entertainment release date
         lblReleaseDateText.text = "year".localized
-        if let releaseYear = DataUtils.getReleaseYear(item.entertainmentModelReleaseDate) {
+        if let releaseYear = DataUtils.getReleaseYear(item.releaseDate) {
             lblReleaseDate.text = "\(releaseYear)"
         } else {
             lblReleaseDate.text = "unknown".localized
         }
         
         // Entertainment duration
-        if item.entertainmentModelType == .movie {
+        if item.type == .movie {
             lblDurationText.text = "duration".localized
-            lblDuration.text = DataUtils.getDurationText(item.entertainmentModelRuntime)
+            lblDuration.text = DataUtils.getDurationText(item.runtime)
         } else {
             lblDurationText.text = "episodes".localized
-            if let numsOfEpisodes = item.entertainmentModelRuntime {
+            if let numsOfEpisodes = item.runtime {
                 lblDuration.text = "\(numsOfEpisodes)"
             } else {
                 lblDuration.text = "unknown".localized
@@ -345,21 +350,21 @@ extension EntertainmentDetailsViewController {
         }
 
         // Entertainment overview
-        lblOverview.text = item.entertainmentModelOverview
-        sectionOverviewView.isHidden = item.entertainmentModelOverview.isEmpty /// Hide section overview if overview empty
+        lblOverview.text = item.overview
+        sectionOverviewView.isHidden = item.overview.isEmpty /// Hide section overview if overview empty
         
         // Entertainment seasons
-        sectionSeasonsView.isHidden = item.entertainmentModelType == .movie
-        entertainentSeasonsS.accept(item.entertainmentModelSeasons ?? [])
+        sectionSeasonsView.isHidden = item.type == .movie
+        entertainentSeasonsS.accept(item.seasons ?? [])
 
         // Entertainment credits
-        entertainentCastsS.accept(item.entertainmentModelCasts ?? [])
+        entertainentCastsS.accept(item.casts ?? [])
         
-        let directorsString = item.entertainmentModelDirectors?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
+        let directorsString = item.directors?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
         lblDirector.text = "Director: \(directorsString)"
         lblDirector.highlight(text: directorsString, color: AppColors.textColorSecondary)
         
-        let writersString = item.entertainmentModelWriters?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
+        let writersString = item.writers?.map { $0.name }.joined(separator: ", ") ?? "unknown".localized
         lblWriters.text = "Writers: \(writersString)"
         lblWriters.highlight(text: writersString, color: AppColors.textColorSecondary)
                 
@@ -367,7 +372,7 @@ extension EntertainmentDetailsViewController {
         
         
         // Entertainment recommend
-        let recommendations = item.entertainmentModelRecommends ?? []
+        let recommendations = item.recommend?.results ?? []
         entertainentRecommendationsS.accept(recommendations)
         sectionRecommendView.isHidden = recommendations.isEmpty /// Hide section recommend if result empty
     }

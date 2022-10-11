@@ -12,8 +12,9 @@ public final class RMBookmarkEntertainment: Object {
     @Persisted(primaryKey: true) var _id: Int = 0
     @Persisted var name: String = ""
     @Persisted var overview: String = ""
-    @Persisted var voteAverage: Double = 0.0
+    @Persisted var rating: Double = 0.0
     @Persisted var releaseDate: String = ""
+    @Persisted var backdropPath: String?
     @Persisted var posterPath: String?
     @Persisted var type: RMEntertainmentType = .movie
     @Persisted var createAt: Date = Date()
@@ -27,7 +28,7 @@ extension RMBookmarkEntertainment: RMOperator {
 
 extension RMBookmarkEntertainment: DomainConvertibleType {
     public func asDomain() -> BookmarkEntertainment {
-        return BookmarkEntertainment(id: _id, name: name, overview: overview, voteAverage: voteAverage, releaseDate: releaseDate, posterPath: posterPath, type: type.asDomain(), createAt: createAt)
+        return BookmarkEntertainment(id: _id, name: name, overview: overview, rating: rating, releaseDate: releaseDate, backdropPath: backdropPath, posterPath: posterPath, type: type.asDomain(), createAt: createAt)
     }
 }
 
@@ -37,8 +38,9 @@ extension BookmarkEntertainment: RealmRepresentable {
             object._id = id
             object.name = name
             object.overview = overview
-            object.voteAverage = voteAverage
+            object.rating = rating
             object.releaseDate = releaseDate
+            object.backdropPath = backdropPath
             object.posterPath = posterPath
             object.type = type.asRealm()
             object.createAt = createAt

@@ -17,7 +17,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
         let retryGenreTrigger: Driver<Void>
         let retryUpcomingTrigger: Driver<Void>
         let retryPreviewTrigger: Driver<Void>
-        let selectionEntertainmentTrigger: Driver<EntertainmentModelType>
+        let selectionEntertainmentTrigger: Driver<EntertainmentViewModel>
         let selectionGenreTrigger: Driver<Genre>
         let previewTabTrigger: Driver<MoviePreviewTab>
         let seeMoreUpcomingTrigger: Driver<Void>
@@ -26,8 +26,8 @@ class MovieViewModel: BaseViewModel, ViewModelType {
     
     struct Output {
         let genresViewState: Driver<ViewState<Genre>>
-        let upcomingViewState: Driver<ViewState<Movie>>
-        let previewViewState: Driver<ViewState<Movie>>
+        let upcomingViewState: Driver<ViewState<EntertainmentViewModel>>
+        let previewViewState: Driver<ViewState<EntertainmentViewModel>>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -64,7 +64,8 @@ class MovieViewModel: BaseViewModel, ViewModelType {
                 self.repositoryProvider
                     .movieRepository()
                     .getUpComing(genreId: nil, page: nil)
-                    .map { ViewState.success($0.results) }
+                    .map { response in response.results.map { $0.asPresentation() } }
+                    .map { ViewState.success($0) }
                     .catchAndReturn(.error)
             }
             .asDriverOnErrorJustComplete()
@@ -80,7 +81,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
         let previewViewStateD = Observable.merge(previewTabTriggerO, retryPreviewWithSelectedTabO)
             .flatMapLatest { tab in
                 self.getPreviewData(with: tab)
-                    .map { ViewState.success($0.results) }
+                    .map { ViewState.success($0) }
                     .catchAndReturn(.error)
             }
             .asDriverOnErrorJustComplete()
@@ -95,7 +96,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
         input.selectionEntertainmentTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.entertainmentDetail(entertainmentId: item.entertainmentModelId, entertainmentType: item.entertainmentModelType))
+                self.router.trigger(.entertainmentDetail(entertainmentId: item.id, entertainmentType: item.type))
             })
             .disposed(by: rx.disposeBag)
         
@@ -133,23 +134,23 @@ class MovieViewModel: BaseViewModel, ViewModelType {
                       previewViewState: previewViewStateD)
     }
     
-    private func getPreviewData(with tab: MoviePreviewTab) -> Observable<BaseResponse<Movie>> {
+    private func getPreviewData(with tab: MoviePreviewTab) -> Single<[EntertainmentViewModel]> {
         switch tab {
         case .topRating:
             return repositoryProvider
                 .movieRepository()
                 .getTopRated(genreId: nil, page: nil)
-                .asObservable()
+                .map { response in response.results.map { $0.asPresentation() } }
         case .news:
             return repositoryProvider
                 .movieRepository()
                 .getNowPlaying(genreId: nil, page: nil)
-                .asObservable()
+                .map { response in response.results.map { $0.asPresentation() } }
         case .trending:
             return repositoryProvider
                 .movieRepository()
                 .getPopular(genreId: nil, page: nil)
-                .asObservable()
+                .map { response in response.results.map { $0.asPresentation() } }
         }
     }
 }

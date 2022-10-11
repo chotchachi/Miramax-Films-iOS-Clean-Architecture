@@ -68,14 +68,14 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, TabBarSelectabl
     // MARK: - Properties
     
     private let genresDataS = BehaviorRelay<[Genre]>(value: [])
-    private let upcomingDataS = BehaviorRelay<[EntertainmentModelType]>(value: [])
-    private let previewDataS = BehaviorRelay<[EntertainmentModelType]>(value: [])
+    private let upcomingDataS = BehaviorRelay<[EntertainmentViewModel]>(value: [])
+    private let previewDataS = BehaviorRelay<[EntertainmentViewModel]>(value: [])
 
     private let previewTabTriggerS = PublishRelay<TVShowPreviewTab>()
-    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
+    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentViewModel>()
     private let genreSelectTriggerS = PublishRelay<Genre>()
     
-    private var bannerEntertertainmentItem: EntertainmentModelType?
+    private var bannerEntertertainmentItem: EntertainmentViewModel?
     
     // MARK: - Lifecycle
 
@@ -135,10 +135,10 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, TabBarSelectabl
                     self.bannerRetryButton.isHidden = true
                     if let firstItem = items.first {
                         self.bannerEntertertainmentItem = firstItem
-                        self.bannerPosterImageView.setImage(with: firstItem.entertainmentModelPosterURL)
-                        self.bannerBackdropImageView.setImage(with: firstItem.entertainmentModelBackdropURL)
-                        self.bannerNameLabel.text = firstItem.entertainmentModelName
-                        self.bannerDescriptionLabel.text = firstItem.entertainmentModelOverview
+                        self.bannerPosterImageView.setImage(with: firstItem.posterURL)
+                        self.bannerBackdropImageView.setImage(with: firstItem.backdropURL)
+                        self.bannerNameLabel.text = firstItem.name
+                        self.bannerDescriptionLabel.text = firstItem.overview
                     }
                 case .error:
                     self.bannerLoadingIndicator.stopAnimating()
@@ -301,11 +301,11 @@ extension TVShowViewController {
 
         upcomingTableView.separatorStyle = .none
         upcomingTableView.register(cellWithClass: EntertainmentRankTableViewCell.self)
-        upcomingTableView.rx.modelSelected(EntertainmentModelType.self)
+        upcomingTableView.rx.modelSelected(EntertainmentViewModel.self)
             .bind(to: entertainmentSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, EntertainmentModelType>> { datasource, tableView, indexPath, item in
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { datasource, tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withClass: EntertainmentRankTableViewCell.self, for: indexPath)
             cell.bind(item, offset: indexPath.row)
             cell.onPlayButtonTapped = { [weak self] in
@@ -355,11 +355,11 @@ extension TVShowViewController {
         previewCollectionView.isScrollEnabled = false
         previewCollectionView.showsVerticalScrollIndicator = false
         previewCollectionView.register(cellWithClass: EntertainmentPreviewCollectionViewCell.self)
-        previewCollectionView.rx.modelSelected(EntertainmentModelType.self)
+        previewCollectionView.rx.modelSelected(EntertainmentViewModel.self)
             .bind(to: entertainmentSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
-        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentModelType>> { dataSource, collectionView, indexPath, item in
+        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentPreviewCollectionViewCell.self, for: indexPath)
             cell.bind(item)
             return cell

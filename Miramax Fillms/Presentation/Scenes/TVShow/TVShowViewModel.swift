@@ -18,7 +18,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         let retryBannerTrigger: Driver<Void>
         let retryUpcomingTrigger: Driver<Void>
         let retryPreviewTrigger: Driver<Void>
-        let selectionEntertainmentTrigger: Driver<EntertainmentModelType>
+        let selectionEntertainmentTrigger: Driver<EntertainmentViewModel>
         let selectionGenreTrigger: Driver<Genre>
         let previewTabTrigger: Driver<TVShowPreviewTab>
         let seeMoreUpcomingTrigger: Driver<Void>
@@ -27,9 +27,9 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
     
     struct Output {
         let genresViewState: Driver<ViewState<Genre>>
-        let bannerViewState: Driver<ViewState<TVShow>>
-        let upcomingViewState: Driver<ViewState<TVShow>>
-        let previewViewState: Driver<ViewState<TVShow>>
+        let bannerViewState: Driver<ViewState<EntertainmentViewModel>>
+        let upcomingViewState: Driver<ViewState<EntertainmentViewModel>>
+        let previewViewState: Driver<ViewState<EntertainmentViewModel>>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -69,7 +69,8 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                 self.repositoryProvider
                     .tvShowRepository()
                     .getAiringToday(genreId: nil, page: nil)
-                    .map { ViewState.success($0.results) }
+                    .map { response in response.results.map { $0.asPresentation() } }
+                    .map { ViewState.success($0) }
                     .catchAndReturn(.error)
             }
             .asDriverOnErrorJustComplete()
@@ -79,7 +80,8 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                 self.repositoryProvider
                     .tvShowRepository()
                     .getOnTheAir(genreId: nil, page: nil)
-                    .map { ViewState.success($0.results) }
+                    .map { response in response.results.map { $0.asPresentation() } }
+                    .map { ViewState.success($0) }
                     .catchAndReturn(.error)
             }
             .asDriverOnErrorJustComplete()
@@ -95,7 +97,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         let previewViewStateD = Observable.merge(previewTabTriggerO, retryPreviewWithSelectedTabO)
             .flatMapLatest { tab in
                 self.getPreviewData(with: tab)
-                    .map { ViewState.success($0.results) }
+                    .map { ViewState.success($0) }
                     .catchAndReturn(.error)
             }
             .asDriverOnErrorJustComplete()
@@ -110,7 +112,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         input.selectionEntertainmentTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.entertainmentDetail(entertainmentId: item.entertainmentModelId, entertainmentType: item.entertainmentModelType))
+                self.router.trigger(.entertainmentDetail(entertainmentId: item.id, entertainmentType: item.type))
             })
             .disposed(by: rx.disposeBag)
         
@@ -149,23 +151,23 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
                       previewViewState: previewViewStateD)
     }
     
-    private func getPreviewData(with tab: TVShowPreviewTab) -> Observable<BaseResponse<TVShow>> {
+    private func getPreviewData(with tab: TVShowPreviewTab) -> Single<[EntertainmentViewModel]> {
         switch tab {
         case .topRating:
             return repositoryProvider
                 .tvShowRepository()
                 .getTopRated(genreId: nil, page: nil)
-                .asObservable()
+                .map { response in response.results.map { $0.asPresentation() } }
         case .news:
             return repositoryProvider
                 .tvShowRepository()
                 .getOnTheAir(genreId: nil, page: nil)
-                .asObservable()
+                .map { response in response.results.map { $0.asPresentation() } }
         case .trending:
             return repositoryProvider
                 .tvShowRepository()
                 .getPopular(genreId: nil, page: nil)
-                .asObservable()
+                .map { response in response.results.map { $0.asPresentation() } }
         }
     }
 }

@@ -17,7 +17,7 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
         let toSearchTrigger: Driver<Void>
         let shareTrigger: Driver<Void>
         let toBiographyTrigger: Driver<Void>
-        let entertainmentSelectTrigger: Driver<EntertainmentModelType>
+        let entertainmentSelectTrigger: Driver<EntertainmentViewModel>
         let toggleBookmarkTrigger: Driver<Void>
     }
     
@@ -107,7 +107,7 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
         input.entertainmentSelectTrigger
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.entertainmentDetail(entertainmentId: item.entertainmentModelId, entertainmentType: item.entertainmentModelType))
+                self.router.trigger(.entertainmentDetail(entertainmentId: item.id, entertainmentType: item.type))
             })
             .disposed(by: rx.disposeBag)
         

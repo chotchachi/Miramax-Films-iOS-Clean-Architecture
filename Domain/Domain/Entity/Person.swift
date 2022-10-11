@@ -36,9 +36,3 @@ public struct Person: PersonModelType {
         return Person(id: id, name: name, profilePath: profilePath, birthday: birthday, biography: biography, images: images, departments: departments, castMovies: castMovies, castTVShows: castTVShows)
     }
 }
-
-extension Person {
-    public var castEntertainments: [EntertainmentModelType] {
-        return (castMovies ?? []) + (castTVShows ?? [])
-    }
-}

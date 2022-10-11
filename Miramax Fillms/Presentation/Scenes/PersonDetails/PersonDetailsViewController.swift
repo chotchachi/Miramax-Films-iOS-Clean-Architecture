@@ -53,9 +53,9 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, L
     
     // MARK: - Properties
     
-    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentModelType>()
+    private let entertainmentSelectTriggerS = PublishRelay<EntertainmentViewModel>()
 
-    private let entertainmentDataS = BehaviorRelay<[EntertainmentModelType]>(value: [])
+    private let entertainmentDataS = BehaviorRelay<[EntertainmentViewModel]>(value: [])
     
     override func configView() {
         super.configView()
@@ -149,11 +149,11 @@ extension PersonDetailsViewController {
         moviesCollectionView.register(cellWithClass: EntertainmentHorizontalCell.self)
         moviesCollectionView.delegate = self
         moviesCollectionView.showsHorizontalScrollIndicator = false
-        moviesCollectionView.rx.modelSelected(EntertainmentModelType.self)
+        moviesCollectionView.rx.modelSelected(EntertainmentViewModel.self)
             .bind(to: entertainmentSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
-        let movieDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentModelType>> { dataSource, collectionView, indexPath, item in
+        let movieDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
             cell.bind(item)
             return cell
@@ -202,7 +202,7 @@ extension PersonDetailsViewController {
         lblBirthday.highlight(text: birthDayString, font: AppFonts.caption1)
         
         // Person movies
-        entertainmentDataS.accept(person.castEntertainments)
+        entertainmentDataS.accept(getCombineCastEntertainment(from: person))
     }
     
     private func getBirdthdayStringFormatted(_ strDate: String?) -> String? {
@@ -214,6 +214,12 @@ extension PersonDetailsViewController {
         } else {
             return nil
         }
+    }
+    
+    private func getCombineCastEntertainment(from person: Person) -> [EntertainmentViewModel] {
+        let castMovies = person.castMovies?.map { $0.asPresentation() } ?? []
+        let castTvShows = person.castTVShows?.map { $0.asPresentation() } ?? []
+        return castMovies + castTvShows
     }
 }
 
