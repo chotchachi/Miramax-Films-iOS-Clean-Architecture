@@ -10,6 +10,7 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import SwifterSwift
+import SnapKit
 import Domain
 
 fileprivate let kSeasonsMaxItems: Int = 3
@@ -36,7 +37,9 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     @IBOutlet weak var lblDurationText: UILabel!
     @IBOutlet weak var lblReleaseDate: UILabel!
     @IBOutlet weak var lblReleaseDateText: UILabel!
-
+    @IBOutlet weak var posterGradientView: GradientView!
+    @IBOutlet weak var genresStackView: UIStackView!
+    
     /// Section overview
     @IBOutlet weak var sectionOverviewView: UIView!
     @IBOutlet weak var overviewSectionHeaderView: SectionHeaderView!
@@ -178,6 +181,11 @@ extension EntertainmentDetailsViewController {
         
         lblReleaseDateText.textColor = AppColors.textColorSecondary
         lblReleaseDateText.font = AppFonts.caption2
+        
+        posterGradientView.startColor = AppColors.colorAccent.withAlphaComponent(0.0)
+        posterGradientView.endColor = AppColors.colorAccent
+        
+        genresStackView.spacing = 4.0
     }
     
     private func configureOverviewSection() {
@@ -324,6 +332,26 @@ extension EntertainmentDetailsViewController {
         // Entertainment poster
         ivPoster.setImage(with: item.posterURL)
         
+        // Entertainment genres
+        let genreButtons = item.genres?.prefix(2).map { createGenreButton(with: $0.name) } ?? []
+        genresStackView.removeArrangedSubviews()
+        genresStackView.addArrangedSubviews(genreButtons)
+        genreButtons.forEach { view in
+            view.snp.makeConstraints { make in
+                make.width.equalTo(57.0)
+                make.height.equalToSuperview()
+            }
+        }
+        if let genres = item.genres, genres.count > 2 {
+            let genreMoreButton = createGenreButton(with: "\(genres.count - 2)+")
+            genreMoreButton.addTarget(self, action: #selector(genreMoreButtonTapped(_:)), for: .touchUpInside)
+            genresStackView.addArrangedSubview(genreMoreButton)
+            genreMoreButton.snp.makeConstraints { make in
+                make.width.equalTo(32.0)
+                make.height.equalToSuperview()
+            }
+        }
+
         // Entertainment rating
         lblRatingText.text = "rating".localized
         lblRating.text = DataUtils.getRatingText(item.rating)
@@ -375,5 +403,20 @@ extension EntertainmentDetailsViewController {
         let recommendations = item.recommend?.results ?? []
         entertainentRecommendationsS.accept(recommendations)
         sectionRecommendView.isHidden = recommendations.isEmpty /// Hide section recommend if result empty
+    }
+    
+    private func createGenreButton(with text: String) -> UIButton {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = AppColors.colorYellow
+        button.cornerRadius = 8.0
+        button.setTitle(text, for: .normal)
+        button.setTitleColor(AppColors.colorPrimary, for: .normal)
+        button.titleLabel?.font = AppFonts.caption1
+        return button
+    }
+    
+    @objc private func genreMoreButtonTapped(_ sender: UIButton) {
+        
     }
 }
