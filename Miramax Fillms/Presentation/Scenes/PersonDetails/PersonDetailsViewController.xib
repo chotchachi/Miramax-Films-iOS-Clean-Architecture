@@ -17,6 +17,10 @@
                 <outlet property="departmentTagListView" destination="W0q-nd-sbB" id="Bkg-ri-zCm"/>
                 <outlet property="gallerySectionHeaderView" destination="cgm-b8-Y4q" id="e0s-m5-FoE"/>
                 <outlet property="ivBackdrop" destination="CAu-Vs-JgV" id="GSW-N6-17O"/>
+                <outlet property="ivGalleryLargeThumb" destination="K4L-RY-rmV" id="E8A-K8-Lho"/>
+                <outlet property="ivGallerySmallThumb1" destination="QSl-97-KWe" id="7Mb-ff-wtW"/>
+                <outlet property="ivGallerySmallThumb2" destination="RAw-Qr-2vc" id="cSE-Ts-CM3"/>
+                <outlet property="ivGallerySmallThumb3" destination="WVN-jP-YWP" id="hsV-D6-X0V"/>
                 <outlet property="ivProfile" destination="qyG-Cx-yo8" id="Bta-nZ-4wP"/>
                 <outlet property="lblBiography" destination="E0l-jh-TsL" id="iQn-xm-gb3"/>
                 <outlet property="lblBirthday" destination="fL0-cd-LgF" id="JFh-t8-P9r"/>
@@ -45,7 +49,7 @@
                     <rect key="frame" x="0.0" y="102" width="390" height="708"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jWF-eo-8QQ">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="742"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="961.33333333333337"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tmo-aQ-lAD" userLabel="Section Title">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="80.666666666666671"/>
@@ -172,27 +176,8 @@
                                         <constraint firstAttribute="height" constant="8" id="lpo-MW-Qo5"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOc-ff-1dM" userLabel="Section Gallery">
-                                    <rect key="frame" x="0.0" y="419" width="390" height="100"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgm-b8-Y4q" userLabel="Gallery Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="32" width="390" height="24"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="24" id="74F-Dc-diT"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="cgm-b8-Y4q" secondAttribute="trailing" id="GTD-Ac-qpJ"/>
-                                        <constraint firstAttribute="height" constant="100" id="ra2-au-lF5"/>
-                                        <constraint firstItem="cgm-b8-Y4q" firstAttribute="leading" secondItem="FOc-ff-1dM" secondAttribute="leading" id="tc2-Yr-3IF"/>
-                                        <constraint firstItem="cgm-b8-Y4q" firstAttribute="top" secondItem="FOc-ff-1dM" secondAttribute="top" constant="32" id="uXZ-EJ-2NG"/>
-                                    </constraints>
-                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOt-27-uIZ" userLabel="Section Movies">
-                                    <rect key="frame" x="0.0" y="519" width="390" height="223"/>
+                                    <rect key="frame" x="0.0" y="419" width="390" height="207"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddU-eE-LLR" userLabel="Movies Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="16" width="390" height="24"/>
@@ -220,10 +205,78 @@
                                         <constraint firstItem="D1P-rj-ro0" firstAttribute="leading" secondItem="YOt-27-uIZ" secondAttribute="leading" id="9Ct-iL-4NL"/>
                                         <constraint firstItem="D1P-rj-ro0" firstAttribute="top" secondItem="ddU-eE-LLR" secondAttribute="bottom" constant="12" id="E8Q-ld-95Z"/>
                                         <constraint firstAttribute="trailing" secondItem="D1P-rj-ro0" secondAttribute="trailing" id="UqP-js-zsn"/>
-                                        <constraint firstAttribute="bottom" secondItem="D1P-rj-ro0" secondAttribute="bottom" constant="16" id="mJy-mg-fUR"/>
+                                        <constraint firstAttribute="bottom" secondItem="D1P-rj-ro0" secondAttribute="bottom" id="mJy-mg-fUR"/>
                                         <constraint firstItem="ddU-eE-LLR" firstAttribute="leading" secondItem="YOt-27-uIZ" secondAttribute="leading" id="r0s-Fy-dac"/>
                                         <constraint firstAttribute="trailing" secondItem="ddU-eE-LLR" secondAttribute="trailing" id="sfa-Ek-Obc"/>
                                         <constraint firstItem="ddU-eE-LLR" firstAttribute="top" secondItem="YOt-27-uIZ" secondAttribute="top" constant="16" id="tuo-gc-Unc"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOc-ff-1dM" userLabel="Section Gallery">
+                                    <rect key="frame" x="0.0" y="626" width="390" height="335.33333333333326"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgm-b8-Y4q" userLabel="Gallery Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="32" width="390" height="24"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="74F-Dc-diT"/>
+                                            </constraints>
+                                        </view>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K4L-RY-rmV">
+                                            <rect key="frame" x="16" y="68" width="358" height="169"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="K4L-RY-rmV" secondAttribute="height" multiplier="343:162" id="kys-zs-5A4"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QfY-oh-GVi">
+                                            <rect key="frame" x="16" y="242.00000000000003" width="358" height="77.333333333333343"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QSl-97-KWe">
+                                                    <rect key="frame" x="0.0" y="0.0" width="116" height="77.333333333333329"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RAw-Qr-2vc">
+                                                    <rect key="frame" x="121" y="0.0" width="116" height="77.333333333333329"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WVN-jP-YWP">
+                                                    <rect key="frame" x="242" y="0.0" width="116" height="77.333333333333329"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="QfY-oh-GVi" secondAttribute="height" multiplier="343:74" id="PNs-GP-ydx"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="QfY-oh-GVi" secondAttribute="bottom" constant="16" id="86v-NZ-Adg"/>
+                                        <constraint firstAttribute="trailing" secondItem="K4L-RY-rmV" secondAttribute="trailing" constant="16" id="BCG-Tw-0Eq"/>
+                                        <constraint firstItem="K4L-RY-rmV" firstAttribute="leading" secondItem="FOc-ff-1dM" secondAttribute="leading" constant="16" id="CFR-iG-TGf"/>
+                                        <constraint firstAttribute="trailing" secondItem="cgm-b8-Y4q" secondAttribute="trailing" id="GTD-Ac-qpJ"/>
+                                        <constraint firstItem="QfY-oh-GVi" firstAttribute="top" secondItem="K4L-RY-rmV" secondAttribute="bottom" constant="5" id="K7J-P6-6Q4"/>
+                                        <constraint firstItem="QfY-oh-GVi" firstAttribute="leading" secondItem="FOc-ff-1dM" secondAttribute="leading" constant="16" id="cYB-tg-Ee0"/>
+                                        <constraint firstItem="K4L-RY-rmV" firstAttribute="top" secondItem="cgm-b8-Y4q" secondAttribute="bottom" constant="12" id="g95-YS-pXN"/>
+                                        <constraint firstAttribute="trailing" secondItem="QfY-oh-GVi" secondAttribute="trailing" constant="16" id="qJn-bJ-TnF"/>
+                                        <constraint firstItem="cgm-b8-Y4q" firstAttribute="leading" secondItem="FOc-ff-1dM" secondAttribute="leading" id="tc2-Yr-3IF"/>
+                                        <constraint firstItem="cgm-b8-Y4q" firstAttribute="top" secondItem="FOc-ff-1dM" secondAttribute="top" constant="32" id="uXZ-EJ-2NG"/>
                                     </constraints>
                                 </view>
                             </subviews>

@@ -15,6 +15,7 @@ enum PersonDetailsRoute: Route {
     case share
     case biography(person: Person)
     case entertainmentDetail(entertainmentId: Int, entertainmentType: EntertainmentType)
+    case viewImage(image: UIImage, sourceView: UIView)
 }
 
 class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
@@ -70,6 +71,11 @@ class PersonDetailsCoordinator: NavigationCoordinator<PersonDetailsRoute> {
         case .entertainmentDetail(entertainmentId: let entertainmentId, entertainmentType: let entertainmentType):
             addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainmentId: entertainmentId, entertainmentType: entertainmentType))
             return .none()
+        case .viewImage(image: let image, sourceView: let sourceView):
+            let imageInfo = GSImageInfo(image: image, imageMode: .aspectFit)
+            let transitionInfo = GSTransitionInfo(fromView: sourceView)
+            let imageViewer = ImageViewerController(imageInfo: imageInfo, transitionInfo: transitionInfo)
+            return .present(imageViewer)
         }
     }
 }

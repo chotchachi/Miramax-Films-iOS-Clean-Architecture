@@ -19,6 +19,7 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
         let toBiographyTrigger: Driver<Void>
         let entertainmentSelectTrigger: Driver<EntertainmentViewModel>
         let toggleBookmarkTrigger: Driver<Void>
+        let viewImageTrigger: Driver<(UIView, UIImage)>
     }
     
     struct Output {
@@ -111,6 +112,13 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
                 self.router.trigger(.entertainmentDetail(entertainmentId: item.id, entertainmentType: item.type))
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.viewImageTrigger
+            .drive(onNext: { [weak self] tuple in
+                guard let self = self else { return }
+                self.router.trigger(.viewImage(image: tuple.1, sourceView: tuple.0))
             })
             .disposed(by: rx.disposeBag)
         

@@ -40,6 +40,10 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, L
     /// Section gallery
     @IBOutlet weak var sectionGalleryView: UIView!
     @IBOutlet weak var gallerySectionHeaderView: SectionHeaderView!
+    @IBOutlet weak var ivGalleryLargeThumb: UIImageView!
+    @IBOutlet weak var ivGallerySmallThumb1: UIImageView!
+    @IBOutlet weak var ivGallerySmallThumb2: UIImageView!
+    @IBOutlet weak var ivGallerySmallThumb3: UIImageView!
 
     /// Section movies
     @IBOutlet weak var sectionMoviesView: UIView!
@@ -54,6 +58,7 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, L
     // MARK: - Properties
     
     private let entertainmentSelectTriggerS = PublishRelay<EntertainmentViewModel>()
+    private let viewImageTriggerS = PublishRelay<(UIView, UIImage)>()
 
     private let entertainmentDataS = BehaviorRelay<[EntertainmentViewModel]>(value: [])
     
@@ -78,7 +83,8 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, L
             shareTrigger: btnShare.rx.tap.asDriver(),
             toBiographyTrigger: btnMoreBiography.rx.tap.asDriver(),
             entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
-            toggleBookmarkTrigger: btnBookmark.rx.tap.asDriver()
+            toggleBookmarkTrigger: btnBookmark.rx.tap.asDriver(),
+            viewImageTrigger: viewImageTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -134,11 +140,6 @@ extension PersonDetailsViewController {
         lblBirthday.font = AppFonts.caption1Bold
     }
     
-    private func configureGallerySection() {
-        gallerySectionHeaderView.title = "gallery".localized
-        gallerySectionHeaderView.actionButtonTittle = "see_more".localized
-    }
-    
     private func configureMoviesSection() {
         moviesSectionHeaderView.title = "movies".localized
         moviesSectionHeaderView.showActionButton = false
@@ -163,6 +164,16 @@ extension PersonDetailsViewController {
             .map { [SectionModel(model: "", items: $0)] }
             .bind(to: moviesCollectionView.rx.items(dataSource: movieDataSource))
             .disposed(by: rx.disposeBag)
+    }
+    
+    private func configureGallerySection() {
+        gallerySectionHeaderView.title = "gallery".localized
+        gallerySectionHeaderView.actionButtonTittle = "see_more".localized
+        
+        [ivGalleryLargeThumb, ivGallerySmallThumb1, ivGallerySmallThumb2, ivGallerySmallThumb3].forEach { view in
+            view?.isUserInteractionEnabled = true
+            view?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(galleryImageViewTapped(_:))))
+        }
     }
     
     private func configureOthersView() {
@@ -203,6 +214,16 @@ extension PersonDetailsViewController {
         
         // Person movies
         entertainmentDataS.accept(getCombineCastEntertainment(from: item))
+        
+        // Person gallery
+        if let images = item.images {
+            sectionGalleryView.isHidden = false
+            [ivGalleryLargeThumb, ivGallerySmallThumb1, ivGallerySmallThumb2, ivGallerySmallThumb3].enumerated().forEach { offset, view in
+                view?.setImage(with: images[safe: offset]?.fileURL)
+            }
+        } else {
+            sectionGalleryView.isHidden = true
+        }
     }
     
     private func getBirdthdayStringFormatted(_ strDate: String?) -> String? {
@@ -220,6 +241,11 @@ extension PersonDetailsViewController {
         let castMovies = person.castMovies ?? []
         let castTvShows = person.castTVShows ?? []
         return castMovies + castTvShows
+    }
+    
+    @objc private func galleryImageViewTapped(_ sender: UITapGestureRecognizer) {
+        guard let imageView = sender.view as? UIImageView, let image = imageView.image else { return }
+        viewImageTriggerS.accept((imageView, image))
     }
 }
 

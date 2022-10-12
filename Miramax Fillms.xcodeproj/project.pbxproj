@@ -64,6 +64,8 @@
 		ED9EC14A28F3FBCD00465623 /* EntertainmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC14928F3FBCD00465623 /* EntertainmentViewModel.swift */; };
 		ED9EC14C28F41A2400465623 /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC14B28F41A2400465623 /* PersonViewModel.swift */; };
 		ED9EC16928F5A48400465623 /* PresentationConvertibleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC16828F5A48400465623 /* PresentationConvertibleType.swift */; };
+		ED9EC19928F7221A00465623 /* Collection+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC19828F7221A00465623 /* Collection+Ext.swift */; };
+		ED9EC19C28F723E800465623 /* ImageViewerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC19B28F723E800465623 /* ImageViewerController.swift */; };
 		EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4475A28D41FFC0037751C /* PrimaryButton.swift */; };
 		EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476B28D431DC0037751C /* AppFonts.swift */; };
 		EDA4476E28D432350037751C /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4476D28D432350037751C /* AppColors.swift */; };
@@ -249,6 +251,8 @@
 		ED9EC14928F3FBCD00465623 /* EntertainmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentViewModel.swift; sourceTree = "<group>"; };
 		ED9EC14B28F41A2400465623 /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
 		ED9EC16828F5A48400465623 /* PresentationConvertibleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationConvertibleType.swift; sourceTree = "<group>"; };
+		ED9EC19828F7221A00465623 /* Collection+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Ext.swift"; sourceTree = "<group>"; };
+		ED9EC19B28F723E800465623 /* ImageViewerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerController.swift; sourceTree = "<group>"; };
 		EDA4475A28D41FFC0037751C /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		EDA4476B28D431DC0037751C /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
 		EDA4476D28D432350037751C /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -574,6 +578,21 @@
 			path = Convertion;
 			sourceTree = "<group>";
 		};
+		ED9EC19728F71D1C00465623 /* GalleryView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GalleryView;
+			sourceTree = "<group>";
+		};
+		ED9EC19A28F723D700465623 /* ImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				ED9EC19B28F723E800465623 /* ImageViewerController.swift */,
+			);
+			path = ImageViewer;
+			sourceTree = "<group>";
+		};
 		EDA4475928D41FE50037751C /* PrimaryButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,6 +702,7 @@
 				ED13B6C328F09886007B7A1D /* UIScrollView+Ext.swift */,
 				ED13B6C528F09A83007B7A1D /* UICollectionView+Ext.swift */,
 				ED9EC0D528F30FC300465623 /* UIView+Ext.swift */,
+				ED9EC19828F7221A00465623 /* Collection+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -734,6 +754,7 @@
 		EDC6DB2528CF6C1900164EBD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				ED9EC19A28F723D700465623 /* ImageViewer */,
 				ED866E3D28E01C1B0066E10B /* PersonBiography */,
 				ED866E1A28DED7590066E10B /* PersonDetails */,
 				EDD5301D28DCBBF40078C6C5 /* SeasonDetails */,
@@ -1083,6 +1104,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				ED9EC19728F71D1C00465623 /* GalleryView */,
 				ED9EC0DC28F32FC900465623 /* PMAlertController */,
 				ED9EC0BC28F1B94300465623 /* BookmarkButton */,
 				ED1F03BB28EDD6440083B088 /* SortPopupView */,
@@ -1312,6 +1334,7 @@
 				ED31388728EF31E400EC759C /* CaseIterable+Ext.swift in Sources */,
 				ED13B6CC28F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCell.swift in Sources */,
 				ED13B6BD28F09303007B7A1D /* WishlistViewController.swift in Sources */,
+				ED9EC19928F7221A00465623 /* Collection+Ext.swift in Sources */,
 				EDE92B9628E5F7CE0083F33A /* Searchable.swift in Sources */,
 				EDD5301328DC97650078C6C5 /* SeasonsViewController.swift in Sources */,
 				EDC6DB2C28CF70F500164EBD /* AppDIContainer.swift in Sources */,
@@ -1389,6 +1412,7 @@
 				ED866E2028DED7AA0066E10B /* PersonDetailsViewModel.swift in Sources */,
 				EDE92B8D28E5EA3B0083F33A /* LoadingView.swift in Sources */,
 				EDE69B5228D6BA58002726B0 /* PersonHorizontalListCell.swift in Sources */,
+				ED9EC19C28F723E800465623 /* ImageViewerController.swift in Sources */,
 				ED31388F28EF434C00EC759C /* Transition+Ext.swift in Sources */,
 				EDD5302528DCBDA50078C6C5 /* SeasonDetailsViewController.swift in Sources */,
 				EDE92B7628E307010083F33A /* UIRefreshControl+Ext.swift in Sources */,
