@@ -21,6 +21,7 @@ public struct TVShowDTO : Mappable {
     public var numberOfSeasons: Int?
     public var seasons: [SeasonDTO]?
     public var credits: CreditDTO?
+    public var backdropImages: [ImageDTO]?
     public var recommendations: TVShowResponseDTO?
     
     public init?(map: Map) {
@@ -40,13 +41,14 @@ public struct TVShowDTO : Mappable {
         numberOfSeasons <- map["number_of_seasons"]
         seasons <- map["seasons"]
         credits <- map["credits"]
+        backdropImages <- map["images.backdrops"]
         recommendations <- map["recommendations"]
     }
 }
 
 extension TVShowDTO: DomainConvertibleType {
     public func asDomain() -> TVShow {
-        return TVShow(id: id, name: name, overview: overview, voteAverage: voteAverage, firstAirDate: firstAirDate, backdropPath: backdropPath, posterPath: posterPath, genres: genres?.map { $0.asDomain() }, numberOfEpisodes: numberOfEpisodes, numberOfSeasons: numberOfSeasons, seasons: seasons?.map { $0.asDomain() }, credits: credits?.asDomain(), recommendations: recommendations?.asDomain())
+        return TVShow(id: id, name: name, overview: overview, voteAverage: voteAverage, firstAirDate: firstAirDate, backdropPath: backdropPath, posterPath: posterPath, genres: genres?.map { $0.asDomain() }, numberOfEpisodes: numberOfEpisodes, numberOfSeasons: numberOfSeasons, seasons: seasons?.map { $0.asDomain() }, credits: credits?.asDomain(), backdropImages: backdropImages?.map { $0.asDomain() }, recommendations: recommendations?.asDomain())
     }
 }
 

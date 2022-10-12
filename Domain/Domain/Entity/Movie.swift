@@ -18,11 +18,12 @@ public struct Movie: EntertainmentModelType {
     public let genres: [Genre]?
     public let runtime: Int?
     public let credits: Credit?
+    public let backdropImages: [Image]?
     public let recommendations: BaseResponse<Movie>?
     
     public var isBookmark: Bool = false
 
-    public init(id: Int, title: String, overview: String, voteAverage: Double, releaseDate: String, backdropPath: String?, posterPath: String?, genres: [Genre]?, runtime: Int?, credits: Credit?, recommendations: BaseResponse<Movie>?) {
+    public init(id: Int, title: String, overview: String, voteAverage: Double, releaseDate: String, backdropPath: String?, posterPath: String?, genres: [Genre]?, runtime: Int?, credits: Credit?, backdropImages: [Image]?, recommendations: BaseResponse<Movie>?) {
         self.id = id
         self.title = title
         self.overview = overview
@@ -33,11 +34,12 @@ public struct Movie: EntertainmentModelType {
         self.genres = genres
         self.runtime = runtime
         self.credits = credits
+        self.backdropImages = backdropImages
         self.recommendations = recommendations
     }
     
     public func copy() -> Movie {
-        return Movie(id: id, title: title, overview: overview, voteAverage: voteAverage, releaseDate: releaseDate, backdropPath: backdropPath, posterPath: posterPath, genres: genres, runtime: runtime, credits: credits, recommendations: recommendations)
+        return Movie(id: id, title: title, overview: overview, voteAverage: voteAverage, releaseDate: releaseDate, backdropPath: backdropPath, posterPath: posterPath, genres: genres, runtime: runtime, credits: credits, backdropImages: backdropImages, recommendations: recommendations)
     }
 }
 

@@ -20,11 +20,12 @@ public struct TVShow: EntertainmentModelType {
     public let numberOfSeasons: Int?
     public let seasons: [Season]?
     public let credits: Credit?
+    public let backdropImages: [Image]?
     public let recommendations: BaseResponse<TVShow>?
     
     public var isBookmark: Bool = false
 
-    public init(id: Int, name: String, overview: String, voteAverage: Double, firstAirDate: String, backdropPath: String?, posterPath: String?, genres: [Genre]?, numberOfEpisodes: Int?, numberOfSeasons: Int?, seasons: [Season]?, credits: Credit?, recommendations: BaseResponse<TVShow>?) {
+    public init(id: Int, name: String, overview: String, voteAverage: Double, firstAirDate: String, backdropPath: String?, posterPath: String?, genres: [Genre]?, numberOfEpisodes: Int?, numberOfSeasons: Int?, seasons: [Season]?, credits: Credit?, backdropImages: [Image]?, recommendations: BaseResponse<TVShow>?) {
         self.id = id
         self.name = name
         self.overview = overview
@@ -37,11 +38,12 @@ public struct TVShow: EntertainmentModelType {
         self.numberOfSeasons = numberOfSeasons
         self.seasons = seasons
         self.credits = credits
+        self.backdropImages = backdropImages
         self.recommendations = recommendations
     }
     
     public func copy() -> TVShow {
-        return TVShow(id: id, name: name, overview: overview, voteAverage: voteAverage, firstAirDate: firstAirDate, backdropPath: backdropPath, posterPath: posterPath, genres: genres, numberOfEpisodes: numberOfEpisodes, numberOfSeasons: numberOfSeasons, seasons: seasons, credits: credits, recommendations: recommendations)
+        return TVShow(id: id, name: name, overview: overview, voteAverage: voteAverage, firstAirDate: firstAirDate, backdropPath: backdropPath, posterPath: posterPath, genres: genres, numberOfEpisodes: numberOfEpisodes, numberOfSeasons: numberOfSeasons, seasons: seasons, credits: credits, backdropImages: backdropImages, recommendations: recommendations)
     }
 }
 

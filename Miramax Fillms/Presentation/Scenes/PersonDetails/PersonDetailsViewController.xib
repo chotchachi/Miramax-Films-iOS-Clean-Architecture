@@ -60,7 +60,7 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0q-nd-sbB" customClass="TagListView" customModule="TagListView">
+                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W0q-nd-sbB" customClass="TagListView" customModule="TagListView">
                                             <rect key="frame" x="16" y="48.666666666666657" width="310" height="20"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <userDefinedRuntimeAttributes>
@@ -69,8 +69,8 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1N-2w-Otc" customClass="BookmarkButton" customModule="Miramax_Fillms" customModuleProvider="target">
-                                            <rect key="frame" x="338" y="16" width="36" height="36"/>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1N-2w-Otc" customClass="BookmarkButton" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="338" y="16" width="36" height="14"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain"/>
                                         </button>
@@ -310,7 +310,7 @@
             <size key="intrinsicContentSize" width="-1" height="55"/>
         </designable>
         <designable name="V1N-2w-Otc">
-            <size key="intrinsicContentSize" width="36" height="36"/>
+            <size key="intrinsicContentSize" width="24" height="14"/>
         </designable>
         <designable name="W0q-nd-sbB">
             <size key="intrinsicContentSize" width="310" height="16"/>

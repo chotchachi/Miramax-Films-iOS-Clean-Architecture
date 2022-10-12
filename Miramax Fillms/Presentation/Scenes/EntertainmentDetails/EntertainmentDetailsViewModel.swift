@@ -22,6 +22,7 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
         let retryTrigger: Driver<Void>
         let seeMoreRecommendTrigger: Driver<Void>
         let toggleBookmarkTrigger: Driver<Void>
+        let viewImageTrigger: Driver<(UIView, UIImage)>
     }
     
     struct Output {
@@ -94,6 +95,13 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
             .compactMap { $0 }
             .flatMapLatest { self.toggleBookmarkEntertainment(with: $0) }
             .subscribe()
+            .disposed(by: rx.disposeBag)
+        
+        input.viewImageTrigger
+            .drive(onNext: { [weak self] tuple in
+                guard let self = self else { return }
+                self.router.trigger(.viewImage(image: tuple.1, sourceView: tuple.0))
+            })
             .disposed(by: rx.disposeBag)
         
         input.popViewTrigger

@@ -18,6 +18,10 @@
                 <outlet property="btnSeeMoreOverview" destination="lZk-Bn-NcY" id="HGL-TE-30e"/>
                 <outlet property="gallerySectionHeaderView" destination="Apb-3h-i54" id="WrG-AD-Puq"/>
                 <outlet property="genresStackView" destination="9Nk-dm-r6o" id="dDx-px-0qo"/>
+                <outlet property="ivGalleryLargeThumb" destination="kCI-hh-4Y9" id="oFd-Db-rjc"/>
+                <outlet property="ivGallerySmallThumb1" destination="nHS-2T-UOa" id="B7V-ID-d7y"/>
+                <outlet property="ivGallerySmallThumb2" destination="L0l-nk-f2j" id="yOo-ja-33l"/>
+                <outlet property="ivGallerySmallThumb3" destination="v5S-15-Nrh" id="QSa-Ok-QYR"/>
                 <outlet property="ivPoster" destination="lyU-Xt-BQn" id="2HV-Y7-Jpe"/>
                 <outlet property="lblDirector" destination="9Er-wk-P5f" id="ejC-7z-qcv"/>
                 <outlet property="lblDuration" destination="bnm-Bp-KOg" id="Zz9-Q7-NOu"/>
@@ -64,7 +68,7 @@
                     <rect key="frame" x="0.0" y="102" width="390" height="708"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4lf-00-G9Z">
-                            <rect key="frame" x="0.0" y="0.0" width="390" height="1373"/>
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="1608.3333333333333"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dhj-Go-AHS" userLabel="Section Title">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="89.333333333333329"/>
@@ -487,7 +491,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VOg-ps-3jd" userLabel="Section Gallery">
-                                    <rect key="frame" x="0.0" y="1066" width="390" height="100"/>
+                                    <rect key="frame" x="0.0" y="1066" width="390" height="335.33333333333326"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Apb-3h-i54" userLabel="Gallery Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="32" width="390" height="24"/>
@@ -496,17 +500,62 @@
                                                 <constraint firstAttribute="height" constant="24" id="8nD-iA-qba"/>
                                             </constraints>
                                         </view>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kCI-hh-4Y9">
+                                            <rect key="frame" x="16" y="68" width="358" height="169"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Siy-UG-1fs">
+                                            <rect key="frame" x="16" y="242.00000000000003" width="358" height="77.333333333333343"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nHS-2T-UOa">
+                                                    <rect key="frame" x="0.0" y="0.0" width="116" height="77.333333333333329"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L0l-nk-f2j">
+                                                    <rect key="frame" x="121" y="0.0" width="116" height="77.333333333333329"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v5S-15-Nrh">
+                                                    <rect key="frame" x="242" y="0.0" width="116" height="77.333333333333329"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="Apb-3h-i54" secondAttribute="trailing" id="6eV-JK-6xQ"/>
-                                        <constraint firstAttribute="height" constant="100" id="kat-2C-L4S"/>
+                                        <constraint firstItem="Siy-UG-1fs" firstAttribute="top" secondItem="kCI-hh-4Y9" secondAttribute="bottom" constant="5" id="7Nj-xn-XlM"/>
+                                        <constraint firstItem="Siy-UG-1fs" firstAttribute="width" secondItem="Siy-UG-1fs" secondAttribute="height" multiplier="343:74" id="CXY-tM-J27"/>
+                                        <constraint firstAttribute="trailing" secondItem="Siy-UG-1fs" secondAttribute="trailing" constant="16" id="FXl-dK-uTE"/>
+                                        <constraint firstItem="Siy-UG-1fs" firstAttribute="leading" secondItem="VOg-ps-3jd" secondAttribute="leading" constant="16" id="RyW-l6-xq6"/>
+                                        <constraint firstItem="kCI-hh-4Y9" firstAttribute="top" secondItem="Apb-3h-i54" secondAttribute="bottom" constant="12" id="W4k-ys-k5w"/>
+                                        <constraint firstAttribute="trailing" secondItem="kCI-hh-4Y9" secondAttribute="trailing" constant="16" id="grg-gL-1IY"/>
+                                        <constraint firstItem="kCI-hh-4Y9" firstAttribute="leading" secondItem="VOg-ps-3jd" secondAttribute="leading" constant="16" id="pVA-pn-z9b"/>
+                                        <constraint firstItem="kCI-hh-4Y9" firstAttribute="width" secondItem="kCI-hh-4Y9" secondAttribute="height" multiplier="343:162" id="rrd-hQ-YZN"/>
+                                        <constraint firstAttribute="bottom" secondItem="Siy-UG-1fs" secondAttribute="bottom" constant="16" id="t7t-ew-fZr"/>
                                         <constraint firstItem="Apb-3h-i54" firstAttribute="top" secondItem="VOg-ps-3jd" secondAttribute="top" constant="32" id="vgF-kO-n4U"/>
                                         <constraint firstItem="Apb-3h-i54" firstAttribute="leading" secondItem="VOg-ps-3jd" secondAttribute="leading" id="wGk-6i-0Of"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbK-8a-hxP" userLabel="Section Recommend">
-                                    <rect key="frame" x="0.0" y="1166" width="390" height="207"/>
+                                    <rect key="frame" x="0.0" y="1401.3333333333333" width="390" height="207"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRO-VA-K0B" userLabel="Recommend Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="24"/>

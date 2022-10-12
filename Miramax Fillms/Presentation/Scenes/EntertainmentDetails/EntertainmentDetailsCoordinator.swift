@@ -18,6 +18,7 @@ enum EntertainmentDetailsRoute: Route {
     case personDetail(personId: Int)
     case entertainmentDetail(entertainmentId: Int, entertainmentType: EntertainmentType)
     case recommendations
+    case viewImage(image: UIImage, sourceView: UIView)
 }
 
 class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetailsRoute> {
@@ -85,6 +86,11 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
         case .recommendations:
             addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, responseRoute: .recommendations(entertainmentId: entertainmentId, entertainmentType: entertainmentType)))
             return .none()
+        case .viewImage(image: let image, sourceView: let sourceView):
+            let imageInfo = GSImageInfo(image: image, imageMode: .aspectFit)
+            let transitionInfo = GSTransitionInfo(fromView: sourceView)
+            let imageViewer = ImageViewerController(imageInfo: imageInfo, transitionInfo: transitionInfo)
+            return .present(imageViewer)
         }
     }
 }

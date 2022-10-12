@@ -98,7 +98,7 @@ extension TVShowApi: TargetType, NetworkConfigurable {
     private func requestTvShowDetail() -> Moya.Task {
         let params: [String : Any] = [
             "api_key" : apiKey,
-            "append_to_response" : "credits,recommendations"
+            "append_to_response" : "credits,recommendations,images,videos"
         ]
         return .requestParameters(parameters: params, encoding: URLEncoding.default)
     }

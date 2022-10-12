@@ -62,7 +62,11 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     /// Section gallery
     @IBOutlet weak var sectionGalleryView: UIView!
     @IBOutlet weak var gallerySectionHeaderView: SectionHeaderView!
-
+    @IBOutlet weak var ivGalleryLargeThumb: UIImageView!
+    @IBOutlet weak var ivGallerySmallThumb1: UIImageView!
+    @IBOutlet weak var ivGallerySmallThumb2: UIImageView!
+    @IBOutlet weak var ivGallerySmallThumb3: UIImageView!
+    
     /// Section recommend
     @IBOutlet weak var sectionRecommendView: UIView!
     @IBOutlet weak var recommendSectionHeaderView: SectionHeaderView!
@@ -78,6 +82,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     private let entertainentSeasonsS = BehaviorRelay<[Season]>(value: [])
     private let entertainentCastsS = BehaviorRelay<[PersonViewModel]>(value: [])
     private let entertainentRecommendationsS = BehaviorRelay<[EntertainmentViewModel]>(value: [])
+    private let viewImageTriggerS = PublishRelay<(UIView, UIImage)>()
 
     private let seasonSelectTriggerS = PublishRelay<Season>()
     private let castSelectTriggerS = PublishRelay<PersonViewModel>()
@@ -114,7 +119,8 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
             shareTrigger: btnShare.rx.tap.asDriver(),
             retryTrigger: errorRetryView.rx.retryTapped.asDriver(),
             seeMoreRecommendTrigger: recommendSectionHeaderView.rx.actionButtonTap.asDriver(),
-            toggleBookmarkTrigger: btnBookmark.rx.tap.asDriver()
+            toggleBookmarkTrigger: btnBookmark.rx.tap.asDriver(),
+            viewImageTrigger: viewImageTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -284,6 +290,11 @@ extension EntertainmentDetailsViewController {
     private func configureGallerySection() {
         gallerySectionHeaderView.title = "gallery".localized
         gallerySectionHeaderView.actionButtonTittle = "see_more".localized
+        
+        [ivGalleryLargeThumb, ivGallerySmallThumb1, ivGallerySmallThumb2, ivGallerySmallThumb3].forEach { view in
+            view?.isUserInteractionEnabled = true
+            view?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(galleryImageViewTapped(_:))))
+        }
     }
     
     private func configureRecommendSection() {
@@ -397,7 +408,14 @@ extension EntertainmentDetailsViewController {
         lblWriters.highlight(text: writersString, color: AppColors.textColorSecondary)
                 
         // Entertainment gallery
-        
+        if let images = item.backdropImages {
+            sectionGalleryView.isHidden = false
+            [ivGalleryLargeThumb, ivGallerySmallThumb1, ivGallerySmallThumb2, ivGallerySmallThumb3].enumerated().forEach { offset, view in
+                view?.setImage(with: images[safe: offset]?.fileURL)
+            }
+        } else {
+            sectionGalleryView.isHidden = true
+        }
         
         // Entertainment recommend
         let recommendations = item.recommendations ?? []
@@ -418,5 +436,10 @@ extension EntertainmentDetailsViewController {
     
     @objc private func genreMoreButtonTapped(_ sender: UIButton) {
         
+    }
+    
+    @objc private func galleryImageViewTapped(_ sender: UITapGestureRecognizer) {
+        guard let imageView = sender.view as? UIImageView, let image = imageView.image else { return }
+        viewImageTriggerS.accept((imageView, image))
     }
 }
