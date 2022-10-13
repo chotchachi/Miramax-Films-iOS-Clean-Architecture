@@ -17,6 +17,7 @@ class GenresViewController: BaseViewController<GenresViewModel>, TabBarSelectabl
     // MARK: - Outlets
     
     @IBOutlet weak var appToolbar: AppToolbar!
+    @IBOutlet weak var tabLayout: TabLayout!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var btnSearch: SearchButton = SearchButton()
@@ -25,6 +26,7 @@ class GenresViewController: BaseViewController<GenresViewModel>, TabBarSelectabl
     
     // MARK: - Properties
     
+    private let genreTabTriggerS = PublishRelay<GenreTab>()
     private let genreSelectTriggerS = PublishRelay<Genre>()
     
     // MARK: - Lifecycle
@@ -33,6 +35,7 @@ class GenresViewController: BaseViewController<GenresViewModel>, TabBarSelectabl
         super.configView()
      
         configureAppToolbar()
+        configureTabLayout()
         configureCollectionView()
     }
     
@@ -42,6 +45,7 @@ class GenresViewController: BaseViewController<GenresViewModel>, TabBarSelectabl
         let input = GenresViewModel.Input(
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             retryTrigger: errorRetryView.rx.retryTapped.asDriver(),
+            genreTabTrigger: genreTabTriggerS.asDriverOnErrorJustComplete(),
             genreSelectTrigger: genreSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
@@ -83,6 +87,13 @@ extension GenresViewController {
         appToolbar.rightButtons = [btnSearch]
     }
     
+    private func configureTabLayout() {
+        tabLayout.titles = GenreTab.allCases.map { $0.title }
+        tabLayout.scrollStyle = .scrollable
+        tabLayout.delegate = self
+        tabLayout.selectionTitle(index: GenreTab.defaultTab.index ?? 1, animated: false)
+    }
+    
     private func configureCollectionView() {
         let gridCollectionViewLayout = GridCollectionViewLayout()
         gridCollectionViewLayout.rowSpacing = 16.0
@@ -102,6 +113,16 @@ extension GenresViewController {
 extension GenresViewController {
     func handleTabBarSelection() {
         
+    }
+}
+
+// MARK: - TabLayoutDelegate
+
+extension GenresViewController: TabLayoutDelegate {
+    func didSelectAtIndex(_ index: Int) {
+        if let tab = GenreTab.element(index) {
+            genreTabTriggerS.accept(tab)
+        }
     }
 }
 

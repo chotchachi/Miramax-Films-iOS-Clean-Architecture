@@ -15,6 +15,7 @@ class GenresViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let toSearchTrigger: Driver<Void>
         let retryTrigger: Driver<Void>
+        let genreTabTrigger: Driver<GenreTab>
         let genreSelectTrigger: Driver<Genre>
     }
     
@@ -32,17 +33,23 @@ class GenresViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let viewTriggerO = trigger
+        let viewTrigger = trigger
             .take(1)
         
-        let retryTriggerO = input.retryTrigger
-            .asObservable()
-        
-        let genresD = Observable.merge(viewTriggerO, retryTriggerO)
+        let genreTabTrigger = viewTrigger
             .flatMapLatest {
-                self.repositoryProvider
-                    .genreRepository()
-                    .getGenreMovieList()
+                input.genreTabTrigger
+                    .asObservable()
+                    .startWith(GenreTab.defaultTab)
+            }
+        
+        let genreTabRetryTrigger = input.retryTrigger
+            .asObservable()
+            .withLatestFrom(genreTabTrigger)
+        
+        let genres = Observable.merge(genreTabTrigger, genreTabRetryTrigger)
+            .flatMapLatest { tab in
+                self.getGenreData(with: tab)
                     .trackActivity(self.loading)
                     .trackError(self.error)
                     .catchAndReturn([])
@@ -63,6 +70,19 @@ class GenresViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output(genres: genresD)
+        return Output(genres: genres)
+    }
+    
+    private func getGenreData(with tab: GenreTab) -> Single<[Genre]> {
+        switch tab {
+        case .movies:
+            return repositoryProvider
+                .genreRepository()
+                .getGenreMovieList()
+        case .shows:
+            return repositoryProvider
+                .genreRepository()
+                .getGenreShowList()
+        }
     }
 }

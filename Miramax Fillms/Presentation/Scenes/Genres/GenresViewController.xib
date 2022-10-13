@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="appToolbar" destination="jfw-23-gEB" id="9wh-RK-AYN"/>
                 <outlet property="collectionView" destination="Mbc-GB-jhT" id="vu6-ED-MVa"/>
+                <outlet property="tabLayout" destination="NMm-7M-OTF" id="3ko-Oz-QAc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Mbc-GB-jhT">
-                    <rect key="frame" x="0.0" y="102" width="390" height="708"/>
+                    <rect key="frame" x="0.0" y="142" width="390" height="668"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nSn-A3-99A">
                         <size key="itemSize" width="128" height="128"/>
@@ -35,17 +36,39 @@
                     <rect key="frame" x="0.0" y="47" width="390" height="55"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9L-ub-u12">
+                    <rect key="frame" x="0.0" y="102" width="390" height="40"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMm-7M-OTF" customClass="TabLayout" customModule="Miramax_Fillms" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="aic-l5-0QQ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="NMm-7M-OTF" secondAttribute="trailing" id="7Us-za-pNJ"/>
+                        <constraint firstAttribute="bottom" secondItem="NMm-7M-OTF" secondAttribute="bottom" id="RgL-W5-C2j"/>
+                        <constraint firstItem="NMm-7M-OTF" firstAttribute="top" secondItem="b9L-ub-u12" secondAttribute="top" id="Zaq-Ke-pdE"/>
+                        <constraint firstItem="NMm-7M-OTF" firstAttribute="leading" secondItem="b9L-ub-u12" secondAttribute="leading" id="cQl-Uk-RZg"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="ColorPrimary"/>
             <constraints>
-                <constraint firstItem="Mbc-GB-jhT" firstAttribute="top" secondItem="jfw-23-gEB" secondAttribute="bottom" id="295-BD-Hd3"/>
                 <constraint firstItem="jfw-23-gEB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FB0-zq-gqV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="b9L-ub-u12" secondAttribute="trailing" id="KW3-L7-UIv"/>
+                <constraint firstItem="b9L-ub-u12" firstAttribute="top" secondItem="jfw-23-gEB" secondAttribute="bottom" id="PNb-xV-1NQ"/>
+                <constraint firstItem="Mbc-GB-jhT" firstAttribute="top" secondItem="b9L-ub-u12" secondAttribute="bottom" id="PzR-LT-zhE"/>
                 <constraint firstItem="jfw-23-gEB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="U0U-JJ-VQO"/>
                 <constraint firstItem="Mbc-GB-jhT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="a1U-Qf-xIw"/>
                 <constraint firstAttribute="trailing" secondItem="Mbc-GB-jhT" secondAttribute="trailing" id="bzu-hm-rQ4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Mbc-GB-jhT" secondAttribute="bottom" id="h8Y-un-Z0e"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jfw-23-gEB" secondAttribute="trailing" id="rLL-P9-IHX"/>
+                <constraint firstItem="b9L-ub-u12" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="urA-Oz-0MZ"/>
             </constraints>
             <point key="canvasLocation" x="96.92307692307692" y="20.616113744075829"/>
         </view>
