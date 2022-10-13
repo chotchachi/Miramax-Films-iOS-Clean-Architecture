@@ -26,6 +26,11 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
     @IBOutlet weak var genresLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var genresRetryButton: PrimaryButton!
     
+    /// Section carousel
+    @IBOutlet weak var carouselLoadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var carouselRetryButton: PrimaryButton!
+    @IBOutlet weak var carouselView: iCarousel!
+    
     /// Section upcoming
     @IBOutlet weak var sectionUpcomingView: UIView!
     @IBOutlet weak var upcomingSectionHeaderView: SectionHeaderView!
@@ -66,6 +71,8 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
     private let genreSelectTriggerS = PublishRelay<Genre>()
     private let toggleBookmarkTriggerS = PublishRelay<EntertainmentViewModel>()
 
+    private var nowPlayingData: [EntertainmentViewModel] = []
+
     // MARK: - Lifecycle
     
     override func configView() {
@@ -73,6 +80,7 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
         
         configureAppToolbar()
         configureSectionGenres()
+        configureSectionCarousel()
         configureSectionUpcoming()
         configureSelfieView()
         configureSectionTabLayout()
@@ -86,6 +94,7 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
         let input = MovieViewModel.Input(
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
             retryGenreTrigger: genresRetryButton.rx.tap.asDriver(),
+            retryNowPlayingTrigger: carouselRetryButton.rx.tap.asDriver(),
             retryUpcomingTrigger: upcomingRetryButton.rx.tap.asDriver(),
             retryPreviewTrigger: previewRetryButton.rx.tap.asDriver(),
             selectionEntertainmentTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
@@ -110,6 +119,24 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
                     self.genresLoadingIndicator.stopAnimating()
                     self.genresCollectionView.isHidden = true
                     self.genresRetryButton.isHidden = false
+                }
+            })
+            .disposed(by: rx.disposeBag)
+        
+        output.nowPlayingViewState
+            .drive(onNext: { [weak self] viewState in
+                guard let self = self else { return }
+                switch viewState {
+                case .success(let items):
+                    self.carouselLoadingIndicator.stopAnimating()
+                    self.carouselView.isHidden = false
+                    self.carouselRetryButton.isHidden = true
+                    self.nowPlayingData = items
+                    self.carouselView.reloadData()
+                case .error:
+                    self.carouselLoadingIndicator.stopAnimating()
+                    self.carouselView.isHidden = true
+                    self.carouselRetryButton.isHidden = false
                 }
             })
             .disposed(by: rx.disposeBag)
@@ -204,6 +231,26 @@ extension MovieViewController {
             .map { [SectionModel(model: "", items: $0)] }
             .bind(to: genresCollectionView.rx.items(dataSource: dataSource))
             .disposed(by: rx.disposeBag)
+    }
+    
+    private func configureSectionCarousel() {
+        carouselLoadingIndicator.startAnimating()
+        
+        carouselRetryButton.titleText = "retry".localized
+        carouselRetryButton.isHidden = true
+        carouselRetryButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.carouselLoadingIndicator.startAnimating()
+                self.carouselRetryButton.isHidden = true
+                self.carouselView.isHidden = true
+            })
+            .disposed(by: rx.disposeBag)
+        
+        carouselView.animator = iCarousel.Animator.Rotary().wrapEnabled(true)
+        carouselView.delegate = self
+        carouselView.dataSource = self
+        carouselView.isPagingEnabled = true
     }
     
     private func configureSectionUpcoming() {
@@ -319,6 +366,49 @@ extension MovieViewController {
 extension MovieViewController {
     func handleTabBarSelection() {
         scrollView.scrollToTop()
+    }
+}
+
+// MARK: - iCarouselDelegate
+
+extension MovieViewController: iCarouselDelegate {
+    func carouselItemWidth(_ carousel: iCarousel) -> CGFloat {
+        return 42.0
+    }
+    
+    func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
+        guard carousel.currentItemIndex == index else { return }
+        guard let item = nowPlayingData[safe: index] else { return }
+        entertainmentSelectTriggerS.accept(item)
+    }
+}
+
+// MARK: - iCarouselDataSource
+
+extension MovieViewController: iCarouselDataSource {
+    func numberOfPlaceholders(in carousel: iCarousel) -> Int {
+        4
+    }
+    
+    func carousel(_ carousel: iCarousel, placeholderViewAt index: Int, reusingView: UIView?) -> UIView? {
+        let reusingView: ItemCarouselView = reusingView as? ItemCarouselView ?? {
+            let view = ItemCarouselView()
+            return view
+        }()
+        return reusingView
+    }
+    
+    func numberOfItems(in carousel: iCarousel) -> Int {
+        return nowPlayingData.count
+    }
+    
+    func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusingView: UIView?) -> UIView {
+        let reusingView: ItemCarouselView = reusingView as? ItemCarouselView ?? {
+            let view = ItemCarouselView(frame: .init(x: 0, y: 0, width: 209, height: 314))
+            return view
+        }()
+        reusingView.setImage(with: nowPlayingData[index].posterURL)
+        return reusingView
     }
 }
 

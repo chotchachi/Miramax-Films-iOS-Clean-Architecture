@@ -13,6 +13,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieViewController" customModule="Miramax_Fillms" customModuleProvider="target">
             <connections>
                 <outlet property="appToolbar" destination="AUo-Rh-dtV" id="x4C-8m-kiD"/>
+                <outlet property="carouselLoadingIndicator" destination="ccE-QI-eA7" id="etE-O3-qI9"/>
+                <outlet property="carouselRetryButton" destination="tLG-8n-eqk" id="xad-Ax-ofw"/>
+                <outlet property="carouselView" destination="OW8-MK-GkG" id="tcn-0N-9Cd"/>
                 <outlet property="genresCollectionView" destination="c0u-HT-Sb5" id="s74-KV-GNU"/>
                 <outlet property="genresLoadingIndicator" destination="5cK-wL-str" id="Le0-pv-7pO"/>
                 <outlet property="genresRetryButton" destination="51D-hQ-Pr0" id="EbR-fk-auV"/>
@@ -57,7 +60,7 @@
                     <rect key="frame" x="0.0" y="114" width="393" height="704"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pwX-Kb-nYr">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="1077.3333333333333"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="1307.6666666666667"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNG-gy-eKX" userLabel="Section Genres">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="82"/>
@@ -98,14 +101,39 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1D-g1-rhA" userLabel="Section Carousel">
-                                    <rect key="frame" x="0.0" y="82" width="393" height="100"/>
+                                    <rect key="frame" x="0.0" y="82" width="393" height="330.33333333333331"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OW8-MK-GkG" customClass="iCarousel" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="16" width="393" height="314.33333333333331"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="OW8-MK-GkG" secondAttribute="height" multiplier="1:0.8" id="NZ3-x2-Zgi"/>
+                                            </constraints>
+                                        </view>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ccE-QI-eA7">
+                                            <rect key="frame" x="186.66666666666666" y="155.33333333333331" width="20" height="20"/>
+                                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </activityIndicatorView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLG-8n-eqk" customClass="PrimaryButton" customModule="Miramax_Fillms" customModuleProvider="target">
+                                            <rect key="frame" x="159" y="148" width="75" height="34.333333333333343"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        </button>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="100" id="8xo-Qz-pnJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="OW8-MK-GkG" secondAttribute="trailing" id="18p-8g-9ch"/>
+                                        <constraint firstItem="ccE-QI-eA7" firstAttribute="centerY" secondItem="O1D-g1-rhA" secondAttribute="centerY" id="2HK-7f-sUx"/>
+                                        <constraint firstItem="OW8-MK-GkG" firstAttribute="leading" secondItem="O1D-g1-rhA" secondAttribute="leading" id="2HK-tC-mv3"/>
+                                        <constraint firstItem="tLG-8n-eqk" firstAttribute="centerY" secondItem="O1D-g1-rhA" secondAttribute="centerY" id="E9I-tG-dhm"/>
+                                        <constraint firstItem="tLG-8n-eqk" firstAttribute="centerX" secondItem="O1D-g1-rhA" secondAttribute="centerX" id="Vf1-Nm-x9Q"/>
+                                        <constraint firstAttribute="bottom" secondItem="OW8-MK-GkG" secondAttribute="bottom" id="bUa-3Z-wED"/>
+                                        <constraint firstItem="OW8-MK-GkG" firstAttribute="top" secondItem="O1D-g1-rhA" secondAttribute="top" constant="16" id="oRv-Kp-Nqj"/>
+                                        <constraint firstItem="ccE-QI-eA7" firstAttribute="centerX" secondItem="O1D-g1-rhA" secondAttribute="centerX" id="ps9-sn-k3s"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1bJ-ca-YYi" userLabel="Section Upcoming">
-                                    <rect key="frame" x="0.0" y="182" width="393" height="215"/>
+                                    <rect key="frame" x="0.0" y="412.33333333333337" width="393" height="215"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGc-ja-reU" userLabel="Upcoming Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="24" width="393" height="24"/>
@@ -128,11 +156,11 @@
                                             </collectionViewFlowLayout>
                                         </collectionView>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="9ZT-il-DjK">
-                                            <rect key="frame" x="186.66666666666666" y="127.66666666666669" width="20" height="20"/>
+                                            <rect key="frame" x="186.66666666666666" y="127.66666666666663" width="20" height="20"/>
                                             <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </activityIndicatorView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ki-SE-zxR" customClass="PrimaryButton" customModule="Miramax_Fillms" customModuleProvider="target">
-                                            <rect key="frame" x="159" y="120.3333333333333" width="75" height="34.333333333333329"/>
+                                            <rect key="frame" x="159" y="120.33333333333324" width="75" height="34.333333333333329"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         </button>
@@ -153,7 +181,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yo-92-0yh" userLabel="Section Selfie">
-                                    <rect key="frame" x="0.0" y="397" width="393" height="210"/>
+                                    <rect key="frame" x="0.0" y="627.33333333333337" width="393" height="210"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdO-8z-4e9" userLabel="Selfie Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="24" width="393" height="24"/>
@@ -182,7 +210,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-ny-BUF" userLabel="Section Tab Layout">
-                                    <rect key="frame" x="0.0" y="607" width="393" height="88"/>
+                                    <rect key="frame" x="0.0" y="837.33333333333337" width="393" height="88"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMT-js-Qje" customClass="TabLayout" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="24" y="24" width="345" height="40"/>
@@ -201,7 +229,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hkr-ty-ymU" userLabel="Section Preview">
-                                    <rect key="frame" x="0.0" y="695" width="393" height="300"/>
+                                    <rect key="frame" x="0.0" y="925.33333333333326" width="393" height="300"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="bu1-Pm-F5U" customClass="SelfSizingCollectionView" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="300"/>
@@ -239,7 +267,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIe-SI-eue" userLabel="Section Preview See More">
-                                    <rect key="frame" x="0.0" y="995.00000000000011" width="393" height="82.333333333333371"/>
+                                    <rect key="frame" x="0.0" y="1225.3333333333333" width="393" height="82.333333333333258"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5V-aK-oyu" customClass="PrimaryButton" customModule="Miramax_Fillms" customModuleProvider="target">
                                             <rect key="frame" x="159" y="24.000000000000004" width="75" height="34.333333333333343"/>
@@ -288,6 +316,9 @@
             <size key="intrinsicContentSize" width="75" height="34.333333333333336"/>
         </designable>
         <designable name="c5V-aK-oyu">
+            <size key="intrinsicContentSize" width="75" height="34.333333333333336"/>
+        </designable>
+        <designable name="tLG-8n-eqk">
             <size key="intrinsicContentSize" width="75" height="34.333333333333336"/>
         </designable>
         <designable name="yqd-gO-rmm">

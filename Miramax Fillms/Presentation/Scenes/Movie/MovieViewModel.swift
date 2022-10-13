@@ -15,6 +15,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let toSearchTrigger: Driver<Void>
         let retryGenreTrigger: Driver<Void>
+        let retryNowPlayingTrigger: Driver<Void>
         let retryUpcomingTrigger: Driver<Void>
         let retryPreviewTrigger: Driver<Void>
         let selectionEntertainmentTrigger: Driver<EntertainmentViewModel>
@@ -27,6 +28,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
     
     struct Output {
         let genresViewState: Driver<ViewState<Genre>>
+        let nowPlayingViewState: Driver<ViewState<EntertainmentViewModel>>
         let upcomingViewState: Driver<ViewState<EntertainmentViewModel>>
         let previewViewState: Driver<ViewState<EntertainmentViewModel>>
     }
@@ -47,6 +49,9 @@ class MovieViewModel: BaseViewModel, ViewModelType {
         let retryGenreTrigger = input.retryGenreTrigger
             .asObservable()
         
+        let retryNowPlayingTrigger = input.retryNowPlayingTrigger
+            .asObservable()
+        
         let retryUpcomingTrigger = input.retryUpcomingTrigger
             .asObservable()
         
@@ -55,6 +60,17 @@ class MovieViewModel: BaseViewModel, ViewModelType {
                 self.repositoryProvider
                     .genreRepository()
                     .getGenreMovieList()
+                    .map { ViewState.success($0) }
+                    .catchAndReturn(.error)
+            }
+            .asDriverOnErrorJustComplete()
+        
+        let nowPlayingViewState = Observable.merge(viewTrigger, retryNowPlayingTrigger)
+            .flatMapLatest {
+                self.repositoryProvider
+                    .movieRepository()
+                    .getNowPlaying(genreId: nil, page: nil)
+                    .map { response in response.results.map { $0.asPresentation() } }
                     .map { ViewState.success($0) }
                     .catchAndReturn(.error)
             }
@@ -148,6 +164,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         return Output(genresViewState: genresViewState,
+                      nowPlayingViewState: nowPlayingViewState,
                       upcomingViewState: upcomingViewState,
                       previewViewState: previewViewState)
     }

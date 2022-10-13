@@ -31,6 +31,18 @@
 		ED31388F28EF434C00EC759C /* Transition+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31388E28EF434C00EC759C /* Transition+Ext.swift */; };
 		ED31389A28F08AE600EC759C /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31389928F08AE600EC759C /* HomeTabBarController.swift */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
+		ED69E04728F84D9C00FDC142 /* iCarousel+ViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */; };
+		ED69E04828F84D9C00FDC142 /* iCarousel+ViewManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */; };
+		ED69E04928F84D9C00FDC142 /* iCarouselAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03D28F84D9C00FDC142 /* iCarouselAnimator.swift */; };
+		ED69E04A28F84D9C00FDC142 /* iCarousel+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03E28F84D9C00FDC142 /* iCarousel+Gesture.swift */; };
+		ED69E04B28F84D9C00FDC142 /* iCarousel+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03F28F84D9C00FDC142 /* iCarousel+Animation.swift */; };
+		ED69E04C28F84D9C00FDC142 /* iCarouselAnimator+Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E04028F84D9C00FDC142 /* iCarouselAnimator+Property.swift */; };
+		ED69E04D28F84D9C00FDC142 /* iCarousel+Scrolling.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E04128F84D9C00FDC142 /* iCarousel+Scrolling.swift */; };
+		ED69E04E28F84D9C00FDC142 /* iCarousel+ViewLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E04228F84D9C00FDC142 /* iCarousel+ViewLoading.swift */; };
+		ED69E04F28F84D9C00FDC142 /* iCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E04328F84D9C00FDC142 /* iCarousel.swift */; };
+		ED69E05028F84D9C00FDC142 /* iCarouselDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E04428F84D9C00FDC142 /* iCarouselDataSource.swift */; };
+		ED69E05128F84D9C00FDC142 /* iCarousel+ViewQueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E04528F84D9C00FDC142 /* iCarousel+ViewQueing.swift */; };
+		ED69E05228F84D9C00FDC142 /* iCarouselDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E04628F84D9C00FDC142 /* iCarouselDelegate.swift */; };
 		ED7A095328EC71370035E099 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094F28EC711D0035E099 /* Roboto-Bold.ttf */; };
 		ED7A095428EC71370035E099 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */; };
 		ED7A095528EC71370035E099 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED7A095028EC711D0035E099 /* Roboto-Medium.ttf */; };
@@ -75,6 +87,7 @@
 		EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478428D59B300037751C /* SectionHeaderViewDelegate.swift */; };
 		EDA4478D28D5A7640037751C /* AppToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478C28D5A7640037751C /* AppToolbar.swift */; };
 		EDA4478F28D5A7740037751C /* AppToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478E28D5A7740037751C /* AppToolbarDelegate.swift */; };
+		EDB263E628F8508E005C61B3 /* ItemCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263E528F8508E005C61B3 /* ItemCarouselView.swift */; };
 		EDB8780228D8AA720016B96B /* EntertainmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */; };
 		EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */; };
 		EDB8780528D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */; };
@@ -216,6 +229,18 @@
 		ED31388E28EF434C00EC759C /* Transition+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Ext.swift"; sourceTree = "<group>"; };
 		ED31389928F08AE600EC759C /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
+		ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewLayout.swift"; sourceTree = "<group>"; };
+		ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewManagement.swift"; sourceTree = "<group>"; };
+		ED69E03D28F84D9C00FDC142 /* iCarouselAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iCarouselAnimator.swift; sourceTree = "<group>"; };
+		ED69E03E28F84D9C00FDC142 /* iCarousel+Gesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+Gesture.swift"; sourceTree = "<group>"; };
+		ED69E03F28F84D9C00FDC142 /* iCarousel+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+Animation.swift"; sourceTree = "<group>"; };
+		ED69E04028F84D9C00FDC142 /* iCarouselAnimator+Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarouselAnimator+Property.swift"; sourceTree = "<group>"; };
+		ED69E04128F84D9C00FDC142 /* iCarousel+Scrolling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+Scrolling.swift"; sourceTree = "<group>"; };
+		ED69E04228F84D9C00FDC142 /* iCarousel+ViewLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewLoading.swift"; sourceTree = "<group>"; };
+		ED69E04328F84D9C00FDC142 /* iCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iCarousel.swift; sourceTree = "<group>"; };
+		ED69E04428F84D9C00FDC142 /* iCarouselDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iCarouselDataSource.swift; sourceTree = "<group>"; };
+		ED69E04528F84D9C00FDC142 /* iCarousel+ViewQueing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewQueing.swift"; sourceTree = "<group>"; };
+		ED69E04628F84D9C00FDC142 /* iCarouselDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iCarouselDelegate.swift; sourceTree = "<group>"; };
 		ED7A094D28EC711D0035E099 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		ED7A094E28EC711D0035E099 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		ED7A094F28EC711D0035E099 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -262,6 +287,7 @@
 		EDA4478428D59B300037751C /* SectionHeaderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewDelegate.swift; sourceTree = "<group>"; };
 		EDA4478C28D5A7640037751C /* AppToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToolbar.swift; sourceTree = "<group>"; };
 		EDA4478E28D5A7740037751C /* AppToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToolbarDelegate.swift; sourceTree = "<group>"; };
+		EDB263E528F8508E005C61B3 /* ItemCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCarouselView.swift; sourceTree = "<group>"; };
 		EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsViewController.swift; sourceTree = "<group>"; };
 		EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntertainmentDetailsViewController.xib; sourceTree = "<group>"; };
 		EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -446,6 +472,25 @@
 				ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */,
 			);
 			path = EntertainmentRankTableViewCell;
+			sourceTree = "<group>";
+		};
+		ED69E03A28F84D9C00FDC142 /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */,
+				ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */,
+				ED69E03D28F84D9C00FDC142 /* iCarouselAnimator.swift */,
+				ED69E03E28F84D9C00FDC142 /* iCarousel+Gesture.swift */,
+				ED69E03F28F84D9C00FDC142 /* iCarousel+Animation.swift */,
+				ED69E04028F84D9C00FDC142 /* iCarouselAnimator+Property.swift */,
+				ED69E04128F84D9C00FDC142 /* iCarousel+Scrolling.swift */,
+				ED69E04228F84D9C00FDC142 /* iCarousel+ViewLoading.swift */,
+				ED69E04328F84D9C00FDC142 /* iCarousel.swift */,
+				ED69E04528F84D9C00FDC142 /* iCarousel+ViewQueing.swift */,
+				ED69E04428F84D9C00FDC142 /* iCarouselDataSource.swift */,
+				ED69E04628F84D9C00FDC142 /* iCarouselDelegate.swift */,
+			);
+			path = iCarousel;
 			sourceTree = "<group>";
 		};
 		ED7A094C28EC70D30035E099 /* Fonts */ = {
@@ -817,6 +862,7 @@
 				EDC6DB4828CF990900164EBD /* MovieViewModel.swift */,
 				ED31388428EF2FD100EC759C /* MoviePreviewTab.swift */,
 				EDC6DB4128CF961700164EBD /* MovieCoordinator.swift */,
+				EDB263E528F8508E005C61B3 /* ItemCarouselView.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -1104,6 +1150,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				ED69E03A28F84D9C00FDC142 /* iCarousel */,
 				ED9EC19728F71D1C00465623 /* GalleryView */,
 				ED9EC0DC28F32FC900465623 /* PMAlertController */,
 				ED9EC0BC28F1B94300465623 /* BookmarkButton */,
@@ -1284,29 +1331,36 @@
 				EDE92B8828E5D97E0083F33A /* ErrorRetryView.swift in Sources */,
 				ED1F03D228EF0F650083B088 /* SettingViewModel.swift in Sources */,
 				EDE69B4728D6312F002726B0 /* SearchViewData.swift in Sources */,
+				ED69E04728F84D9C00FDC142 /* iCarousel+ViewLayout.swift in Sources */,
 				ED9EC14A28F3FBCD00465623 /* EntertainmentViewModel.swift in Sources */,
 				ED7A096028EC84D80035E099 /* EntertainmentListViewModel.swift in Sources */,
 				ED13B6CD28F12173007B7A1D /* EntertainmentHorizontalListCollectionViewCellDelegate.swift in Sources */,
 				EDC6DB4228CF961700164EBD /* MovieCoordinator.swift in Sources */,
 				EDB8781928D8D37C0016B96B /* DataUtils.swift in Sources */,
+				ED69E04A28F84D9C00FDC142 /* iCarousel+Gesture.swift in Sources */,
+				EDB263E628F8508E005C61B3 /* ItemCarouselView.swift in Sources */,
 				EDE69B5828D6BE1A002726B0 /* PersonHorizontalCell.swift in Sources */,
 				EDB8780228D8AA720016B96B /* EntertainmentDetailsViewController.swift in Sources */,
+				ED69E04828F84D9C00FDC142 /* iCarousel+ViewManagement.swift in Sources */,
 				EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */,
 				ED9EC0BE28F1B95700465623 /* BookmarkButton.swift in Sources */,
 				EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */,
 				EDC6DB4628CF98F800164EBD /* MovieViewController.swift in Sources */,
 				EDE69B8028D7321F002726B0 /* TVShowViewModel.swift in Sources */,
+				ED69E05228F84D9C00FDC142 /* iCarouselDelegate.swift in Sources */,
 				ED866E4028E01C300066E10B /* PersonBiographyViewController.swift in Sources */,
 				EDE92B6428E28F170083F33A /* EntertainmentPreviewCollectionViewCell.swift in Sources */,
 				EDD5300A28DC95740078C6C5 /* SeasonsViewModel.swift in Sources */,
 				EDA4478D28D5A7640037751C /* AppToolbar.swift in Sources */,
 				EDD52F8328DB7D4D0078C6C5 /* Date+Ext.swift in Sources */,
 				ED9EC16928F5A48400465623 /* PresentationConvertibleType.swift in Sources */,
+				ED69E04B28F84D9C00FDC142 /* iCarousel+Animation.swift in Sources */,
 				EDE69B5028D643A6002726B0 /* String+Ext.swift in Sources */,
 				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
 				ED9EC0E128F32FE700465623 /* PMAlertAction.swift in Sources */,
 				EDE69B4528D6294D002726B0 /* SearchViewModel.swift in Sources */,
 				ED9EC0D628F30FC300465623 /* UIView+Ext.swift in Sources */,
+				ED69E04D28F84D9C00FDC142 /* iCarousel+Scrolling.swift in Sources */,
 				EDA4478F28D5A7740037751C /* AppToolbarDelegate.swift in Sources */,
 				ED13B6C228F0972E007B7A1D /* TabBarSelectable.swift in Sources */,
 				EDD5302A28DCBDC50078C6C5 /* SeasonDetailsCoordinator.swift in Sources */,
@@ -1317,12 +1371,14 @@
 				EDD5301C28DCB6D00078C6C5 /* GradientView.swift in Sources */,
 				ED866E2228DED8030066E10B /* PersonDetailsCoordinator.swift in Sources */,
 				EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */,
+				ED69E04F28F84D9C00FDC142 /* iCarousel.swift in Sources */,
 				EDE92B9428E5F5420083F33A /* ShareButton.swift in Sources */,
 				EDFAD3B328D3745D00ED3BCD /* GridCollectionViewLayout.swift in Sources */,
 				EDE92D3328E98A4B0083F33A /* SelfSizingCollectionView.swift in Sources */,
 				EDD5301628DC99860078C6C5 /* SeasonsCoordinator.swift in Sources */,
 				ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */,
 				EDE92B8F28E5EB3F0083F33A /* LoadingDisplayable.swift in Sources */,
+				ED69E05128F84D9C00FDC142 /* iCarousel+ViewQueing.swift in Sources */,
 				EDE69B7D28D73214002726B0 /* TVShowViewController.swift in Sources */,
 				EDB8780728D8AABB0016B96B /* EntertainmentDetailsCoordinator.swift in Sources */,
 				EDA4478128D591410037751C /* SectionHeaderView.swift in Sources */,
@@ -1367,6 +1423,7 @@
 				EDFAD39E28D30E7200ED3BCD /* DataSourceAssembly.swift in Sources */,
 				ED1F03CF28EF0F590083B088 /* SettingViewController.swift in Sources */,
 				EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */,
+				ED69E04C28F84D9C00FDC142 /* iCarouselAnimator+Property.swift in Sources */,
 				ED13B6C628F09A83007B7A1D /* UICollectionView+Ext.swift in Sources */,
 				ED1F03BA28EDBD550083B088 /* DefaultsContants.swift in Sources */,
 				EDC502D028D377CC0047C7C3 /* GenreCollectionViewCell.swift in Sources */,
@@ -1374,6 +1431,7 @@
 				EDE69B4228D62943002726B0 /* SearchViewController.swift in Sources */,
 				EDFAD37F28D2309C00ED3BCD /* NSObject+Rx.swift in Sources */,
 				EDFAD38128D230C200ED3BCD /* HasDisposeBag.swift in Sources */,
+				ED69E04E28F84D9C00FDC142 /* iCarousel+ViewLoading.swift in Sources */,
 				EDC6DB4028CF92DE00164EBD /* HomeCoordinator.swift in Sources */,
 				EDD52F7B28DB6D260078C6C5 /* SelfSizingTableView.swift in Sources */,
 				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
@@ -1411,11 +1469,13 @@
 				ED7A096328EC84D80035E099 /* EntertainmentListViewController.swift in Sources */,
 				ED866E2028DED7AA0066E10B /* PersonDetailsViewModel.swift in Sources */,
 				EDE92B8D28E5EA3B0083F33A /* LoadingView.swift in Sources */,
+				ED69E05028F84D9C00FDC142 /* iCarouselDataSource.swift in Sources */,
 				EDE69B5228D6BA58002726B0 /* PersonHorizontalListCell.swift in Sources */,
 				ED9EC19C28F723E800465623 /* ImageViewerController.swift in Sources */,
 				ED31388F28EF434C00EC759C /* Transition+Ext.swift in Sources */,
 				EDD5302528DCBDA50078C6C5 /* SeasonDetailsViewController.swift in Sources */,
 				EDE92B7628E307010083F33A /* UIRefreshControl+Ext.swift in Sources */,
+				ED69E04928F84D9C00FDC142 /* iCarouselAnimator.swift in Sources */,
 				ED7A096228EC84D80035E099 /* EntertainmentListCoordinator.swift in Sources */,
 				EDE69B6A28D71464002726B0 /* SearchCoordinator.swift in Sources */,
 				EDC6DB2128CF69DF00164EBD /* BaseViewModel.swift in Sources */,
