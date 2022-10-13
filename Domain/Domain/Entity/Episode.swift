@@ -30,7 +30,7 @@ public struct Episode: Equatable {
 extension Episode: ImageConfigurable {
     public var posterURL: URL? {
         guard let stillPath = stillPath else { return nil }
-        let urlString = regularImageBaseURLString.appending(stillPath)
+        let urlString = backdropImageBaseURLString.appending(stillPath)
         return URL(string: urlString)
     }
 }

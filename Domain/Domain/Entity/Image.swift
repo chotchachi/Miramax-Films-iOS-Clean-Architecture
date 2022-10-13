@@ -23,7 +23,7 @@ public struct Image: Equatable {
 
 extension Image: ImageConfigurable {
     public var fileURL: URL? {
-        let urlString = regularImageBaseURLString.appending(filePath)
+        let urlString = backdropImageBaseURLString.appending(filePath)
         return URL(string: urlString)
     }
 }
