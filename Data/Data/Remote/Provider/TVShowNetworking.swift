@@ -13,6 +13,10 @@ public struct TVShowNetworking: NetworkingType {
     let provider: NetworkProvider<T>
     
     public static func getNetworking() -> TVShowNetworking {
-        return TVShowNetworking(provider: NetworkProvider(session: DefaultAlamofireSession.shared))
+        let provider = NetworkProvider<T>(
+            endpointClosure: DefaultEndpointMapping().endpointsClosure(),
+            session: DefaultAlamofireSession.shared
+        )
+        return TVShowNetworking(provider: provider)
     }
 }

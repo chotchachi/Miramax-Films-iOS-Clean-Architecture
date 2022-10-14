@@ -13,6 +13,10 @@ public struct GenreNetworking: NetworkingType {
     let provider: NetworkProvider<T>
     
     public static func getNetworking() -> GenreNetworking {
-        return GenreNetworking(provider: NetworkProvider(session: DefaultAlamofireSession.shared))
+        let provider = NetworkProvider<T>(
+            endpointClosure: DefaultEndpointMapping().endpointsClosure(),
+            session: DefaultAlamofireSession.shared
+        )
+        return GenreNetworking(provider: provider)
     }
 }

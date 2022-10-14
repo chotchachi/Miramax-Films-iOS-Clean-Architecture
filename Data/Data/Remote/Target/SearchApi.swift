@@ -49,9 +49,7 @@ extension SearchApi: TargetType, NetworkConfigurable {
     }
     
     private func requestWithQueryAndPageTask(_ query: String, _ page: Int?) -> Moya.Task {
-        var params: [String : Any] = [
-            "api_key" : apiKey
-        ]
+        var params: [String : Any] = [:]
         params["query"] = query
         if page != nil {
             params["page"] = page

@@ -89,6 +89,7 @@
 		EDA4478F28D5A7740037751C /* AppToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478E28D5A7740037751C /* AppToolbarDelegate.swift */; };
 		EDB263E628F8508E005C61B3 /* ItemCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263E528F8508E005C61B3 /* ItemCarouselView.swift */; };
 		EDB263E828F8681D005C61B3 /* GenreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263E728F8681D005C61B3 /* GenreTab.swift */; };
+		EDB263EB28F87E69005C61B3 /* PersonListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263EA28F87E69005C61B3 /* PersonListCoordinator.swift */; };
 		EDB8780228D8AA720016B96B /* EntertainmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */; };
 		EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */; };
 		EDB8780528D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */; };
@@ -290,6 +291,7 @@
 		EDA4478E28D5A7740037751C /* AppToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToolbarDelegate.swift; sourceTree = "<group>"; };
 		EDB263E528F8508E005C61B3 /* ItemCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCarouselView.swift; sourceTree = "<group>"; };
 		EDB263E728F8681D005C61B3 /* GenreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTab.swift; sourceTree = "<group>"; };
+		EDB263EA28F87E69005C61B3 /* PersonListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListCoordinator.swift; sourceTree = "<group>"; };
 		EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsViewController.swift; sourceTree = "<group>"; };
 		EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntertainmentDetailsViewController.xib; sourceTree = "<group>"; };
 		EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -686,6 +688,14 @@
 			path = AppToolbar;
 			sourceTree = "<group>";
 		};
+		EDB263E928F87E3B005C61B3 /* PersonList */ = {
+			isa = PBXGroup;
+			children = (
+				EDB263EA28F87E69005C61B3 /* PersonListCoordinator.swift */,
+			);
+			path = PersonList;
+			sourceTree = "<group>";
+		};
 		EDB877FF28D8AA600016B96B /* EntertainmentDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -804,6 +814,7 @@
 				ED9EC19A28F723D700465623 /* ImageViewer */,
 				ED866E3D28E01C1B0066E10B /* PersonBiography */,
 				ED866E1A28DED7590066E10B /* PersonDetails */,
+				EDB263E928F87E3B005C61B3 /* PersonList */,
 				EDD5301D28DCBBF40078C6C5 /* SeasonDetails */,
 				EDD5300628DC95210078C6C5 /* Seasons */,
 				EDB877FF28D8AA600016B96B /* EntertainmentDetails */,
@@ -1407,6 +1418,7 @@
 				ED13B6C428F09886007B7A1D /* UIScrollView+Ext.swift in Sources */,
 				EDD5302828DCBDBA0078C6C5 /* SeasonDetailsViewModel.swift in Sources */,
 				EDC502D828D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift in Sources */,
+				EDB263EB28F87E69005C61B3 /* PersonListCoordinator.swift in Sources */,
 				EDE92B7828E32C930083F33A /* EntertainmentDetailCollectionViewCell.swift in Sources */,
 				ED13B6C028F09314007B7A1D /* WishlistCoordinator.swift in Sources */,
 				ED9EC14C28F41A2400465623 /* PersonViewModel.swift in Sources */,

@@ -13,6 +13,10 @@ public struct PeopleNetworking: NetworkingType {
     let provider: NetworkProvider<T>
     
     public static func getNetworking() -> PeopleNetworking {
-        return PeopleNetworking(provider: NetworkProvider(session: DefaultAlamofireSession.shared))
+        let provider = NetworkProvider<T>(
+            endpointClosure: DefaultEndpointMapping().endpointsClosure(),
+            session: DefaultAlamofireSession.shared
+        )
+        return PeopleNetworking(provider: provider)
     }
 }

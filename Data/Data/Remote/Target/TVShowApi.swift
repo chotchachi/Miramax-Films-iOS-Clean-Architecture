@@ -51,27 +51,21 @@ extension TVShowApi: TargetType, NetworkConfigurable {
     var task: Moya.Task {
         switch self {
         case .airingToday(genreId: let genreId, page: let page):
-            return requestWithParams(genreId, nil, page)
+            return requestWithParams(genreId: genreId, page: page)
         case .onTheAir(genreId: let genreId, page: let page):
-            return requestWithParams(genreId, nil, page)
+            return requestWithParams(genreId: genreId, page: page)
         case .topRated(genreId: let genreId, page: let page):
-            return requestWithParams(genreId, nil, page)
+            return requestWithParams(genreId: genreId, page: page)
         case .popular(genreId: let genreId, page: let page):
-            return requestWithParams(genreId, nil, page)
+            return requestWithParams(genreId: genreId, page: page)
         case .byGenre(genreId: let genreId, sortBy: let sortBy, page: let page):
-            return requestWithParams(genreId, sortBy, page)
+            return requestWithParams(genreId: genreId, sortBy: sortBy, page: page)
         case .detail:
-            return requestTvShowDetail()
+            return .requestParameters(parameters: ["append_to_response" : "credits,recommendations,images,videos"], encoding: URLEncoding.default)
         case .recommendations(tvShowId: _, page: let page):
-            var params: [String : Any] = [
-                "api_key" : apiKey
-            ]
-            if page != nil {
-                params["page"] = page
-            }
-            return .requestParameters(parameters: params, encoding: URLEncoding.default)
+            return requestWithParams(page: page)
         case .season:
-            return requestTvShowSeason()
+            return .requestPlain
         }
     }
     
@@ -79,10 +73,8 @@ extension TVShowApi: TargetType, NetworkConfigurable {
         nil
     }
     
-    private func requestWithParams(_ genreId: Int? = nil, _ sortBy: String? = nil, _ page: Int? = nil) -> Moya.Task {
-        var params: [String : Any] = [
-            "api_key" : apiKey
-        ]
+    private func requestWithParams(genreId: Int? = nil, sortBy: String? = nil, page: Int? = nil) -> Moya.Task {
+        var params: [String : Any] = [:]
         if genreId != nil {
             params["with_genres"] = genreId
         }
@@ -92,21 +84,6 @@ extension TVShowApi: TargetType, NetworkConfigurable {
         if page != nil {
             params["page"] = page
         }
-        return .requestParameters(parameters: params, encoding: URLEncoding.default)
-    }
-    
-    private func requestTvShowDetail() -> Moya.Task {
-        let params: [String : Any] = [
-            "api_key" : apiKey,
-            "append_to_response" : "credits,recommendations,images,videos"
-        ]
-        return .requestParameters(parameters: params, encoding: URLEncoding.default)
-    }
-    
-    private func requestTvShowSeason() -> Moya.Task {
-        let params: [String : Any] = [
-            "api_key" : apiKey,
-        ]
         return .requestParameters(parameters: params, encoding: URLEncoding.default)
     }
 }

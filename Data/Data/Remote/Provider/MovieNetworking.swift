@@ -13,6 +13,10 @@ public struct MovieNetworking: NetworkingType {
     let provider: NetworkProvider<T>
     
     public static func getNetworking() -> MovieNetworking {
-        return MovieNetworking(provider: NetworkProvider(session: DefaultAlamofireSession.shared))
+        let provider = NetworkProvider<T>(
+            endpointClosure: DefaultEndpointMapping().endpointsClosure(),
+            session: DefaultAlamofireSession.shared
+        )
+        return MovieNetworking(provider: provider)
     }
 }

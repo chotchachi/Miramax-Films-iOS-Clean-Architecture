@@ -30,19 +30,11 @@ extension PeopleApi: TargetType, NetworkConfigurable {
     var task: Moya.Task {
         switch self {
         case .personDetail:
-            return requestPersonDetail()
+            return .requestParameters(parameters: ["append_to_response" : "images,combined_credits"], encoding: URLEncoding.default)
         }
     }
     
     var headers: [String : String]? {
         nil
-    }
-    
-    private func requestPersonDetail() -> Moya.Task {
-        let params: [String : Any] = [
-            "api_key" : apiKey,
-            "append_to_response" : "images,combined_credits"
-        ]
-        return .requestParameters(parameters: params, encoding: URLEncoding.default)
     }
 }

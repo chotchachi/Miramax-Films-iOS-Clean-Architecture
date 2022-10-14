@@ -13,6 +13,10 @@ public struct SearchNetworking: NetworkingType {
     let provider: NetworkProvider<T>
     
     public static func getNetworking() -> SearchNetworking {
-        return SearchNetworking(provider: NetworkProvider(session: DefaultAlamofireSession.shared))
+        let provider = NetworkProvider<T>(
+            endpointClosure: DefaultEndpointMapping().endpointsClosure(),
+            session: DefaultAlamofireSession.shared
+        )
+        return SearchNetworking(provider: provider)
     }
 }

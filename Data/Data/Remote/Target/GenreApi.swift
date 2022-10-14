@@ -31,7 +31,7 @@ extension GenreApi: TargetType, NetworkConfigurable {
     }
     
     var task: Moya.Task {
-        .requestParameters(parameters: ["api_key" : apiKey], encoding: URLEncoding.default)
+        .requestPlain
     }
     
     var headers: [String : String]? {

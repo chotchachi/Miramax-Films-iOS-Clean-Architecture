@@ -48,25 +48,19 @@ extension MovieApi: TargetType, NetworkConfigurable {
     var task: Moya.Task {
         switch self {
         case .nowPlaying(genreId: let genreId, page: let page):
-            return requestWithParams(genreId, nil, page)
+            return requestWithParams(genreId: genreId, page: page)
         case .topRated(genreId: let genreId, page: let page):
-            return requestWithParams(genreId, nil, page)
+            return requestWithParams(genreId: genreId, page: page)
         case .popular(genreId: let genreId, page: let page):
-            return requestWithParams(genreId, nil, page)
+            return requestWithParams(genreId: genreId, page: page)
         case .upComing(genreId: let genreId, page: let page):
-            return requestWithParams(genreId, nil, page)
+            return requestWithParams(genreId: genreId, page: page)
         case .byGenre(genreId: let genreId, sortBy: let sortBy, page: let page):
-            return requestWithParams(genreId, sortBy, page)
+            return requestWithParams(genreId: genreId, sortBy: sortBy, page: page)
         case .detail:
-            return requestMovieDetail()
+            return .requestParameters(parameters: ["append_to_response" : "credits,recommendations,images,videos"], encoding: URLEncoding.default)
         case .recommendations(movieId: _, page: let page):
-            var params: [String : Any] = [
-                "api_key" : apiKey
-            ]
-            if page != nil {
-                params["page"] = page
-            }
-            return .requestParameters(parameters: params, encoding: URLEncoding.default)
+            return requestWithParams(page: page)
         }
     }
     
@@ -74,10 +68,8 @@ extension MovieApi: TargetType, NetworkConfigurable {
         nil
     }
     
-    private func requestWithParams(_ genreId: Int? = nil, _ sortBy: String? = nil, _ page: Int? = nil) -> Moya.Task {
-        var params: [String : Any] = [
-            "api_key" : apiKey
-        ]
+    private func requestWithParams(genreId: Int? = nil, sortBy: String? = nil, page: Int? = nil) -> Moya.Task {
+        var params: [String : Any] = [:]
         if genreId != nil {
             params["with_genres"] = genreId
         }
@@ -87,14 +79,6 @@ extension MovieApi: TargetType, NetworkConfigurable {
         if page != nil {
             params["page"] = page
         }
-        return .requestParameters(parameters: params, encoding: URLEncoding.default)
-    }
-    
-    private func requestMovieDetail() -> Moya.Task {
-        let params: [String : Any] = [
-            "api_key" : apiKey,
-            "append_to_response" : "credits,recommendations,images,videos"
-        ]
         return .requestParameters(parameters: params, encoding: URLEncoding.default)
     }
 }
