@@ -90,6 +90,7 @@
 		EDB263E628F8508E005C61B3 /* ItemCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263E528F8508E005C61B3 /* ItemCarouselView.swift */; };
 		EDB263E828F8681D005C61B3 /* GenreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263E728F8681D005C61B3 /* GenreTab.swift */; };
 		EDB263EB28F87E69005C61B3 /* PersonListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263EA28F87E69005C61B3 /* PersonListCoordinator.swift */; };
+		EDB263F228F9B672005C61B3 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263F128F9B672005C61B3 /* CircleImageView.swift */; };
 		EDB8780228D8AA720016B96B /* EntertainmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */; };
 		EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */; };
 		EDB8780528D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */; };
@@ -292,6 +293,7 @@
 		EDB263E528F8508E005C61B3 /* ItemCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCarouselView.swift; sourceTree = "<group>"; };
 		EDB263E728F8681D005C61B3 /* GenreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTab.swift; sourceTree = "<group>"; };
 		EDB263EA28F87E69005C61B3 /* PersonListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListCoordinator.swift; sourceTree = "<group>"; };
+		EDB263F128F9B672005C61B3 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsViewController.swift; sourceTree = "<group>"; };
 		EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntertainmentDetailsViewController.xib; sourceTree = "<group>"; };
 		EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -694,6 +696,14 @@
 				EDB263EA28F87E69005C61B3 /* PersonListCoordinator.swift */,
 			);
 			path = PersonList;
+			sourceTree = "<group>";
+		};
+		EDB263F028F9B66A005C61B3 /* CircleImageView */ = {
+			isa = PBXGroup;
+			children = (
+				EDB263F128F9B672005C61B3 /* CircleImageView.swift */,
+			);
+			path = CircleImageView;
 			sourceTree = "<group>";
 		};
 		EDB877FF28D8AA600016B96B /* EntertainmentDetails */ = {
@@ -1164,6 +1174,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				EDB263F028F9B66A005C61B3 /* CircleImageView */,
 				ED69E03A28F84D9C00FDC142 /* iCarousel */,
 				ED9EC19728F71D1C00465623 /* GalleryView */,
 				ED9EC0DC28F32FC900465623 /* PMAlertController */,
@@ -1386,6 +1397,7 @@
 				EDD5301C28DCB6D00078C6C5 /* GradientView.swift in Sources */,
 				ED866E2228DED8030066E10B /* PersonDetailsCoordinator.swift in Sources */,
 				EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */,
+				EDB263F228F9B672005C61B3 /* CircleImageView.swift in Sources */,
 				ED69E04F28F84D9C00FDC142 /* iCarousel.swift in Sources */,
 				EDE92B9428E5F5420083F33A /* ShareButton.swift in Sources */,
 				EDFAD3B328D3745D00ED3BCD /* GridCollectionViewLayout.swift in Sources */,

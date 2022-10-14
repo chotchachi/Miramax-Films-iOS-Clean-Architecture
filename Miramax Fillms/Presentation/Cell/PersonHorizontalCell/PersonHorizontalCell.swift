@@ -13,8 +13,8 @@ import Domain
 class PersonHorizontalCell: UICollectionViewCell {
     
     // MARK: - Views
-
-    private var ivProfile: UIImageView!
+    
+    private var ivProfile: CircleImageView!
     private var lblName: UILabel!
     
     override init(frame: CGRect) {
@@ -24,10 +24,9 @@ class PersonHorizontalCell: UICollectionViewCell {
         
         // image view profile
         
-        ivProfile = UIImageView()
+        ivProfile = CircleImageView()
         ivProfile.translatesAutoresizingMaskIntoConstraints = false
         ivProfile.contentMode = .scaleAspectFill
-        ivProfile.clipsToBounds = true
         
         // label name
         
@@ -57,12 +56,6 @@ class PersonHorizontalCell: UICollectionViewCell {
         }
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        ivProfile.cornerRadius = ivProfile.width / 2.0
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -77,7 +70,5 @@ class PersonHorizontalCell: UICollectionViewCell {
     func bind(_ item: PersonViewModel) {
         ivProfile.setImage(with: item.profileURL)
         lblName.text = item.name
-        
-        layoutIfNeeded()
     }
 }
