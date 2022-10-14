@@ -67,6 +67,7 @@ class GenresViewController: BaseViewController<GenresViewModel>, TabBarSelectabl
                 if isLoading {
                     self?.hideErrorRetryView()
                 }
+                self?.collectionView.isHidden = isLoading
             })
             .disposed(by: rx.disposeBag)
         
