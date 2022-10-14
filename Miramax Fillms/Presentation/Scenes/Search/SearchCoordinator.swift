@@ -12,8 +12,9 @@ enum SearchRoute: Route {
     case initial
     case dismiss
     case personDetail(personId: Int)
+    case personList(query: String)
     case entertainmentDetail(entertainmentId: Int, entertainmentType: EntertainmentType)
-    case entertainmentList(responseRoute: EntertainmentsResponseRoute)
+    case entertainmentList(query: String, entertainmentType: EntertainmentType)
 }
 
 class SearchCoordinator: NavigationCoordinator<SearchRoute> {
@@ -37,11 +38,14 @@ class SearchCoordinator: NavigationCoordinator<SearchRoute> {
         case .personDetail(personId: let personId):
             addChild(PersonDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, personId: personId, fromSearch: true))
             return .none()
+        case .personList(query: let query):
+            addChild(PersonListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, query: query, fromSearch: true))
+            return .none()
         case .entertainmentDetail(entertainmentId: let entertainmentId, entertainmentType: let entertainmentType):
             addChild(EntertainmentDetailsCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, entertainmentId: entertainmentId, entertainmentType: entertainmentType, fromSearch: true))
             return .none()
-        case .entertainmentList(responseRoute: let responseRoute):
-            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, responseRoute: responseRoute, fromSearch: true))
+        case .entertainmentList(query: let query, entertainmentType: let entertainmentType):
+            addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, responseRoute: .search(query: query, entertainmentType: entertainmentType), fromSearch: true))
             return .none()
         }
     }

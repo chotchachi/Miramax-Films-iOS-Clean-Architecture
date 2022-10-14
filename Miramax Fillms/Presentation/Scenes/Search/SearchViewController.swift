@@ -39,7 +39,8 @@ class SearchViewController: BaseViewController<SearchViewModel>, LoadingDisplaya
     private let clearAllSearchRecentTriggerS = PublishRelay<Void>()
     private let seeMoreMovieTriggerS = PublishRelay<Void>()
     private let seeMoreTVShowTriggerS = PublishRelay<Void>()
-    
+    private let seeMorePeopleTriggerS = PublishRelay<Void>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
@@ -64,7 +65,8 @@ class SearchViewController: BaseViewController<SearchViewModel>, LoadingDisplaya
             entertainmentSelectTrigger: entertainmentSelectTriggerS.asDriverOnErrorJustComplete(),
             clearAllSearchRecentTrigger: clearAllSearchRecentTriggerS.asDriverOnErrorJustComplete(),
             seeMoreMovieTrigger: seeMoreMovieTriggerS.asDriverOnErrorJustComplete(),
-            seeMoreTVShowTrigger: seeMoreTVShowTriggerS.asDriverOnErrorJustComplete()
+            seeMoreTVShowTrigger: seeMoreTVShowTriggerS.asDriverOnErrorJustComplete(),
+            seeMorePeopleTrigger: seeMorePeopleTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
@@ -250,7 +252,7 @@ extension SearchViewController: PersonHorizontalListCellDelegate {
     }
     
     func personHorizontalList(onActionButtonTapped indexPath: IndexPath) {
-        
+        seeMorePeopleTriggerS.accept(())
     }
     
     func personHorizontalList(onRetryButtonTapped indexPath: IndexPath) {

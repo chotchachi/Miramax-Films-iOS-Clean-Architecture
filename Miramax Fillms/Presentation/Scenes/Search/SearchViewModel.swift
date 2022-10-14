@@ -19,6 +19,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
         let clearAllSearchRecentTrigger: Driver<Void>
         let seeMoreMovieTrigger: Driver<Void>
         let seeMoreTVShowTrigger: Driver<Void>
+        let seeMorePeopleTrigger: Driver<Void>
     }
     
     struct Output {
@@ -91,7 +92,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
             .compactMap { $0 }
             .drive(onNext: { [weak self] query in
                 guard let self = self else { return }
-                self.router.trigger(.entertainmentList(responseRoute: .search(query: query, entertainmentType: .movie)))
+                self.router.trigger(.entertainmentList(query: query, entertainmentType: .movie))
             })
             .disposed(by: rx.disposeBag)
         
@@ -100,7 +101,16 @@ class SearchViewModel: BaseViewModel, ViewModelType {
             .compactMap { $0 }
             .drive(onNext: { [weak self] query in
                 guard let self = self else { return }
-                self.router.trigger(.entertainmentList(responseRoute: .search(query: query, entertainmentType: .tvShow)))
+                self.router.trigger(.entertainmentList(query: query, entertainmentType: .tvShow))
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.seeMorePeopleTrigger
+            .withLatestFrom(searchTriggerO.asDriverOnErrorJustComplete())
+            .compactMap { $0 }
+            .drive(onNext: { [weak self] query in
+                guard let self = self else { return }
+                self.router.trigger(.personList(query: query))
             })
             .disposed(by: rx.disposeBag)
         

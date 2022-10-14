@@ -91,6 +91,9 @@
 		EDB263E828F8681D005C61B3 /* GenreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263E728F8681D005C61B3 /* GenreTab.swift */; };
 		EDB263EB28F87E69005C61B3 /* PersonListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263EA28F87E69005C61B3 /* PersonListCoordinator.swift */; };
 		EDB263F228F9B672005C61B3 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263F128F9B672005C61B3 /* CircleImageView.swift */; };
+		EDB263F528F9B82B005C61B3 /* PersonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263F328F9B82B005C61B3 /* PersonListViewController.swift */; };
+		EDB263F628F9B82B005C61B3 /* PersonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDB263F428F9B82B005C61B3 /* PersonListViewController.xib */; };
+		EDB263F828F9B83F005C61B3 /* PersonListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263F728F9B83F005C61B3 /* PersonListViewModel.swift */; };
 		EDB8780228D8AA720016B96B /* EntertainmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */; };
 		EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */; };
 		EDB8780528D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */; };
@@ -294,6 +297,9 @@
 		EDB263E728F8681D005C61B3 /* GenreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTab.swift; sourceTree = "<group>"; };
 		EDB263EA28F87E69005C61B3 /* PersonListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListCoordinator.swift; sourceTree = "<group>"; };
 		EDB263F128F9B672005C61B3 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
+		EDB263F328F9B82B005C61B3 /* PersonListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListViewController.swift; sourceTree = "<group>"; };
+		EDB263F428F9B82B005C61B3 /* PersonListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonListViewController.xib; sourceTree = "<group>"; };
+		EDB263F728F9B83F005C61B3 /* PersonListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListViewModel.swift; sourceTree = "<group>"; };
 		EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsViewController.swift; sourceTree = "<group>"; };
 		EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntertainmentDetailsViewController.xib; sourceTree = "<group>"; };
 		EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -693,6 +699,9 @@
 		EDB263E928F87E3B005C61B3 /* PersonList */ = {
 			isa = PBXGroup;
 			children = (
+				EDB263F728F9B83F005C61B3 /* PersonListViewModel.swift */,
+				EDB263F328F9B82B005C61B3 /* PersonListViewController.swift */,
+				EDB263F428F9B82B005C61B3 /* PersonListViewController.xib */,
 				EDB263EA28F87E69005C61B3 /* PersonListCoordinator.swift */,
 			);
 			path = PersonList;
@@ -1290,6 +1299,7 @@
 				ED13B6BE28F09303007B7A1D /* WishlistViewController.xib in Resources */,
 				ED7A095728EC71370035E099 /* Roboto-Light.ttf in Resources */,
 				ED7A096128EC84D80035E099 /* EntertainmentListViewController.xib in Resources */,
+				EDB263F628F9B82B005C61B3 /* PersonListViewController.xib in Resources */,
 				EDE69B4328D62943002726B0 /* SearchViewController.xib in Resources */,
 				ED1F03D028EF0F590083B088 /* SettingViewController.xib in Resources */,
 				ED9EC0E228F32FE700465623 /* PMAlertController.xib in Resources */,
@@ -1400,6 +1410,8 @@
 				EDB263F228F9B672005C61B3 /* CircleImageView.swift in Sources */,
 				ED69E04F28F84D9C00FDC142 /* iCarousel.swift in Sources */,
 				EDE92B9428E5F5420083F33A /* ShareButton.swift in Sources */,
+				EDB263F828F9B83F005C61B3 /* PersonListViewModel.swift in Sources */,
+				EDB263F528F9B82B005C61B3 /* PersonListViewController.swift in Sources */,
 				EDFAD3B328D3745D00ED3BCD /* GridCollectionViewLayout.swift in Sources */,
 				EDE92D3328E98A4B0083F33A /* SelfSizingCollectionView.swift in Sources */,
 				EDD5301628DC99860078C6C5 /* SeasonsCoordinator.swift in Sources */,
