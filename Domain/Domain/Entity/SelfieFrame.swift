@@ -8,11 +8,11 @@
 import Foundation
 
 public struct SelfieFrame {
-    let name: String
-    let path: String
+    public let name: String
+    public let previewURL: URL
     
-    public init(name: String, path: String) {
+    public init(name: String, previewURL: URL) {
         self.name = name
-        self.path = path
+        self.previewURL = previewURL
     }
 }

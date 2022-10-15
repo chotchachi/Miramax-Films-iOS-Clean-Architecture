@@ -22,8 +22,21 @@ public struct SelfieFrameDTO : Mappable {
     }
 }
 
+extension SelfieFrameDTO {
+    private var frameDir: URL {
+        return ResourceManager.selfieFramesBundleURL
+            .appendingPathComponent(path, isDirectory: true)
+    }
+    
+    private var previewURL: URL {
+        return frameDir
+            .appendingPathComponent("preview")
+            .appendingPathExtension("png")
+    }
+}
+
 extension SelfieFrameDTO: DomainConvertibleType {
     public func asDomain() -> SelfieFrame {
-        return SelfieFrame(name: name, path: path)
+        return SelfieFrame(name: name, previewURL: previewURL)
     }
 }
