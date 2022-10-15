@@ -14,6 +14,7 @@ enum MovieRoute: Route {
     case search
     case entertainmentDetail(entertainmentId: Int, entertainmentType: EntertainmentType)
     case entertainmentList(responseRoute: EntertainmentsResponseRoute)
+    case selfieMovie
 }
 
 class MovieCoordinator: NavigationCoordinator<MovieRoute> {
@@ -42,6 +43,9 @@ class MovieCoordinator: NavigationCoordinator<MovieRoute> {
         case .entertainmentList(responseRoute: let responseRoute):
             addChild(EntertainmentListCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, responseRoute: responseRoute))
             return .none()
+        case .selfieMovie:
+            let selfieMovieCoordinator = SelfieMovieCoordinator(appDIContainer: appDIContainer)
+            return .presentFullScreen(selfieMovieCoordinator, animation: .navigation)
         }
     }
 }

@@ -94,6 +94,11 @@
 		EDB263F528F9B82B005C61B3 /* PersonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263F328F9B82B005C61B3 /* PersonListViewController.swift */; };
 		EDB263F628F9B82B005C61B3 /* PersonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDB263F428F9B82B005C61B3 /* PersonListViewController.xib */; };
 		EDB263F828F9B83F005C61B3 /* PersonListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263F728F9B83F005C61B3 /* PersonListViewModel.swift */; };
+		EDB263FC28FA78F4005C61B3 /* SelfieMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263FA28FA78F4005C61B3 /* SelfieMovieViewController.swift */; };
+		EDB263FD28FA78F4005C61B3 /* SelfieMovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDB263FB28FA78F4005C61B3 /* SelfieMovieViewController.xib */; };
+		EDB263FF28FA78FF005C61B3 /* SelfieMovieCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263FE28FA78FF005C61B3 /* SelfieMovieCoordinator.swift */; };
+		EDB2640128FA7905005C61B3 /* SelfieMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2640028FA7905005C61B3 /* SelfieMovieViewModel.swift */; };
+		EDB2640328FA7E91005C61B3 /* SelfieMovieTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2640228FA7E91005C61B3 /* SelfieMovieTab.swift */; };
 		EDB8780228D8AA720016B96B /* EntertainmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */; };
 		EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */; };
 		EDB8780528D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */; };
@@ -300,6 +305,11 @@
 		EDB263F328F9B82B005C61B3 /* PersonListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListViewController.swift; sourceTree = "<group>"; };
 		EDB263F428F9B82B005C61B3 /* PersonListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonListViewController.xib; sourceTree = "<group>"; };
 		EDB263F728F9B83F005C61B3 /* PersonListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListViewModel.swift; sourceTree = "<group>"; };
+		EDB263FA28FA78F4005C61B3 /* SelfieMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieMovieViewController.swift; sourceTree = "<group>"; };
+		EDB263FB28FA78F4005C61B3 /* SelfieMovieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieMovieViewController.xib; sourceTree = "<group>"; };
+		EDB263FE28FA78FF005C61B3 /* SelfieMovieCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieMovieCoordinator.swift; sourceTree = "<group>"; };
+		EDB2640028FA7905005C61B3 /* SelfieMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieMovieViewModel.swift; sourceTree = "<group>"; };
+		EDB2640228FA7E91005C61B3 /* SelfieMovieTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieMovieTab.swift; sourceTree = "<group>"; };
 		EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsViewController.swift; sourceTree = "<group>"; };
 		EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntertainmentDetailsViewController.xib; sourceTree = "<group>"; };
 		EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -715,6 +725,18 @@
 			path = CircleImageView;
 			sourceTree = "<group>";
 		};
+		EDB263F928FA78CE005C61B3 /* SelfieMovie */ = {
+			isa = PBXGroup;
+			children = (
+				EDB263FA28FA78F4005C61B3 /* SelfieMovieViewController.swift */,
+				EDB263FB28FA78F4005C61B3 /* SelfieMovieViewController.xib */,
+				EDB263FE28FA78FF005C61B3 /* SelfieMovieCoordinator.swift */,
+				EDB2640028FA7905005C61B3 /* SelfieMovieViewModel.swift */,
+				EDB2640228FA7E91005C61B3 /* SelfieMovieTab.swift */,
+			);
+			path = SelfieMovie;
+			sourceTree = "<group>";
+		};
 		EDB877FF28D8AA600016B96B /* EntertainmentDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -830,6 +852,7 @@
 		EDC6DB2528CF6C1900164EBD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EDB263F928FA78CE005C61B3 /* SelfieMovie */,
 				ED9EC19A28F723D700465623 /* ImageViewer */,
 				ED866E3D28E01C1B0066E10B /* PersonBiography */,
 				ED866E1A28DED7590066E10B /* PersonDetails */,
@@ -1301,6 +1324,7 @@
 				ED7A096128EC84D80035E099 /* EntertainmentListViewController.xib in Resources */,
 				EDB263F628F9B82B005C61B3 /* PersonListViewController.xib in Resources */,
 				EDE69B4328D62943002726B0 /* SearchViewController.xib in Resources */,
+				EDB263FD28FA78F4005C61B3 /* SelfieMovieViewController.xib in Resources */,
 				ED1F03D028EF0F590083B088 /* SettingViewController.xib in Resources */,
 				ED9EC0E228F32FE700465623 /* PMAlertController.xib in Resources */,
 				EDE69B7E28D73214002726B0 /* TVShowViewController.xib in Resources */,
@@ -1382,6 +1406,7 @@
 				EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */,
 				EDC6DB4628CF98F800164EBD /* MovieViewController.swift in Sources */,
 				EDE69B8028D7321F002726B0 /* TVShowViewModel.swift in Sources */,
+				EDB263FC28FA78F4005C61B3 /* SelfieMovieViewController.swift in Sources */,
 				ED69E05228F84D9C00FDC142 /* iCarouselDelegate.swift in Sources */,
 				ED866E4028E01C300066E10B /* PersonBiographyViewController.swift in Sources */,
 				EDE92B6428E28F170083F33A /* EntertainmentPreviewCollectionViewCell.swift in Sources */,
@@ -1424,6 +1449,7 @@
 				ED866E4528E01DF60066E10B /* PersonBiographyCoordinator.swift in Sources */,
 				EDC6DB2428CF6A0800164EBD /* ViewModelType.swift in Sources */,
 				EDE69B4E28D63EBB002726B0 /* UIViewController+Ext.swift in Sources */,
+				EDB2640328FA7E91005C61B3 /* SelfieMovieTab.swift in Sources */,
 				ED31388528EF2FD100EC759C /* MoviePreviewTab.swift in Sources */,
 				EDE69B7228D7303D002726B0 /* Animation+Navigation.swift in Sources */,
 				ED31388728EF31E400EC759C /* CaseIterable+Ext.swift in Sources */,
@@ -1448,6 +1474,7 @@
 				ED9EC14C28F41A2400465623 /* PersonViewModel.swift in Sources */,
 				EDE92B8A28E5DD3D0083F33A /* Displayable.swift in Sources */,
 				ED1F03BD28EDD64E0083B088 /* SortPopupView.swift in Sources */,
+				EDB2640128FA7905005C61B3 /* SelfieMovieViewModel.swift in Sources */,
 				EDE69B7528D7303D002726B0 /* Animation+Scale.swift in Sources */,
 				EDE92D3028E9823D0083F33A /* SelfieWithMovieView.swift in Sources */,
 				ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */,
@@ -1515,6 +1542,7 @@
 				ED31388F28EF434C00EC759C /* Transition+Ext.swift in Sources */,
 				EDD5302528DCBDA50078C6C5 /* SeasonDetailsViewController.swift in Sources */,
 				EDE92B7628E307010083F33A /* UIRefreshControl+Ext.swift in Sources */,
+				EDB263FF28FA78FF005C61B3 /* SelfieMovieCoordinator.swift in Sources */,
 				ED69E04928F84D9C00FDC142 /* iCarouselAnimator.swift in Sources */,
 				ED7A096228EC84D80035E099 /* EntertainmentListCoordinator.swift in Sources */,
 				EDE69B6A28D71464002726B0 /* SearchCoordinator.swift in Sources */,

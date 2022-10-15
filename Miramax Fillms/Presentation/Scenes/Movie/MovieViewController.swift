@@ -93,6 +93,7 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
         
         let input = MovieViewModel.Input(
             toSearchTrigger: btnSearch.rx.tap.asDriver(),
+            toSelfieMovieTrigger: selfieView.rx.actionTapped.asDriver(),
             retryGenreTrigger: genresRetryButton.rx.tap.asDriver(),
             retryNowPlayingTrigger: carouselRetryButton.rx.tap.asDriver(),
             retryUpcomingTrigger: upcomingRetryButton.rx.tap.asDriver(),

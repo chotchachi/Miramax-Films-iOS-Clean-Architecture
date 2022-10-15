@@ -14,6 +14,7 @@ class MovieViewModel: BaseViewModel, ViewModelType {
     
     struct Input {
         let toSearchTrigger: Driver<Void>
+        let toSelfieMovieTrigger: Driver<Void>
         let retryGenreTrigger: Driver<Void>
         let retryNowPlayingTrigger: Driver<Void>
         let retryUpcomingTrigger: Driver<Void>
@@ -122,6 +123,13 @@ class MovieViewModel: BaseViewModel, ViewModelType {
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.router.trigger(.search)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.toSelfieMovieTrigger
+            .drive(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.router.trigger(.selfieMovie)
             })
             .disposed(by: rx.disposeBag)
         
