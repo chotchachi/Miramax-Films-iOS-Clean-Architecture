@@ -15,6 +15,10 @@
 		ED9EC0CF28F2890F00465623 /* BookmarkEntertainmentDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0CE28F2890F00465623 /* BookmarkEntertainmentDao.swift */; };
 		ED9EC0D428F2AE4C00465623 /* EntertainmentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0D328F2AE4C00465623 /* EntertainmentRepository.swift */; };
 		EDB263EF28F90BD6005C61B3 /* DefaultEndpointMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263EE28F90BD6005C61B3 /* DefaultEndpointMapping.swift */; };
+		EDB2640928FA82F1005C61B3 /* SelfieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2640828FA82F1005C61B3 /* SelfieRepository.swift */; };
+		EDB2640C28FA8381005C61B3 /* SelfieFrames.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EDB2640B28FA8381005C61B3 /* SelfieFrames.bundle */; };
+		EDB2640F28FA863C005C61B3 /* selfie_frames.json in Resources */ = {isa = PBXBuildFile; fileRef = EDB2640E28FA863C005C61B3 /* selfie_frames.json */; };
+		EDB2641128FA8675005C61B3 /* SelfieFrameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2641028FA8675005C61B3 /* SelfieFrameDTO.swift */; };
 		EDE92C4128E697920083F33A /* Data.h in Headers */ = {isa = PBXBuildFile; fileRef = EDE92C4028E697920083F33A /* Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDE92CC928E698E40083F33A /* RepositoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAF28E698E20083F33A /* RepositoryProvider.swift */; };
 		EDE92CCA28E699010083F33A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CC628E698E30083F33A /* ReachabilityManager.swift */; };
@@ -99,6 +103,10 @@
 		ED9EC0CE28F2890F00465623 /* BookmarkEntertainmentDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkEntertainmentDao.swift; sourceTree = "<group>"; };
 		ED9EC0D328F2AE4C00465623 /* EntertainmentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRepository.swift; sourceTree = "<group>"; };
 		EDB263EE28F90BD6005C61B3 /* DefaultEndpointMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEndpointMapping.swift; sourceTree = "<group>"; };
+		EDB2640828FA82F1005C61B3 /* SelfieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieRepository.swift; sourceTree = "<group>"; };
+		EDB2640B28FA8381005C61B3 /* SelfieFrames.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SelfieFrames.bundle; sourceTree = "<group>"; };
+		EDB2640E28FA863C005C61B3 /* selfie_frames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = selfie_frames.json; sourceTree = "<group>"; };
+		EDB2641028FA8675005C61B3 /* SelfieFrameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieFrameDTO.swift; sourceTree = "<group>"; };
 		EDE92C3D28E697920083F33A /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE92C4028E697920083F33A /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		EDE92C8328E698E20083F33A /* RemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
@@ -190,6 +198,23 @@
 			path = ../Pods;
 			sourceTree = "<group>";
 		};
+		EDB2640A28FA8365005C61B3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EDB2640D28FA8510005C61B3 /* JsonData */,
+				EDB2640B28FA8381005C61B3 /* SelfieFrames.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EDB2640D28FA8510005C61B3 /* JsonData */ = {
+			isa = PBXGroup;
+			children = (
+				EDB2640E28FA863C005C61B3 /* selfie_frames.json */,
+			);
+			path = JsonData;
+			sourceTree = "<group>";
+		};
 		EDE92C3328E697910083F33A = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +236,7 @@
 		EDE92C3F28E697920083F33A /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				EDB2640A28FA8365005C61B3 /* Resources */,
 				EDE92C8528E698E20083F33A /* DataSources */,
 				EDE92CB328E698E30083F33A /* Convertion */,
 				EDE92CBF28E698E30083F33A /* Local */,
@@ -310,6 +336,7 @@
 				EDE92CAA28E698E20083F33A /* EpisodeDTO.swift */,
 				EDE92CAC28E698E20083F33A /* ImageDTO.swift */,
 				EDE92CAD28E698E20083F33A /* PersonCreditDTO.swift */,
+				EDB2641028FA8675005C61B3 /* SelfieFrameDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -375,6 +402,7 @@
 				EDE92CC428E698E30083F33A /* SearchRepository.swift */,
 				ED31389428EFE87200EC759C /* OptionsRepository.swift */,
 				ED9EC0D328F2AE4C00465623 /* EntertainmentRepository.swift */,
+				EDB2640828FA82F1005C61B3 /* SelfieRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -468,6 +496,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDB2640C28FA8381005C61B3 /* SelfieFrames.bundle in Resources */,
+				EDB2640F28FA863C005C61B3 /* selfie_frames.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +554,7 @@
 				EDE92CE528E6991D0083F33A /* PersonResponseDTO.swift in Sources */,
 				EDE92CD328E6990A0083F33A /* NetworkManager.swift in Sources */,
 				EDE92CE928E699210083F33A /* PersonCreditDTO.swift in Sources */,
+				EDB2640928FA82F1005C61B3 /* SelfieRepository.swift in Sources */,
 				EDE92D2528E6D8580083F33A /* NetworkConfiguration.swift in Sources */,
 				EDE92CF928E6992F0083F33A /* RMEntertainmentType.swift in Sources */,
 				EDE92CE728E699210083F33A /* SeasonDTO.swift in Sources */,
@@ -555,6 +586,7 @@
 				EDE92CF128E699210083F33A /* TVShowDTO.swift in Sources */,
 				EDE92CFB28E699320083F33A /* LocalDataSource.swift in Sources */,
 				EDB263EF28F90BD6005C61B3 /* DefaultEndpointMapping.swift in Sources */,
+				EDB2641128FA8675005C61B3 /* SelfieFrameDTO.swift in Sources */,
 				EDE92CD828E699110083F33A /* SearchNetworking.swift in Sources */,
 				EDE92CE128E6991D0083F33A /* GenreResponseDTO.swift in Sources */,
 				EDE92CFC28E699360083F33A /* DomainConvertibleType.swift in Sources */,

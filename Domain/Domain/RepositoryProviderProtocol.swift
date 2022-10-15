@@ -13,4 +13,5 @@ public protocol RepositoryProviderProtocol {
     func searchRepository() -> SearchRepositoryProtocol
     func optionsRepository() -> OptionsRepositoryProtocol
     func entertainmentRepository() -> EntertainmentRepositoryProtocol
+    func selfieRepository() -> SelfieRepositoryProtocol
 }

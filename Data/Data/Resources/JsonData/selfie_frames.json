@@ -1,0 +1,26 @@
+[
+    {
+        "name" : "Frame 1",
+        "path" : "frame1"
+    },
+    {
+        "name" : "Frame 2",
+        "path" : "frame2"
+    },
+    {
+        "name" : "Frame 3",
+        "path" : "frame3"
+    },
+    {
+        "name" : "Frame 4",
+        "path" : "frame4"
+    },
+    {
+        "name" : "Frame 5",
+        "path" : "frame5"
+    },
+    {
+        "name" : "Frame 6",
+        "path" : "frame6"
+    }
+]
