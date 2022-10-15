@@ -99,6 +99,8 @@
 		EDB263FF28FA78FF005C61B3 /* SelfieMovieCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263FE28FA78FF005C61B3 /* SelfieMovieCoordinator.swift */; };
 		EDB2640128FA7905005C61B3 /* SelfieMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2640028FA7905005C61B3 /* SelfieMovieViewModel.swift */; };
 		EDB2640328FA7E91005C61B3 /* SelfieMovieTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2640228FA7E91005C61B3 /* SelfieMovieTab.swift */; };
+		EDB2641428FA8A01005C61B3 /* SelfieFramePreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2641328FA8A01005C61B3 /* SelfieFramePreviewCollectionViewCell.swift */; };
+		EDB2641C28FA9C98005C61B3 /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2641B28FA9C98005C61B3 /* CollectionViewWaterfallLayout.swift */; };
 		EDB8780228D8AA720016B96B /* EntertainmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */; };
 		EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */; };
 		EDB8780528D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */; };
@@ -310,6 +312,8 @@
 		EDB263FE28FA78FF005C61B3 /* SelfieMovieCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieMovieCoordinator.swift; sourceTree = "<group>"; };
 		EDB2640028FA7905005C61B3 /* SelfieMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieMovieViewModel.swift; sourceTree = "<group>"; };
 		EDB2640228FA7E91005C61B3 /* SelfieMovieTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieMovieTab.swift; sourceTree = "<group>"; };
+		EDB2641328FA8A01005C61B3 /* SelfieFramePreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieFramePreviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		EDB2641B28FA9C98005C61B3 /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		EDB8780028D8AA720016B96B /* EntertainmentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsViewController.swift; sourceTree = "<group>"; };
 		EDB8780128D8AA720016B96B /* EntertainmentDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntertainmentDetailsViewController.xib; sourceTree = "<group>"; };
 		EDB8780428D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -735,6 +739,22 @@
 				EDB2640228FA7E91005C61B3 /* SelfieMovieTab.swift */,
 			);
 			path = SelfieMovie;
+			sourceTree = "<group>";
+		};
+		EDB2641228FA89E4005C61B3 /* SelfieFramePreviewCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EDB2641328FA8A01005C61B3 /* SelfieFramePreviewCollectionViewCell.swift */,
+			);
+			path = SelfieFramePreviewCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		EDB2641A28FA9C91005C61B3 /* CollectionViewWaterfallLayout */ = {
+			isa = PBXGroup;
+			children = (
+				EDB2641B28FA9C98005C61B3 /* CollectionViewWaterfallLayout.swift */,
+			);
+			path = CollectionViewWaterfallLayout;
 			sourceTree = "<group>";
 		};
 		EDB877FF28D8AA600016B96B /* EntertainmentDetails */ = {
@@ -1186,6 +1206,7 @@
 		EDFAD3AF28D3723C00ED3BCD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				EDB2641228FA89E4005C61B3 /* SelfieFramePreviewCollectionViewCell */,
 				ED9EC0D928F31F7600465623 /* EntertainmentWishlistCollectionViewCell */,
 				ED5BA69E28EB19370030F4B0 /* EntertainmentRankTableViewCell */,
 				EDE92B7928E32C9D0083F33A /* EntertainmentDetailCollectionViewCell */,
@@ -1206,6 +1227,7 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				EDB2641A28FA9C91005C61B3 /* CollectionViewWaterfallLayout */,
 				EDB263F028F9B66A005C61B3 /* CircleImageView */,
 				ED69E03A28F84D9C00FDC142 /* iCarousel */,
 				ED9EC19728F71D1C00465623 /* GalleryView */,
@@ -1424,6 +1446,7 @@
 				EDB263E828F8681D005C61B3 /* GenreTab.swift in Sources */,
 				EDA4478F28D5A7740037751C /* AppToolbarDelegate.swift in Sources */,
 				ED13B6C228F0972E007B7A1D /* TabBarSelectable.swift in Sources */,
+				EDB2641428FA8A01005C61B3 /* SelfieFramePreviewCollectionViewCell.swift in Sources */,
 				EDD5302A28DCBDC50078C6C5 /* SeasonDetailsCoordinator.swift in Sources */,
 				EDD52F5728DA14930078C6C5 /* UILabel+Ext.swift in Sources */,
 				ED866E4328E01C390066E10B /* PersonBiographyViewModel.swift in Sources */,
@@ -1523,6 +1546,7 @@
 				ED866E5C28E09AB60066E10B /* UIImageView+Kingfisher.swift in Sources */,
 				EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */,
 				ED13B6BA28F092F9007B7A1D /* WishlistViewModel.swift in Sources */,
+				EDB2641C28FA9C98005C61B3 /* CollectionViewWaterfallLayout.swift in Sources */,
 				ED31389A28F08AE600EC759C /* HomeTabBarController.swift in Sources */,
 				EDA4475B28D41FFC0037751C /* PrimaryButton.swift in Sources */,
 				EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */,

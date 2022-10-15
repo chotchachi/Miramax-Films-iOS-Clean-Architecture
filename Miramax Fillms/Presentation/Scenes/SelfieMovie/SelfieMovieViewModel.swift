@@ -16,7 +16,7 @@ class SelfieMovieViewModel: BaseViewModel, ViewModelType {
     }
     
     struct Output {
-        
+        let selfieFrameData: Driver<[SelfieFrame]>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -29,6 +29,9 @@ class SelfieMovieViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
+        let selfieFrames = repositoryProvider
+            .selfieRepository()
+            .getAllFrame()
         
         input.dismissTrigger
             .drive(onNext: { [weak self] in
@@ -37,6 +40,6 @@ class SelfieMovieViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output()
+        return Output(selfieFrameData: Driver.just(selfieFrames))
     }
 }
