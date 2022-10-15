@@ -24,6 +24,7 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
     
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var lblCurrentSortValue: UILabel!
     @IBOutlet weak var btnTogglePresentationMode: UIButton!
     @IBOutlet weak var btnOptions: UIButton!
 
@@ -210,6 +211,8 @@ extension EntertainmentListViewController {
     }
     
     private func configureHeaderView() {
+        updateLabelCurrentSortValue(sortOption: viewModel.currentSortOption)
+        
         updateButtonTogglePresentationModeIcon(presentationMode)
         
         btnTogglePresentationMode.rx.tap
@@ -293,6 +296,10 @@ extension EntertainmentListViewController {
         btnOptions.tintColor = .white
         isShowingSortPopup = false
     }
+    
+    private func updateLabelCurrentSortValue(sortOption: SortOption) {
+        lblCurrentSortValue.text = "\("sorted_by".localized) \(sortOption.text)"
+    }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -314,6 +321,7 @@ extension EntertainmentListViewController: UICollectionViewDelegate {
 extension EntertainmentListViewController: SortPopupViewDelegate {
     func sortPopupView(onSortOptionSelect sortOption: SortOption) {
         dismissSortPopupView()
+        updateLabelCurrentSortValue(sortOption: sortOption)
         sortOptionTriggerS.accept(sortOption)
     }
 }

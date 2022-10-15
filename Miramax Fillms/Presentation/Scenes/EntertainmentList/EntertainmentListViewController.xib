@@ -15,6 +15,7 @@
                 <outlet property="btnOptions" destination="OrV-RE-WJ0" id="6C6-72-2Ym"/>
                 <outlet property="btnTogglePresentationMode" destination="m5E-KZ-3Vl" id="zWR-S6-8hF"/>
                 <outlet property="collectionView" destination="DyE-32-6jf" id="icp-C6-thZ"/>
+                <outlet property="lblCurrentSortValue" destination="tIC-9O-07h" id="ua3-C0-ehu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,6 +31,12 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ix9-Xw-9gu">
                     <rect key="frame" x="0.0" y="102" width="390" height="61"/>
                     <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorted by popular" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIC-9O-07h">
+                            <rect key="frame" x="15.999999999999993" y="23.333333333333329" width="101.33333333333331" height="14.333333333333336"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1SK-je-ORL" userLabel="Divider">
                             <rect key="frame" x="16" y="60" width="358" height="1"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -67,10 +74,13 @@
                     <constraints>
                         <constraint firstItem="1SK-je-ORL" firstAttribute="leading" secondItem="Ix9-Xw-9gu" secondAttribute="leading" constant="16" id="0Z4-OC-Anq"/>
                         <constraint firstItem="1SK-je-ORL" firstAttribute="top" secondItem="5PL-Ro-6Ca" secondAttribute="bottom" constant="20" id="4MP-ju-fnd"/>
+                        <constraint firstItem="tIC-9O-07h" firstAttribute="leading" secondItem="Ix9-Xw-9gu" secondAttribute="leading" constant="16" id="BMD-aS-Imu"/>
+                        <constraint firstItem="tIC-9O-07h" firstAttribute="centerY" secondItem="Ix9-Xw-9gu" secondAttribute="centerY" id="EsO-U7-upZ"/>
                         <constraint firstAttribute="trailing" secondItem="5PL-Ro-6Ca" secondAttribute="trailing" constant="16" id="Gv2-Ht-pm7"/>
                         <constraint firstAttribute="bottom" secondItem="1SK-je-ORL" secondAttribute="bottom" id="S3G-Xo-Jtr"/>
                         <constraint firstAttribute="trailing" secondItem="1SK-je-ORL" secondAttribute="trailing" constant="16" id="UsZ-3y-pQb"/>
                         <constraint firstItem="5PL-Ro-6Ca" firstAttribute="top" secondItem="Ix9-Xw-9gu" secondAttribute="top" constant="16" id="klG-gz-Ard"/>
+                        <constraint firstItem="5PL-Ro-6Ca" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tIC-9O-07h" secondAttribute="trailing" constant="12" id="qvb-X3-PQX"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="DyE-32-6jf">
