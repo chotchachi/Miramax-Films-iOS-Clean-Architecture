@@ -344,12 +344,12 @@ extension EntertainmentDetailsViewController {
         ivPoster.setImage(with: item.posterURL)
         
         // Entertainment genres
-        let genreButtons = item.genres?.prefix(2).map { createGenreButton(with: $0.name) } ?? []
+        let genreButtons = item.genres?.prefix(2).map { createGenreLabel(with: $0.name) } ?? []
         genresStackView.removeArrangedSubviews()
         genresStackView.addArrangedSubviews(genreButtons)
         genreButtons.forEach { view in
             view.snp.makeConstraints { make in
-                make.width.equalTo(57.0)
+                make.width.equalTo(60.0)
                 make.height.equalToSuperview()
             }
         }
@@ -432,6 +432,21 @@ extension EntertainmentDetailsViewController {
         button.setTitleColor(AppColors.colorPrimary, for: .normal)
         button.titleLabel?.font = AppFonts.caption1
         return button
+    }
+    
+    private func createGenreLabel(with text: String) -> UILabel {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = text
+        label.backgroundColor = AppColors.colorYellow
+        label.cornerRadius = 8.0
+        label.textColor = AppColors.colorPrimary
+        label.font = AppFonts.caption1
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        return label
     }
     
     @objc private func genreMoreButtonTapped(_ sender: UIButton) {
