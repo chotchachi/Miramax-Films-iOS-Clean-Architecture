@@ -344,20 +344,20 @@ extension EntertainmentDetailsViewController {
         ivPoster.setImage(with: item.posterURL)
         
         // Entertainment genres
-        let genreButtons = item.genres?.prefix(2).map { createGenreLabel(with: $0.name) } ?? []
+        let genreViews = item.genres?.prefix(2).map { createGenreView(with: $0.name) } ?? []
         genresStackView.removeArrangedSubviews()
-        genresStackView.addArrangedSubviews(genreButtons)
-        genreButtons.forEach { view in
+        genresStackView.addArrangedSubviews(genreViews)
+        genreViews.forEach { view in
             view.snp.makeConstraints { make in
                 make.width.equalTo(60.0)
                 make.height.equalToSuperview()
             }
         }
         if let genres = item.genres, genres.count > 2 {
-            let genreMoreButton = createGenreButton(with: "\(genres.count - 2)+")
-            genreMoreButton.addTarget(self, action: #selector(genreMoreButtonTapped(_:)), for: .touchUpInside)
-            genresStackView.addArrangedSubview(genreMoreButton)
-            genreMoreButton.snp.makeConstraints { make in
+            let genreMoreView = createGenreView(with: "\(genres.count - 2)+")
+            genreMoreView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(genreMoreViewTapped(_:))))
+            genresStackView.addArrangedSubview(genreMoreView)
+            genreMoreView.snp.makeConstraints { make in
                 make.width.equalTo(32.0)
                 make.height.equalToSuperview()
             }
@@ -423,18 +423,7 @@ extension EntertainmentDetailsViewController {
         sectionRecommendView.isHidden = recommendations.isEmpty /// Hide section recommend if result empty
     }
     
-    private func createGenreButton(with text: String) -> UIButton {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = AppColors.colorYellow
-        button.cornerRadius = 8.0
-        button.setTitle(text, for: .normal)
-        button.setTitleColor(AppColors.colorPrimary, for: .normal)
-        button.titleLabel?.font = AppFonts.caption1
-        return button
-    }
-    
-    private func createGenreLabel(with text: String) -> UILabel {
+    private func createGenreView(with text: String) -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = text
@@ -449,7 +438,7 @@ extension EntertainmentDetailsViewController {
         return label
     }
     
-    @objc private func genreMoreButtonTapped(_ sender: UIButton) {
+    @objc private func genreMoreViewTapped(_ sender: UITapGestureRecognizer) {
         
     }
     
