@@ -20,12 +20,11 @@ class SearchViewController: BaseViewController<SearchViewModel>, LoadingDisplaya
     @IBOutlet weak var appToolbar: AppToolbar!
     @IBOutlet weak var tfSearch: UITextField!
     @IBOutlet weak var btnClearSearch: UIButton!
+    @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var viewSearchEmpty: UIView!
     @IBOutlet weak var lblEmptyMessage: UILabel!
-    
-    private var btnCancel: UIButton!
-    
+        
     var loaderView: LoadingView = LoadingView()
     
     // MARK: - Properties
@@ -121,15 +120,9 @@ extension SearchViewController {
     }
     
     private func configureOtherViews() {
-        btnCancel = UIButton(type: .system)
         btnCancel.setTitle("cancel".localized, for: .normal)
         btnCancel.setTitleColor(AppColors.colorAccent, for: .normal)
         btnCancel.titleLabel?.font = AppFonts.caption1
-        view.addSubview(btnCancel)
-        btnCancel.snp.makeConstraints { make in
-            make.centerY.equalTo(appToolbar.snp.centerY)
-            make.trailing.equalToSuperview().offset(-16.0)
-        }
         
         tfSearch.delegate = self
         tfSearch.returnKeyType = .search

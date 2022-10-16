@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="Miramax_Fillms" customModuleProvider="target">
             <connections>
                 <outlet property="appToolbar" destination="36x-RQ-zYG" id="yrG-Re-Lbk"/>
+                <outlet property="btnCancel" destination="z2k-0B-7zz" id="MW9-13-Vzt"/>
                 <outlet property="btnClearSearch" destination="m8p-mk-w7X" id="okK-zB-IRT"/>
                 <outlet property="collectionView" destination="Ecb-nK-L5l" id="Pzg-lv-pUF"/>
                 <outlet property="lblEmptyMessage" destination="Hh4-Iq-zIP" id="Jo5-M5-DOM"/>
@@ -33,6 +34,13 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="showBackButton" value="NO"/>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2k-0B-7zz">
+                    <rect key="frame" x="329" y="60" width="45" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="tintColor" name="ColorAccent"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Cancel"/>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7h-AP-EqN">
                     <rect key="frame" x="16" y="102" width="358" height="44"/>
                     <subviews>
@@ -121,10 +129,12 @@
                 <constraint firstItem="Ecb-nK-L5l" firstAttribute="top" secondItem="a7h-AP-EqN" secondAttribute="bottom" id="9nz-QZ-asJ"/>
                 <constraint firstItem="36x-RQ-zYG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BPp-ws-rW6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="C3y-Si-Hbv" secondAttribute="trailing" constant="32" id="HvG-kg-iER"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="z2k-0B-7zz" secondAttribute="trailing" constant="16" id="KX9-Ih-frG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="36x-RQ-zYG" secondAttribute="trailing" id="LEu-t3-u2b"/>
                 <constraint firstItem="a7h-AP-EqN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Mdn-Xw-tJn"/>
                 <constraint firstItem="a7h-AP-EqN" firstAttribute="top" secondItem="36x-RQ-zYG" secondAttribute="bottom" id="TaK-Bp-lWP"/>
                 <constraint firstItem="C3y-Si-Hbv" firstAttribute="centerY" secondItem="Ecb-nK-L5l" secondAttribute="centerY" id="dvb-de-veV"/>
+                <constraint firstItem="z2k-0B-7zz" firstAttribute="centerY" secondItem="36x-RQ-zYG" secondAttribute="centerY" id="f4j-ad-mZy"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ecb-nK-L5l" secondAttribute="trailing" id="rGn-1L-gQa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ecb-nK-L5l" secondAttribute="bottom" id="wtT-AO-Hcx"/>
             </constraints>
@@ -140,6 +150,9 @@
         <image name="ic_circle_close_fill" width="24" height="24"/>
         <image name="ic_search" width="17.666666030883789" height="17.666666030883789"/>
         <image name="search_empty" width="128" height="128"/>
+        <namedColor name="ColorAccent">
+            <color red="0.90200001001358032" green="0.0040000001899898052" blue="0.13699999451637268" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="ColorPrimary">
             <color red="0.024000000208616257" green="0.067000001668930054" blue="0.21199999749660492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
