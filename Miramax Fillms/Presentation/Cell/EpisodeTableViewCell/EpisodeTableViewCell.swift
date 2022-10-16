@@ -52,7 +52,7 @@ class EpisodeTableViewCell: UITableViewCell {
         
         lblAirDate = UILabel()
         lblAirDate.translatesAutoresizingMaskIntoConstraints = false
-        lblAirDate.textColor = UIColor(hex: 0x0A1231)
+        lblAirDate.textColor = AppColors.colorPrimary
         lblAirDate.font = AppFonts.caption2
         
         let lblAirDateWrapView = UIView()
