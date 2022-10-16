@@ -3,6 +3,7 @@ PODS:
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
   - Alamofire (5.6.2)
+  - DeviceKit (4.7.0)
   - Differentiator (5.0.0)
   - Kingfisher (6.3.1)
   - MKProgress (1.1.0)
@@ -50,9 +51,11 @@ PODS:
   - XCoordinator/RxSwift (2.2.0):
     - RxSwift (~> 6.1)
     - XCoordinator/Core
+  - youtube-ios-player-helper (1.0.4)
 
 DEPENDENCIES:
   - Action (~> 5.0.0)
+  - DeviceKit (~> 4.0)
   - Kingfisher
   - MKProgress
   - Moya/RxSwift (~> 15.0)
@@ -69,11 +72,13 @@ DEPENDENCIES:
   - TagListView (~> 1.0)
   - XCoordinator (~> 2.2.0)
   - XCoordinator/RxSwift (~> 2.2.0)
+  - youtube-ios-player-helper (~> 1.0.4)
 
 SPEC REPOS:
   trunk:
     - Action
     - Alamofire
+    - DeviceKit
     - Differentiator
     - Kingfisher
     - MKProgress
@@ -92,10 +97,12 @@ SPEC REPOS:
     - Swinject
     - TagListView
     - XCoordinator
+    - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   Action: 47f1825511907b4fcd79dd7a7db9526c20f78018
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  DeviceKit: c870c34f7c0e0ac4caa6f052e6efe7ef1472c5a1
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
   MKProgress: 260d166200323f3d991190a73ab2dc3a04b0f52f
@@ -114,7 +121,8 @@ SPEC CHECKSUMS:
   Swinject: b4a11b31992e8668308dc594ba1cb9b3164a37ab
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   XCoordinator: a5f91e43ee944f508529763921165697d3211629
+  youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
 
-PODFILE CHECKSUM: 4629d1358b7fbdf8811db2473b76cd9d928ca121
+PODFILE CHECKSUM: a88eb6536085ea9a5c746362e361ba0d54c4150b
 
 COCOAPODS: 1.11.3
