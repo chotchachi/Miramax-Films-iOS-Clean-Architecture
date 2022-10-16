@@ -13,6 +13,7 @@ import Domain
 class SelfieMovieViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let dismissTrigger: Driver<Void>
+        let selfieFrameSelectTrigger: Driver<SelfieFrame>
     }
     
     struct Output {
@@ -37,6 +38,13 @@ class SelfieMovieViewModel: BaseViewModel, ViewModelType {
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.router.trigger(.dismiss)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.selfieFrameSelectTrigger
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.router.trigger(.chooseMovie(selfieFrame: item))
             })
             .disposed(by: rx.disposeBag)
         

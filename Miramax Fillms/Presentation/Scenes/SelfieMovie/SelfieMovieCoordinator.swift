@@ -11,6 +11,7 @@ import Domain
 enum SelfieMovieRoute: Route {
     case initial
     case dismiss
+    case chooseMovie(selfieFrame: SelfieFrame)
 }
 
 class SelfieMovieCoordinator: NavigationCoordinator<SelfieMovieRoute> {
@@ -31,6 +32,8 @@ class SelfieMovieCoordinator: NavigationCoordinator<SelfieMovieRoute> {
             return .push(vc)
         case .dismiss:
             return .dismiss(animation: .navigation)
+        case .chooseMovie(selfieFrame: let selfieFrame):
+            return .none()
         }
     }
 }

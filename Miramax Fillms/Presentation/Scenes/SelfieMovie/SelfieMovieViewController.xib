@@ -13,6 +13,8 @@
             <connections>
                 <outlet property="appToolbar" destination="lja-b9-zhS" id="p71-R7-u9u"/>
                 <outlet property="frameCollectionView" destination="UFp-rv-tNj" id="GgP-gj-y32"/>
+                <outlet property="recentlyCollectionView" destination="Z8h-0l-nZO" id="Nwe-7U-3Ao"/>
+                <outlet property="recentlyHeaderView" destination="rHw-iT-Bus" id="emV-JN-YPz"/>
                 <outlet property="tabLayout" destination="qqw-1h-6iU" id="teN-gp-mGq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,9 +30,37 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06i-vm-ys6" userLabel="Recently View">
                     <rect key="frame" x="0.0" y="102" width="390" height="190"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHw-iT-Bus" userLabel="Movies Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="16" width="390" height="24"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="3BD-VZ-rd5"/>
+                            </constraints>
+                        </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Z8h-0l-nZO">
+                            <rect key="frame" x="0.0" y="40" width="390" height="150"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="150" id="pB4-Km-muS"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="y4a-L4-avw">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
                     <color key="backgroundColor" name="ColorTertiary"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="190" id="NQm-zb-kL2"/>
+                        <constraint firstItem="Z8h-0l-nZO" firstAttribute="top" secondItem="rHw-iT-Bus" secondAttribute="bottom" id="2dX-uk-3IQ"/>
+                        <constraint firstItem="Z8h-0l-nZO" firstAttribute="leading" secondItem="06i-vm-ys6" secondAttribute="leading" id="3MG-dY-wyD"/>
+                        <constraint firstItem="rHw-iT-Bus" firstAttribute="leading" secondItem="06i-vm-ys6" secondAttribute="leading" id="9QQ-AW-8uw"/>
+                        <constraint firstItem="rHw-iT-Bus" firstAttribute="top" secondItem="06i-vm-ys6" secondAttribute="top" constant="16" id="dsR-XS-nXq"/>
+                        <constraint firstAttribute="trailing" secondItem="Z8h-0l-nZO" secondAttribute="trailing" id="hEB-36-M0X"/>
+                        <constraint firstAttribute="bottom" secondItem="Z8h-0l-nZO" secondAttribute="bottom" id="hm8-OE-hMy"/>
+                        <constraint firstAttribute="trailing" secondItem="rHw-iT-Bus" secondAttribute="trailing" id="mAV-yM-lKs"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Q6-85-MtX">
@@ -53,7 +83,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="UFp-rv-tNj">
-                    <rect key="frame" x="0.0" y="332" width="390" height="512"/>
+                    <rect key="frame" x="0.0" y="340" width="390" height="504"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dea-Cm-Q7a">
                         <size key="itemSize" width="128" height="128"/>
@@ -77,7 +107,7 @@
                 <constraint firstItem="0Q6-85-MtX" firstAttribute="top" secondItem="06i-vm-ys6" secondAttribute="bottom" id="Z0s-Ms-MEK"/>
                 <constraint firstItem="0Q6-85-MtX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kEW-FM-IXT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="06i-vm-ys6" secondAttribute="trailing" id="tP9-a1-tcJ"/>
-                <constraint firstItem="UFp-rv-tNj" firstAttribute="top" secondItem="0Q6-85-MtX" secondAttribute="bottom" id="xOq-Xf-KSG"/>
+                <constraint firstItem="UFp-rv-tNj" firstAttribute="top" secondItem="0Q6-85-MtX" secondAttribute="bottom" constant="8" id="xOq-Xf-KSG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lja-b9-zhS" secondAttribute="trailing" id="ykv-sr-Jbr"/>
             </constraints>
             <point key="canvasLocation" x="121.53846153846153" y="20.616113744075829"/>

@@ -20,8 +20,9 @@ class SelfieMovieViewController: BaseViewController<SelfieMovieViewModel> {
     
     @IBOutlet weak var appToolbar: AppToolbar!
     
+    @IBOutlet weak var recentlyHeaderView: SectionHeaderView!
     @IBOutlet weak var viewRecently: UIView!
-    @IBOutlet weak var recentCollectionView: UICollectionView!
+    @IBOutlet weak var recentlyCollectionView: UICollectionView!
     
     @IBOutlet weak var tabLayout: TabLayout!
     @IBOutlet weak var frameCollectionView: UICollectionView!
@@ -31,6 +32,7 @@ class SelfieMovieViewController: BaseViewController<SelfieMovieViewModel> {
     private var selfieFrameData: [SelfieFrame] = []
     
     private let selfieTabTriggerS = PublishRelay<SelfieMovieTab>()
+    private let selfieFrameSelectTriggerS = PublishRelay<SelfieFrame>()
     
     // MARK: - Lifecycle
     
@@ -38,6 +40,7 @@ class SelfieMovieViewController: BaseViewController<SelfieMovieViewModel> {
         super.configView()
         
         configureAppToolbar()
+        configureSectionRecently()
         configureTabLayout()
         configureFrameCollectionView()
     }
@@ -45,12 +48,18 @@ class SelfieMovieViewController: BaseViewController<SelfieMovieViewModel> {
     override func bindViewModel() {
         super.bindViewModel()
         
-        let input = SelfieMovieViewModel.Input(dismissTrigger: appToolbar.rx.backButtonTap.asDriver())
+        let input = SelfieMovieViewModel.Input(
+            dismissTrigger: appToolbar.rx.backButtonTap.asDriver(),
+            selfieFrameSelectTrigger: selfieFrameSelectTriggerS.asDriverOnErrorJustComplete()
+        )
         let output = viewModel.transform(input: input)
         
         let frameDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, SelfieFrame>> { datasource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: SelfieFramePreviewCollectionViewCell.self, for: indexPath)
             cell.bind(item)
+            cell.onApplyButtonTapped = { [weak self] in
+                self?.selfieFrameSelectTriggerS.accept(item)
+            }
             return cell
         }
         
@@ -78,6 +87,11 @@ extension SelfieMovieViewController {
         appToolbar.showBackButton = true
     }
     
+    private func configureSectionRecently() {
+        recentlyHeaderView.title = "recenlty".localized
+        recentlyHeaderView.actionButtonTittle = "see_more".localized
+    }
+    
     private func configureTabLayout() {
         tabLayout.titles = SelfieMovieTab.allCases.map { $0.title }
         tabLayout.scrollStyle = .scrollable
@@ -87,12 +101,15 @@ extension SelfieMovieViewController {
     
     private func configureFrameCollectionView() {
         let collectionViewLayout = CollectionViewWaterfallLayout()
-        collectionViewLayout.sectionInset = UIEdgeInsets(top: 16.0, left: 16.0, bottom: 16.0, right: 16.0)
+        collectionViewLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 16.0, right: 16.0)
         collectionViewLayout.minimumColumnSpacing = 16.0
         collectionViewLayout.minimumInteritemSpacing = 16.0
         collectionViewLayout.delegate = self
         frameCollectionView.collectionViewLayout = collectionViewLayout
         frameCollectionView.register(cellWithClass: SelfieFramePreviewCollectionViewCell.self)
+        frameCollectionView.rx.modelSelected(SelfieFrame.self)
+            .bind(to: selfieFrameSelectTriggerS)
+            .disposed(by: rx.disposeBag)
     }
 }
 

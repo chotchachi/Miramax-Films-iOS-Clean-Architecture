@@ -17,6 +17,12 @@ class SelfieFramePreviewCollectionViewCell: UICollectionViewCell {
     private var ivPreview: UIImageView!
     private var btnApply: UIButton!
     
+    // MARK: - Properties
+    
+    var onApplyButtonTapped: (() -> ())?
+
+    // MARK: - Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -47,6 +53,7 @@ class SelfieFramePreviewCollectionViewCell: UICollectionViewCell {
         btnApply.titleLabel?.font = AppFonts.caption2
         btnApply.tintColor = AppColors.textColorPrimary
         btnApply.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 6.0)
+        btnApply.addTarget(self, action: #selector(onApplyButtonTapped(_:)), for: .touchUpInside)
         contentView.addSubview(btnApply)
         btnApply.snp.makeConstraints { make in
             make.top.equalTo(ivPreview.snp.bottom).offset(6.0)
@@ -70,5 +77,9 @@ class SelfieFramePreviewCollectionViewCell: UICollectionViewCell {
     
     func bind(_ item: SelfieFrame) {
         ivPreview.setImage(with: item.previewURL)
+    }
+    
+    @objc private func onApplyButtonTapped(_ sender: UIButton) {
+        onApplyButtonTapped?()
     }
 }
