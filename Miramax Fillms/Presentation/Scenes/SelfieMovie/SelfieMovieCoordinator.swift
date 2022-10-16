@@ -33,6 +33,7 @@ class SelfieMovieCoordinator: NavigationCoordinator<SelfieMovieRoute> {
         case .dismiss:
             return .dismiss(animation: .navigation)
         case .chooseMovie(selfieFrame: let selfieFrame):
+            addChild(SelfieCameraCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, selfieFrame: selfieFrame))
             return .none()
         }
     }

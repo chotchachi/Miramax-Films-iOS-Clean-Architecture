@@ -66,3 +66,12 @@
 "popular" = "Popular";
 "favorite" = "Favorite";
 "apply" = "Apply";
+"recenlty" = "Recenlty";
+"error_importing_image" = "Error while importing the image.";
+"error_capture_image" = "Error while capture the image.";
+"get_camera_device_error" = "Error while get camera device.";
+"initialize_camera_device_error" = "Error unable to initialize camera.";
+"grant" = "Grant";
+"no_camera_permisison_grant_access" = "No camera permission \nPlease grant access permission to continue";
+"camera_restricted_alert_title" = "Restricted";
+"camera_restricted_alert_message" = "You've been restricted from using the camera on this device. Without camera access this feature won't work. Please contact the device owner so they can give you access.";
