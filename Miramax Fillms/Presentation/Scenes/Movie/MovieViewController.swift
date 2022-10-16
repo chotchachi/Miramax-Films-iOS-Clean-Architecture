@@ -9,10 +9,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import SnapKit
+import DeviceKit
 import SwifterSwift
 import Domain
-
-fileprivate let kPreviewCollectionViewMinHeight: CGFloat = 500.0
 
 class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable, Searchable {
     
@@ -30,11 +30,13 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
     @IBOutlet weak var carouselLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var carouselRetryButton: PrimaryButton!
     @IBOutlet weak var carouselView: iCarousel!
-    
+    @IBOutlet weak var carouselViewHc: NSLayoutConstraint!
+
     /// Section upcoming
     @IBOutlet weak var sectionUpcomingView: UIView!
     @IBOutlet weak var upcomingSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var upcomingCollectionView: UICollectionView!
+    @IBOutlet weak var upcomingCollectionViewHc: NSLayoutConstraint!
     @IBOutlet weak var upcomingLoadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var upcomingRetryButton: PrimaryButton!
     
@@ -183,7 +185,8 @@ class MovieViewController: BaseViewController<MovieViewModel>, TabBarSelectable,
         super.viewWillLayoutSubviews()
         
         let previewContentHeight = previewCollectionView.intrinsicContentSize.height
-        previewCollectionViewHc.constant = previewContentHeight < kPreviewCollectionViewMinHeight ? kPreviewCollectionViewMinHeight : previewContentHeight
+        let previewMinHeight = DimensionConstants.entertainmentPreviewCollectionViewMinHeight
+        previewCollectionViewHc.constant = max(previewContentHeight, previewMinHeight)
     }
 }
 
@@ -252,6 +255,8 @@ extension MovieViewController {
         carouselView.delegate = self
         carouselView.dataSource = self
         carouselView.isPagingEnabled = true
+        
+        carouselViewHc.constant = DimensionConstants.movieCarouselViewHeightConstraint
     }
     
     private func configureSectionUpcoming() {
@@ -286,6 +291,8 @@ extension MovieViewController {
             .bind(to: entertainmentSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
+        upcomingCollectionViewHc.constant = DimensionConstants.entertainmentHorizontalCollectionViewHeightConstraint
+
         let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
             cell.bind(item)
@@ -324,7 +331,7 @@ extension MovieViewController {
             .disposed(by: rx.disposeBag)
         
         let collectionViewLayout = ColumnFlowLayout(
-            cellsPerRow: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2,
+            cellsPerRow: Device.current.isPad ? 3 : 2,
             ratio: DimensionConstants.entertainmentPreviewCellRatio,
             minimumInteritemSpacing: DimensionConstants.entertainmentPreviewCellSpacing,
             minimumLineSpacing: DimensionConstants.entertainmentPreviewCellSpacing,
@@ -374,7 +381,7 @@ extension MovieViewController {
 
 extension MovieViewController: iCarouselDelegate {
     func carouselItemWidth(_ carousel: iCarousel) -> CGFloat {
-        return 42.0
+        return Device.current.isPad ? 84.0 : 42.0
     }
     
     func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
@@ -392,8 +399,10 @@ extension MovieViewController: iCarouselDataSource {
     }
     
     func carousel(_ carousel: iCarousel, placeholderViewAt index: Int, reusingView: UIView?) -> UIView? {
+        let viewHeight = carousel.height
+        let viewWidth = viewHeight * DimensionConstants.movieCarouselItemViewRatio
         let reusingView: ItemCarouselView = reusingView as? ItemCarouselView ?? {
-            let view = ItemCarouselView()
+            let view = ItemCarouselView(frame: .init(x: 0, y: 0, width: viewWidth, height: viewHeight))
             return view
         }()
         return reusingView
@@ -404,8 +413,10 @@ extension MovieViewController: iCarouselDataSource {
     }
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusingView: UIView?) -> UIView {
+        let viewHeight = carousel.height
+        let viewWidth = viewHeight * DimensionConstants.movieCarouselItemViewRatio
         let reusingView: ItemCarouselView = reusingView as? ItemCarouselView ?? {
-            let view = ItemCarouselView(frame: .init(x: 0, y: 0, width: 209, height: 314))
+            let view = ItemCarouselView(frame: .init(x: 0, y: 0, width: viewWidth, height: viewHeight))
             return view
         }()
         reusingView.setImage(with: nowPlayingData[index].posterURL)

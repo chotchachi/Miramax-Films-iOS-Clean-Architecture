@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DeviceKit
 
 struct DimensionConstants {
     static let appToolbarHeight: CGFloat = 55.0
@@ -29,4 +30,16 @@ struct DimensionConstants {
     
     static let wishlistCellRatio: CGFloat = 0.55
     static let wishlistCellSpacing: CGFloat = 16.0
+    
+    static let movieCarouselItemViewRatio: CGFloat = 0.67
+    
+    static let entertainmentPreviewCollectionViewMinHeight: CGFloat = 500.0
+    
+    static var movieCarouselViewHeightConstraint: CGFloat {
+        return Device.current.isPad ? 600.0 : 310.0
+    }
+    
+    static var entertainmentHorizontalCollectionViewHeightConstraint: CGFloat {
+        return Device.current.isPad ? 310.0 : 155.0
+    }
 }
