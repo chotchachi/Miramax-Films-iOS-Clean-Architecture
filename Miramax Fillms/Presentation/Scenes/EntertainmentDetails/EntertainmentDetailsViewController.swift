@@ -12,6 +12,7 @@ import RxDataSources
 import SwifterSwift
 import SnapKit
 import Domain
+import youtube_ios_player_helper
 
 fileprivate let kSeasonsMaxItems: Int = 3
 fileprivate let kOverviewLabelMaxLines: Int = 5
@@ -62,7 +63,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     /// Section gallery
     @IBOutlet weak var sectionGalleryView: UIView!
     @IBOutlet weak var gallerySectionHeaderView: SectionHeaderView!
-    @IBOutlet weak var ivGalleryLargeThumb: UIImageView!
+    @IBOutlet weak var ytPlayerView: YTPlayerView!
     @IBOutlet weak var ivGallerySmallThumb1: UIImageView!
     @IBOutlet weak var ivGallerySmallThumb2: UIImageView!
     @IBOutlet weak var ivGallerySmallThumb3: UIImageView!
@@ -290,11 +291,6 @@ extension EntertainmentDetailsViewController {
     private func configureGallerySection() {
         gallerySectionHeaderView.title = "gallery".localized
         gallerySectionHeaderView.actionButtonTittle = "see_more".localized
-        
-        [ivGalleryLargeThumb, ivGallerySmallThumb1, ivGallerySmallThumb2, ivGallerySmallThumb3].forEach { view in
-            view?.isUserInteractionEnabled = true
-            view?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(galleryImageViewTapped(_:))))
-        }
     }
     
     private func configureRecommendSection() {
@@ -408,13 +404,20 @@ extension EntertainmentDetailsViewController {
         lblWriters.highlight(text: writersString, color: AppColors.textColorSecondary)
                 
         // Entertainment gallery
-        if let images = item.backdropImages {
-            sectionGalleryView.isHidden = false
-            [ivGalleryLargeThumb, ivGallerySmallThumb1, ivGallerySmallThumb2, ivGallerySmallThumb3].enumerated().forEach { offset, view in
-                view?.setImage(with: images[safe: offset]?.fileURL)
+        sectionGalleryView.isHidden = item.videos?.isEmpty == true && item.backdropImages?.isEmpty == true
+        if let videos = item.videos {
+            let youtubeVideos = videos.filter { $0.site == "YouTube" }
+            if let youtubeVideo = youtubeVideos.first {
+                let playvarsDic = ["controls": 0, "playsinline": 0, "autohide": 1, "showinfo": 0, "autoplay": 1, "modestbranding": 1]
+                ytPlayerView.load(withVideoId: youtubeVideo.key, playerVars: playvarsDic)
             }
-        } else {
-            sectionGalleryView.isHidden = true
+        }
+        if let images = item.backdropImages {
+            zip(images, [ivGallerySmallThumb1, ivGallerySmallThumb2, ivGallerySmallThumb3]).forEach { (image, imageView) in
+                imageView?.setImage(with: image.fileURL)
+                imageView?.isUserInteractionEnabled = true
+                imageView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(galleryImageViewTapped(_:))))
+            }
         }
         
         // Entertainment recommend
