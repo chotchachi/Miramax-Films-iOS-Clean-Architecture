@@ -17,6 +17,7 @@
 		ED9EC0D228F2ADE100465623 /* EntertainmentRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0D128F2ADE100465623 /* EntertainmentRepositoryProtocol.swift */; };
 		EDB2640528FA812D005C61B3 /* SelfieFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2640428FA812D005C61B3 /* SelfieFrame.swift */; };
 		EDB2640728FA82A6005C61B3 /* SelfieRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2640628FA82A6005C61B3 /* SelfieRepositoryProtocol.swift */; };
+		EDB2642028FAE420005C61B3 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2641F28FAE420005C61B3 /* Video.swift */; };
 		EDE92C2D28E6977D0083F33A /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = EDE92C2C28E6977D0083F33A /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDE92C4828E698660083F33A /* RepositoryProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C4728E698660083F33A /* RepositoryProviderProtocol.swift */; };
 		EDE92C6828E698990083F33A /* MovieRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C4A28E698860083F33A /* MovieRepositoryProtocol.swift */; };
@@ -54,6 +55,7 @@
 		ED9EC0D128F2ADE100465623 /* EntertainmentRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRepositoryProtocol.swift; sourceTree = "<group>"; };
 		EDB2640428FA812D005C61B3 /* SelfieFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieFrame.swift; sourceTree = "<group>"; };
 		EDB2640628FA82A6005C61B3 /* SelfieRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieRepositoryProtocol.swift; sourceTree = "<group>"; };
+		EDB2641F28FAE420005C61B3 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		EDE92C2928E6977D0083F33A /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE92C2C28E6977D0083F33A /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		EDE92C4728E698660083F33A /* RepositoryProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProviderProtocol.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				EDE92C5928E698860083F33A /* Cast.swift */,
 				EDE92C5A28E698860083F33A /* Credit.swift */,
 				EDE92C6028E698860083F33A /* Image.swift */,
+				EDB2641F28FAE420005C61B3 /* Video.swift */,
 				ED1F03BE28EDE20D0083B088 /* SortOption.swift */,
 				ED13B6C728F09CF2007B7A1D /* EntertainmentType.swift */,
 				EDE92C6228E698860083F33A /* RecentEntertainment.swift */,
@@ -326,6 +329,7 @@
 				EDB2640528FA812D005C61B3 /* SelfieFrame.swift in Sources */,
 				EDE92C4828E698660083F33A /* RepositoryProviderProtocol.swift in Sources */,
 				EDE92C6B28E698990083F33A /* TVShowRepositoryProtocol.swift in Sources */,
+				EDB2642028FAE420005C61B3 /* Video.swift in Sources */,
 				EDE92C7A28E698A70083F33A /* RecentEntertainment.swift in Sources */,
 				ED9EC0C428F1D88B00465623 /* BookmarkPerson.swift in Sources */,
 				ED9EC0B228F135AA00465623 /* BaseResponse.swift in Sources */,

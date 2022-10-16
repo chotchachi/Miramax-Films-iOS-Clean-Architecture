@@ -20,6 +20,7 @@
 		EDB2640F28FA863C005C61B3 /* selfie_frames.json in Resources */ = {isa = PBXBuildFile; fileRef = EDB2640E28FA863C005C61B3 /* selfie_frames.json */; };
 		EDB2641128FA8675005C61B3 /* SelfieFrameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2641028FA8675005C61B3 /* SelfieFrameDTO.swift */; };
 		EDB2641628FA8B08005C61B3 /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2641528FA8B08005C61B3 /* ResourceManager.swift */; };
+		EDB2641E28FAE33C005C61B3 /* VideoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2641D28FAE33C005C61B3 /* VideoDTO.swift */; };
 		EDE92C4128E697920083F33A /* Data.h in Headers */ = {isa = PBXBuildFile; fileRef = EDE92C4028E697920083F33A /* Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDE92CC928E698E40083F33A /* RepositoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAF28E698E20083F33A /* RepositoryProvider.swift */; };
 		EDE92CCA28E699010083F33A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CC628E698E30083F33A /* ReachabilityManager.swift */; };
@@ -109,6 +110,7 @@
 		EDB2640E28FA863C005C61B3 /* selfie_frames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = selfie_frames.json; sourceTree = "<group>"; };
 		EDB2641028FA8675005C61B3 /* SelfieFrameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieFrameDTO.swift; sourceTree = "<group>"; };
 		EDB2641528FA8B08005C61B3 /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
+		EDB2641D28FAE33C005C61B3 /* VideoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDTO.swift; sourceTree = "<group>"; };
 		EDE92C3D28E697920083F33A /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE92C4028E697920083F33A /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		EDE92C8328E698E20083F33A /* RemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				EDE92CA928E698E20083F33A /* SeasonDTO.swift */,
 				EDE92CAA28E698E20083F33A /* EpisodeDTO.swift */,
 				EDE92CAC28E698E20083F33A /* ImageDTO.swift */,
+				EDB2641D28FAE33C005C61B3 /* VideoDTO.swift */,
 				EDE92CAD28E698E20083F33A /* PersonCreditDTO.swift */,
 				EDB2641028FA8675005C61B3 /* SelfieFrameDTO.swift */,
 			);
@@ -578,6 +581,7 @@
 				EDE92CE428E6991D0083F33A /* ImagesResponseDTO.swift in Sources */,
 				EDE92D2328E6D84E0083F33A /* NetworkConfigurable.swift in Sources */,
 				EDE92CF328E699210083F33A /* CrewDTO.swift in Sources */,
+				EDB2641E28FAE33C005C61B3 /* VideoDTO.swift in Sources */,
 				EDE92CEB28E699210083F33A /* GenreDTO.swift in Sources */,
 				EDE92CD928E699110083F33A /* TVShowNetworking.swift in Sources */,
 				EDE92D0028E6993B0083F33A /* LocalDataSourceProtocol.swift in Sources */,

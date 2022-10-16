@@ -20,6 +20,7 @@ public struct MovieDTO : Mappable {
     public var runtime: Int?
     public var credits: CreditDTO?
     public var backdropImages: [ImageDTO]?
+    public var videos: [VideoDTO]?
     public var recommendations: MovieResponseDTO?
 
     public init?(map: Map) {
@@ -38,12 +39,13 @@ public struct MovieDTO : Mappable {
         runtime <- map["runtime"]
         credits <- map["credits"]
         backdropImages <- map["images.backdrops"]
+        videos <- map["videos.results"]
         recommendations <- map["recommendations"]
     }
 }
 
 extension MovieDTO: DomainConvertibleType {
     public func asDomain() -> Movie {
-        return Movie(id: id, title: title, overview: overview, voteAverage: voteAverage, releaseDate: releaseDate, backdropPath: backdropPath, posterPath: posterPath, genres: genres?.map { $0.asDomain() }, runtime: runtime, credits: credits?.asDomain(), backdropImages: backdropImages?.map { $0.asDomain() }, recommendations: recommendations?.asDomain())
+        return Movie(id: id, title: title, overview: overview, voteAverage: voteAverage, releaseDate: releaseDate, backdropPath: backdropPath, posterPath: posterPath, genres: genres?.map { $0.asDomain() }, runtime: runtime, credits: credits?.asDomain(), backdropImages: backdropImages?.map { $0.asDomain() }, videos: videos?.map { $0.asDomain() }, recommendations: recommendations?.asDomain())
     }
 }

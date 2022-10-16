@@ -24,6 +24,7 @@ struct EntertainmentViewModel {
     let casts: [PersonViewModel]?
     let seasons: [Season]?
     let backdropImages: [Image]?
+    let videos: [Video]?
     let recommendations: [EntertainmentViewModel]?
     let isBookmark: Bool
 }
@@ -46,6 +47,7 @@ extension Movie: PresentationConvertibleType {
             casts: casts?.map { $0.asPresentation() },
             seasons: nil,
             backdropImages: backdropImages,
+            videos: videos,
             recommendations: recommendations?.results.map { $0.asPresentation() },
             isBookmark: isBookmark
         )
@@ -70,6 +72,7 @@ extension TVShow: PresentationConvertibleType {
             casts: casts?.map { $0.asPresentation() },
             seasons: seasons,
             backdropImages: backdropImages,
+            videos: videos,
             recommendations: recommendations?.results.map { $0.asPresentation() },
             isBookmark: isBookmark
         )
@@ -94,6 +97,7 @@ extension BookmarkEntertainment: PresentationConvertibleType {
             casts: nil,
             seasons: nil,
             backdropImages: nil,
+            videos: nil,
             recommendations: nil,
             isBookmark: true
         )
@@ -118,6 +122,7 @@ extension RecentEntertainment {
             casts: nil,
             seasons: nil,
             backdropImages: nil,
+            videos: nil,
             recommendations: nil,
             isBookmark: false
         )
