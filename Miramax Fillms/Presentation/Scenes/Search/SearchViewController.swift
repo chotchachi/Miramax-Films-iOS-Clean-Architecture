@@ -40,15 +40,12 @@ class SearchViewController: BaseViewController<SearchViewModel>, LoadingDisplaya
     private let seeMoreTVShowTriggerS = PublishRelay<Void>()
     private let seeMorePeopleTriggerS = PublishRelay<Void>()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        hideKeyboardWhenTappedAround()
-        
-    }
+    // MARK: - Lifecycle
 
     override func configView() {
         super.configView()
         
+        hideKeyboardWhenTappedAround()
         configureAppToolbar()
         configureCollectionView()
         configureOtherViews()
@@ -87,16 +84,6 @@ class SearchViewController: BaseViewController<SearchViewModel>, LoadingDisplaya
                 isLoading ? self?.showLoader() : self?.hideLoader()
             })
             .disposed(by: rx.disposeBag)
-    }
-    
-    @objc private func clearSearchButtonTapped(_ sender: UIButton) {
-        tfSearch.text = ""
-        tfSearch.resignFirstResponder()
-        searchTriggerS.accept(nil)
-    }
-    
-    @objc private func searchTextFieldDidChange(_ sender: UITextField) {
-        btnClearSearch.isHidden = sender.text?.isEmpty ?? true
     }
 }
 
@@ -139,6 +126,16 @@ extension SearchViewController {
         
         lblEmptyMessage.font = AppFonts.caption1SemiBold
         lblEmptyMessage.textColor = AppColors.textColorPrimary
+    }
+    
+    @objc private func clearSearchButtonTapped(_ sender: UIButton) {
+        tfSearch.text = ""
+        tfSearch.resignFirstResponder()
+        searchTriggerS.accept(nil)
+    }
+    
+    @objc private func searchTextFieldDidChange(_ sender: UITextField) {
+        btnClearSearch.isHidden = sender.text?.isEmpty ?? true
     }
 }
 
