@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -62,7 +61,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5K3-RG-rF3">
-                    <rect key="frame" x="0.0" y="102" width="390" height="707.99999999999989"/>
+                    <rect key="frame" x="0.0" y="102" width="390" height="708"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZaL-7M-jth">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="1340"/>
@@ -125,7 +124,7 @@
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" name="ColorTertiary"/>
                                                     <constraints>
                                                         <constraint firstItem="DTD-eS-suh" firstAttribute="leading" secondItem="Hm8-Ib-Kd1" secondAttribute="leading" id="7Yr-RO-Xc9"/>
                                                         <constraint firstAttribute="width" secondItem="Hm8-Ib-Kd1" secondAttribute="height" multiplier="375:228" id="8XE-Vr-3q6"/>
@@ -143,7 +142,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="117" height="176.66666666666666"/>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="ColorSecondary"/>
+                                                    <color key="backgroundColor" name="ColorTertiary"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="A0R-IE-cnU" secondAttribute="bottom" id="0sV-hr-pID"/>
                                                         <constraint firstItem="A0R-IE-cnU" firstAttribute="top" secondItem="gSx-eV-yQl" secondAttribute="top" id="2Xz-hJ-Yi2"/>
@@ -379,14 +378,8 @@
         <namedColor name="ColorPrimary">
             <color red="0.024000000208616257" green="0.067000001668930054" blue="0.21199999749660492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="ColorSecondary">
-            <color red="0.10599999874830246" green="0.10199999809265137" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="ColorTertiary">
             <color red="0.15299999713897705" green="0.17299999296665192" blue="0.24699999392032623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

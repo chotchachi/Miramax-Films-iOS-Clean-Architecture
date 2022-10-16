@@ -249,6 +249,7 @@ extension TVShowViewController {
     }
     
     private func configureSectionBanner() {
+        bannerMainView.isHidden = true
         bannerMainView.isUserInteractionEnabled = true
         bannerMainView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onBannerMainViewTapped(_:))))
         
