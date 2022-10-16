@@ -110,6 +110,9 @@
 		EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */; };
 		EDC502D528D38C2D0047C7C3 /* Rx+asDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D428D38C2D0047C7C3 /* Rx+asDriver.swift */; };
 		EDC502D828D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC502D728D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift */; };
+		EDC5E24C28FBE25D00F1B911 /* ChooseMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC5E24A28FBE25D00F1B911 /* ChooseMovieViewController.swift */; };
+		EDC5E24D28FBE25D00F1B911 /* ChooseMovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDC5E24B28FBE25D00F1B911 /* ChooseMovieViewController.xib */; };
+		EDC5E24F28FBE27100F1B911 /* ChooseMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC5E24E28FBE27100F1B911 /* ChooseMovieViewModel.swift */; };
 		EDC6DB2128CF69DF00164EBD /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB2028CF69DF00164EBD /* BaseViewModel.swift */; };
 		EDC6DB2428CF6A0800164EBD /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */; };
 		EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC6DB2628CF6C3300164EBD /* BaseViewController.swift */; };
@@ -323,6 +326,9 @@
 		EDC502D228D3867B0047C7C3 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		EDC502D428D38C2D0047C7C3 /* Rx+asDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+asDriver.swift"; sourceTree = "<group>"; };
 		EDC502D728D38EDB0047C7C3 /* EntertainmentHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentHorizontalCell.swift; sourceTree = "<group>"; };
+		EDC5E24A28FBE25D00F1B911 /* ChooseMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMovieViewController.swift; sourceTree = "<group>"; };
+		EDC5E24B28FBE25D00F1B911 /* ChooseMovieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseMovieViewController.xib; sourceTree = "<group>"; };
+		EDC5E24E28FBE27100F1B911 /* ChooseMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMovieViewModel.swift; sourceTree = "<group>"; };
 		EDC6DB2028CF69DF00164EBD /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		EDC6DB2328CF6A0800164EBD /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		EDC6DB2628CF6C3300164EBD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -784,6 +790,16 @@
 			path = EntertainmentHorizontalCell;
 			sourceTree = "<group>";
 		};
+		EDC5E24928FBE20500F1B911 /* ChooseMovie */ = {
+			isa = PBXGroup;
+			children = (
+				EDC5E24A28FBE25D00F1B911 /* ChooseMovieViewController.swift */,
+				EDC5E24B28FBE25D00F1B911 /* ChooseMovieViewController.xib */,
+				EDC5E24E28FBE27100F1B911 /* ChooseMovieViewModel.swift */,
+			);
+			path = ChooseMovie;
+			sourceTree = "<group>";
+		};
 		EDC6DB1528CF664D00164EBD /* GlobalDefine */ = {
 			isa = PBXGroup;
 			children = (
@@ -872,6 +888,7 @@
 		EDC6DB2528CF6C1900164EBD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EDC5E24928FBE20500F1B911 /* ChooseMovie */,
 				EDB263F928FA78CE005C61B3 /* SelfieMovie */,
 				ED9EC19A28F723D700465623 /* ImageViewer */,
 				ED866E3D28E01C1B0066E10B /* PersonBiography */,
@@ -1336,6 +1353,7 @@
 				ED7A095528EC71370035E099 /* Roboto-Medium.ttf in Resources */,
 				ED7A095328EC71370035E099 /* Roboto-Bold.ttf in Resources */,
 				EDD9A19A28E0B93000FBA909 /* GenresViewController.xib in Resources */,
+				EDC5E24D28FBE25D00F1B911 /* ChooseMovieViewController.xib in Resources */,
 				EDC6DB4728CF98F800164EBD /* MovieViewController.xib in Resources */,
 				EDC6DB3728CF759400164EBD /* SplashViewController.xib in Resources */,
 				ED7A095628EC71370035E099 /* Roboto-Black.ttf in Resources */,
@@ -1439,6 +1457,7 @@
 				ED69E04B28F84D9C00FDC142 /* iCarousel+Animation.swift in Sources */,
 				EDE69B5028D643A6002726B0 /* String+Ext.swift in Sources */,
 				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
+				EDC5E24F28FBE27100F1B911 /* ChooseMovieViewModel.swift in Sources */,
 				ED9EC0E128F32FE700465623 /* PMAlertAction.swift in Sources */,
 				EDE69B4528D6294D002726B0 /* SearchViewModel.swift in Sources */,
 				ED9EC0D628F30FC300465623 /* UIView+Ext.swift in Sources */,
@@ -1523,6 +1542,7 @@
 				EDFAD38128D230C200ED3BCD /* HasDisposeBag.swift in Sources */,
 				ED69E04E28F84D9C00FDC142 /* iCarousel+ViewLoading.swift in Sources */,
 				EDC6DB4028CF92DE00164EBD /* HomeCoordinator.swift in Sources */,
+				EDC5E24C28FBE25D00F1B911 /* ChooseMovieViewController.swift in Sources */,
 				EDD52F7B28DB6D260078C6C5 /* SelfSizingTableView.swift in Sources */,
 				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
 				EDD52F7E28DB6F0E0078C6C5 /* SeasonSmallTableViewCell.swift in Sources */,
