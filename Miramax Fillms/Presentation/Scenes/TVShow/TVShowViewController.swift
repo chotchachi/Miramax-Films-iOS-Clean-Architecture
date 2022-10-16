@@ -9,12 +9,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import SnapKit
+import DeviceKit
 import SwifterSwift
 import Domain
 
 fileprivate let kUpcomingMaxItems: Int = 6
 fileprivate let kUpcomingTableViewMinHeight: CGFloat = 200.0
-fileprivate let kPreviewCollectionViewMinHeight: CGFloat = 500.0
 
 class TVShowViewController: BaseViewController<TVShowViewModel>, TabBarSelectable, Searchable {
 
@@ -192,10 +193,11 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, TabBarSelectabl
         super.viewWillLayoutSubviews()
         
         let previewContentHeight = previewCollectionView.intrinsicContentSize.height
-        previewCollectionViewHc.constant = previewContentHeight < kPreviewCollectionViewMinHeight ? kPreviewCollectionViewMinHeight : previewContentHeight
+        let previewMinHeight = DimensionConstants.entertainmentPreviewCollectionViewMinHeight
+        previewCollectionViewHc.constant = max(previewContentHeight, previewMinHeight)
         
         let upcomingContentHeight = upcomingTableView.intrinsicContentSize.height
-        upcomingTableViewHc.constant = upcomingContentHeight < kUpcomingTableViewMinHeight ? kUpcomingTableViewMinHeight : upcomingContentHeight
+        upcomingTableViewHc.constant = max(upcomingContentHeight, kUpcomingTableViewMinHeight)
     }
 }
 
@@ -345,7 +347,7 @@ extension TVShowViewController {
             .disposed(by: rx.disposeBag)
         
         let collectionViewLayout = ColumnFlowLayout(
-            cellsPerRow: UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2,
+            cellsPerRow: Device.current.isPad ? 3 : 2,
             ratio: DimensionConstants.entertainmentPreviewCellRatio,
             minimumInteritemSpacing: DimensionConstants.entertainmentPreviewCellSpacing,
             minimumLineSpacing: DimensionConstants.entertainmentPreviewCellSpacing,
