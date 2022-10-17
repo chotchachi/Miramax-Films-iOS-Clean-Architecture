@@ -16,7 +16,7 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
     }
     
     struct Output {
-        
+        let selfieFrame: Driver<SelfieFrame>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -38,6 +38,6 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output()
+        return Output(selfieFrame: Driver.just(selfieFrame))
     }
 }

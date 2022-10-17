@@ -11,6 +11,8 @@ import SwifterSwift
 import RxCocoa
 import RxSwift
 import AVFoundation
+import Kingfisher
+import Domain
 
 enum CameraDevice {
     case back, front
@@ -20,13 +22,21 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     
     // MARK: - Outlets + Views
     
-    @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var previewView: UIView!
-    @IBOutlet weak var btnCapture: UIButton!
+    
+    @IBOutlet weak var frameImageView: UIImageView!
+    @IBOutlet weak var frameImageViewHc: NSLayoutConstraint!
+    
+    @IBOutlet weak var canvasView: UIView!
+    @IBOutlet weak var canvasImageView: UIImageView!
+    
+    @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnSwitchCamera: UIButton!
     @IBOutlet weak var btnFlash: UIButton!
     @IBOutlet weak var btnMoreOption: UIButton!
-    @IBOutlet weak var btnGallery: UIButton!
+    
+    @IBOutlet weak var btnCapture: UIButton!
+    @IBOutlet weak var btnFrameLayer: UIView!
 
     private var noPermissionView: UIView!
     
@@ -59,6 +69,13 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
             backTrigger: btnBack.rx.tap.asDriver()
         )
         let output = viewModel.transform(input: input)
+        
+        output.selfieFrame
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.setFrameImage(with: item)
+            })
+            .disposed(by: rx.disposeBag)
         
     }
     
@@ -109,6 +126,8 @@ extension SelfieCameraViewController {
 //                self.presentImagePickerController()
 //            })
 //            .disposed(by: rx.disposeBag)
+        
+        btnFrameLayer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onButtonFrameLayerTapped(_:))))
         
         
         // Setup live preview
@@ -335,19 +354,22 @@ extension SelfieCameraViewController {
 //        present(vc, animated: true)
     }
     
-    private func presentCropViewController(with image: UIImage) {
-//        let cropViewController = CropViewController(image: image)
-//        cropViewController.aspectRatioPreset = .presetSquare
-//        cropViewController.allowedAspectRatios = [.presetSquare]
-//        cropViewController.aspectRatioLockEnabled = true
-//        cropViewController.aspectRatioPickerButtonHidden = true
-//        cropViewController.resetAspectRatioEnabled = false
-//        cropViewController.cancelButtonTitle = "cancel".localized
-//        cropViewController.cancelButtonColor = .red
-//        cropViewController.doneButtonTitle = "done".localized
-//        cropViewController.doneButtonColor = AppColors.colorPrimary
-//        cropViewController.delegate = self
-//        present(cropViewController, animated: true)
+    @objc private func onButtonFrameLayerTapped(_ sender: UITapGestureRecognizer) {
+        
+    }
+    
+    private func setFrameImage(with item: SelfieFrame) {
+        KingfisherManager.shared.retrieveImage(with: item.frameURL) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let value):
+                self.frameImageView.image = value.image
+                let size = value.image.suitableSize(widthLimit: UIScreen.main.bounds.width)
+                self.frameImageViewHc.constant = size?.height ?? 0.0
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 

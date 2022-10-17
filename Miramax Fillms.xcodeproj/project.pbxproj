@@ -64,6 +64,7 @@
 		ED866E5C28E09AB60066E10B /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED866E5B28E09AB60066E10B /* UIImageView+Kingfisher.swift */; };
 		ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62128C6369800D60351 /* AppDelegate.swift */; };
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
+		ED9E423D28FD1708009783E0 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E423C28FD1708009783E0 /* UIImage+Ext.swift */; };
 		ED9EC0B728F160D100465623 /* EntertainmentResponseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0B628F160D100465623 /* EntertainmentResponseViewModel.swift */; };
 		ED9EC0BE28F1B95700465623 /* BookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0BD28F1B95700465623 /* BookmarkButton.swift */; };
 		ED9EC0C628F1E62E00465623 /* PersonWishlistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0C528F1E62E00465623 /* PersonWishlistCollectionViewCell.swift */; };
@@ -284,6 +285,7 @@
 		ED86E62128C6369800D60351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED86E62A28C6369B00D60351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED86E62F28C6369B00D60351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED9E423C28FD1708009783E0 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		ED9EC0B628F160D100465623 /* EntertainmentResponseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentResponseViewModel.swift; sourceTree = "<group>"; };
 		ED9EC0BD28F1B95700465623 /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
 		ED9EC0C528F1E62E00465623 /* PersonWishlistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonWishlistCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -856,6 +858,7 @@
 				ED13B6C528F09A83007B7A1D /* UICollectionView+Ext.swift */,
 				ED9EC0D528F30FC300465623 /* UIView+Ext.swift */,
 				ED9EC19828F7221A00465623 /* Collection+Ext.swift */,
+				ED9E423C28FD1708009783E0 /* UIImage+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1553,6 +1556,7 @@
 				ED31388928EF320100EC759C /* TVShowPreviewTab.swift in Sources */,
 				EDFAD39E28D30E7200ED3BCD /* DataSourceAssembly.swift in Sources */,
 				ED1F03CF28EF0F590083B088 /* SettingViewController.swift in Sources */,
+				ED9E423D28FD1708009783E0 /* UIImage+Ext.swift in Sources */,
 				EDC502D328D3867B0047C7C3 /* UIColor+Ext.swift in Sources */,
 				ED69E04C28F84D9C00FDC142 /* iCarouselAnimator+Property.swift in Sources */,
 				ED13B6C628F09A83007B7A1D /* UICollectionView+Ext.swift in Sources */,
@@ -1741,10 +1745,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Miramax Fillms/GlobalDefine/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Miramax Fillms need Camera Permission to capture image.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Miramax Fillms need Photo Library Permission to select image.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1758,6 +1766,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chotchachi.Miramax-Fillms";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1770,10 +1779,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Miramax Fillms/GlobalDefine/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Miramax Fillms need Camera Permission to capture image.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Miramax Fillms need Photo Library Permission to select image.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1787,6 +1800,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chotchachi.Miramax-Fillms";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
