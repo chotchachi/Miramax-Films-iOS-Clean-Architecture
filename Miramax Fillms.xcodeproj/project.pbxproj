@@ -65,6 +65,7 @@
 		ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86E62128C6369800D60351 /* AppDelegate.swift */; };
 		ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86E62A28C6369B00D60351 /* Assets.xcassets */; };
 		ED9E423D28FD1708009783E0 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E423C28FD1708009783E0 /* UIImage+Ext.swift */; };
+		ED9E424B28FD92DA009783E0 /* ChooseMovieCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E424A28FD92DA009783E0 /* ChooseMovieCoordinator.swift */; };
 		ED9EC0B728F160D100465623 /* EntertainmentResponseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0B628F160D100465623 /* EntertainmentResponseViewModel.swift */; };
 		ED9EC0BE28F1B95700465623 /* BookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0BD28F1B95700465623 /* BookmarkButton.swift */; };
 		ED9EC0C628F1E62E00465623 /* PersonWishlistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9EC0C528F1E62E00465623 /* PersonWishlistCollectionViewCell.swift */; };
@@ -286,6 +287,7 @@
 		ED86E62A28C6369B00D60351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED86E62F28C6369B00D60351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED9E423C28FD1708009783E0 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		ED9E424A28FD92DA009783E0 /* ChooseMovieCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMovieCoordinator.swift; sourceTree = "<group>"; };
 		ED9EC0B628F160D100465623 /* EntertainmentResponseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentResponseViewModel.swift; sourceTree = "<group>"; };
 		ED9EC0BD28F1B95700465623 /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
 		ED9EC0C528F1E62E00465623 /* PersonWishlistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonWishlistCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -803,9 +805,10 @@
 		EDC5E24928FBE20500F1B911 /* ChooseMovie */ = {
 			isa = PBXGroup;
 			children = (
+				EDC5E24E28FBE27100F1B911 /* ChooseMovieViewModel.swift */,
 				EDC5E24A28FBE25D00F1B911 /* ChooseMovieViewController.swift */,
 				EDC5E24B28FBE25D00F1B911 /* ChooseMovieViewController.xib */,
-				EDC5E24E28FBE27100F1B911 /* ChooseMovieViewModel.swift */,
+				ED9E424A28FD92DA009783E0 /* ChooseMovieCoordinator.swift */,
 			);
 			path = ChooseMovie;
 			sourceTree = "<group>";
@@ -1127,13 +1130,6 @@
 			path = EntertainmentPreviewCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		EDE92B6E28E2DAD80083F33A /* InfiniteCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = InfiniteCollectionView;
-			sourceTree = "<group>";
-		};
 		EDE92B7228E3017A0083F33A /* DefaultRefreshControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -1283,7 +1279,6 @@
 				EDE92B8628E5D9680083F33A /* ErrorRetryView */,
 				EDE92B7A28E350580083F33A /* ColumnFlowLayout */,
 				EDE92B7228E3017A0083F33A /* DefaultRefreshControl */,
-				EDE92B6E28E2DAD80083F33A /* InfiniteCollectionView */,
 				EDD5301A28DCB6C90078C6C5 /* GradientView */,
 				EDE69B3728D60DAF002726B0 /* TabLayout */,
 				EDA4478B28D5A74C0037751C /* AppToolbar */,
@@ -1545,6 +1540,7 @@
 				EDE69B7528D7303D002726B0 /* Animation+Scale.swift in Sources */,
 				EDE92D3028E9823D0083F33A /* SelfieWithMovieView.swift in Sources */,
 				ED86E62228C6369800D60351 /* AppDelegate.swift in Sources */,
+				ED9E424B28FD92DA009783E0 /* ChooseMovieCoordinator.swift in Sources */,
 				EDE69B5428D6BA66002726B0 /* PersonHorizontalListCellDelegate.swift in Sources */,
 				EDE69B3B28D60E5B002726B0 /* TabLayoutDelegate.swift in Sources */,
 				EDA4478328D59A090037751C /* Constants.swift in Sources */,
