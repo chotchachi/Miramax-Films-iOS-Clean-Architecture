@@ -36,16 +36,21 @@ class SearchViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let searchTriggerO = input.searchTrigger
+        /// Search query trigger
+        let searchQueryTrigger = input.searchTrigger
             .startWith(nil)
             .distinctUntilChanged()
             .asObservable()
         
-        let recentEntertainmentO = repositoryProvider
+        /// Search recent entertainment data
+        let recentEntertainment = repositoryProvider
             .searchRepository()
             .getRecentEntertainment()
         
-        let searchViewDataItemsD = Observable.combineLatest(searchTriggerO, recentEntertainmentO)
+        /// Combine search query & search recent
+        /// If query not nil -> return search data with query
+        /// If query was nil -> return search recent entertainment
+        let searchViewDataItems = Observable.combineLatest(searchQueryTrigger, recentEntertainment)
             .flatMapLatest { (query, recentItems) -> Observable<[SearchViewData]> in
                 if let query = query {
                     return self.search(query)
@@ -55,14 +60,17 @@ class SearchViewModel: BaseViewModel, ViewModelType {
             }
             .asDriver(onErrorJustReturn: [])
         
+        /// Save recent entertainment
+        input.entertainmentSelectTrigger
+            .asObservable()
+            .flatMapLatest { self.saveRecentEntertainment($0) }
+            .subscribe()
+            .disposed(by: rx.disposeBag)
+        
+        /// Clear all search recent entertainment
         input.clearAllSearchRecentTrigger
             .asObservable()
-            .flatMapLatest {
-                self.repositoryProvider
-                    .searchRepository()
-                    .removeAllRecentEntertainment()
-                    .catch { _ in Observable.empty() }
-            }
+            .flatMapLatest { self.clearAllRecentEntertainment() }
             .subscribe()
             .disposed(by: rx.disposeBag)
         
@@ -88,7 +96,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         input.seeMoreMovieTrigger
-            .withLatestFrom(searchTriggerO.asDriverOnErrorJustComplete())
+            .withLatestFrom(searchQueryTrigger.asDriverOnErrorJustComplete())
             .compactMap { $0 }
             .drive(onNext: { [weak self] query in
                 guard let self = self else { return }
@@ -97,7 +105,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         input.seeMoreTVShowTrigger
-            .withLatestFrom(searchTriggerO.asDriverOnErrorJustComplete())
+            .withLatestFrom(searchQueryTrigger.asDriverOnErrorJustComplete())
             .compactMap { $0 }
             .drive(onNext: { [weak self] query in
                 guard let self = self else { return }
@@ -106,7 +114,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         input.seeMorePeopleTrigger
-            .withLatestFrom(searchTriggerO.asDriverOnErrorJustComplete())
+            .withLatestFrom(searchQueryTrigger.asDriverOnErrorJustComplete())
             .compactMap { $0 }
             .drive(onNext: { [weak self] query in
                 guard let self = self else { return }
@@ -114,14 +122,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        // Save recent entertainment
-        input.entertainmentSelectTrigger
-            .asObservable()
-            .flatMapLatest { self.saveRecentEntertainment($0) }
-            .subscribe()
-            .disposed(by: rx.disposeBag)
-        
-        return Output(searchViewDataItems: searchViewDataItemsD)
+        return Output(searchViewDataItems: searchViewDataItems)
     }
     
     private func search(_ query: String) -> Observable<[SearchViewData]> {
@@ -179,6 +180,13 @@ class SearchViewModel: BaseViewModel, ViewModelType {
         return repositoryProvider
             .searchRepository()
             .addRecentEntertainment(item: recentEntertainment)
+            .catch { _ in Observable.empty() }
+    }
+    
+    private func clearAllRecentEntertainment() -> Observable<Void> {
+        return repositoryProvider
+            .searchRepository()
+            .removeAllRecentEntertainment()
             .catch { _ in Observable.empty() }
     }
 }
