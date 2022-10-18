@@ -43,17 +43,13 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let viewTrigger = trigger
+        let entertainmentData = trigger
             .take(1)
-        
-        let retryTrigger = input.retryTrigger
-            .asObservable()
-        
-        let entertainmentData = Observable.merge(viewTrigger, retryTrigger)
             .flatMapLatest {
                 self.getEntertainmentDetails()
                     .trackError(self.error)
                     .trackActivity(self.loading)
+                    .retryWith(input.retryTrigger)
                     .catch { _ in Observable.empty() }
             }
 

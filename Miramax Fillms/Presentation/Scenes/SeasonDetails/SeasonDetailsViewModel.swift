@@ -35,13 +35,8 @@ class SeasonDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let viewTriggerO = trigger
+        let episodesData = trigger
             .take(1)
-        
-        let retryTriggerO = input.retryTrigger
-            .asObservable()
-        
-        let episodesDataD = Observable.merge(viewTriggerO, retryTriggerO)
             .flatMapLatest {
                 return self.repositoryProvider
                     .tvShowRepository()
@@ -49,6 +44,7 @@ class SeasonDetailsViewModel: BaseViewModel, ViewModelType {
                     .map { $0.episodes ?? [] }
                     .trackError(self.error)
                     .trackActivity(self.loading)
+                    .retryWith(input.retryTrigger)
                     .catchAndReturn([])
             }
             .asDriverOnErrorJustComplete()
@@ -60,6 +56,6 @@ class SeasonDetailsViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output(episodesData: episodesDataD)
+        return Output(episodesData: episodesData)
     }
 }

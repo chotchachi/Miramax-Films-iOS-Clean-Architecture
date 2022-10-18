@@ -33,25 +33,20 @@ class GenresViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let viewTrigger = trigger
+        let genreTabTrigger = trigger
             .take(1)
-        
-        let genreTabTrigger = viewTrigger
             .flatMapLatest {
                 input.genreTabTrigger
                     .asObservable()
                     .startWith(GenreTab.defaultTab)
             }
         
-        let genreTabRetryTrigger = input.retryTrigger
-            .asObservable()
-            .withLatestFrom(genreTabTrigger)
-        
-        let genres = Observable.merge(genreTabTrigger, genreTabRetryTrigger)
+        let genres = genreTabTrigger
             .flatMapLatest { tab in
                 self.getGenreData(with: tab)
                     .trackActivity(self.loading)
                     .trackError(self.error)
+                    .retryWith(input.retryTrigger)
                     .catchAndReturn([])
             }
             .asDriverOnErrorJustComplete()

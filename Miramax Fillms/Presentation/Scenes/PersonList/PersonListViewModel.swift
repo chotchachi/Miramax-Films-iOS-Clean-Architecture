@@ -12,6 +12,12 @@ import Domain
 
 typealias PersonListViewResult = (data: [PersonViewModel], isRefresh: Bool)
 
+fileprivate struct QueryOptions {
+    let query: String
+    let page: Int
+    let isRefresh: Bool
+}
+
 class PersonListViewModel: BaseViewModel, ViewModelType {
     
     struct Input {
@@ -44,32 +50,29 @@ class PersonListViewModel: BaseViewModel, ViewModelType {
     func transform(input: Input) -> Output {
         let refreshTrigger = input.refreshTrigger
             .asObservable()
-            .map { (1, true) }
+            .map { QueryOptions(query: self.query, page: 1, isRefresh: true) }
                 
         let loadMoreTrigger = input.loadMoreTrigger
             .asObservable()
             .filter { self.hasNextPage }
-            .map { (self.currentPage + 1, false) }
+            .map { QueryOptions(query: self.query, page: self.currentPage + 1, isRefresh: false) }
         
         let queryOptions = Observable.merge(refreshTrigger, loadMoreTrigger)
-            .startWith((1, true))
+            .startWith(QueryOptions(query: self.query, page: 1, isRefresh: true))
         
-        let retryTrigger = input.retryTrigger
-            .asObservable()
-            .withLatestFrom(queryOptions)
-        
-        let viewResult = Observable.merge(queryOptions, retryTrigger)
-            .flatMapLatest { (page, isRefresh) -> Observable<(data: [PersonViewModel], isRefresh: Bool)> in
-                self.getPersonData(query: self.query, page: page)
+        let viewResult = queryOptions
+            .flatMapLatest { options -> Observable<(data: [PersonViewModel], isRefresh: Bool)> in
+                self.getPersonData(query: options.query, page: options.page)
                     .do(onSuccess: { [weak self] in
                         guard let self = self else { return }
                         self.currentPage = $0.page
                         self.hasNextPage = $0.page < $0.totalPages
                     })
                     .map { items in items.results.map { $0.asPresentation() } }
-                    .map { ($0, isRefresh) }
+                    .map { ($0, options.isRefresh) }
                     .trackError(self.error)
                     .trackActivity(self.loading)
+                    .retryWith(input.retryTrigger)
                     .catch { _ in Observable.empty() }
             }
             .scan(([], true)) { acc, change -> PersonListViewResult in

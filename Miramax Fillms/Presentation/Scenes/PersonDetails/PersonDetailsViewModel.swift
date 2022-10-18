@@ -38,19 +38,15 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let viewTrigger = trigger
+        let personData = trigger
             .take(1)
-        
-        let retryTrigger = input.retryTrigger
-            .asObservable()
-        
-        let personData = Observable.merge(viewTrigger, retryTrigger)
             .flatMapLatest {
                 self.repositoryProvider
                     .personRepository()
                     .getPersonDetail(personId: self.personId)
                     .trackError(self.error)
                     .trackActivity(self.loading)
+                    .retryWith(input.retryTrigger)
                     .catch { _ in Observable.empty() }
             }
         
