@@ -31,6 +31,8 @@
 		ED31388F28EF434C00EC759C /* Transition+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31388E28EF434C00EC759C /* Transition+Ext.swift */; };
 		ED31389A28F08AE600EC759C /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31389928F08AE600EC759C /* HomeTabBarController.swift */; };
 		ED42803828FE8C6F001DB45C /* Rx+retryWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42803728FE8C6F001DB45C /* Rx+retryWith.swift */; };
+		ED42803A28FE9CB1001DB45C /* SelfieCameraViewController+Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42803928FE9CB1001DB45C /* SelfieCameraViewController+Capture.swift */; };
+		ED42803C28FE9E6B001DB45C /* SelfieCameraViewController+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42803B28FE9E6B001DB45C /* SelfieCameraViewController+Frame.swift */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
 		ED69E04728F84D9C00FDC142 /* iCarousel+ViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */; };
 		ED69E04828F84D9C00FDC142 /* iCarousel+ViewManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */; };
@@ -252,6 +254,8 @@
 		ED31388E28EF434C00EC759C /* Transition+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Ext.swift"; sourceTree = "<group>"; };
 		ED31389928F08AE600EC759C /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		ED42803728FE8C6F001DB45C /* Rx+retryWith.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+retryWith.swift"; sourceTree = "<group>"; };
+		ED42803928FE9CB1001DB45C /* SelfieCameraViewController+Capture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelfieCameraViewController+Capture.swift"; sourceTree = "<group>"; };
+		ED42803B28FE9E6B001DB45C /* SelfieCameraViewController+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelfieCameraViewController+Frame.swift"; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
 		ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewLayout.swift"; sourceTree = "<group>"; };
 		ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewManagement.swift"; sourceTree = "<group>"; };
@@ -821,6 +825,8 @@
 				EDC5E25328FBEAE500F1B911 /* SelfieCameraViewModel.swift */,
 				EDC5E25528FBEAED00F1B911 /* SelfieCameraViewController.swift */,
 				EDC5E25628FBEAED00F1B911 /* SelfieCameraViewController.xib */,
+				ED42803928FE9CB1001DB45C /* SelfieCameraViewController+Capture.swift */,
+				ED42803B28FE9E6B001DB45C /* SelfieCameraViewController+Frame.swift */,
 				EDC5E25128FBEADF00F1B911 /* SelfieCameraCoordinator.swift */,
 			);
 			path = SelfieCamera;
@@ -1579,6 +1585,7 @@
 				ED9EC0B728F160D100465623 /* EntertainmentResponseViewModel.swift in Sources */,
 				EDB8780528D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift in Sources */,
 				ED1F03AD28EC92360083B088 /* EntertainmentsResponseRoute.swift in Sources */,
+				ED42803A28FE9CB1001DB45C /* SelfieCameraViewController+Capture.swift in Sources */,
 				EDD52F5928DA1B2A0078C6C5 /* DimensionConstants.swift in Sources */,
 				EDE92B9928E5F7F10083F33A /* SearchButton.swift in Sources */,
 				ED9EC0C928F279AE00465623 /* WishlistPreviewTab.swift in Sources */,
@@ -1615,6 +1622,7 @@
 				EDE92B7628E307010083F33A /* UIRefreshControl+Ext.swift in Sources */,
 				EDC5E25728FBEAED00F1B911 /* SelfieCameraViewController.swift in Sources */,
 				EDB263FF28FA78FF005C61B3 /* SelfieMovieCoordinator.swift in Sources */,
+				ED42803C28FE9E6B001DB45C /* SelfieCameraViewController+Frame.swift in Sources */,
 				ED69E04928F84D9C00FDC142 /* iCarouselAnimator.swift in Sources */,
 				ED7A096228EC84D80035E099 /* EntertainmentListCoordinator.swift in Sources */,
 				EDE69B6A28D71464002726B0 /* SearchCoordinator.swift in Sources */,
