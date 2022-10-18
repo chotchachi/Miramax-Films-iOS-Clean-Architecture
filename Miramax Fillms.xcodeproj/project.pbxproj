@@ -30,6 +30,7 @@
 		ED31388928EF320100EC759C /* TVShowPreviewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31388828EF320100EC759C /* TVShowPreviewTab.swift */; };
 		ED31388F28EF434C00EC759C /* Transition+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31388E28EF434C00EC759C /* Transition+Ext.swift */; };
 		ED31389A28F08AE600EC759C /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED31389928F08AE600EC759C /* HomeTabBarController.swift */; };
+		ED42803828FE8C6F001DB45C /* Rx+retryWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42803728FE8C6F001DB45C /* Rx+retryWith.swift */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
 		ED69E04728F84D9C00FDC142 /* iCarousel+ViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */; };
 		ED69E04828F84D9C00FDC142 /* iCarousel+ViewManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */; };
@@ -250,6 +251,7 @@
 		ED31388828EF320100EC759C /* TVShowPreviewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowPreviewTab.swift; sourceTree = "<group>"; };
 		ED31388E28EF434C00EC759C /* Transition+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transition+Ext.swift"; sourceTree = "<group>"; };
 		ED31389928F08AE600EC759C /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		ED42803728FE8C6F001DB45C /* Rx+retryWith.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+retryWith.swift"; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
 		ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewLayout.swift"; sourceTree = "<group>"; };
 		ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewManagement.swift"; sourceTree = "<group>"; };
@@ -1235,6 +1237,7 @@
 				EDFAD37E28D2309C00ED3BCD /* NSObject+Rx.swift */,
 				EDFAD38028D230C200ED3BCD /* HasDisposeBag.swift */,
 				EDC502D428D38C2D0047C7C3 /* Rx+asDriver.swift */,
+				ED42803728FE8C6F001DB45C /* Rx+retryWith.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1458,6 +1461,7 @@
 				ED69E04A28F84D9C00FDC142 /* iCarousel+Gesture.swift in Sources */,
 				EDB263E628F8508E005C61B3 /* ItemCarouselView.swift in Sources */,
 				EDE69B5828D6BE1A002726B0 /* PersonHorizontalCell.swift in Sources */,
+				ED42803828FE8C6F001DB45C /* Rx+retryWith.swift in Sources */,
 				EDB8780228D8AA720016B96B /* EntertainmentDetailsViewController.swift in Sources */,
 				ED69E04828F84D9C00FDC142 /* iCarousel+ViewManagement.swift in Sources */,
 				EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */,
@@ -1742,9 +1746,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = D4692K9B9S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Miramax Fillms/GlobalDefine/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Miramax Fillms need Camera Permission to capture image.";
@@ -1760,9 +1766,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.chotchachi.Miramax-Fillms";
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.app.new.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Provision;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1776,9 +1783,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = D4692K9B9S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Miramax Fillms/GlobalDefine/Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Miramax Fillms need Camera Permission to capture image.";
@@ -1794,9 +1803,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.chotchachi.Miramax-Fillms";
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.app.new.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Provision;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
