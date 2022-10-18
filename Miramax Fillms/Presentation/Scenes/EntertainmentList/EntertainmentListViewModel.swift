@@ -12,6 +12,12 @@ import Domain
 
 typealias EntertainmentListViewResult = (data: [EntertainmentViewModel], isRefresh: Bool)
 
+fileprivate struct QueryOptions {
+    let sortOption: SortOption
+    let page: Int
+    let isRefresh: Bool
+}
+
 class EntertainmentListViewModel: BaseViewModel, ViewModelType {
     
     struct Input {
@@ -52,43 +58,38 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let refreshTriggerO = input.refreshTrigger
-            .asObservable()
-            .map { (1, self.currentSortOption, true) }
-                
-        let loadMoreTriggerO = input.loadMoreTrigger
-            .asObservable()
-            .filter { self.hasNextPage }
-            .map { (self.currentPage + 1, self.currentSortOption, false) }
-        
-        let sortOptionTriggerO = input.sortOptionTrigger
+        let sortOptionTrigger = input.sortOptionTrigger
             .asObservable()
             .distinctUntilChanged()
             .do(onNext: { sortOption in
                 self.currentSortOption = sortOption
             })
-            .mapToVoid()
-            .map { (1, self.currentSortOption, true) }
-
-        let queryOptionsO = Observable.merge(sortOptionTriggerO, refreshTriggerO, loadMoreTriggerO)
-            .startWith((1, self.currentSortOption, true))
+            .map { QueryOptions(sortOption: $0, page: 1, isRefresh: true) }
         
-        let retryTriggerO = input.retryTrigger
+        let refreshTrigger = input.refreshTrigger
             .asObservable()
-            .withLatestFrom(queryOptionsO)
+            .map { QueryOptions(sortOption: self.currentSortOption, page: 1, isRefresh: true) }
+                
+        let loadMoreTrigger = input.loadMoreTrigger
+            .asObservable()
+            .filter { self.hasNextPage }
+            .map { QueryOptions(sortOption: self.currentSortOption, page: self.currentPage + 1, isRefresh: false) }
+
+        let queryOptions = Observable.merge(sortOptionTrigger, refreshTrigger, loadMoreTrigger)
+            .startWith(QueryOptions(sortOption: self.currentSortOption, page: 1, isRefresh: true))
         
-        let viewResultD = Observable.merge(queryOptionsO, retryTriggerO)
-            .flatMapLatest { (page, sortOption, isRefresh) -> Observable<(data: [EntertainmentViewModel], isRefresh: Bool)> in
-                self.getEntertainmentData(page: page, sortOption: sortOption)
+        let viewResult = queryOptions
+            .flatMapLatest { options -> Observable<(data: [EntertainmentViewModel], isRefresh: Bool)> in
+                self.getEntertainmentData(page: options.page, sortOption: options.sortOption)
                     .do(onSuccess: { [weak self] in
                         guard let self = self else { return }
                         self.currentPage = $0.page
                         self.hasNextPage = $0.page < $0.totalPages
                     })
-                    .map { $0.results }
-                    .map { ($0, isRefresh) }
+                    .map { ($0.results, options.isRefresh) }
                     .trackError(self.error)
                     .trackActivity(self.loading)
+                    .retryWith(input.retryTrigger)
                     .catch { _ in Observable.empty() }
             }
             .scan(([], true)) { acc, change -> EntertainmentListViewResult in
@@ -124,7 +125,7 @@ class EntertainmentListViewModel: BaseViewModel, ViewModelType {
         
         return Output(
             responseRoute: Driver.just(responseRoute),
-            viewResult: viewResultD
+            viewResult: viewResult
         )
     }
     
