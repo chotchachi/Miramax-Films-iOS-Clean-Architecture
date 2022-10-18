@@ -48,18 +48,23 @@ class ChooseMovieViewController: BaseViewController<ChooseMovieViewModel>, Loadi
     override func bindViewModel() {
         super.bindViewModel()
         
+        let doneTriggerWithSelectedItem = btnDone.rx.tap
+            .withLatestFrom(collectionView.rx.modelSelected(EntertainmentViewModel.self))
+            .asDriverOnErrorJustComplete()
+        
         let input = ChooseMovieViewModel.Input(
             popViewTrigger: btnCancel.rx.tap.asDriver(),
             searchTrigger: searchTriggerS.asDriverOnErrorJustComplete(),
             retryTrigger: errorRetryView.rx.retryTapped.asDriver(),
             refreshTrigger: refreshTriggerS.asDriverOnErrorJustComplete(),
-            loadMoreTrigger: loadMoreTriggerS.asDriverOnErrorJustComplete()
+            loadMoreTrigger: loadMoreTriggerS.asDriverOnErrorJustComplete(),
+            doneTrigger: doneTriggerWithSelectedItem
         )
         let output = viewModel.transform(input: input)
         
         let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
-            cell.bind(item)
+            cell.bind(item, canSelection: true)
             return cell
         }
         
@@ -103,10 +108,13 @@ extension ChooseMovieViewController {
         collectionView.collectionViewLayout = collectionViewLayout
         collectionView.delegate = self
         collectionView.register(cellWithClass: EntertainmentHorizontalCell.self)
-        
         collectionView.refreshControl = DefaultRefreshControl(title: "refresh".localized) { [weak self] in
             self?.refreshTriggerS.accept(())
         }
+        collectionView.rx.modelSelected(EntertainmentViewModel.self)
+            .map { _ in true }
+            .bind(to: btnDone.rx.isEnabled)
+            .disposed(by: rx.disposeBag)
     }
     
     private func configureOtherViews() {
@@ -128,6 +136,10 @@ extension ChooseMovieViewController {
         btnClearSearch.addTarget(self, action: #selector(clearSearchButtonTapped(_:)), for: .touchUpInside)
         
         lblSearchResult.isHidden = true
+        
+        btnDone.setTitleColor(AppColors.colorAccent, for: .normal)
+        btnDone.setTitleColor(AppColors.colorAccent.withAlphaComponent(0.5), for: .disabled)
+        btnDone.titleLabel?.font = AppFonts.caption1
         btnDone.isEnabled = false
     }
     

@@ -245,7 +245,7 @@
                                         <constraint firstAttribute="height" constant="500" id="or4-DB-Xoe"/>
                                     </constraints>
                                 </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R7H-uy-Met" userLabel="Canvas Image View">
+                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R7H-uy-Met" userLabel="Canvas Image View">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="500"/>
                                 </imageView>
                             </subviews>

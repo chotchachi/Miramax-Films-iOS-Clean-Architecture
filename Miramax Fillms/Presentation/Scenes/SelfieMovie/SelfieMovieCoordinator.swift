@@ -10,7 +10,7 @@ import Domain
 
 enum SelfieMovieRoute: Route {
     case initial
-    case dismiss
+    case pop
     case chooseMovie(selfieFrame: SelfieFrame)
 }
 
@@ -30,10 +30,10 @@ class SelfieMovieCoordinator: NavigationCoordinator<SelfieMovieRoute> {
             let vc = SelfieMovieViewController()
             vc.viewModel = SelfieMovieViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter)
             return .push(vc)
-        case .dismiss:
+        case .pop:
             return .dismiss(animation: .navigation)
         case .chooseMovie(selfieFrame: let selfieFrame):
-            addChild(SelfieCameraCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, selfieFrame: selfieFrame))
+            addChild(ChooseMovieCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, selfieFrame: selfieFrame))
             return .none()
         }
     }

@@ -752,10 +752,10 @@
 		EDB263F928FA78CE005C61B3 /* SelfieMovie */ = {
 			isa = PBXGroup;
 			children = (
+				EDB2640028FA7905005C61B3 /* SelfieMovieViewModel.swift */,
 				EDB263FA28FA78F4005C61B3 /* SelfieMovieViewController.swift */,
 				EDB263FB28FA78F4005C61B3 /* SelfieMovieViewController.xib */,
 				EDB263FE28FA78FF005C61B3 /* SelfieMovieCoordinator.swift */,
-				EDB2640028FA7905005C61B3 /* SelfieMovieViewModel.swift */,
 				EDB2640228FA7E91005C61B3 /* SelfieMovieTab.swift */,
 			);
 			path = SelfieMovie;

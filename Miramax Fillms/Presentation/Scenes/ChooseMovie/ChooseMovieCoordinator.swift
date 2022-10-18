@@ -6,16 +6,19 @@
 //
 
 import XCoordinator
+import UIKit
 import Domain
 
 enum ChooseMovieRoute: Route {
     case initial
     case pop
+    case done(movieImage: UIImage)
 }
 
 class ChooseMovieCoordinator: NavigationCoordinator<ChooseMovieRoute> {
     private let appDIContainer: AppDIContainer
-//    private let selfieFrame: SelfieFrame
+    private let selfieFrame: SelfieFrame?
+    private let callback: SelectMovieCallback?
     
     public override var viewController: UIViewController! {
         return autoreleaseController
@@ -23,9 +26,10 @@ class ChooseMovieCoordinator: NavigationCoordinator<ChooseMovieRoute> {
     
     private weak var autoreleaseController: UIViewController?
     
-    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController) {
+    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, selfieFrame: SelfieFrame? = nil, callback: SelectMovieCallback? = nil) {
         self.appDIContainer = appDIContainer
-//        self.selfieFrame = selfieFrame
+        self.selfieFrame = selfieFrame
+        self.callback = callback
         super.init(rootViewController: rootViewController, initialRoute: nil)
         trigger(.initial)
     }
@@ -39,6 +43,14 @@ class ChooseMovieCoordinator: NavigationCoordinator<ChooseMovieRoute> {
             return .push(vc)
         case .pop:
             return .pop()
+        case .done(movieImage: let movieImage):
+            if let callback = callback {
+                callback(movieImage)
+                return .pop()
+            } else {
+                addChild(SelfieCameraCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, selfieFrame: selfieFrame!, movieImage: movieImage))
+                return .none()
+            }
         }
     }
 }

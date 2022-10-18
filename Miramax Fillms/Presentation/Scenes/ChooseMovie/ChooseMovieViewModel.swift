@@ -8,6 +8,7 @@
 import RxCocoa
 import RxSwift
 import XCoordinator
+import Kingfisher
 import Domain
 
 typealias MovieSearchViewResult = (data: [EntertainmentViewModel], isRefresh: Bool)
@@ -25,6 +26,7 @@ class ChooseMovieViewModel: BaseViewModel, ViewModelType {
         let retryTrigger: Driver<Void>
         let refreshTrigger: Driver<Void>
         let loadMoreTrigger: Driver<Void>
+        let doneTrigger: Driver<EntertainmentViewModel>
     }
     
     struct Output {
@@ -64,11 +66,7 @@ class ChooseMovieViewModel: BaseViewModel, ViewModelType {
         
         let queryOptions = Observable.merge(refreshTrigger, loadMoreTrigger, searchQueryTrigger)
         
-        let retryTrigger = input.retryTrigger
-            .asObservable()
-            .withLatestFrom(queryOptions)
-        
-        let searchResult = Observable.merge(queryOptions, retryTrigger)
+        let searchResult = queryOptions
             .filter { $0.query != nil }
             .flatMapLatest { options -> Observable<(data: [EntertainmentViewModel], isRefresh: Bool)> in
                 self.searchMovies(query: options.query!, page: options.page)
@@ -81,6 +79,7 @@ class ChooseMovieViewModel: BaseViewModel, ViewModelType {
                     .map { ($0, options.isRefresh) }
                     .trackError(self.error)
                     .trackActivity(self.loading)
+                    .retryWith(input.retryTrigger)
                     .catch { _ in Observable.empty() }
             }
             .scan(([], true)) { acc, change -> MovieSearchViewResult in
@@ -100,6 +99,20 @@ class ChooseMovieViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
+        input.doneTrigger
+            .asObservable()
+            .compactMap { $0.posterURL }
+            .flatMapLatest {
+                self.getMovieImage(with: $0)
+                    .asObservable()
+                    .catch { _ in Observable.empty() }
+            }
+            .subscribe(onNext: { [weak self] image in
+                guard let self = self else { return }
+                self.router.trigger(.done(movieImage: image))
+            })
+            .disposed(by: rx.disposeBag)
+        
         return Output(searchResult: searchResult)
     }
     
@@ -115,5 +128,19 @@ class ChooseMovieViewModel: BaseViewModel, ViewModelType {
                     totalResults: response.totalResults
                 )
             }
+    }
+    
+    private func getMovieImage(with imageURL: URL) -> Single<UIImage> {
+        return Single.create { single in
+            KingfisherManager.shared.retrieveImage(with: imageURL) { result in
+                switch result {
+                case .success(let value):
+                    single(.success(value.image))
+                case .failure(let error):
+                    single(.failure(error))
+                }
+            }
+            return Disposables.create()
+        }
     }
 }

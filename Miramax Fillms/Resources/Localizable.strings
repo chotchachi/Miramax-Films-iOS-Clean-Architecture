@@ -22,6 +22,7 @@
 "search" = "Search";
 "search_bar_placeholder" = "Movies, TV Shows, Actor,...";
 "search_result_empty" = "No search results found";
+"search_result_found" = "Search results found";
 "recent" = "Recent";
 "actors" = "Actors";
 "rating" = "Rating";
@@ -75,3 +76,4 @@
 "no_camera_permisison_grant_access" = "No camera permission \nPlease grant access permission to continue";
 "camera_restricted_alert_title" = "Restricted";
 "camera_restricted_alert_message" = "You've been restricted from using the camera on this device. Without camera access this feature won't work. Please contact the device owner so they can give you access.";
+"search_selfie_movie_placeholder" = "Search Movies";
