@@ -13,16 +13,22 @@
             <connections>
                 <outlet property="btnBack" destination="PLx-OI-QwJ" id="RM1-lX-0SS"/>
                 <outlet property="btnCapture" destination="Qbz-a4-IJJ" id="i9T-gR-AgC"/>
+                <outlet property="btnDone" destination="wOw-8X-y8Y" id="Wie-SL-cxL"/>
                 <outlet property="btnFlash" destination="mIE-Sx-yEE" id="FOn-T2-Kih"/>
                 <outlet property="btnFrameLayer" destination="5Kz-Yl-BaU" id="ONk-Sy-BF2"/>
                 <outlet property="btnMoreOption" destination="h26-W6-NUU" id="pJv-3P-0le"/>
+                <outlet property="btnRetake" destination="so7-WY-L5t" id="HWR-zM-79j"/>
                 <outlet property="btnSwitchCamera" destination="F57-BP-aax" id="0hm-CN-cE0"/>
                 <outlet property="canvasImageView" destination="R7H-uy-Met" id="DQ7-cY-kcF"/>
                 <outlet property="canvasView" destination="BKn-sK-ZM2" id="9re-wJ-AAc"/>
+                <outlet property="captureImageView" destination="Wfb-pd-4Bz" id="kR0-dG-0v5"/>
                 <outlet property="frameImageView" destination="e8t-Mt-9AN" id="YkN-aw-Zc4"/>
                 <outlet property="frameImageViewHc" destination="or4-DB-Xoe" id="HSt-s4-CAZ"/>
                 <outlet property="previewView" destination="vFo-Vv-gIa" id="LSc-RO-twG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewCameraControls" destination="hoL-Um-4wH" id="KZv-0b-ibJ"/>
+                <outlet property="viewDoneCapture" destination="SES-n6-zYI" id="qBH-jR-fIQ"/>
+                <outlet property="viewFrameLayer" destination="eVJ-9F-gOi" id="zVX-MA-2ky"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -157,7 +163,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="ColorTertiary"/>
                             <constraints>
                                 <constraint firstItem="A7C-td-Pcq" firstAttribute="leading" secondItem="hoL-Um-4wH" secondAttribute="leading" id="2Ju-Wu-UsK"/>
                                 <constraint firstItem="5Kz-Yl-BaU" firstAttribute="centerY" secondItem="Ruc-m9-6Wi" secondAttribute="centerY" id="8mj-1P-6mq"/>
@@ -218,13 +224,57 @@
                                 <constraint firstItem="bvy-mo-I62" firstAttribute="top" secondItem="eVJ-9F-gOi" secondAttribute="top" constant="16" id="Xig-lc-bg1"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SES-n6-zYI" userLabel="View Done Capture">
+                            <rect key="frame" x="0.0" y="0.0" width="390" height="198"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOw-8X-y8Y">
+                                    <rect key="frame" x="167" y="71" width="56" height="56"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="56" id="NQk-XF-B50"/>
+                                        <constraint firstAttribute="width" constant="56" id="RR5-q5-RD0"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="ic_check_gradient"/>
+                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNn-Wh-8CH" userLabel="Dummy Left">
+                                    <rect key="frame" x="0.0" y="98.333333333333371" width="167" height="1"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="wBf-LZ-1MD"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="so7-WY-L5t">
+                                    <rect key="frame" x="67.666666666666671" y="83" width="32" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="32" id="pc1-73-Xag"/>
+                                        <constraint firstAttribute="height" constant="32" id="tL2-mi-dF4"/>
+                                    </constraints>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="ic_redo"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" name="ColorTertiary"/>
+                            <constraints>
+                                <constraint firstItem="wOw-8X-y8Y" firstAttribute="centerY" secondItem="SES-n6-zYI" secondAttribute="centerY" id="88X-qN-HBv"/>
+                                <constraint firstItem="TNn-Wh-8CH" firstAttribute="centerY" secondItem="wOw-8X-y8Y" secondAttribute="centerY" id="9Ie-SB-fZC"/>
+                                <constraint firstItem="TNn-Wh-8CH" firstAttribute="leading" secondItem="SES-n6-zYI" secondAttribute="leading" id="9RY-IK-1OZ"/>
+                                <constraint firstItem="wOw-8X-y8Y" firstAttribute="leading" secondItem="TNn-Wh-8CH" secondAttribute="trailing" id="LzL-O9-Jid"/>
+                                <constraint firstItem="so7-WY-L5t" firstAttribute="centerY" secondItem="TNn-Wh-8CH" secondAttribute="centerY" id="fGF-FF-lKq"/>
+                                <constraint firstItem="so7-WY-L5t" firstAttribute="centerX" secondItem="TNn-Wh-8CH" secondAttribute="centerX" id="gLe-Qy-lTx"/>
+                                <constraint firstItem="wOw-8X-y8Y" firstAttribute="centerX" secondItem="SES-n6-zYI" secondAttribute="centerX" id="pAU-e6-r3V"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" name="ColorTertiary"/>
                     <constraints>
                         <constraint firstItem="hoL-Um-4wH" firstAttribute="top" secondItem="7i0-5u-bRG" secondAttribute="top" id="1yb-0T-naO"/>
                         <constraint firstItem="eVJ-9F-gOi" firstAttribute="top" secondItem="7i0-5u-bRG" secondAttribute="top" id="SIo-6v-4L0"/>
                         <constraint firstAttribute="trailing" secondItem="eVJ-9F-gOi" secondAttribute="trailing" id="XrD-No-4I1"/>
+                        <constraint firstAttribute="trailing" secondItem="SES-n6-zYI" secondAttribute="trailing" id="iGD-G8-zrg"/>
                         <constraint firstItem="eVJ-9F-gOi" firstAttribute="leading" secondItem="7i0-5u-bRG" secondAttribute="leading" id="kh8-IO-eHL"/>
+                        <constraint firstItem="SES-n6-zYI" firstAttribute="top" secondItem="7i0-5u-bRG" secondAttribute="top" id="mqg-Pz-tPB"/>
+                        <constraint firstItem="SES-n6-zYI" firstAttribute="leading" secondItem="7i0-5u-bRG" secondAttribute="leading" id="qV3-3o-DO3"/>
                         <constraint firstAttribute="trailing" secondItem="hoL-Um-4wH" secondAttribute="trailing" id="qzC-oN-CVZ"/>
                         <constraint firstItem="hoL-Um-4wH" firstAttribute="leading" secondItem="7i0-5u-bRG" secondAttribute="leading" id="ukb-Xh-jGj"/>
                     </constraints>
@@ -239,6 +289,9 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BKn-sK-ZM2" userLabel="Canvas View">
                             <rect key="frame" x="0.0" y="5.3333333333333144" width="390" height="500"/>
                             <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wfb-pd-4Bz" userLabel="Capture Image View">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="500"/>
+                                </imageView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e8t-Mt-9AN" userLabel="Frame Image View">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="500"/>
                                     <constraints>
@@ -251,11 +304,15 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="Wfb-pd-4Bz" secondAttribute="bottom" id="0DS-hF-Pfk"/>
                                 <constraint firstAttribute="trailing" secondItem="R7H-uy-Met" secondAttribute="trailing" id="3aV-XA-AcO"/>
                                 <constraint firstAttribute="bottom" secondItem="R7H-uy-Met" secondAttribute="bottom" id="689-Gv-pKM"/>
+                                <constraint firstItem="Wfb-pd-4Bz" firstAttribute="top" secondItem="BKn-sK-ZM2" secondAttribute="top" id="7sO-PP-amS"/>
                                 <constraint firstItem="R7H-uy-Met" firstAttribute="top" secondItem="BKn-sK-ZM2" secondAttribute="top" id="Eqy-Bl-9AT"/>
                                 <constraint firstAttribute="trailing" secondItem="e8t-Mt-9AN" secondAttribute="trailing" id="K9s-16-dCh"/>
+                                <constraint firstAttribute="trailing" secondItem="Wfb-pd-4Bz" secondAttribute="trailing" id="Lwp-8E-sLo"/>
                                 <constraint firstAttribute="bottom" secondItem="e8t-Mt-9AN" secondAttribute="bottom" id="PsE-Y1-OCu"/>
+                                <constraint firstItem="Wfb-pd-4Bz" firstAttribute="leading" secondItem="BKn-sK-ZM2" secondAttribute="leading" id="apS-mh-7KU"/>
                                 <constraint firstItem="e8t-Mt-9AN" firstAttribute="top" secondItem="BKn-sK-ZM2" secondAttribute="top" id="flr-FT-PAJ"/>
                                 <constraint firstItem="e8t-Mt-9AN" firstAttribute="leading" secondItem="BKn-sK-ZM2" secondAttribute="leading" id="pwB-YU-uEY"/>
                                 <constraint firstItem="R7H-uy-Met" firstAttribute="leading" secondItem="BKn-sK-ZM2" secondAttribute="leading" id="tVF-dE-bwG"/>
@@ -288,6 +345,7 @@
                 <constraint firstItem="0v2-fT-U3k" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="h0Y-Ep-brj"/>
                 <constraint firstItem="7i0-5u-bRG" firstAttribute="top" secondItem="V9I-2M-Ess" secondAttribute="bottom" id="iQh-JM-hpi"/>
                 <constraint firstItem="V9I-2M-Ess" firstAttribute="top" secondItem="0v2-fT-U3k" secondAttribute="bottom" id="izP-Qf-N8o"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="SES-n6-zYI" secondAttribute="bottom" id="m4I-9m-wCM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7i0-5u-bRG" secondAttribute="trailing" id="qBS-XG-56s"/>
                 <constraint firstItem="V9I-2M-Ess" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="z4Q-hl-qeg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hoL-Um-4wH" secondAttribute="bottom" id="z9t-FW-idZ"/>
@@ -298,12 +356,14 @@
     <resources>
         <image name="ic_capture" width="56" height="56"/>
         <image name="ic_check" width="24" height="24"/>
+        <image name="ic_check_gradient" width="85.333335876464844" height="85.333335876464844"/>
         <image name="ic_close" width="24" height="24"/>
         <image name="ic_close_" width="24" height="24"/>
         <image name="ic_flash" width="24" height="24"/>
         <image name="ic_frame_layer" width="32" height="32"/>
         <image name="ic_more_horizontal" width="24" height="24"/>
         <image name="ic_navigation_back" width="24" height="24"/>
+        <image name="ic_redo" width="21.333333969116211" height="21.333333969116211"/>
         <image name="ic_switch_camera" width="24" height="24"/>
         <namedColor name="ColorPrimary">
             <color red="0.024000000208616257" green="0.067000001668930054" blue="0.21199999749660492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

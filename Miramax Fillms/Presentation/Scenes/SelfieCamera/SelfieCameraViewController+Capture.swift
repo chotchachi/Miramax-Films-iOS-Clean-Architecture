@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import AVFoundation
+import SwifterSwift
 
 extension SelfieCameraViewController {
     func setupLivePreview() {
@@ -22,33 +23,42 @@ extension SelfieCameraViewController {
         
         /// Init capture session
         captureSession = AVCaptureSession()
-        captureSession.sessionPreset = .medium
-        videoPreviewLayer.session = captureSession
+        captureSession!.sessionPreset = .medium
+        videoPreviewLayer.session = captureSession!
         
         /// Get current camera device
         guard let cameraDevice = getCameraDevice() else { return }
         
         /// Add capture device output
         stillImageOutput = AVCapturePhotoOutput()
-        if captureSession.canAddOutput(stillImageOutput) {
-            captureSession.addOutput(stillImageOutput)
+        if captureSession!.canAddOutput(stillImageOutput!) {
+            captureSession!.addOutput(stillImageOutput!)
         }
         
         /// Add capture device input
-        addCaptureDeviceInput(cameraDevice) {
+        addCaptureDeviceInput(session: captureSession!, cameraDevice: cameraDevice) {
             DispatchQueue.global(qos: .userInitiated).async { [weak self ] in
-                self?.captureSession.startRunning()
+                self?.captureSession?.startRunning()
             }
         }
     }
     
-    func addCaptureDeviceInput(_ cameraDevice: AVCaptureDevice, completion: () -> ()) {
+    func stopCamera() {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self ] in
+            self?.captureSession?.stopRunning()
+            self?.captureSession = nil
+            self?.stillImageOutput = nil
+            self?.videoPreviewLayer.session = nil
+        }
+    }
+    
+    private func addCaptureDeviceInput(session: AVCaptureSession, cameraDevice: AVCaptureDevice, completion: () -> ()) {
         do {
             let input = try AVCaptureDeviceInput(device: cameraDevice)
                         
-            if captureSession.canAddInput(input) {
-                captureSession.addInput(input)
-                isConfiguringCamera = false
+            if session.canAddInput(input) {
+                session.addInput(input)
+                self.isConfiguringCamera = false
                 completion()
             }
         } catch {
@@ -60,10 +70,13 @@ extension SelfieCameraViewController {
     }
     
     func switchCameraDevice() {
+        guard let captureSession = self.captureSession else { return }
+        
         isConfiguringCamera = true
         
         /// Toggle camera device
         currentCameraDevice = currentCameraDevice == .back ? .front : .back
+        setButtonFlash(isEnable: currentCameraDevice == .back)
 
         /// Get new camera device
         guard let newCameraDevice = getCameraDevice() else { return }
@@ -76,12 +89,12 @@ extension SelfieCameraViewController {
         }
         
         /// Add capture device input
-        addCaptureDeviceInput(newCameraDevice) { }
+        addCaptureDeviceInput(session: captureSession, cameraDevice: newCameraDevice) { }
         
         captureSession.commitConfiguration()
     }
     
-    func getCameraDevice() -> AVCaptureDevice? {
+    private func getCameraDevice() -> AVCaptureDevice? {
         if let device = AVCaptureDevice.DiscoverySession(
             deviceTypes: [.builtInWideAngleCamera],
             mediaType: AVMediaType.video,
@@ -94,6 +107,12 @@ extension SelfieCameraViewController {
             }
             return nil
         }
+    }
+        
+    func snapPhoto() {
+        guard let stillImageOutput = self.stillImageOutput else { return }
+        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
+        stillImageOutput.capturePhoto(with: settings, delegate: self)
     }
     
     func toggleFlash() {
@@ -118,12 +137,7 @@ extension SelfieCameraViewController {
             print(error)
         }
     }
-    
-    func snapPhoto() {
-        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
-        stillImageOutput.capturePhoto(with: settings, delegate: self)
-    }
-        
+
     func checkCameraPermission(completion: @escaping () -> ()) {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized:
@@ -161,6 +175,12 @@ extension SelfieCameraViewController {
             [self.btnCapture, self.btnSwitchCamera].forEach { button in
                 button?.isEnabled = isEnable
             }
+        }
+    }
+    
+    func setButtonFlash(isEnable: Bool) {
+        DispatchQueue.main.async {
+            self.btnFlash.isEnabled = isEnable
         }
     }
     
@@ -223,10 +243,16 @@ extension SelfieCameraViewController {
 
 extension SelfieCameraViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-//        guard let imageData = photo.fileDataRepresentation(), let image = UIImage(data: imageData) else {
-//            view.makeToast("error_capture_image".localized)
-//            return
-//        }
-//        presentCropViewController(with: image)
+        guard let imageData = photo.fileDataRepresentation(), let image = UIImage(data: imageData) else {
+            self.showAlert(title: "error".localized, message: "error_capture_image".localized)
+            return
+        }
+        handleDoneCaptureView()
+        if currentCameraDevice == .back {
+            captureImageView.image = image
+        } else {
+            let flippedImage = UIImage(cgImage: image.cgImage!, scale: image.scale, orientation: .leftMirrored)
+            captureImageView.image = flippedImage
+        }
     }
 }
