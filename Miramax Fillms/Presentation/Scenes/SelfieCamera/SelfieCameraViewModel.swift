@@ -15,6 +15,7 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let popViewTrigger: Driver<Void>
         let selectMovieImageTrigger: Driver<Void>
+        let doneTrigger: Driver<UIImage>
     }
     
     struct Output {
@@ -52,6 +53,13 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
                 self?.router.trigger(.selectMovieImage(callback: { movieImage in
                     self?.movieImageS.accept(movieImage)
                 }))
+            })
+            .disposed(by: rx.disposeBag)
+        
+        input.doneTrigger
+            .drive(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.router.trigger(.preview(image: item))
             })
             .disposed(by: rx.disposeBag)
         

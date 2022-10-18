@@ -79,3 +79,6 @@
 "search_selfie_movie_placeholder" = "Search Movies";
 "error_importing_image" = "Error while importing the image.";
 "error_capture_image" = "Error while capture the image.";
+"save_image_success_title" = "Image Saved";
+"save_image_success_message" = "Image successfully saved to Photos library";
+"share_image" = "Share image";

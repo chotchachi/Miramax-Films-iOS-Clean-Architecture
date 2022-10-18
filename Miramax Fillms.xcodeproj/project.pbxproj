@@ -33,6 +33,10 @@
 		ED42803828FE8C6F001DB45C /* Rx+retryWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42803728FE8C6F001DB45C /* Rx+retryWith.swift */; };
 		ED42803A28FE9CB1001DB45C /* SelfieCameraViewController+Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42803928FE9CB1001DB45C /* SelfieCameraViewController+Capture.swift */; };
 		ED42803C28FE9E6B001DB45C /* SelfieCameraViewController+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42803B28FE9E6B001DB45C /* SelfieCameraViewController+Frame.swift */; };
+		ED42803F28FECDC7001DB45C /* SelfiePreviewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42803E28FECDC7001DB45C /* SelfiePreviewCoordinator.swift */; };
+		ED42804128FECDD3001DB45C /* SelfiePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42804028FECDD3001DB45C /* SelfiePreviewViewModel.swift */; };
+		ED42804428FECDDE001DB45C /* SelfiePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42804228FECDDE001DB45C /* SelfiePreviewViewController.swift */; };
+		ED42804528FECDDE001DB45C /* SelfiePreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED42804328FECDDE001DB45C /* SelfiePreviewViewController.xib */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
 		ED69E04728F84D9C00FDC142 /* iCarousel+ViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */; };
 		ED69E04828F84D9C00FDC142 /* iCarousel+ViewManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */; };
@@ -256,6 +260,10 @@
 		ED42803728FE8C6F001DB45C /* Rx+retryWith.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+retryWith.swift"; sourceTree = "<group>"; };
 		ED42803928FE9CB1001DB45C /* SelfieCameraViewController+Capture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelfieCameraViewController+Capture.swift"; sourceTree = "<group>"; };
 		ED42803B28FE9E6B001DB45C /* SelfieCameraViewController+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelfieCameraViewController+Frame.swift"; sourceTree = "<group>"; };
+		ED42803E28FECDC7001DB45C /* SelfiePreviewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfiePreviewCoordinator.swift; sourceTree = "<group>"; };
+		ED42804028FECDD3001DB45C /* SelfiePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfiePreviewViewModel.swift; sourceTree = "<group>"; };
+		ED42804228FECDDE001DB45C /* SelfiePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfiePreviewViewController.swift; sourceTree = "<group>"; };
+		ED42804328FECDDE001DB45C /* SelfiePreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfiePreviewViewController.xib; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
 		ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewLayout.swift"; sourceTree = "<group>"; };
 		ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewManagement.swift"; sourceTree = "<group>"; };
@@ -514,6 +522,17 @@
 				EDC6DB3F28CF92DE00164EBD /* HomeCoordinator.swift */,
 			);
 			path = HomeTabBar;
+			sourceTree = "<group>";
+		};
+		ED42803D28FECDAB001DB45C /* SelfiePreview */ = {
+			isa = PBXGroup;
+			children = (
+				ED42804028FECDD3001DB45C /* SelfiePreviewViewModel.swift */,
+				ED42804228FECDDE001DB45C /* SelfiePreviewViewController.swift */,
+				ED42804328FECDDE001DB45C /* SelfiePreviewViewController.xib */,
+				ED42803E28FECDC7001DB45C /* SelfiePreviewCoordinator.swift */,
+			);
+			path = SelfiePreview;
 			sourceTree = "<group>";
 		};
 		ED5BA69E28EB19370030F4B0 /* EntertainmentRankTableViewCell */ = {
@@ -921,6 +940,7 @@
 		EDC6DB2528CF6C1900164EBD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				ED42803D28FECDAB001DB45C /* SelfiePreview */,
 				EDC5E25028FBE91300F1B911 /* SelfieCamera */,
 				EDC5E24928FBE20500F1B911 /* ChooseMovie */,
 				EDB263F928FA78CE005C61B3 /* SelfieMovie */,
@@ -1395,6 +1415,7 @@
 				ED1F03D028EF0F590083B088 /* SettingViewController.xib in Resources */,
 				ED9EC0E228F32FE700465623 /* PMAlertController.xib in Resources */,
 				EDC5E25828FBEAED00F1B911 /* SelfieCameraViewController.xib in Resources */,
+				ED42804528FECDDE001DB45C /* SelfiePreviewViewController.xib in Resources */,
 				EDE69B7E28D73214002726B0 /* TVShowViewController.xib in Resources */,
 				EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */,
 				EDD5302628DCBDA50078C6C5 /* SeasonDetailsViewController.xib in Resources */,
@@ -1469,6 +1490,7 @@
 				EDE69B5828D6BE1A002726B0 /* PersonHorizontalCell.swift in Sources */,
 				ED42803828FE8C6F001DB45C /* Rx+retryWith.swift in Sources */,
 				EDB8780228D8AA720016B96B /* EntertainmentDetailsViewController.swift in Sources */,
+				ED42804428FECDDE001DB45C /* SelfiePreviewViewController.swift in Sources */,
 				ED69E04828F84D9C00FDC142 /* iCarousel+ViewManagement.swift in Sources */,
 				EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */,
 				ED9EC0BE28F1B95700465623 /* BookmarkButton.swift in Sources */,
@@ -1483,6 +1505,7 @@
 				EDA4478D28D5A7640037751C /* AppToolbar.swift in Sources */,
 				EDD52F8328DB7D4D0078C6C5 /* Date+Ext.swift in Sources */,
 				ED9EC16928F5A48400465623 /* PresentationConvertibleType.swift in Sources */,
+				ED42803F28FECDC7001DB45C /* SelfiePreviewCoordinator.swift in Sources */,
 				ED69E04B28F84D9C00FDC142 /* iCarousel+Animation.swift in Sources */,
 				EDE69B5028D643A6002726B0 /* String+Ext.swift in Sources */,
 				EDC6DB2728CF6C3300164EBD /* BaseViewController.swift in Sources */,
@@ -1609,6 +1632,7 @@
 				EDE69B7728D73078002726B0 /* TransitionAnimation+Defaults.swift in Sources */,
 				EDE92B7428E301820083F33A /* DefaultRefreshControl.swift in Sources */,
 				ED1F03CB28EF0F060083B088 /* SettingCoordinator.swift in Sources */,
+				ED42804128FECDD3001DB45C /* SelfiePreviewViewModel.swift in Sources */,
 				EDE69B3928D60DBA002726B0 /* TabLayout.swift in Sources */,
 				ED7A096328EC84D80035E099 /* EntertainmentListViewController.swift in Sources */,
 				ED866E2028DED7AA0066E10B /* PersonDetailsViewModel.swift in Sources */,

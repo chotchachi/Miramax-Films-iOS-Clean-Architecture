@@ -22,6 +22,8 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     
     // MARK: - Outlets + Views
     
+    @IBOutlet weak var viewMain: UIView!
+    
     @IBOutlet weak var previewView: UIView!
     
     /// To hold capture image, frame image, movie poster image
@@ -46,8 +48,12 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     @IBOutlet weak var viewCameraControls: UIView!
     @IBOutlet weak var btnCapture: UIButton!
     @IBOutlet weak var btnFrameLayer: UIView!
-    
+    @IBOutlet weak var btnGallery: UIView!
+
     @IBOutlet weak var viewFrameLayer: UIView!
+    @IBOutlet weak var btnCloseViewFrameLayer: UIButton!
+    @IBOutlet weak var btnNoFrameLayer: UIButton!
+    @IBOutlet weak var btnDoneSelectFrameLayer: UIButton!
 
     @IBOutlet weak var viewDoneCapture: UIView!
     @IBOutlet weak var btnDone: UIButton!
@@ -71,7 +77,10 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     
     private var isViewAppear: Bool = false
     
+    private var currentSelfieFrame: SelfieFrame?
+    
     let selectMovieImageTriggerS = PublishRelay<Void>()
+    let doneTriggerS = PublishRelay<UIImage>()
     
     // MARK: - Lifecycle
 
@@ -89,13 +98,15 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
         
         let input = SelfieCameraViewModel.Input(
             popViewTrigger: btnBack.rx.tap.asDriver(),
-            selectMovieImageTrigger: selectMovieImageTriggerS.asDriverOnErrorJustComplete()
+            selectMovieImageTrigger: selectMovieImageTriggerS.asDriverOnErrorJustComplete(),
+            doneTrigger: doneTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
         output.selfieFrame
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
+                self.currentSelfieFrame = item
                 self.setFrameImage(with: item)
             })
             .disposed(by: rx.disposeBag)
@@ -155,29 +166,50 @@ extension SelfieCameraViewController {
                 self.startNewCapture()
             })
             .disposed(by: rx.disposeBag)
+
+        btnCloseViewFrameLayer.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.visibleViewFrameLayer(isVisible: false)
+            })
+            .disposed(by: rx.disposeBag)
         
-//        btnGallery.rx.tap
-//            .subscribe(onNext: { [weak self] in
-//                guard let self = self else { return }
-//                self.presentImagePickerController()
-//            })
-//            .disposed(by: rx.disposeBag)
+        btnNoFrameLayer.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+//                self.frameImageView.image = nil
+//                self.frameImageViewHc.constant = self.viewMain.height
+            })
+            .disposed(by: rx.disposeBag)
+        
+        btnDone.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                let finalImage = self.canvasView.toImage()
+                self.doneTriggerS.accept(finalImage)
+            })
+            .disposed(by: rx.disposeBag)
         
         btnFrameLayer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onButtonFrameLayerTapped(_:))))
-        
+        btnGallery.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onButtonGalleryTapped(_:))))
+
         captureImageView.contentMode = .scaleAspectFill
     }
     
-    private func presentImagePickerController() {
+    @objc private func onButtonFrameLayerTapped(_ sender: UITapGestureRecognizer) {
+        visibleViewFrameLayer(isVisible: true)
+    }
+    
+    @objc private func onButtonGalleryTapped(_ sender: UITapGestureRecognizer) {
         let vc = UIImagePickerController()
         vc.sourceType = .photoLibrary
         vc.delegate = self
         present(vc, animated: true)
     }
     
-    @objc private func onButtonFrameLayerTapped(_ sender: UITapGestureRecognizer) {
-        // test
-        presentImagePickerController()
+    private func visibleViewFrameLayer(isVisible: Bool) {
+        viewCameraControls.isHidden = isVisible
+        viewFrameLayer.isHidden = !isVisible
     }
     
     func handleDoneCaptureView() {
