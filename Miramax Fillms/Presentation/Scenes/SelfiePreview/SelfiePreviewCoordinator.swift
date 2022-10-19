@@ -38,7 +38,7 @@ class SelfiePreviewCoordinator: NavigationCoordinator<SelfiePreviewRoute> {
             autoreleaseController = vc
             return .push(vc)
         case .pop:
-            return .pop()
+            return .popToRoot()
         }
     }
 }

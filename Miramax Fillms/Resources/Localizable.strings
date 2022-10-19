@@ -82,3 +82,7 @@
 "save_image_success_title" = "Image Saved";
 "save_image_success_message" = "Image successfully saved to Photos library";
 "share_image" = "Share image";
+"add_image_favorite" = "Favorite image";
+"add_image_favorite_successfully" = "Add image favorite successfully!";
+"add_image_favorite_failed" = "Add image favorite failed. Please try again!";
+"add_image_favorite_already_exist" = "Image already add to favorite!";
