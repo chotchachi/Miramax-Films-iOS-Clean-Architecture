@@ -29,13 +29,14 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     /// To hold capture image, frame image, movie poster image
     /// Using to export the final image
     @IBOutlet weak var canvasView: UIView!
+    @IBOutlet weak var canvasViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var canvasViewHeightConstraint: NSLayoutConstraint!
 
     /// To hold capture image
     @IBOutlet weak var captureImageView: UIImageView!
 
     /// To hold frame image
     @IBOutlet weak var frameImageView: UIImageView!
-    @IBOutlet weak var frameImageViewHc: NSLayoutConstraint!
     
     /// To hold movie poster image
     @IBOutlet weak var canvasImageView: UIImageView!

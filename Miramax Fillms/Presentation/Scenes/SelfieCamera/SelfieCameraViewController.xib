@@ -25,9 +25,10 @@
                 <outlet property="btnSwitchCamera" destination="F57-BP-aax" id="0hm-CN-cE0"/>
                 <outlet property="canvasImageView" destination="R7H-uy-Met" id="DQ7-cY-kcF"/>
                 <outlet property="canvasView" destination="BKn-sK-ZM2" id="9re-wJ-AAc"/>
+                <outlet property="canvasViewHeightConstraint" destination="Kw0-Lz-aZF" id="AbD-D3-RLL"/>
+                <outlet property="canvasViewWidthConstraint" destination="o5z-DO-BR5" id="ewh-c5-0iZ"/>
                 <outlet property="captureImageView" destination="Wfb-pd-4Bz" id="kR0-dG-0v5"/>
                 <outlet property="frameImageView" destination="e8t-Mt-9AN" id="YkN-aw-Zc4"/>
-                <outlet property="frameImageViewHc" destination="or4-DB-Xoe" id="HSt-s4-CAZ"/>
                 <outlet property="previewView" destination="vFo-Vv-gIa" id="LSc-RO-twG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewCameraControls" destination="hoL-Um-4wH" id="KZv-0b-ibJ"/>
@@ -125,9 +126,6 @@
                                 </imageView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e8t-Mt-9AN" userLabel="Frame Image View">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="500"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="500" id="or4-DB-Xoe"/>
-                                    </constraints>
                                 </imageView>
                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R7H-uy-Met" userLabel="Canvas Image View">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="500"/>
@@ -141,10 +139,12 @@
                                 <constraint firstItem="Wfb-pd-4Bz" firstAttribute="top" secondItem="BKn-sK-ZM2" secondAttribute="top" id="7sO-PP-amS"/>
                                 <constraint firstItem="R7H-uy-Met" firstAttribute="top" secondItem="BKn-sK-ZM2" secondAttribute="top" id="Eqy-Bl-9AT"/>
                                 <constraint firstAttribute="trailing" secondItem="e8t-Mt-9AN" secondAttribute="trailing" id="K9s-16-dCh"/>
+                                <constraint firstAttribute="height" constant="500" id="Kw0-Lz-aZF"/>
                                 <constraint firstAttribute="trailing" secondItem="Wfb-pd-4Bz" secondAttribute="trailing" id="Lwp-8E-sLo"/>
                                 <constraint firstAttribute="bottom" secondItem="e8t-Mt-9AN" secondAttribute="bottom" id="PsE-Y1-OCu"/>
                                 <constraint firstItem="Wfb-pd-4Bz" firstAttribute="leading" secondItem="BKn-sK-ZM2" secondAttribute="leading" id="apS-mh-7KU"/>
                                 <constraint firstItem="e8t-Mt-9AN" firstAttribute="top" secondItem="BKn-sK-ZM2" secondAttribute="top" id="flr-FT-PAJ"/>
+                                <constraint firstAttribute="width" constant="390" id="o5z-DO-BR5"/>
                                 <constraint firstItem="e8t-Mt-9AN" firstAttribute="leading" secondItem="BKn-sK-ZM2" secondAttribute="leading" id="pwB-YU-uEY"/>
                                 <constraint firstItem="R7H-uy-Met" firstAttribute="leading" secondItem="BKn-sK-ZM2" secondAttribute="leading" id="tVF-dE-bwG"/>
                             </constraints>
@@ -152,12 +152,11 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="BKn-sK-ZM2" secondAttribute="trailing" id="Eyp-HN-JVm"/>
                         <constraint firstItem="BKn-sK-ZM2" firstAttribute="centerY" secondItem="V9I-2M-Ess" secondAttribute="centerY" id="IBc-oZ-m1a"/>
                         <constraint firstItem="vFo-Vv-gIa" firstAttribute="width" secondItem="BKn-sK-ZM2" secondAttribute="width" id="INc-a9-Tci"/>
+                        <constraint firstItem="BKn-sK-ZM2" firstAttribute="centerX" secondItem="V9I-2M-Ess" secondAttribute="centerX" id="ZxE-KR-3Fs"/>
                         <constraint firstItem="vFo-Vv-gIa" firstAttribute="height" secondItem="BKn-sK-ZM2" secondAttribute="height" id="cXM-aI-gnP"/>
                         <constraint firstItem="vFo-Vv-gIa" firstAttribute="centerY" secondItem="BKn-sK-ZM2" secondAttribute="centerY" id="djl-gB-7GH"/>
-                        <constraint firstItem="BKn-sK-ZM2" firstAttribute="leading" secondItem="V9I-2M-Ess" secondAttribute="leading" id="qR4-od-Ee8"/>
                         <constraint firstItem="vFo-Vv-gIa" firstAttribute="centerX" secondItem="BKn-sK-ZM2" secondAttribute="centerX" id="qb5-sV-BWt"/>
                     </constraints>
                 </view>

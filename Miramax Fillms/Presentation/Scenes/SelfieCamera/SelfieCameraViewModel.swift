@@ -26,20 +26,28 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
     private let repositoryProvider: RepositoryProviderProtocol
     private let router: UnownedRouter<SelfieCameraRoute>
     private let selfieFrame: SelfieFrame
-    private let movieImage: UIImage
     
-    private let movieImageS = PublishRelay<UIImage>()
+    private let movieImageS: BehaviorRelay<UIImage>
 
     init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<SelfieCameraRoute>, selfieFrame: SelfieFrame, movieImage: UIImage) {
         self.repositoryProvider = repositoryProvider
         self.router = router
         self.selfieFrame = selfieFrame
-        self.movieImage = movieImage
+        self.movieImageS = BehaviorRelay(value: movieImage)
         super.init()
     }
     
     func transform(input: Input) -> Output {
-        let movieImageData = Driver.merge(Driver.just(movieImage), movieImageS.asDriverOnErrorJustComplete())
+        let viewTrigger = trigger
+            .take(1)
+        
+        let selfieFrame = viewTrigger
+            .map { self.selfieFrame }
+            .asDriverOnErrorJustComplete()
+        
+        let movieImageData = viewTrigger
+            .flatMapLatest { self.movieImageS }
+            .asDriverOnErrorJustComplete()
         
         input.popViewTrigger
             .drive(onNext: { [weak self] in
@@ -63,7 +71,7 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output(selfieFrame: Driver.just(selfieFrame),
+        return Output(selfieFrame: selfieFrame,
                       movieImage: movieImageData)
     }
 }

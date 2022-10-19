@@ -17,8 +17,9 @@ extension SelfieCameraViewController {
             switch result {
             case .success(let value):
                 self.frameImageView.image = value.image
-                let size = value.image.suitableSize(widthLimit: UIScreen.main.bounds.width)
-                self.frameImageViewHc.constant = size?.height ?? 0.0
+                let size = value.image.suitableSize(heightLimit: self.viewMain.height, widthLimit: UIScreen.main.bounds.width)
+                self.canvasViewWidthConstraint.constant = size?.width ?? 0.0
+                self.canvasViewHeightConstraint.constant = size?.height ?? 0.0
             case .failure(let error):
                 print(error)
             }
