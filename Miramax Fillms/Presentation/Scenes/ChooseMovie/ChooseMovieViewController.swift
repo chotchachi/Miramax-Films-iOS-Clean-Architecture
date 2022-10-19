@@ -24,6 +24,9 @@ class ChooseMovieViewController: BaseViewController<ChooseMovieViewModel>, Loadi
     @IBOutlet weak var lblSearchResult: UILabel!
     @IBOutlet weak var btnDone: UIButton!
     
+    @IBOutlet weak var viewSearchEmpty: UIView!
+    @IBOutlet weak var lblEmptyMessage: UILabel!
+    
     var loaderView: LoadingView = LoadingView()
     var errorRetryView: ErrorRetryView = ErrorRetryView()
 
@@ -69,6 +72,19 @@ class ChooseMovieViewController: BaseViewController<ChooseMovieViewModel>, Loadi
         }
         
         output.searchResult
+            .do(onNext: { [weak self] result in
+                guard let self = self else { return }
+                let items = result.data
+                self.collectionView.isHidden = items.isEmpty
+                self.viewSearchEmpty.isHidden = !items.isEmpty
+                if items.isEmpty {
+                    self.lblSearchResult.isHidden = true
+                    self.lblEmptyMessage.text = "\("search_result_empty".localized) “\(self.tfSearch.text ?? "")”"
+                } else {
+                    self.lblSearchResult.isHidden = false
+                    self.lblSearchResult.text = "\("search_result_found".localized) “\(self.tfSearch.text ?? "")”"
+                }
+            })
             .map { [SectionModel(model: "", items: $0.data)] }
             .drive(collectionView.rx.items(dataSource: dataSource))
             .disposed(by: rx.disposeBag)
@@ -141,6 +157,11 @@ extension ChooseMovieViewController {
         btnDone.setTitleColor(AppColors.colorAccent.withAlphaComponent(0.5), for: .disabled)
         btnDone.titleLabel?.font = AppFonts.caption1
         btnDone.isEnabled = false
+        
+        lblEmptyMessage.font = AppFonts.caption1SemiBold
+        lblEmptyMessage.textColor = AppColors.textColorPrimary
+        
+        viewSearchEmpty.isHidden = true
     }
     
     @objc private func clearSearchButtonTapped(_ sender: UIButton) {
@@ -161,8 +182,8 @@ extension ChooseMovieViewController: UITextFieldDelegate {
         guard let query = textField.text, !query.isEmpty && !query.isBlank else { return false }
         searchTriggerS.accept(query)
         tfSearch.resignFirstResponder()
-        lblSearchResult.isHidden = false
-        lblSearchResult.text = "\("search_result_found".localized) “\(query)“"
+        collectionView.isHidden = true
+        viewSearchEmpty.isHidden = true
         return true
     }
 }

@@ -15,9 +15,11 @@
                 <outlet property="btnClearSearch" destination="HIt-xc-oX8" id="G3h-WU-LFg"/>
                 <outlet property="btnDone" destination="Hih-CA-cx7" id="Dup-fz-c2A"/>
                 <outlet property="collectionView" destination="XND-11-PD0" id="dij-vU-Ty2"/>
+                <outlet property="lblEmptyMessage" destination="9b0-Ke-jjX" id="Xll-WD-ROd"/>
                 <outlet property="lblSearchResult" destination="cff-zE-qbN" id="veW-wD-63b"/>
                 <outlet property="tfSearch" destination="KT3-vJ-RF0" id="r2l-2i-aHc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewSearchEmpty" destination="lLj-P5-dYI" id="DS8-C5-Kqw"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -121,22 +123,52 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLj-P5-dYI">
+                    <rect key="frame" x="32" y="422" width="326" height="156.33333333333337"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_empty" translatesAutoresizingMaskIntoConstraints="NO" id="nzG-hB-CmQ">
+                            <rect key="frame" x="99" y="0.0" width="128" height="128"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="128" id="HgR-oS-Ewa"/>
+                                <constraint firstAttribute="width" secondItem="nzG-hB-CmQ" secondAttribute="height" multiplier="1:1" id="U7J-Q3-Fqs"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No search results found “Jack”" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9b0-Ke-jjX">
+                            <rect key="frame" x="0.0" y="136" width="326" height="20.333333333333343"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="nzG-hB-CmQ" firstAttribute="top" secondItem="lLj-P5-dYI" secondAttribute="top" id="4sW-wx-oSK"/>
+                        <constraint firstAttribute="bottom" secondItem="9b0-Ke-jjX" secondAttribute="bottom" id="9Pr-oj-sRK"/>
+                        <constraint firstItem="9b0-Ke-jjX" firstAttribute="leading" secondItem="lLj-P5-dYI" secondAttribute="leading" id="CmE-Dv-JDV"/>
+                        <constraint firstAttribute="trailing" secondItem="9b0-Ke-jjX" secondAttribute="trailing" id="Kfi-fQ-avP"/>
+                        <constraint firstItem="9b0-Ke-jjX" firstAttribute="top" secondItem="nzG-hB-CmQ" secondAttribute="bottom" constant="8" id="hZ1-l5-o0K"/>
+                        <constraint firstItem="nzG-hB-CmQ" firstAttribute="centerX" secondItem="lLj-P5-dYI" secondAttribute="centerX" id="kfL-ml-IYG"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="ColorPrimary"/>
             <constraints>
                 <constraint firstItem="d1h-i5-cWP" firstAttribute="leading" secondItem="cqQ-RU-zo0" secondAttribute="trailing" constant="12" id="2kF-U5-2M2"/>
+                <constraint firstItem="lLj-P5-dYI" firstAttribute="centerY" secondItem="XND-11-PD0" secondAttribute="centerY" id="3vR-xo-1C9"/>
                 <constraint firstAttribute="bottom" secondItem="XND-11-PD0" secondAttribute="bottom" id="6Ba-Qr-pqh"/>
                 <constraint firstItem="mv7-LS-O2U" firstAttribute="top" secondItem="cqQ-RU-zo0" secondAttribute="bottom" id="7ZP-uI-6fD"/>
                 <constraint firstItem="XND-11-PD0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="810-OP-qgc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="d1h-i5-cWP" secondAttribute="trailing" constant="16" id="Dne-X0-jOH"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mv7-LS-O2U" secondAttribute="trailing" id="Dvo-mF-YOx"/>
+                <constraint firstItem="lLj-P5-dYI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="Jnt-jN-ntn"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XND-11-PD0" secondAttribute="trailing" id="NHN-Df-BIa"/>
                 <constraint firstItem="cqQ-RU-zo0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="QfZ-3u-3ab"/>
                 <constraint firstItem="mv7-LS-O2U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="S1Q-Wx-kpx"/>
                 <constraint firstItem="XND-11-PD0" firstAttribute="top" secondItem="mv7-LS-O2U" secondAttribute="bottom" id="bMu-G5-Txv"/>
                 <constraint firstItem="d1h-i5-cWP" firstAttribute="centerY" secondItem="cqQ-RU-zo0" secondAttribute="centerY" id="kDM-oq-ROr"/>
                 <constraint firstItem="cqQ-RU-zo0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="pYm-d1-vst"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lLj-P5-dYI" secondAttribute="trailing" constant="32" id="vow-p8-WiS"/>
             </constraints>
             <point key="canvasLocation" x="121.53846153846153" y="20.616113744075829"/>
         </view>
@@ -145,6 +177,7 @@
         <image name="ic_check" width="24" height="24"/>
         <image name="ic_circle_close_fill" width="24" height="24"/>
         <image name="ic_search" width="17.666666030883789" height="17.666666030883789"/>
+        <image name="search_empty" width="128" height="128"/>
         <namedColor name="ColorAccent">
             <color red="0.90200001001358032" green="0.0040000001899898052" blue="0.13699999451637268" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
