@@ -42,12 +42,12 @@ public final class SearchRepository: SearchRepositoryProtocol {
             .map { items in items.sorted { $0.createAt > $1.createAt } } // sort by createAt
     }
     
-    public func addRecentEntertainment(item: RecentEntertainment) -> Observable<Void> {
+    public func addRecentEntertainment(item: RecentEntertainment) -> Completable {
         return localDataSource
             .saveSearchRecentEntertainments(item: item.asRealm())
     }
     
-    public func removeAllRecentEntertainment() -> Observable<Void> {
+    public func removeAllRecentEntertainment() -> Completable {
         return localDataSource
             .removeAllRecentEntertainment()
     }

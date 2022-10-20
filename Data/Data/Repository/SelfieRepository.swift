@@ -7,8 +7,15 @@
 
 import Domain
 import ObjectMapper
+import RxSwift
 
 public class SelfieRepository: SelfieRepositoryProtocol {
+    private let localDataSource: LocalDataSourceProtocol
+    
+    public init(localDataSource: LocalDataSourceProtocol) {
+        self.localDataSource = localDataSource
+    }
+    
     public func getAllFrame() -> [SelfieFrame] {
         if let url = ResourceManager.dataBundle.url(forResource: "selfie_frames", withExtension: "json") {
             do {
@@ -25,5 +32,16 @@ public class SelfieRepository: SelfieRepositoryProtocol {
             print("Load selfie frame data failed: File not found!")
             return []
         }
+    }
+    
+    public func getAllFavoriteSelfie() -> Observable<[FavoriteSelfie]> {
+        return localDataSource
+            .getAllFavoriteSelfie()
+            .map { items in items.map { $0.asDomain() } }
+    }
+    
+    public func saveFavoriteSelfie(item: FavoriteSelfie) -> Completable {
+        return localDataSource
+            .saveFavoriteSelfie(item: item.asRealm())
     }
 }

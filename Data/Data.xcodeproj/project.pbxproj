@@ -21,6 +21,8 @@
 		EDB2641128FA8675005C61B3 /* SelfieFrameDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2641028FA8675005C61B3 /* SelfieFrameDTO.swift */; };
 		EDB2641628FA8B08005C61B3 /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2641528FA8B08005C61B3 /* ResourceManager.swift */; };
 		EDB2641E28FAE33C005C61B3 /* VideoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2641D28FAE33C005C61B3 /* VideoDTO.swift */; };
+		EDC7232A2900482C009118C9 /* RMFavoriteSelfie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC723292900482C009118C9 /* RMFavoriteSelfie.swift */; };
+		EDC7232C290049B8009118C9 /* FavoriteSelfieDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7232B290049B8009118C9 /* FavoriteSelfieDao.swift */; };
 		EDE92C4128E697920083F33A /* Data.h in Headers */ = {isa = PBXBuildFile; fileRef = EDE92C4028E697920083F33A /* Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDE92CC928E698E40083F33A /* RepositoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CAF28E698E20083F33A /* RepositoryProvider.swift */; };
 		EDE92CCA28E699010083F33A /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92CC628E698E30083F33A /* ReachabilityManager.swift */; };
@@ -111,6 +113,8 @@
 		EDB2641028FA8675005C61B3 /* SelfieFrameDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieFrameDTO.swift; sourceTree = "<group>"; };
 		EDB2641528FA8B08005C61B3 /* ResourceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
 		EDB2641D28FAE33C005C61B3 /* VideoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDTO.swift; sourceTree = "<group>"; };
+		EDC723292900482C009118C9 /* RMFavoriteSelfie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMFavoriteSelfie.swift; sourceTree = "<group>"; };
+		EDC7232B290049B8009118C9 /* FavoriteSelfieDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSelfieDao.swift; sourceTree = "<group>"; };
 		EDE92C3D28E697920083F33A /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE92C4028E697920083F33A /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		EDE92C8328E698E20083F33A /* RemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
@@ -371,6 +375,7 @@
 				EDE92CB628E698E30083F33A /* RecentEntertainmentDao.swift */,
 				ED9EC0C128F1D5D700465623 /* BookmarkPersonDao.swift */,
 				ED9EC0CE28F2890F00465623 /* BookmarkEntertainmentDao.swift */,
+				EDC7232B290049B8009118C9 /* FavoriteSelfieDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 				EDE92CBB28E698E30083F33A /* RMRecentEntertainment.swift */,
 				ED9EC0BF28F1D41E00465623 /* RMBookmarkPerson.swift */,
 				ED9EC0CA28F2860500465623 /* RMBookmarkEntertainment.swift */,
+				EDC723292900482C009118C9 /* RMFavoriteSelfie.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -554,6 +560,7 @@
 				EDE92CF528E6992B0083F33A /* RecentEntertainmentDao.swift in Sources */,
 				EDE92CE228E6991D0083F33A /* MovieResponseDTO.swift in Sources */,
 				EDE92CFD28E699360083F33A /* RMOperator.swift in Sources */,
+				EDC7232C290049B8009118C9 /* FavoriteSelfieDao.swift in Sources */,
 				EDE92CDB28E699110083F33A /* PeopleNetworking.swift in Sources */,
 				EDE92CEC28E699210083F33A /* CreditDTO.swift in Sources */,
 				EDE92CDC28E699150083F33A /* MovieApi.swift in Sources */,
@@ -585,6 +592,7 @@
 				EDE92CEB28E699210083F33A /* GenreDTO.swift in Sources */,
 				EDE92CD928E699110083F33A /* TVShowNetworking.swift in Sources */,
 				EDE92D0028E6993B0083F33A /* LocalDataSourceProtocol.swift in Sources */,
+				EDC7232A2900482C009118C9 /* RMFavoriteSelfie.swift in Sources */,
 				EDE92CED28E699210083F33A /* ImageDTO.swift in Sources */,
 				ED9EC0CF28F2890F00465623 /* BookmarkEntertainmentDao.swift in Sources */,
 				EDE92CF228E699210083F33A /* MovieDTO.swift in Sources */,

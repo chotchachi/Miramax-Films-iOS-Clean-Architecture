@@ -23,36 +23,20 @@ final class BookmarkEntertainmentDao: BaseDao {
         }
     }
     
-    func save(entity: RMBookmarkEntertainment) -> Observable<Void> {
-        return Observable.deferred {
+    func save(entity: RMBookmarkEntertainment) -> Completable {
+        return Completable.deferred {
             return self.realmInstance().rx.save(entity: entity)
         }
     }
 
-    func update(entity: RMBookmarkEntertainment) -> Observable<Void> {
-        return Observable.deferred {
-            return self.realmInstance().rx.save(entity: entity, update: true)
-        }
-    }
-
-    func delete(entity: RMBookmarkEntertainment) -> Observable<Void> {
-        return Observable.deferred {
+    func delete(entity: RMBookmarkEntertainment) -> Completable {
+        return Completable.deferred {
             return self.realmInstance().rx.delete(entity: entity)
         }
     }
 
-    func delete(entities: [RMBookmarkEntertainment]) -> Observable<Void> {
-        return Observable.deferred {
-            let deleteObs = entities.map { entity in
-                return self.realmInstance().rx.delete(entity: entity)
-            }
-            return Observable.zip(deleteObs)
-                .map { _ in }
-        }
-    }
-    
-    func deleteAllMovies() -> Observable<Void> {
-        return Observable.deferred {
+    func deleteAllMovies() -> Completable {
+        return Completable.deferred {
             let realm = self.realmInstance()
             let objects = realm.objects(RMBookmarkEntertainment.self)
                 .toArray()
@@ -61,8 +45,8 @@ final class BookmarkEntertainmentDao: BaseDao {
         }
     }
     
-    func deleteAllTVShows() -> Observable<Void> {
-        return Observable.deferred {
+    func deleteAllTVShows() -> Completable {
+        return Completable.deferred {
             let realm = self.realmInstance()
             let objects = realm.objects(RMBookmarkEntertainment.self)
                 .toArray()

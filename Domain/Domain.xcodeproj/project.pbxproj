@@ -18,6 +18,7 @@
 		EDB2640528FA812D005C61B3 /* SelfieFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2640428FA812D005C61B3 /* SelfieFrame.swift */; };
 		EDB2640728FA82A6005C61B3 /* SelfieRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2640628FA82A6005C61B3 /* SelfieRepositoryProtocol.swift */; };
 		EDB2642028FAE420005C61B3 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB2641F28FAE420005C61B3 /* Video.swift */; };
+		EDC7232829002CB2009118C9 /* FavoriteSelfie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7232729002CB2009118C9 /* FavoriteSelfie.swift */; };
 		EDE92C2D28E6977D0083F33A /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = EDE92C2C28E6977D0083F33A /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDE92C4828E698660083F33A /* RepositoryProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C4728E698660083F33A /* RepositoryProviderProtocol.swift */; };
 		EDE92C6828E698990083F33A /* MovieRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92C4A28E698860083F33A /* MovieRepositoryProtocol.swift */; };
@@ -56,6 +57,7 @@
 		EDB2640428FA812D005C61B3 /* SelfieFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieFrame.swift; sourceTree = "<group>"; };
 		EDB2640628FA82A6005C61B3 /* SelfieRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieRepositoryProtocol.swift; sourceTree = "<group>"; };
 		EDB2641F28FAE420005C61B3 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		EDC7232729002CB2009118C9 /* FavoriteSelfie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSelfie.swift; sourceTree = "<group>"; };
 		EDE92C2928E6977D0083F33A /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE92C2C28E6977D0083F33A /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		EDE92C4728E698660083F33A /* RepositoryProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProviderProtocol.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				ED9EC0C328F1D88B00465623 /* BookmarkPerson.swift */,
 				ED9EC0CC28F2863700465623 /* BookmarkEntertainment.swift */,
 				EDB2640428FA812D005C61B3 /* SelfieFrame.swift */,
+				EDC7232729002CB2009118C9 /* FavoriteSelfie.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				EDE92C7328E698A70083F33A /* Crew.swift in Sources */,
 				EDB2640728FA82A6005C61B3 /* SelfieRepositoryProtocol.swift in Sources */,
 				EDE92C7E28E698A70083F33A /* Person.swift in Sources */,
+				EDC7232829002CB2009118C9 /* FavoriteSelfie.swift in Sources */,
 				EDE92C6828E698990083F33A /* MovieRepositoryProtocol.swift in Sources */,
 				EDE92D1E28E6C7960083F33A /* ImageConfigurable.swift in Sources */,
 				EDE92C8128E698AB0083F33A /* GenreResponse.swift in Sources */,

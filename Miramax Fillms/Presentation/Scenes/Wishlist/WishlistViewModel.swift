@@ -60,18 +60,18 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
         input.removeAllTrigger
             .asObservable()
             .withLatestFrom(previewTabTriggerO)
-            .flatMapLatest {
+            .flatMap {
                 self.removeAllWishlist(with: $0)
-                    .catch { _ in Observable.empty() }
+                    .catch { _ in Completable.empty() }
             }
             .subscribe()
             .disposed(by: rx.disposeBag)
         
         input.removeItemTrigger
             .asObservable()
-            .flatMapLatest {
+            .flatMap {
                 self.removeWishlistItem(with: $0)
-                    .catch { _ in Observable.empty() }
+                    .catch { _ in Completable.empty() }
             }
             .subscribe()
             .disposed(by: rx.disposeBag)
@@ -120,7 +120,7 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
         }
     }
     
-    private func removeAllWishlist(with tab: WishlistPreviewTab) -> Observable<Void> {
+    private func removeAllWishlist(with tab: WishlistPreviewTab) -> Completable {
         switch tab {
         case .movies:
             return repositoryProvider
@@ -137,7 +137,7 @@ class WishlistViewModel: BaseViewModel, ViewModelType {
         }
     }
     
-    private func removeWishlistItem(with item: WishlistViewItem) -> Observable<Void> {
+    private func removeWishlistItem(with item: WishlistViewItem) -> Completable {
         switch item {
         case .movie(let item):
             let bookmarkItem = BookmarkEntertainment(id: item.id, name: item.name, overview: item.overview, rating: item.rating, releaseDate: item.releaseDate, backdropPath: item.backdropURL?.path, posterPath: item.posterURL?.path, type: item.type, createAt: Date())

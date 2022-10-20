@@ -89,7 +89,10 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
             .asObservable()
             .withLatestFrom(entertainmentWithBookmark)
             .compactMap { $0 }
-            .flatMapLatest { self.toggleBookmarkEntertainment(with: $0) }
+            .flatMap {
+                self.toggleBookmarkEntertainment(with: $0)
+                    .catch { _ in Completable.empty() }
+            }
             .subscribe()
             .disposed(by: rx.disposeBag)
         
@@ -180,7 +183,7 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
         }
     }
     
-    private func toggleBookmarkEntertainment(with item: Any) -> Observable<Void> {
+    private func toggleBookmarkEntertainment(with item: Any) -> Completable {
         var bookmarkEntertainment: BookmarkEntertainment!
         var isBookmark: Bool!
         if let movie = item as? Movie {
@@ -210,18 +213,16 @@ class EntertainmentDetailsViewModel: BaseViewModel, ViewModelType {
             )
             isBookmark = tvShow.isBookmark
         } else {
-            return Observable.just(())
+            return Completable.error(NSError(domain: "Cannot cast item to valid type", code: 1))
         }
         if !isBookmark {
             return repositoryProvider
                 .entertainmentRepository()
                 .saveBookmarkEntertainment(item: bookmarkEntertainment)
-                .catch { _ in Observable.empty() }
         } else {
             return repositoryProvider
                 .entertainmentRepository()
                 .removeBookmarkEntertainment(item: bookmarkEntertainment)
-                .catch { _ in Observable.empty() }
         }
     }
 }

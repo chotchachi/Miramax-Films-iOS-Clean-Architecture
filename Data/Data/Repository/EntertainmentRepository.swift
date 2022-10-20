@@ -34,22 +34,22 @@ public final class EntertainmentRepository: EntertainmentRepositoryProtocol {
             .map { items in items.filter { $0.type == .tvShow } }
     }
     
-    public func saveBookmarkEntertainment(item: BookmarkEntertainment) -> Observable<Void> {
+    public func saveBookmarkEntertainment(item: BookmarkEntertainment) -> Completable {
         return localDataSource
             .saveBookmarkEntertainment(item: item.asRealm())
     }
     
-    public func removeBookmarkEntertainment(item: BookmarkEntertainment) -> Observable<Void> {
+    public func removeBookmarkEntertainment(item: BookmarkEntertainment) -> Completable {
         return localDataSource
             .removeBookmarkEntertainment(item: item.asRealm())
     }
     
-    public func removeAllBookmarkEntertainmentMovie() -> Observable<Void> {
+    public func removeAllBookmarkEntertainmentMovie() -> Completable {
         return localDataSource
             .removeAllBookmarkEntertainmentMovie()
     }
     
-    public func removeAllBookmarkEntertainmentTVShow() -> Observable<Void> {
+    public func removeAllBookmarkEntertainmentTVShow() -> Completable {
         return localDataSource
             .removeAllBookmarkEntertainmentTVShow()
     }

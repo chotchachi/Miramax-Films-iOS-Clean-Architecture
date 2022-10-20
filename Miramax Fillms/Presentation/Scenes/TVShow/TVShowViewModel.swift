@@ -114,7 +114,10 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         
         input.toggleBookmarkTrigger
             .asObservable()
-            .flatMapLatest { self.toggleBookmarkItem(with: $0) }
+            .flatMap {
+                self.toggleBookmarkItem(with: $0)
+                    .catch { _ in Completable.empty() }
+            }
             .subscribe()
             .disposed(by: rx.disposeBag)
         
@@ -197,7 +200,7 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
         }
     }
     
-    private func toggleBookmarkItem(with item: EntertainmentViewModel) -> Observable<Void> {
+    private func toggleBookmarkItem(with item: EntertainmentViewModel) -> Completable {
         let bookmarkEntertainment = BookmarkEntertainment(
             id: item.id,
             name: item.name,
@@ -213,12 +216,10 @@ class TVShowViewModel: BaseViewModel, ViewModelType {
             return repositoryProvider
                 .entertainmentRepository()
                 .saveBookmarkEntertainment(item: bookmarkEntertainment)
-                .catch { _ in Observable.empty() }
         } else {
             return repositoryProvider
                 .entertainmentRepository()
                 .removeBookmarkEntertainment(item: bookmarkEntertainment)
-                .catch { _ in Observable.empty() }
         }
     }
 }

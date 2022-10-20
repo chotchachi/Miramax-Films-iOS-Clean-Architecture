@@ -17,50 +17,45 @@ extension Object {
 }
 
 extension Reactive where Base == Realm {
-    func save<R: RMOperator>(entity: R, update: Bool = true) -> Observable<Void> where R: Object  {
-        return Observable.create { observer in
+    func save<R: RMOperator>(entity: R, update: Bool = true) -> Completable where R: Object  {
+        return Completable.create { completable in
             do {
                 try self.base.write {
                     self.base.add(entity, update: update ? .all : .error)
                 }
-                observer.onNext(())
-                observer.onCompleted()
+                completable(.completed)
             } catch {
-                observer.onError(error)
+                completable(.error(error))
             }
             return Disposables.create()
         }
     }
 
-    func delete<R: RMOperator>(entity: R) -> Observable<Void> where R: Object {
-        return Observable.create { observer in
+    func delete<R: RMOperator>(entity: R) -> Completable where R: Object {
+        return Completable.create { completable in
             do {
                 guard let object = self.base.object(ofType: R.self, forPrimaryKey: entity.primaryKey()) else { fatalError() }
 
                 try self.base.write {
                     self.base.delete(object)
                 }
-
-                observer.onNext(())
-                observer.onCompleted()
+                completable(.completed)
             } catch {
-                observer.onError(error)
+                completable(.error(error))
             }
             return Disposables.create()
         }
     }
     
-    func delete<R: RMOperator>(entities: [R]) -> Observable<Void> where R: Object {
-        return Observable.create { observer in
+    func delete<R: RMOperator>(entities: [R]) -> Completable where R: Object {
+        return Completable.create { completable in
             do {
                 try self.base.write {
                     self.base.delete(entities)
                 }
-                
-                observer.onNext(())
-                observer.onCompleted()
+                completable(.completed)
             } catch {
-                observer.onError(error)
+                completable(.error(error))
             }
             return Disposables.create()
         }

@@ -63,14 +63,20 @@ class SearchViewModel: BaseViewModel, ViewModelType {
         /// Save recent entertainment
         input.entertainmentSelectTrigger
             .asObservable()
-            .flatMapLatest { self.saveRecentEntertainment($0) }
+            .flatMap {
+                self.saveRecentEntertainment($0)
+                    .catch { _ in Completable.empty() }
+            }
             .subscribe()
             .disposed(by: rx.disposeBag)
         
         /// Clear all search recent entertainment
         input.clearAllSearchRecentTrigger
             .asObservable()
-            .flatMapLatest { self.clearAllRecentEntertainment() }
+            .flatMap {
+                self.clearAllRecentEntertainment()
+                    .catch { _ in Completable.empty() }
+            }
             .subscribe()
             .disposed(by: rx.disposeBag)
         
@@ -168,7 +174,7 @@ class SearchViewModel: BaseViewModel, ViewModelType {
         }).trackActivity(loading)
     }
     
-    private func saveRecentEntertainment(_ item: EntertainmentViewModel) -> Observable<Void> {
+    private func saveRecentEntertainment(_ item: EntertainmentViewModel) -> Completable {
         let recentEntertainment = RecentEntertainment(
             id: item.id,
             name: item.name,
@@ -180,13 +186,11 @@ class SearchViewModel: BaseViewModel, ViewModelType {
         return repositoryProvider
             .searchRepository()
             .addRecentEntertainment(item: recentEntertainment)
-            .catch { _ in Observable.empty() }
     }
     
-    private func clearAllRecentEntertainment() -> Observable<Void> {
+    private func clearAllRecentEntertainment() -> Completable {
         return repositoryProvider
             .searchRepository()
             .removeAllRecentEntertainment()
-            .catch { _ in Observable.empty() }
     }
 }

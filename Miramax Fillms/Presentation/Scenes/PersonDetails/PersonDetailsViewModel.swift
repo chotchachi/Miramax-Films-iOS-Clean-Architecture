@@ -69,7 +69,10 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
         input.toggleBookmarkTrigger
             .asObservable()
             .withLatestFrom(personWithBookmark)
-            .flatMapLatest { self.toggleBookmarkPerson(with: $0) }
+            .flatMap {
+                self.toggleBookmarkPerson(with: $0)
+                    .catch { _ in Completable.empty() }
+            }
             .subscribe()
             .disposed(by: rx.disposeBag)
         
@@ -121,7 +124,7 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
         return Output(personViewModel: personViewModel)
     }
     
-    private func toggleBookmarkPerson(with item: Person) -> Observable<Void> {
+    private func toggleBookmarkPerson(with item: Person) -> Completable {
         let bookmarkPerson = BookmarkPerson(
             id: item.id,
             name: item.name,
@@ -134,12 +137,10 @@ class PersonDetailsViewModel: BaseViewModel, ViewModelType {
             return repositoryProvider
                 .personRepository()
                 .saveBookmarkPerson(item: bookmarkPerson)
-                .catch { _ in Observable.empty() }
         } else {
             return repositoryProvider
                 .personRepository()
                 .removeBookmarkPerson(item: bookmarkPerson)
-                .catch { _ in Observable.empty() }
         }
     }
 }

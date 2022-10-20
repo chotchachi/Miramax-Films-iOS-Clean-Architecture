@@ -45,6 +45,6 @@ public final class RepositoryProvider: RepositoryProviderProtocol {
     }
     
     public func selfieRepository() -> SelfieRepositoryProtocol {
-        return SelfieRepository()
+        return SelfieRepository(localDataSource: localDataSource)
     }
 }

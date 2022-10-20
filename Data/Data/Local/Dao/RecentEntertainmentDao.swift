@@ -23,36 +23,14 @@ final class RecentEntertainmentDao: BaseDao {
         }
     }
     
-    func save(entity: RMRecentEntertainment) -> Observable<Void> {
-        return Observable.deferred {
+    func save(entity: RMRecentEntertainment) -> Completable {
+        return Completable.deferred {
             return self.realmInstance().rx.save(entity: entity)
         }
     }
 
-    func update(entity: RMRecentEntertainment) -> Observable<Void> {
-        return Observable.deferred {
-            return self.realmInstance().rx.save(entity: entity, update: true)
-        }
-    }
-
-    func delete(entity: RMRecentEntertainment) -> Observable<Void> {
-        return Observable.deferred {
-            return self.realmInstance().rx.delete(entity: entity)
-        }
-    }
-
-    func delete(entities: [RMRecentEntertainment]) -> Observable<Void> {
-        return Observable.deferred {
-            let deleteObs = entities.map { entity in
-                return self.realmInstance().rx.delete(entity: entity)
-            }
-            return Observable.zip(deleteObs)
-                .map { _ in }
-        }
-    }
-    
-    func deleteAll() -> Observable<Void> {
-        return Observable.deferred {
+    func deleteAll() -> Completable {
+        return Completable.deferred {
             let realm = self.realmInstance()
             let objects = realm.objects(RMRecentEntertainment.self)
             return realm.rx.delete(entities: objects.toArray())

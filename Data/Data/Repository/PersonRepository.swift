@@ -30,17 +30,17 @@ public final class PersonRepository: PersonRepositoryProtocol {
             .map { items in items.sorted { $0.createAt > $1.createAt } } // sort by createAt
     }
     
-    public func saveBookmarkPerson(item: BookmarkPerson) -> Observable<Void> {
+    public func saveBookmarkPerson(item: BookmarkPerson) -> Completable {
         return localDataSource
             .saveBookmarkPerson(item: item.asRealm())
     }
     
-    public func removeBookmarkPerson(item: BookmarkPerson) -> Observable<Void> {
+    public func removeBookmarkPerson(item: BookmarkPerson) -> Completable {
         return localDataSource
             .removeBookmarkPerson(item: item.asRealm())
     }
     
-    public func removeAllBookmarkPerson() -> Observable<Void> {
+    public func removeAllBookmarkPerson() -> Completable {
         return localDataSource
             .removeAllBookmarkPerson()
     }

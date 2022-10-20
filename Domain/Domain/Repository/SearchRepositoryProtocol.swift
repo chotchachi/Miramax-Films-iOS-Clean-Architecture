@@ -12,6 +12,6 @@ public protocol SearchRepositoryProtocol {
     func searchTVShow(query: String, page: Int?) -> Single<BaseResponse<TVShow>>
     func searchPerson(query: String, page: Int?) -> Single<BaseResponse<Person>>
     func getRecentEntertainment() -> Observable<[RecentEntertainment]>
-    func addRecentEntertainment(item: RecentEntertainment) -> Observable<Void>
-    func removeAllRecentEntertainment() -> Observable<Void>
+    func addRecentEntertainment(item: RecentEntertainment) -> Completable
+    func removeAllRecentEntertainment() -> Completable
 }

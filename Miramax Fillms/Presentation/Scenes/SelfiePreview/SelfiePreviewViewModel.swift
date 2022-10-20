@@ -37,7 +37,7 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
         self.repositoryProvider = repositoryProvider
         self.router = router
         self.finalImage = finalImage
-        self.tempImageName = "img_\(Int(Date().timeIntervalSince1970)).jpg"
+        self.tempImageName = "img_\(Int(Date().timeIntervalSince1970))"
         super.init()
     }
     
@@ -45,7 +45,16 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
         let favoriteImageState = input.addFavoriteTrigger
             .asObservable()
             .flatMapLatest {
-                self.saveImage(imageName: self.tempImageName, image: self.finalImage)
+                self.saveImage(imageName: self.tempImageName.appending(".jpg"), image: self.finalImage)
+                    .andThen(self.storedFavoriteSelfieImage())
+                    .andThen(Observable.just(FavoriteImageState.successfully))
+                    .catch({ error in
+                        if (error as NSError).code == 2 {
+                            return Observable.just(FavoriteImageState.alreadyExist)
+                        } else {
+                            return Observable.just(FavoriteImageState.failed)
+                        }
+                    })
             }
             .asDriverOnErrorJustComplete()
         
@@ -62,10 +71,10 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
         )
     }
     
-    private func saveImage(imageName: String, image: UIImage) -> Single<FavoriteImageState> {
-        return Single.create { single in
+    private func saveImage(imageName: String, image: UIImage) -> Completable {
+        return Completable.create { completable in
             guard let data = image.jpegData(compressionQuality: 1) else {
-                single(.success(.failed))
+                completable(.error(NSError(domain: "Get UIImage jpeg data failed.", code: 1)))
                 return Disposables.create()
             }
             
@@ -73,18 +82,31 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
             let fileURL = destinationURL.appendingPathComponent(imageName)
             
             if FileManager.default.fileExists(atPath: fileURL.path) {
-                single(.success(.alreadyExist))
+                completable(.error(NSError(domain: "File already exist.", code: 2)))
             } else {
                 do {
                     try data.write(to: fileURL)
-                    single(.success(.successfully))
+                    completable(.completed)
                 } catch {
-                    single(.success(.failed))
+                    completable(.error(NSError(domain: "Write image data failed.", code: 3)))
                 }
             }
             
             return Disposables.create()
         }
+    }
+    
+    private func storedFavoriteSelfieImage() -> Completable {
+        let favoriteSelfie = FavoriteSelfie(
+            name: self.tempImageName,
+            frame: nil,
+            userLocation: nil,
+            userCreateDate: nil,
+            createAt: Date()
+        )
+        return repositoryProvider
+            .selfieRepository()
+            .saveFavoriteSelfie(item: favoriteSelfie)
     }
     
     func getFavoriteSelfieImagesDirectory() -> URL {
