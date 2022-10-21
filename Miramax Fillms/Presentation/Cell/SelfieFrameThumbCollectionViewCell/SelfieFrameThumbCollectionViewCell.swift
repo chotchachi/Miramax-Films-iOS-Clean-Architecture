@@ -15,8 +15,25 @@ class SelfieFrameThumbCollectionViewCell: UICollectionViewCell {
     // MARK: - Views
 
     private var ivPreview: UIImageView!
-    
+    private var viewSelected: UIView!
+
     // MARK: - Properties
+    
+    private var canSelection: Bool = false
+    
+    override var isSelected: Bool {
+        didSet {
+            guard canSelection else { return }
+            UIView.transition(
+                with: viewSelected,
+                duration: 0.2,
+                options: .transitionCrossDissolve
+            ) { [weak self] in
+                guard let self = self else { return }
+                self.viewSelected.isHidden = !self.isSelected
+            }
+        }
+    }
     
     // MARK: - Lifecycle
 
@@ -54,6 +71,30 @@ class SelfieFrameThumbCollectionViewCell: UICollectionViewCell {
             make.trailing.equalToSuperview().offset(3)
             make.leading.equalToSuperview().offset(-3)
         }
+        
+        // View selected
+        
+        viewSelected = UIView()
+        viewSelected.translatesAutoresizingMaskIntoConstraints = false
+        viewSelected.backgroundColor = AppColors.colorAccent.withAlphaComponent(0.3)
+        viewSelected.isHidden = true
+        containerView.addSubview(viewSelected)
+        viewSelected.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+        }
+        
+        let ivSelected = UIImageView(image: UIImage(named: "ic_circle_check"))
+        ivSelected.translatesAutoresizingMaskIntoConstraints = false
+        ivSelected.tintColor = .white
+        viewSelected.addSubview(ivSelected)
+        ivSelected.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.height.equalTo(24.0)
+            make.width.equalTo(24.0)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -67,7 +108,8 @@ class SelfieFrameThumbCollectionViewCell: UICollectionViewCell {
         ivPreview.image = nil
     }
     
-    func bind(_ item: SelfieFrame) {
+    func bind(_ item: SelfieFrame, canSelection: Bool = false) {
         ivPreview.setImage(with: item.previewURL)
+        self.canSelection = canSelection
     }
 }
