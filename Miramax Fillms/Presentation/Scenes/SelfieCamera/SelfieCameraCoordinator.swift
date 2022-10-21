@@ -15,7 +15,7 @@ enum SelfieCameraRoute: Route {
     case initial
     case pop
     case selectMovieImage(callback: SelectMovieCallback)
-    case preview(image: UIImage)
+    case preview(image: UIImage, selfieFrame: SelfieFrame)
 }
 
 class SelfieCameraCoordinator: NavigationCoordinator<SelfieCameraRoute> {
@@ -49,8 +49,8 @@ class SelfieCameraCoordinator: NavigationCoordinator<SelfieCameraRoute> {
         case .selectMovieImage(callback: let callback):
             addChild(ChooseMovieCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, callback: callback))
             return .none()
-        case .preview(image: let image):
-            addChild(SelfiePreviewCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, finalImage: image))
+        case .preview(image: let image, selfieFrame: let selfieFrame):
+            addChild(SelfiePreviewCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, finalImage: image, selfieFrame: selfieFrame))
             return .none()
         }
     }

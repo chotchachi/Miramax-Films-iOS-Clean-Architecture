@@ -81,7 +81,7 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     private var currentSelfieFrame: SelfieFrame?
     
     let selectMovieImageTriggerS = PublishRelay<Void>()
-    let doneTriggerS = PublishRelay<UIImage>()
+    let doneTriggerS = PublishRelay<(UIImage, SelfieFrame)>()
     
     // MARK: - Lifecycle
 
@@ -187,7 +187,7 @@ extension SelfieCameraViewController {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 let finalImage = self.canvasView.toImage()
-                self.doneTriggerS.accept(finalImage)
+                self.doneTriggerS.accept((finalImage, self.currentSelfieFrame!))
             })
             .disposed(by: rx.disposeBag)
         

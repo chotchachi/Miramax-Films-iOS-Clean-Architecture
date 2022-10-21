@@ -31,14 +31,21 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
     private let repositoryProvider: RepositoryProviderProtocol
     private let router: UnownedRouter<SelfiePreviewRoute>
     private let finalImage: UIImage
+    private let selfieFrame: SelfieFrame
     private let tempImageName: String
     
-    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<SelfiePreviewRoute>, finalImage: UIImage) {
+    init(repositoryProvider: RepositoryProviderProtocol,
+         router: UnownedRouter<SelfiePreviewRoute>,
+         finalImage: UIImage,
+         selfieFrame: SelfieFrame
+    ) {
         self.repositoryProvider = repositoryProvider
         self.router = router
         self.finalImage = finalImage
+        self.selfieFrame = selfieFrame
         self.tempImageName = "img_\(Int(Date().timeIntervalSince1970))"
         super.init()
+        storedRecentSelfieFrame(with: selfieFrame)
     }
     
     func transform(input: Input) -> Output {
@@ -99,7 +106,7 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
     private func storedFavoriteSelfieImage() -> Completable {
         let favoriteSelfie = FavoriteSelfie(
             name: self.tempImageName,
-            frame: nil,
+            frame: self.selfieFrame.name,
             userLocation: nil,
             userCreateDate: nil,
             createAt: Date()
@@ -107,6 +114,14 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
         return repositoryProvider
             .selfieRepository()
             .saveFavoriteSelfie(item: favoriteSelfie)
+    }
+    
+    private func storedRecentSelfieFrame(with selfieFrame: SelfieFrame) {
+        let defaults = Defaults.shared
+        var recentSelfieFrames = defaults.get(for: .recentSelfieFrames) ?? []
+        recentSelfieFrames.removeAll(where: { $0 == selfieFrame.name }) // Remove if exist
+        recentSelfieFrames.append(selfieFrame.name)
+        defaults.set(recentSelfieFrames, for: .recentSelfieFrames)
     }
     
     func getFavoriteSelfieImagesDirectory() -> URL {

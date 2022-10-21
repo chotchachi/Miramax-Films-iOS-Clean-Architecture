@@ -21,7 +21,6 @@ class SelfieMovieViewController: BaseViewController<SelfieMovieViewModel> {
     @IBOutlet weak var appToolbar: AppToolbar!
     
     @IBOutlet weak var recentlyHeaderView: SectionHeaderView!
-    @IBOutlet weak var viewRecently: UIView!
     @IBOutlet weak var recentlyCollectionView: UICollectionView!
     
     @IBOutlet weak var tabLayout: TabLayout!
@@ -70,6 +69,17 @@ class SelfieMovieViewController: BaseViewController<SelfieMovieViewModel> {
             .map { [SectionModel(model: "", items: $0)] }
             .drive(frameCollectionView.rx.items(dataSource: frameDataSource))
             .disposed(by: rx.disposeBag)
+        
+        let recentlyFrameDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, SelfieFrame>> { dataSource, collectionView, indexPath, item in
+            let cell = collectionView.dequeueReusableCell(withClass: SelfieFrameThumbCollectionViewCell.self, for: indexPath)
+            cell.bind(item)
+            return cell
+        }
+        
+        output.recentlyFrameData
+            .map { [SectionModel(model: "", items: $0)] }
+            .drive(recentlyCollectionView.rx.items(dataSource: recentlyFrameDataSource))
+            .disposed(by: rx.disposeBag)
     }
     
     override func viewWillLayoutSubviews() {
@@ -89,7 +99,17 @@ extension SelfieMovieViewController {
     
     private func configureSectionRecently() {
         recentlyHeaderView.title = "recenlty".localized
-        recentlyHeaderView.actionButtonTittle = "see_more".localized
+        recentlyHeaderView.showActionButton = false
+        
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.scrollDirection = .horizontal
+        recentlyCollectionView.collectionViewLayout = collectionViewLayout
+        recentlyCollectionView.register(cellWithClass: SelfieFrameThumbCollectionViewCell.self)
+        recentlyCollectionView.delegate = self
+        recentlyCollectionView.showsHorizontalScrollIndicator = false
+        recentlyCollectionView.rx.modelSelected(SelfieFrame.self)
+            .bind(to: selfieFrameSelectTriggerS)
+            .disposed(by: rx.disposeBag)
     }
     
     private func configureTabLayout() {
@@ -126,7 +146,7 @@ extension SelfieMovieViewController: TabLayoutDelegate {
 // MARK: - CollectionViewWaterfallLayoutDelegate
 
 extension SelfieMovieViewController: CollectionViewWaterfallLayoutDelegate {
-    func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout: CollectionViewWaterfallLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let image = try? UIImage(url: selfieFrameData[indexPath.row].previewURL),
               let collectionViewLayout = collectionView.collectionViewLayout as? CollectionViewWaterfallLayout else { return .zero }
         
@@ -141,5 +161,23 @@ extension SelfieMovieViewController: CollectionViewWaterfallLayoutDelegate {
         + 38.0 // apply button height with padding top
         
         return CGSize(width: itemWidth, height: itemHeight)
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension SelfieMovieViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemHeight = collectionView.frame.height
+        let itemWidth = itemHeight * DimensionConstants.selfieFrameThumbCellRatio
+        return .init(width: itemWidth, height: itemHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .init(top: 0, left: 16.0, bottom: 0.0, right: 16.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return DimensionConstants.selfieFrameThumbCellSpacing
     }
 }

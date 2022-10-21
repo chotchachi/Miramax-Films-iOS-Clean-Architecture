@@ -18,6 +18,7 @@ class SelfieMovieViewModel: BaseViewModel, ViewModelType {
     
     struct Output {
         let selfieFrameData: Driver<[SelfieFrame]>
+        let recentlyFrameData: Driver<[SelfieFrame]>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -30,9 +31,22 @@ class SelfieMovieViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let selfieFrames = repositoryProvider
-            .selfieRepository()
-            .getAllFrame()
+        let selfieFrames = Driver.just(
+            repositoryProvider
+                .selfieRepository()
+                .getAllFrame()
+        )
+        
+        let recentlyFrameNames = Defaults.shared
+            .getObservable(for: .recentSelfieFrames)
+            .map { $0?.reversed() ?? [] }
+            .asDriver(onErrorJustReturn: [])
+        
+        let recentlyFrames = Driver.combineLatest(recentlyFrameNames, selfieFrames) { recentlyFrameNames, selfieFrames in
+            return recentlyFrameNames.compactMap { name -> SelfieFrame? in
+                return selfieFrames.first(where: { $0.name == name })
+            }
+        }
         
         input.popViewTrigger
             .drive(onNext: { [weak self] in
@@ -48,6 +62,7 @@ class SelfieMovieViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output(selfieFrameData: Driver.just(selfieFrames))
+        return Output(selfieFrameData: selfieFrames,
+                      recentlyFrameData: recentlyFrames)
     }
 }

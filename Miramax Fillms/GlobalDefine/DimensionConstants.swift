@@ -42,4 +42,7 @@ struct DimensionConstants {
     static var entertainmentHorizontalCollectionViewHeightConstraint: CGFloat {
         return Device.current.isPad ? 310.0 : 155.0
     }
+    
+    static var selfieFrameThumbCellRatio: CGFloat = 0.78
+    static var selfieFrameThumbCellSpacing: CGFloat = 8.0
 }

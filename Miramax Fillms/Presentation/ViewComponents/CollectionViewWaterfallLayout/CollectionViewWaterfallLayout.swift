@@ -10,20 +10,20 @@ import UIKit
 public let CollectionViewWaterfallElementKindSectionHeader = "CollectionViewWaterfallElementKindSectionHeader"
 public let CollectionViewWaterfallElementKindSectionFooter = "CollectionViewWaterfallElementKindSectionFooter"
 
-@objc public protocol CollectionViewWaterfallLayoutDelegate: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+@objc public protocol CollectionViewWaterfallLayoutDelegate: AnyObject {
+    func collectionView(_ collectionView: UICollectionView, layout: CollectionViewWaterfallLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     
-    @objc optional func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, heightForHeaderInSection section: Int) -> Float
+    @objc optional func collectionView(_ collectionView: UICollectionView, layout: CollectionViewWaterfallLayout, heightForHeaderInSection section: Int) -> Float
     
-    @objc optional func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, heightForFooterInSection section: Int) -> Float
+    @objc optional func collectionView(_ collectionView: UICollectionView, layout: CollectionViewWaterfallLayout, heightForFooterInSection section: Int) -> Float
     
-    @objc optional func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, insetForSection section: Int) -> UIEdgeInsets
+    @objc optional func collectionView(_ collectionView: UICollectionView, layout: CollectionViewWaterfallLayout, insetForSection section: Int) -> UIEdgeInsets
     
-    @objc optional func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, insetForHeaderInSection section: Int) -> UIEdgeInsets
+    @objc optional func collectionView(_ collectionView: UICollectionView, layout: CollectionViewWaterfallLayout, insetForHeaderInSection section: Int) -> UIEdgeInsets
     
-    @objc optional func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, insetForFooterInSection section: Int) -> UIEdgeInsets
+    @objc optional func collectionView(_ collectionView: UICollectionView, layout: CollectionViewWaterfallLayout, insetForFooterInSection section: Int) -> UIEdgeInsets
     
-    @objc optional func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, minimumInteritemSpacingForSection section: Int) -> Float
+    @objc optional func collectionView(_ collectionView: UICollectionView, layout: CollectionViewWaterfallLayout, minimumInteritemSpacingForSection section: Int) -> Float
     
 }
 
@@ -153,7 +153,7 @@ public class CollectionViewWaterfallLayout: UICollectionViewLayout {
             top += Float(headerInset.top)
             
             if headerHeight > 0 {
-                attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionHeader, with: NSIndexPath(item: 0, section: section) as IndexPath)
+                attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionHeader, with: IndexPath(item: 0, section: section))
                 attributes.frame = CGRect(x: headerInset.left, y: CGFloat(top), width: collectionView.frame.size.width - (headerInset.left + headerInset.right), height: CGFloat(headerHeight))
                 
                 headersAttribute[section] = attributes
@@ -176,18 +176,18 @@ public class CollectionViewWaterfallLayout: UICollectionViewLayout {
             
             // Item will be put into shortest column.
             for idx in 0..<itemCount {
-                let indexPath = NSIndexPath(item: idx, section: section)
+                let indexPath = IndexPath(item: idx, section: section)
                 let columnIndex = shortestColumnIndex()
                 
                 let xOffset = Float(sectionInset.left) + Float(itemWidth + minimumColumnSpacing) * Float(columnIndex)
                 let yOffset = columnHeights[columnIndex]
-                let itemSize = delegate.collectionView(collectionView, layout: self, sizeForItemAtIndexPath: indexPath)
+                let itemSize = delegate.collectionView(collectionView, layout: self, sizeForItemAt: indexPath)
                 var itemHeight: Float = 0.0
                 if itemSize.height > 0 && itemSize.width > 0 {
                     itemHeight = Float(itemSize.height) * itemWidth / Float(itemSize.width)
                 }
                 
-                attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath as IndexPath)
+                attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
                 attributes.frame = CGRect(x: CGFloat(xOffset), y: CGFloat(yOffset), width: CGFloat(itemWidth), height: CGFloat(itemHeight))
                 itemAttributes.append(attributes)
                 allItemAttributes.append(attributes)
@@ -209,7 +209,7 @@ public class CollectionViewWaterfallLayout: UICollectionViewLayout {
             top += Float(footerInset.top)
             
             if footerHeight > 0 {
-                attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionFooter, with: NSIndexPath(item: 0, section: section) as IndexPath)
+                attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionFooter, with: IndexPath(item: 0, section: section))
                 attributes.frame = CGRect(x: footerInset.left, y: CGFloat(top), width: collectionView.frame.size.width - (footerInset.left + footerInset.right), height: CGFloat(footerHeight))
                 
                 footersAttribute[section] = attributes

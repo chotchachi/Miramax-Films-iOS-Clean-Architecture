@@ -28,8 +28,8 @@
                     <rect key="frame" x="0.0" y="47" width="390" height="55"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06i-vm-ys6" userLabel="Recently View">
-                    <rect key="frame" x="0.0" y="102" width="390" height="190"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06i-vm-ys6" userLabel="Recently View">
+                    <rect key="frame" x="0.0" y="102" width="390" height="193"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHw-iT-Bus" userLabel="Movies Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="16" width="390" height="24"/>
@@ -39,10 +39,10 @@
                             </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Z8h-0l-nZO">
-                            <rect key="frame" x="0.0" y="40" width="390" height="150"/>
+                            <rect key="frame" x="0.0" y="52" width="390" height="125"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="150" id="pB4-Km-muS"/>
+                                <constraint firstAttribute="height" constant="125" id="pB4-Km-muS"/>
                             </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="y4a-L4-avw">
                                 <size key="itemSize" width="128" height="128"/>
@@ -54,17 +54,17 @@
                     </subviews>
                     <color key="backgroundColor" name="ColorTertiary"/>
                     <constraints>
-                        <constraint firstItem="Z8h-0l-nZO" firstAttribute="top" secondItem="rHw-iT-Bus" secondAttribute="bottom" id="2dX-uk-3IQ"/>
+                        <constraint firstItem="Z8h-0l-nZO" firstAttribute="top" secondItem="rHw-iT-Bus" secondAttribute="bottom" constant="12" id="2dX-uk-3IQ"/>
                         <constraint firstItem="Z8h-0l-nZO" firstAttribute="leading" secondItem="06i-vm-ys6" secondAttribute="leading" id="3MG-dY-wyD"/>
                         <constraint firstItem="rHw-iT-Bus" firstAttribute="leading" secondItem="06i-vm-ys6" secondAttribute="leading" id="9QQ-AW-8uw"/>
                         <constraint firstItem="rHw-iT-Bus" firstAttribute="top" secondItem="06i-vm-ys6" secondAttribute="top" constant="16" id="dsR-XS-nXq"/>
                         <constraint firstAttribute="trailing" secondItem="Z8h-0l-nZO" secondAttribute="trailing" id="hEB-36-M0X"/>
-                        <constraint firstAttribute="bottom" secondItem="Z8h-0l-nZO" secondAttribute="bottom" id="hm8-OE-hMy"/>
+                        <constraint firstAttribute="bottom" secondItem="Z8h-0l-nZO" secondAttribute="bottom" constant="16" id="hm8-OE-hMy"/>
                         <constraint firstAttribute="trailing" secondItem="rHw-iT-Bus" secondAttribute="trailing" id="mAV-yM-lKs"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Q6-85-MtX">
-                    <rect key="frame" x="0.0" y="102" width="390" height="40"/>
+                    <rect key="frame" x="0.0" y="295" width="390" height="40"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqw-1h-6iU" customClass="TabLayout" customModule="Miramax_Fillms" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
@@ -83,7 +83,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="UFp-rv-tNj">
-                    <rect key="frame" x="0.0" y="150" width="390" height="694"/>
+                    <rect key="frame" x="0.0" y="343" width="390" height="501"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dea-Cm-Q7a">
                         <size key="itemSize" width="128" height="128"/>
@@ -98,7 +98,7 @@
             <constraints>
                 <constraint firstItem="lja-b9-zhS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="6rc-ux-reS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0Q6-85-MtX" secondAttribute="trailing" id="8LE-DK-c1Y"/>
-                <constraint firstItem="0Q6-85-MtX" firstAttribute="top" secondItem="lja-b9-zhS" secondAttribute="bottom" id="8tW-IQ-rza"/>
+                <constraint firstItem="0Q6-85-MtX" firstAttribute="top" secondItem="06i-vm-ys6" secondAttribute="bottom" id="CMw-k9-njS"/>
                 <constraint firstItem="06i-vm-ys6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="DEW-ET-drV"/>
                 <constraint firstItem="lja-b9-zhS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HLn-qL-5Bx"/>
                 <constraint firstAttribute="bottom" secondItem="UFp-rv-tNj" secondAttribute="bottom" id="LNr-MB-ST1"/>
