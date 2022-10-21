@@ -45,4 +45,8 @@ struct DimensionConstants {
     
     static var selfieFrameThumbCellRatio: CGFloat = 0.78
     static var selfieFrameThumbCellSpacing: CGFloat = 8.0
+    
+    static var recentlySelfieFrameHeightConstraint: CGFloat {
+        return Device.current.isPad ? 250.0 : 190.0
+    }
 }

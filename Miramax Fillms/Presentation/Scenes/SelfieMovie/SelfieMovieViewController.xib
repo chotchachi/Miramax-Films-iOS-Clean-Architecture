@@ -15,6 +15,7 @@
                 <outlet property="frameCollectionView" destination="UFp-rv-tNj" id="GgP-gj-y32"/>
                 <outlet property="recentlyCollectionView" destination="Z8h-0l-nZO" id="Nwe-7U-3Ao"/>
                 <outlet property="recentlyHeaderView" destination="rHw-iT-Bus" id="emV-JN-YPz"/>
+                <outlet property="recentlySectionHeightConstraint" destination="Hl2-ea-1fW" id="ryB-uf-0Ga"/>
                 <outlet property="tabLayout" destination="qqw-1h-6iU" id="teN-gp-mGq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,7 +30,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06i-vm-ys6" userLabel="Recently View">
-                    <rect key="frame" x="0.0" y="102" width="390" height="193"/>
+                    <rect key="frame" x="0.0" y="102" width="390" height="190"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHw-iT-Bus" userLabel="Movies Section Header View" customClass="SectionHeaderView" customModule="Miramax_Fillms" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="16" width="390" height="24"/>
@@ -39,11 +40,8 @@
                             </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Z8h-0l-nZO">
-                            <rect key="frame" x="0.0" y="52" width="390" height="125"/>
+                            <rect key="frame" x="0.0" y="52" width="390" height="122"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="125" id="pB4-Km-muS"/>
-                            </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="y4a-L4-avw">
                                 <size key="itemSize" width="128" height="128"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -57,6 +55,7 @@
                         <constraint firstItem="Z8h-0l-nZO" firstAttribute="top" secondItem="rHw-iT-Bus" secondAttribute="bottom" constant="12" id="2dX-uk-3IQ"/>
                         <constraint firstItem="Z8h-0l-nZO" firstAttribute="leading" secondItem="06i-vm-ys6" secondAttribute="leading" id="3MG-dY-wyD"/>
                         <constraint firstItem="rHw-iT-Bus" firstAttribute="leading" secondItem="06i-vm-ys6" secondAttribute="leading" id="9QQ-AW-8uw"/>
+                        <constraint firstAttribute="height" constant="190" id="Hl2-ea-1fW"/>
                         <constraint firstItem="rHw-iT-Bus" firstAttribute="top" secondItem="06i-vm-ys6" secondAttribute="top" constant="16" id="dsR-XS-nXq"/>
                         <constraint firstAttribute="trailing" secondItem="Z8h-0l-nZO" secondAttribute="trailing" id="hEB-36-M0X"/>
                         <constraint firstAttribute="bottom" secondItem="Z8h-0l-nZO" secondAttribute="bottom" constant="16" id="hm8-OE-hMy"/>
@@ -64,7 +63,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Q6-85-MtX">
-                    <rect key="frame" x="0.0" y="295" width="390" height="40"/>
+                    <rect key="frame" x="0.0" y="292" width="390" height="40"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qqw-1h-6iU" customClass="TabLayout" customModule="Miramax_Fillms" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="40"/>
@@ -83,7 +82,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="UFp-rv-tNj">
-                    <rect key="frame" x="0.0" y="343" width="390" height="501"/>
+                    <rect key="frame" x="0.0" y="340" width="390" height="504"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dea-Cm-Q7a">
                         <size key="itemSize" width="128" height="128"/>

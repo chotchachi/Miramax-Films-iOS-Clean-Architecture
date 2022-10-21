@@ -20,6 +20,7 @@ class SelfieMovieViewController: BaseViewController<SelfieMovieViewModel> {
     
     @IBOutlet weak var appToolbar: AppToolbar!
     
+    @IBOutlet weak var recentlySectionHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var recentlyHeaderView: SectionHeaderView!
     @IBOutlet weak var recentlyCollectionView: UICollectionView!
     
@@ -110,6 +111,8 @@ extension SelfieMovieViewController {
         recentlyCollectionView.rx.modelSelected(SelfieFrame.self)
             .bind(to: selfieFrameSelectTriggerS)
             .disposed(by: rx.disposeBag)
+        
+        recentlySectionHeightConstraint.constant = DimensionConstants.recentlySelfieFrameHeightConstraint
     }
     
     private func configureTabLayout() {
