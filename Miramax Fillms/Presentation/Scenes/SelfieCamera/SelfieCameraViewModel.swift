@@ -15,12 +15,13 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let popViewTrigger: Driver<Void>
         let selectMovieImageTrigger: Driver<Void>
-        let doneTrigger: Driver<(UIImage, SelfieFrame)>
+        let doneTrigger: Driver<(UIImage, SelfieFrame?)>
     }
     
     struct Output {
         let selfieFrame: Driver<SelfieFrame>
         let movieImage: Driver<UIImage>
+        let selfieFrameData: Driver<[SelfieFrame]>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -49,6 +50,12 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
             .flatMapLatest { self.movieImageS }
             .asDriverOnErrorJustComplete()
         
+        let selfieFrames = Driver.just(
+            repositoryProvider
+                .selfieRepository()
+                .getAllFrame()
+        )
+        
         input.popViewTrigger
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -72,6 +79,7 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         return Output(selfieFrame: selfieFrame,
-                      movieImage: movieImageData)
+                      movieImage: movieImageData,
+                      selfieFrameData: selfieFrames)
     }
 }

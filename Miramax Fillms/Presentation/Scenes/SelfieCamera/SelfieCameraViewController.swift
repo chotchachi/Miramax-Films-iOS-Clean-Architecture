@@ -10,6 +10,7 @@ import SnapKit
 import SwifterSwift
 import RxCocoa
 import RxSwift
+import RxDataSources
 import AVFoundation
 import Kingfisher
 import Domain
@@ -55,6 +56,7 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     @IBOutlet weak var btnCloseViewFrameLayer: UIButton!
     @IBOutlet weak var btnNoFrameLayer: UIButton!
     @IBOutlet weak var btnDoneSelectFrameLayer: UIButton!
+    @IBOutlet weak var frameLayerCollectionView: UICollectionView!
 
     @IBOutlet weak var viewDoneCapture: UIView!
     @IBOutlet weak var btnDone: UIButton!
@@ -79,9 +81,10 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     private var isViewAppear: Bool = false
     
     private var currentSelfieFrame: SelfieFrame?
+    private var tempSelectionSelfieFrame: SelfieFrame?
     
     let selectMovieImageTriggerS = PublishRelay<Void>()
-    let doneTriggerS = PublishRelay<(UIImage, SelfieFrame)>()
+    let doneTriggerS = PublishRelay<(UIImage, SelfieFrame?)>()
     
     // MARK: - Lifecycle
 
@@ -92,6 +95,7 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
         setupLivePreview()
         updateCameraViewsState(isEnable: false)
         setButtonFlash(isEnable: currentCameraDevice == .back)
+        configureFrameLayerView()
     }
     
     override func bindViewModel() {
@@ -117,6 +121,17 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
                 guard let self = self else { return }
                 self.setMovieImage(with: item)
             })
+            .disposed(by: rx.disposeBag)
+        
+        let frameDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, SelfieFrame>> { datasource, collectionView, indexPath, item in
+            let cell = collectionView.dequeueReusableCell(withClass: SelfieFrameThumbCollectionViewCell.self, for: indexPath)
+            cell.bind(item, canSelection: true)
+            return cell
+        }
+        
+        output.selfieFrameData
+            .map { [SectionModel(model: "", items: $0)] }
+            .drive(frameLayerCollectionView.rx.items(dataSource: frameDataSource))
             .disposed(by: rx.disposeBag)
     }
     
@@ -172,14 +187,25 @@ extension SelfieCameraViewController {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.visibleViewFrameLayer(isVisible: false)
+                self.setFrameImage(with: self.currentSelfieFrame)
+                self.tempSelectionSelfieFrame = nil
             })
             .disposed(by: rx.disposeBag)
         
         btnNoFrameLayer.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-//                self.frameImageView.image = nil
-//                self.frameImageViewHc.constant = self.viewMain.height
+                self.tempSelectionSelfieFrame = nil
+                self.setFrameImage(with: nil)
+            })
+            .disposed(by: rx.disposeBag)
+        
+        btnDoneSelectFrameLayer.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.visibleViewFrameLayer(isVisible: false)
+                self.currentSelfieFrame = self.tempSelectionSelfieFrame
+                self.setFrameImage(with: self.currentSelfieFrame)
             })
             .disposed(by: rx.disposeBag)
         
@@ -195,6 +221,22 @@ extension SelfieCameraViewController {
         btnGallery.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onButtonGalleryTapped(_:))))
 
         captureImageView.contentMode = .scaleAspectFill
+    }
+    
+    private func configureFrameLayerView() {
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.scrollDirection = .horizontal
+        frameLayerCollectionView.collectionViewLayout = collectionViewLayout
+        frameLayerCollectionView.register(cellWithClass: SelfieFrameThumbCollectionViewCell.self)
+        frameLayerCollectionView.delegate = self
+        frameLayerCollectionView.showsHorizontalScrollIndicator = false
+        frameLayerCollectionView.rx.modelSelected(SelfieFrame.self)
+            .subscribe(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.tempSelectionSelfieFrame = item
+                self.setFrameImage(with: item)
+            })
+            .disposed(by: rx.disposeBag)
     }
     
     @objc private func onButtonFrameLayerTapped(_ sender: UITapGestureRecognizer) {
@@ -253,5 +295,23 @@ extension SelfieCameraViewController: UIImagePickerControllerDelegate, UINavigat
             self.handleDoneCaptureView()
             self.captureImageView.image = image
         }
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension SelfieCameraViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemHeight = collectionView.frame.height
+        let itemWidth = itemHeight * DimensionConstants.selfieFrameThumbCellRatio
+        return .init(width: itemWidth, height: itemHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .init(top: 0, left: 16.0, bottom: 0.0, right: 16.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return DimensionConstants.selfieFrameThumbCellSpacing
     }
 }

@@ -19,6 +19,7 @@ class SelfieMovieViewModel: BaseViewModel, ViewModelType {
     struct Output {
         let selfieFrameData: Driver<[SelfieFrame]>
         let recentlyFrameData: Driver<[SelfieFrame]>
+        let favoriteSelfieData: Driver<[FavoriteSelfie]>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -48,6 +49,11 @@ class SelfieMovieViewModel: BaseViewModel, ViewModelType {
             }
         }
         
+        let favoriteSelfies = repositoryProvider
+            .selfieRepository()
+            .getAllFavoriteSelfie()
+            .asDriver(onErrorJustReturn: [])
+        
         input.popViewTrigger
             .drive(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -63,6 +69,7 @@ class SelfieMovieViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         return Output(selfieFrameData: selfieFrames,
-                      recentlyFrameData: recentlyFrames)
+                      recentlyFrameData: recentlyFrames,
+                      favoriteSelfieData: favoriteSelfies)
     }
 }

@@ -11,19 +11,29 @@ import Kingfisher
 import Domain
 
 extension SelfieCameraViewController {
-    func setFrameImage(with item: SelfieFrame) {
-        KingfisherManager.shared.retrieveImage(with: item.frameURL) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let value):
-                self.frameImageView.image = value.image
-                let size = value.image.suitableSize(heightLimit: self.viewMain.height, widthLimit: UIScreen.main.bounds.width)
-                self.canvasViewWidthConstraint.constant = size?.width ?? 0.0
-                self.canvasViewHeightConstraint.constant = size?.height ?? 0.0
-            case .failure(let error):
-                print(error)
+    func setFrameImage(with selfieFrame: SelfieFrame?) {
+        if let item = selfieFrame {
+            KingfisherManager.shared.retrieveImage(with: item.frameURL) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let value):
+                    self.frameImageView.image = value.image
+                    let size = value.image.suitableSize(heightLimit: self.viewMain.height, widthLimit: UIScreen.main.bounds.width)
+                    self.canvasViewWidthConstraint.constant = size?.width ?? 0.0
+                    self.canvasViewHeightConstraint.constant = size?.height ?? 0.0
+                case .failure(let error):
+                    print(error)
+                }
             }
+        } else {
+            frameImageView.image = nil
+            setCanvasViewFullSize()
         }
+    }
+    
+    private func setCanvasViewFullSize() {
+        self.canvasViewWidthConstraint.constant = viewMain.width
+        self.canvasViewHeightConstraint.constant = viewMain.height
     }
     
     func setMovieImage(with item: UIImage) {

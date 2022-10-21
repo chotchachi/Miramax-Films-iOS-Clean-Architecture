@@ -29,6 +29,7 @@
                 <outlet property="canvasViewWidthConstraint" destination="o5z-DO-BR5" id="ewh-c5-0iZ"/>
                 <outlet property="captureImageView" destination="Wfb-pd-4Bz" id="kR0-dG-0v5"/>
                 <outlet property="frameImageView" destination="e8t-Mt-9AN" id="YkN-aw-Zc4"/>
+                <outlet property="frameLayerCollectionView" destination="D2G-0l-1Qv" id="5Kc-9O-aE8"/>
                 <outlet property="previewView" destination="vFo-Vv-gIa" id="LSc-RO-twG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewCameraControls" destination="hoL-Um-4wH" id="KZv-0b-ibJ"/>
@@ -300,13 +301,27 @@
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" image="ic_check"/>
                                 </button>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="D2G-0l-1Qv">
+                                    <rect key="frame" x="0.0" y="52" width="390" height="130"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rrk-gP-TY9">
+                                        <size key="itemSize" width="128" height="128"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
                             </subviews>
                             <color key="backgroundColor" name="ColorTertiary"/>
                             <constraints>
                                 <constraint firstItem="bvy-mo-I62" firstAttribute="leading" secondItem="eVJ-9F-gOi" secondAttribute="leading" constant="16" id="CRh-Da-ZYO"/>
                                 <constraint firstAttribute="trailing" secondItem="7iJ-nh-RBD" secondAttribute="trailing" constant="16" id="FZv-UI-hE9"/>
                                 <constraint firstItem="7iJ-nh-RBD" firstAttribute="top" secondItem="eVJ-9F-gOi" secondAttribute="top" constant="16" id="ORY-lN-WgE"/>
+                                <constraint firstItem="D2G-0l-1Qv" firstAttribute="top" secondItem="bvy-mo-I62" secondAttribute="bottom" constant="12" id="WQc-CF-M00"/>
                                 <constraint firstItem="bvy-mo-I62" firstAttribute="top" secondItem="eVJ-9F-gOi" secondAttribute="top" constant="16" id="Xig-lc-bg1"/>
+                                <constraint firstAttribute="bottom" secondItem="D2G-0l-1Qv" secondAttribute="bottom" constant="16" id="ae4-Hy-udD"/>
+                                <constraint firstItem="D2G-0l-1Qv" firstAttribute="leading" secondItem="eVJ-9F-gOi" secondAttribute="leading" id="cyX-pw-Qe8"/>
+                                <constraint firstAttribute="trailing" secondItem="D2G-0l-1Qv" secondAttribute="trailing" id="prd-nO-yaW"/>
                             </constraints>
                         </view>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SES-n6-zYI" userLabel="View Done Capture">
