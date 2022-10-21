@@ -31,13 +31,13 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
     private let repositoryProvider: RepositoryProviderProtocol
     private let router: UnownedRouter<SelfiePreviewRoute>
     private let finalImage: UIImage
-    private let selfieFrame: SelfieFrame
+    private let selfieFrame: SelfieFrame?
     private let tempImageName: String
     
     init(repositoryProvider: RepositoryProviderProtocol,
          router: UnownedRouter<SelfiePreviewRoute>,
          finalImage: UIImage,
-         selfieFrame: SelfieFrame
+         selfieFrame: SelfieFrame?
     ) {
         self.repositoryProvider = repositoryProvider
         self.router = router
@@ -45,7 +45,9 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
         self.selfieFrame = selfieFrame
         self.tempImageName = "img_\(Int(Date().timeIntervalSince1970))"
         super.init()
-        storedRecentSelfieFrame(with: selfieFrame)
+        if let selfieFrame = selfieFrame {
+            storedRecentSelfieFrame(with: selfieFrame)
+        }
     }
     
     func transform(input: Input) -> Output {
@@ -106,7 +108,7 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
     private func storedFavoriteSelfieImage() -> Completable {
         let favoriteSelfie = FavoriteSelfie(
             name: self.tempImageName,
-            frame: self.selfieFrame.name,
+            frame: self.selfieFrame?.name,
             userLocation: nil,
             userCreateDate: nil,
             createAt: Date()

@@ -17,7 +17,7 @@ enum SelfiePreviewRoute: Route {
 class SelfiePreviewCoordinator: NavigationCoordinator<SelfiePreviewRoute> {
     private let appDIContainer: AppDIContainer
     private let finalImage: UIImage
-    private let selfieFrame: SelfieFrame
+    private let selfieFrame: SelfieFrame?
     
     public override var viewController: UIViewController! {
         return autoreleaseController
@@ -25,7 +25,7 @@ class SelfiePreviewCoordinator: NavigationCoordinator<SelfiePreviewRoute> {
     
     private weak var autoreleaseController: UIViewController?
     
-    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, finalImage: UIImage, selfieFrame: SelfieFrame) {
+    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, finalImage: UIImage, selfieFrame: SelfieFrame?) {
         self.appDIContainer = appDIContainer
         self.finalImage = finalImage
         self.selfieFrame = selfieFrame

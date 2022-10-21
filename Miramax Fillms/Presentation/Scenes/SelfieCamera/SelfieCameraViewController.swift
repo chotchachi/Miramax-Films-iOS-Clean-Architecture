@@ -187,7 +187,7 @@ extension SelfieCameraViewController {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 let finalImage = self.canvasView.toImage()
-                self.doneTriggerS.accept((finalImage, self.currentSelfieFrame!))
+                self.doneTriggerS.accept((finalImage, self.currentSelfieFrame))
             })
             .disposed(by: rx.disposeBag)
         

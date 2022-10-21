@@ -15,7 +15,7 @@ enum SelfieCameraRoute: Route {
     case initial
     case pop
     case selectMovieImage(callback: SelectMovieCallback)
-    case preview(image: UIImage, selfieFrame: SelfieFrame)
+    case preview(image: UIImage, selfieFrame: SelfieFrame?)
 }
 
 class SelfieCameraCoordinator: NavigationCoordinator<SelfieCameraRoute> {
