@@ -31,6 +31,8 @@
                 <outlet property="frameImageView" destination="e8t-Mt-9AN" id="YkN-aw-Zc4"/>
                 <outlet property="frameLayerCollectionView" destination="D2G-0l-1Qv" id="5Kc-9O-aE8"/>
                 <outlet property="previewView" destination="vFo-Vv-gIa" id="LSc-RO-twG"/>
+                <outlet property="previewViewHeightConstraint" destination="ezC-Oc-DKL" id="8pB-5Z-W3z"/>
+                <outlet property="previewViewWidthConstraint" destination="1wK-M3-NHx" id="WMr-zN-bIs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewCameraControls" destination="hoL-Um-4wH" id="KZv-0b-ibJ"/>
                 <outlet property="viewDoneCapture" destination="SES-n6-zYI" id="qBH-jR-fIQ"/>
@@ -115,9 +117,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9I-2M-Ess" userLabel="View Main">
                     <rect key="frame" x="0.0" y="101" width="390" height="511"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFo-Vv-gIa" userLabel="Preview View">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFo-Vv-gIa" userLabel="Preview View">
                             <rect key="frame" x="0.0" y="5.3333333333333144" width="390" height="500"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="390" id="1wK-M3-NHx"/>
+                                <constraint firstAttribute="height" constant="500" id="ezC-Oc-DKL"/>
+                            </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BKn-sK-ZM2" userLabel="Canvas View">
                             <rect key="frame" x="0.0" y="5.3333333333333144" width="390" height="500"/>
@@ -125,7 +131,7 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wfb-pd-4Bz" userLabel="Capture Image View">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="500"/>
                                 </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e8t-Mt-9AN" userLabel="Frame Image View">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e8t-Mt-9AN" userLabel="Frame Image View">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="500"/>
                                 </imageView>
                                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R7H-uy-Met" userLabel="Canvas Image View">
@@ -153,12 +159,10 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="vFo-Vv-gIa" firstAttribute="centerY" secondItem="V9I-2M-Ess" secondAttribute="centerY" id="4r7-JJ-wl3"/>
                         <constraint firstItem="BKn-sK-ZM2" firstAttribute="centerY" secondItem="V9I-2M-Ess" secondAttribute="centerY" id="IBc-oZ-m1a"/>
-                        <constraint firstItem="vFo-Vv-gIa" firstAttribute="width" secondItem="BKn-sK-ZM2" secondAttribute="width" id="INc-a9-Tci"/>
                         <constraint firstItem="BKn-sK-ZM2" firstAttribute="centerX" secondItem="V9I-2M-Ess" secondAttribute="centerX" id="ZxE-KR-3Fs"/>
-                        <constraint firstItem="vFo-Vv-gIa" firstAttribute="height" secondItem="BKn-sK-ZM2" secondAttribute="height" id="cXM-aI-gnP"/>
-                        <constraint firstItem="vFo-Vv-gIa" firstAttribute="centerY" secondItem="BKn-sK-ZM2" secondAttribute="centerY" id="djl-gB-7GH"/>
-                        <constraint firstItem="vFo-Vv-gIa" firstAttribute="centerX" secondItem="BKn-sK-ZM2" secondAttribute="centerX" id="qb5-sV-BWt"/>
+                        <constraint firstItem="vFo-Vv-gIa" firstAttribute="centerX" secondItem="V9I-2M-Ess" secondAttribute="centerX" id="mPN-q3-1cd"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7i0-5u-bRG" userLabel="View Controls">
