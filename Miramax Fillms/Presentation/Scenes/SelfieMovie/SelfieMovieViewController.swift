@@ -50,6 +50,7 @@ class SelfieMovieViewController: BaseViewController<SelfieMovieViewModel> {
         
         let input = SelfieMovieViewModel.Input(
             popViewTrigger: appToolbar.rx.backButtonTap.asDriver(),
+            selfieTabTrigger: selfieTabTriggerS.asDriverOnErrorJustComplete(),
             selfieFrameSelectTrigger: selfieFrameSelectTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)

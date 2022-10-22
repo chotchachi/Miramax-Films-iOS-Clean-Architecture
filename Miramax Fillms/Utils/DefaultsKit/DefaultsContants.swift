@@ -10,4 +10,5 @@ import Foundation
 extension DefaultsKey {
     static let presentationModel = Key<PresentationMode>("presentationModel")
     static let recentSelfieFrames = Key<[String]>("recentSelfieFrames")
+    static let favoriteSelfieFrames = Key<[String]>("favoriteSelfieFrames")
 }

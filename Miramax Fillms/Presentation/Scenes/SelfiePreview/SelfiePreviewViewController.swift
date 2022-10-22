@@ -51,19 +51,19 @@ class SelfiePreviewViewController: BaseViewController<SelfiePreviewViewModel> {
             })
             .disposed(by: rx.disposeBag)
         
-        output.favoriteImageState
-            .drive(onNext: { [weak self] state in
-                guard let self = self else { return }
-                switch state {
-                case .successfully:
-                    self.showAlert(title: "add_image_favorite".localized, message: "add_image_favorite_successfully".localized)
-                case .failed:
-                    self.showAlert(title: "add_image_favorite".localized, message: "add_image_favorite_failed".localized)
-                case .alreadyExist:
-                    self.showAlert(title: "add_image_favorite".localized, message: "add_image_favorite_already_exist".localized)
-                }
-            })
-            .disposed(by: rx.disposeBag)
+//        output.favoriteImageState
+//            .drive(onNext: { [weak self] state in
+//                guard let self = self else { return }
+//                switch state {
+//                case .successfully:
+//                    self.showAlert(title: "add_image_favorite".localized, message: "add_image_favorite_successfully".localized)
+//                case .failed:
+//                    self.showAlert(title: "add_image_favorite".localized, message: "add_image_favorite_failed".localized)
+//                case .alreadyExist:
+//                    self.showAlert(title: "add_image_favorite".localized, message: "add_image_favorite_already_exist".localized)
+//                }
+//            })
+//            .disposed(by: rx.disposeBag)
     }
     
     @objc private func buttonFavoriteTapped(_ sender: UITapGestureRecognizer) {

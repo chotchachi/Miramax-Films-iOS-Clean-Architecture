@@ -13,13 +13,14 @@ import Domain
 class SelfieMovieViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let popViewTrigger: Driver<Void>
+        let selfieTabTrigger: Driver<SelfieMovieTab>
         let selfieFrameSelectTrigger: Driver<SelfieFrame>
     }
     
     struct Output {
         let selfieFrameData: Driver<[SelfieFrame]>
         let recentlyFrameData: Driver<[SelfieFrame]>
-        let favoriteSelfieData: Driver<[FavoriteSelfie]>
+//        let favoriteSelfieData: Driver<[FavoriteSelfie]>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -32,7 +33,7 @@ class SelfieMovieViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let selfieFrames = Driver.just(
+        let allSelfieFrames = Observable.just(
             repositoryProvider
                 .selfieRepository()
                 .getAllFrame()
@@ -41,18 +42,42 @@ class SelfieMovieViewModel: BaseViewModel, ViewModelType {
         let recentlyFrameNames = Defaults.shared
             .getObservable(for: .recentSelfieFrames)
             .map { $0?.reversed() ?? [] }
-            .asDriver(onErrorJustReturn: [])
         
-        let recentlyFrames = Driver.combineLatest(recentlyFrameNames, selfieFrames) { recentlyFrameNames, selfieFrames in
+        let recentlyFrames = Observable.combineLatest(recentlyFrameNames, allSelfieFrames) { recentlyFrameNames, selfieFrames in
             return recentlyFrameNames.compactMap { name -> SelfieFrame? in
                 return selfieFrames.first(where: { $0.name == name })
             }
         }
         
-        let favoriteSelfies = repositoryProvider
-            .selfieRepository()
-            .getAllFavoriteSelfie()
-            .asDriver(onErrorJustReturn: [])
+        let favoriteFrameNames = Defaults.shared
+            .getObservable(for: .favoriteSelfieFrames)
+            .map { $0?.reversed() ?? [] }
+        
+        let favoriteFrames = Observable.combineLatest(favoriteFrameNames, allSelfieFrames) { favoriteFrameNames, selfieFrames in
+            return favoriteFrameNames.compactMap { name -> SelfieFrame? in
+                return selfieFrames.first(where: { $0.name == name })
+            }
+        }
+        
+        let selfieTabTrigger = input.selfieTabTrigger
+            .asObservable()
+            .startWith(SelfieMovieTab.defaultTab)
+        
+        let selfieFrameData = selfieTabTrigger
+            .flatMapLatest { tab in
+                switch tab {
+                case .popular:
+                    return allSelfieFrames
+                case .favorite:
+                    return favoriteFrames
+                }
+            }
+            .asDriverOnErrorJustComplete()
+        
+//        let favoriteSelfies = repositoryProvider
+//            .selfieRepository()
+//            .getAllFavoriteSelfie()
+//            .asDriver(onErrorJustReturn: [])
         
         input.popViewTrigger
             .drive(onNext: { [weak self] in
@@ -68,8 +93,7 @@ class SelfieMovieViewModel: BaseViewModel, ViewModelType {
             })
             .disposed(by: rx.disposeBag)
         
-        return Output(selfieFrameData: selfieFrames,
-                      recentlyFrameData: recentlyFrames,
-                      favoriteSelfieData: favoriteSelfies)
+        return Output(selfieFrameData: selfieFrameData,
+                      recentlyFrameData: recentlyFrames.asDriver(onErrorJustReturn: []))
     }
 }

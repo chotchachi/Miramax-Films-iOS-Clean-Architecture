@@ -25,7 +25,7 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
     
     struct Output {
         let finalImage: Driver<UIImage>
-        let favoriteImageState: Driver<FavoriteImageState>
+//        let favoriteImageState: Driver<FavoriteImageState>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
@@ -51,21 +51,28 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let favoriteImageState = input.addFavoriteTrigger
-            .asObservable()
-            .flatMapLatest {
-                self.saveImage(imageName: self.tempImageName.appending(".jpg"), image: self.finalImage)
-                    .andThen(self.storedFavoriteSelfieImage())
-                    .andThen(Observable.just(FavoriteImageState.successfully))
-                    .catch({ error in
-                        if (error as NSError).code == 2 {
-                            return Observable.just(FavoriteImageState.alreadyExist)
-                        } else {
-                            return Observable.just(FavoriteImageState.failed)
-                        }
-                    })
-            }
-            .asDriverOnErrorJustComplete()
+//        let favoriteImageState = input.addFavoriteTrigger
+//            .asObservable()
+//            .flatMapLatest {
+//                self.saveImage(imageName: self.tempImageName.appending(".jpg"), image: self.finalImage)
+//                    .andThen(self.storedFavoriteSelfieImage())
+//                    .andThen(Observable.just(FavoriteImageState.successfully))
+//                    .catch({ error in
+//                        if (error as NSError).code == 2 {
+//                            return Observable.just(FavoriteImageState.alreadyExist)
+//                        } else {
+//                            return Observable.just(FavoriteImageState.failed)
+//                        }
+//                    })
+//            }
+//            .asDriverOnErrorJustComplete()
+        
+        input.addFavoriteTrigger
+            .drive(onNext: { [weak self] in
+                guard let self = self, let selfieFrame = self.selfieFrame else { return }
+                self.storedFavoriteSelfieFrame(with: selfieFrame)
+            })
+            .disposed(by: rx.disposeBag)
         
         input.popViewTrigger
             .drive(onNext: { [weak self] in
@@ -75,8 +82,8 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         return Output(
-            finalImage: Driver.just(finalImage),
-            favoriteImageState: favoriteImageState
+            finalImage: Driver.just(finalImage)
+//            favoriteImageState: favoriteImageState
         )
     }
     
@@ -124,6 +131,14 @@ class SelfiePreviewViewModel: BaseViewModel, ViewModelType {
         recentSelfieFrames.removeAll(where: { $0 == selfieFrame.name }) // Remove if exist
         recentSelfieFrames.append(selfieFrame.name)
         defaults.set(recentSelfieFrames, for: .recentSelfieFrames)
+    }
+    
+    private func storedFavoriteSelfieFrame(with selfieFrame: SelfieFrame) {
+        let defaults = Defaults.shared
+        var favoriteSelfieFrames = defaults.get(for: .favoriteSelfieFrames) ?? []
+        favoriteSelfieFrames.removeAll(where: { $0 == selfieFrame.name }) // Remove if exist
+        favoriteSelfieFrames.append(selfieFrame.name)
+        defaults.set(favoriteSelfieFrames, for: .favoriteSelfieFrames)
     }
     
     func getFavoriteSelfieImagesDirectory() -> URL {
