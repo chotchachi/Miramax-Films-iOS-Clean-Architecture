@@ -12,21 +12,18 @@ extension UIImage {
     /**
      Suitable size for specific height or width to keep same image ratio
      */
-    func suitableSize(heightLimit: CGFloat? = nil,
-                             widthLimit: CGFloat? = nil )-> CGSize? {
+    func suitableSize(heightLimit: CGFloat, widthLimit: CGFloat) -> CGSize {
+        let imageRatio = self.size.height / self.size.width
         
-        if let height = heightLimit {
-            
-            let width = (height / self.size.height) * self.size.width
-            
-            return CGSize(width: width, height: height)
+        var height = max(heightLimit, self.size.height)
+        
+        var width = height / imageRatio
+        
+        if width > widthLimit {
+            width = widthLimit
+            height = width * imageRatio
         }
         
-        if let width = widthLimit {
-            let height = (width / self.size.width) * self.size.height
-            return CGSize(width: width, height: height)
-        }
-        
-        return nil
+        return .init(width: width, height: height)
     }
 }
