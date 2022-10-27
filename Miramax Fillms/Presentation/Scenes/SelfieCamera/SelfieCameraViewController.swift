@@ -39,10 +39,11 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     @IBOutlet weak var captureImageView: UIImageView!
 
     /// To hold frame image
-    @IBOutlet weak var frameImageView: UIImageView!
+//    @IBOutlet weak var frameImageView: UIImageView!
+    @IBOutlet weak var frameView: UIView!
     
     /// To hold movie poster image
-    @IBOutlet weak var canvasImageView: UIImageView!
+//    @IBOutlet weak var canvasImageView: UIImageView!
     
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnSwitchCamera: UIButton!
@@ -118,10 +119,10 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
             })
             .disposed(by: rx.disposeBag)
         
-        output.movieImage
+        output.movie
             .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.setMovieImage(with: item)
+                self.setFramePosterImage(with: item)
             })
             .disposed(by: rx.disposeBag)
         

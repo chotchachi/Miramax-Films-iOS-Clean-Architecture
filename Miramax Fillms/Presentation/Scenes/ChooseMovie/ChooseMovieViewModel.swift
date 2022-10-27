@@ -100,16 +100,9 @@ class ChooseMovieViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         input.doneTrigger
-            .asObservable()
-            .compactMap { $0.posterURL }
-            .flatMapLatest {
-                self.getMovieImage(with: $0)
-                    .asObservable()
-                    .catch { _ in Observable.empty() }
-            }
-            .subscribe(onNext: { [weak self] image in
+            .drive(onNext: { [weak self] item in
                 guard let self = self else { return }
-                self.router.trigger(.done(movieImage: image))
+                self.router.trigger(.done(movie: item))
             })
             .disposed(by: rx.disposeBag)
         
@@ -130,17 +123,17 @@ class ChooseMovieViewModel: BaseViewModel, ViewModelType {
             }
     }
     
-    private func getMovieImage(with imageURL: URL) -> Single<UIImage> {
-        return Single.create { single in
-            KingfisherManager.shared.retrieveImage(with: imageURL) { result in
-                switch result {
-                case .success(let value):
-                    single(.success(value.image))
-                case .failure(let error):
-                    single(.failure(error))
-                }
-            }
-            return Disposables.create()
-        }
-    }
+//    private func getMovieImage(with imageURL: URL) -> Single<UIImage> {
+//        return Single.create { single in
+//            KingfisherManager.shared.retrieveImage(with: imageURL) { result in
+//                switch result {
+//                case .success(let value):
+//                    single(.success(value.image))
+//                case .failure(let error):
+//                    single(.failure(error))
+//                }
+//            }
+//            return Disposables.create()
+//        }
+//    }
 }

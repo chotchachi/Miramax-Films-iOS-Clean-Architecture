@@ -12,7 +12,7 @@ import Domain
 enum ChooseMovieRoute: Route {
     case initial
     case pop
-    case done(movieImage: UIImage)
+    case done(movie: EntertainmentViewModel)
 }
 
 class ChooseMovieCoordinator: NavigationCoordinator<ChooseMovieRoute> {
@@ -43,12 +43,12 @@ class ChooseMovieCoordinator: NavigationCoordinator<ChooseMovieRoute> {
             return .push(vc)
         case .pop:
             return .pop()
-        case .done(movieImage: let movieImage):
+        case .done(movie: let movie):
             if let callback = callback {
-                callback(movieImage)
+                callback(movie)
                 return .pop()
             } else {
-                addChild(SelfieCameraCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, selfieFrame: selfieFrame!, movieImage: movieImage))
+                addChild(SelfieCameraCoordinator(appDIContainer: appDIContainer, rootViewController: rootViewController, selfieFrame: selfieFrame!, movie: movie))
                 return .none()
             }
         }

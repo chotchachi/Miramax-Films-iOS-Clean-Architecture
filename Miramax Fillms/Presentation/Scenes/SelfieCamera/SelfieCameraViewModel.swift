@@ -20,7 +20,7 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
     
     struct Output {
         let selfieFrame: Driver<SelfieFrame>
-        let movieImage: Driver<UIImage>
+        let movie: Driver<EntertainmentViewModel>
         let selfieFrameData: Driver<[SelfieFrame]>
     }
     
@@ -28,13 +28,13 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
     private let router: UnownedRouter<SelfieCameraRoute>
     private let selfieFrame: SelfieFrame
     
-    private let movieImageS: BehaviorRelay<UIImage>
+    private let movieS: BehaviorRelay<EntertainmentViewModel>
 
-    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<SelfieCameraRoute>, selfieFrame: SelfieFrame, movieImage: UIImage) {
+    init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<SelfieCameraRoute>, selfieFrame: SelfieFrame, movie: EntertainmentViewModel) {
         self.repositoryProvider = repositoryProvider
         self.router = router
         self.selfieFrame = selfieFrame
-        self.movieImageS = BehaviorRelay(value: movieImage)
+        self.movieS = BehaviorRelay(value: movie)
         super.init()
     }
     
@@ -46,8 +46,8 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
             .map { self.selfieFrame }
             .asDriverOnErrorJustComplete()
         
-        let movieImageData = viewTrigger
-            .flatMapLatest { self.movieImageS }
+        let movieData = viewTrigger
+            .flatMapLatest { self.movieS }
             .asDriverOnErrorJustComplete()
         
         let selfieFrames = Driver.just(
@@ -65,8 +65,8 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
         
         input.selectMovieImageTrigger
             .drive(onNext: { [weak self] in
-                self?.router.trigger(.selectMovieImage(callback: { movieImage in
-                    self?.movieImageS.accept(movieImage)
+                self?.router.trigger(.selectMovieImage(callback: { movie in
+                    self?.movieS.accept(movie)
                 }))
             })
             .disposed(by: rx.disposeBag)
@@ -79,7 +79,7 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
             .disposed(by: rx.disposeBag)
         
         return Output(selfieFrame: selfieFrame,
-                      movieImage: movieImageData,
+                      movie: movieData,
                       selfieFrameData: selfieFrames)
     }
 }

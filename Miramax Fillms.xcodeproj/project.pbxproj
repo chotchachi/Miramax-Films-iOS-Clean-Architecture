@@ -205,6 +205,11 @@
 		EDE92D2B28E6DB130083F33A /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDE92D2728E6DB130083F33A /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EDE92D3028E9823D0083F33A /* SelfieWithMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92D2F28E9823D0083F33A /* SelfieWithMovieView.swift */; };
 		EDE92D3328E98A4B0083F33A /* SelfSizingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE92D3228E98A4B0083F33A /* SelfSizingCollectionView.swift */; };
+		EDF07A722908352900BADD91 /* Frame1.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF07A712908352900BADD91 /* Frame1.swift */; };
+		EDF07A742908353400BADD91 /* Frame1.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDF07A732908353400BADD91 /* Frame1.xib */; };
+		EDF07A76290847B400BADD91 /* SelfieFrameProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF07A75290847B400BADD91 /* SelfieFrameProtocol.swift */; };
+		EDF07A7B290AC96700BADD91 /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF07A7A290AC96700BADD91 /* DesignableLabel.swift */; };
+		EDF07A7D290ACBD600BADD91 /* Rochester-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDF07A7C290ACB9800BADD91 /* Rochester-Regular.ttf */; };
 		EDFAD37328D2073600ED3BCD /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */; };
 		EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */; };
 		EDFAD37B28D22F0E00ED3BCD /* ActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */; };
@@ -433,6 +438,11 @@
 		EDE92D2728E6DB130083F33A /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE92D2F28E9823D0083F33A /* SelfieWithMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieWithMovieView.swift; sourceTree = "<group>"; };
 		EDE92D3228E98A4B0083F33A /* SelfSizingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizingCollectionView.swift; sourceTree = "<group>"; };
+		EDF07A712908352900BADD91 /* Frame1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame1.swift; sourceTree = "<group>"; };
+		EDF07A732908353400BADD91 /* Frame1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Frame1.xib; sourceTree = "<group>"; };
+		EDF07A75290847B400BADD91 /* SelfieFrameProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieFrameProtocol.swift; sourceTree = "<group>"; };
+		EDF07A7A290AC96700BADD91 /* DesignableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableLabel.swift; sourceTree = "<group>"; };
+		EDF07A7C290ACB9800BADD91 /* Rochester-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rochester-Regular.ttf"; sourceTree = "<group>"; };
 		EDFAD37228D2073600ED3BCD /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
 		EDFAD37828D22EEF00ED3BCD /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
 		EDFAD37A28D22F0E00ED3BCD /* ActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTracker.swift; sourceTree = "<group>"; };
@@ -567,6 +577,7 @@
 		ED7A094C28EC70D30035E099 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				EDF07A7C290ACB9800BADD91 /* Rochester-Regular.ttf */,
 				ED7A094D28EC711D0035E099 /* Roboto-Black.ttf */,
 				ED7A094F28EC711D0035E099 /* Roboto-Bold.ttf */,
 				ED7A095128EC711D0035E099 /* Roboto-Light.ttf */,
@@ -1254,6 +1265,32 @@
 			path = SelfSizingCollectionView;
 			sourceTree = "<group>";
 		};
+		EDF07A6F2908343A00BADD91 /* SelfieFrames */ = {
+			isa = PBXGroup;
+			children = (
+				EDF07A702908344B00BADD91 /* Frame1 */,
+				EDF07A75290847B400BADD91 /* SelfieFrameProtocol.swift */,
+			);
+			path = SelfieFrames;
+			sourceTree = "<group>";
+		};
+		EDF07A702908344B00BADD91 /* Frame1 */ = {
+			isa = PBXGroup;
+			children = (
+				EDF07A712908352900BADD91 /* Frame1.swift */,
+				EDF07A732908353400BADD91 /* Frame1.xib */,
+			);
+			path = Frame1;
+			sourceTree = "<group>";
+		};
+		EDF07A79290AC96000BADD91 /* DesignableLabel */ = {
+			isa = PBXGroup;
+			children = (
+				EDF07A7A290AC96700BADD91 /* DesignableLabel.swift */,
+			);
+			path = DesignableLabel;
+			sourceTree = "<group>";
+		};
 		EDFAD36F28D2059600ED3BCD /* Assemblers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1303,6 +1340,8 @@
 		EDFAD3B028D3743A00ED3BCD /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				EDF07A79290AC96000BADD91 /* DesignableLabel */,
+				EDF07A6F2908343A00BADD91 /* SelfieFrames */,
 				EDB2641A28FA9C91005C61B3 /* CollectionViewWaterfallLayout */,
 				EDB263F028F9B66A005C61B3 /* CircleImageView */,
 				ED69E03A28F84D9C00FDC142 /* iCarousel */,
@@ -1423,6 +1462,7 @@
 				EDB263F628F9B82B005C61B3 /* PersonListViewController.xib in Resources */,
 				EDE69B4328D62943002726B0 /* SearchViewController.xib in Resources */,
 				EDB263FD28FA78F4005C61B3 /* SelfieMovieViewController.xib in Resources */,
+				EDF07A742908353400BADD91 /* Frame1.xib in Resources */,
 				ED1F03D028EF0F590083B088 /* SettingViewController.xib in Resources */,
 				ED9EC0E228F32FE700465623 /* PMAlertController.xib in Resources */,
 				EDC5E25828FBEAED00F1B911 /* SelfieCameraViewController.xib in Resources */,
@@ -1431,6 +1471,7 @@
 				EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */,
 				EDD5302628DCBDA50078C6C5 /* SeasonDetailsViewController.xib in Resources */,
 				ED7A095828EC71370035E099 /* Roboto-Thin.ttf in Resources */,
+				EDF07A7D290ACBD600BADD91 /* Rochester-Regular.ttf in Resources */,
 				EDD52F6728DAC9B70078C6C5 /* Localizable.strings in Resources */,
 				ED7A095428EC71370035E099 /* Roboto-Regular.ttf in Resources */,
 				ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */,
@@ -1506,6 +1547,7 @@
 				EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */,
 				ED9EC0BE28F1B95700465623 /* BookmarkButton.swift in Sources */,
 				EDFAD37D28D22FD300ED3BCD /* Rx+Map.swift in Sources */,
+				EDF07A7B290AC96700BADD91 /* DesignableLabel.swift in Sources */,
 				EDC6DB4628CF98F800164EBD /* MovieViewController.swift in Sources */,
 				EDE69B8028D7321F002726B0 /* TVShowViewModel.swift in Sources */,
 				EDB263FC28FA78F4005C61B3 /* SelfieMovieViewController.swift in Sources */,
@@ -1532,6 +1574,7 @@
 				EDD5302A28DCBDC50078C6C5 /* SeasonDetailsCoordinator.swift in Sources */,
 				EDD52F5728DA14930078C6C5 /* UILabel+Ext.swift in Sources */,
 				ED866E4328E01C390066E10B /* PersonBiographyViewModel.swift in Sources */,
+				EDF07A76290847B400BADD91 /* SelfieFrameProtocol.swift in Sources */,
 				EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */,
 				ED866E1D28DED76C0066E10B /* PersonDetailsViewController.swift in Sources */,
 				EDD5301C28DCB6D00078C6C5 /* GradientView.swift in Sources */,
@@ -1621,6 +1664,7 @@
 				EDB8780528D8AA7A0016B96B /* EntertainmentDetailsViewModel.swift in Sources */,
 				ED1F03AD28EC92360083B088 /* EntertainmentsResponseRoute.swift in Sources */,
 				ED42803A28FE9CB1001DB45C /* SelfieCameraViewController+Capture.swift in Sources */,
+				EDF07A722908352900BADD91 /* Frame1.swift in Sources */,
 				EDD52F5928DA1B2A0078C6C5 /* DimensionConstants.swift in Sources */,
 				EDE92B9928E5F7F10083F33A /* SearchButton.swift in Sources */,
 				ED9EC0C928F279AE00465623 /* WishlistPreviewTab.swift in Sources */,

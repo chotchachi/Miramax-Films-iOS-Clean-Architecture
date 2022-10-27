@@ -23,13 +23,12 @@
                 <outlet property="btnNoFrameLayer" destination="SbL-0p-kHi" id="bbN-5h-1rq"/>
                 <outlet property="btnRetake" destination="so7-WY-L5t" id="HWR-zM-79j"/>
                 <outlet property="btnSwitchCamera" destination="F57-BP-aax" id="0hm-CN-cE0"/>
-                <outlet property="canvasImageView" destination="R7H-uy-Met" id="DQ7-cY-kcF"/>
                 <outlet property="canvasView" destination="BKn-sK-ZM2" id="9re-wJ-AAc"/>
                 <outlet property="canvasViewHeightConstraint" destination="Kw0-Lz-aZF" id="AbD-D3-RLL"/>
                 <outlet property="canvasViewWidthConstraint" destination="o5z-DO-BR5" id="ewh-c5-0iZ"/>
                 <outlet property="captureImageView" destination="Wfb-pd-4Bz" id="kR0-dG-0v5"/>
-                <outlet property="frameImageView" destination="e8t-Mt-9AN" id="YkN-aw-Zc4"/>
                 <outlet property="frameLayerCollectionView" destination="D2G-0l-1Qv" id="5Kc-9O-aE8"/>
+                <outlet property="frameView" destination="CaT-jR-P7t" id="Htu-mH-IQ4"/>
                 <outlet property="previewView" destination="vFo-Vv-gIa" id="LSc-RO-twG"/>
                 <outlet property="previewViewHeightConstraint" destination="ezC-Oc-DKL" id="8pB-5Z-W3z"/>
                 <outlet property="previewViewWidthConstraint" destination="1wK-M3-NHx" id="WMr-zN-bIs"/>
@@ -131,29 +130,23 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wfb-pd-4Bz" userLabel="Capture Image View">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="500"/>
                                 </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e8t-Mt-9AN" userLabel="Frame Image View">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CaT-jR-P7t">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="500"/>
-                                </imageView>
-                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R7H-uy-Met" userLabel="Canvas Image View">
-                                    <rect key="frame" x="0.0" y="0.0" width="390" height="500"/>
-                                </imageView>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Wfb-pd-4Bz" secondAttribute="bottom" id="0DS-hF-Pfk"/>
-                                <constraint firstAttribute="trailing" secondItem="R7H-uy-Met" secondAttribute="trailing" id="3aV-XA-AcO"/>
-                                <constraint firstAttribute="bottom" secondItem="R7H-uy-Met" secondAttribute="bottom" id="689-Gv-pKM"/>
                                 <constraint firstItem="Wfb-pd-4Bz" firstAttribute="top" secondItem="BKn-sK-ZM2" secondAttribute="top" id="7sO-PP-amS"/>
-                                <constraint firstItem="R7H-uy-Met" firstAttribute="top" secondItem="BKn-sK-ZM2" secondAttribute="top" id="Eqy-Bl-9AT"/>
-                                <constraint firstAttribute="trailing" secondItem="e8t-Mt-9AN" secondAttribute="trailing" id="K9s-16-dCh"/>
                                 <constraint firstAttribute="height" constant="500" id="Kw0-Lz-aZF"/>
                                 <constraint firstAttribute="trailing" secondItem="Wfb-pd-4Bz" secondAttribute="trailing" id="Lwp-8E-sLo"/>
-                                <constraint firstAttribute="bottom" secondItem="e8t-Mt-9AN" secondAttribute="bottom" id="PsE-Y1-OCu"/>
+                                <constraint firstAttribute="bottom" secondItem="CaT-jR-P7t" secondAttribute="bottom" id="Mxm-pF-tf3"/>
+                                <constraint firstItem="CaT-jR-P7t" firstAttribute="leading" secondItem="BKn-sK-ZM2" secondAttribute="leading" id="UOs-RF-vBx"/>
                                 <constraint firstItem="Wfb-pd-4Bz" firstAttribute="leading" secondItem="BKn-sK-ZM2" secondAttribute="leading" id="apS-mh-7KU"/>
-                                <constraint firstItem="e8t-Mt-9AN" firstAttribute="top" secondItem="BKn-sK-ZM2" secondAttribute="top" id="flr-FT-PAJ"/>
+                                <constraint firstAttribute="trailing" secondItem="CaT-jR-P7t" secondAttribute="trailing" id="jga-ut-YII"/>
                                 <constraint firstAttribute="width" constant="390" id="o5z-DO-BR5"/>
-                                <constraint firstItem="e8t-Mt-9AN" firstAttribute="leading" secondItem="BKn-sK-ZM2" secondAttribute="leading" id="pwB-YU-uEY"/>
-                                <constraint firstItem="R7H-uy-Met" firstAttribute="leading" secondItem="BKn-sK-ZM2" secondAttribute="leading" id="tVF-dE-bwG"/>
+                                <constraint firstItem="CaT-jR-P7t" firstAttribute="top" secondItem="BKn-sK-ZM2" secondAttribute="top" id="pbY-g7-Tg6"/>
                             </constraints>
                         </view>
                     </subviews>

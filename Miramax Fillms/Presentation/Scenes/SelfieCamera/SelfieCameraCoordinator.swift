@@ -9,7 +9,7 @@ import XCoordinator
 import UIKit
 import Domain
 
-typealias SelectMovieCallback = (UIImage) -> Void
+typealias SelectMovieCallback = (EntertainmentViewModel) -> Void
 
 enum SelfieCameraRoute: Route {
     case initial
@@ -21,7 +21,7 @@ enum SelfieCameraRoute: Route {
 class SelfieCameraCoordinator: NavigationCoordinator<SelfieCameraRoute> {
     private let appDIContainer: AppDIContainer
     private let selfieFrame: SelfieFrame
-    private let movieImage: UIImage
+    private let movie: EntertainmentViewModel
     
     public override var viewController: UIViewController! {
         return autoreleaseController
@@ -29,10 +29,10 @@ class SelfieCameraCoordinator: NavigationCoordinator<SelfieCameraRoute> {
     
     private weak var autoreleaseController: UIViewController?
     
-    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, selfieFrame: SelfieFrame, movieImage: UIImage) {
+    init(appDIContainer: AppDIContainer, rootViewController: UINavigationController, selfieFrame: SelfieFrame, movie: EntertainmentViewModel) {
         self.appDIContainer = appDIContainer
         self.selfieFrame = selfieFrame
-        self.movieImage = movieImage
+        self.movie = movie
         super.init(rootViewController: rootViewController, initialRoute: nil)
         trigger(.initial)
     }
@@ -41,7 +41,7 @@ class SelfieCameraCoordinator: NavigationCoordinator<SelfieCameraRoute> {
         switch route {
         case .initial:
             let vc = SelfieCameraViewController()
-            vc.viewModel = SelfieCameraViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter, selfieFrame: selfieFrame, movieImage: movieImage)
+            vc.viewModel = SelfieCameraViewModel(repositoryProvider: appDIContainer.resolve(), router: unownedRouter, selfieFrame: selfieFrame, movie: movie)
             autoreleaseController = vc
             return .push(vc)
         case .pop:
