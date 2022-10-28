@@ -6,6 +6,35 @@ PODS:
   - DeviceKit (4.7.0)
   - Differentiator (5.0.0)
   - Kingfisher (6.3.1)
+  - MaterialComponents/Availability (124.2.0)
+  - MaterialComponents/BottomSheet (124.2.0):
+    - MaterialComponents/Elevation
+    - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/ShapeLibrary
+    - MaterialComponents/Shapes
+  - MaterialComponents/Elevation (124.2.0):
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/private/Application (124.2.0)
+  - MaterialComponents/private/Color (124.2.0):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/KeyboardWatcher (124.2.0):
+    - MaterialComponents/private/Application
+  - MaterialComponents/private/Math (124.2.0)
+  - MaterialComponents/ShadowElevations (124.2.0)
+  - MaterialComponents/ShadowLayer (124.2.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/ShapeLibrary (124.2.0):
+    - MaterialComponents/private/Math
+    - MaterialComponents/Shapes
+  - MaterialComponents/Shapes (124.2.0):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
   - MKProgress (1.1.0)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
@@ -57,6 +86,7 @@ DEPENDENCIES:
   - Action (~> 5.0.0)
   - DeviceKit (~> 4.0)
   - Kingfisher
+  - MaterialComponents/BottomSheet (~> 124.2.0)
   - MKProgress
   - Moya/RxSwift (~> 15.0)
   - ObjectMapper (~> 4.2.0)
@@ -81,6 +111,7 @@ SPEC REPOS:
     - DeviceKit
     - Differentiator
     - Kingfisher
+    - MaterialComponents
     - MKProgress
     - Moya
     - ObjectMapper
@@ -105,6 +136,7 @@ SPEC CHECKSUMS:
   DeviceKit: c870c34f7c0e0ac4caa6f052e6efe7ef1472c5a1
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
+  MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
   MKProgress: 260d166200323f3d991190a73ab2dc3a04b0f52f
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
@@ -123,6 +155,6 @@ SPEC CHECKSUMS:
   XCoordinator: a5f91e43ee944f508529763921165697d3211629
   youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
 
-PODFILE CHECKSUM: b2f60b72eb662e63057556a0a330507ff4b35568
+PODFILE CHECKSUM: 799db16a0029758acf7aac1994f8959d808f5682
 
 COCOAPODS: 1.11.3

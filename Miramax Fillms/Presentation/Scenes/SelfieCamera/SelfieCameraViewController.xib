@@ -19,8 +19,8 @@
                 <outlet property="btnFlash" destination="mIE-Sx-yEE" id="FOn-T2-Kih"/>
                 <outlet property="btnFrameLayer" destination="5Kz-Yl-BaU" id="ONk-Sy-BF2"/>
                 <outlet property="btnGallery" destination="cME-Zn-iZF" id="yTS-01-F9f"/>
-                <outlet property="btnMoreOption" destination="h26-W6-NUU" id="pJv-3P-0le"/>
                 <outlet property="btnNoFrameLayer" destination="SbL-0p-kHi" id="bbN-5h-1rq"/>
+                <outlet property="btnOptions" destination="h26-W6-NUU" id="ADi-CB-mxg"/>
                 <outlet property="btnRetake" destination="so7-WY-L5t" id="HWR-zM-79j"/>
                 <outlet property="btnSwitchCamera" destination="F57-BP-aax" id="0hm-CN-cE0"/>
                 <outlet property="canvasView" destination="BKn-sK-ZM2" id="9re-wJ-AAc"/>
@@ -61,7 +61,7 @@
                                     <state key="normal" image="ic_navigation_back"/>
                                 </button>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jtp-mM-aYo">
-                                    <rect key="frame" x="310" y="15" width="64" height="24"/>
+                                    <rect key="frame" x="270" y="15" width="104" height="24"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIE-Sx-yEE">
                                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -83,8 +83,8 @@
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" image="ic_switch_camera"/>
                                         </button>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h26-W6-NUU">
-                                            <rect key="frame" x="64" y="0.0" width="24" height="24"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h26-W6-NUU">
+                                            <rect key="frame" x="80" y="0.0" width="24" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="24" id="KbU-ee-Byn"/>
                                                 <constraint firstAttribute="height" constant="24" id="z2c-WH-KII"/>

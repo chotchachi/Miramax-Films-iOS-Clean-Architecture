@@ -37,6 +37,8 @@
 		ED42804128FECDD3001DB45C /* SelfiePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42804028FECDD3001DB45C /* SelfiePreviewViewModel.swift */; };
 		ED42804428FECDDE001DB45C /* SelfiePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED42804228FECDDE001DB45C /* SelfiePreviewViewController.swift */; };
 		ED42804528FECDDE001DB45C /* SelfiePreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED42804328FECDDE001DB45C /* SelfiePreviewViewController.xib */; };
+		ED45B21E290C2CB6007E7D9F /* SelfieCameraOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45B21C290C2CB6007E7D9F /* SelfieCameraOptionsViewController.swift */; };
+		ED45B21F290C2CB6007E7D9F /* SelfieCameraOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED45B21D290C2CB6007E7D9F /* SelfieCameraOptionsViewController.xib */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
 		ED69E04728F84D9C00FDC142 /* iCarousel+ViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */; };
 		ED69E04828F84D9C00FDC142 /* iCarousel+ViewManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */; };
@@ -270,6 +272,8 @@
 		ED42804028FECDD3001DB45C /* SelfiePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfiePreviewViewModel.swift; sourceTree = "<group>"; };
 		ED42804228FECDDE001DB45C /* SelfiePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfiePreviewViewController.swift; sourceTree = "<group>"; };
 		ED42804328FECDDE001DB45C /* SelfiePreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfiePreviewViewController.xib; sourceTree = "<group>"; };
+		ED45B21C290C2CB6007E7D9F /* SelfieCameraOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieCameraOptionsViewController.swift; sourceTree = "<group>"; };
+		ED45B21D290C2CB6007E7D9F /* SelfieCameraOptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieCameraOptionsViewController.xib; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
 		ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewLayout.swift"; sourceTree = "<group>"; };
 		ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewManagement.swift"; sourceTree = "<group>"; };
@@ -547,12 +551,28 @@
 			path = SelfiePreview;
 			sourceTree = "<group>";
 		};
+		ED45B21B290C2C87007E7D9F /* SelfieCameraOptions */ = {
+			isa = PBXGroup;
+			children = (
+				ED45B21C290C2CB6007E7D9F /* SelfieCameraOptionsViewController.swift */,
+				ED45B21D290C2CB6007E7D9F /* SelfieCameraOptionsViewController.xib */,
+			);
+			path = SelfieCameraOptions;
+			sourceTree = "<group>";
+		};
 		ED5BA69E28EB19370030F4B0 /* EntertainmentRankTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */,
 			);
 			path = EntertainmentRankTableViewCell;
+			sourceTree = "<group>";
+		};
+		ED61401A290AE4D0007EA988 /* Frame2 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Frame2;
 			sourceTree = "<group>";
 		};
 		ED69E03A28F84D9C00FDC142 /* iCarousel */ = {
@@ -953,6 +973,7 @@
 		EDC6DB2528CF6C1900164EBD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				ED45B21B290C2C87007E7D9F /* SelfieCameraOptions */,
 				ED42803D28FECDAB001DB45C /* SelfiePreview */,
 				EDC5E25028FBE91300F1B911 /* SelfieCamera */,
 				EDC5E24928FBE20500F1B911 /* ChooseMovie */,
@@ -1269,6 +1290,7 @@
 			isa = PBXGroup;
 			children = (
 				EDF07A702908344B00BADD91 /* Frame1 */,
+				ED61401A290AE4D0007EA988 /* Frame2 */,
 				EDF07A75290847B400BADD91 /* SelfieFrameProtocol.swift */,
 			);
 			path = SelfieFrames;
@@ -1447,6 +1469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED45B21F290C2CB6007E7D9F /* SelfieCameraOptionsViewController.xib in Resources */,
 				ED7A095528EC71370035E099 /* Roboto-Medium.ttf in Resources */,
 				ED7A095328EC71370035E099 /* Roboto-Bold.ttf in Resources */,
 				EDD9A19A28E0B93000FBA909 /* GenresViewController.xib in Resources */,
@@ -1694,6 +1717,7 @@
 				ED866E2028DED7AA0066E10B /* PersonDetailsViewModel.swift in Sources */,
 				EDE92B8D28E5EA3B0083F33A /* LoadingView.swift in Sources */,
 				ED69E05028F84D9C00FDC142 /* iCarouselDataSource.swift in Sources */,
+				ED45B21E290C2CB6007E7D9F /* SelfieCameraOptionsViewController.swift in Sources */,
 				EDC5E25428FBEAE500F1B911 /* SelfieCameraViewModel.swift in Sources */,
 				EDE69B5228D6BA58002726B0 /* PersonHorizontalListCell.swift in Sources */,
 				ED9EC19C28F723E800465623 /* ImageViewerController.swift in Sources */,

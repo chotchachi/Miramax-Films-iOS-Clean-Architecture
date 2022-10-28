@@ -32,9 +32,6 @@ class PersonListViewController: BaseViewController<PersonListViewModel>, Loading
     private var isAnimatingPresentation: Bool = false
     private var isFetching: Bool = false
     
-    private var isShowingSortPopup: Bool = false
-    private var sortPopupView: SortPopupView?
-    
     private let refreshTriggerS = PublishRelay<Void>()
     private let loadMoreTriggerS = PublishRelay<Void>()
     private let personSelectTriggerS = PublishRelay<PersonViewModel>()

@@ -47,7 +47,8 @@ target 'Miramax Fillms' do
   pod 'TagListView', '~> 1.0'
   pod 'DeviceKit', '~> 4.0'
   pod 'youtube-ios-player-helper', '~> 1.0.4'
-  
+  pod 'MaterialComponents/BottomSheet', '~> 124.2.0'
+
 end
 
 post_install do |installer|

@@ -13,6 +13,7 @@ import RxSwift
 import RxDataSources
 import AVFoundation
 import Kingfisher
+import MaterialComponents.MaterialBottomSheet
 import Domain
 
 enum CameraDevice {
@@ -48,7 +49,7 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnSwitchCamera: UIButton!
     @IBOutlet weak var btnFlash: UIButton!
-    @IBOutlet weak var btnMoreOption: UIButton!
+    @IBOutlet weak var btnOptions: UIButton!
     
     @IBOutlet weak var viewCameraControls: UIView!
     @IBOutlet weak var btnCapture: UIButton!
@@ -179,6 +180,13 @@ extension SelfieCameraViewController {
             })
             .disposed(by: rx.disposeBag)
         
+        btnOptions.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.presentOptionsBottomSheet()
+            })
+            .disposed(by: rx.disposeBag)
+        
         btnRetake.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -282,6 +290,13 @@ extension SelfieCameraViewController {
         captureImageView.isHidden = true
 
         setupCamera()
+    }
+    
+    private func presentOptionsBottomSheet() {
+        let optionsVC = SelfieCameraOptionsViewController()
+        let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: optionsVC)
+        bottomSheet.preferredContentSize = CGSize(width: view.width, height: view.height)
+        present(bottomSheet, animated: true)
     }
 }
 
