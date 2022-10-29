@@ -11,9 +11,7 @@ protocol SelfieFrameProtocol {
     var ivPoster: UIImageView! { get set }
     var lblDate: UILabel! { get set }
     var lblLocation: UILabel! { get set }
-    
-    var onPosterImageViewTapped: (()->Void)? { get set }
-    
+        
     func setPosterImage(_ image: UIImage)
     func setDateText(_ text: String?)
     func setLocationText(_ text: String?)

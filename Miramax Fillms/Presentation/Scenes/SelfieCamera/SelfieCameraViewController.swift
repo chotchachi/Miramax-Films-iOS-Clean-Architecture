@@ -39,12 +39,8 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     /// To hold capture image
     @IBOutlet weak var captureImageView: UIImageView!
 
-    /// To hold frame image
-//    @IBOutlet weak var frameImageView: UIImageView!
+    /// To hold selfie frame
     @IBOutlet weak var frameView: UIView!
-    
-    /// To hold movie poster image
-//    @IBOutlet weak var canvasImageView: UIImageView!
     
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnSwitchCamera: UIButton!

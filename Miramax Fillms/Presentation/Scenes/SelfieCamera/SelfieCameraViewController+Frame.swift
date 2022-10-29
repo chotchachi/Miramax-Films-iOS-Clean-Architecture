@@ -19,24 +19,32 @@ extension SelfieCameraViewController {
         frameView.removeSubviews()
 
         if let item = selfieFrame {
-//            KingfisherManager.shared.retrieveImage(with: item.frameURL) { [weak self] result in
-//                guard let self = self else { return }
-//                switch result {
-//                case .success(let value):
-//                    self.frameImageView.image = value.image
-//                    let size = value.image.suitableSize(heightLimit: self.viewMain.height, widthLimit: self.viewMain.width)
-//                    self.canvasViewWidthConstraint.constant = size.width
-//                    self.canvasViewHeightConstraint.constant = size.height
-//                    self.previewViewWidthConstraint.constant = size.width
-//                    self.previewViewHeightConstraint.constant = size.height
-//                case .failure(let error):
-//                    print(error)
-//                }
-//            }
-            let frame = Frame1()
+            KingfisherManager.shared.retrieveImage(with: item.frameURL) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let value):
+                    let size = value.image.suitableSize(heightLimit: self.viewMain.height, widthLimit: self.viewMain.width)
+                    self.canvasViewWidthConstraint.constant = size.width
+                    self.canvasViewHeightConstraint.constant = size.height
+                    self.previewViewWidthConstraint.constant = size.width
+                    self.previewViewHeightConstraint.constant = size.height
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            
+            var frame: SelfieFrameView!
+            
+            if item.name == "Frame 1" {
+                frame = Frame1()
+            } else if item.name == "Frame 2" {
+                frame = Frame2()
+            }
+            
             frame.onPosterImageViewTapped = { [weak self] in
                 self?.selectMovieImageTriggerS.accept(())
             }
+            
             frameView.addSubview(frame)
             frame.snp.makeConstraints { make in
                 make.top.equalToSuperview()
@@ -47,7 +55,6 @@ extension SelfieCameraViewController {
             
             setFrameDateText(with: Date())
         } else {
-//            frameImageView.image = nil
             setCanvasViewFullSize()
         }
     }

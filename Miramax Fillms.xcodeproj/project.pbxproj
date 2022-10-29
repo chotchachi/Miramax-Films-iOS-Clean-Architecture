@@ -41,6 +41,7 @@
 		ED45B21F290C2CB6007E7D9F /* SelfieCameraOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED45B21D290C2CB6007E7D9F /* SelfieCameraOptionsViewController.xib */; };
 		ED45B235290D1876007E7D9F /* Frame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45B233290D1876007E7D9F /* Frame2.swift */; };
 		ED45B236290D1876007E7D9F /* Frame2.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED45B234290D1876007E7D9F /* Frame2.xib */; };
+		ED45B238290D2B31007E7D9F /* SelfieFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45B237290D2B31007E7D9F /* SelfieFrameView.swift */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
 		ED69E04728F84D9C00FDC142 /* iCarousel+ViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */; };
 		ED69E04828F84D9C00FDC142 /* iCarousel+ViewManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */; };
@@ -278,6 +279,7 @@
 		ED45B21D290C2CB6007E7D9F /* SelfieCameraOptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieCameraOptionsViewController.xib; sourceTree = "<group>"; };
 		ED45B233290D1876007E7D9F /* Frame2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame2.swift; sourceTree = "<group>"; };
 		ED45B234290D1876007E7D9F /* Frame2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Frame2.xib; sourceTree = "<group>"; };
+		ED45B237290D2B31007E7D9F /* SelfieFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieFrameView.swift; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
 		ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewLayout.swift"; sourceTree = "<group>"; };
 		ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewManagement.swift"; sourceTree = "<group>"; };
@@ -1298,6 +1300,7 @@
 				EDF07A702908344B00BADD91 /* Frame1 */,
 				ED61401A290AE4D0007EA988 /* Frame2 */,
 				EDF07A75290847B400BADD91 /* SelfieFrameProtocol.swift */,
+				ED45B237290D2B31007E7D9F /* SelfieFrameView.swift */,
 			);
 			path = SelfieFrames;
 			sourceTree = "<group>";
@@ -1624,6 +1627,7 @@
 				EDE92B8F28E5EB3F0083F33A /* LoadingDisplayable.swift in Sources */,
 				EDC7232F2901B0D9009118C9 /* SelfieFrameThumbCollectionViewCell.swift in Sources */,
 				ED69E05128F84D9C00FDC142 /* iCarousel+ViewQueing.swift in Sources */,
+				ED45B238290D2B31007E7D9F /* SelfieFrameView.swift in Sources */,
 				EDE69B7D28D73214002726B0 /* TVShowViewController.swift in Sources */,
 				EDB8780728D8AABB0016B96B /* EntertainmentDetailsCoordinator.swift in Sources */,
 				EDA4478128D591410037751C /* SectionHeaderView.swift in Sources */,

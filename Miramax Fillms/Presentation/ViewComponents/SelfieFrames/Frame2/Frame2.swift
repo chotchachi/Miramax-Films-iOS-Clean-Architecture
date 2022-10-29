@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Frame2: UIView, SelfieFrameProtocol {
+class Frame2: SelfieFrameView, SelfieFrameProtocol {
     
     // MARK: - Views
     
@@ -18,10 +18,6 @@ class Frame2: UIView, SelfieFrameProtocol {
     
     @IBOutlet weak var ivPosterWrap: UIView!
     
-    // MARK: - Properties
-    
-    var onPosterImageViewTapped: (() -> Void)?
-
     // MARK: - Initializers
     
     override init(frame: CGRect) {
