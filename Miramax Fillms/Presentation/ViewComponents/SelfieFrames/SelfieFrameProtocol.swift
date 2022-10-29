@@ -15,8 +15,8 @@ protocol SelfieFrameProtocol {
     var onPosterImageViewTapped: (()->Void)? { get set }
     
     func setPosterImage(_ image: UIImage)
-    func setDateText(_ text: String)
-    func setLocationText(_ text: String)
+    func setDateText(_ text: String?)
+    func setLocationText(_ text: String?)
 }
 
 extension SelfieFrameProtocol {
@@ -24,11 +24,11 @@ extension SelfieFrameProtocol {
         ivPoster.image = image
     }
     
-    func setDateText(_ text: String) {
+    func setDateText(_ text: String?) {
         lblDate.text = text
     }
     
-    func setLocationText(_ text: String) {
+    func setLocationText(_ text: String?) {
         lblLocation.text = text
     }
 }

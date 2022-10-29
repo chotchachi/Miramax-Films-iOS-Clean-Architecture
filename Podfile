@@ -48,7 +48,8 @@ target 'Miramax Fillms' do
   pod 'DeviceKit', '~> 4.0'
   pod 'youtube-ios-player-helper', '~> 1.0.4'
   pod 'MaterialComponents/BottomSheet', '~> 124.2.0'
-
+  pod 'FSCalendar'
+  
 end
 
 post_install do |installer|

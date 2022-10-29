@@ -87,6 +87,9 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     private var currentSelfieFrame: SelfieFrame?
     private var tempSelectionSelfieFrame: SelfieFrame?
     
+    private var currentFormLocation: String?
+    private var currentFormDate: Date?
+    
     let selectMovieImageTriggerS = PublishRelay<Void>()
     let doneTriggerS = PublishRelay<(UIImage, SelfieFrame?)>()
     
@@ -294,6 +297,15 @@ extension SelfieCameraViewController {
     
     private func presentOptionsBottomSheet() {
         let optionsVC = SelfieCameraOptionsViewController()
+        optionsVC.selectedLocation = currentFormLocation
+        optionsVC.selectedDate = currentFormDate
+        optionsVC.onDoneAction = { [weak self] results in
+            guard let self = self else { return }
+            self.currentFormDate = results.date
+            self.setFrameDateText(with: results.date)
+            self.currentFormLocation = results.location
+            self.setFrameLocationText(with: results.location)
+        }
         let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: optionsVC)
         bottomSheet.preferredContentSize = CGSize(width: view.width, height: view.height)
         present(bottomSheet, animated: true)

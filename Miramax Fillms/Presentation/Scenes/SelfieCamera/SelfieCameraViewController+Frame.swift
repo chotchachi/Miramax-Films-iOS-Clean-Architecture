@@ -72,14 +72,14 @@ extension SelfieCameraViewController {
         }
     }
     
-    func setFrameDateText(with date: Date) {
+    func setFrameDateText(with date: Date?) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMMM, yyyy"
         guard let frame = self.frameView.subviews.first as? SelfieFrameProtocol else { return }
-        frame.setDateText(dateFormatter.string(from: date))
+        frame.setDateText(date != nil ? dateFormatter.string(from: date!) : nil)
     }
     
-    func setFrameLocationText(with location: String) {
+    func setFrameLocationText(with location: String?) {
         guard let frame = self.frameView.subviews.first as? SelfieFrameProtocol else { return }
         frame.setLocationText(location)
     }

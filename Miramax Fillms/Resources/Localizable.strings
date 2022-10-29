@@ -86,3 +86,7 @@
 "add_image_favorite_successfully" = "Add image favorite successfully!";
 "add_image_favorite_failed" = "Add image favorite failed. Please try again!";
 "add_image_favorite_already_exist" = "Image already add to favorite!";
+"movie_selfie" = "Movie Selfie";
+"enter_location" = "Enter Location";
+"select_date" = "Select Date";
+"done" = "Done";
