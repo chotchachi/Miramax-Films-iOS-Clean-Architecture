@@ -42,6 +42,9 @@
 		ED45B235290D1876007E7D9F /* Frame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45B233290D1876007E7D9F /* Frame2.swift */; };
 		ED45B236290D1876007E7D9F /* Frame2.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED45B234290D1876007E7D9F /* Frame2.xib */; };
 		ED45B238290D2B31007E7D9F /* SelfieFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45B237290D2B31007E7D9F /* SelfieFrameView.swift */; };
+		ED45B23C290D2C89007E7D9F /* Frame3.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45B23A290D2C89007E7D9F /* Frame3.swift */; };
+		ED45B23D290D2C89007E7D9F /* Frame3.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED45B23B290D2C89007E7D9F /* Frame3.xib */; };
+		ED45B23F290D7762007E7D9F /* Rrum-Raisin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED45B23E290D7762007E7D9F /* Rrum-Raisin-Regular.ttf */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
 		ED69E04728F84D9C00FDC142 /* iCarousel+ViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */; };
 		ED69E04828F84D9C00FDC142 /* iCarousel+ViewManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */; };
@@ -280,6 +283,9 @@
 		ED45B233290D1876007E7D9F /* Frame2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame2.swift; sourceTree = "<group>"; };
 		ED45B234290D1876007E7D9F /* Frame2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Frame2.xib; sourceTree = "<group>"; };
 		ED45B237290D2B31007E7D9F /* SelfieFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieFrameView.swift; sourceTree = "<group>"; };
+		ED45B23A290D2C89007E7D9F /* Frame3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame3.swift; sourceTree = "<group>"; };
+		ED45B23B290D2C89007E7D9F /* Frame3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Frame3.xib; sourceTree = "<group>"; };
+		ED45B23E290D7762007E7D9F /* Rrum-Raisin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rrum-Raisin-Regular.ttf"; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
 		ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewLayout.swift"; sourceTree = "<group>"; };
 		ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewManagement.swift"; sourceTree = "<group>"; };
@@ -566,6 +572,15 @@
 			path = SelfieCameraOptions;
 			sourceTree = "<group>";
 		};
+		ED45B239290D2C7B007E7D9F /* Frame3 */ = {
+			isa = PBXGroup;
+			children = (
+				ED45B23A290D2C89007E7D9F /* Frame3.swift */,
+				ED45B23B290D2C89007E7D9F /* Frame3.xib */,
+			);
+			path = Frame3;
+			sourceTree = "<group>";
+		};
 		ED5BA69E28EB19370030F4B0 /* EntertainmentRankTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +620,7 @@
 		ED7A094C28EC70D30035E099 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				ED45B23E290D7762007E7D9F /* Rrum-Raisin-Regular.ttf */,
 				EDF07A7C290ACB9800BADD91 /* Rochester-Regular.ttf */,
 				ED7A094D28EC711D0035E099 /* Roboto-Black.ttf */,
 				ED7A094F28EC711D0035E099 /* Roboto-Bold.ttf */,
@@ -1299,6 +1315,7 @@
 			children = (
 				EDF07A702908344B00BADD91 /* Frame1 */,
 				ED61401A290AE4D0007EA988 /* Frame2 */,
+				ED45B239290D2C7B007E7D9F /* Frame3 */,
 				EDF07A75290847B400BADD91 /* SelfieFrameProtocol.swift */,
 				ED45B237290D2B31007E7D9F /* SelfieFrameView.swift */,
 			);
@@ -1503,6 +1520,8 @@
 				EDE69B7E28D73214002726B0 /* TVShowViewController.xib in Resources */,
 				EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */,
 				EDD5302628DCBDA50078C6C5 /* SeasonDetailsViewController.xib in Resources */,
+				ED45B23F290D7762007E7D9F /* Rrum-Raisin-Regular.ttf in Resources */,
+				ED45B23D290D2C89007E7D9F /* Frame3.xib in Resources */,
 				ED7A095828EC71370035E099 /* Roboto-Thin.ttf in Resources */,
 				EDF07A7D290ACBD600BADD91 /* Rochester-Regular.ttf in Resources */,
 				EDD52F6728DAC9B70078C6C5 /* Localizable.strings in Resources */,
@@ -1707,6 +1726,7 @@
 				ED9EC0E028F32FE700465623 /* PMAlertController.swift in Sources */,
 				EDD9A19928E0B93000FBA909 /* GenresViewController.swift in Sources */,
 				EDE92B8528E5D7CC0083F33A /* ErrorRetryable.swift in Sources */,
+				ED45B23C290D2C89007E7D9F /* Frame3.swift in Sources */,
 				EDC502D528D38C2D0047C7C3 /* Rx+asDriver.swift in Sources */,
 				EDE69B8228D732A1002726B0 /* TVShowCoordinator.swift in Sources */,
 				EDFAD37928D22EEF00ED3BCD /* ErrorTracker.swift in Sources */,

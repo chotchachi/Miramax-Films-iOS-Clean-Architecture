@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Rrum-Raisin-Regular.ttf">
+            <string>RumRaisin-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Frame3" customModule="Miramax_Fillms" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="i5M-Pr-FkT" id="I8R-Ki-wm2"/>
+                <outlet property="ivPoster" destination="10B-qX-5Tx" id="EeS-N3-nbO"/>
+                <outlet property="lblDate" destination="Tht-Sh-bop" id="KJn-Nm-Fea"/>
+                <outlet property="lblLocation" destination="pr7-cV-WRx" id="b6P-5i-Y6E"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="488"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frame3" translatesAutoresizingMaskIntoConstraints="NO" id="qbm-LQ-elN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="488"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="10B-qX-5Tx">
+                    <rect key="frame" x="220" y="410" width="143.66666666666663" height="78"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="10B-qX-5Tx" secondAttribute="height" multiplier="138:75" id="bFC-iP-8l8"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04th June, 2022" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tht-Sh-bop">
+                    <rect key="frame" x="232.99999999999997" y="355.66666666666669" width="118.66666666666666" height="13"/>
+                    <fontDescription key="fontDescription" name="RumRaisin-Regular" family="Rum Raisin" pointSize="10"/>
+                    <color key="textColor" red="0.24313725490196078" green="0.023529411764705882" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spring Love Cinemas -1235 USA" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pr7-cV-WRx">
+                    <rect key="frame" x="232.99999999999997" y="372.66666666666669" width="118.66666666666666" height="13"/>
+                    <fontDescription key="fontDescription" name="RumRaisin-Regular" family="Rum Raisin" pointSize="10"/>
+                    <color key="textColor" red="0.24313725490196078" green="0.023529411764705882" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnA-3h-EMj">
+                    <rect key="frame" x="363.66666666666669" y="0.0" width="11.333333333333314" height="488"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psq-bJ-x4o">
+                    <rect key="frame" x="0.0" y="385.66666666666669" width="363.66666666666669" height="102.33333333333331"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mta-GL-UdN">
+                    <rect key="frame" x="0.0" y="0.0" width="233" height="410"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="qbm-LQ-elN" secondAttribute="bottom" id="1mZ-1g-aZI"/>
+                <constraint firstItem="psq-bJ-x4o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5Q0-2K-6ih"/>
+                <constraint firstAttribute="trailing" secondItem="tnA-3h-EMj" secondAttribute="trailing" id="CnF-Kq-lsL"/>
+                <constraint firstAttribute="bottom" secondItem="tnA-3h-EMj" secondAttribute="bottom" id="Cv3-4c-cMM"/>
+                <constraint firstItem="pr7-cV-WRx" firstAttribute="leading" secondItem="Mta-GL-UdN" secondAttribute="trailing" id="EhR-hm-XXy"/>
+                <constraint firstAttribute="trailing" secondItem="qbm-LQ-elN" secondAttribute="trailing" id="GUV-Mj-ASY"/>
+                <constraint firstItem="psq-bJ-x4o" firstAttribute="top" secondItem="pr7-cV-WRx" secondAttribute="bottom" id="IIN-To-HZK"/>
+                <constraint firstItem="Mta-GL-UdN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QRl-Sb-6jo"/>
+                <constraint firstItem="tnA-3h-EMj" firstAttribute="leading" secondItem="10B-qX-5Tx" secondAttribute="trailing" id="Rt7-MX-vZv"/>
+                <constraint firstItem="10B-qX-5Tx" firstAttribute="top" secondItem="Mta-GL-UdN" secondAttribute="bottom" id="Tt7-wx-mQg"/>
+                <constraint firstItem="qbm-LQ-elN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WMz-gA-QwB"/>
+                <constraint firstItem="tnA-3h-EMj" firstAttribute="leading" secondItem="psq-bJ-x4o" secondAttribute="trailing" id="Xk0-WG-cAj"/>
+                <constraint firstItem="Mta-GL-UdN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZBb-bb-Je8"/>
+                <constraint firstItem="psq-bJ-x4o" firstAttribute="height" secondItem="qbm-LQ-elN" secondAttribute="height" multiplier="0.21" id="ZKi-Ay-7MP"/>
+                <constraint firstItem="qbm-LQ-elN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bI1-wE-fIT"/>
+                <constraint firstItem="10B-qX-5Tx" firstAttribute="height" secondItem="qbm-LQ-elN" secondAttribute="height" multiplier="0.16" id="eJp-IN-7ra"/>
+                <constraint firstAttribute="bottom" secondItem="psq-bJ-x4o" secondAttribute="bottom" id="f2F-uf-74t"/>
+                <constraint firstItem="tnA-3h-EMj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gzu-Hq-na8"/>
+                <constraint firstItem="tnA-3h-EMj" firstAttribute="leading" secondItem="pr7-cV-WRx" secondAttribute="trailing" constant="12" id="hII-WP-dMo"/>
+                <constraint firstItem="Mta-GL-UdN" firstAttribute="width" secondItem="qbm-LQ-elN" secondAttribute="width" multiplier="0.621333" id="iz2-y1-ID6"/>
+                <constraint firstItem="pr7-cV-WRx" firstAttribute="top" secondItem="Tht-Sh-bop" secondAttribute="bottom" constant="4" id="kSI-7f-61T"/>
+                <constraint firstAttribute="bottom" secondItem="10B-qX-5Tx" secondAttribute="bottom" id="q2k-WQ-qzJ"/>
+                <constraint firstItem="tnA-3h-EMj" firstAttribute="leading" secondItem="Tht-Sh-bop" secondAttribute="trailing" constant="12" id="uXC-L9-gch"/>
+                <constraint firstItem="tnA-3h-EMj" firstAttribute="width" secondItem="qbm-LQ-elN" secondAttribute="width" multiplier="0.03" id="wS9-CL-GLe"/>
+                <constraint firstItem="Tht-Sh-bop" firstAttribute="leading" secondItem="Mta-GL-UdN" secondAttribute="trailing" id="zeg-99-eGv"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="153.07692307692307" y="-56.161137440758289"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="frame3" width="393" height="512"/>
+    </resources>
+</document>
