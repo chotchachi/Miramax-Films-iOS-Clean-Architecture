@@ -308,6 +308,7 @@ extension SelfieCameraViewController {
         }
         let bottomSheet: MDCBottomSheetController = MDCBottomSheetController(contentViewController: optionsVC)
         bottomSheet.preferredContentSize = CGSize(width: view.width, height: view.height)
+        bottomSheet.delegate = self
         present(bottomSheet, animated: true)
     }
 }
@@ -343,5 +344,15 @@ extension SelfieCameraViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return DimensionConstants.selfieFrameThumbCellSpacing
+    }
+}
+
+// MARK: - MDCBottomSheetControllerDelegate
+
+extension SelfieCameraViewController: MDCBottomSheetControllerDelegate {
+    func bottomSheetControllerStateChanged(_ controller: MDCBottomSheetController, state: MDCSheetState) {
+        if state == .closed {
+            controller.dismissKeyboard()
+        }
     }
 }
