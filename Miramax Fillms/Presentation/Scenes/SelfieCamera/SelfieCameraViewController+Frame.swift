@@ -15,8 +15,8 @@ import RxCocoa
 import Domain
 
 extension SelfieCameraViewController {
-    func setFrameImage(with selfieFrame: SelfieFrame?) {
-        frameView.removeSubviews()
+    func setFrame(with selfieFrame: SelfieFrame?, and movie: EntertainmentViewModel) {
+        frameView.removeSubviews() /// Remove current frame view
 
         if let item = selfieFrame {
             KingfisherManager.shared.retrieveImage(with: item.frameURL) { [weak self] result in
@@ -55,18 +55,17 @@ extension SelfieCameraViewController {
                 make.trailing.equalToSuperview()
             }
             
-            setFrameDateText(with: Date())
+            setFramePosterImage(with: movie)
+            setFrameDateText(with: currentFormDate ?? Date())
         } else {
-            setCanvasViewFullSize()
+            /// If selfie frame was nil
+            /// Set canvas view fill main view
+            canvasViewWidthConstraint.constant = viewMain.width
+            canvasViewHeightConstraint.constant = viewMain.height
         }
     }
     
-    private func setCanvasViewFullSize() {
-        self.canvasViewWidthConstraint.constant = viewMain.width
-        self.canvasViewHeightConstraint.constant = viewMain.height
-    }
-    
-    func setFramePosterImage(with item: EntertainmentViewModel) {
+    private func setFramePosterImage(with item: EntertainmentViewModel) {
         guard let posterURL = item.posterURL else { return }
         
         KingfisherManager.shared.retrieveImage(with: posterURL) { [weak self] result in

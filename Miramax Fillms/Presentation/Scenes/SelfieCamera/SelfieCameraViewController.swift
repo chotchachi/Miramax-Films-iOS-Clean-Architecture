@@ -81,12 +81,16 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     
     private var isViewAppear: Bool = false
     
-    private var currentSelfieFrame: SelfieFrame?
-    private var tempSelectionSelfieFrame: SelfieFrame?
+    /// Current frame elements
+    var currentSelfieFrame: SelfieFrame?
+    var currentMovie: EntertainmentViewModel!
+    var currentFormLocation: String?
+    var currentFormDate: Date?
     
-    private var currentFormLocation: String?
-    private var currentFormDate: Date?
-    
+    private var tempSelectionSelfieFrame: SelfieFrame? /// Using to hold selection selfie frame
+
+    /// Relay
+    let selecteSelfieFrameTriggerS = PublishRelay<SelfieFrame?>()
     let selectMovieImageTriggerS = PublishRelay<Void>()
     let doneTriggerS = PublishRelay<(UIImage, SelfieFrame?)>()
     
@@ -108,22 +112,17 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
         let input = SelfieCameraViewModel.Input(
             popViewTrigger: btnBack.rx.tap.asDriver(),
             selectMovieImageTrigger: selectMovieImageTriggerS.asDriverOnErrorJustComplete(),
+            selectSelfieFrameTrigger: selecteSelfieFrameTriggerS.asDriverOnErrorJustComplete(),
             doneTrigger: doneTriggerS.asDriverOnErrorJustComplete()
         )
         let output = viewModel.transform(input: input)
         
-        output.selfieFrame
-            .drive(onNext: { [weak self] item in
+        Driver.combineLatest(output.selfieFrame, output.movie)
+            .drive(onNext: { [weak self] (selfieFrame, movie) in
                 guard let self = self else { return }
-                self.currentSelfieFrame = item
-                self.setFrameImage(with: item)
-            })
-            .disposed(by: rx.disposeBag)
-        
-        output.movie
-            .drive(onNext: { [weak self] item in
-                guard let self = self else { return }
-                self.setFramePosterImage(with: item)
+                self.currentSelfieFrame = selfieFrame
+                self.currentMovie = movie
+                self.setFrame(with: selfieFrame, and: movie)
             })
             .disposed(by: rx.disposeBag)
         
@@ -198,8 +197,8 @@ extension SelfieCameraViewController {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.visibleViewFrameLayer(isVisible: false)
-                self.setFrameImage(with: self.currentSelfieFrame)
-                self.tempSelectionSelfieFrame = nil
+                self.tempSelectionSelfieFrame = nil /// Reset temp selfie frame
+                self.setFrame(with: self.currentSelfieFrame, and: self.currentMovie)
             })
             .disposed(by: rx.disposeBag)
         
@@ -207,7 +206,7 @@ extension SelfieCameraViewController {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.tempSelectionSelfieFrame = nil
-                self.setFrameImage(with: nil)
+                self.setFrame(with: nil, and: self.currentMovie)
             })
             .disposed(by: rx.disposeBag)
         
@@ -215,8 +214,8 @@ extension SelfieCameraViewController {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.visibleViewFrameLayer(isVisible: false)
-                self.currentSelfieFrame = self.tempSelectionSelfieFrame
-                self.setFrameImage(with: self.currentSelfieFrame)
+                self.selecteSelfieFrameTriggerS.accept(self.tempSelectionSelfieFrame)
+                self.tempSelectionSelfieFrame = nil /// Reset temp selfie frame
             })
             .disposed(by: rx.disposeBag)
         
@@ -245,7 +244,7 @@ extension SelfieCameraViewController {
             .subscribe(onNext: { [weak self] item in
                 guard let self = self else { return }
                 self.tempSelectionSelfieFrame = item
-                self.setFrameImage(with: item)
+                self.setFrame(with: item, and: self.currentMovie)
             })
             .disposed(by: rx.disposeBag)
     }

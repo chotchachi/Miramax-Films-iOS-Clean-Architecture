@@ -15,25 +15,26 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
     struct Input {
         let popViewTrigger: Driver<Void>
         let selectMovieImageTrigger: Driver<Void>
+        let selectSelfieFrameTrigger: Driver<SelfieFrame?>
         let doneTrigger: Driver<(UIImage, SelfieFrame?)>
     }
     
     struct Output {
-        let selfieFrame: Driver<SelfieFrame>
+        let selfieFrame: Driver<SelfieFrame?>
         let movie: Driver<EntertainmentViewModel>
         let selfieFrameData: Driver<[SelfieFrame]>
     }
     
     private let repositoryProvider: RepositoryProviderProtocol
     private let router: UnownedRouter<SelfieCameraRoute>
-    private let selfieFrame: SelfieFrame
     
+    private let selfieFrameS: BehaviorRelay<SelfieFrame?>
     private let movieS: BehaviorRelay<EntertainmentViewModel>
 
     init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<SelfieCameraRoute>, selfieFrame: SelfieFrame, movie: EntertainmentViewModel) {
         self.repositoryProvider = repositoryProvider
         self.router = router
-        self.selfieFrame = selfieFrame
+        self.selfieFrameS = BehaviorRelay(value: selfieFrame)
         self.movieS = BehaviorRelay(value: movie)
         super.init()
     }
@@ -43,7 +44,7 @@ class SelfieCameraViewModel: BaseViewModel, ViewModelType {
             .take(1)
         
         let selfieFrame = viewTrigger
-            .map { self.selfieFrame }
+            .flatMapLatest { self.selfieFrameS }
             .asDriverOnErrorJustComplete()
         
         let movieData = viewTrigger
