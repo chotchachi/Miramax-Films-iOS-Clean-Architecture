@@ -46,6 +46,7 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
     @IBOutlet weak var btnSwitchCamera: UIButton!
     @IBOutlet weak var btnFlash: UIButton!
     @IBOutlet weak var btnOptions: UIButton!
+    @IBOutlet weak var btnEditForm: UIButton!
     
     @IBOutlet weak var viewCameraControls: UIView!
     @IBOutlet weak var btnCapture: UIButton!
@@ -179,10 +180,10 @@ extension SelfieCameraViewController {
             })
             .disposed(by: rx.disposeBag)
         
-        btnOptions.rx.tap
+        btnEditForm.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.presentOptionsBottomSheet()
+                self.presentEditFormSheet()
             })
             .disposed(by: rx.disposeBag)
         
@@ -291,7 +292,7 @@ extension SelfieCameraViewController {
         setupCamera()
     }
     
-    private func presentOptionsBottomSheet() {
+    private func presentEditFormSheet() {
         let optionsVC = SelfieCameraOptionsViewController()
         optionsVC.selectedLocation = currentFormLocation
         optionsVC.selectedDate = currentFormDate
