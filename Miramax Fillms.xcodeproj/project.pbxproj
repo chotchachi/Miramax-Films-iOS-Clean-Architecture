@@ -39,6 +39,8 @@
 		ED42804528FECDDE001DB45C /* SelfiePreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED42804328FECDDE001DB45C /* SelfiePreviewViewController.xib */; };
 		ED45B21E290C2CB6007E7D9F /* SelfieCameraOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45B21C290C2CB6007E7D9F /* SelfieCameraOptionsViewController.swift */; };
 		ED45B21F290C2CB6007E7D9F /* SelfieCameraOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED45B21D290C2CB6007E7D9F /* SelfieCameraOptionsViewController.xib */; };
+		ED45B235290D1876007E7D9F /* Frame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45B233290D1876007E7D9F /* Frame2.swift */; };
+		ED45B236290D1876007E7D9F /* Frame2.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED45B234290D1876007E7D9F /* Frame2.xib */; };
 		ED5BA6A028EB19830030F4B0 /* EntertainmentRankTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */; };
 		ED69E04728F84D9C00FDC142 /* iCarousel+ViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */; };
 		ED69E04828F84D9C00FDC142 /* iCarousel+ViewManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */; };
@@ -274,6 +276,8 @@
 		ED42804328FECDDE001DB45C /* SelfiePreviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfiePreviewViewController.xib; sourceTree = "<group>"; };
 		ED45B21C290C2CB6007E7D9F /* SelfieCameraOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieCameraOptionsViewController.swift; sourceTree = "<group>"; };
 		ED45B21D290C2CB6007E7D9F /* SelfieCameraOptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieCameraOptionsViewController.xib; sourceTree = "<group>"; };
+		ED45B233290D1876007E7D9F /* Frame2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame2.swift; sourceTree = "<group>"; };
+		ED45B234290D1876007E7D9F /* Frame2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Frame2.xib; sourceTree = "<group>"; };
 		ED5BA69F28EB19830030F4B0 /* EntertainmentRankTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntertainmentRankTableViewCell.swift; sourceTree = "<group>"; };
 		ED69E03B28F84D9C00FDC142 /* iCarousel+ViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewLayout.swift"; sourceTree = "<group>"; };
 		ED69E03C28F84D9C00FDC142 /* iCarousel+ViewManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "iCarousel+ViewManagement.swift"; sourceTree = "<group>"; };
@@ -571,6 +575,8 @@
 		ED61401A290AE4D0007EA988 /* Frame2 */ = {
 			isa = PBXGroup;
 			children = (
+				ED45B233290D1876007E7D9F /* Frame2.swift */,
+				ED45B234290D1876007E7D9F /* Frame2.xib */,
 			);
 			path = Frame2;
 			sourceTree = "<group>";
@@ -1481,6 +1487,7 @@
 				ED866E4128E01C300066E10B /* PersonBiographyViewController.xib in Resources */,
 				ED13B6BE28F09303007B7A1D /* WishlistViewController.xib in Resources */,
 				ED7A095728EC71370035E099 /* Roboto-Light.ttf in Resources */,
+				ED45B236290D1876007E7D9F /* Frame2.xib in Resources */,
 				ED7A096128EC84D80035E099 /* EntertainmentListViewController.xib in Resources */,
 				EDB263F628F9B82B005C61B3 /* PersonListViewController.xib in Resources */,
 				EDE69B4328D62943002726B0 /* SearchViewController.xib in Resources */,
@@ -1601,6 +1608,7 @@
 				EDA4476C28D431DC0037751C /* AppFonts.swift in Sources */,
 				ED866E1D28DED76C0066E10B /* PersonDetailsViewController.swift in Sources */,
 				EDD5301C28DCB6D00078C6C5 /* GradientView.swift in Sources */,
+				ED45B235290D1876007E7D9F /* Frame2.swift in Sources */,
 				EDC5E25228FBEADF00F1B911 /* SelfieCameraCoordinator.swift in Sources */,
 				ED866E2228DED8030066E10B /* PersonDetailsCoordinator.swift in Sources */,
 				EDA4477E28D58D0E0037751C /* Resolver+resolveOrThrow.swift in Sources */,

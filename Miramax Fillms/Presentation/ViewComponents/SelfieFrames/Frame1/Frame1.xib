@@ -22,20 +22,20 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="441" height="557"/>
+            <rect key="frame" x="0.0" y="0.0" width="401" height="557"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frame1" translatesAutoresizingMaskIntoConstraints="NO" id="hV6-sI-Os7">
-                    <rect key="frame" x="0.0" y="0.0" width="441" height="557"/>
+                    <rect key="frame" x="0.0" y="0.0" width="401" height="557"/>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashscreen" translatesAutoresizingMaskIntoConstraints="NO" id="WYz-3f-hzj">
-                    <rect key="frame" x="274.33333333333331" y="337.33333333333331" width="122.66666666666669" height="183.66666666666669"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WYz-3f-hzj">
+                    <rect key="frame" x="234.33333333333334" y="337.33333333333331" width="122.66666666666666" height="183.66666666666669"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="WYz-3f-hzj" secondAttribute="height" multiplier="110:165" id="stl-sH-xVC"/>
                     </constraints>
                 </imageView>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minion" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7La-V7-YxQ" customClass="DesignableLabel" customModule="Miramax_Fillms" customModuleProvider="target">
-                    <rect key="frame" x="248.66666666666666" y="473.66666666666669" width="32.333333333333343" height="62.333333333333314"/>
+                    <rect key="frame" x="227.66666666666666" y="473.66666666666669" width="32.333333333333343" height="62.333333333333314"/>
                     <fontDescription key="fontDescription" name="Rochester-Regular" family="Rochester" pointSize="25"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -46,37 +46,42 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04th June, 2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NU8-3Q-g52">
-                    <rect key="frame" x="233.66666666666663" y="107.66666666666667" width="172" height="18.333333333333329"/>
+                    <rect key="frame" x="212.66666666666663" y="107.66666666666667" width="156.33333333333337" height="18.333333333333329"/>
                     <fontDescription key="fontDescription" name="Rochester-Regular" family="Rochester" pointSize="14"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spring Love Cinemas -1235 USA" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7M-c3-8Ii">
-                    <rect key="frame" x="233.66666666666663" y="130" width="172" height="18.333333333333343"/>
+                    <rect key="frame" x="212.66666666666663" y="130" width="156.33333333333337" height="36.333333333333343"/>
                     <fontDescription key="fontDescription" name="Rochester-Regular" family="Rochester" pointSize="14"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QaU-BA-8cx">
-                    <rect key="frame" x="0.0" y="0.0" width="441" height="107.66666666666667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="401" height="107.66666666666667"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UR2-It-E1w">
-                    <rect key="frame" x="0.0" y="107.66666666666666" width="233.66666666666666" height="449.33333333333337"/>
+                    <rect key="frame" x="0.0" y="107.66666666666666" width="212.66666666666666" height="449.33333333333337"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AvH-ew-Tlv">
-                    <rect key="frame" x="405.66666666666669" y="126" width="35.333333333333314" height="431"/>
+                    <rect key="frame" x="369" y="126" width="32" height="431"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJJ-k8-VOL">
+                    <rect key="frame" x="0.0" y="521" width="401" height="36"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="QaU-BA-8cx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="053-K5-10j"/>
-                <constraint firstAttribute="bottom" secondItem="WYz-3f-hzj" secondAttribute="bottom" constant="36" id="1Z0-xm-N5q"/>
+                <constraint firstAttribute="trailing" secondItem="tJJ-k8-VOL" secondAttribute="trailing" id="0E3-gH-zXn"/>
                 <constraint firstItem="NU8-3Q-g52" firstAttribute="leading" secondItem="UR2-It-E1w" secondAttribute="trailing" id="222-cH-WqD"/>
                 <constraint firstAttribute="bottom" secondItem="AvH-ew-Tlv" secondAttribute="bottom" id="4JM-L7-CPd"/>
                 <constraint firstItem="hV6-sI-Os7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4us-Ii-C7s"/>
+                <constraint firstAttribute="bottom" secondItem="tJJ-k8-VOL" secondAttribute="bottom" id="5kq-7h-IYC"/>
                 <constraint firstItem="AvH-ew-Tlv" firstAttribute="top" secondItem="NU8-3Q-g52" secondAttribute="bottom" id="75a-vC-KKb"/>
                 <constraint firstItem="7La-V7-YxQ" firstAttribute="leading" secondItem="UR2-It-E1w" secondAttribute="trailing" id="7vP-BA-egP"/>
                 <constraint firstAttribute="trailing" secondItem="AvH-ew-Tlv" secondAttribute="trailing" id="BQQ-3T-K27"/>
@@ -85,8 +90,10 @@
                 <constraint firstAttribute="bottom" secondItem="hV6-sI-Os7" secondAttribute="bottom" id="JkL-6u-ubo"/>
                 <constraint firstItem="hV6-sI-Os7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LXj-rS-nni"/>
                 <constraint firstItem="AvH-ew-Tlv" firstAttribute="leading" secondItem="NU8-3Q-g52" secondAttribute="trailing" id="NzM-Hy-JlF"/>
+                <constraint firstItem="tJJ-k8-VOL" firstAttribute="top" secondItem="WYz-3f-hzj" secondAttribute="bottom" id="OIm-r4-3db"/>
+                <constraint firstItem="AvH-ew-Tlv" firstAttribute="leading" secondItem="WYz-3f-hzj" secondAttribute="trailing" constant="12" id="OoV-Wx-DQJ"/>
                 <constraint firstItem="UR2-It-E1w" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="OrC-m1-Ult"/>
-                <constraint firstAttribute="trailing" secondItem="WYz-3f-hzj" secondAttribute="trailing" constant="44" id="XkB-TU-0AP"/>
+                <constraint firstItem="tJJ-k8-VOL" firstAttribute="height" secondItem="hV6-sI-Os7" secondAttribute="height" multiplier="0.064632" id="T1s-e3-4TC"/>
                 <constraint firstItem="7La-V7-YxQ" firstAttribute="bottom" secondItem="WYz-3f-hzj" secondAttribute="bottom" id="YRK-Xu-1AL"/>
                 <constraint firstItem="NU8-3Q-g52" firstAttribute="top" secondItem="QaU-BA-8cx" secondAttribute="bottom" id="ZLF-tv-RoW"/>
                 <constraint firstAttribute="trailing" secondItem="hV6-sI-Os7" secondAttribute="trailing" id="bHH-KK-JTb"/>
@@ -97,13 +104,14 @@
                 <constraint firstItem="AvH-ew-Tlv" firstAttribute="leading" secondItem="N7M-c3-8Ii" secondAttribute="trailing" id="rYQ-CK-Btq"/>
                 <constraint firstItem="QaU-BA-8cx" firstAttribute="height" secondItem="hV6-sI-Os7" secondAttribute="height" multiplier="0.193103" id="rvV-Ms-fqr"/>
                 <constraint firstItem="QaU-BA-8cx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="uxT-QY-hoA"/>
+                <constraint firstItem="tJJ-k8-VOL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zJt-SH-bJY"/>
                 <constraint firstItem="N7M-c3-8Ii" firstAttribute="top" secondItem="NU8-3Q-g52" secondAttribute="bottom" constant="4" id="zdl-l9-dsa"/>
                 <constraint firstItem="UR2-It-E1w" firstAttribute="width" secondItem="hV6-sI-Os7" secondAttribute="width" multiplier="0.53" id="zpR-g0-qRi"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="145.80152671755724" y="-109.50704225352113"/>
+            <point key="canvasLocation" x="115.26717557251908" y="-109.50704225352113"/>
         </view>
     </objects>
     <designables>
@@ -113,6 +121,5 @@
     </designables>
     <resources>
         <image name="frame1" width="512" height="666"/>
-        <image name="splashscreen" width="375" height="812"/>
     </resources>
 </document>
