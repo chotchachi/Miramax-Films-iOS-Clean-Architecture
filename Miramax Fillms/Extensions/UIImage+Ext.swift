@@ -15,7 +15,7 @@ extension UIImage {
     func suitableSize(heightLimit: CGFloat, widthLimit: CGFloat) -> CGSize {
         let imageRatio = self.size.height / self.size.width
         
-        var height = max(heightLimit, self.size.height)
+        var height = self.size.height >= heightLimit ? heightLimit : self.size.height
         
         var width = height / imageRatio
         
