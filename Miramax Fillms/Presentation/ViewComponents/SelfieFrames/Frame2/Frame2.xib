@@ -29,15 +29,15 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9R-Mf-u3R">
                     <rect key="frame" x="0.0" y="0.0" width="534" height="515"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Z5-kK-lms">
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Z5-kK-lms">
                             <rect key="frame" x="0.0" y="0.0" width="190.66666666666666" height="515"/>
                             <color key="backgroundColor" red="0.43529411764705883" green="0.36470588235294116" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-No-fMb">
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-No-fMb">
                             <rect key="frame" x="0.0" y="0.0" width="80" height="515"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="org-jY-RU9">
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="org-jY-RU9">
                             <rect key="frame" x="0.0" y="0.0" width="534" height="103"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -105,7 +105,7 @@
                                 <constraint firstItem="DS4-cJ-R9H" firstAttribute="top" secondItem="2ur-AN-CJ4" secondAttribute="bottom" id="s2F-j2-ggE"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJm-ar-HZw">
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LJm-ar-HZw">
                             <rect key="frame" x="0.0" y="401.66666666666669" width="534" height="113.33333333333331"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>

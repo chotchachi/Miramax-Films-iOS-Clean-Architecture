@@ -41,6 +41,10 @@ extension SelfieCameraViewController {
                 frame = Frame2()
             } else if item.name == "Frame 3" {
                 frame = Frame3()
+            } else if item.name == "Frame 5" {
+                frame = Frame5()
+            } else if item.name == "Frame 6" {
+                frame = Frame6()
             }
             
             frame.onPosterImageViewTapped = { [weak self] in

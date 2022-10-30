@@ -104,6 +104,12 @@
 		EDA4478528D59B300037751C /* SectionHeaderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478428D59B300037751C /* SectionHeaderViewDelegate.swift */; };
 		EDA4478D28D5A7640037751C /* AppToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478C28D5A7640037751C /* AppToolbar.swift */; };
 		EDA4478F28D5A7740037751C /* AppToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA4478E28D5A7740037751C /* AppToolbarDelegate.swift */; };
+		EDAD2081290EABE900D0C675 /* Frame5.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAD207F290EABE900D0C675 /* Frame5.swift */; };
+		EDAD2082290EABE900D0C675 /* Frame5.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDAD2080290EABE900D0C675 /* Frame5.xib */; };
+		EDAD2084290EAEA300D0C675 /* Pixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDAD2083290EAEA300D0C675 /* Pixel.ttf */; };
+		EDAD2088290EC9A500D0C675 /* Frame6.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAD2086290EC9A500D0C675 /* Frame6.swift */; };
+		EDAD2089290EC9A500D0C675 /* Frame6.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDAD2087290EC9A500D0C675 /* Frame6.xib */; };
+		EDAD208B290ECE3700D0C675 /* Saira-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDAD208A290ECE3700D0C675 /* Saira-Bold.ttf */; };
 		EDB263E628F8508E005C61B3 /* ItemCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263E528F8508E005C61B3 /* ItemCarouselView.swift */; };
 		EDB263E828F8681D005C61B3 /* GenreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263E728F8681D005C61B3 /* GenreTab.swift */; };
 		EDB263EB28F87E69005C61B3 /* PersonListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263EA28F87E69005C61B3 /* PersonListCoordinator.swift */; };
@@ -347,6 +353,12 @@
 		EDA4478428D59B300037751C /* SectionHeaderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderViewDelegate.swift; sourceTree = "<group>"; };
 		EDA4478C28D5A7640037751C /* AppToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToolbar.swift; sourceTree = "<group>"; };
 		EDA4478E28D5A7740037751C /* AppToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppToolbarDelegate.swift; sourceTree = "<group>"; };
+		EDAD207F290EABE900D0C675 /* Frame5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame5.swift; sourceTree = "<group>"; };
+		EDAD2080290EABE900D0C675 /* Frame5.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Frame5.xib; sourceTree = "<group>"; };
+		EDAD2083290EAEA300D0C675 /* Pixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pixel.ttf; sourceTree = "<group>"; };
+		EDAD2086290EC9A500D0C675 /* Frame6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame6.swift; sourceTree = "<group>"; };
+		EDAD2087290EC9A500D0C675 /* Frame6.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Frame6.xib; sourceTree = "<group>"; };
+		EDAD208A290ECE3700D0C675 /* Saira-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Saira-Bold.ttf"; sourceTree = "<group>"; };
 		EDB263E528F8508E005C61B3 /* ItemCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCarouselView.swift; sourceTree = "<group>"; };
 		EDB263E728F8681D005C61B3 /* GenreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTab.swift; sourceTree = "<group>"; };
 		EDB263EA28F87E69005C61B3 /* PersonListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListCoordinator.swift; sourceTree = "<group>"; };
@@ -620,6 +632,8 @@
 		ED7A094C28EC70D30035E099 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				EDAD208A290ECE3700D0C675 /* Saira-Bold.ttf */,
+				EDAD2083290EAEA300D0C675 /* Pixel.ttf */,
 				ED45B23E290D7762007E7D9F /* Rrum-Raisin-Regular.ttf */,
 				EDF07A7C290ACB9800BADD91 /* Rochester-Regular.ttf */,
 				ED7A094D28EC711D0035E099 /* Roboto-Black.ttf */,
@@ -808,6 +822,24 @@
 				EDA4478E28D5A7740037751C /* AppToolbarDelegate.swift */,
 			);
 			path = AppToolbar;
+			sourceTree = "<group>";
+		};
+		EDAD207A290EAA2700D0C675 /* Frame5 */ = {
+			isa = PBXGroup;
+			children = (
+				EDAD207F290EABE900D0C675 /* Frame5.swift */,
+				EDAD2080290EABE900D0C675 /* Frame5.xib */,
+			);
+			path = Frame5;
+			sourceTree = "<group>";
+		};
+		EDAD2085290EC99700D0C675 /* Frame6 */ = {
+			isa = PBXGroup;
+			children = (
+				EDAD2086290EC9A500D0C675 /* Frame6.swift */,
+				EDAD2087290EC9A500D0C675 /* Frame6.xib */,
+			);
+			path = Frame6;
 			sourceTree = "<group>";
 		};
 		EDB263E928F87E3B005C61B3 /* PersonList */ = {
@@ -1316,6 +1348,8 @@
 				EDF07A702908344B00BADD91 /* Frame1 */,
 				ED61401A290AE4D0007EA988 /* Frame2 */,
 				ED45B239290D2C7B007E7D9F /* Frame3 */,
+				EDAD207A290EAA2700D0C675 /* Frame5 */,
+				EDAD2085290EC99700D0C675 /* Frame6 */,
 				EDF07A75290847B400BADD91 /* SelfieFrameProtocol.swift */,
 				ED45B237290D2B31007E7D9F /* SelfieFrameView.swift */,
 			);
@@ -1504,7 +1538,9 @@
 				EDC6DB3728CF759400164EBD /* SplashViewController.xib in Resources */,
 				ED7A095628EC71370035E099 /* Roboto-Black.ttf in Resources */,
 				EDD5301428DC97650078C6C5 /* SeasonsViewController.xib in Resources */,
+				EDAD2082290EABE900D0C675 /* Frame5.xib in Resources */,
 				ED866E4128E01C300066E10B /* PersonBiographyViewController.xib in Resources */,
+				EDAD208B290ECE3700D0C675 /* Saira-Bold.ttf in Resources */,
 				ED13B6BE28F09303007B7A1D /* WishlistViewController.xib in Resources */,
 				ED7A095728EC71370035E099 /* Roboto-Light.ttf in Resources */,
 				ED45B236290D1876007E7D9F /* Frame2.xib in Resources */,
@@ -1518,6 +1554,7 @@
 				EDC5E25828FBEAED00F1B911 /* SelfieCameraViewController.xib in Resources */,
 				ED42804528FECDDE001DB45C /* SelfiePreviewViewController.xib in Resources */,
 				EDE69B7E28D73214002726B0 /* TVShowViewController.xib in Resources */,
+				EDAD2089290EC9A500D0C675 /* Frame6.xib in Resources */,
 				EDB8780328D8AA720016B96B /* EntertainmentDetailsViewController.xib in Resources */,
 				EDD5302628DCBDA50078C6C5 /* SeasonDetailsViewController.xib in Resources */,
 				ED45B23F290D7762007E7D9F /* Rrum-Raisin-Regular.ttf in Resources */,
@@ -1525,6 +1562,7 @@
 				ED7A095828EC71370035E099 /* Roboto-Thin.ttf in Resources */,
 				EDF07A7D290ACBD600BADD91 /* Rochester-Regular.ttf in Resources */,
 				EDD52F6728DAC9B70078C6C5 /* Localizable.strings in Resources */,
+				EDAD2084290EAEA300D0C675 /* Pixel.ttf in Resources */,
 				ED7A095428EC71370035E099 /* Roboto-Regular.ttf in Resources */,
 				ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */,
 				ED866E1E28DED76C0066E10B /* PersonDetailsViewController.xib in Resources */,
@@ -1707,6 +1745,8 @@
 				ED69E04E28F84D9C00FDC142 /* iCarousel+ViewLoading.swift in Sources */,
 				EDC6DB4028CF92DE00164EBD /* HomeCoordinator.swift in Sources */,
 				EDC5E24C28FBE25D00F1B911 /* ChooseMovieViewController.swift in Sources */,
+				EDAD2088290EC9A500D0C675 /* Frame6.swift in Sources */,
+				EDAD2081290EABE900D0C675 /* Frame5.swift in Sources */,
 				EDD52F7B28DB6D260078C6C5 /* SelfSizingTableView.swift in Sources */,
 				EDC6DB3928CF764500164EBD /* SplashViewModel.swift in Sources */,
 				EDD52F7E28DB6F0E0078C6C5 /* SeasonSmallTableViewCell.swift in Sources */,

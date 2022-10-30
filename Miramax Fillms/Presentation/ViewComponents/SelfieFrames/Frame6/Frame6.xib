@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+        <array key="Saira-Bold.ttf">
+            <string>Saira-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Frame6" customModule="Miramax_Fillms" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="i5M-Pr-FkT" id="zer-EZ-GXv"/>
+                <outlet property="ivPoster" destination="Vdm-b7-h9e" id="GNT-8K-zsX"/>
+                <outlet property="lblDate" destination="IVK-ik-65c" id="4vq-MV-5Vy"/>
+                <outlet property="lblLocation" destination="Nrb-av-9Yz" id="HG5-Hl-g50"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="488"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mw3-a8-cRy">
+                    <rect key="frame" x="360" y="0.0" width="15" height="488"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QiO-WV-C3U">
+                    <rect key="frame" x="0.0" y="0.0" width="30.666666666666668" height="488"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vdm-b7-h9e">
+                    <rect key="frame" x="30.666666666666657" y="290.33333333333331" width="329.33333333333337" height="197.66666666666669"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="frame6" translatesAutoresizingMaskIntoConstraints="NO" id="H2g-JM-UnP">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="488"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spring Love Cinemas -1235 USA" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nrb-av-9Yz">
+                    <rect key="frame" x="94.666666666666671" y="426.33333333333331" width="185.66666666666663" height="15.333333333333314"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04th June, 2022" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVK-ik-65c">
+                    <rect key="frame" x="56.333333333333336" y="330.66666666666669" width="100.66666666666666" height="20.666666666666686"/>
+                    <fontDescription key="fontDescription" name="Saira-Bold" family="Saira" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISe-f7-lMi">
+                    <rect key="frame" x="0.0" y="441.66666666666669" width="375" height="46.333333333333314"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNc-eT-9s2">
+                    <rect key="frame" x="0.0" y="0.0" width="56.333333333333336" height="488"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rpn-p7-J5e">
+                    <rect key="frame" x="0.0" y="351.33333333333331" width="375" height="136.66666666666669"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="ISe-f7-lMi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3HT-K0-RvR"/>
+                <constraint firstItem="Vdm-b7-h9e" firstAttribute="leading" secondItem="QiO-WV-C3U" secondAttribute="trailing" id="4Pb-LP-crf"/>
+                <constraint firstItem="ISe-f7-lMi" firstAttribute="height" secondItem="H2g-JM-UnP" secondAttribute="height" multiplier="0.095" id="6Rb-0Y-MVz"/>
+                <constraint firstItem="H2g-JM-UnP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8fz-pn-nkD"/>
+                <constraint firstItem="rpn-p7-J5e" firstAttribute="height" secondItem="H2g-JM-UnP" secondAttribute="height" multiplier="0.28" id="9i3-Tu-DQj"/>
+                <constraint firstAttribute="bottom" secondItem="rpn-p7-J5e" secondAttribute="bottom" id="CiW-sN-en0"/>
+                <constraint firstItem="rpn-p7-J5e" firstAttribute="top" secondItem="IVK-ik-65c" secondAttribute="bottom" id="CvT-jW-nhH"/>
+                <constraint firstItem="mw3-a8-cRy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="FRU-na-J4O"/>
+                <constraint firstAttribute="bottom" secondItem="Vdm-b7-h9e" secondAttribute="bottom" id="Jgk-yC-Y8P"/>
+                <constraint firstAttribute="bottom" secondItem="QiO-WV-C3U" secondAttribute="bottom" id="LKS-jq-OM8"/>
+                <constraint firstAttribute="trailing" secondItem="H2g-JM-UnP" secondAttribute="trailing" id="LhT-ed-Avo"/>
+                <constraint firstItem="ISe-f7-lMi" firstAttribute="top" secondItem="Nrb-av-9Yz" secondAttribute="bottom" id="PcX-v4-1bQ"/>
+                <constraint firstItem="QiO-WV-C3U" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Qib-vM-bFj"/>
+                <constraint firstAttribute="trailing" secondItem="rpn-p7-J5e" secondAttribute="trailing" id="Swn-IC-ewa"/>
+                <constraint firstItem="rpn-p7-J5e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bVO-iI-gNf"/>
+                <constraint firstItem="Vdm-b7-h9e" firstAttribute="width" secondItem="Vdm-b7-h9e" secondAttribute="height" multiplier="2:1.2" id="ba2-D0-xyY"/>
+                <constraint firstAttribute="bottom" secondItem="GNc-eT-9s2" secondAttribute="bottom" id="csY-eS-D0t"/>
+                <constraint firstItem="IVK-ik-65c" firstAttribute="leading" secondItem="GNc-eT-9s2" secondAttribute="trailing" id="fUr-6T-0eg"/>
+                <constraint firstItem="QiO-WV-C3U" firstAttribute="width" secondItem="H2g-JM-UnP" secondAttribute="width" multiplier="0.082" id="h0G-CH-wVb"/>
+                <constraint firstAttribute="trailing" secondItem="ISe-f7-lMi" secondAttribute="trailing" id="h7k-Mz-6St"/>
+                <constraint firstItem="GNc-eT-9s2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="j6F-hw-Az9"/>
+                <constraint firstAttribute="trailing" secondItem="mw3-a8-cRy" secondAttribute="trailing" id="jUs-DT-fC6"/>
+                <constraint firstItem="GNc-eT-9s2" firstAttribute="width" secondItem="H2g-JM-UnP" secondAttribute="width" multiplier="0.15" id="jgR-PA-MaX"/>
+                <constraint firstAttribute="bottom" secondItem="ISe-f7-lMi" secondAttribute="bottom" id="jp2-Rc-tWK"/>
+                <constraint firstItem="GNc-eT-9s2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lpR-XA-oZl"/>
+                <constraint firstItem="H2g-JM-UnP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mhd-O6-i2Z"/>
+                <constraint firstItem="Nrb-av-9Yz" firstAttribute="centerX" secondItem="H2g-JM-UnP" secondAttribute="centerX" id="oaE-Wz-jUO"/>
+                <constraint firstItem="mw3-a8-cRy" firstAttribute="width" secondItem="H2g-JM-UnP" secondAttribute="width" multiplier="0.04" id="psJ-rh-Aoy"/>
+                <constraint firstAttribute="bottom" secondItem="H2g-JM-UnP" secondAttribute="bottom" id="qxD-8H-XTs"/>
+                <constraint firstItem="QiO-WV-C3U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="te2-fR-DN5"/>
+                <constraint firstItem="mw3-a8-cRy" firstAttribute="leading" secondItem="Vdm-b7-h9e" secondAttribute="trailing" id="uLf-dd-JXM"/>
+                <constraint firstAttribute="bottom" secondItem="mw3-a8-cRy" secondAttribute="bottom" id="yzY-fH-kbO"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="137.69230769230768" y="20.616113744075829"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="frame6" width="512" height="665"/>
+    </resources>
+</document>
