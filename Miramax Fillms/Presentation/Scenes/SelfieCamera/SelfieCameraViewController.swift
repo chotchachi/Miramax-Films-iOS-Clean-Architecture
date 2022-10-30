@@ -271,6 +271,7 @@ extension SelfieCameraViewController {
         viewDoneCapture.isHidden = false
         btnFlash.isHidden = true
         btnSwitchCamera.isHidden = true
+        btnEditForm.isHidden = true
         
         captureImageView.isHidden = false
         
@@ -281,6 +282,7 @@ extension SelfieCameraViewController {
         viewCameraControls.isHidden = false
         btnFlash.isHidden = false
         btnSwitchCamera.isHidden = false
+        btnEditForm.isHidden = false
         
         viewFrameLayer.isHidden = true
         viewDoneCapture.isHidden = true
