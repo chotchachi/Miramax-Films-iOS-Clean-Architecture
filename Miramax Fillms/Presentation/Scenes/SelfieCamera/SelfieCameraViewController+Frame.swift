@@ -70,13 +70,13 @@ extension SelfieCameraViewController {
     }
     
     private func setFramePosterImage(with item: EntertainmentViewModel) {
-        guard let posterURL = item.posterURL else { return }
+        guard let frame = self.frameView.subviews.first as? SelfieFrameProtocol, let posterURL = item.posterURL else { return }
         
-        KingfisherManager.shared.retrieveImage(with: posterURL) { [weak self] result in
-            guard let self = self else { return }
+        frame.setMovieNameText(item.name)
+        
+        KingfisherManager.shared.retrieveImage(with: posterURL) { result in
             switch result {
             case .success(let value):
-                guard let frame = self.frameView.subviews.first as? SelfieFrameProtocol else { return }
                 frame.setPosterImage(value.image)
             case .failure:
                 break

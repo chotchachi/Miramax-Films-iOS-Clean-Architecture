@@ -12,6 +12,9 @@ class Frame2: SelfieFrameView, SelfieFrameProtocol {
     // MARK: - Views
     
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var lblMovieName: UILabel!
+    @IBOutlet weak var lblMovieNameShadow1: UILabel!
+    @IBOutlet weak var lblMovieNameShadow2: UILabel!
     @IBOutlet weak var ivPoster: UIImageView!
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblLocation: UILabel!
@@ -46,5 +49,11 @@ class Frame2: SelfieFrameView, SelfieFrameProtocol {
     
     @objc private func posterImageViewTapped(_ sender: UITapGestureRecognizer) {
         onPosterImageViewTapped?()
+    }
+    
+    func setMovieNameText(_ text: String) {
+        [lblMovieName, lblMovieNameShadow1, lblMovieNameShadow2].forEach { label in
+            label?.text = text
+        }
     }
 }

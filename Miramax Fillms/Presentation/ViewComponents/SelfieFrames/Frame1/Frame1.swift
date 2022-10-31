@@ -12,6 +12,7 @@ class Frame1: SelfieFrameView, SelfieFrameProtocol {
     // MARK: - Views
     
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var lblMovieName: UILabel!
     @IBOutlet weak var ivPoster: UIImageView!
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblLocation: UILabel!

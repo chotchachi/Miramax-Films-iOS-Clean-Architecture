@@ -110,6 +110,7 @@
 		EDAD2088290EC9A500D0C675 /* Frame6.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAD2086290EC9A500D0C675 /* Frame6.swift */; };
 		EDAD2089290EC9A500D0C675 /* Frame6.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDAD2087290EC9A500D0C675 /* Frame6.xib */; };
 		EDAD208B290ECE3700D0C675 /* Saira-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDAD208A290ECE3700D0C675 /* Saira-Bold.ttf */; };
+		EDB16D8E291016B2006969EF /* Baloo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDB16D8D291016B2006969EF /* Baloo-Regular.ttf */; };
 		EDB263E628F8508E005C61B3 /* ItemCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263E528F8508E005C61B3 /* ItemCarouselView.swift */; };
 		EDB263E828F8681D005C61B3 /* GenreTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263E728F8681D005C61B3 /* GenreTab.swift */; };
 		EDB263EB28F87E69005C61B3 /* PersonListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB263EA28F87E69005C61B3 /* PersonListCoordinator.swift */; };
@@ -359,6 +360,7 @@
 		EDAD2086290EC9A500D0C675 /* Frame6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame6.swift; sourceTree = "<group>"; };
 		EDAD2087290EC9A500D0C675 /* Frame6.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Frame6.xib; sourceTree = "<group>"; };
 		EDAD208A290ECE3700D0C675 /* Saira-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Saira-Bold.ttf"; sourceTree = "<group>"; };
+		EDB16D8D291016B2006969EF /* Baloo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo-Regular.ttf"; sourceTree = "<group>"; };
 		EDB263E528F8508E005C61B3 /* ItemCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCarouselView.swift; sourceTree = "<group>"; };
 		EDB263E728F8681D005C61B3 /* GenreTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTab.swift; sourceTree = "<group>"; };
 		EDB263EA28F87E69005C61B3 /* PersonListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListCoordinator.swift; sourceTree = "<group>"; };
@@ -632,6 +634,7 @@
 		ED7A094C28EC70D30035E099 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				EDB16D8D291016B2006969EF /* Baloo-Regular.ttf */,
 				EDAD208A290ECE3700D0C675 /* Saira-Bold.ttf */,
 				EDAD2083290EAEA300D0C675 /* Pixel.ttf */,
 				ED45B23E290D7762007E7D9F /* Rrum-Raisin-Regular.ttf */,
@@ -1562,6 +1565,7 @@
 				ED7A095828EC71370035E099 /* Roboto-Thin.ttf in Resources */,
 				EDF07A7D290ACBD600BADD91 /* Rochester-Regular.ttf in Resources */,
 				EDD52F6728DAC9B70078C6C5 /* Localizable.strings in Resources */,
+				EDB16D8E291016B2006969EF /* Baloo-Regular.ttf in Resources */,
 				EDAD2084290EAEA300D0C675 /* Pixel.ttf in Resources */,
 				ED7A095428EC71370035E099 /* Roboto-Regular.ttf in Resources */,
 				ED86E62B28C6369B00D60351 /* Assets.xcassets in Resources */,
