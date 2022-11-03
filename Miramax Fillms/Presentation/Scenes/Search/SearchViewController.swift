@@ -199,9 +199,9 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         let item = searchViewDataItems[indexPath.row]
         switch item {
         case .actor:
-            itemHeight = 150.0
+            itemHeight = DimensionConstants.personHorizontalCollectionViewHeightConstraint
         default:
-            itemHeight = 200.0
+            itemHeight = DimensionConstants.entertainmentHorizontalCollectionViewHeightConstraint
         }
         let itemWidth = collectionView.frame.width
         return .init(width: itemWidth, height: itemHeight)
