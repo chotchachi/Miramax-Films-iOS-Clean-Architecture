@@ -51,12 +51,13 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     @IBOutlet weak var sectionSeasonsView: UIView!
     @IBOutlet weak var seasonsSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var seasonsTableView: SelfSizingTableView!
-    @IBOutlet weak var seasonsTableViewHc: NSLayoutConstraint!
+    @IBOutlet weak var seasonsTableViewHeightConstraint: NSLayoutConstraint!
     
     /// Section credits
     @IBOutlet weak var sectionCreditsView: UIView!
     @IBOutlet weak var actorsSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var actorsCollectionView: UICollectionView!
+    @IBOutlet weak var actorsCollectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblDirector: UILabel!
     @IBOutlet weak var lblWriters: UILabel!
     
@@ -72,7 +73,8 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     @IBOutlet weak var sectionRecommendView: UIView!
     @IBOutlet weak var recommendSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var recommendCollectionView: UICollectionView!
-    
+    @IBOutlet weak var recommendCollectionViewHeightConstraint: NSLayoutConstraint!
+
     var btnSearch: SearchButton = SearchButton()
     var btnShare: ShareButton = ShareButton()
     var loaderView: LoadingView = LoadingView()
@@ -153,7 +155,7 @@ class EntertainmentDetailsViewController: BaseViewController<EntertainmentDetail
     override func viewWillLayoutSubviews() {
         super.updateViewConstraints()
         
-        seasonsTableViewHc.constant = seasonsTableView.intrinsicContentSize.height
+        seasonsTableViewHeightConstraint.constant = seasonsTableView.intrinsicContentSize.height
     }
 }
 
@@ -270,6 +272,8 @@ extension EntertainmentDetailsViewController {
             .bind(to: castSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
+        actorsCollectionViewHeightConstraint.constant = DimensionConstants.personHorizontalCollectionViewHeightConstraint
+        
         let actorDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, PersonViewModel>> { dataSource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalCell.self, for: indexPath)
             cell.bind(item)
@@ -311,6 +315,8 @@ extension EntertainmentDetailsViewController {
         recommendCollectionView.rx.modelSelected(EntertainmentViewModel.self)
             .bind(to: entertainmentSelectTriggerS)
             .disposed(by: rx.disposeBag)
+        
+        recommendCollectionViewHeightConstraint.constant = DimensionConstants.entertainmentHorizontalCollectionViewHeightConstraint
         
         let recommendDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)

@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EntertainmentDetailsViewController" customModule="Miramax_Fillms" customModuleProvider="target">
             <connections>
                 <outlet property="actorsCollectionView" destination="qWn-yn-d4z" id="Xa2-L5-zC0"/>
+                <outlet property="actorsCollectionViewHeightConstraint" destination="qOb-y0-tXl" id="1gs-51-8MV"/>
                 <outlet property="actorsSectionHeaderView" destination="aCn-cF-N4o" id="2b5-0u-0Db"/>
                 <outlet property="appToolbar" destination="twN-0J-lwG" id="PRk-5G-clh"/>
                 <outlet property="btnBookmark" destination="QuS-6K-4Ki" id="bBS-Fx-9mq"/>
@@ -35,11 +36,12 @@
                 <outlet property="overviewSectionHeaderView" destination="wju-qU-NfZ" id="6Cu-i9-2HZ"/>
                 <outlet property="posterGradientView" destination="ITU-C8-j63" id="Cze-ig-I4I"/>
                 <outlet property="recommendCollectionView" destination="dx8-3D-4Ze" id="4m1-ro-1tk"/>
+                <outlet property="recommendCollectionViewHeightConstraint" destination="vId-ah-PrS" id="f6c-yk-oLE"/>
                 <outlet property="recommendSectionHeaderView" destination="pRO-VA-K0B" id="ywc-6Q-H0g"/>
                 <outlet property="scrollView" destination="KFI-Sc-xE0" id="71N-PP-8PH"/>
                 <outlet property="seasonsSectionHeaderView" destination="uCL-Bl-SIt" id="UsX-fo-8AC"/>
                 <outlet property="seasonsTableView" destination="kkj-A7-N8i" id="MKs-qo-qeP"/>
-                <outlet property="seasonsTableViewHc" destination="Iax-gq-Y8j" id="bT2-g5-YEj"/>
+                <outlet property="seasonsTableViewHeightConstraint" destination="Iax-gq-Y8j" id="bT2-g5-YEj"/>
                 <outlet property="sectionCreditsView" destination="lnC-om-0Tr" id="Cyo-bD-8hW"/>
                 <outlet property="sectionGalleryView" destination="VOg-ps-3jd" id="myU-DO-XKz"/>
                 <outlet property="sectionHeaderView" destination="cco-bo-EMk" id="ihQ-zy-nJb"/>
