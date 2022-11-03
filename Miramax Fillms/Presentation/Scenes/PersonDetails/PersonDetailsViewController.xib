@@ -26,6 +26,7 @@
                 <outlet property="lblBirthday" destination="fL0-cd-LgF" id="JFh-t8-P9r"/>
                 <outlet property="lblTitle" destination="zYs-by-e51" id="Igv-kI-Yf6"/>
                 <outlet property="moviesCollectionView" destination="D1P-rj-ro0" id="shW-il-jI9"/>
+                <outlet property="moviesCollectionViewHeightConstraint" destination="4z8-ZT-Vya" id="MOg-pZ-xK7"/>
                 <outlet property="moviesSectionHeaderView" destination="ddU-eE-LLR" id="Pk3-el-Nrl"/>
                 <outlet property="scrollView" destination="coh-lq-TpG" id="9pZ-AO-whI"/>
                 <outlet property="sectionBackdropView" destination="KOv-bP-THe" id="KLE-rd-Tie"/>

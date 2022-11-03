@@ -49,7 +49,8 @@ class PersonDetailsViewController: BaseViewController<PersonDetailsViewModel>, L
     @IBOutlet weak var sectionMoviesView: UIView!
     @IBOutlet weak var moviesSectionHeaderView: SectionHeaderView!
     @IBOutlet weak var moviesCollectionView: UICollectionView!
-    
+    @IBOutlet weak var moviesCollectionViewHeightConstraint: NSLayoutConstraint!
+
     var btnSearch: SearchButton = SearchButton()
     var btnShare: ShareButton = ShareButton()
     var loaderView: LoadingView = LoadingView()
@@ -153,6 +154,8 @@ extension PersonDetailsViewController {
         moviesCollectionView.rx.modelSelected(EntertainmentViewModel.self)
             .bind(to: entertainmentSelectTriggerS)
             .disposed(by: rx.disposeBag)
+        
+        moviesCollectionViewHeightConstraint.constant = DimensionConstants.entertainmentHorizontalCollectionViewHeightConstraint
         
         let movieDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
