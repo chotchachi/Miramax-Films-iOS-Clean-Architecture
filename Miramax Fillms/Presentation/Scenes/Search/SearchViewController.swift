@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 import SwifterSwift
+import DeviceKit
 import Domain
 
 class SearchViewController: BaseViewController<SearchViewModel>, LoadingDisplayable {
@@ -199,9 +200,9 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         let item = searchViewDataItems[indexPath.row]
         switch item {
         case .actor:
-            itemHeight = DimensionConstants.personHorizontalCollectionViewHeightConstraint
+            itemHeight = Device.current.isPad ? 300.0 : 150.0
         default:
-            itemHeight = DimensionConstants.entertainmentHorizontalCollectionViewHeightConstraint
+            itemHeight = Device.current.isPad ? 400.0 : 200.0
         }
         let itemWidth = collectionView.frame.width
         return .init(width: itemWidth, height: itemHeight)

@@ -44,7 +44,7 @@ struct DimensionConstants {
     }
     
     static var personHorizontalCollectionViewHeightConstraint: CGFloat {
-        return Device.current.isPad ? 300.0 : 150.0
+        return Device.current.isPad ? 210.0 : 105.0
     }
     
     static var selfieFrameThumbCellRatio: CGFloat = 0.78
