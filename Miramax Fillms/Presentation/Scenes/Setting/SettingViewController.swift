@@ -9,6 +9,8 @@ import UIKit
 import RxCocoa
 import RxSwift
 import SwifterSwift
+import MessageUI
+import SafariServices
 
 class SettingViewController: BaseViewController<SettingViewModel>, TabBarSelectable, Searchable {
 
@@ -44,7 +46,7 @@ class SettingViewController: BaseViewController<SettingViewModel>, TabBarSelecta
         let input = SettingViewModel.Input(
             toSearchTrigger: btnSearch.rx.tap.asDriver()
         )
-        let output = viewModel.transform(input: input)
+        let _ = viewModel.transform(input: input)
     }
 }
 
@@ -85,11 +87,66 @@ extension SettingViewController {
     @objc private func actionViewTapped(_ sender: UITapGestureRecognizer) {
         guard let view = sender.view else { return }
         if view == viewPolicy {
-            print("policy")
+            let safariVC = SFSafariViewController(url: URL(string: Constants.privacyLink)!)
+            present(safariVC, animated: true, completion: nil)
         } else if view == viewFeedback {
-            print("feedback")
+            sendEmail()
         } else if view == viewShareApp {
-            print("share")
+            shareApp()
+        }
+    }
+    
+    private func sendEmail() {
+        let appName = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String
+        let subject = appName ?? "FeedBack"
+        let body = ""
+        
+        // Show default mail composer
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients([Constants.emailFeedback])
+            mail.setSubject(subject)
+            mail.setMessageBody(body, isHTML: false)
+            
+            present(mail, animated: true)
+            
+            // Show third party email composer if default Mail app is not present
+        } else if let emailUrl = createEmailUrl(to: Constants.emailFeedback, subject: subject, body: body) {
+            UIApplication.shared.open(emailUrl)
+        }
+    }
+    
+    private func createEmailUrl(to: String, subject: String, body: String) -> URL? {
+        let subjectEncoded = subject.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let bodyEncoded = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        
+        let gmailUrl = URL(string: "googlegmail://co?to=\(to)&subject=\(subjectEncoded)&body=\(bodyEncoded)")
+        let outlookUrl = URL(string: "ms-outlook://compose?to=\(to)&subject=\(subjectEncoded)")
+        let defaultUrl = URL(string: "mailto:\(to)?subject=\(subjectEncoded)&body=\(bodyEncoded)")
+        
+        if let gmailUrl = gmailUrl, UIApplication.shared.canOpenURL(gmailUrl) {
+            return gmailUrl
+        } else if let outlookUrl = outlookUrl, UIApplication.shared.canOpenURL(outlookUrl) {
+            return outlookUrl
+        }
+        
+        return defaultUrl
+    }
+    
+    private func shareApp() {
+        if let urlStr = NSURL(string: "https://apps.apple.com/app/id\(Constants.appId)") {
+            let objectsToShare = [urlStr]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+
+            if UI_USER_INTERFACE_IDIOM() == .pad {
+                if let popup = activityVC.popoverPresentationController {
+                    popup.sourceView = self.view
+                    popup.sourceRect = CGRect(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4, width: 0, height: 0)
+                }
+            }
+
+            self.present(activityVC, animated: true, completion: nil)
         }
     }
 }
@@ -99,5 +156,13 @@ extension SettingViewController {
 extension SettingViewController {
     func handleTabBarSelection() {
         
+    }
+}
+
+// MARK: - MFMailComposeViewControllerDelegate
+
+extension SettingViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }
