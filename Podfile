@@ -1,5 +1,8 @@
 platform :ios, '11.2'
 
+# ignore all warnings from all pods
+inhibit_all_warnings!
+
 workspace 'Miramax Fillms.xcworkspace'
 project 'Miramax Fillms.xcodeproj'
 
