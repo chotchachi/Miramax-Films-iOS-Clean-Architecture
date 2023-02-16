@@ -26,7 +26,7 @@ class EpisodeTableViewCell: UITableViewCell {
     
     private var lblOverviewShowMore = false
     
-    var onLayoutChangeNeeded: (() -> ())?
+    var onLayoutChangeNeeded: (() -> Void)?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

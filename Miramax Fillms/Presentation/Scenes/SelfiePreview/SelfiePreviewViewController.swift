@@ -78,7 +78,7 @@ class SelfiePreviewViewController: BaseViewController<SelfiePreviewViewModel> {
     @objc private func buttonShareTapped(_ sender: UITapGestureRecognizer) {
         guard let image = currentImage else { return }
         var activityItems = [
-            "share_image".localized,
+            "share_image".localized
         ] as [Any]
         activityItems.append(contentsOf: [image])
         let ac = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)

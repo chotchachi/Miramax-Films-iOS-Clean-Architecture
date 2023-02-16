@@ -8,5 +8,5 @@
 import UIKit
 
 class SelfieFrameView: UIView {
-    var onPosterImageViewTapped: (()->Void)?
+    var onPosterImageViewTapped: (() -> Void)?
 }

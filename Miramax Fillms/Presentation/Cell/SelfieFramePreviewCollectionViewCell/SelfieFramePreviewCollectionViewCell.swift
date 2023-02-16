@@ -19,7 +19,7 @@ class SelfieFramePreviewCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var onApplyButtonTapped: (() -> ())?
+    var onApplyButtonTapped: (() -> Void)?
 
     // MARK: - Lifecycle
 

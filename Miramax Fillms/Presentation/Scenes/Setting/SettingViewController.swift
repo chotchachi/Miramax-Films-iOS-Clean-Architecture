@@ -46,7 +46,7 @@ class SettingViewController: BaseViewController<SettingViewModel>, TabBarSelecta
         let input = SettingViewModel.Input(
             toSearchTrigger: btnSearch.rx.tap.asDriver()
         )
-        let _ = viewModel.transform(input: input)
+        _ = viewModel.transform(input: input)
     }
 }
 

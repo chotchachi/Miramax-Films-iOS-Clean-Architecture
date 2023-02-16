@@ -189,7 +189,7 @@ extension TabLayout {
             if fromeFrame.origin.x < toFrame.origin.x {
                 UIView.animate(withDuration: animationDuration, delay: 0, options: .curveLinear, animations: {
                     indicator.frame.size.width = CGFloat(sizeWidth)
-                }, completion: { (completion) in
+                }, completion: { _ in
                     UIView.animate(withDuration: animationDuration, animations: {
                         indicator.frame.size.width = CGFloat(sizeWidth)
                         indicator.frame.origin.x = toLabel.center.x - CGFloat(sizeWidth / 2)
@@ -200,7 +200,7 @@ extension TabLayout {
                 UIView.animate(withDuration: animationDuration, delay: 0, options: .curveLinear, animations: {
                     indicator.frame.origin.x = toLabel.center.x - CGFloat(sizeWidth / 2)
                     indicator.frame.size.width = CGFloat(sizeWidth)
-                }, completion: { (completion) in
+                }, completion: { _ in
                     UIView.animate(withDuration: animationDuration, animations: {
                         indicator.frame.size.width = CGFloat(sizeWidth)
                     })

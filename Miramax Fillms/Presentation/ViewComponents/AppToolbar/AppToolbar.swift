@@ -62,7 +62,7 @@ final class AppToolbar: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSizeMake(UIView.noIntrinsicMetric, DimensionConstants.appToolbarHeight)
+        return .init(width: UIView.noIntrinsicMetric, height: DimensionConstants.appToolbarHeight)
     }
     
     override func prepareForInterfaceBuilder() {

@@ -50,7 +50,7 @@ class SeasonDetailsViewController: BaseViewController<SeasonDetailsViewModel>, L
         )
         let output = viewModel.transform(input: input)
         
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Episode>> { dataSource, tableView, indexPath, item in
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Episode>> { _, tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withClass: EpisodeTableViewCell.self, for: indexPath)
             cell.bind(item)
             cell.onLayoutChangeNeeded = { [weak self] in
