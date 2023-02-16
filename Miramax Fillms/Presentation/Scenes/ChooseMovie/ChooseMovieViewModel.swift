@@ -38,7 +38,7 @@ class ChooseMovieViewModel: BaseViewModel, ViewModelType {
 
     private var currentPage: Int = 1
     private var hasNextPage: Bool = false
-    private var currentSearchQuery: String? = nil
+    private var currentSearchQuery: String?
     
     init(repositoryProvider: RepositoryProviderProtocol, router: UnownedRouter<ChooseMovieRoute>) {
         self.repositoryProvider = repositoryProvider

@@ -82,7 +82,7 @@ class EntertainmentListViewController: BaseViewController<EntertainmentListViewM
         )
         let output = viewModel.transform(input: input)
         
-        let entertainmentDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
+        let entertainmentDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { _, collectionView, indexPath, item in
             switch self.presentationMode {
             case .preview:
                 let cell = collectionView.dequeueReusableCell(withClass: EntertainmentPreviewCollectionViewCell.self, for: indexPath)

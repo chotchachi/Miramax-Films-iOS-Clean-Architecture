@@ -55,7 +55,7 @@ class SelfieMovieViewController: BaseViewController<SelfieMovieViewModel> {
         )
         let output = viewModel.transform(input: input)
         
-        let frameDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, SelfieFrame>> { datasource, collectionView, indexPath, item in
+        let frameDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, SelfieFrame>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: SelfieFramePreviewCollectionViewCell.self, for: indexPath)
             cell.bind(item)
             cell.onApplyButtonTapped = { [weak self] in
@@ -72,7 +72,7 @@ class SelfieMovieViewController: BaseViewController<SelfieMovieViewModel> {
             .drive(frameCollectionView.rx.items(dataSource: frameDataSource))
             .disposed(by: rx.disposeBag)
         
-        let recentlyFrameDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, SelfieFrame>> { dataSource, collectionView, indexPath, item in
+        let recentlyFrameDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, SelfieFrame>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: SelfieFrameThumbCollectionViewCell.self, for: indexPath)
             cell.bind(item)
             return cell

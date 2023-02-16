@@ -58,7 +58,7 @@ class PersonListViewController: BaseViewController<PersonListViewModel>, Loading
         )
         let output = viewModel.transform(input: input)
         
-        let entertainmentDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, PersonViewModel>> { dataSource, collectionView, indexPath, item in
+        let entertainmentDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, PersonViewModel>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: PersonWishlistCollectionViewCell.self, for: indexPath)
             cell.bind(item)
             return cell

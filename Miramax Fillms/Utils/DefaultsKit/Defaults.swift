@@ -139,7 +139,7 @@ public final class Defaults {
     /// Removes given bundle's persistent domain
     ///
     /// - Parameter type: Bundle.
-    public func removeAll(bundle : Bundle = Bundle.main) {
+    public func removeAll(bundle: Bundle = Bundle.main) {
         guard let name = bundle.bundleIdentifier else { return }
         self.userDefaults.removePersistentDomain(forName: name)
     }

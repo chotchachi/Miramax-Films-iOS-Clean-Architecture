@@ -10,16 +10,16 @@ import SnapKit
 
 public struct GSImageInfo {
     
-    public enum ImageMode : Int {
+    public enum ImageMode: Int {
         case aspectFit  = 1
         case aspectFill = 2
     }
     
-    public let image     : UIImage
-    public let imageMode : ImageMode
-    public var imageHD   : URL?
+    public let image: UIImage
+    public let imageMode: ImageMode
+    public var imageHD: URL?
     
-    public var contentMode : UIView.ContentMode {
+    public var contentMode: UIView.ContentMode {
         return UIView.ContentMode(rawValue: imageMode.rawValue)!
     }
     
@@ -45,10 +45,10 @@ public struct GSImageInfo {
             let h = image.size.height * r
             
             return CGRect(
-                x      : origin?.x ?? rect.origin.x - (w - rect.width) / 2,
-                y      : origin?.y ?? rect.origin.y - (h - rect.height) / 2,
-                width  : w,
-                height : h
+                x: origin?.x ?? rect.origin.x - (w - rect.width) / 2,
+                y: origin?.y ?? rect.origin.y - (h - rect.height) / 2,
+                width: w,
+                height: h
             )
         }
     }
@@ -273,7 +273,7 @@ open class ImageViewerController: UIViewController {
         guard let imageHD = imageInfo.imageHD else { return }
             
         let request = URLRequest(url: imageHD, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 15)
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
+        let task = session.dataTask(with: request, completionHandler: { (data, _, _) -> Void in
             guard let data = data else { return }
             guard let image = UIImage(data: data) else { return }
             self.imageView.image = image
@@ -310,8 +310,8 @@ open class ImageViewerController: UIViewController {
         }
     }
     
-    fileprivate var panViewOrigin : CGPoint?
-    fileprivate var panViewAlpha  : CGFloat = 1
+    fileprivate var panViewOrigin: CGPoint?
+    fileprivate var panViewAlpha: CGFloat = 1
     
     @objc fileprivate func pan(_ gesture: UIPanGestureRecognizer) {
         
@@ -416,9 +416,9 @@ extension ImageViewerController: UIGestureRecognizerDelegate {
 
 class GSImageViewerTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
-    let imageInfo      : GSImageInfo
-    let transitionInfo : GSTransitionInfo
-    var transitionMode : TransitionMode
+    let imageInfo: GSImageInfo
+    let transitionInfo: GSTransitionInfo
+    var transitionMode: TransitionMode
     
     enum TransitionMode {
         case present
@@ -475,9 +475,7 @@ class GSImageViewerTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 containerView.addSubview(imageViewer.view)
                 transitionContext.completeTransition(true)
             })
-        }
-        
-        else if transitionMode == .dismiss {
+        } else if transitionMode == .dismiss {
             let imageViewer = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as! ImageViewerController
                 imageViewer.view.removeFromSuperview()
             

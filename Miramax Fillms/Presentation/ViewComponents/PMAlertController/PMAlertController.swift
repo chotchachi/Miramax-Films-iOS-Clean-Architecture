@@ -34,7 +34,7 @@ open class PMAlertController: UIViewController {
     @IBOutlet weak open var alertActionStackViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak open var alertActionStackViewBottomConstraint: NSLayoutConstraint!
     
-    var animator : UIDynamicAnimator?
+    var animator: UIDynamicAnimator?
     
     @objc open var textFields: [UITextField] = []
     
@@ -75,13 +75,13 @@ open class PMAlertController: UIViewController {
         
         if let description = description {
             alertDescription.text = description
-        }else{
+        } else {
             alertDescription.isHidden = true
         }
         
         alertViewWidthConstraint.constant = 270
         
-        //Gesture recognizer for background dismiss with background touch
+        // Gesture recognizer for background dismiss with background touch
         let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(dismissAlertControllerFromBackgroundTap))
         alertMaskBackground.addGestureRecognizer(tapRecognizer)
         
@@ -105,7 +105,7 @@ open class PMAlertController: UIViewController {
         alertAction.addTarget(self, action: #selector(PMAlertController.dismissAlertController(_:)), for: .touchUpInside)
     }
     
-    @objc fileprivate func dismissAlertController(_ sender: PMAlertAction){
+    @objc fileprivate func dismissAlertController(_ sender: PMAlertAction) {
         self.animateDismissWithGravity(sender.actionStyle)
         self.dismiss(animated: true, completion: nil)
     }
@@ -121,30 +121,30 @@ open class PMAlertController: UIViewController {
     
     // MARK: - Text Fields
     
-    open func addTextField(textField:UITextField? = nil, _ configuration: (_ textField: UITextField?) -> Void){
+    open func addTextField(textField: UITextField? = nil, _ configuration: (_ textField: UITextField?) -> Void) {
         let textField = textField ?? UITextField()
         textField.delegate = self
         textField.returnKeyType = .done
         textField.font = UIFont(name: "Avenir-Heavy", size: 17)
         textField.textAlignment = .center
-        configuration (textField)
+        configuration(textField)
         _addTextField(textField)
     }
     
-    func _addTextField(_ textField: UITextField){
+    func _addTextField(_ textField: UITextField) {
         alertActionStackView.addArrangedSubview(textField)
         alertActionStackViewHeightConstraint.constant = kAlertActionHeight * CGFloat(alertActionStackView.arrangedSubviews.count)
         alertActionStackView.axis = .vertical
         textFields.append(textField)
     }
     
-    func hasTextFieldAdded () -> Bool{
-        return textFields.count > 0
+    func hasTextFieldAdded () -> Bool {
+        return textFields.isEmpty
     }
     
     // MARK: - Customizations
     
-    fileprivate func configureViews(){
+    fileprivate func configureViews() {
         alertView.layer.masksToBounds = false
         alertView.layer.shadowOffset = CGSize(width: 0, height: 0)
         alertView.layer.shadowRadius = 8
@@ -161,23 +161,20 @@ open class PMAlertController: UIViewController {
         alertMaskBackground.backgroundColor = UIColor(hex: 0x1A2138).withAlphaComponent(0.6)
     }
     
-    fileprivate func loadNibAlertController() -> [AnyObject]?{
+    fileprivate func loadNibAlertController() -> [AnyObject]? {
         let podBundle = Bundle(for: self.classForCoder)
         
-        if let bundleURL = podBundle.url(forResource: "PMAlertController", withExtension: "bundle"){
+        if let bundleURL = podBundle.url(forResource: "PMAlertController", withExtension: "bundle") {
             
             if let bundle = Bundle(url: bundleURL) {
                 return bundle.loadNibNamed("PMAlertController", owner: self, options: nil) as [AnyObject]?
-            }
-            else {
+            } else {
                 assertionFailure("Could not load the bundle")
             }
             
-        }
-        else if let nib = podBundle.loadNibNamed("PMAlertController", owner: self, options: nil) as [AnyObject]?{
+        } else if let nib = podBundle.loadNibNamed("PMAlertController", owner: self, options: nil) as [AnyObject]? {
             return nib
-        }
-        else{
+        } else {
             assertionFailure("Could not create a path to the bundle")
         }
         return nil
@@ -185,12 +182,12 @@ open class PMAlertController: UIViewController {
     
     // MARK: - Animations
     
-    fileprivate func animateDismissWithGravity(_ style: PMAlertActionStyle){
-        if gravityDismissAnimation == true{
+    fileprivate func animateDismissWithGravity(_ style: PMAlertActionStyle) {
+        if gravityDismissAnimation == true {
             var radian = Double.pi
             if style == .default {
                 radian = 2 * Double.pi
-            }else{
+            } else {
                 radian = -2 * Double.pi
             }
             animator = UIDynamicAnimator(referenceView: self.view)
@@ -209,7 +206,7 @@ open class PMAlertController: UIViewController {
     // MARK: - Keyboard avoiding
     
     var tempFrameOrigin: CGPoint?
-    var keyboardHasBeenShown:Bool = false
+    var keyboardHasBeenShown: Bool = false
     
     @objc fileprivate func keyboardWillShow(_ notification: Notification) {
         keyboardHasBeenShown = true
@@ -229,8 +226,8 @@ open class PMAlertController: UIViewController {
     }
     
     @objc fileprivate func keyboardWillHide(_ notification: Notification) {
-        if (keyboardHasBeenShown) { // Only on the simulator (keyboard will be hidden)
-            if (tempFrameOrigin != nil){
+        if keyboardHasBeenShown { // Only on the simulator (keyboard will be hidden)
+            if tempFrameOrigin != nil {
                 alertView.frame.origin.y = tempFrameOrigin!.y
                 tempFrameOrigin = nil
             }

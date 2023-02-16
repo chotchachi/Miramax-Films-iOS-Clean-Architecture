@@ -52,7 +52,7 @@ extension SelfieCameraViewController {
         }
     }
     
-    private func addCaptureDeviceInput(session: AVCaptureSession, cameraDevice: AVCaptureDevice, completion: () -> ()) {
+    private func addCaptureDeviceInput(session: AVCaptureSession, cameraDevice: AVCaptureDevice, completion: () -> Void) {
         do {
             let input = try AVCaptureDeviceInput(device: cameraDevice)
                         
@@ -122,7 +122,7 @@ extension SelfieCameraViewController {
         do {
             try device.lockForConfiguration()
             
-            if (device.torchMode == .on) {
+            if device.torchMode == .on {
                 device.torchMode = .off
             } else {
                 do {
@@ -138,35 +138,35 @@ extension SelfieCameraViewController {
         }
     }
 
-    func checkCameraPermission(completion: @escaping () -> ()) {
+    func checkCameraPermission(completion: @escaping () -> Void) {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
-            case .authorized:
-                DispatchQueue.main.async {
-                    completion()
-                }
-            case .notDetermined:
-                AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
-                    guard let self = self else { return }
-                    if granted {
-                        DispatchQueue.main.async {
-                            completion()
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            self.visibleNoCameraPermissionView()
-                        }
+        case .authorized:
+            DispatchQueue.main.async {
+                completion()
+            }
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
+                guard let self = self else { return }
+                if granted {
+                    DispatchQueue.main.async {
+                        completion()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.visibleNoCameraPermissionView()
                     }
                 }
-            case .denied:
-                DispatchQueue.main.async {
-                    self.visibleNoCameraPermissionView()
-                }
-            case .restricted:
-                DispatchQueue.main.async {
-                    self.showAlert(title: "camera_restricted_alert_title".localized, message: "camera_restricted_alert_message".localized)
-                }
-            default:
-                break
+            }
+        case .denied:
+            DispatchQueue.main.async {
+                self.visibleNoCameraPermissionView()
+            }
+        case .restricted:
+            DispatchQueue.main.async {
+                self.showAlert(title: "camera_restricted_alert_title".localized, message: "camera_restricted_alert_message".localized)
+            }
+        default:
+            break
         }
     }
     

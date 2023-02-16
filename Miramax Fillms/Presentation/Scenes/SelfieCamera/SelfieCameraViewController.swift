@@ -126,7 +126,7 @@ class SelfieCameraViewController: BaseViewController<SelfieCameraViewModel> {
             })
             .disposed(by: rx.disposeBag)
         
-        let frameDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, SelfieFrame>> { datasource, collectionView, indexPath, item in
+        let frameDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, SelfieFrame>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: SelfieFrameThumbCollectionViewCell.self, for: indexPath)
             cell.bind(item, canSelection: true)
             return cell
@@ -314,7 +314,7 @@ extension SelfieCameraViewController {
 // MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 
 extension SelfieCameraViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
             guard let image = info[.originalImage] as? UIImage else {

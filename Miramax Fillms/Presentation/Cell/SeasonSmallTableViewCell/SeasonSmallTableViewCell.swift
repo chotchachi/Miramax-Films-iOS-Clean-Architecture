@@ -22,7 +22,7 @@ class SeasonSmallTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    var onPlayButtonTapped: (() -> ())?
+    var onPlayButtonTapped: (() -> Void)?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

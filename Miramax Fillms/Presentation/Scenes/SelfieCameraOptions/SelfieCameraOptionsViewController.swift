@@ -34,7 +34,7 @@ class SelfieCameraOptionsViewController: UIViewController {
     
     // MARK: - Properties
     
-    var onDoneAction: ((FormOptionsResult)->Void)?
+    var onDoneAction: ((FormOptionsResult) -> Void)?
         
     var selectedLocation: String?
     var selectedDate: Date?

@@ -65,7 +65,7 @@ class EntertainmentDetailsCoordinator: NavigationCoordinator<EntertainmentDetail
                 return .none()
             }
             let activity = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-            if (UIDevice.current.userInterfaceIdiom == .pad) {
+            if UIDevice.current.userInterfaceIdiom == .pad {
                 activity.popoverPresentationController?.sourceView = viewController.view
                 activity.popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: 768, height: 300)
             }

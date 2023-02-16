@@ -147,7 +147,6 @@ class TVShowViewController: BaseViewController<TVShowViewModel>, TabBarSelectabl
                     self.bannerLoadingIndicator.stopAnimating()
                     self.bannerMainView.isHidden = true
                     self.bannerRetryButton.isHidden = false
-                    break
                 }
             })
             .disposed(by: rx.disposeBag)
@@ -236,7 +235,7 @@ extension TVShowViewController {
             .bind(to: genreSelectTriggerS)
             .disposed(by: rx.disposeBag)
 
-        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Genre>> { dataSource, collectionView, indexPath, item in
+        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Genre>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: GenreCollectionViewCell.self, for: indexPath)
             cell.bind(item)
             return cell
@@ -303,14 +302,13 @@ extension TVShowViewController {
             })
             .disposed(by: rx.disposeBag)
 
-
         upcomingTableView.separatorStyle = .none
         upcomingTableView.register(cellWithClass: EntertainmentRankTableViewCell.self)
         upcomingTableView.rx.modelSelected(EntertainmentViewModel.self)
             .bind(to: entertainmentSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { datasource, tableView, indexPath, item in
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { _, tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withClass: EntertainmentRankTableViewCell.self, for: indexPath)
             cell.bind(item, offset: indexPath.row)
             cell.onPlayButtonTapped = { [weak self] in
@@ -364,7 +362,7 @@ extension TVShowViewController {
             .bind(to: entertainmentSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
-        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
+        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentPreviewCollectionViewCell.self, for: indexPath)
             cell.bind(item)
             cell.onButtonBookmarkTapped = { [weak self] in

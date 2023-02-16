@@ -50,7 +50,7 @@ class HomeTabBarController: UITabBarController {
         
         let selectedButton = buttons[index]
         
-        let move: () -> () = {
+        let move: () -> Void = {
             let point = CGPoint(
                 x: selectedButton.center.x,
                 y: selectedButton.frame.minY

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public enum PMAlertActionStyle : Int {
+public enum PMAlertActionStyle: Int {
     case `default`
     case cancel
 }
@@ -17,7 +17,7 @@ open class PMAlertAction: UIButton {
     
     fileprivate var action: (() -> Void)?
     
-    open var actionStyle : PMAlertActionStyle
+    open var actionStyle: PMAlertActionStyle
     
     open var separator = UIImageView()
     

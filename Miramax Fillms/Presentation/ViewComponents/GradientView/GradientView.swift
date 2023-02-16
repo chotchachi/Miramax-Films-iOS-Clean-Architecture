@@ -62,7 +62,7 @@ import UIKit
         let fromColors = gradientLayer?.colors
         let toColors: [AnyObject] = [ newTopColor.cgColor, newBottomColor.cgColor]
         gradientLayer?.colors = toColors
-        let animation : CABasicAnimation = CABasicAnimation(keyPath: "colors")
+        let animation: CABasicAnimation = CABasicAnimation(keyPath: "colors")
         animation.fromValue = fromColors
         animation.toValue = toColors
         animation.duration = duration

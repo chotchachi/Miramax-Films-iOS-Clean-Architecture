@@ -50,7 +50,7 @@ class GenresViewController: BaseViewController<GenresViewModel>, TabBarSelectabl
         )
         let output = viewModel.transform(input: input)
         
-        let genreDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Genre>> { dataSource, collectionView, indexPath, item in
+        let genreDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Genre>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: GenreCollectionViewCell.self, for: indexPath)
             cell.bind(item)
             return cell

@@ -65,7 +65,7 @@ class ChooseMovieViewController: BaseViewController<ChooseMovieViewModel>, Loadi
         )
         let output = viewModel.transform(input: input)
         
-        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
+        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
             cell.bind(item, canSelection: true)
             return cell

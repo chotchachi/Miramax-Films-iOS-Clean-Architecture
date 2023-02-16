@@ -7,8 +7,8 @@
 
 import UIKit
 
-public let CollectionViewWaterfallElementKindSectionHeader = "CollectionViewWaterfallElementKindSectionHeader"
-public let CollectionViewWaterfallElementKindSectionFooter = "CollectionViewWaterfallElementKindSectionFooter"
+fileprivate let collectionViewWaterfallElementKindSectionHeader = "collectionViewWaterfallElementKindSectionHeader"
+fileprivate let collectionViewWaterfallElementKindSectionFooter = "collectionViewWaterfallElementKindSectionFooter"
 
 @objc public protocol CollectionViewWaterfallLayoutDelegate: AnyObject {
     func collectionView(_ collectionView: UICollectionView, layout: CollectionViewWaterfallLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
@@ -153,7 +153,7 @@ public class CollectionViewWaterfallLayout: UICollectionViewLayout {
             top += Float(headerInset.top)
             
             if headerHeight > 0 {
-                attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionHeader, with: IndexPath(item: 0, section: section))
+                attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: collectionViewWaterfallElementKindSectionHeader, with: IndexPath(item: 0, section: section))
                 attributes.frame = CGRect(x: headerInset.left, y: CGFloat(top), width: collectionView.frame.size.width - (headerInset.left + headerInset.right), height: CGFloat(headerHeight))
                 
                 headersAttribute[section] = attributes
@@ -166,7 +166,6 @@ public class CollectionViewWaterfallLayout: UICollectionViewLayout {
             for idx in 0..<columnCount {
                 columnHeights[idx] = top
             }
-            
             
             /*
             * 3. Section items
@@ -209,7 +208,7 @@ public class CollectionViewWaterfallLayout: UICollectionViewLayout {
             top += Float(footerInset.top)
             
             if footerHeight > 0 {
-                attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: CollectionViewWaterfallElementKindSectionFooter, with: IndexPath(item: 0, section: section))
+                attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: collectionViewWaterfallElementKindSectionFooter, with: IndexPath(item: 0, section: section))
                 attributes.frame = CGRect(x: footerInset.left, y: CGFloat(top), width: collectionView.frame.size.width - (footerInset.left + footerInset.right), height: CGFloat(footerHeight))
                 
                 footersAttribute[section] = attributes
@@ -251,9 +250,9 @@ public class CollectionViewWaterfallLayout: UICollectionViewLayout {
     public override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         var attribute: UICollectionViewLayoutAttributes?
         
-        if elementKind == CollectionViewWaterfallElementKindSectionHeader {
+        if elementKind == collectionViewWaterfallElementKindSectionHeader {
             attribute = headersAttribute[indexPath.section]
-        } else if elementKind == CollectionViewWaterfallElementKindSectionFooter {
+        } else if elementKind == collectionViewWaterfallElementKindSectionFooter {
             attribute = footersAttribute[indexPath.section]
         }
         
@@ -297,7 +296,6 @@ public class CollectionViewWaterfallLayout: UICollectionViewLayout {
     }
 }
 
-
 // MARK: - Private Methods
 private extension CollectionViewWaterfallLayout {
     func shortestColumnIndex() -> Int {
@@ -316,7 +314,7 @@ private extension CollectionViewWaterfallLayout {
     
     func longestColumnIndex() -> Int {
         var index: Int = 0
-        var longestHeight:Float = 0
+        var longestHeight: Float = 0
         
         for (idx, height) in columnHeights.enumerated() {
             if height > longestHeight {

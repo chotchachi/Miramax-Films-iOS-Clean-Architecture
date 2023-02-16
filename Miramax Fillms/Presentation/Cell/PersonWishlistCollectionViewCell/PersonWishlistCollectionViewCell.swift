@@ -23,7 +23,7 @@ class PersonWishlistCollectionViewCell: UICollectionViewCell, UIGestureRecognize
     
     // MARK: - Properties
     
-    var onDeleteButtonTapped: (()->())?
+    var onDeleteButtonTapped: (() -> Void)?
     
     // MARK: - Lifecycle
     
@@ -232,7 +232,7 @@ extension PersonWishlistCollectionViewCell {
     
     private func shouldShowRevealView(forVelocity velocity: CGPoint) -> Bool {
         guard let revealView = revealView else { return false }
-        return abs(velocity.x) > revealView.frame.width / 2 && velocity.x < 0;
+        return abs(velocity.x) > revealView.frame.width / 2 && velocity.x < 0
     }
     
     private func bigThenRevealViewHalfWidth() -> Bool {
@@ -266,7 +266,7 @@ extension PersonWishlistCollectionViewCell {
             delay: 0,
             options: .curveEaseOut,
             animations: {
-                self.snapShotView?.center = CGPoint(x: self.frame.width / 2 - self.revealView!.frame.width + 15.0 , y: self.snapShotView!.center.y)
+                self.snapShotView?.center = CGPoint(x: self.frame.width / 2 - self.revealView!.frame.width + 15.0, y: self.snapShotView!.center.y)
             }
         )
     }

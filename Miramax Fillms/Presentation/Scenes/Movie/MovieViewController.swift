@@ -225,7 +225,7 @@ extension MovieViewController {
             .bind(to: genreSelectTriggerS)
             .disposed(by: rx.disposeBag)
 
-        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Genre>> { dataSource, collectionView, indexPath, item in
+        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Genre>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: GenreCollectionViewCell.self, for: indexPath)
             cell.bind(item)
             return cell
@@ -293,7 +293,7 @@ extension MovieViewController {
         
         upcomingCollectionViewHc.constant = DimensionConstants.entertainmentHorizontalCollectionViewHeightConstraint
 
-        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
+        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
             cell.bind(item)
             return cell
@@ -347,7 +347,7 @@ extension MovieViewController {
             .bind(to: entertainmentSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
-        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
+        let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentPreviewCollectionViewCell.self, for: indexPath)
             cell.bind(item)
             cell.onButtonBookmarkTapped = { [weak self] in

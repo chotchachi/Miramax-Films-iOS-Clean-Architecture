@@ -157,7 +157,7 @@ extension PersonDetailsViewController {
         
         moviesCollectionViewHeightConstraint.constant = DimensionConstants.entertainmentHorizontalCollectionViewHeightConstraint
         
-        let movieDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
+        let movieDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
             cell.bind(item)
             return cell

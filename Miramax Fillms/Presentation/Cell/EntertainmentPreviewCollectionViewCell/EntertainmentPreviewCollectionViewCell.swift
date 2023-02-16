@@ -22,7 +22,7 @@ class EntertainmentPreviewCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var onButtonBookmarkTapped: (()->())?
+    var onButtonBookmarkTapped: (() -> Void)?
 
     // MARK: - Lifecycle
     

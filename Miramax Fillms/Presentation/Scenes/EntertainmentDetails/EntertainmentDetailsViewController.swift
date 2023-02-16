@@ -236,7 +236,7 @@ extension EntertainmentDetailsViewController {
             .bind(to: seasonSelectTriggerS)
             .disposed(by: rx.disposeBag)
         
-        let seasonDataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Season>> { dataSource, tableView, indexPath, item in
+        let seasonDataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Season>> { _, tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withClass: SeasonSmallTableViewCell.self, for: indexPath)
             cell.bind(item, offset: indexPath.row)
             cell.onPlayButtonTapped = { [weak self] in
@@ -274,7 +274,7 @@ extension EntertainmentDetailsViewController {
         
         actorsCollectionViewHeightConstraint.constant = DimensionConstants.personHorizontalCollectionViewHeightConstraint
         
-        let actorDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, PersonViewModel>> { dataSource, collectionView, indexPath, item in
+        let actorDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, PersonViewModel>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: PersonHorizontalCell.self, for: indexPath)
             cell.bind(item)
             return cell
@@ -318,7 +318,7 @@ extension EntertainmentDetailsViewController {
         
         recommendCollectionViewHeightConstraint.constant = DimensionConstants.entertainmentHorizontalCollectionViewHeightConstraint
         
-        let recommendDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { dataSource, collectionView, indexPath, item in
+        let recommendDataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, EntertainmentViewModel>> { _, collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withClass: EntertainmentHorizontalCell.self, for: indexPath)
             cell.bind(item)
             return cell
@@ -392,7 +392,8 @@ extension EntertainmentDetailsViewController {
 
         // Entertainment overview
         lblOverview.text = item.overview
-        sectionOverviewView.isHidden = item.overview.isEmpty /// Hide section overview if overview empty
+        /// Hide section overview if overview empty
+        sectionOverviewView.isHidden = item.overview.isEmpty
         
         // Entertainment seasons
         sectionSeasonsView.isHidden = item.type == .movie
