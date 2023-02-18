@@ -4,17 +4,8 @@ default_platform(:ios)
 platform :ios do
   desc "Build and upload"
   lane :build_upload do
-    cocoapods_install
     build_release
     upload_deploygate
-  end
-
-  desc "CocoaPods Install"
-  lane :cocoapods_install do
-    cocoapods(
-      clean_install: true,
-      try_repo_update_on_error: true
-    )
   end
 
   desc "Build the iOS app for release"

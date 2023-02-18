@@ -23,14 +23,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Build and upload
 
-### ios cocoapods_install
-
-```sh
-[bundle exec] fastlane ios cocoapods_install
-```
-
-CocoaPods Install
-
 ### ios build_release
 
 ```sh
