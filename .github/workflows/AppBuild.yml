@@ -58,5 +58,6 @@ jobs:
         env:
           APP_IDENTIFIER: ${{ secrets.APP_IDENTIFIER }}
           APP_PROFILE_NAME: ${{ secrets.APP_PROFILE_NAME }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
           DEPLOYGATE_API_KEY: ${{ secrets.DEPLOYGATE_API_KEY }}
           DEPLOYGATE_USERNAME: ${{ secrets.DEPLOYGATE_USERNAME }}
