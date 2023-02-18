@@ -19,6 +19,7 @@ platform :ios do
       code_sign_identity: "Apple Development",
       bundle_identifier: app_identifier,
       profile_name: app_profile_name,
+      team_id: "",
       build_configurations: ["Release"]
     )
 
@@ -32,7 +33,6 @@ platform :ios do
           app_identifier => app_profile_name
         }
       },
-      export_team_id: "",
       skip_package_dependencies_resolution: true,
       disable_package_automatic_updates: true
     )
