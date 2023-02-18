@@ -39,6 +39,14 @@ Build the iOS app for release
 
 Upload ipa to DeployGate
 
+### ios telegram_notification
+
+```sh
+[bundle exec] fastlane ios telegram_notification
+```
+
+Telegram notification
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

@@ -6,6 +6,7 @@ platform :ios do
   lane :build_upload do
     build_release
     upload_deploygate
+    telegram_notification
   end
 
   desc "Build the iOS app for release"
@@ -47,6 +48,18 @@ platform :ios do
       user: ENV["DEPLOYGATE_USERNAME"],
       ipa: lane_context[SharedValues::IPA_OUTPUT_PATH],
       message: "Build #{lane_context[SharedValues::BUILD_NUMBER]}"
+    )
+  end
+
+  desc "Telegram notification"
+  lane :telegram_notification do
+    newly_uploaded_url = lane_context[SharedValues::DEPLOYGATE_URL]
+
+    telegram(
+      token: ENV["TELEGRAM_BOT_TOKEN"],
+      chat_id: ENV["TELEGRAM_BOT_TOKEN"],
+      text: "*Distribute ipa to Deploygate successfully* \n[#{newly_uploaded_url}](#{newly_uploaded_url})",
+      parse_mode: "Markdown"
     )
   end
 
