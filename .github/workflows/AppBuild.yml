@@ -61,3 +61,5 @@ jobs:
           TEAM_ID: ${{ secrets.TEAM_ID }}
           DEPLOYGATE_API_KEY: ${{ secrets.DEPLOYGATE_API_KEY }}
           DEPLOYGATE_USERNAME: ${{ secrets.DEPLOYGATE_USERNAME }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}

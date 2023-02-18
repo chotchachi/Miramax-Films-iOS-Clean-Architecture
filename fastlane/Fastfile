@@ -57,7 +57,7 @@ platform :ios do
 
     telegram(
       token: ENV["TELEGRAM_BOT_TOKEN"],
-      chat_id: ENV["TELEGRAM_BOT_TOKEN"],
+      chat_id: ENV["TELEGRAM_CHAT_ID"],
       text: "*Distribute ipa to Deploygate successfully* \n[#{newly_uploaded_url}](#{newly_uploaded_url})",
       parse_mode: "Markdown"
     )
