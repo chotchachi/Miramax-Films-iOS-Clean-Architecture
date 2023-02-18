@@ -1,3 +1,4 @@
+opt_out_usage
 default_platform(:ios)
 
 platform :ios do
@@ -5,6 +6,7 @@ platform :ios do
   lane :build_upload do
     cocoapods_install
     build_release
+    upload_deploygate
   end
 
   desc "CocoaPods Install"
