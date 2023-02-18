@@ -15,7 +15,7 @@ jobs:
       - name: Set up ruby env
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1.2p20'
+          ruby-version: '3.1.2'
           bundler-cache: true
 
       #     - name: Import Code-Signing Certificates
