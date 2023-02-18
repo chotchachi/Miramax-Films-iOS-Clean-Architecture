@@ -1,0 +1,58 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Build and upload"
+  lane :build_upload do
+    cocoapods_install
+    build_release
+  end
+
+  desc "CocoaPods Install"
+  lane :cocoapods_install do
+    cocoapods(
+      clean_install: true,
+      try_repo_update_on_error: true
+    )
+  end
+
+  desc "Build the iOS app for release"
+  lane :build_release do |options|
+    app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+    app_profile_name = "Provisioncomtestappnewapp"
+
+    update_code_signing_settings(
+      use_automatic_signing: false,
+      targets: ["Miramax Fillms"],
+      code_sign_identity: "iPhone Developer",
+      bundle_identifier: app_identifier,
+      profile_name: app_profile_name,
+      build_configurations: ["Release"]
+    )
+
+    gym(
+      scheme: "Miramax Fillms",
+      output_name: "Miramax Fillms",
+      export_options: {
+        method: "development",
+        provisioningProfiles: {
+          app_identifier => app_profile_name
+        }
+      }
+    )
+
+    puts "IPA output path: #{lane_context[SharedValues::IPA_OUTPUT_PATH]}"
+  end
+
+  desc "Upload ipa to DeployGate"
+  lane :upload_deploygate do
+    deploygate(
+      api_token: ENV["DEPLOYGATE_API_KEY"],
+      user: ENV["DEPLOYGATE_USERNAME"],
+      ipa: lane_context[SharedValues::IPA_OUTPUT_PATH],
+      message: "Build #{lane_context[SharedValues::BUILD_NUMBER]}"
+    )
+
+    puts "Newly uploaded build URL: #{lane_context[SharedValues::DEPLOYGATE_URL]}"
+  end
+
+end

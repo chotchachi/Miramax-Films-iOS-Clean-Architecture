@@ -1,4 +1,4 @@
-name: App build
+name: App build & upload
 
 on:
   push:
@@ -6,11 +6,24 @@ on:
       - main
 
 jobs:
-  build_with_signing:
+  deploy:
     runs-on: macos-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@main
+        uses: actions/checkout@v3
+
+      - name: Set up ruby env
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1.2p20'
+          bundler-cache: true
+
+      #     - name: Import Code-Signing Certificates
+      #       uses: Apple-Actions/import-codesign-certs@v1
+      #       with:
+      #         p12-file-base64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+      #         p12-password: ${{ secrets.P12_PASSWORD }}
+
       - name: Install the Apple certificate and provisioning profile
         env:
           BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
@@ -39,5 +52,9 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
-      - name: CocoaPod Install
-        run: pod install
+
+      - name: Build & upload ipa file
+        run: bundle exec fastlane ios build_upload
+        env:
+          DEPLOYGATE_API_KEY: ${{ secrets.DEPLOYGATE_API_KEY }}
+          DEPLOYGATE_USERNAME: ${{ secrets.DEPLOYGATE_USERNAME }}
