@@ -1,5 +1,6 @@
 opt_out_usage
 default_platform(:ios)
+ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "120"
 
 platform :ios do
   desc "Build and upload"
@@ -21,23 +22,28 @@ platform :ios do
       code_sign_identity: "iPhone Developer",
       bundle_identifier: app_identifier,
       profile_name: app_profile_name,
-      team_id: team_id
+      team_id: team_id,
+      build_configurations: ["Release"]
     )
 
     gym(
       scheme: "Miramax Fillms",
       output_name: "Miramax Fillms.ipa",
-      output_directory: "ipa",
+      build_path: "build",
+      archive_path: "build/archive",
+      output_directory: "build/ipa",
+      buildlog_path: "build/log",
       export_options: {
         method: "development",
         provisioningProfiles: {
           app_identifier => app_profile_name
         }
       },
+      destination: "generic/platform=iOS",
       skip_package_dependencies_resolution: true,
       disable_package_automatic_updates: true,
       silent: true,
-      clean: true
+      clean: false
     )
   end
 
@@ -59,6 +65,17 @@ platform :ios do
       token: ENV["TELEGRAM_BOT_TOKEN"],
       chat_id: ENV["TELEGRAM_CHAT_ID"],
       text: "*Distribute ipa to Deploygate successfully* \n[#{newly_uploaded_url}](#{newly_uploaded_url})",
+      parse_mode: "Markdown"
+    )
+  end
+
+  error do |lane, exception, options|
+    telegram(
+      token: "6229232163:AAHd6UygtGa6tx6nhqXGFW1KKmoPy9UCBuM",
+      chat_id: "652359941",
+      text: "*Error building the application - see the log file*",
+      file: "build/log/Miramax Fillms-Miramax Fillms.log",
+      mime_type: "text/plain",
       parse_mode: "Markdown"
     )
   end
