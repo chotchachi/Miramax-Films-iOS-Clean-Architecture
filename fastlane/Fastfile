@@ -71,8 +71,8 @@ platform :ios do
 
   error do |lane, exception, options|
     telegram(
-      token: "6229232163:AAHd6UygtGa6tx6nhqXGFW1KKmoPy9UCBuM",
-      chat_id: "652359941",
+      token: ENV["TELEGRAM_BOT_TOKEN"],
+      chat_id: ENV["TELEGRAM_CHAT_ID"],
       text: "*Error building the application - see the log file*",
       file: "build/log/Miramax Fillms-Miramax Fillms.log",
       mime_type: "text/plain",
