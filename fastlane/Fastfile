@@ -1,24 +1,20 @@
+opt_out_usage
 default_platform(:ios)
+ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "120"
 
 platform :ios do
   desc "Build and upload"
   lane :build_upload do
-    cocoapods_install
     build_release
-  end
-
-  desc "CocoaPods Install"
-  lane :cocoapods_install do
-    cocoapods(
-      clean_install: true,
-      try_repo_update_on_error: true
-    )
+    upload_deploygate
+    telegram_notification
   end
 
   desc "Build the iOS app for release"
   lane :build_release do |options|
-    app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
-    app_profile_name = "Provisioncomtestappnewapp"
+    app_identifier = ENV["APP_IDENTIFIER"]
+    app_profile_name = ENV["APP_PROFILE_NAME"]
+    team_id = ENV["TEAM_ID"]
 
     update_code_signing_settings(
       use_automatic_signing: false,
@@ -26,21 +22,29 @@ platform :ios do
       code_sign_identity: "iPhone Developer",
       bundle_identifier: app_identifier,
       profile_name: app_profile_name,
+      team_id: team_id,
       build_configurations: ["Release"]
     )
 
     gym(
       scheme: "Miramax Fillms",
-      output_name: "Miramax Fillms",
+      output_name: "Miramax Fillms.ipa",
+      build_path: "build",
+      archive_path: "build/archive",
+      output_directory: "build/ipa",
+      buildlog_path: "build/log",
       export_options: {
         method: "development",
         provisioningProfiles: {
           app_identifier => app_profile_name
         }
-      }
+      },
+      destination: "generic/platform=iOS",
+      skip_package_dependencies_resolution: true,
+      disable_package_automatic_updates: true,
+      silent: true,
+      clean: false
     )
-
-    puts "IPA output path: #{lane_context[SharedValues::IPA_OUTPUT_PATH]}"
   end
 
   desc "Upload ipa to DeployGate"
@@ -51,8 +55,29 @@ platform :ios do
       ipa: lane_context[SharedValues::IPA_OUTPUT_PATH],
       message: "Build #{lane_context[SharedValues::BUILD_NUMBER]}"
     )
+  end
 
-    puts "Newly uploaded build URL: #{lane_context[SharedValues::DEPLOYGATE_URL]}"
+  desc "Telegram notification"
+  lane :telegram_notification do
+    newly_uploaded_url = lane_context[SharedValues::DEPLOYGATE_URL]
+
+    telegram(
+      token: ENV["TELEGRAM_BOT_TOKEN"],
+      chat_id: ENV["TELEGRAM_CHAT_ID"],
+      text: "*Distribute ipa to Deploygate successfully* \n[#{newly_uploaded_url}](#{newly_uploaded_url})",
+      parse_mode: "Markdown"
+    )
+  end
+
+  error do |lane, exception, options|
+    telegram(
+      token: ENV["TELEGRAM_BOT_TOKEN"],
+      chat_id: ENV["TELEGRAM_CHAT_ID"],
+      text: "*Error building the application - see the log file*",
+      file: "build/log/Miramax Fillms-Miramax Fillms.log",
+      mime_type: "text/plain",
+      parse_mode: "Markdown"
+    )
   end
 
 end
