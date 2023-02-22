@@ -1,7 +1,7 @@
 # Miramax Films iOS Clean Architecture
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-) [![Build CI](https://github.com/hoc081098/ComicReaderApp_MVI_Coroutine_RxKotlin_Jetpack/actions/workflows/build.yml/badge.svg)](https://github.com/chotchachi/Miramax-Films-iOS-Clean-Architecture/actions/workflows/AppBuild.yml) [![Releases](https://img.shields.io/github/release/nextcloud/ios.svg)](https://github.com/chotchachi/Miramax-Films-iOS-Clean-Architecture/releases/latest) [![SwiftLint](https://github.com/nextcloud/ios/actions/workflows/lint.yml/badge.svg)](https://github.com/chotchachi/Miramax-Films-iOS-Clean-Architecture/actions/workflows/SwiftLint.yml)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-) [![Build CI](https://github.com/chotchachi/Miramax-Films-iOS-Clean-Architecture/actions/workflows/AppBuild.yml/badge.svg)](https://github.com/chotchachi/Miramax-Films-iOS-Clean-Architecture/actions/workflows/AppBuild.yml) [![Releases](https://img.shields.io/github/v/release/chotchachi/Miramax-Films-iOS-Clean-Architecture.svg)](https://github.com/chotchachi/Miramax-Films-iOS-Clean-Architecture/releases/latest) [![SwiftLint](https://github.com/nextcloud/ios/actions/workflows/lint.yml/badge.svg)](https://github.com/chotchachi/Miramax-Films-iOS-Clean-Architecture/actions/workflows/SwiftLint.yml)
 
 # Content
 - [Screenshots](#screenshots)
